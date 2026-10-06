@@ -64,7 +64,7 @@ function expandVariantGroups(value) {
 		}
 
 		if (closingIndex === -1) {
-			throw new SyntaxError(`registyle compile: unclosed variant group in "${value}"`);
+			throw new SyntaxError(`tailmantic compile: unclosed variant group in "${value}"`);
 		}
 
 		const prefix = value.slice(0, index);
@@ -80,7 +80,7 @@ function expandVariantGroups(value) {
 function normalizeUtilityValue(value, context) {
 	if (typeof value === 'string') return value;
 	if (Array.isArray(value) && value.every((part) => typeof part === 'string')) return value.join(' ');
-	throw new TypeError(`registyle compile: "${context}" must be a string or an array of strings`);
+	throw new TypeError(`tailmantic compile: "${context}" must be a string or an array of strings`);
 }
 
 function isCssDeclarationKey(key) {
@@ -135,13 +135,13 @@ function orderedClassEntries(classes) {
 
 	function visit(name) {
 		if (visited.has(name)) return;
-		if (resolving.has(name)) throw new Error(`registyle compile: circular extend detected for "${name}"`);
+		if (resolving.has(name)) throw new Error(`tailmantic compile: circular extend detected for "${name}"`);
 		resolving.add(name);
 		const config = classes[name];
 		const ownConfig = typeof config === 'string' ? { tw: config } : config || {};
 		const parents = ownConfig.extend ? Array.isArray(ownConfig.extend) ? ownConfig.extend : [ownConfig.extend] : [];
 		for (const parent of parents) {
-			if (!Object.hasOwn(classes, parent)) throw new Error(`registyle compile: unknown extended class "${parent}"`);
+			if (!Object.hasOwn(classes, parent)) throw new Error(`tailmantic compile: unknown extended class "${parent}"`);
 			visit(parent);
 		}
 		resolving.delete(name);
@@ -214,7 +214,7 @@ function collectRegistrationUtilities(classes = {}, groups = {}, classEntries = 
 
 	function resolveClass(name) {
 		if (resolved.has(name)) return resolved.get(name);
-		if (resolving.has(name)) throw new Error(`registyle compile: circular extend detected for "${name}"`);
+		if (resolving.has(name)) throw new Error(`tailmantic compile: circular extend detected for "${name}"`);
 		resolving.add(name);
 		const config = classes[name];
 		const ownConfig = typeof config === 'string' ? { tw: config } : { ...(config || {}) };
@@ -371,7 +371,7 @@ function retargetSelectors(root, tokenSelectors, selectorParser, modifierSelecto
 			const selectors = [...(tokenSelectors.get(token)?.keys() || [])].join(', ');
 			return selectors ? `${token} (${selectors})` : token;
 		});
-		throw new Error(`registyle compile: Tailwind did not generate CSS for: ${details.join(', ')}`);
+		throw new Error(`tailmantic compile: Tailwind did not generate CSS for: ${details.join(', ')}`);
 	}
 }
 
@@ -388,8 +388,8 @@ function escapeCssString(value) {
 export async function compile(manifest = {}, options = {}) {
 	const classes = manifest.classes || {};
 	const groups = manifest.groups || {};
-	if (!classes || typeof classes !== 'object' || Array.isArray(classes)) throw new TypeError('registyle compile: classes must be an object map');
-	if (!groups || typeof groups !== 'object' || Array.isArray(groups)) throw new TypeError('registyle compile: groups must be an object map');
+	if (!classes || typeof classes !== 'object' || Array.isArray(classes)) throw new TypeError('tailmantic compile: classes must be an object map');
+	if (!groups || typeof groups !== 'object' || Array.isArray(groups)) throw new TypeError('tailmantic compile: groups must be an object map');
 
 	const classEntries = orderedClassEntries(classes);
 	const { tokenSelectors, modifierSelectors } = collectRegistrationUtilities(classes, groups, classEntries);
@@ -412,14 +412,14 @@ export async function compile(manifest = {}, options = {}) {
 			import('postcss-selector-parser'),
 		]);
 	} catch (error) {
-		throw new Error('registyle compile requires postcss, @tailwindcss/postcss v4, and postcss-selector-parser. Install them as development dependencies.', { cause: error });
+		throw new Error('tailmantic compile requires postcss, @tailwindcss/postcss v4, and postcss-selector-parser. Install them as development dependencies.', { cause: error });
 	}
 
 	const tokens = [...tokenSelectors.keys()].join(' ');
 	const sourceDirective = `@source inline("${escapeCssString(tokens)}");`;
 	const inputCss = options.inputCss || '@reference "tailwindcss"; @import "tailwindcss/utilities.css" source(none);';
 	const input = `${inputCss}\n${sourceDirective}`;
-	const from = resolve(options.baseDir || process.cwd(), 'registyle.generated.css');
+	const from = resolve(options.baseDir || process.cwd(), 'tailmantic.generated.css');
 	const result = await postcss([tailwind()]).process(input, { from, map: false });
 	const root = postcss.parse(result.css);
 	retargetSelectors(root, tokenSelectors, selectorParser, modifierSelectors);
@@ -441,7 +441,7 @@ export async function compile(manifest = {}, options = {}) {
 				[rawCss, root.toString()].filter(Boolean).join('\n'),
 				finalCss
 			);
-			console.log('[registyle] Optimization stats:', stats);
+			console.log('[tailmantic] Optimization stats:', stats);
 		}
 	}
 	
@@ -450,7 +450,7 @@ export async function compile(manifest = {}, options = {}) {
 
 /** Compile a manifest and write its generated CSS to a file. */
 export async function compileToFile(manifest, outputPath, options = {}) {
-	if (typeof outputPath !== 'string' || !outputPath) throw new TypeError('registyle compileToFile: outputPath must be a non-empty string');
+	if (typeof outputPath !== 'string' || !outputPath) throw new TypeError('tailmantic compileToFile: outputPath must be a non-empty string');
 	const absolutePath = resolvePath(outputPath);
 	const css = await compile(manifest, { ...options, baseDir: options.baseDir || process.cwd() });
 	await mkdir(dirname(absolutePath), { recursive: true });

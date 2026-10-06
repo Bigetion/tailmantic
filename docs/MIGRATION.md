@@ -1,5 +1,7 @@
 # Migration Guide
 
+This is historical upgrade guidance for the original Registyle 1.x to 2.0 transition. Tailmantic 1.0.0 starts from that 2.x codebase; Tailmantic consumers should use the current [README](../README.md) rather than this guide.
+
 This guide covers upgrades from Registyle 1.x to 2.0.0. For installation and workflow choices, start with the [README](../README.md); for current public signatures, see the [API reference](./API.md).
 
 ## Upgrade

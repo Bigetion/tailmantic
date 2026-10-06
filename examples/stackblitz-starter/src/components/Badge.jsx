@@ -1,4 +1,4 @@
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 export function Badge({ variant = 'default', className, children }) {
   return (

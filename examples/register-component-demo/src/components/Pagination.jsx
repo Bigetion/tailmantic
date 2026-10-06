@@ -1,5 +1,5 @@
 import React from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export function Pagination({ page, total, pageSize = 10, onChange }) {

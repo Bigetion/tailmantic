@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { access, mkdir, mkdtemp, readFile, rm, symlink } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
@@ -72,16 +72,31 @@ test('reports the registration when a utility array contains a non-string', asyn
 });
 
 test('compiles the component demo button registration into semantic utility rules', async () => {
-	const { default: manifest } = await import('../examples/register-component-demo/src/registyles/index.js');
-	const css = await compile(manifest);
+	const packageLink = join(process.cwd(), 'node_modules', 'tailmantic');
+	let createdPackageLink = false;
+	try {
+		await access(packageLink);
+	} catch (error) {
+		if (error.code !== 'ENOENT') throw error;
+		await mkdir(join(process.cwd(), 'node_modules'), { recursive: true });
+		await symlink(process.cwd(), packageLink, 'junction');
+		createdPackageLink = true;
+	}
 
-	assert.match(css, /\.btn[^{}]*\{[^}]*display:\s*inline-flex/);
-	assert.match(css, /\.btn-primary[^{}]*\{[^}]*background-color:/);
-	assert.match(css, /\.btn-md[^{}]*\{[^}]*padding-inline:/);
-	assert.match(css, /\.btn-primary:enabled:hover[^{}]*\{[^}]*background-color:/);
-	assert.match(css, /\.checkbox-checked\[aria-checked="true"\][^{]*\{[^}]*background-color:/);
-	assert.match(css, /\.checkbox-indeterminate\[aria-checked="mixed"\][^{]*\{[^}]*background-color:/);
-	assert.match(css, /\.checkbox-sm[^{}]*\{[^}]*width:\s*14px\s*!important/);
+	try {
+		const { default: manifest } = await import('../examples/register-component-demo/src/tailmantics/index.js');
+		const css = await compile(manifest);
+
+		assert.match(css, /\.btn[^{}]*\{[^}]*display:\s*inline-flex/);
+		assert.match(css, /\.btn-primary[^{}]*\{[^}]*background-color:/);
+		assert.match(css, /\.btn-md[^{}]*\{[^}]*padding-inline:/);
+		assert.match(css, /\.btn-primary:enabled:hover[^{}]*\{[^}]*background-color:/);
+		assert.match(css, /\.checkbox-checked\[aria-checked="true"\][^{]*\{[^}]*background-color:/);
+		assert.match(css, /\.checkbox-indeterminate\[aria-checked="mixed"\][^{]*\{[^}]*background-color:/);
+		assert.match(css, /\.checkbox-sm[^{}]*\{[^}]*width:\s*14px\s*!important/);
+	} finally {
+		if (createdPackageLink) await rm(packageLink, { force: true });
+	}
 });
 
 test('preserves 1.0-compatible output by default and safely optimizes only when enabled', async () => {
@@ -177,7 +192,7 @@ test('rejects utility arrays in the runtime registration API', () => {
 });
 
 test('writes compiled CSS to an output file', async () => {
-	const directory = await mkdtemp(join(tmpdir(), 'registyle-'));
+	const directory = await mkdtemp(join(tmpdir(), 'tailmantic-'));
 	try {
 		const outputPath = join(directory, 'generated.css');
 		await compileToFile({ classes: { btn: { tw: 'bg-linear-to-r' } } }, outputPath);

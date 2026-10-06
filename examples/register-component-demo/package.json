@@ -1,5 +1,5 @@
 {
-  "name": "registyle-component-demo",
+  "name": "tailmantic-component-demo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,7 +12,7 @@
     "lucide-react": "^0.468.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "registyle": "file:../.."
+    "tailmantic": "file:../.."
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",

@@ -1,5 +1,5 @@
 import React from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 export function Card({ children, className }) {
   return <div className={cx('card', className)}>{children}</div>;

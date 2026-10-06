@@ -1,5 +1,5 @@
 /**
- * Theme system for registyle - centralized design tokens
+ * Theme system for tailmantic - centralized design tokens
  */
 
 const defaultTheme = {

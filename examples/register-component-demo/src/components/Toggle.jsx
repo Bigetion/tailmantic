@@ -1,5 +1,5 @@
 import React from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 export function Toggle({ checked = false, onChange, size = 'md', label, disabled }) {
   const sizeKey = size === 'md' ? '' : size;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { X } from 'lucide-react';
 
 export function Tag({ children, variant, onRemove, className }) {

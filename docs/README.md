@@ -1,6 +1,6 @@
-# Registyle Documentation
+# Tailmantic Documentation
 
-Use this guide to find the right workflow and reference. Registyle has two styling paths: a CSS-only runtime for plain declarations, and a build-time Tailwind v4 compiler for utility-backed semantic classes.
+Use this guide to find the right workflow and reference. Tailmantic has two styling paths: a CSS-only runtime for plain declarations, and a build-time Tailwind v4 compiler for utility-backed semantic classes.
 
 ## Choose a Workflow
 
@@ -8,7 +8,7 @@ Use this guide to find the right workflow and reference. Registyle has two styli
 | --- | --- | --- |
 | Plain CSS registrations without Tailwind dependencies | Runtime `register()` and CSS extraction | [API reference](./API.md#runtime-registration) |
 | Tailwind utilities compiled to named classes | `compile()` or `compileToFile()` | [API reference](./API.md#tailwind-compiler) |
-| Vite dev updates and production CSS output | `registyle()` Vite plugin | [README: Vite plugin](../README.md#vite-plugin) |
+| Vite dev updates and production CSS output | `tailmantic()` Vite plugin | [README: Vite plugin](../README.md#vite-plugin) |
 | A different bundler or server-side CSS extraction | Compiler build step or runtime API | [Integrations](./INTEGRATIONS.md) |
 | Conditional classes from component props | `cx()` or `createVariants()` | [API reference](./API.md#class-composition) and [Advanced guide](./ADVANCED.md#variants-composition) |
 
@@ -19,7 +19,7 @@ Use this guide to find the right workflow and reference. Registyle has two styli
 3. Follow [Integrations](./INTEGRATIONS.md) to connect your bundler or SSR setup.
 4. Read the [Advanced guide](./ADVANCED.md) for themes, variants, CSS layers, and container queries.
 5. Use [Troubleshooting](./TROUBLESHOOTING.md) when CSS is missing or a build fails.
-6. Use the [Migration guide](./MIGRATION.md) when upgrading to v2.
+6. Use the [upstream migration guide](./MIGRATION.md) only when upgrading an original Registyle v1 app to Registyle v2; Tailmantic 1.0.0 starts from the v2 codebase.
 
 ## Examples
 
@@ -29,4 +29,4 @@ Use this guide to find the right workflow and reference. Registyle has two styli
 ## Reference
 
 - [Changelog](./CHANGELOG.md)
-- [GitHub issues](https://github.com/Bigetion/registyle/issues)
+- [GitHub issues](https://github.com/Bigetion/tailmantic/issues)

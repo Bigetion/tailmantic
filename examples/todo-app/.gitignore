@@ -9,7 +9,7 @@ lerna-debug.log*
 
 node_modules
 dist
-.registyle
+.tailmantic
 dist-ssr
 *.local
 

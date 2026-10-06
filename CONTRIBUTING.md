@@ -1,4 +1,4 @@
-# Contributing to registyle
+# Contributing to tailmantic
 
 Thanks for your interest in contributing! This guide covers everything you need to get started.
 
@@ -17,8 +17,8 @@ You need Node.js 18 or later.
 
 ```sh
 # Clone the repository
-git clone https://github.com/Bigetion/registyle.git
-cd registyle
+git clone https://github.com/Bigetion/tailmantic.git
+cd tailmantic
 
 # Install dependencies
 npm install
@@ -58,7 +58,7 @@ The test suite covers:
 ## Project Structure
 
 ```
-registyle/
+tailmantic/
 ├── core-runtime.js      # CSS-only runtime engine
 ├── core-entry.js        # Package root entry (re-exports runtime)
 ├── collector.js         # Manifest collector (build-time)
@@ -76,7 +76,7 @@ registyle/
 
 ### Two Styling Paths
 
-registyle has two distinct paths — keep them separate when making changes:
+tailmantic has two distinct paths — keep them separate when making changes:
 
 **Runtime path** (`core-runtime.js`): Parses plain CSS declaration objects and injects `<style>` tags. Does **not** support `tw` utilities.
 
@@ -137,10 +137,10 @@ If you change a public API, update the corresponding `.d.ts` file and add a usag
 
 ## Reporting Issues
 
-Use [GitHub Issues](https://github.com/Bigetion/registyle/issues/new) to report bugs or request features.
+Use [GitHub Issues](https://github.com/Bigetion/tailmantic/issues/new) to report bugs or request features.
 
 For bugs, please include:
-- registyle version (`npm list registyle`)
+- tailmantic version (`npm list tailmantic`)
 - Node.js version (`node --version`)
 - A minimal reproduction (code snippet or repo link)
 - What you expected vs. what actually happened

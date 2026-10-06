@@ -1,6 +1,6 @@
 # Advanced Guide
 
-Deep dive into registyle's advanced features and patterns.
+Deep dive into tailmantic's advanced features and patterns.
 
 The modules in this guide are optional subpath APIs. The core workflow is semantic CSS registration, with Tailwind compilation and the Vite adapter available when needed.
 
@@ -19,7 +19,7 @@ The modules in this guide are optional subpath APIs. The core workflow is semant
 ### Creating Custom Themes
 
 ```js
-import { createTheme } from 'registyle/theme';
+import { createTheme } from 'tailmantic/theme';
 
 const theme = createTheme({
   colors: {
@@ -96,7 +96,7 @@ theme.get('typography.fontFamily.sans'); // → font family
 ### Theme Provider Pattern
 
 ```js
-import { withTheme } from 'registyle/theme';
+import { withTheme } from 'tailmantic/theme';
 
 const themed = withTheme(theme);
 
@@ -130,7 +130,7 @@ const [groupName, components] = themed.group('form', (t) => ({
 ### Dark Mode Themes
 
 ```js
-import { createTheme, themes } from 'registyle/theme';
+import { createTheme, themes } from 'tailmantic/theme';
 
 const darkTheme = createTheme({
   colors: {
@@ -150,7 +150,7 @@ const currentTheme = isDark ? darkTheme : themes.default;
 ### Complex Variant Patterns
 
 ```js
-import { createVariants, compound } from 'registyle/variants';
+import { createVariants, compound } from 'tailmantic/variants';
 
 const button = createVariants({
   base: {
@@ -238,7 +238,7 @@ const button = createVariants({
 
 ```tsx
 import { button } from './variants';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
@@ -276,7 +276,7 @@ export function Button({
 ### Merging Variants
 
 ```js
-import { mergeVariants } from 'registyle/variants';
+import { mergeVariants } from 'tailmantic/variants';
 
 const customButton = mergeVariants(
   {
@@ -433,7 +433,7 @@ register('responsive-card', {
 Optimization is opt-in. Pass options to the compiler or Vite adapter when you want minified or deduplicated output:
 
 ```js
-import { compile } from 'registyle/compile';
+import { compile } from 'tailmantic/compile';
 
 const css = await compile(manifest, {
   minify: true,
@@ -482,7 +482,7 @@ export { theme } from './theme';
 export { buttonVariants } from './components/button';
 export { manifest } from './manifest';
 
-// packages/web-app/registyle.config.js
+// packages/web-app/tailmantic.config.js
 import { manifest } from '@company/design-system';
 
 export default manifest;
@@ -491,7 +491,7 @@ export default manifest;
 ### Incremental Adoption
 
 ```js
-import { register } from 'registyle';
+import { register } from 'tailmantic';
 
 register('button', { padding: '0.5rem 1rem' });
 ```
@@ -536,7 +536,7 @@ The package root's `npm test` script runs the test suite and type checks. Run th
 
 ## End-to-End: Variants + Theme + Collector
 
-This section shows a complete workflow that connects all three advanced APIs — `createTheme`, `createVariants`, and `register` from `registyle/collector` — into a single cohesive registration file.
+This section shows a complete workflow that connects all three advanced APIs — `createTheme`, `createVariants`, and `register` from `tailmantic/collector` — into a single cohesive registration file.
 
 ### The Goal
 
@@ -549,8 +549,8 @@ Register a `btn` component with:
 ### Step 1 — Define the Theme
 
 ```js
-// src/registyles/theme.js
-import { createTheme } from 'registyle/theme';
+// src/tailmantics/theme.js
+import { createTheme } from 'tailmantic/theme';
 
 export const theme = createTheme({
   colors: {
@@ -573,8 +573,8 @@ export const theme = createTheme({
 ### Step 2 — Define the Variants
 
 ```js
-// src/registyles/button.variants.js
-import { createVariants } from 'registyle/variants';
+// src/tailmantics/button.variants.js
+import { createVariants } from 'tailmantic/variants';
 
 export const buttonVariants = createVariants({
   base: {
@@ -615,14 +615,14 @@ export const buttonVariants = createVariants({
 
 ### Step 3 — Register via Collector
 
-`toManifest()` converts the variant definition into an object keyed by generated class name — ready to be passed to `register` from `registyle/collector`.
+`toManifest()` converts the variant definition into an object keyed by generated class name — ready to be passed to `register` from `tailmantic/collector`.
 
 ```js
-// src/registyles/button.js
-import { register } from 'registyle/collector';
+// src/tailmantics/button.js
+import { register } from 'tailmantic/collector';
 import { buttonVariants } from './button.variants.js';
 import { theme } from './theme.js';
-import { withTheme } from 'registyle/theme';
+import { withTheme } from 'tailmantic/theme';
 
 // Register all variant combinations: btn, btn-primary, btn-secondary,
 // btn-danger, btn-sm, btn-md, btn-lg, and any compound overrides.
@@ -645,8 +645,8 @@ register(iconName, iconConfig);
 ### Step 4 — Expose via Collector Index
 
 ```js
-// src/registyles/index.js
-import { getManifest } from 'registyle/collector';
+// src/tailmantics/index.js
+import { getManifest } from 'tailmantic/collector';
 import './button.js';
 // import other component files here...
 
@@ -657,7 +657,7 @@ export default getManifest();
 
 ```tsx
 // src/components/Button.tsx
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 type Intent = 'primary' | 'secondary' | 'danger';
 type Size = 'sm' | 'md' | 'lg';
@@ -694,7 +694,7 @@ export function Button({
 
 ### What Gets Compiled
 
-The Vite plugin collects the manifest from `src/registyles/index.js` and compiles it through Tailwind v4. The output CSS contains one rule per class name:
+The Vite plugin collects the manifest from `src/tailmantics/index.js` and compiles it through Tailwind v4. The output CSS contains one rule per class name:
 
 ```css
 .btn { display: inline-flex; align-items: center; ... }

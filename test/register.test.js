@@ -112,7 +112,7 @@ test('cx combines conditional values and supports bound classes', () => {
 });
 
 test('rejects runtime Tailwind classes and requires the build adapter', () => {
-	assert.throws(() => register('btn', { tw: 'bg-blue-500' }), /registyle\/compile/);
-	assert.throws(() => register.group('badge', { root: 'bg-blue-100' }), /registyle\/compile/);
+	assert.throws(() => register('btn', { tw: 'bg-blue-500' }), /tailmantic\/compile/);
+	assert.throws(() => register.group('badge', { root: 'bg-blue-100' }), /tailmantic\/compile/);
 	assert.equal(register.extractCSS(), '');
 });

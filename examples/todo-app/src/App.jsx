@@ -11,9 +11,9 @@ import {
   Sparkles,
   Trash2,
 } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
-const STORAGE_KEY = 'registyle-daymark-tasks-v1';
+const STORAGE_KEY = 'tailmantic-daymark-tasks-v1';
 const views = [
   { id: 'inbox', label: 'All tasks', icon: Inbox },
   { id: 'today', label: 'Today', icon: CalendarDays },
@@ -66,7 +66,7 @@ function viewTitle(view) {
   return views.find((item) => item.id === view)?.label || 'All tasks';
 }
 
-function RegistyleTaskRow({ task, onToggle, onDelete }) {
+function TailmanticTaskRow({ task, onToggle, onDelete }) {
   return (
     <li className={cx('task-row', task.completed && 'task-row-completed')}>
       <button className={cx('task-check', task.completed && 'task-check-checked')} type="button" aria-label={task.completed ? `Mark ${task.title} incomplete` : `Complete ${task.title}`} onClick={onToggle}>
@@ -116,7 +116,7 @@ export default function App() {
   const [draft, setDraft] = useState('');
   const [draftDate, setDraftDate] = useState(today);
   const [draftPriority, setDraftPriority] = useState('medium');
-  const [rowStyle, setRowStyle] = useState('registyle');
+  const [rowStyle, setRowStyle] = useState('tailmantic');
   const searchInput = useRef(null);
 
   useEffect(() => {
@@ -283,15 +283,15 @@ export default function App() {
             </form>
 
             <div className="list-toolbar">
-              <div className="list-heading-group"><div><h2 className="list-heading">{activeView === 'today' ? 'Your list' : viewTitle(activeView)}</h2><span className="list-count">{visibleTasks.length} {visibleTasks.length === 1 ? 'task' : 'tasks'}</span></div><div className="row-style-control"><span className="row-style-label">ROW STYLE</span><div className="row-style-toggle" role="group" aria-label="Task row styling"><button className={cx('row-style-option', rowStyle === 'tailwind' && 'row-style-option-active')} type="button" aria-pressed={rowStyle === 'tailwind'} onClick={() => setRowStyle('tailwind')}>Tailwind</button><button className={cx('row-style-option', rowStyle === 'registyle' && 'row-style-option-active')} type="button" aria-pressed={rowStyle === 'registyle'} onClick={() => setRowStyle('registyle')}>Registyle</button></div></div></div>
+              <div className="list-heading-group"><div><h2 className="list-heading">{activeView === 'today' ? 'Your list' : viewTitle(activeView)}</h2><span className="list-count">{visibleTasks.length} {visibleTasks.length === 1 ? 'task' : 'tasks'}</span></div><div className="row-style-control"><span className="row-style-label">ROW STYLE</span><div className="row-style-toggle" role="group" aria-label="Task row styling"><button className={cx('row-style-option', rowStyle === 'tailwind' && 'row-style-option-active')} type="button" aria-pressed={rowStyle === 'tailwind'} onClick={() => setRowStyle('tailwind')}>Tailwind</button><button className={cx('row-style-option', rowStyle === 'tailmantic' && 'row-style-option-active')} type="button" aria-pressed={rowStyle === 'tailmantic'} onClick={() => setRowStyle('tailmantic')}>Tailmantic</button></div></div></div>
               <button className="clear-button" type="button" onClick={clearCompleted} disabled={!counts.completed}><Trash2 size={15} />Clear completed</button>
             </div>
 
             {visibleTasks.length ? (
               <ul className="task-list">
                 {visibleTasks.map((task) => (
-                  rowStyle === 'registyle'
-                    ? <RegistyleTaskRow key={task.id} task={task} onToggle={() => toggleTask(task.id)} onDelete={() => deleteTask(task.id)} />
+                  rowStyle === 'tailmantic'
+                    ? <TailmanticTaskRow key={task.id} task={task} onToggle={() => toggleTask(task.id)} onDelete={() => deleteTask(task.id)} />
                     : <TailwindTaskRow key={task.id} task={task} onToggle={() => toggleTask(task.id)} onDelete={() => deleteTask(task.id)} />
                 ))}
               </ul>

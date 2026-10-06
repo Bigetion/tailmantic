@@ -4,15 +4,15 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 import { compile } from './compile.js';
 
-const VIRTUAL_STYLESHEET_ID = 'virtual:registyle.css';
+const VIRTUAL_STYLESHEET_ID = 'virtual:tailmantic.css';
 const RESOLVED_STYLESHEET_ID = `\0${VIRTUAL_STYLESHEET_ID}`;
 
 function asViteModuleId(root, file) {
 	return `/${relative(root, file).split(sep).join('/')}`;
 }
 
-export function registyle(options = {}) {
-	const entry = options.entry || 'src/registyles/index.js';
+export function tailmantic(options = {}) {
+	const entry = options.entry || 'src/tailmantics/index.js';
 	const outFile = options.outFile;
 	const inputCss = options.inputCss || '@reference "tailwindcss"; @import "tailwindcss/utilities.css" source(none);';
 	const debug = options.debug || false;
@@ -46,7 +46,7 @@ export function registyle(options = {}) {
 				const viteUrl = pathToFileURL(requireFromProject.resolve('vite')).href;
 				viteModule = await import(viteUrl);
 			} catch (fallbackError) {
-				throw new Error('registyle/vite: Failed to import Vite. Make sure vite is installed as a dependency.', { 
+				throw new Error('tailmantic/vite: Failed to import Vite. Make sure vite is installed as a dependency.', {
 					cause: fallbackError 
 				});
 			}
@@ -54,7 +54,7 @@ export function registyle(options = {}) {
 		
 		const { createServer } = viteModule;
 		if (typeof createServer !== 'function') {
-			throw new TypeError('registyle/vite: createServer is not a function. Check your Vite installation.');
+			throw new TypeError('tailmantic/vite: createServer is not a function. Check your Vite installation.');
 		}
 		
 		const server = await createServer({
@@ -67,12 +67,12 @@ export function registyle(options = {}) {
 		});
 
 		try {
-			const collector = await server.ssrLoadModule('registyle/collector');
+			const collector = await server.ssrLoadModule('tailmantic/collector');
 			collector.resetManifest();
 			const module = await server.ssrLoadModule(asViteModuleId(root, entryPath));
 			const manifest = module.default || module.manifest;
 			if (!manifest || typeof manifest !== 'object') {
-				throw new TypeError(`registyle/vite: ${entry} must export a manifest as default`);
+				throw new TypeError(`tailmantic/vite: ${entry} must export a manifest as default`);
 			}
 			
 			// Pass through optimization options; compilation preserves CSS by default.
@@ -86,19 +86,19 @@ export function registyle(options = {}) {
 			});
 			
 			// Write to disk if outFile is configured OR if we're in a problematic environment
-			const actualOutputPath = outputPath || (needsPhysicalFile ? resolve(root, 'src/registyle.generated.css') : null);
+			const actualOutputPath = outputPath || (needsPhysicalFile ? resolve(root, 'src/tailmantic.generated.css') : null);
 			if (actualOutputPath) {
 				await mkdir(dirname(actualOutputPath), { recursive: true });
 				await writeFile(actualOutputPath, compiledCss);
 				if (debug || needsPhysicalFile) {
 					const envInfo = isCodeSandbox ? ' (CodeSandbox detected)' : isStackBlitz ? ' (StackBlitz detected)' : '';
-					console.log(`[registyle] CSS written to ${actualOutputPath}${envInfo}`);
+					console.log(`[tailmantic] CSS written to ${actualOutputPath}${envInfo}`);
 				}
 			}
 			
 			if (debug) {
 				const duration = Date.now() - startTime;
-				console.log(`[registyle] Compiled in ${duration}ms (compilation #${compilationCount})`);
+				console.log(`[tailmantic] Compiled in ${duration}ms (compilation #${compilationCount})`);
 			}
 			
 			return manifest;
@@ -108,7 +108,7 @@ export function registyle(options = {}) {
 	}
 
 	return {
-		name: 'registyle:vite',
+		name: 'tailmantic:vite',
 		enforce: 'pre',
 		resolveId(id) {
 			if (id === VIRTUAL_STYLESHEET_ID) return RESOLVED_STYLESHEET_ID;
@@ -125,9 +125,9 @@ export function registyle(options = {}) {
 			if (outFile) {
 				outputPath = resolve(root, outFile);
 			} else if (needsPhysicalFile) {
-				outputPath = resolve(root, 'src/registyle.generated.css');
+				outputPath = resolve(root, 'src/tailmantic.generated.css');
 				if (debug) {
-					console.log('[registyle] Environment requires physical CSS file, using:', outputPath);
+					console.log('[tailmantic] Environment requires physical CSS file, using:', outputPath);
 				}
 			}
 		},
@@ -180,4 +180,4 @@ export function registyle(options = {}) {
 	};
 }
 
-export default registyle;
+export default tailmantic;

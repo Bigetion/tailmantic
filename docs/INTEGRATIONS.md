@@ -1,6 +1,6 @@
 # Integrations
 
-Registyle has one dedicated bundler plugin today: Vite. The Tailwind compiler API is bundler-agnostic, so other build systems can compile a manifest in a Node build step and import the generated CSS through their normal CSS pipeline.
+Tailmantic has one dedicated bundler plugin today: Vite. The Tailwind compiler API is bundler-agnostic, so other build systems can compile a manifest in a Node build step and import the generated CSS through their normal CSS pipeline.
 
 ## Vite
 
@@ -9,17 +9,17 @@ Use the plugin when registrations are part of a Vite app. It loads the manifest 
 ```js
 // vite.config.js
 import { defineConfig } from 'vite';
-import { registyle } from 'registyle/vite';
+import { tailmantic } from 'tailmantic/vite';
 
 export default defineConfig({
-  plugins: [registyle()],
+  plugins: [tailmantic()],
 });
 ```
 
-The default entry is `src/registyles/index.js`; it should import registration modules and default-export `getManifest()`. Import the generated stylesheet once from the app entry:
+The default entry is `src/tailmantics/index.js`; it should import registration modules and default-export `getManifest()`. Import the generated stylesheet once from the app entry:
 
 ```js
-import 'virtual:registyle.css';
+import 'virtual:tailmantic.css';
 ```
 
 Set `entry` and `watch` when your source layout differs. Set `outFile` only if another tool needs a physical CSS file. See the [component demo](../examples/register-component-demo/README.md) for a complete Vite app.
@@ -31,10 +31,10 @@ Run the compiler as a build step before your app's normal build. This works with
 ```js
 // scripts/build-styles.mjs
 import { resolve } from 'node:path';
-import { compileToFile } from 'registyle/compile';
-import manifest from '../src/registyles/index.js';
+import { compileToFile } from 'tailmantic/compile';
+import manifest from '../src/tailmantics/index.js';
 
-await compileToFile(manifest, resolve('src/registyle.css'));
+await compileToFile(manifest, resolve('src/tailmantic.css'));
 ```
 
 Add the script before the framework build and import the generated stylesheet from your app entry:
@@ -56,7 +56,7 @@ If the app does not need Tailwind utilities or a build-time manifest, use the CS
 
 ```js
 // styles/index.js
-import { register } from 'registyle';
+import { register } from 'tailmantic';
 
 register('notice', { padding: '0.75rem 1rem', color: '#1e3a8a' });
 ```
@@ -65,7 +65,7 @@ For server-side extraction, import the registration modules before calling `regi
 
 ```js
 import './styles/index.js';
-import { register } from 'registyle';
+import { register } from 'tailmantic';
 
 const css = register.extractCSS();
 ```
@@ -80,7 +80,7 @@ The Vite plugin works the same way in Vue projects. Install the dependencies:
 npm create vite@latest my-app -- --template vue
 cd my-app
 npm install
-npm install registyle
+npm install tailmantic
 npm install -D @tailwindcss/postcss postcss postcss-selector-parser
 ```
 
@@ -89,17 +89,17 @@ Add the plugin to `vite.config.js`:
 ```js
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { registyle } from 'registyle/vite';
+import { tailmantic } from 'tailmantic/vite';
 
 export default defineConfig({
-  plugins: [vue(), registyle()],
+  plugins: [vue(), tailmantic()],
 });
 ```
 
-Create `src/registyles/button.js`:
+Create `src/tailmantics/button.js`:
 
 ```js
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('btn', {
   base: { tw: 'inline-flex items-center rounded-md px-4 py-2 font-medium' },
@@ -110,10 +110,10 @@ register('btn', {
 });
 ```
 
-Create `src/registyles/index.js`:
+Create `src/tailmantics/index.js`:
 
 ```js
-import { getManifest } from 'registyle/collector';
+import { getManifest } from 'tailmantic/collector';
 import './button.js';
 
 export default getManifest();
@@ -123,7 +123,7 @@ Import the stylesheet in `src/main.js`:
 
 ```js
 import { createApp } from 'vue';
-import 'virtual:registyle.css';
+import 'virtual:tailmantic.css';
 import App from './App.vue';
 
 createApp(App).mount('#app');
@@ -152,14 +152,14 @@ Next.js App Router uses webpack or Turbopack, not Vite, so use the manual compil
 Install dependencies:
 
 ```sh
-npm install registyle
+npm install tailmantic
 npm install -D @tailwindcss/postcss postcss postcss-selector-parser
 ```
 
-Create `src/registyles/button.js`:
+Create `src/tailmantics/button.js`:
 
 ```js
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('btn', {
   base: { tw: 'inline-flex items-center rounded-md px-4 py-2 font-medium' },
@@ -169,10 +169,10 @@ register('btn', {
 });
 ```
 
-Create `src/registyles/index.js`:
+Create `src/tailmantics/index.js`:
 
 ```js
-import { getManifest } from 'registyle/collector';
+import { getManifest } from 'tailmantic/collector';
 import './button.js';
 
 export default getManifest();
@@ -181,11 +181,11 @@ export default getManifest();
 Create `scripts/build-styles.mjs`:
 
 ```js
-import { compileToFile } from 'registyle/compile';
-import manifest from '../src/registyles/index.js';
+import { compileToFile } from 'tailmantic/compile';
+import manifest from '../src/tailmantics/index.js';
 import { resolve } from 'node:path';
 
-await compileToFile(manifest, resolve('src/registyle.css'), {
+await compileToFile(manifest, resolve('src/tailmantic.css'), {
   // If you use a custom Tailwind theme, reference it here:
   // inputCss: '@reference "./src/app.css";',
   // baseDir: process.cwd(),
@@ -207,7 +207,7 @@ Update `package.json` scripts to compile styles before each build:
 Import the generated stylesheet in your root layout (`app/layout.tsx`):
 
 ```tsx
-import '../registyle.css';
+import '../tailmantic.css';
 
 export default function RootLayout({ children }) {
   return (
@@ -222,7 +222,7 @@ Use the class names in a Server or Client Component:
 
 ```tsx
 // app/components/Button.tsx
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 interface ButtonProps {
   variant?: 'primary';
@@ -243,4 +243,4 @@ export function Button({ variant = 'primary', className, children }: ButtonProps
 
 ## Framework Notes
 
-registyle does not ship dedicated Astro or Nuxt plugins. Use the manual compiler step above when the framework supports importing generated CSS, and follow that framework's CSS ordering and server-rendering rules. Do not import `virtual:registyle.css` outside Vite unless the bundler provides a compatible virtual module.
+tailmantic does not ship dedicated Astro or Nuxt plugins. Use the manual compiler step above when the framework supports importing generated CSS, and follow that framework's CSS ordering and server-rendering rules. Do not import `virtual:tailmantic.css` outside Vite unless the bundler provides a compatible virtual module.

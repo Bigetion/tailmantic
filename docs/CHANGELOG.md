@@ -1,6 +1,14 @@
-# Changelog
+# Tailmantic Changelog
 
-All notable changes to registyle will be documented in this file.
+## [1.0.0] - 2026-10-07
+
+### Changed
+
+- Published the package under the new npm name `tailmantic`.
+- Renamed the Vite plugin to `tailmantic()` and the stylesheet module to `virtual:tailmantic.css`.
+- Renamed the default registration directory to `src/tailmantics/`.
+
+The entries below document the upstream Registyle release history this package is based on.
 
 ## [2.1.0] - 2026-10-02
 

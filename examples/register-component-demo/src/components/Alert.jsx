@@ -1,5 +1,5 @@
 import React from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { Info, CheckCircle, AlertTriangle, XCircle, X } from 'lucide-react';
 
 const ICONS = {

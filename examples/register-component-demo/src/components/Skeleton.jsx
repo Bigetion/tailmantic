@@ -1,5 +1,5 @@
 import React from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 export function Skeleton({ variant = 'text', width, height, className, style }) {
   return (

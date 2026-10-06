@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 export function Tabs({ tabs, defaultTab, className }) {
   const [active, setActive] = useState(defaultTab ?? tabs[0]?.id);

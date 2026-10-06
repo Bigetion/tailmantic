@@ -1,6 +1,6 @@
 import type { Registration } from './index.js';
 
-export interface RegistyleManifest {
+export interface TailmanticManifest {
 	classes?: Record<string, Registration | string>;
 	groups?: Record<string, Record<string, Registration | string>>;
 }
@@ -18,6 +18,6 @@ export interface CompileOptions {
 	debug?: boolean;
 }
 
-export declare function compile(manifest?: RegistyleManifest, options?: CompileOptions): Promise<string>;
-export declare function compileToFile(manifest: RegistyleManifest, outputPath: string, options?: CompileOptions): Promise<string>;
+export declare function compile(manifest?: TailmanticManifest, options?: CompileOptions): Promise<string>;
+export declare function compileToFile(manifest: TailmanticManifest, outputPath: string, options?: CompileOptions): Promise<string>;
 export default compile;

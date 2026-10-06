@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 export function Tooltip({ children, content, placement = 'top', className }) {
   const [visible, setVisible] = useState(false);

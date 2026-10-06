@@ -12,7 +12,7 @@ const packageRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 
 test('packed tarball installs in a clean consumer and exposes public entry points', { timeout: 60000 }, async () => {
-	const tempDirectory = await mkdtemp(join(tmpdir(), 'registyle-consumer-'));
+	const tempDirectory = await mkdtemp(join(tmpdir(), 'tailmantic-consumer-'));
 	const consumerDirectory = join(tempDirectory, 'consumer');
 
 	try {
@@ -30,11 +30,11 @@ test('packed tarball installs in a clean consumer and exposes public entry point
 		const tarballPath = join(tempDirectory, filename);
 		await mkdir(consumerDirectory);
 		await writeFile(join(consumerDirectory, 'package.json'), JSON.stringify({
-			name: 'registyle-clean-consumer',
+			name: 'tailmantic-clean-consumer',
 			private: true,
 			version: '1.0.0',
 			type: 'module',
-			dependencies: { registyle: `file:../${filename}` },
+			dependencies: { tailmantic: `file:../${filename}` },
 			devDependencies: sourceManifest.peerDependencies,
 		}));
 
@@ -45,18 +45,18 @@ test('packed tarball installs in a clean consumer and exposes public entry point
 			windowsHide: true,
 		});
 
-		const installedPackage = JSON.parse(await readFile(join(consumerDirectory, 'node_modules', 'registyle', 'package.json'), 'utf8'));
+		const installedPackage = JSON.parse(await readFile(join(consumerDirectory, 'node_modules', 'tailmantic', 'package.json'), 'utf8'));
 		assert.equal(installedPackage.version, JSON.parse(await readFile(join(packageRoot, 'package.json'), 'utf8')).version);
 		for (const subpath of ['./cache', './optimize', './presets', './validate']) {
 			assert.equal(Object.hasOwn(installedPackage.exports, subpath), false, `${subpath} should not be exported`);
 		}
 
 		const smokeCode = [
-			"import { register, cx } from 'registyle';",
-			"import { getManifest, register as collect } from 'registyle/collector';",
-			"import { compile } from 'registyle/compile';",
-			"import { registyle } from 'registyle/vite';",
-			"if ('cn' in await import('registyle')) throw new Error('removed cn alias remains exported');",
+			"import { register, cx } from 'tailmantic';",
+			"import { getManifest, register as collect } from 'tailmantic/collector';",
+			"import { compile } from 'tailmantic/compile';",
+			"import { tailmantic } from 'tailmantic/vite';",
+			"if ('cn' in await import('tailmantic')) throw new Error('removed cn alias remains exported');",
 			"register('consumer-button', { color: 'red' });",
 			"if (!register.extractCSS().includes('.consumer-button')) throw new Error('runtime entry failed');",
 			"if (cx('consumer-button') !== 'consumer-button') throw new Error('cx entry failed');",
@@ -64,7 +64,7 @@ test('packed tarball installs in a clean consumer and exposes public entry point
 			"if (!getManifest().classes['collected-button']) throw new Error('collector entry failed');",
 			"const css = await compile({ classes: { 'consumer-button': { tw: 'inline-flex px-4 bg-blue-600' } } });",
 			"if (!css.includes('.consumer-button') || !/display:\\s*inline-flex/.test(css)) throw new Error('compile entry failed');",
-			"if (registyle().name !== 'registyle:vite') throw new Error('Vite entry failed');",
+			"if (tailmantic().name !== 'tailmantic:vite') throw new Error('Vite entry failed');",
 		].join('\n');
 		await run(process.execPath, ['--input-type=module', '-e', smokeCode], {
 			cwd: consumerDirectory,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { ChevronDown } from 'lucide-react';
 
 export function Accordion({ items, className }) {

@@ -1,6 +1,6 @@
 /**
- * Variants composition system for registyle
- * Inspired by CVA (Class Variance Authority) but integrated with registyle
+ * Variants composition system for tailmantic
+ * Inspired by CVA (Class Variance Authority) but integrated with tailmantic
  */
 
 /**

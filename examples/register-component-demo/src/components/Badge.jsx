@@ -1,5 +1,5 @@
 import React from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 export function Badge({ children, variant = 'default', size, dot, className }) {
   if (dot) {

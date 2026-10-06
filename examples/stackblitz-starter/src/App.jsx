@@ -16,7 +16,7 @@ export default function App() {
         {/* Header */}
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-            <h1 style={{ fontSize: '24px', fontWeight: 700, margin: 0 }}>registyle</h1>
+            <h1 style={{ fontSize: '24px', fontWeight: 700, margin: 0 }}>tailmantic</h1>
             <Badge variant="primary">v2.1.0</Badge>
           </div>
           <p style={{ color: '#6b7280', margin: 0, fontSize: '15px' }}>
@@ -59,7 +59,7 @@ export default function App() {
         <Card>
           <CardHeader>
             <span style={{ fontWeight: 600, fontSize: '14px' }}>cx() for conditional classes</span>
-            <Badge variant="default">registyle</Badge>
+            <Badge variant="default">tailmantic</Badge>
           </CardHeader>
           <CardBody>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -139,10 +139,10 @@ export default function App() {
           <CardBody>
             <ol style={{ margin: 0, paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '14px', color: '#374151', lineHeight: 1.6 }}>
               <li>
-                Define classes in <code style={{ background: '#f3f4f6', padding: '1px 5px', borderRadius: '4px' }}>src/registyles/button.js</code> using <code style={{ background: '#f3f4f6', padding: '1px 5px', borderRadius: '4px' }}>register()</code> with Tailwind utilities
+                Define classes in <code style={{ background: '#f3f4f6', padding: '1px 5px', borderRadius: '4px' }}>src/tailmantics/button.js</code> using <code style={{ background: '#f3f4f6', padding: '1px 5px', borderRadius: '4px' }}>register()</code> with Tailwind utilities
               </li>
               <li>
-                The Vite plugin picks up <code style={{ background: '#f3f4f6', padding: '1px 5px', borderRadius: '4px' }}>src/registyles/index.js</code>, compiles everything through Tailwind v4, and serves it as <code style={{ background: '#f3f4f6', padding: '1px 5px', borderRadius: '4px' }}>virtual:registyle.css</code>
+                The Vite plugin picks up <code style={{ background: '#f3f4f6', padding: '1px 5px', borderRadius: '4px' }}>src/tailmantics/index.js</code>, compiles everything through Tailwind v4, and serves it as <code style={{ background: '#f3f4f6', padding: '1px 5px', borderRadius: '4px' }}>virtual:tailmantic.css</code>
               </li>
               <li>
                 Your components use clean class names like <code style={{ background: '#f3f4f6', padding: '1px 5px', borderRadius: '4px' }}>btn btn-primary btn-md</code> — no utility strings in JSX
@@ -154,7 +154,7 @@ export default function App() {
           </CardBody>
           <CardFooter>
             <a
-              href="https://github.com/Bigetion/registyle"
+              href="https://github.com/Bigetion/tailmantic"
               target="_blank"
               rel="noopener noreferrer"
               style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '13px', color: '#3b82f6', textDecoration: 'none' }}
@@ -162,7 +162,7 @@ export default function App() {
               <GitBranch size={14} /> GitHub
             </a>
             <a
-              href="https://www.npmjs.com/package/registyle"
+              href="https://www.npmjs.com/package/tailmantic"
               target="_blank"
               rel="noopener noreferrer"
               style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '13px', color: '#3b82f6', textDecoration: 'none' }}

@@ -56,8 +56,8 @@ function resolveExtend(config, rawConfigs, resolving = new Set()) {
 	let result = {};
 	for (const name of names) {
 		const parent = rawConfigs.get(name);
-		if (!parent || typeof parent !== 'object') throw new Error(`registyle: unknown extended class "${name}"`);
-		if (resolving.has(name)) throw new Error(`registyle: circular extend detected for "${name}"`);
+		if (!parent || typeof parent !== 'object') throw new Error(`tailmantic: unknown extended class "${name}"`);
+		if (resolving.has(name)) throw new Error(`tailmantic: circular extend detected for "${name}"`);
 		resolving.add(name);
 		result = merge(result, resolveExtend(parent, rawConfigs, resolving));
 		resolving.delete(name);
@@ -76,7 +76,7 @@ function toDeclarations(config, important = false) {
 function assertNoUtilities(config) {
 	if (!config || typeof config !== 'object') return;
 	if (typeof config.tw === 'string' || Array.isArray(config.tw) || typeof config._ === 'string' || Array.isArray(config._)) {
-		throw new Error('registyle: Tailwind utilities must be compiled at build time with `registyle/compile`; register() accepts CSS declarations only.');
+		throw new Error('tailmantic: Tailwind utilities must be compiled at build time with `tailmantic/compile`; register() accepts CSS declarations only.');
 	}
 	for (const value of Object.values(config)) {
 		if (value && typeof value === 'object') assertNoUtilities(value);
@@ -148,11 +148,11 @@ export function createRegistry({ injectStyles = true } = {}) {
 	function flush() {
 		if (!injectStyles || typeof document === 'undefined') return;
 		if (!styleTag?.parentNode) {
-			styleTag = document.getElementById('registyle-style');
+			styleTag = document.getElementById('tailmantic-style');
 			if (!styleTag) {
 				styleTag = document.createElement('style');
-				styleTag.id = 'registyle-style';
-				styleTag.setAttribute('data-registyle', '');
+				styleTag.id = 'tailmantic-style';
+				styleTag.setAttribute('data-tailmantic', '');
 				(document.head || document.documentElement).appendChild(styleTag);
 			}
 		}
@@ -165,8 +165,8 @@ export function createRegistry({ injectStyles = true } = {}) {
 	}
 
 	function register(name, config = {}) {
-		if (typeof name !== 'string' || !name.trim()) throw new TypeError('registyle.register: className must be a non-empty string');
-		if (!config || typeof config !== 'object' || Array.isArray(config)) throw new TypeError('registyle.register: config must be a CSS style object');
+		if (typeof name !== 'string' || !name.trim()) throw new TypeError('tailmantic.register: className must be a non-empty string');
+		if (!config || typeof config !== 'object' || Array.isArray(config)) throw new TypeError('tailmantic.register: config must be a CSS style object');
 		assertNoUtilities(config);
 		const previousConfig = rawConfigs.get(name);
 		const hadPreviousConfig = rawConfigs.has(name);
@@ -203,11 +203,11 @@ export function createRegistry({ injectStyles = true } = {}) {
 	}
 
 	register.group = function group(baseName, components = {}) {
-		if (typeof baseName !== 'string' || !baseName.trim()) throw new TypeError('registyle.register.group: baseName must be a non-empty string');
-		if (!components || typeof components !== 'object' || Array.isArray(components)) throw new TypeError('registyle.register.group: components must be an object');
+		if (typeof baseName !== 'string' || !baseName.trim()) throw new TypeError('tailmantic.register.group: baseName must be a non-empty string');
+		if (!components || typeof components !== 'object' || Array.isArray(components)) throw new TypeError('tailmantic.register.group: components must be an object');
 		const css = Object.entries(components).map(([key, config]) => {
 			const selector = key === 'root' || key === baseName ? `.${baseName}` : `.${baseName}-${key}`;
-			if (typeof config === 'string') throw new Error('registyle: Tailwind utilities must be compiled at build time with `registyle/compile`.');
+			if (typeof config === 'string') throw new Error('tailmantic: Tailwind utilities must be compiled at build time with `tailmantic/compile`.');
 			const layer = config?.layer;
 			const important = config?.important;
 			return buildCss(selector, config, { layer, important });
@@ -216,7 +216,7 @@ export function createRegistry({ injectStyles = true } = {}) {
 	};
 
 	register.all = function all(configs = {}) {
-		if (!configs || typeof configs !== 'object' || Array.isArray(configs)) throw new TypeError('registyle.register.all: expected an object map');
+		if (!configs || typeof configs !== 'object' || Array.isArray(configs)) throw new TypeError('tailmantic.register.all: expected an object map');
 		for (const [name, config] of Object.entries(configs)) register(name, config);
 	};
 

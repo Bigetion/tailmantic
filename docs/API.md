@@ -1,13 +1,13 @@
 # API Reference
 
-This page documents the public Registyle v2 APIs. For choosing between runtime CSS, manual compilation, and Vite, see the [README](../README.md) or [documentation guide](./README.md).
+This page documents the public Tailmantic v2 APIs. For choosing between runtime CSS, manual compilation, and Vite, see the [README](../README.md) or [documentation guide](./README.md).
 
 ## Runtime Registration
 
 Import `register` from the package root for CSS declarations that do not need Tailwind compilation:
 
 ```js
-import { register } from 'registyle';
+import { register } from 'tailmantic';
 
 register('notice', {
   padding: '0.75rem 1rem',
@@ -52,7 +52,7 @@ The selectors are `.button`, `.button-primary`, `.button-compact`, `.card`, and 
 Tailwind utilities are compiled from an explicit manifest with the official Tailwind CSS v4 compiler:
 
 ```js
-import { compileToFile } from 'registyle/compile';
+import { compileToFile } from 'tailmantic/compile';
 
 const manifest = {
   classes: {
@@ -65,7 +65,7 @@ const manifest = {
   },
 };
 
-await compileToFile(manifest, './src/registyle.css');
+await compileToFile(manifest, './src/tailmantic.css');
 ```
 
 Install the compiler peers in the consuming project:
@@ -114,15 +114,15 @@ Both accept these options:
 The collector builds a manifest from registration modules for a build tool such as Vite:
 
 ```js
-// src/registyles/button.js
-import { register } from 'registyle/collector';
+// src/tailmantics/button.js
+import { register } from 'tailmantic/collector';
 
 register('button', { tw: 'inline-flex rounded px-4 py-2' });
 ```
 
 ```js
-// src/registyles/index.js
-import { getManifest } from 'registyle/collector';
+// src/tailmantics/index.js
+import { getManifest } from 'tailmantic/collector';
 import './button.js';
 
 export default getManifest();
@@ -134,22 +134,22 @@ The collector exports `register`, `getManifest()`, and `resetManifest()`. The Vi
 
 ```js
 import { defineConfig } from 'vite';
-import { registyle } from 'registyle/vite';
+import { tailmantic } from 'tailmantic/vite';
 
-export default defineConfig({ plugins: [registyle()] });
+export default defineConfig({ plugins: [tailmantic()] });
 ```
 
 Options:
 
 | Option | Default | Purpose |
 | --- | --- | --- |
-| `entry` | `src/registyles/index.js` | Module that imports registrations and exports `getManifest()` |
-| `watch` | `src/registyles` | Directory watched for registration changes |
-| `outFile` | unset | Optional disk copy; otherwise use `virtual:registyle.css` |
+| `entry` | `src/tailmantics/index.js` | Module that imports registrations and exports `getManifest()` |
+| `watch` | `src/tailmantics` | Directory watched for registration changes |
+| `outFile` | unset | Optional disk copy; otherwise use `virtual:tailmantic.css` |
 | `forceOutFile` | `false` | Force physical file output for environments like CodeSandbox |
 | Compiler options | See above | `inputCss`, `baseDir`, `minify`, `deduplicate`, `optimize`, `debug` |
 
-Import `virtual:registyle.css` once from the app entry when `outFile` is not set. The plugin watches registration sources; it does not scan application markup for arbitrary class names.
+Import `virtual:tailmantic.css` once from the app entry when `outFile` is not set. The plugin watches registration sources; it does not scan application markup for arbitrary class names.
 
 **Note for CodeSandbox/StackBlitz:** The plugin auto-detects browser-based IDEs and writes a physical file when needed. See the [CodeSandbox guide](./CODESANDBOX.md) for details.
 
@@ -158,7 +158,7 @@ Import `virtual:registyle.css` once from the app entry when `outFile` is not set
 `cx()` combines conditional class values without generating CSS:
 
 ```js
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const className = cx(
   'button',
@@ -168,4 +168,4 @@ const className = cx(
 );
 ```
 
-`cx.with('button')` returns a helper that always includes the provided base values. For CSS-generating variants, import `createVariants`, `compound`, or `mergeVariants` from `registyle/variants`; see [Variants Composition](./ADVANCED.md#variants-composition).
+`cx.with('button')` returns a helper that always includes the provided base values. For CSS-generating variants, import `createVariants`, `compound`, or `mergeVariants` from `tailmantic/variants`; see [Variants Composition](./ADVANCED.md#variants-composition).

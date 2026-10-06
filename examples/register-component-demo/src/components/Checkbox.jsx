@@ -1,5 +1,5 @@
 import React from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { Check, Minus } from 'lucide-react';
 
 export function Checkbox({ checked = false, indeterminate = false, onChange, label, size = 'md', disabled }) {

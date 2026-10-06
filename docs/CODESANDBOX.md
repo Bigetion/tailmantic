@@ -1,6 +1,6 @@
 # CodeSandbox & Online IDE Integration
 
-Registyle works with CodeSandbox, StackBlitz, and other online IDEs, but virtual modules may not work reliably in these environments. This guide shows how to configure Registyle for browser-based development environments.
+Tailmantic works with CodeSandbox, StackBlitz, and other online IDEs, but virtual modules may not work reliably in these environments. This guide shows how to configure Tailmantic for browser-based development environments.
 
 ## 🚀 Quick Start (5 Minutes)
 
@@ -9,7 +9,7 @@ Registyle works with CodeSandbox, StackBlitz, and other online IDEs, but virtual
 ```json
 {
   "dependencies": {
-    "registyle": "^2.0.1"
+    "tailmantic": "^2.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
@@ -25,18 +25,18 @@ Registyle works with CodeSandbox, StackBlitz, and other online IDEs, but virtual
 // vite.config.js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { registyle } from 'registyle/vite';
+import { tailmantic } from 'tailmantic/vite';
 
 export default defineConfig({
-  plugins: [react(), registyle()]  // Auto-detects CodeSandbox
+  plugins: [react(), tailmantic()]  // Auto-detects CodeSandbox
 });
 ```
 
 ### 3. Create Registrations
 
 ```js
-// src/registyles/button.js
-import { register } from 'registyle/collector';
+// src/tailmantics/button.js
+import { register } from 'tailmantic/collector';
 
 register('btn', {
   base: { tw: 'px-4 py-2 rounded bg-blue-600 text-white' }
@@ -44,8 +44,8 @@ register('btn', {
 ```
 
 ```js
-// src/registyles/index.js
-import { getManifest } from 'registyle/collector';
+// src/tailmantics/index.js
+import { getManifest } from 'tailmantic/collector';
 import './button.js';
 export default getManifest();
 ```
@@ -54,7 +54,7 @@ export default getManifest();
 
 ```js
 // src/main.jsx - Use physical file instead of virtual module
-import './registyle.generated.css';  // ✅ Works in CodeSandbox
+import './tailmantic.generated.css';  // ✅ Works in CodeSandbox
 ```
 
 ### 5. Use Classes
@@ -70,7 +70,7 @@ import './registyle.generated.css';  // ✅ Works in CodeSandbox
 
 ## The Problem
 
-Virtual modules like `virtual:registyle.css` may fail to resolve in some online IDEs because:
+Virtual modules like `virtual:tailmantic.css` may fail to resolve in some online IDEs because:
 
 1. The module resolution differs from local Vite
 2. The virtual module ID isn't recognized by the browser-based bundler
@@ -78,13 +78,13 @@ Virtual modules like `virtual:registyle.css` may fail to resolve in some online 
 
 ## Solution 1: Auto-Detection (Recommended)
 
-Registyle v2.0.0+ automatically detects CodeSandbox and StackBlitz environments and writes a physical CSS file when needed. **No configuration required.**
+Tailmantic v2.0.0+ automatically detects CodeSandbox and StackBlitz environments and writes a physical CSS file when needed. **No configuration required.**
 
 The plugin detects these environments:
 - CodeSandbox (via `CODESANDBOX_SSE`, `SANDBOX_ID`, or `CODESANDBOX` env vars)
 - StackBlitz (via webcontainer shell detection)
 
-When detected, it writes CSS to `src/registyle.generated.css` automatically.
+When detected, it writes CSS to `src/tailmantic.generated.css` automatically.
 
 ### Usage in CodeSandbox
 
@@ -92,10 +92,10 @@ When detected, it writes CSS to `src/registyle.generated.css` automatically.
 ```js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { registyle } from 'registyle/vite';
+import { tailmantic } from 'tailmantic/vite';
 
 export default defineConfig({
-  plugins: [react(), registyle()],
+  plugins: [react(), tailmantic()],
 });
 ```
 
@@ -106,15 +106,15 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 
 // Instead of virtual module, import the generated file
-import './registyle.generated.css';
+import './tailmantic.generated.css';
 
 createRoot(document.getElementById('root')).render(<App />);
 ```
 
-**Important:** Add `registyle.generated.css` to `.gitignore`:
+**Important:** Add `tailmantic.generated.css` to `.gitignore`:
 ```
 # .gitignore
-src/registyle.generated.css
+src/tailmantic.generated.css
 ```
 
 ## Solution 2: Explicit Configuration
@@ -125,12 +125,12 @@ Force physical file output for any environment:
 ```js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { registyle } from 'registyle/vite';
+import { tailmantic } from 'tailmantic/vite';
 
 export default defineConfig({
   plugins: [
     react(),
-    registyle({
+    tailmantic({
       forceOutFile: true,  // ← Always write physical file
     })
   ],
@@ -140,15 +140,15 @@ export default defineConfig({
 Or specify a custom output path:
 
 ```js
-registyle({
-  outFile: 'src/styles/registyle.css',
+tailmantic({
+  outFile: 'src/styles/tailmantic.css',
 })
 ```
 
 Then import that file instead of the virtual module:
 
 ```js
-import './styles/registyle.css';
+import './styles/tailmantic.css';
 ```
 
 ## Solution 3: Manual Compilation
@@ -158,10 +158,10 @@ For environments where the plugin doesn't work at all, use manual compilation:
 **scripts/build-styles.mjs:**
 ```js
 import { resolve } from 'node:path';
-import { compileToFile } from 'registyle/compile';
-import manifest from '../src/registyles/index.js';
+import { compileToFile } from 'tailmantic/compile';
+import manifest from '../src/tailmantics/index.js';
 
-await compileToFile(manifest, resolve('src/registyle.css'));
+await compileToFile(manifest, resolve('src/tailmantic.css'));
 console.log('✓ Styles compiled');
 ```
 
@@ -179,7 +179,7 @@ console.log('✓ Styles compiled');
 
 **src/main.jsx:**
 ```js
-import './registyle.css';
+import './tailmantic.css';
 ```
 
 ## Troubleshooting
@@ -190,32 +190,32 @@ If you edit registration files but CSS doesn't update:
 
 1. **Check the watch path:** Make sure `watch` option includes all registration files:
    ```js
-   registyle({
-     watch: 'src/registyles',  // Should cover all registration modules
+   tailmantic({
+     watch: 'src/tailmantics',  // Should cover all registration modules
    })
    ```
 
 2. **Manual refresh:** In some online IDEs, you may need to manually refresh the preview after editing styles.
 
-3. **Check file generation:** Verify `src/registyle.generated.css` exists and updates when you edit registrations.
+3. **Check file generation:** Verify `src/tailmantic.generated.css` exists and updates when you edit registrations.
 
 ### Module Not Found Error
 
-If you see `Cannot find module 'virtual:registyle.css'`:
+If you see `Cannot find module 'virtual:tailmantic.css'`:
 
 1. Change import in `src/main.jsx`:
    ```js
    // Before
-   import 'virtual:registyle.css';
+   import 'virtual:tailmantic.css';
    
    // After
-   import './registyle.generated.css';
+   import './tailmantic.generated.css';
    ```
 
 2. Or configure explicit output:
    ```js
-   registyle({
-     outFile: 'src/registyle.css'
+   tailmantic({
+     outFile: 'src/tailmantic.css'
    })
    ```
 
@@ -223,9 +223,9 @@ If you see `Cannot find module 'virtual:registyle.css'`:
 
 If no CSS is generated:
 
-1. **Check entry point:** Verify `src/registyles/index.js` exists and exports manifest:
+1. **Check entry point:** Verify `src/tailmantics/index.js` exists and exports manifest:
    ```js
-   import { getManifest } from 'registyle/collector';
+   import { getManifest } from 'tailmantic/collector';
    import './button.js';
    // ... other imports
    
@@ -256,7 +256,7 @@ If TypeScript complains about the virtual module, add type declarations:
 ```ts
 /// <reference types="vite/client" />
 
-declare module 'virtual:registyle.css' {
+declare module 'virtual:tailmantic.css' {
   const css: string;
   export default css;
 }
@@ -270,13 +270,13 @@ Or just use the physical file import which doesn't need type declarations.
 - ✅ Auto-detection works
 - ✅ Hot reload works
 - ⚠️ First load may be slow (dependencies install)
-- 💡 Use `import './registyle.generated.css'`
+- 💡 Use `import './tailmantic.generated.css'`
 
 ### StackBlitz
 - ✅ Auto-detection works
 - ✅ Hot reload works
 - ⚠️ WebContainer may be slower than local
-- 💡 Use `import './registyle.generated.css'`
+- 💡 Use `import './tailmantic.generated.css'`
 
 ### Replit
 - ⚠️ May need `forceOutFile: true`
@@ -285,7 +285,7 @@ Or just use the physical file import which doesn't need type declarations.
 ### Local Development
 - ✅ Virtual module works perfectly
 - ✅ Fastest performance
-- 💡 Use `import 'virtual:registyle.css'`
+- 💡 Use `import 'virtual:tailmantic.css'`
 
 ## Best Practice for Portability
 
@@ -295,12 +295,12 @@ To make your project work everywhere (local + online IDEs):
 ```js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { registyle } from 'registyle/vite';
+import { tailmantic } from 'tailmantic/vite';
 
 export default defineConfig({
   plugins: [
     react(),
-    registyle({
+    tailmantic({
       // Auto-detects online IDEs and writes physical file when needed
       // No configuration needed for CodeSandbox/StackBlitz
     })
@@ -313,10 +313,10 @@ export default defineConfig({
 // Use conditional import
 try {
   // Try virtual module first (works locally)
-  await import('virtual:registyle.css');
+  await import('virtual:tailmantic.css');
 } catch {
   // Fall back to physical file (works in online IDEs)
-  await import('./registyle.generated.css');
+  await import('./tailmantic.generated.css');
 }
 ```
 
@@ -324,7 +324,7 @@ Or use a simpler approach:
 
 ```js
 // Always use physical file (works everywhere)
-import './registyle.generated.css';
+import './tailmantic.generated.css';
 ```
 
 **package.json:**
@@ -339,7 +339,7 @@ import './registyle.generated.css';
 
 **.gitignore:**
 ```
-src/registyle.generated.css
+src/tailmantic.generated.css
 ```
 
 This setup works locally and in any online IDE without changes.

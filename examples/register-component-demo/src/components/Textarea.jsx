@@ -1,5 +1,5 @@
 import React from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 export function Textarea({ label, hint, error, rows = 4, className, ...props }) {
   return (

@@ -3,7 +3,7 @@
 import type { Plugin } from 'vite';
 import type { CompileOptions } from './compile.js';
 
-export interface RegistyleViteOptions extends CompileOptions {
+export interface TailmanticViteOptions extends CompileOptions {
 	entry?: string;
 	/** Optional disk copy of generated CSS; by default, use the virtual stylesheet module. */
 	outFile?: string;
@@ -12,5 +12,5 @@ export interface RegistyleViteOptions extends CompileOptions {
 	watch?: string;
 }
 
-export declare function registyle(options?: RegistyleViteOptions): Plugin;
-export default registyle;
+export declare function tailmantic(options?: TailmanticViteOptions): Plugin;
+export default tailmantic;

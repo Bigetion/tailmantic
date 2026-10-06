@@ -1,9 +1,9 @@
-# registyle
+# tailmantic
 
-[![npm version](https://img.shields.io/npm/v/registyle.svg)](https://www.npmjs.com/package/registyle)
-[![npm downloads](https://img.shields.io/npm/dm/registyle.svg)](https://www.npmjs.com/package/registyle)
+[![npm version](https://img.shields.io/npm/v/tailmantic.svg)](https://www.npmjs.com/package/tailmantic)
+[![npm downloads](https://img.shields.io/npm/dm/tailmantic.svg)](https://www.npmjs.com/package/tailmantic)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/Bigetion/registyle/tree/master/examples/stackblitz-starter)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/Bigetion/tailmantic/tree/master/examples/stackblitz-starter)
 
 A semantic styling library that compiles Tailwind CSS v4 utilities into named component classes, with a separate CSS-only runtime for plain declarations.
 
@@ -13,21 +13,21 @@ See [CHANGELOG](./docs/CHANGELOG.md) for version history.
 
 ## Try It Online
 
-**[▶ Open in StackBlitz](https://stackblitz.com/github/Bigetion/registyle/tree/master/examples/stackblitz-starter)** — no install needed, runs in your browser.
+**[▶ Open in StackBlitz](https://stackblitz.com/github/Bigetion/tailmantic/tree/master/examples/stackblitz-starter)** — no install needed, runs in your browser.
 
 ## Features
 
 - Compile Tailwind utilities onto semantic selectors such as `.action-button` and `.action-button-primary`
 - Register component slots with `register.group()`
 - Use utility arrays and grouped prefixes such as `max-sm:(w-full flex-col)`
-- Compose conditional class names with `cx()` or generate variant registrations with `registyle/variants`
+- Compose conditional class names with `cx()` or generate variant registrations with `tailmantic/variants`
 - Choose a Vite plugin, a manual compiler step, or the CSS-only runtime
 - Extract runtime CSS for server-side rendering
 
 ## Install
 
 ```sh
-npm install registyle
+npm install tailmantic
 ```
 
 ## How It Works
@@ -38,7 +38,7 @@ For a React app, the Vite plugin is the shortest path:
 registration files -> Vite collects styles -> Tailwind v4 compiles utilities -> virtual CSS -> semantic classes in JSX
 ```
 
-You write `register()` calls in JavaScript modules. The plugin collects them from `src/registyles/index.js` and exposes compiled CSS as `virtual:registyle.css`. You do not create a manifest by hand. Registyle compiles only registered utilities; it does not scan JSX or HTML for class names, and its stylesheet does not include Tailwind Preflight.
+You write `register()` calls in JavaScript modules. The plugin collects them from `src/tailmantics/index.js` and exposes compiled CSS as `virtual:tailmantic.css`. You do not create a manifest by hand. Tailmantic compiles only registered utilities; it does not scan JSX or HTML for class names, and its stylesheet does not include Tailwind Preflight.
 
 For apps without Vite, use `compileToFile()` in a build script. If you do not need Tailwind, use the CSS-only runtime API instead.
 
@@ -50,26 +50,26 @@ Create a React app if you do not already have one:
 npm create vite@latest my-app -- --template react
 cd my-app
 npm install
-npm install registyle
+npm install tailmantic
 npm install -D @tailwindcss/postcss postcss postcss-selector-parser
 ```
 
-Vite's React template already includes Vite and `@vitejs/plugin-react`. Add the Registyle plugin to `vite.config.js`:
+Vite's React template already includes Vite and `@vitejs/plugin-react`. Add the Tailmantic plugin to `vite.config.js`:
 
 ```js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { registyle } from 'registyle/vite';
+import { tailmantic } from 'tailmantic/vite';
 
 export default defineConfig({
-  plugins: [react(), registyle()],
+  plugins: [react(), tailmantic()],
 });
 ```
 
-Create `src/registyles/button.js` and register a component style:
+Create `src/tailmantics/button.js` and register a component style:
 
 ```js
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('action-button', {
   base: {
@@ -85,10 +85,10 @@ register('action-button', {
 });
 ```
 
-Create `src/registyles/index.js` to collect the styles. The Vite plugin uses this entry by default:
+Create `src/tailmantics/index.js` to collect the styles. The Vite plugin uses this entry by default:
 
 ```js
-import { getManifest } from 'registyle/collector';
+import { getManifest } from 'tailmantic/collector';
 import './button.js';
 
 export default getManifest();
@@ -97,13 +97,13 @@ export default getManifest();
 Import the virtual stylesheet once in `src/main.jsx`:
 
 ```js
-import 'virtual:registyle.css';
+import 'virtual:tailmantic.css';
 ```
 
 Then use the semantic class in your React component:
 
 ```jsx
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 export function Button({ variant = 'primary', className, ...props }) {
   return (
@@ -121,7 +121,7 @@ Run the app as usual:
 npm run dev
 ```
 
-The CSS flow is handled by Vite: it watches `src/registyles`, recompiles when a registration changes, and emits CSS during `npm run build`. The component demo in [`examples/register-component-demo`](./examples/register-component-demo/README.md) shows the complete setup.
+The CSS flow is handled by Vite: it watches `src/tailmantics`, recompiles when a registration changes, and emits CSS during `npm run build`. The component demo in [`examples/register-component-demo`](./examples/register-component-demo/README.md) shows the complete setup.
 
 ## Writing Utilities
 
@@ -148,11 +148,11 @@ Native Tailwind v4 single-value shorthand such as `bg-(--brand)` is passed throu
 
 ## Other Build Setups
 
-For bundlers without a Registyle plugin, compile a manifest in a Node build script and import the generated CSS through your app's normal CSS pipeline:
+For bundlers without a Tailmantic plugin, compile a manifest in a Node build script and import the generated CSS through your app's normal CSS pipeline:
 
 ```js
 // scripts/build-styles.mjs
-import { compileToFile } from 'registyle/compile';
+import { compileToFile } from 'tailmantic/compile';
 
 const manifest = {
   classes: {
@@ -162,13 +162,13 @@ const manifest = {
   },
 };
 
-await compileToFile(manifest, 'src/registyle.css');
+await compileToFile(manifest, 'src/tailmantic.css');
 ```
 
-Run `node scripts/build-styles.mjs` before your framework's build command, then import `src/registyle.css` from your app entry. If you use a custom Tailwind theme or CSS-first plugins, pass an `inputCss` option that references your app stylesheet:
+Run `node scripts/build-styles.mjs` before your framework's build command, then import `src/tailmantic.css` from your app entry. If you use a custom Tailwind theme or CSS-first plugins, pass an `inputCss` option that references your app stylesheet:
 
 ```js
-await compileToFile(manifest, 'src/registyle.css', {
+await compileToFile(manifest, 'src/tailmantic.css', {
   inputCss: '@reference "./src/app.css"; @import "tailwindcss/utilities.css";',
   baseDir: process.cwd(),
 });
@@ -181,7 +181,7 @@ See the [integration guide](./docs/INTEGRATIONS.md) for more build and server-re
 For plain CSS declarations without Tailwind, import `register()` from the package root:
 
 ```js
-import { register } from 'registyle';
+import { register } from 'tailmantic';
 
 register('notice', {
   padding: '0.75rem 1rem',
@@ -204,9 +204,9 @@ In the browser, the runtime injects a style tag. In Node.js, call `register.extr
 - [Changelog](./docs/CHANGELOG.md) — release history
 - [Examples](./examples/) — component library and todo app
 
-## Why Registyle
+## Why Tailmantic
 
-Most approaches make you choose: **Tailwind's power** *or* **clean class names in HTML**. Registyle gives you both.
+Most approaches make you choose: **Tailwind's power** *or* **clean class names in HTML**. Tailmantic gives you both.
 
 ```html
 <!-- ❌ CVA + Tailwind — utility strings sprawl in every JSX file -->
@@ -214,11 +214,11 @@ Most approaches make you choose: **Tailwind's power** *or* **clean class names i
                bg-blue-600 text-white hover:bg-blue-700 focus-visible:outline-2
                focus-visible:outline-blue-600 px-4 py-2 text-sm transition-colors">
 
-<!-- ✅ registyle — semantic names, Tailwind compiled underneath -->
+<!-- ✅ tailmantic — semantic names, Tailwind compiled underneath -->
 <button class="btn btn-primary btn-md">
 ```
 
-| | registyle | CVA + Tailwind | twin.macro | vanilla-extract |
+| | tailmantic | CVA + Tailwind | twin.macro | vanilla-extract |
 |---|---|---|---|---|
 | Semantic class names in HTML | ✅ `.btn .btn-primary` | ❌ utility strings | ❌ hashed | ❌ hashed |
 | Tailwind v4 support | ✅ native | ✅ | ❌ | ❌ |
@@ -234,25 +234,25 @@ The [component demo](./examples/register-component-demo) — 22 full UI componen
 | | Raw | Gzip |
 |---|---|---|
 | Tailwind v4 base layer (fixed overhead) | 27.4 KB | ~5.5 KB |
-| Registyle semantic classes (200+ rules) | 9.8 KB | ~1.9 KB |
+| Tailmantic semantic classes (200+ rules) | 9.8 KB | ~1.9 KB |
 | Keyframes + CSS variables | 1.7 KB | ~0.7 KB |
 | **Total** | **38.9 KB** | **7.3 KB** |
 
 Zero KB of JavaScript runtime overhead. The base layer overhead is fixed — adding more components costs only ~0.09 KB gzip each.
 
-## When to Use Registyle
+## When to Use Tailmantic
 
-Registyle is for projects that want Tailwind v4 utilities compiled onto semantic class names from an explicit set of registrations. It is especially useful when component markup should stay independent of the utilities that style it. Choose the CSS-only runtime when you only need plain declarations.
+Tailmantic is for projects that want Tailwind v4 utilities compiled onto semantic class names from an explicit set of registrations. It is especially useful when component markup should stay independent of the utilities that style it. Choose the CSS-only runtime when you only need plain declarations.
 
 ## Support This Project
 
-If Registyle helps your project, consider buying me a coffee! Your support helps maintain and improve the library.
+If Tailmantic helps your project, consider buying me a coffee! Your support helps maintain and improve the library.
 
 <a href="https://buymeacoffee.com/bigetion" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="200" /></a>
 
 ## Contributing
 
-Contributions are welcome. Report bugs and feature requests through [GitHub Issues](https://github.com/Bigetion/registyle/issues/new).
+Contributions are welcome. Report bugs and feature requests through [GitHub Issues](https://github.com/Bigetion/tailmantic/issues/new).
 
 ## License
 

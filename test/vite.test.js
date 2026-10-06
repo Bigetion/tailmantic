@@ -4,14 +4,14 @@ import test from 'node:test';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build, createServer } from 'vite';
-import { registyle } from '../vite.js';
+import { tailmantic } from '../vite.js';
 
 const packageRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
 async function waitForCss(server, predicate) {
 	const deadline = Date.now() + 5000;
 	while (Date.now() < deadline) {
-		const loaded = await server.pluginContainer.load('\0virtual:registyle.css');
+		const loaded = await server.pluginContainer.load('\0virtual:tailmantic.css');
 		const css = typeof loaded === 'string' ? loaded : loaded?.code || '';
 		if (predicate(css)) return css;
 		await new Promise((resolvePromise) => setTimeout(resolvePromise, 50));
@@ -21,17 +21,17 @@ async function waitForCss(server, predicate) {
 
 test('Vite plugin generates CSS on startup and rebuilds after registration changes', { timeout: 15000 }, async () => {
 	const root = await mkdtemp(join(packageRoot, '.test-vite-'));
-	const sourceDirectory = join(root, 'src', 'registyles');
+	const sourceDirectory = join(root, 'src', 'tailmantics');
 	const entryPath = join(sourceDirectory, 'index.js');
-	const outputPath = join(root, '.registyle', 'style.css');
+	const outputPath = join(root, '.tailmantic', 'style.css');
 	let server;
 
 	try {
 		await mkdir(sourceDirectory, { recursive: true });
 		await mkdir(join(root, 'node_modules'), { recursive: true });
-		await symlink(packageRoot, join(root, 'node_modules', 'registyle'), 'junction');
+		await symlink(packageRoot, join(root, 'node_modules', 'tailmantic'), 'junction');
 		const writeEntry = (utility) => writeFile(entryPath, [
-			"import { getManifest, register } from 'registyle/collector';",
+			"import { getManifest, register } from 'tailmantic/collector';",
 			`register('action-button', { tw: '${utility}' });`,
 			'export default getManifest();',
 		].join('\n'));
@@ -40,7 +40,7 @@ test('Vite plugin generates CSS on startup and rebuilds after registration chang
 		server = await createServer({
 			configFile: false,
 			root,
-			plugins: [registyle()],
+			plugins: [tailmantic()],
 			server: { host: '127.0.0.1', port: 0 },
 			logLevel: 'silent',
 		});
@@ -67,11 +67,11 @@ test('Vite build emits the virtual stylesheet as a CSS asset', { timeout: 15000 
 	try {
 		await mkdir(sourceDirectory, { recursive: true });
 		await mkdir(join(root, 'node_modules'), { recursive: true });
-		await symlink(packageRoot, join(root, 'node_modules', 'registyle'), 'junction');
+		await symlink(packageRoot, join(root, 'node_modules', 'tailmantic'), 'junction');
 		await writeFile(join(root, 'index.html'), '<script type="module" src="/src/main.js"></script>');
-		await writeFile(join(sourceDirectory, 'main.js'), "import 'virtual:registyle.css';");
+		await writeFile(join(sourceDirectory, 'main.js'), "import 'virtual:tailmantic.css';");
 		await writeFile(join(sourceDirectory, 'registrations.js'), [
-			"import { getManifest, register } from 'registyle/collector';",
+			"import { getManifest, register } from 'tailmantic/collector';",
 			"register('action-button', { tw: 'flex' });",
 			'export default getManifest();',
 		].join('\n'));
@@ -79,7 +79,7 @@ test('Vite build emits the virtual stylesheet as a CSS asset', { timeout: 15000 
 		const result = await build({
 			configFile: false,
 			root,
-			plugins: [registyle({ entry: 'src/registrations.js', watch: 'src' })],
+			plugins: [tailmantic({ entry: 'src/registrations.js', watch: 'src' })],
 			logLevel: 'silent',
 			build: { write: false },
 		});
@@ -97,15 +97,15 @@ test('Vite build emits the virtual stylesheet as a CSS asset', { timeout: 15000 
 test('Vite plugin writes an optional CSS copy when outFile is configured', { timeout: 15000 }, async () => {
 	const root = await mkdtemp(join(packageRoot, '.test-vite-output-'));
 	const sourceDirectory = join(root, 'src');
-	const outputPath = join(root, '.registyle', 'style.css');
+	const outputPath = join(root, '.tailmantic', 'style.css');
 	let server;
 
 	try {
 		await mkdir(sourceDirectory, { recursive: true });
 		await mkdir(join(root, 'node_modules'), { recursive: true });
-		await symlink(packageRoot, join(root, 'node_modules', 'registyle'), 'junction');
+		await symlink(packageRoot, join(root, 'node_modules', 'tailmantic'), 'junction');
 		await writeFile(join(sourceDirectory, 'registrations.js'), [
-			"import { getManifest, register } from 'registyle/collector';",
+			"import { getManifest, register } from 'tailmantic/collector';",
 			"register('action-button', { tw: 'flex' });",
 			'export default getManifest();',
 		].join('\n'));
@@ -113,7 +113,7 @@ test('Vite plugin writes an optional CSS copy when outFile is configured', { tim
 		server = await createServer({
 			configFile: false,
 			root,
-			plugins: [registyle({ entry: 'src/registrations.js', outFile: '.registyle/style.css' })],
+			plugins: [tailmantic({ entry: 'src/registrations.js', outFile: '.tailmantic/style.css' })],
 			server: { host: '127.0.0.1', port: 0 },
 			logLevel: 'silent',
 		});

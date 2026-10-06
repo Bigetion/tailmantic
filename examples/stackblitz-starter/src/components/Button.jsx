@@ -1,7 +1,7 @@
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 /**
- * Button component — uses semantic class names from registyle.
+ * Button component — uses semantic class names from tailmantic.
  * No utility strings here. The HTML will contain: "btn btn-primary btn-md"
  */
 export function Button({

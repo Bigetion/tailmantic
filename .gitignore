@@ -1,6 +1,6 @@
 node_modules/
 dist/
-.registyle/
+.tailmantic/
 coverage/
 *.log
 *.tgz

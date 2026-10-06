@@ -1,9 +1,9 @@
-import { cx, register, type Registration } from 'registyle';
-import 'virtual:registyle.css';
-import { getManifest, register as collect } from 'registyle/collector';
-import { compile, type RegistyleManifest } from 'registyle/compile';
-import { registyle, type RegistyleViteOptions } from 'registyle/vite';
-import { compound, createVariants, mergeVariants } from 'registyle/variants';
+import { cx, register, type Registration } from 'tailmantic';
+import 'virtual:tailmantic.css';
+import { getManifest, register as collect } from 'tailmantic/collector';
+import { compile, type TailmanticManifest } from 'tailmantic/compile';
+import { tailmantic, type TailmanticViteOptions } from 'tailmantic/vite';
+import { compound, createVariants, mergeVariants } from 'tailmantic/variants';
 import type { Plugin } from 'vite';
 
 const button: Registration = {
@@ -17,7 +17,7 @@ register.group('card', { root: { borderRadius: '8px' } });
 const className: string = cx.with('button')('button-primary', { disabled: false });
 
 collect('button', button);
-const manifest: RegistyleManifest = getManifest();
+const manifest: TailmanticManifest = getManifest();
 const compiledCss: Promise<string> = compile(manifest, { baseDir: '.' });
 const variantClasses: string[] = createVariants({
 	variants: { size: { sm: { padding: '4px' } } },
@@ -27,10 +27,10 @@ const mergedVariants = mergeVariants(
 	{ compoundVariants: [compound({ size: 'sm' }, { padding: '4px' })] },
 );
 
-const options: RegistyleViteOptions = { entry: 'src/registyles/index.ts', outFile: '.registyle/style.css' };
+const options: TailmanticViteOptions = { entry: 'src/tailmantics/index.ts', outFile: '.tailmantic/style.css' };
 // @ts-expect-error removed in v2
-const obsoleteOptions: RegistyleViteOptions = { cache: true };
-const plugin: Plugin = registyle(options);
+const obsoleteOptions: TailmanticViteOptions = { cache: true };
+const plugin: Plugin = tailmantic(options);
 
 void className;
 void compiledCss;

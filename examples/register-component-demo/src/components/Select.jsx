@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { ChevronDown, Check } from 'lucide-react';
 
 export function Select({ options = [], value, onChange, placeholder = 'Select…', label, className }) {

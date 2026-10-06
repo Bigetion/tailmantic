@@ -1,14 +1,14 @@
 {
-  "name": "registyle",
-  "version": "2.1.1",
-  "description": "Write Tailwind utilities once. Use semantic class names everywhere.",
-  "homepage": "https://github.com/Bigetion/registyle#readme",
+  "name": "tailmantic",
+  "version": "1.0.0",
+  "description": "A semantic styling toolkit powered by Tailwind CSS.",
+  "homepage": "https://github.com/Bigetion/tailmantic#readme",
   "bugs": {
-    "url": "https://github.com/Bigetion/registyle/issues"
+    "url": "https://github.com/Bigetion/tailmantic/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Bigetion/registyle.git"
+    "url": "git+https://github.com/Bigetion/tailmantic.git"
   },
   "type": "module",
   "main": "./core-entry.js",
@@ -109,9 +109,10 @@
     }
   },
   "keywords": [
+    "tailmantic",
     "css",
     "semantic-css",
-    "register",
+    "semantic-styling",
     "tailwindcss",
     "tailwindcss-v4",
     "vite",

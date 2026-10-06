@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 // Components
 import { Button, IconButton } from './components/Button';
@@ -531,9 +531,9 @@ function AccordionDemo() {
     <div style={{ maxWidth: 560 }}>
       <Accordion
         items={[
-          { title: 'What is register() in registyle?', content: 'register() lets you define semantic CSS class names once — with Tailwind utilities, raw CSS properties, pseudo shorthands, and modifiers — and reuse them anywhere with plain class names in your HTML.' },
+          { title: 'What is register() in tailmantic?', content: 'register() lets you define semantic CSS class names once — with Tailwind utilities, raw CSS properties, pseudo shorthands, and modifiers — and reuse them anywhere with plain class names in your HTML.' },
           { title: 'How is this different from Tailwind CSS?', content: 'Tailwind requires long class strings directly in HTML. register() lets you define those classes once and use short, meaningful names like btn btn-primary everywhere, similar to Bootstrap but with Tailwind power.' },
-          { title: 'Does it need a build step?', content: 'Yes. registyle compiles your registrations at build time via the Vite plugin or a Node build script. The compiled CSS is then injected as a virtual stylesheet or written to a file.' },
+          { title: 'Does it need a build step?', content: 'Yes. tailmantic compiles your registrations at build time via the Vite plugin or a Node build script. The compiled CSS is then injected as a virtual stylesheet or written to a file.' },
           { title: 'Can I use it with React, Vue, or Svelte?', content: 'Yes. register() is framework-agnostic. It works anywhere JavaScript runs — React, Vue, Svelte, vanilla HTML, or Node.js for SSR.' },
         ]}
       />
@@ -863,7 +863,7 @@ export default function App() {
       {/* Sidebar */}
       <aside className="sidebar">
         <div className="sidebar-logo">
-          <span className="brand-mark">r</span> registyle
+          <span className="brand-mark">r</span> tailmantic
         </div>
         <nav className="sidebar-nav" aria-label="Component examples">
           {NAV.map(group => (
@@ -893,7 +893,7 @@ export default function App() {
         {demo && (
           <div className="content-frame">
             <div className="demo-topline">
-              <span className="demo-location">Registyle / Component library</span>
+              <span className="demo-location">Tailmantic / Component library</span>
               <span className="demo-count">{Object.keys(DEMO_MAP).length} components</span>
             </div>
             <header className="demo-header">
