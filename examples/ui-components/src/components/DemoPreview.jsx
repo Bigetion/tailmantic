@@ -290,7 +290,7 @@ function InputPreview({ demoId }) {
 }
 
 function DisplayPreview({ demoId }) {
-  return <div className="preview-row"><span className="rgi-chip rgi-chip-filled">Data display</span><span className="rgi-chip rgi-chip-primary">Registyle UI</span><span className="preview-note">Responsive component preview</span></div>;
+  return <div className="preview-row"><span className="rgi-chip rgi-chip-filled">Data display</span><span className="rgi-chip rgi-chip-primary">Tailmantic UI</span><span className="preview-note">Responsive component preview</span></div>;
 }
 
 function FeedbackPreview({ demoId }) {

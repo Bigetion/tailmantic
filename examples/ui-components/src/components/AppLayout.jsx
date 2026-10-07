@@ -72,8 +72,8 @@ function MobileNavigationDrawer({ groups, onClose }) {
         aria-label="Component navigation"
       >
         <div className="mobile-drawer-header">
-          <span className="brand-mark" aria-hidden="true"><span>R</span></span>
-          <span className="brand-lockup"><span className="brand-name">Registyle UI</span><span className="brand-subtitle">Explore library</span></span>
+          <span className="brand-mark" aria-hidden="true"><span>T</span></span>
+          <span className="brand-lockup"><span className="brand-name">Tailmantic UI</span><span className="brand-subtitle">Explore library</span></span>
           <button
             className="rgi-icon-button mobile-drawer-close"
             ref={closeButtonRef}
@@ -107,7 +107,7 @@ function MobileNavigationDrawer({ groups, onClose }) {
         </div>
         <div className="sidebar-bottom">
           <div className="sidebar-bottom-icon"><ShieldCheck size={14} /></div>
-          <span><strong>Built with Registyle</strong><small>Semantic styling, made simple</small></span>
+          <span><strong>Built with Tailmantic</strong><small>Semantic styling, made simple</small></span>
           <ExternalLink size={12} />
         </div>
       </aside>
@@ -180,12 +180,12 @@ export default function AppLayout() {
         >
           {mobileNavOpen ? <X size={19} /> : <Menu size={19} />}
         </button>
-        <NavLink className="brand-link" to="/components/autocomplete" aria-label="Registyle UI home">
-          <span className="brand-mark" aria-hidden="true"><span>R</span></span>
-          <span className="brand-lockup"><span className="brand-name">Registyle UI</span><span className="brand-subtitle">by Registyle</span></span>
+        <NavLink className="brand-link" to="/components/autocomplete" aria-label="Tailmantic UI home">
+          <span className="brand-mark" aria-hidden="true"><span>T</span></span>
+          <span className="brand-lockup"><span className="brand-name">Tailmantic UI</span><span className="brand-subtitle">by Tailmantic</span></span>
         </NavLink>
         <span className="version-badge">
-          <span className="version-indicator" /> v9.4.0
+          <span className="version-indicator" /> v0.1.0
         </span>
         <div className="topbar-spacer" />
         <label className="search-box">
@@ -235,16 +235,16 @@ export default function AppLayout() {
             </div>
           )}
         </label>
-        <a className="topbar-github" href="https://github.com/Bigetion/registyle" target="_blank" rel="noreferrer">
+        <a className="topbar-github" href="https://github.com/Bigetion/tailmantic" target="_blank" rel="noreferrer">
         <span>Open source</span><ArrowUpRight size={13} />
         </a>
         <a
           className="rgi-icon-button help-button"
-          href="https://github.com/Bigetion/registyle/tree/master/packages/ui-components"
+          href="https://github.com/Bigetion/tailmantic/tree/main/packages/ui-components"
           target="_blank"
           rel="noreferrer"
-          aria-label="Registyle UI package source"
-          title="Registyle UI package source"
+          aria-label="Tailmantic UI package source"
+          title="Tailmantic UI package source"
         >
           <CircleHelp size={17} />
         </a>
@@ -284,7 +284,7 @@ export default function AppLayout() {
           </div>
           <div className="sidebar-bottom">
             <div className="sidebar-bottom-icon"><ShieldCheck size={14} /></div>
-            <span><strong>Built with Registyle</strong><small>Semantic styling, made simple</small></span>
+            <span><strong>Built with Tailmantic</strong><small>Semantic styling, made simple</small></span>
             <ExternalLink size={12} />
           </div>
         </aside>

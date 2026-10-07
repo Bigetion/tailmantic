@@ -1,11 +1,11 @@
 {
   "name": "@registyle/ui-components",
   "version": "0.1.0",
-  "description": "Standalone React components styled with Registyle.",
-  "homepage": "https://github.com/Bigetion/registyle#readme",
+  "description": "Standalone React components styled with Tailmantic.",
+  "homepage": "https://github.com/Bigetion/tailmantic/tree/main/packages/ui-components#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Bigetion/registyle.git",
+    "url": "git+https://github.com/Bigetion/tailmantic.git",
     "directory": "packages/ui-components"
   },
   "publishConfig": {

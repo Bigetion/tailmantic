@@ -14,9 +14,9 @@ import { cx } from 'registyle';
 function Brand({ subtitle = 'Design workspace' }) {
   return (
     <div className="appbar-brand">
-      <span className="appbar-brand-mark">M</span>
+      <span className="appbar-brand-mark">T</span>
       <span className="appbar-brand-copy">
-        <strong>Registyle UI</strong>
+        <strong>Tailmantic UI</strong>
         <small>{subtitle}</small>
       </span>
     </div>

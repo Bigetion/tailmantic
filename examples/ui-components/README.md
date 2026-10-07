@@ -1,6 +1,6 @@
-# Registyle UI
+# Tailmantic UI Components
 
-A component explorer for the Registyle UI library, built with React, React Router, Popper.js, Vite, and Registyle. Every component has its own addressable page, live examples, usage snippet, and implementation source map. Component styles are registered as semantic classes and compiled by Tailmantic's Vite plugin.
+A component explorer for the Tailmantic UI library, built with React, React Router, Popper.js, and Vite. Every component has its own addressable page, live examples, usage snippet, and implementation source map. Component styles are registered as semantic classes and compiled by Tailmantic's Vite plugin.
 
 Requires Node.js 20 or newer.
 
@@ -21,4 +21,4 @@ src/components/ui/button/Button.jsx
 src/registyles/components/button.js
 ```
 
-Component metadata, groups, and descriptions are defined in `src/data/components.js`; each page route is resolved to its own page module. Shared page layout, code panels, and interaction primitives stay reusable. Component-specific styles are imported by `src/registyles/components/index.js` and registered with Registyle's collector. Floating menus, tooltips, autocomplete/select examples, and popovers share a portal-based Popper implementation with flip and overflow handling, outside-click dismissal, and Escape-key support.
+Component metadata, groups, and descriptions are defined in `src/data/components.js`; each page route is resolved to its own page module. Shared page layout, code panels, and interaction primitives stay reusable. Component-specific styles are imported by `src/registyles/components/index.js` and registered with Tailmantic's collector. Floating menus, tooltips, autocomplete/select examples, and popovers share a portal-based Popper implementation with flip and overflow handling, outside-click dismissal, and Escape-key support.

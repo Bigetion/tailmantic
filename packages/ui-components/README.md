@@ -1,6 +1,6 @@
 # @registyle/ui-components
 
-Standalone React components styled with Registyle. All 47 Registyle UI components and their base styles live in this package; interactive showcase content and demo-only styles remain in the example application.
+Standalone React components styled with Tailmantic. All 47 Tailmantic UI components and their base styles live in this package; interactive showcase content and demo-only styles remain in the example application.
 
 Install the package and its peer dependencies:
 
@@ -34,7 +34,7 @@ function Example() {
 }
 ```
 
-The package requires Node.js 18+ to build or publish. Consuming applications must provide React and React DOM 18+, Registyle 2.1+, and `@popperjs/core` 2.11.8+ when using Popper, Popover, or Menu. Configure the Registyle Vite plugin and import `virtual:registyle.css`; add `@registyle/ui-components/styles` to the application's Registyle manifest to register the package's base styles. Every component is available from the root entry, has its own subpath export, and includes TypeScript props:
+The package requires Node.js 20+ to build or publish. Consuming applications must provide React and React DOM 18+, Tailmantic 1.0+, and `@popperjs/core` 2.11.8+ when using Popper, Popover, or Menu. Configure the Tailmantic Vite plugin and import `virtual:tailmantic.css`; add `@registyle/ui-components/styles` to the application's Tailmantic manifest to register the package's base styles. Every component is available from the root entry, has its own subpath export, and includes TypeScript props:
 
 ```jsx
 import Button from '@registyle/ui-components/button';

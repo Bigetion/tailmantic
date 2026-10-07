@@ -48,8 +48,8 @@ export default function DemoPanel({ title, caption, code, children }) {
         </div>
       )}
       <footer className="demo-footer">
-        <span>Semantic styles compiled by Registyle</span>
-        <a className="source-link" href="#registyle-source">
+        <span>Semantic styles compiled by Tailmantic</span>
+        <a className="source-link" href="#tailmantic-source">
           View style source <ArrowRight size={12} />
         </a>
       </footer>

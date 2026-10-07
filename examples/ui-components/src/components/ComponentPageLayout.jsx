@@ -6,7 +6,7 @@ import DemoPanel from './DemoPanel.jsx';
 const IMPLEMENTATION_ROWS = [
   ['Page', 'src/pages/components/{slug}/Page.jsx', 'Dedicated React Router page.'],
   ['Component', 'src/components/ui/{slug}/{name}.jsx', 'Dedicated component page entry point.'],
-  ['Registyle', 'src/registyles/components/{slug}.js', 'Component-specific styles and variants.'],
+  ['Styles', 'src/registyles/components/{slug}.js', 'Component-specific styles and variants.'],
   ['Examples', '{count} live examples', 'Rendered in the examples section above.'],
 ];
 
@@ -48,7 +48,7 @@ export default function ComponentPageLayout({ component, children }) {
           <h1 className="page-heading">{component.name}</h1>
           <p className="page-intro">{component.description}</p>
           <div className="hero-meta">
-            <span><Check size={13} /> Dedicated Registyle module</span>
+            <span><Check size={13} /> Dedicated Tailmantic style module</span>
             <span><Layers size={13} /> {component.demos.length} live examples</span>
           </div>
         </div>
@@ -61,7 +61,7 @@ export default function ComponentPageLayout({ component, children }) {
         </div>
         <a
           className="rgi-button rgi-button-outlined docs-button"
-          href="https://github.com/Bigetion/registyle/tree/master/packages/ui-components"
+          href="https://github.com/Bigetion/tailmantic/tree/main/packages/ui-components"
           target="_blank"
           rel="noreferrer"
         >
@@ -85,7 +85,7 @@ export default function ComponentPageLayout({ component, children }) {
         <a href={`#${component.slug}-examples-heading`}>Examples</a>
         <a href={`#${component.slug}-usage-heading`}>Usage</a>
         <a href={`#${component.slug}-implementation-heading`}>Implementation</a>
-        <span className="toc-version">v9.4.0</span>
+        <span className="toc-version">v0.1.0</span>
       </nav>
 
       <section className="page-section" aria-labelledby={`${component.slug}-examples-heading`}>
@@ -146,12 +146,12 @@ export default function ComponentPageLayout({ component, children }) {
         </div>
       </section>
 
-      <footer className="page-footer" id="registyle-source">
+      <footer className="page-footer" id="tailmantic-source">
         <div className="footer-brand">
-          <span className="brand-mark brand-mark-small">R</span>
-          <span>Registyle UI</span>
+          <span className="brand-mark brand-mark-small">T</span>
+          <span>Tailmantic UI</span>
         </div>
-        <span>Semantic styles, powered by Registyle.</span>
+        <span>Semantic styles, powered by Tailmantic.</span>
         <div className="footer-links">
           <Link to={`/components/${previous.slug}`} aria-label={`Previous: ${previous.name}`}><ArrowLeft size={15} /></Link>
           <Link to={`/components/${next.slug}`} aria-label={`Next: ${next.name}`}><ArrowRight size={15} /></Link>
