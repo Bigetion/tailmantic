@@ -25,21 +25,24 @@ export function tailmantic(options = {}) {
 	let compiledCss = null;
 	
 	let compilationCount = 0;
+
+	// Persistent SSR server — created lazily on first compile, reused for all
+	// subsequent compiles, and closed in the closeBundle/buildEnd hook.
+	let ssrServer = null;
 	
 	// Auto-detect problematic environments
 	const isCodeSandbox = process.env.CODESANDBOX_SSE || process.env.SANDBOX_ID || process.env.CODESANDBOX;
 	const isStackBlitz = process.env.SHELL?.includes('webcontainer');
 	const needsPhysicalFile = forceOutFile || isCodeSandbox || isStackBlitz;
 
-	async function compileStyles() {
-		const startTime = Date.now();
-		compilationCount++;
-		
+	async function getOrCreateSsrServer() {
+		if (ssrServer) return ssrServer;
+
 		// Try direct import first (works in most environments including CodeSandbox)
 		let viteModule;
 		try {
 			viteModule = await import('vite');
-		} catch (directImportError) {
+		} catch (_directImportError) {
 			// Fallback to dynamic resolution for special environments
 			try {
 				const requireFromProject = createRequire(resolve(root, 'package.json'));
@@ -47,17 +50,17 @@ export function tailmantic(options = {}) {
 				viteModule = await import(viteUrl);
 			} catch (fallbackError) {
 				throw new Error('tailmantic/vite: Failed to import Vite. Make sure vite is installed as a dependency.', {
-					cause: fallbackError 
+					cause: fallbackError,
 				});
 			}
 		}
-		
+
 		const { createServer } = viteModule;
 		if (typeof createServer !== 'function') {
 			throw new TypeError('tailmantic/vite: createServer is not a function. Check your Vite installation.');
 		}
-		
-		const server = await createServer({
+
+		ssrServer = await createServer({
 			configFile: false,
 			root,
 			server: { middlewareMode: true },
@@ -66,45 +69,60 @@ export function tailmantic(options = {}) {
 			optimizeDeps: { noDiscovery: true, include: [] },
 		});
 
-		try {
-			const collector = await server.ssrLoadModule('tailmantic/collector');
-			collector.resetManifest();
-			const module = await server.ssrLoadModule(asViteModuleId(root, entryPath));
-			const manifest = module.default || module.manifest;
-			if (!manifest || typeof manifest !== 'object') {
-				throw new TypeError(`tailmantic/vite: ${entry} must export a manifest as default`);
-			}
-			
-			// Pass through optimization options; compilation preserves CSS by default.
-			compiledCss = await compile(manifest, {
-				baseDir: root, 
-				inputCss,
-				minify: options.minify,
-				optimize: options.optimize,
-				deduplicate: options.deduplicate,
-				debug,
-			});
-			
-			// Write to disk if outFile is configured OR if we're in a problematic environment
-			const actualOutputPath = outputPath || (needsPhysicalFile ? resolve(root, 'src/tailmantic.generated.css') : null);
-			if (actualOutputPath) {
-				await mkdir(dirname(actualOutputPath), { recursive: true });
-				await writeFile(actualOutputPath, compiledCss);
-				if (debug || needsPhysicalFile) {
-					const envInfo = isCodeSandbox ? ' (CodeSandbox detected)' : isStackBlitz ? ' (StackBlitz detected)' : '';
-					console.log(`[tailmantic] CSS written to ${actualOutputPath}${envInfo}`);
-				}
-			}
-			
-			if (debug) {
-				const duration = Date.now() - startTime;
-				console.log(`[tailmantic] Compiled in ${duration}ms (compilation #${compilationCount})`);
-			}
-			
-			return manifest;
-		} finally {
-			await server.close();
+		return ssrServer;
+	}
+
+	async function closeSsrServer() {
+		if (ssrServer) {
+			await ssrServer.close();
+			ssrServer = null;
 		}
+	}
+
+	async function compileStyles() {
+		const startTime = Date.now();
+		compilationCount++;
+		
+		const server = await getOrCreateSsrServer();
+
+		// Invalidate all cached modules so re-imports pick up file changes.
+		server.moduleGraph.invalidateAll();
+
+		const collector = await server.ssrLoadModule('tailmantic/collector');
+		collector.resetManifest();
+		const module = await server.ssrLoadModule(asViteModuleId(root, entryPath));
+		const manifest = module.default || module.manifest;
+		if (!manifest || typeof manifest !== 'object') {
+			throw new TypeError(`tailmantic/vite: ${entry} must export a manifest as default`);
+		}
+		
+		// Pass through optimization options; compilation preserves CSS by default.
+		compiledCss = await compile(manifest, {
+			baseDir: root, 
+			inputCss,
+			minify: options.minify,
+			optimize: options.optimize,
+			deduplicate: options.deduplicate,
+			debug,
+		});
+		
+		// Write to disk if outFile is configured OR if we're in a problematic environment
+		const actualOutputPath = outputPath || (needsPhysicalFile ? resolve(root, 'src/tailmantic.generated.css') : null);
+		if (actualOutputPath) {
+			await mkdir(dirname(actualOutputPath), { recursive: true });
+			await writeFile(actualOutputPath, compiledCss);
+			if (debug || needsPhysicalFile) {
+				const envInfo = isCodeSandbox ? ' (CodeSandbox detected)' : isStackBlitz ? ' (StackBlitz detected)' : '';
+				console.log(`[tailmantic] CSS written to ${actualOutputPath}${envInfo}`);
+			}
+		}
+		
+		if (debug) {
+			const duration = Date.now() - startTime;
+			console.log(`[tailmantic] Compiled in ${duration}ms (compilation #${compilationCount})`);
+		}
+		
+		return manifest;
 	}
 
 	return {
@@ -133,6 +151,9 @@ export function tailmantic(options = {}) {
 		},
 		async buildStart() {
 			await compileStyles();
+		},
+		async closeBundle() {
+			await closeSsrServer();
 		},
 		async configureServer(server) {
 			await compileStyles();
@@ -170,11 +191,12 @@ export function tailmantic(options = {}) {
 			server.watcher.on('change', onChange);
 			server.watcher.on('add', onChange);
 			server.watcher.on('unlink', onChange);
-			server.httpServer?.once('close', () => {
+			server.httpServer?.once('close', async () => {
 				clearTimeout(timer);
 				server.watcher.off('change', onChange);
 				server.watcher.off('add', onChange);
 				server.watcher.off('unlink', onChange);
+				await closeSsrServer();
 			});
 		},
 	};

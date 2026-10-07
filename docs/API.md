@@ -169,3 +169,28 @@ const className = cx(
 ```
 
 `cx.with('button')` returns a helper that always includes the provided base values. For CSS-generating variants, import `createVariants`, `compound`, or `mergeVariants` from `tailmantic/variants`; see [Variants Composition](./ADVANCED.md#variants-composition).
+
+### cx() and Tailwind conflict resolution
+
+`cx()` concatenates class names — it does **not** resolve Tailwind utility conflicts. This is intentional: tailmantic's semantic class names are already stable, so conflict resolution is rarely needed between Tailmantic-managed selectors. The behavior matches [`clsx`](https://github.com/lukeed/clsx).
+
+If you are combining Tailmantic class names with arbitrary Tailwind utilities (for example, user-supplied `className` props), duplicate or conflicting utilities are not deduplicated:
+
+```js
+// cx() — concatenation only, no conflict resolution
+cx('p-4', isPrimary ? 'p-2' : '');
+// → 'p-4 p-2'  (both classes present; last one in the stylesheet wins)
+```
+
+When you need deduplication or conflict resolution, use [`tailwind-merge`](https://github.com/dcastil/tailwind-merge) alongside `cx()`:
+
+```js
+import { twMerge } from 'tailwind-merge';
+import { cx } from 'tailmantic';
+
+// twMerge resolves conflicts; cx() handles conditionals first
+const className = twMerge(cx('p-4', isPrimary && 'p-2'));
+// → 'p-2'  (conflicting p-* utilities merged; last wins)
+```
+
+Use `twMerge` only at the component boundary where arbitrary overrides arrive — not inside Tailmantic manifest registrations, which the compiler resolves deterministically.

@@ -1,3 +1,5 @@
+> **Note for Tailmantic users:** This document covers migration from Registyle v1 to v2 (the upstream library Tailmantic was originally based on). If you are a new Tailmantic user, this file does not apply to you — see [CHANGELOG.md](./CHANGELOG.md) for Tailmantic-specific release history.
+
 # Migration Guide
 
 This is historical upgrade guidance for the original Registyle 1.x to 2.0 transition. Tailmantic 1.0.0 starts from that 2.x codebase; Tailmantic consumers should use the current [README](../README.md) rather than this guide.

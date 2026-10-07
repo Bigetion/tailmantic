@@ -67,3 +67,24 @@ Runtime styles are available from `register.extractCSS()` after registration mod
 - Check the [API reference](./API.md) for the active API contract.
 - Review the [Advanced guide](./ADVANCED.md) for CSS layers, variants, themes, and container queries.
 - Search [GitHub issues](https://github.com/Bigetion/tailmantic/issues) or open a minimal reproduction with the manifest, compiler options, and error output.
+
+## Custom Tailwind theme colors not working
+
+If you have extended Tailwind's theme in a CSS file with `@theme { ... }` and your custom color classes (e.g. `bg-brand-500`) are not being generated, pass that CSS file via the `inputCss` option:
+
+**compile API:**
+```js
+import { compile } from 'tailmantic/compile';
+import { getManifest } from './src/tailmantics/index.js';
+
+const css = await compile(getManifest(), {
+  inputCss: '@import "./tailwind.css";'
+});
+```
+
+**Vite plugin:**
+```js
+// vite.config.js
+import tailmantic from 'tailmantic/vite';
+export default { plugins: [tailmantic({ inputCss: '@import "./tailwind.css";' })] };
+```

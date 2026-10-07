@@ -14,6 +14,63 @@ The modules in this guide are optional subpath APIs. The core workflow is semant
 - [Production Patterns](#production-patterns)
 - [End-to-End: Variants + Theme + Collector](#end-to-end-variants--theme--collector)
 
+## Using a custom Tailwind theme
+
+If your project defines custom design tokens in a CSS file using Tailwind v4's `@theme` directive, you must pass that file to the compiler so those tokens are available when compiling your manifest classes.
+
+### Step 1 — define your theme
+
+```css
+/* tailwind.css */
+@import "tailwindcss";
+
+@theme {
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+}
+```
+
+### Step 2 — reference it via inputCss
+
+**compile() API:**
+```js
+import { compile } from 'tailmantic/compile';
+import { getManifest } from './src/tailmantics/index.js';
+
+const css = await compile(getManifest(), {
+  inputCss: '@import "./tailwind.css";',
+  baseDir: process.cwd(),
+});
+```
+
+**Vite plugin:**
+```js
+// vite.config.js
+import { defineConfig } from 'vite';
+import { tailmantic } from 'tailmantic/vite';
+
+export default defineConfig({
+  plugins: [
+    tailmantic({
+      inputCss: '@import "./tailwind.css";',
+    }),
+  ],
+});
+```
+
+### Step 3 — use the custom tokens in registrations
+
+```js
+import { register } from 'tailmantic/collector';
+
+register('hero-button', {
+  tw: 'bg-brand-500 text-white hover:bg-brand-600 focus-visible:ring-brand-700',
+});
+```
+
+Without the `inputCss` pointing to your theme file, the Tailwind compiler has no knowledge of `--color-brand-500` and will throw a "Tailwind did not generate CSS for" error. See [TROUBLESHOOTING.md](./TROUBLESHOOTING.md#custom-tailwind-theme-colors-not-working) for more details.
+
 ## Theme System
 
 ### Creating Custom Themes

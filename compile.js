@@ -316,7 +316,8 @@ function retargetSelectors(root, tokenSelectors, selectorParser, modifierSelecto
 				let targetNodes;
 				try {
 					targetNodes = selectorParser().astSync(target).nodes[0].nodes.map((node) => node.clone());
-				} catch {
+				} catch (err) {
+					console.warn(`[tailmantic] Failed to parse selector for utility "${utilityNode.value}" → "${target}": ${err.message}`);
 					continue;
 				}
 				let replacementNode;

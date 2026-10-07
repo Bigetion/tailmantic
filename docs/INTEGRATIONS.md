@@ -241,6 +241,51 @@ export function Button({ variant = 'primary', className, children }: ButtonProps
 
 > **Note:** In development, run `npm run build:styles` once before starting Next.js, then re-run it whenever you change a registration file. For automatic rebuilding during development, add a file watcher script using `chokidar` or `node --watch scripts/build-styles.mjs`.
 
+### Watch mode for development
+
+For automatic CSS rebuilding when registration files change, add a watcher script using [chokidar](https://github.com/paulmillr/chokidar):
+
+```js
+// scripts/watch-tailmantic.js
+import chokidar from 'chokidar';
+import { compileToFile } from 'tailmantic/compile';
+import { getManifest } from './src/tailmantics/index.js';
+
+const MANIFEST_DIR = './src/tailmantics';
+const OUT_FILE = './public/tailmantic.css';
+
+async function rebuild() {
+  try {
+    await compileToFile(getManifest(), OUT_FILE);
+    console.log('[tailmantic] CSS rebuilt');
+  } catch (err) {
+    console.error('[tailmantic] Build error:', err.message);
+  }
+}
+
+await rebuild();
+chokidar.watch(MANIFEST_DIR).on('change', rebuild);
+```
+
+Add this to your `package.json` scripts:
+
+```json
+{
+  "scripts": {
+    "build:styles": "node scripts/build-styles.mjs",
+    "watch-tailmantic": "node scripts/watch-tailmantic.js",
+    "build": "npm run build:styles && next build",
+    "dev": "npm run watch-tailmantic & next dev"
+  }
+}
+```
+
+Install chokidar as a dev dependency if it is not already present:
+
+```sh
+npm install -D chokidar
+```
+
 ## Framework Notes
 
 tailmantic does not ship dedicated Astro or Nuxt plugins. Use the manual compiler step above when the framework supports importing generated CSS, and follow that framework's CSS ordering and server-rendering rules. Do not import `virtual:tailmantic.css` outside Vite unless the bundler provides a compatible virtual module.
