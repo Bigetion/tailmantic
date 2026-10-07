@@ -8,7 +8,7 @@ const packageDir = fileURLToPath(new URL('.', import.meta.url));
 const source = (path) => resolve(packageDir, 'src', path);
 
 export default defineConfig({
-  plugins: [react(), tailmantic({ entry: 'src/registyles/index.js' })],
+  plugins: [react(), tailmantic({ entry: 'src/tailmantics/index.js' })],
   build: {
     lib: {
       entry: {

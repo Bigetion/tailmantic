@@ -24,7 +24,7 @@
       "types": "./index.d.ts",
       "import": "./dist/index.js"
     },
-    "./styles": "./src/registyles/index.js",
+    "./styles": "./src/tailmantics/index.js",
     "./accordion": {
       "types": "./src/accordion/accordion.d.ts",
       "import": "./dist/accordion.js"
@@ -218,7 +218,7 @@
     "dist",
     "index.d.ts",
     "src/index.d.ts",
-    "src/registyles/index.js",
+    "src/tailmantics/index.js",
     "src/*/*.d.ts",
     "src/*/*.styles.js",
     "README.md",
@@ -240,7 +240,7 @@
   "sideEffects": [
     "./dist/*.js",
     "./src/**/*.styles.js",
-    "./src/registyles/index.js"
+    "./src/tailmantics/index.js"
   ],
   "devDependencies": {
     "@popperjs/core": "^2.11.8",

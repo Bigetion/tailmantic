@@ -77,7 +77,7 @@ If your v1 app imported a generated `.registyle/style.css`, the v2 Vite plugin u
 + import 'virtual:registyle.css';
 ```
 
-The default manifest entry is `src/registyles/index.js`, which imports registration modules and default-exports `getManifest()`. To keep a physical CSS file, configure `outFile` and continue importing that file instead. See the Vite section in the [README](../README.md#vite-plugin).
+The default manifest entry is `src/tailmantics/index.js`, which imports registration modules and default-exports `getManifest()`. To keep a physical CSS file, configure `outFile` and continue importing that file instead. See the Vite section in the [README](../README.md#vite-plugin).
 
 ## Verify the Upgrade
 
