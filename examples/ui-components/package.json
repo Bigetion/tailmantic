@@ -15,7 +15,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.18.4",
-    "registyle": "file:../.."
+    "registyle": "file:../..",
+    "tailmantic": "file:../.."
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",

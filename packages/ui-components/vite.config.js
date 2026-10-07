@@ -1,14 +1,14 @@
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
-import { registyle } from 'registyle/vite';
+import { tailmantic } from 'registyle/vite';
 import { defineConfig } from 'vite';
 
 const packageDir = fileURLToPath(new URL('.', import.meta.url));
 const source = (path) => resolve(packageDir, 'src', path);
 
 export default defineConfig({
-  plugins: [react(), registyle({ entry: 'src/registyles/index.js' })],
+  plugins: [react(), tailmantic({ entry: 'src/registyles/index.js' })],
   build: {
     lib: {
       entry: {
