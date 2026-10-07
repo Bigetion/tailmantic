@@ -1,7 +1,7 @@
 {
   "name": "tailmantic",
   "version": "1.0.1",
-  "description": "A semantic styling toolkit powered by Tailwind CSS.",
+  "description": "Build your own semantic design system with registered Tailwind CSS v4 utilities.",
   "homepage": "https://github.com/Bigetion/tailmantic#readme",
   "bugs": {
     "url": "https://github.com/Bigetion/tailmantic/issues"
@@ -113,6 +113,7 @@
     "css",
     "semantic-css",
     "semantic-styling",
+    "semantic-design-system",
     "tailwindcss",
     "tailwindcss-v4",
     "vite",
@@ -124,7 +125,7 @@
     "themes",
     "react",
     "vue",
-    "component-library"
+    "css-compiler"
   ],
   "sideEffects": [
     "./core-entry.js",

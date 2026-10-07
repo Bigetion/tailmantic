@@ -20,7 +20,7 @@ export default function App() {
             <Badge variant="primary">v1.0.0</Badge>
           </div>
           <p style={{ color: '#6b7280', margin: 0, fontSize: '15px' }}>
-            Write Tailwind utilities once. Use semantic class names everywhere.
+            Build your own semantic design system with registered Tailwind CSS v4 utilities.
           </p>
           <p style={{ color: '#9ca3af', margin: '8px 0 0', fontSize: '13px' }}>
             💡 Open <strong>DevTools → Inspector</strong> and click any button below.

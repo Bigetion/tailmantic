@@ -5,6 +5,7 @@
 ### Fixed
 
 - Updated StackBlitz and repository documentation links to use the `main` branch.
+- Clarified that Tailmantic is a toolkit for building app-owned semantic design systems, not a ready-made component library.
 
 ## [1.0.0] - 2026-10-07
 

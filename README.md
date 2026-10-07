@@ -5,7 +5,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/Bigetion/tailmantic/tree/main/examples/stackblitz-starter)
 
-A semantic styling library that compiles Tailwind CSS v4 utilities into named component classes, with a separate CSS-only runtime for plain declarations.
+Build your own semantic design system on Tailwind CSS v4. Register the utility styles your app uses, then compile them into reusable classes with Tailmantic's Vite plugin or compiler.
+
+Tailmantic is a styling toolkit, not a ready-made component library: you define the styles and components that fit your product. It compiles only registered Tailwind utilities, and also offers a CSS-only runtime for plain declarations.
 
 > **ESM only.** This package requires Node.js 18+ and a bundler that supports ES Modules (Vite, webpack 5, Rollup, esbuild). CommonJS `require()` is not supported.
 
@@ -17,7 +19,9 @@ See [CHANGELOG](./docs/CHANGELOG.md) for version history.
 
 ## Features
 
+- Build semantic classes and component styles owned by your app
 - Compile Tailwind utilities onto semantic selectors such as `.action-button` and `.action-button-primary`
+- Compile only explicitly registered utilities instead of scanning JSX or HTML
 - Register component slots with `register.group()`
 - Use utility arrays and grouped prefixes such as `max-sm:(w-full flex-col)`
 - Compose conditional class names with `cx()` or generate variant registrations with `tailmantic/variants`
