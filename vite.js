@@ -155,6 +155,13 @@ export function tailmantic(options = {}) {
 		async closeBundle() {
 			await closeSsrServer();
 		},
+		async buildEnd(error) {
+			// closeBundle does not fire on failed builds, so we close the SSR
+			// server here too to avoid leaving it open when the build errors out.
+			if (error) {
+				await closeSsrServer();
+			}
+		},
 		async configureServer(server) {
 			await compileStyles();
 			server.watcher.add(watchPath);
