@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('accordion-demo', {
   base: { tw: 'w-full max-w-[620px] overflow-hidden rounded-lg border border-[var(--border)] bg-[#111720]' },

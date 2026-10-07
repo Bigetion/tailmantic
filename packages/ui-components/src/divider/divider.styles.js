@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-divider', {
   base: { tw: 'm-0 shrink-0 border-0 border-[var(--border,#273142)] text-[var(--muted,#9aa8bd)]' },

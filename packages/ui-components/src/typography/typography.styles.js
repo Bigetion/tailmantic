@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-typography', {
   base: { tw: 'm-0 text-[var(--rgi-typography-color,var(--text,#edf2fb))]' },

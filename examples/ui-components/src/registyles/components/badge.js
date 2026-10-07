@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('badge-anchor', {
   base: { tw: 'relative inline-flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#141c28] text-[#aebbd0]' },

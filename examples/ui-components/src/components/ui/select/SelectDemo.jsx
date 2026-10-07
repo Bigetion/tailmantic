@@ -1,6 +1,6 @@
 import { useCallback, useId, useRef, useState } from 'react';
 import { Check, ChevronDown, X } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from '../../Popper.jsx';
 
 const OPTIONS = [

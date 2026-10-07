@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Layers, Plus } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const LEVELS = [0, 1, 2, 3, 4, 6, 8, 12, 16, 24];
 

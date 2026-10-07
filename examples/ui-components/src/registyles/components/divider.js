@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('divider-demo', {
   base: { tw: 'flex w-full max-w-[520px] flex-col gap-3 text-xs text-[var(--muted)]' },

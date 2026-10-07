@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-select-field', {
   base: { tw: 'flex min-w-0 flex-col gap-1.5' },

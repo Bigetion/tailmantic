@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('modal-demo', {
   base: { tw: 'flex w-full max-w-[680px] flex-col gap-2.5' },

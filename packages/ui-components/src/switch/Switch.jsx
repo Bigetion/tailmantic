@@ -1,5 +1,5 @@
 import { forwardRef, useId, useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './switch.styles.js';
 
 const Switch = forwardRef(function Switch(

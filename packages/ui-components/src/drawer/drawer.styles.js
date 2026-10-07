@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-drawer-root', { base: { tw: 'contents' } });
 register('rgi-drawer-backdrop', {

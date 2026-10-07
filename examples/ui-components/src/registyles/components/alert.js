@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('alert-stack', {
   base: { tw: 'flex w-full max-w-[620px] flex-col gap-2' },

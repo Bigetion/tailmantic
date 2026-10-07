@@ -1,5 +1,5 @@
 {
-  "name": "@registyle/ui-components",
+  "name": "@tailmantic/ui-components",
   "version": "0.1.0",
   "description": "Standalone React components styled with Tailmantic.",
   "homepage": "https://github.com/Bigetion/tailmantic/tree/main/packages/ui-components#readme",
@@ -235,7 +235,7 @@
     "@popperjs/core": "^2.11.8",
     "react": ">=18",
     "react-dom": ">=18",
-    "registyle": "file:../.."
+    "tailmantic": "^1.0.0"
   },
   "sideEffects": [
     "./dist/*.js",
@@ -252,7 +252,6 @@
     "postcss-selector-parser": "^7.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "registyle": "file:../..",
     "tailmantic": "file:../..",
     "typescript": "^5.9.3",
     "vite": "^6.4.3"

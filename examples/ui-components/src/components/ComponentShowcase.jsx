@@ -8,7 +8,7 @@ const styleSources = import.meta.glob('../registyles/components/*.js', {
 });
 
 const COMPONENT_STYLE_NOTES = {
-  checkbox: 'Base component styles are provided by @registyle/ui-components/checkbox.',
+  checkbox: 'Base component styles are provided by @tailmantic/ui-components/checkbox.',
 };
 
 const BUTTON_DEMOS = {
@@ -732,7 +732,7 @@ export default function ComponentShowcase({ component }) {
   const styleSource = styleSources[stylePath] ?? COMPONENT_STYLE_NOTES[component.slug];
 
   if (typeof styleSource !== 'string') {
-    throw new Error(`Missing Registyle source for "${component.slug}" at ${stylePath}`);
+    throw new Error(`Missing Tailmantic style source for "${component.slug}" at ${stylePath}`);
   }
 
   return (

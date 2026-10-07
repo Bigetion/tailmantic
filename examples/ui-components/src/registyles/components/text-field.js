@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('input-helper', {
   base: { tw: 'text-[11px] text-[#ef9a9a]' },

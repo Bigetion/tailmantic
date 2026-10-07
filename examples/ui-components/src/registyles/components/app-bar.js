@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('appbar-demo', {
   base: { tw: 'flex w-full max-w-[720px] flex-col gap-2' },

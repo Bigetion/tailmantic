@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './link.styles.js';
 
 const Link = forwardRef(function Link(

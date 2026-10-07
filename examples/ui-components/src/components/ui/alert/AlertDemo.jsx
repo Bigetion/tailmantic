@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Activity, Check, Info, RotateCcw, X } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const ALERTS = [
   ['info', Info, 'New update available', 'A refreshed workspace is ready to explore.'],

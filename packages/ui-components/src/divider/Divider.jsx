@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './divider.styles.js';
 
 const Divider = forwardRef(function Divider(

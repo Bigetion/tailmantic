@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('paper-demo', {
   base: { tw: 'flex w-full max-w-[650px] flex-col gap-3' },

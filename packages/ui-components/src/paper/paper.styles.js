@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-paper', {
   base: { tw: 'bg-[var(--panel,#111824)] text-[var(--text,#edf2fb)]' },

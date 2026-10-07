@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-rating', {
   base: { tw: 'inline-flex items-center gap-0.5 text-[var(--rating-color,#e3a927)]' },

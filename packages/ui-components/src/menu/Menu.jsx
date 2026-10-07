@@ -1,5 +1,5 @@
 import { Children, cloneElement, forwardRef, isValidElement, useEffect, useRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import ClickAwayListener from '../click-away-listener/ClickAwayListener.jsx';
 import Popper from '../popper/Popper.jsx';
 import './menu.styles.js';

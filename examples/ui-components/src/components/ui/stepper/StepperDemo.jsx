@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Check, CreditCard, MapPin, PackageCheck, UserRound } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const STEPS = [
   { label: 'Account', Icon: UserRound, detail: 'Create your workspace profile.' },

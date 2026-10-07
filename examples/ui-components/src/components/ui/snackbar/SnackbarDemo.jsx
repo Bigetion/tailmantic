@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Check, RotateCcw, X } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 function SnackbarMessage({ message, action, onAction, onDismiss }) {
   return (

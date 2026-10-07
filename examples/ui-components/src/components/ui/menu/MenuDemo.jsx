@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Check, ChevronDown, Copy, Download, MoreHorizontal, Pencil, Settings, Share2, Trash2 } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from '../../Popper.jsx';
 
 const FALLBACK_PLACEMENTS = ['top-start', 'bottom-end', 'top-end'];

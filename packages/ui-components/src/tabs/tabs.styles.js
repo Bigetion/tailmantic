@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-tabs', {
   base: { tw: 'flex min-w-0 flex-col text-[var(--text,#20242b)]' },

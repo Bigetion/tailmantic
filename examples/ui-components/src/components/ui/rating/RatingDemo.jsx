@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Star } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const MAX_RATING = 5;
 

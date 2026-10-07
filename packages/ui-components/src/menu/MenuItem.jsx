@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './menu.styles.js';
 
 const MenuItem = forwardRef(function MenuItem(

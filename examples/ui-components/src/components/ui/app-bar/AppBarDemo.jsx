@@ -9,7 +9,7 @@ import {
   Settings,
   X,
 } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 function Brand({ subtitle = 'Design workspace' }) {
   return (

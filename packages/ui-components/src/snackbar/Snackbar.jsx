@@ -1,5 +1,5 @@
 import { forwardRef, useEffect } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './snackbar.styles.js';
 
 const Snackbar = forwardRef(function Snackbar(

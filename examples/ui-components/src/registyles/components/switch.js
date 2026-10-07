@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-switch-success', {
   base: { tw: 'checked:!bg-[#2d9b72]' },

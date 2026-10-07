@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AlertTriangle, Check, FileText, X } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 function DialogShell({ open, onClose, title, description, children, fullscreen = false, tone }) {
   const dialogRef = useRef(null);

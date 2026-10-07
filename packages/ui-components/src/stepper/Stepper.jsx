@@ -1,5 +1,5 @@
 import { Children, cloneElement, forwardRef, isValidElement } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './stepper.styles.js';
 
 const Step = forwardRef(function Step(

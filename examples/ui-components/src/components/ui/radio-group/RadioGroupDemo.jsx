@@ -1,4 +1,4 @@
-import { RadioGroup } from '@registyle/ui-components';
+import { RadioGroup } from '@tailmantic/ui-components';
 import { useState } from 'react';
 
 const PLANS = [

@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './portal.styles.js';
 
 function Portal({ children, container, className }) {

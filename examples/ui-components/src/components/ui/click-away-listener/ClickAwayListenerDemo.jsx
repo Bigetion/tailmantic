@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import { Check, MousePointer2, MousePointerClick, Touchpad, X } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from '../../Popper.jsx';
 
 function ClickAwayExample({ demoId }) {

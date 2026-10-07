@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('card-demo', {
   base: { tw: 'w-full max-w-[360px]' },

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowDown, ArrowUp, ArrowUpDown, Check, ChevronDown, Download } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const INITIAL_ROWS = [
   { id: 'PRJ-2048', name: 'Mobile app redesign', owner: 'Olivia Martin', initials: 'OM', tone: 'table-avatar-blue', status: 'In progress', updated: '2026-10-02', progress: 72 },

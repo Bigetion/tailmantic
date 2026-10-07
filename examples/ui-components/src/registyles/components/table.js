@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('table-wrap', {
   base: { tw: 'w-full overflow-x-auto rounded-lg border border-[var(--border)]' },

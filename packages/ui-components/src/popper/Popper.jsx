@@ -1,6 +1,6 @@
 import { createPopper } from '@popperjs/core';
 import { forwardRef, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import Portal from '../portal/Portal.jsx';
 import './popper.styles.js';
 

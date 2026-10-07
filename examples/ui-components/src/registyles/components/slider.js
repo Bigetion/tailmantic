@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('slider-block', {
   base: { tw: 'w-[min(280px,100%)]' },

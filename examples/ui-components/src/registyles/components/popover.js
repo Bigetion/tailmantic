@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('floating-card', {
   base: { tw: 'w-[min(310px,80vw)] p-4' },

@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-badge-root', {
   base: { tw: 'relative inline-flex align-middle' },

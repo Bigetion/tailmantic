@@ -1,9 +1,9 @@
-import type { PopperProps } from '@registyle/ui-components';
-import { Button, Checkbox, Chip, IconGlyph } from '@registyle/ui-components';
-import ButtonOnly from '@registyle/ui-components/button';
-import CheckboxOnly from '@registyle/ui-components/checkbox';
-import ChipOnly from '@registyle/ui-components/chip';
-import IconGlyphOnly from '@registyle/ui-components/icon-glyph';
+import type { PopperProps } from '@tailmantic/ui-components';
+import { Button, Checkbox, Chip, IconGlyph } from '@tailmantic/ui-components';
+import ButtonOnly from '@tailmantic/ui-components/button';
+import CheckboxOnly from '@tailmantic/ui-components/checkbox';
+import ChipOnly from '@tailmantic/ui-components/chip';
+import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 
 export const rootExports = (
   <>

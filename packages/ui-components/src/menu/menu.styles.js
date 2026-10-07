@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-menu-positioner', { base: { tw: 'z-50' } });
 register('rgi-menu', {

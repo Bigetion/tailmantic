@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Check, Image, RotateCcw, UserRound } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 function SkeletonShape({ className = '' }) {
   return <span className={cx('skeleton-block', className)} aria-hidden="true" />;

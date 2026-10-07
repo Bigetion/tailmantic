@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('tooltip-surface', {
   base: { tw: 'z-50 max-w-[240px] rounded-md border border-[#ffffff12] bg-[#252c38] px-2.5 py-1.5 text-[10px] leading-relaxed text-[#eef2fb] shadow-[0_8px_24px_#0009]' },

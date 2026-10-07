@@ -1,5 +1,5 @@
 import { forwardRef, useId } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './select.styles.js';
 
 const Select = forwardRef(function Select(

@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-stepper', {
   base: { tw: 'm-0 flex list-none gap-0 p-0 text-[var(--text,#20242b)]' },

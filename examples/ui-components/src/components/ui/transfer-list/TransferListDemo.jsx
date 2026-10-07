@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Check, ChevronsLeft, ChevronsRight } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const OPTIONS = [
   { id: 'wifi', label: 'Wi-Fi', detail: 'Network access' },

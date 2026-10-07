@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './toggle-button.styles.js';
 
 const ToggleButton = forwardRef(function ToggleButton(

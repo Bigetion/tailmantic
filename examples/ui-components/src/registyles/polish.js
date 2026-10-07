@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register.all({
   'brand-mark span': { tw: 'font-[Manrope,sans-serif] text-[17px] font-extrabold tracking-[-.1em]' },

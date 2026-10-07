@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronRight, Dot, MoreHorizontal, Slash } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const PATH = ['Workspace', 'Projects', 'Website refresh', 'Design system'];
 

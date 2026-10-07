@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('demo-list', {
   base: { tw: 'w-full max-w-[500px] overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--panel)]' },

@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useRef, useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './checkbox.styles.js';
 
 const Checkbox = forwardRef(function Checkbox(

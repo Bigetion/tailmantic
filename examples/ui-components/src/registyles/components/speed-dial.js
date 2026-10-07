@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('speed-dial-showcase', {
   base: { tw: 'flex w-full max-w-[700px] flex-col gap-3' },

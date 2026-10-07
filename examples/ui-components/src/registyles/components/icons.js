@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('icon-gallery', {
   base: { tw: 'grid w-full grid-cols-[repeat(auto-fit,minmax(74px,1fr))] gap-2' },

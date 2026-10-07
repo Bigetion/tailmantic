@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './app-bar.styles.js';
 
 const AppBar = forwardRef(function AppBar(

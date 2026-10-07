@@ -1,6 +1,6 @@
 import { useId, useRef, useState } from 'react';
 import { Check, CircleHelp, Keyboard, Sparkles } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { PopperSurface } from '../../Popper.jsx';
 
 const PLACEMENTS = ['top', 'right', 'bottom', 'left'];

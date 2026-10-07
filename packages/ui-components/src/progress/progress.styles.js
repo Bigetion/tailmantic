@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-progress', { base: { tw: 'text-[var(--rgi-blue,#8eacff)]' } });
 register('rgi-progress-linear', { base: { tw: 'block w-full' } });

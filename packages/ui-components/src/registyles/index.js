@@ -1,4 +1,4 @@
-import { getManifest } from 'registyle/collector';
+import { getManifest } from 'tailmantic/collector';
 import '../accordion/accordion.styles.js';
 import '../alert/alert.styles.js';
 import '../app-bar/app-bar.styles.js';

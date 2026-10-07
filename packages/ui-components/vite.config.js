@@ -1,7 +1,7 @@
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
-import { tailmantic } from 'registyle/vite';
+import { tailmantic } from 'tailmantic/vite';
 import { defineConfig } from 'vite';
 
 const packageDir = fileURLToPath(new URL('.', import.meta.url));
@@ -70,8 +70,8 @@ export default defineConfig({
         'react',
         'react/jsx-runtime',
         'react-dom',
-        'registyle',
-        'registyle/collector',
+        'tailmantic',
+        'tailmantic/collector',
       ],
     },
   },

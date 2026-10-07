@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-list', {
   base: { tw: 'm-0 flex list-none flex-col p-2 text-[var(--text,#edf2fb)]' },

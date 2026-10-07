@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useId, useMemo, useRef, useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './autocomplete.styles.js';
 
 function getOption(option) {

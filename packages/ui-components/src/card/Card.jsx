@@ -1,5 +1,5 @@
 import { createElement, forwardRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './card.styles.js';
 
 const Card = forwardRef(function Card(

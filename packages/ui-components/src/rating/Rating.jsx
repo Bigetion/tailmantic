@@ -1,5 +1,5 @@
 import { forwardRef, useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './rating.styles.js';
 
 const Rating = forwardRef(function Rating(

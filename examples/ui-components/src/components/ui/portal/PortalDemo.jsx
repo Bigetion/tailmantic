@@ -1,7 +1,7 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowUpRight, Layers, MousePointer2, X } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 function BodyPortalDemo() {
   const [open, setOpen] = useState(false);

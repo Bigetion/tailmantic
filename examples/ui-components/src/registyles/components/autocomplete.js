@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register.group('autocomplete', {
   root: { tw: 'relative flex w-[min(380px,100%)] flex-col gap-2.5' },

@@ -1,15 +1,15 @@
 import { useId, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const SECTIONS = [
   {
-    title: 'What is Registyle?',
-    content: 'Registyle is a utility-first styling system for registering reusable, semantic component styles in your application.',
+    title: 'What is Tailmantic?',
+    content: 'Tailmantic compiles registered Tailwind CSS utilities into reusable, semantic component styles for your application.',
   },
   {
     title: 'How does style collection work?',
-    content: 'Register a component name once, then use that name in your markup. Registyle collects the matching utility styles into your generated stylesheet.',
+    content: 'Register a component name once, then use that name in your markup. Tailmantic collects the matching utility styles into your generated stylesheet.',
   },
   {
     title: 'Can I customize the theme?',

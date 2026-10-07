@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Bell, Mail, MessageCircle, ShoppingCart } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 function Badge({ children, content, label, variant = 'badge-count', hidden = false, overlap = 'circular' }) {
   return (

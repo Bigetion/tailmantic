@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-speed-dial', {
   base: { tw: 'relative inline-flex flex-col items-center gap-2' },

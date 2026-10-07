@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('avatar-stack', {
   base: { tw: 'flex -space-x-2 [&_.rgi-avatar]:border-2 [&_.rgi-avatar]:border-[var(--panel)]' },

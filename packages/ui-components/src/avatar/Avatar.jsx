@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './avatar.styles.js';
 
 const Avatar = forwardRef(function Avatar(

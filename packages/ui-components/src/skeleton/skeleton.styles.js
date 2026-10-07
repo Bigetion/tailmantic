@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-skeleton', {
   base: { tw: 'block max-w-full bg-[var(--rgi-skeleton,#303b4c)]' },

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { FilePlus2, Image, Mail, Plus, Share2, X } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const ACTIONS = [
   { label: 'Upload image', Icon: Image },

@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('dialog-demo', {
   base: { tw: 'flex min-h-[100px] w-full flex-wrap items-center justify-center gap-3' },

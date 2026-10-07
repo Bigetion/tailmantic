@@ -1,6 +1,6 @@
 import { useId, useState } from 'react';
 import { Minus, Plus } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 function clamp(value, min, max) {
   return Math.min(max ?? Infinity, Math.max(min ?? -Infinity, value));

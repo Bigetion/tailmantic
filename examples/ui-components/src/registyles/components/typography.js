@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('typography-demo', {
   base: { tw: 'flex flex-col gap-3' },

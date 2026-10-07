@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const ROWS = Array.from({ length: 36 }, (_, index) => ({
   id: `PRJ-${String(1240 + index)}`,

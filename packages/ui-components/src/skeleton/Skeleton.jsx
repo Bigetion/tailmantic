@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './skeleton.styles.js';
 
 const Skeleton = forwardRef(function Skeleton(

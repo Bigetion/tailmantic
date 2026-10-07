@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './paper.styles.js';
 
 const Paper = forwardRef(function Paper(

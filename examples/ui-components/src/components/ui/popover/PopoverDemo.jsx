@@ -1,6 +1,6 @@
 import { useCallback, useId, useRef, useState } from 'react';
 import { ArrowUpRight, Check, ChevronDown, FolderKanban, Layers, X } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from '../../Popper.jsx';
 
 const PLACEMENTS = ['top', 'right', 'bottom', 'left'];

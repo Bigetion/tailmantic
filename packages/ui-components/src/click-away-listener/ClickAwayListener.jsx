@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './click-away-listener.styles.js';
 
 const ClickAwayListener = forwardRef(function ClickAwayListener(

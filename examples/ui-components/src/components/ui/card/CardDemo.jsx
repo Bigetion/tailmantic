@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ArrowUpRight, Bookmark, Check, Heart, Image, MoreHorizontal, Users } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 function ProjectCard() {
   return (

@@ -1,5 +1,5 @@
 import { useId, useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './transfer-list.styles.js';
 
 function TransferList({

@@ -1,6 +1,6 @@
-import { Switch } from '@registyle/ui-components';
+import { Switch } from '@tailmantic/ui-components';
 import { useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 function SwitchControl({ id, label, checked, onChange, variant, disabled = false }) {
   return (

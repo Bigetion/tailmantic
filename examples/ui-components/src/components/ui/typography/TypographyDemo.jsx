@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AlignCenter, AlignLeft, AlignRight, Check } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const WEIGHTS = [
   ['Regular', 400],

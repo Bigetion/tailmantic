@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import Portal from '../portal/Portal.jsx';
 import './modal.styles.js';
 

@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-alert', {
   base: { tw: 'flex w-full items-start gap-3 rounded-lg border px-4 py-3 text-sm' },

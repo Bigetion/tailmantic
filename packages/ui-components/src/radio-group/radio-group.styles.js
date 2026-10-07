@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-radio-group', {
   base: { tw: 'm-0 flex min-w-0 flex-col gap-2 border-0 p-0 text-[var(--text,#edf2fb)]' },

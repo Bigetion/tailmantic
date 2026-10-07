@@ -1,6 +1,6 @@
 import { useCallback, useId, useRef, useState } from 'react';
 import { AlignCenter, AlignLeft, AlignRight, ChevronDown, Code2, Eye, History, Save } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { useClickAway } from '../../Popper.jsx';
 
 const VIEWS = [

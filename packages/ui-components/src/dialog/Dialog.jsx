@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useId, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './dialog.styles.js';
 
 const FOCUSABLE =

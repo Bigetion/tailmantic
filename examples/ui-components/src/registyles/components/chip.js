@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('chip-examples', {
   base: { tw: 'flex flex-wrap items-center gap-2.5' },

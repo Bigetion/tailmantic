@@ -10,7 +10,7 @@ import {
   X,
 } from 'lucide-react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import { componentGroups, componentCatalog } from '../data/components.js';
 
 function MobileNavigationDrawer({ groups, onClose }) {

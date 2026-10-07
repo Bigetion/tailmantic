@@ -1,5 +1,5 @@
 import { User } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 function Avatar({ label, initials, variant, size = 'medium', children }) {
   return (

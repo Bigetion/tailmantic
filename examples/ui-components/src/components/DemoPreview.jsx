@@ -23,8 +23,8 @@ import {
   User,
   X,
 } from 'lucide-react';
-import { cx } from 'registyle';
-import { Button } from '@registyle/ui-components';
+import { cx } from 'tailmantic';
+import { Button } from '@tailmantic/ui-components';
 import { PopperSurface, useClickAway } from './Popper.jsx';
 import AutocompleteDemo from './ui/autocomplete/AutocompleteDemo.jsx';
 import AvatarDemo from './ui/avatar/AvatarDemo.jsx';

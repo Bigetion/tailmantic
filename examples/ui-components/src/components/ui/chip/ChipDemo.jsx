@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Check, Clock3, Code2, X } from 'lucide-react';
-import { Chip } from '@registyle/ui-components';
+import { Chip } from '@tailmantic/ui-components';
 
 function ChipVariants() {
   return (

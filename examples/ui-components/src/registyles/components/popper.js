@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('floating-demo', {
   base: { tw: 'relative flex min-h-16 min-w-0 flex-wrap items-center gap-4' },

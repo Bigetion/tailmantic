@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-table', {
   base: { tw: 'w-full border-collapse text-left text-sm text-[var(--text,#edf2fb)]' },

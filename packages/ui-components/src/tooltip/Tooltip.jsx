@@ -1,5 +1,5 @@
 import { cloneElement, Fragment, forwardRef, isValidElement, useId } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './tooltip.styles.js';
 
 const Tooltip = forwardRef(function Tooltip(

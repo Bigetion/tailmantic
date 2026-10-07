@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useId, useRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import Popper from '../popper/Popper.jsx';
 import './popover.styles.js';
 

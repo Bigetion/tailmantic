@@ -1,5 +1,5 @@
 import { forwardRef, useId, useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './number-field.styles.js';
 
 function decimalPlaces(value) {

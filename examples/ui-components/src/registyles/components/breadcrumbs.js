@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('breadcrumbs-demo', {
   base: { tw: 'flex w-full max-w-[620px] flex-col gap-4 rounded-lg border border-[var(--border)] bg-[#111720] p-4' },

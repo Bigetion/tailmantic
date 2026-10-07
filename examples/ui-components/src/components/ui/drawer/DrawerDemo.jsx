@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Bell, BriefcaseBusiness, ChevronDown, FileText, FolderKanban, Home, Layers, Settings, Users, X } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const BASIC_ITEMS = [
   { label: 'Overview', Icon: Home },

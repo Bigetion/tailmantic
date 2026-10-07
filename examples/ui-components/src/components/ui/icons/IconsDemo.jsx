@@ -32,7 +32,7 @@ import {
   User,
   X,
 } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const ICONS = [
   [Home, 'Home', 'Navigation'],

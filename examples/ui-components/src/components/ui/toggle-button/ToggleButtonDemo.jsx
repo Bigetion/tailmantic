@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AlignCenter, AlignLeft, AlignRight, Grid2X2, List, Map, Table2 } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const VIEW_OPTIONS = [
   { id: 'list', label: 'List', Icon: List },

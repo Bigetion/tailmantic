@@ -1,7 +1,7 @@
-import { TextField } from '@registyle/ui-components';
+import { TextField } from '@tailmantic/ui-components';
 import { Search, X } from 'lucide-react';
 import { useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 function BasicTextField() {
   const [name, setName] = useState('');

@@ -1,5 +1,5 @@
 import { forwardRef, useId } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './text-field.styles.js';
 
 const TextField = forwardRef(function TextField(

@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register.group('rgi-autocomplete', {
   root: { tw: 'relative block w-full text-[var(--text,#edf2fb)]' },

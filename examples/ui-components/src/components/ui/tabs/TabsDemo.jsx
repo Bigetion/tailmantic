@@ -1,6 +1,6 @@
 import { useId, useRef, useState } from 'react';
 import { Activity, Bell, FileText, LayoutDashboard, Settings, Users } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const WORKSPACE_TABS = [
   { label: 'Overview', Icon: LayoutDashboard, title: 'Workspace overview', description: 'A quick look at the work happening across your team.', metric: '12 active projects', value: '+18%', tone: 'blue' },

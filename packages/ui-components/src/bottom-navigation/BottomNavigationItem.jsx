@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './bottom-navigation.styles.js';
 
 const BottomNavigationItem = forwardRef(function BottomNavigationItem(

@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('bottom-navigation-demo', {
   base: { tw: 'flex w-full max-w-[470px] flex-col gap-3' },

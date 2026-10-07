@@ -50,7 +50,7 @@ test('packed package installs with working exports, styles, and consumer types',
   );
 
   const appNodeModules = join(appDir, 'node_modules');
-  const installedPackage = join(appNodeModules, '@registyle', 'ui-components');
+  const installedPackage = join(appNodeModules, '@tailmantic', 'ui-components');
   for (const file of ['LICENSE', 'README.md', 'index.d.ts', 'dist/index.js']) {
     assert.ok(
       existsSync(join(installedPackage, file)),
@@ -62,7 +62,7 @@ test('packed package installs with working exports, styles, and consumer types',
     ['react', join(packageDir, 'node_modules', 'react')],
     ['react-dom', join(packageDir, 'node_modules', 'react-dom')],
     ['@popperjs/core', join(packageDir, 'node_modules', '@popperjs', 'core')],
-    ['registyle', join(packageDir, 'node_modules', 'registyle')],
+    ['tailmantic', join(packageDir, 'node_modules', 'tailmantic')],
     ['@types', join(packageDir, 'node_modules', '@types')],
   ];
 
@@ -87,9 +87,9 @@ test('packed package installs with working exports, styles, and consumer types',
   writeFileSync(
     typeFixture,
     `
-import { BottomNavigation, Button, Pagination, Tooltip } from '@registyle/ui-components';
-import type { BottomNavigationProps, PaginationProps, TooltipProps } from '@registyle/ui-components';
-import ButtonOnly from '@registyle/ui-components/button';
+import { BottomNavigation, Button, Pagination, Tooltip } from '@tailmantic/ui-components';
+import type { BottomNavigationProps, PaginationProps, TooltipProps } from '@tailmantic/ui-components';
+import ButtonOnly from '@tailmantic/ui-components/button';
 ${subpathTypeImports}
 
 const bottomNavigation: BottomNavigationProps = { onChange: (_event, value) => value };

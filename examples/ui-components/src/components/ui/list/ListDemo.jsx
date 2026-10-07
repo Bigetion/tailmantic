@@ -12,7 +12,7 @@ import {
   ShieldCheck,
   UserRound,
 } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const NAVIGATION_ITEMS = [
   [Folder, 'Projects', '12 active projects'],

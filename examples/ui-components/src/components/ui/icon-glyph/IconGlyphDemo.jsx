@@ -17,7 +17,7 @@ import {
   Star,
   TriangleAlert,
 } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const ICON_GLYPHS = [
   [Home, 'Home', 'Home'],

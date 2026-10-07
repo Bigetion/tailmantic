@@ -1,7 +1,7 @@
 import { useCallback, useId, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Check, FolderKanban, ShieldCheck, X } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 function ModalSurface({ open, onClose, title, description, children, closeOnBackdrop = true, closeOnEscape = true }) {
   const modalRef = useRef(null);

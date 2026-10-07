@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Bell, Bookmark, Compass, Home, Search, UserRound } from 'lucide-react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const DESTINATIONS = [
   { label: 'Home', Icon: Home },

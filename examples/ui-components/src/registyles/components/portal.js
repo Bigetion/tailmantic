@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('portal-demo', {
   base: { tw: 'flex min-h-[175px] w-full max-w-[650px] flex-col justify-center gap-3' },

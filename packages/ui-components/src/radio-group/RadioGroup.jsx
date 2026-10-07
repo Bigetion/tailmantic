@@ -1,5 +1,5 @@
 import { forwardRef, useId, useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 import './radio-group.styles.js';
 
 const RadioGroup = forwardRef(function RadioGroup(

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { cx } from 'registyle';
+import { cx } from 'tailmantic';
 
 const MARKS = [0, 25, 50, 75, 100];
 

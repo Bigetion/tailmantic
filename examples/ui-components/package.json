@@ -1,5 +1,5 @@
 {
-  "name": "registyle-ui-components",
+  "name": "tailmantic-ui-components",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,12 +10,11 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "@registyle/ui-components": "file:../../packages/ui-components",
+    "@tailmantic/ui-components": "file:../../packages/ui-components",
     "lucide-react": "^0.468.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.18.4",
-    "registyle": "file:../..",
     "tailmantic": "file:../.."
   },
   "devDependencies": {

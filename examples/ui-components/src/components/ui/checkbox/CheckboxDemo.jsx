@@ -1,5 +1,5 @@
 import { useId, useState } from 'react';
-import { Checkbox } from '@registyle/ui-components';
+import { Checkbox } from '@tailmantic/ui-components';
 
 const PREFERENCES = [
   { id: 'product', label: 'Product updates', description: 'News about features and releases.' },

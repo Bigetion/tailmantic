@@ -1,4 +1,4 @@
-import { register } from 'registyle/collector';
+import { register } from 'tailmantic/collector';
 
 register('rgi-pagination', { base: { tw: 'flex justify-center text-[var(--text,#20242b)]' } });
 register('rgi-pagination-list', { base: { tw: 'm-0 flex list-none items-center gap-1 p-0' } });
