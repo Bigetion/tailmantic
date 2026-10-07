@@ -111,7 +111,7 @@ If you change a public API, update the corresponding `.d.ts` file and add a usag
 
 ## Submitting a Pull Request
 
-1. Fork the repository and create a branch from `master`:
+1. Fork the repository and create a branch from `main`:
    ```sh
    git checkout -b fix/your-fix-name
    # or
@@ -131,7 +131,7 @@ If you change a public API, update the corresponding `.d.ts` file and add a usag
    chore: bump devDependency versions
    ```
 
-4. Push your branch and open a pull request against `master`.
+4. Push your branch and open a pull request against `main`.
 
 5. Describe what changed and why in the PR description. Link any related issues.
 

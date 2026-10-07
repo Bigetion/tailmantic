@@ -25,6 +25,6 @@ npm run dev
 
 ## Learn more
 
-- [Full documentation](https://github.com/Bigetion/tailmantic/tree/master/docs)
-- [API reference](https://github.com/Bigetion/tailmantic/blob/master/docs/API.md)
-- [Component demo](https://github.com/Bigetion/tailmantic/tree/master/examples/register-component-demo)
+- [Full documentation](https://github.com/Bigetion/tailmantic/tree/main/docs)
+- [API reference](https://github.com/Bigetion/tailmantic/blob/main/docs/API.md)
+- [Component demo](https://github.com/Bigetion/tailmantic/tree/main/examples/register-component-demo)

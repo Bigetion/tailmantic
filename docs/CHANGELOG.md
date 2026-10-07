@@ -1,5 +1,11 @@
 # Tailmantic Changelog
 
+## [1.0.1] - 2026-10-07
+
+### Fixed
+
+- Updated StackBlitz and repository documentation links to use the `main` branch.
+
 ## [1.0.0] - 2026-10-07
 
 ### Changed

@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/tailmantic.svg)](https://www.npmjs.com/package/tailmantic)
 [![npm downloads](https://img.shields.io/npm/dm/tailmantic.svg)](https://www.npmjs.com/package/tailmantic)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/Bigetion/tailmantic/tree/master/examples/stackblitz-starter)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/github/Bigetion/tailmantic/tree/main/examples/stackblitz-starter)
 
 A semantic styling library that compiles Tailwind CSS v4 utilities into named component classes, with a separate CSS-only runtime for plain declarations.
 
@@ -13,7 +13,7 @@ See [CHANGELOG](./docs/CHANGELOG.md) for version history.
 
 ## Try It Online
 
-**[▶ Open in StackBlitz](https://stackblitz.com/github/Bigetion/tailmantic/tree/master/examples/stackblitz-starter)** — no install needed, runs in your browser.
+**[▶ Open in StackBlitz](https://stackblitz.com/github/Bigetion/tailmantic/tree/main/examples/stackblitz-starter)** — no install needed, runs in your browser.
 
 ## Features
 
