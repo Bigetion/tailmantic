@@ -17,7 +17,7 @@ export default function App() {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
             <h1 style={{ fontSize: '24px', fontWeight: 700, margin: 0 }}>tailmantic</h1>
-            <Badge variant="primary">v2.1.0</Badge>
+            <Badge variant="primary">v1.0.0</Badge>
           </div>
           <p style={{ color: '#6b7280', margin: 0, fontSize: '15px' }}>
             Write Tailwind utilities once. Use semantic class names everywhere.
