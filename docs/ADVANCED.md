@@ -492,8 +492,13 @@ Optimization is opt-in. Pass options to the compiler or Vite adapter when you wa
 ```js
 import { compile } from 'tailmantic/compile';
 
+// Full production optimization: merge selectors + deduplicate + minify
 const css = await compile(manifest, {
-  minify: true,
+  optimize: true,
+});
+
+// Merge duplicate selectors only, no minification (readable output, useful for debugging)
+const debugCss = await compile(manifest, {
   deduplicate: true,
 });
 ```
