@@ -42,3 +42,36 @@ import Tabs from '@tailmantic/ui-components/tabs';
 ```
 
 For example, `Checkbox` supports native input props, controlled or uncontrolled state, and an `indeterminate` state. Its `ref` points to the native input element.
+
+## Standalone component usage
+
+Each component ships its own style file and a corresponding token file so you can load only what you need.
+
+```js
+// Load tokens (design variables) and styles for a single component
+import '@tailmantic/ui-components/tokens/dark';  // or /tokens/light
+import '@tailmantic/ui-components/button/styles';
+
+// Or register every component's styles at once (existing approach)
+import '@tailmantic/ui-components/styles';
+```
+
+**Token files** (`/tokens/dark`, `/tokens/light`) set CSS custom properties — colors, spacing, border radii, shadows — on `:root`. They are the design-token layer that all component styles reference via `var(--...)` variables. Import exactly one token file per page.
+
+**Customizing tokens** — override any CSS variable in your own stylesheet after the token import:
+
+```css
+:root {
+  --color-primary: #7c3aed;
+  --radius-md: 0.5rem;
+}
+```
+
+**Mix and match** — you can import styles for only the components your page uses. Each `*/styles` file is self-contained and registers its tokens with Tailmantic's collector independently.
+
+**ButtonGroup dependency** — `ButtonGroup` renders `Button` children and its styles target `rgi-button` descendants. Always import `button/styles` alongside `button-group/styles`:
+
+```js
+import '@tailmantic/ui-components/button/styles';
+import '@tailmantic/ui-components/button-group/styles';
+```
