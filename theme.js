@@ -218,6 +218,7 @@ export function createTheme(customTokens = {}) {
 	// Helper for font size
 	const text = (size) => {
 		const value = get(`fontSize.${size}`);
+		if (!value) return undefined;
 		if (Array.isArray(value)) {
 			return { fontSize: value[0], ...value[1] };
 		}

@@ -4,6 +4,25 @@
  */
 
 /**
+ * Deep merge two plain objects. Arrays and non-object values are replaced.
+ * Mirrors the deepMerge helper in theme.js.
+ * @param {Record<string, unknown>} target
+ * @param {Record<string, unknown>} source
+ * @returns {Record<string, unknown>}
+ */
+function deepMerge(target, source) {
+	const result = { ...target };
+	for (const [key, value] of Object.entries(source)) {
+		if (value && typeof value === 'object' && !Array.isArray(value)) {
+			result[key] = deepMerge(result[key] && typeof result[key] === 'object' && !Array.isArray(result[key]) ? result[key] : {}, value);
+		} else {
+			result[key] = value;
+		}
+	}
+	return result;
+}
+
+/**
  * Create a variant-based component registration
  */
 export function createVariants(config) {
@@ -137,9 +156,9 @@ export function mergeVariants(...configs) {
 	};
 
 	for (const config of configs) {
-		// Merge base styles
+		// Merge base styles (deep merge to preserve nested style objects)
 		if (config.base) {
-			merged.base = { ...merged.base, ...config.base };
+			merged.base = deepMerge(merged.base, config.base);
 		}
 
 		// Merge variants
@@ -148,7 +167,7 @@ export function mergeVariants(...configs) {
 				if (!merged.variants[key]) {
 					merged.variants[key] = {};
 				}
-				merged.variants[key] = { ...merged.variants[key], ...options };
+				merged.variants[key] = deepMerge(merged.variants[key], options);
 			}
 		}
 

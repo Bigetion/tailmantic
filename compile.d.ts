@@ -2,7 +2,7 @@ import type { Registration } from './index.js';
 
 export interface TailmanticManifest {
 	classes?: Record<string, Registration | string>;
-	groups?: Record<string, Record<string, Registration | string>>;
+	groups?: Record<string, Record<string, Registration>>;
 }
 
 export interface CompileOptions {

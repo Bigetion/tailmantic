@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { createVariants } from '../variants.js';
+import { createVariants, mergeVariants } from '../variants.js';
 
 test('compose can emit the same component-prefixed classes as the manifest', () => {
 	const button = createVariants({
@@ -67,4 +67,33 @@ test('compound class aliases are included only when their conditions match', () 
 		'button-size-sm',
 		'button-variant-outline',
 	]);
+});
+
+test('mergeVariants deep-merges overlapping variant option keys without losing nested styles', () => {
+const configA = {
+variants: {
+size: {
+sm: { padding: '4px', hover: { background: 'red' } },
+lg: { padding: '8px' },
+},
+},
+};
+const configB = {
+variants: {
+size: {
+sm: { padding: '6px' },
+xl: { padding: '12px' },
+},
+},
+};
+const merged = mergeVariants(configA, configB);
+
+// configB's sm.padding overrides configA's sm.padding
+assert.equal(merged.variants.size.sm.padding, '6px');
+// configA's nested hover styles are preserved (deep merge, not replaced)
+assert.deepEqual(merged.variants.size.sm.hover, { background: 'red' });
+// lg from configA is preserved
+assert.deepEqual(merged.variants.size.lg, { padding: '8px' });
+// xl from configB is added
+assert.deepEqual(merged.variants.size.xl, { padding: '12px' });
 });
