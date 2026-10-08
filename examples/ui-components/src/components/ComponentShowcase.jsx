@@ -1,7 +1,7 @@
 import DemoPanel from './DemoPanel.jsx';
 import DemoPreview from './DemoPreview.jsx';
 
-const styleSources = import.meta.glob('../tailmantics/components/*.js', {
+const styleSources = import.meta.glob('../tailmantics/demo/*.js', {
   eager: true,
   query: '?raw',
   import: 'default',
@@ -728,7 +728,7 @@ function titleFromDemo(id) {
 }
 
 export default function ComponentShowcase({ component }) {
-  const stylePath = `../tailmantics/components/${component.slug}.js`;
+  const stylePath = `../tailmantics/demo/${component.slug}.js`;
   const styleSource = styleSources[stylePath] ?? COMPONENT_STYLE_NOTES[component.slug];
 
   if (typeof styleSource !== 'string') {

@@ -6,7 +6,7 @@ import DemoPanel from './DemoPanel.jsx';
 const IMPLEMENTATION_ROWS = [
   ['Page', 'src/pages/components/{slug}/Page.jsx', 'Dedicated React Router page.'],
   ['Component', 'src/components/ui/{slug}/{name}.jsx', 'Dedicated component page entry point.'],
-  ['Styles', 'src/tailmantics/components/{slug}.js', 'Component-specific styles and variants.'],
+  ['Styles', 'src/tailmantics/demo/{slug}.js', 'Component-specific styles and variants.'],
   ['Examples', '{count} live examples', 'Rendered in the examples section above.'],
 ];
 
