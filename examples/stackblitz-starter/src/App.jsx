@@ -1,13 +1,23 @@
 import { useState } from 'react';
-import { Minus, Plus, RotateCcw, GitBranch, ExternalLink } from 'lucide-react';
+import { Minus, Plus, RotateCcw, GitBranch, ExternalLink, Bell, Mail, ShoppingCart, User } from 'lucide-react';
 import { Button } from './components/Button';
 import { Badge } from './components/Badge';
 import { Card, CardHeader, CardBody, CardFooter } from './components/Card';
 import { Input } from './components/Input';
 
+// @tailmantic/ui-components — ready-made components
+import UiButton from '@tailmantic/ui-components/button';
+import UiCard from '@tailmantic/ui-components/card';
+import UiAlert from '@tailmantic/ui-components/alert';
+import UiBadge from '@tailmantic/ui-components/badge';
+import UiTabs from '@tailmantic/ui-components/tabs';
+import UiDialog from '@tailmantic/ui-components/dialog';
+import UiTextField from '@tailmantic/ui-components/text-field';
+
 export default function App() {
   const [count, setCount] = useState(0);
   const [email, setEmail] = useState('');
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
     <div style={{ fontFamily: 'inherit', minHeight: '100vh', background: '#f9fafb', padding: '32px 16px' }}>
@@ -171,6 +181,203 @@ export default function App() {
             </a>
           </CardFooter>
         </Card>
+
+        {/* ── @tailmantic/ui-components showcase ── */}
+        <div style={{ marginTop: '16px' }}>
+          <div style={{ marginBottom: '16px' }}>
+            <h2 style={{ fontSize: '20px', fontWeight: 700, margin: '0 0 6px' }}>
+              @tailmantic/ui-components
+            </h2>
+            <p style={{ color: '#6b7280', margin: 0, fontSize: '15px' }}>
+              Ready-made components — import and use, no registration needed.
+            </p>
+          </div>
+
+          {/* Dark-surface container */}
+          <div style={{
+            background: '#090c12',
+            borderRadius: '16px',
+            padding: '32px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '28px',
+          }}>
+
+            {/* Button */}
+            <div>
+              <p style={{ margin: '0 0 12px', fontSize: '13px', color: '#a3aec0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Button — variants &amp; colors
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '10px' }}>
+                <UiButton variant="contained" color="primary">Contained</UiButton>
+                <UiButton variant="outlined" color="primary">Outlined</UiButton>
+                <UiButton variant="text" color="primary">Text</UiButton>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                <UiButton variant="contained" color="secondary">Secondary</UiButton>
+                <UiButton variant="contained" color="error">Error</UiButton>
+                <UiButton variant="contained" size="small">Small</UiButton>
+                <UiButton variant="contained" size="large">Large</UiButton>
+              </div>
+            </div>
+
+            {/* Card */}
+            <div>
+              <p style={{ margin: '0 0 12px', fontSize: '13px', color: '#a3aec0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Card — variants
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+                <UiCard variant="elevated" elevation={2} style={{ padding: '16px', minWidth: '160px' }}>
+                  <strong style={{ color: '#edf2fb' }}>Elevated</strong>
+                  <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#a3aec0' }}>elevation=2</p>
+                </UiCard>
+                <UiCard variant="outlined" style={{ padding: '16px', minWidth: '160px' }}>
+                  <strong style={{ color: '#edf2fb' }}>Outlined</strong>
+                  <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#a3aec0' }}>variant=&quot;outlined&quot;</p>
+                </UiCard>
+                <UiCard variant="filled" interactive style={{ padding: '16px', minWidth: '160px', cursor: 'pointer' }}>
+                  <strong style={{ color: '#edf2fb' }}>Filled</strong>
+                  <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#a3aec0' }}>interactive</p>
+                </UiCard>
+              </div>
+            </div>
+
+            {/* Alert */}
+            <div>
+              <p style={{ margin: '0 0 12px', fontSize: '13px', color: '#a3aec0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Alert — severity
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <UiAlert severity="info" title="Info">This is an informational message.</UiAlert>
+                <UiAlert severity="success" title="Success">Operation completed successfully.</UiAlert>
+                <UiAlert severity="warning" title="Warning">Check your configuration.</UiAlert>
+                <UiAlert severity="error" title="Error" variant="filled">Something went wrong.</UiAlert>
+              </div>
+            </div>
+
+            {/* Tabs */}
+            <div>
+              <p style={{ margin: '0 0 12px', fontSize: '13px', color: '#a3aec0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Tabs
+              </p>
+              <UiTabs
+                ariaLabel="Demo tabs"
+                tabs={[
+                  {
+                    label: 'Overview',
+                    value: 'overview',
+                    content: (
+                      <p style={{ margin: '12px 0 0', fontSize: '14px', color: '#a3aec0' }}>
+                        Overview panel — write whatever content fits here.
+                      </p>
+                    ),
+                  },
+                  {
+                    label: 'Details',
+                    value: 'details',
+                    content: (
+                      <p style={{ margin: '12px 0 0', fontSize: '14px', color: '#a3aec0' }}>
+                        Detailed information and specifications.
+                      </p>
+                    ),
+                  },
+                  {
+                    label: 'Settings',
+                    value: 'settings',
+                    content: (
+                      <p style={{ margin: '12px 0 0', fontSize: '14px', color: '#a3aec0' }}>
+                        Configure your preferences here.
+                      </p>
+                    ),
+                  },
+                ]}
+              />
+            </div>
+
+            {/* Badge */}
+            <div>
+              <p style={{ margin: '0 0 12px', fontSize: '13px', color: '#a3aec0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Badge — overlaid on icon
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', alignItems: 'center' }}>
+                <UiBadge badgeContent={4} color="primary">
+                  <span style={{ display: 'inline-flex', padding: '8px', background: '#1f2937', borderRadius: '8px' }}>
+                    <Bell size={20} style={{ color: '#edf2fb' }} />
+                  </span>
+                </UiBadge>
+                <UiBadge badgeContent={99} color="error">
+                  <span style={{ display: 'inline-flex', padding: '8px', background: '#1f2937', borderRadius: '8px' }}>
+                    <Mail size={20} style={{ color: '#edf2fb' }} />
+                  </span>
+                </UiBadge>
+                <UiBadge badgeContent={200} max={99} color="secondary">
+                  <span style={{ display: 'inline-flex', padding: '8px', background: '#1f2937', borderRadius: '8px' }}>
+                    <ShoppingCart size={20} style={{ color: '#edf2fb' }} />
+                  </span>
+                </UiBadge>
+                <UiBadge variant="dot" color="success">
+                  <span style={{ display: 'inline-flex', padding: '8px', background: '#1f2937', borderRadius: '8px' }}>
+                    <User size={20} style={{ color: '#edf2fb' }} />
+                  </span>
+                </UiBadge>
+              </div>
+            </div>
+
+            {/* Dialog */}
+            <div>
+              <p style={{ margin: '0 0 12px', fontSize: '13px', color: '#a3aec0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Dialog
+              </p>
+              <UiButton variant="contained" color="primary" onClick={() => setDialogOpen(true)}>
+                Open Dialog
+              </UiButton>
+              <UiDialog
+                open={dialogOpen}
+                onClose={() => setDialogOpen(false)}
+                title="Example Dialog"
+                description="This dialog is rendered via createPortal and traps focus correctly."
+                actions={
+                  <>
+                    <UiButton variant="text" color="primary" onClick={() => setDialogOpen(false)}>
+                      Cancel
+                    </UiButton>
+                    <UiButton variant="contained" color="primary" onClick={() => setDialogOpen(false)}>
+                      Confirm
+                    </UiButton>
+                  </>
+                }
+              >
+                <p style={{ margin: 0, fontSize: '14px', color: '#a3aec0' }}>
+                  The Dialog accepts <code>title</code>, <code>description</code>,{' '}
+                  <code>children</code>, and <code>actions</code> props.
+                  Press <kbd>Escape</kbd> or click the backdrop to close.
+                </p>
+              </UiDialog>
+            </div>
+
+            {/* TextField */}
+            <div>
+              <p style={{ margin: '0 0 12px', fontSize: '13px', color: '#a3aec0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                TextField
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '360px' }}>
+                <UiTextField
+                  label="Email address"
+                  type="email"
+                  placeholder="you@example.com"
+                  helperText="We'll never share your email."
+                />
+                <UiTextField
+                  label="Username"
+                  defaultValue="john_doe"
+                  error
+                  errorText="Username is already taken."
+                />
+              </div>
+            </div>
+
+          </div>{/* end dark container */}
+        </div>{/* end ui-components section */}
 
       </div>
     </div>

@@ -1,30 +1,22 @@
-# tailmantic starter
+# tailmantic — StackBlitz Starter
 
-Minimal starter template for [tailmantic](https://github.com/Bigetion/tailmantic) — React + Vite.
+A minimal Vite + React starter that demonstrates two ways to build UI with tailmantic:
 
-## What's included
+**Section 1 — `register()` API**
+Build your own design system tokens. Define semantic class names (e.g. `btn btn-primary`) backed by Tailwind v4 utilities. Zero JS runtime, ~7 KB gzip for a full component set.
 
-- `src/tailmantics/button.js` — Button with variants and sizes
-- `src/tailmantics/badge.js` — Badge with color variants
-- `src/tailmantics/card.js` — Card group slots (header, body, footer)
-- `src/tailmantics/input.js` — Input field with error state
-- `src/tailmantics/index.js` — Manifest entry (add more files here)
+**Section 2 — `@tailmantic/ui-components` showcase**
+Drop-in React components (Button, Card, Alert, Badge, Tabs, Dialog, TextField) that are pre-built and styled with the same token system. Import and use with no registration step needed.
 
-## Run locally
+## Running locally
 
-```sh
+```bash
 npm install
 npm run dev
 ```
 
-## How to add a new component
+## Building
 
-1. Create `src/tailmantics/your-component.js`
-2. Import it in `src/tailmantics/index.js`
-3. Use the class names in your JSX: `<div className="your-component">`
-
-## Learn more
-
-- [Full documentation](https://github.com/Bigetion/tailmantic/tree/main/docs)
-- [API reference](https://github.com/Bigetion/tailmantic/blob/main/docs/API.md)
-- [Component demo](https://github.com/Bigetion/tailmantic/tree/main/examples/register-component-demo)
+```bash
+npm run build
+```
