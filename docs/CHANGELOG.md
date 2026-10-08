@@ -1,5 +1,35 @@
 # Tailmantic Changelog
 
+## [1.0.2] - 2026-10-07
+
+### Added
+
+- Persistent Vite SSR server — reused across hot-reload compiles instead of spawning a new server each time
+- `buildEnd` hook to close the SSR server on failed builds
+- CI matrix now includes Node 18 (was only 20 and 22)
+- `docs/API.md` — added `cx()` vs `tailwind-merge` behavior note
+- `docs/TROUBLESHOOTING.md` — added custom Tailwind `@theme` quick start section and concurrent SSR collector warning
+- `docs/ADVANCED.md` — added "Using a custom Tailwind theme" section
+- `docs/INTEGRATIONS.md` — added Next.js watch mode script example
+- `docs/MIGRATION.md` — added banner clarifying the document covers Registyle→Tailmantic migration history
+- `test/compile.test.js` — added `@layer` CSS wrapping test
+- `test/variants.test.js` — added `mergeVariants` deep-merge test
+
+### Changed
+
+- `mergeVariants` now uses deep merge for base styles (was shallow spread)
+
+### Fixed
+
+- Fixed `@layer` CSS wrapping — rules were being appended to root instead of inside the `@layer` block (`root.append()` returns `this`, not the new node — fixed via `root.last`)
+- Fixed Vite HMR infinite rebuild loop — `void rebuild()` was outside the `if (pending)` block; now correctly placed inside
+- Fixed `mergeVariants` shallow spread on variant option objects — now uses `deepMerge`
+- Fixed `theme.text()` returning `{ fontSize: undefined }` for invalid size keys — now returns `undefined`
+- Fixed `compile.d.ts` group values type — removed `| string` which was incorrectly allowed (runtime throws on string)
+- Fixed stale "v2" label in `docs/API.md`
+- Fixed duplicate `node:path` import in `compile.js`
+- Added `console.warn` in `compile.js` when selector-parse fails (was silent drop)
+
 ## [1.0.1] - 2026-10-07
 
 ### Fixed

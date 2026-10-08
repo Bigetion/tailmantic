@@ -93,6 +93,8 @@ A `tw` value may be a string or an array of strings. Arrays are joined at compil
 
 For example, `max-sm:(w-full flex-col)` expands to `max-sm:w-full max-sm:flex-col`. Native Tailwind v4 single-value shorthand such as `bg-(--brand)` is passed through unchanged. Unknown utilities fail the build with the utility and registration name.
 
+The Tailwind v4 `!` prefix is supported to force `!important` on a declaration: `tw: '!bg-blue-500 text-white'` compiles the `bg-blue-500` declaration with `!important`. Use this sparingly — CSS layers are usually a cleaner way to control specificity.
+
 ### `compile()` and `compileToFile()`
 
 - `compile(manifest, options)` resolves to the generated CSS string.
