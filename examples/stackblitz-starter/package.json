@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "@tailmantic/ui-components": "file:../../packages/ui-components",
+    "@tailmantic/ui-components": "^0.2.0",
     "lucide-react": "^1.49.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailmantic": "^1.0.0"
+    "tailmantic": "^1.0.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
