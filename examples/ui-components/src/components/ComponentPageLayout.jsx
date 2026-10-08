@@ -34,7 +34,7 @@ export default function ComponentPageLayout({ component, children }) {
 
   return (
     <div className="content-width component-page">
-      <nav className="breadcrumbs" aria-label="Breadcrumb">
+      <nav className="app-breadcrumbs" aria-label="Breadcrumb">
         <Link to="/components/autocomplete">Components</Link>
         <span>/</span>
         <span>{component.group}</span>

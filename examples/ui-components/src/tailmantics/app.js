@@ -47,7 +47,7 @@ register.all({
     tw: 'ml-0 min-w-0 flex-1 px-4 py-6 md:ml-[246px] md:px-7 md:py-8 lg:ml-[276px] lg:px-8 xl:px-[clamp(28px,5vw,76px)] xl:py-12',
   },
   'content-width': { tw: 'mx-auto max-w-[1050px]' },
-  'breadcrumbs': { tw: 'mb-7 flex items-center gap-2.5 text-[10px] tracking-[.02em] text-[var(--subtle)] [&_a]:text-[var(--subtle)] [&_a]:no-underline [&_a:hover]:text-[var(--rgi-blue)]' },
+  'app-breadcrumbs': { tw: 'mb-7 flex items-center gap-2.5 text-[10px] tracking-[.02em] text-[var(--subtle)] [&_a]:text-[var(--subtle)] [&_a]:no-underline [&_a:hover]:text-[var(--rgi-blue)]' },
   'breadcrumb-current': { tw: 'text-[var(--rgi-blue)]' },
   'page-heading': {
     tw: 'mb-2 font-[Manrope,sans-serif] text-[42px] font-semibold tracking-[-.045em] text-[#f2f5fb] max-sm:text-[32px]',
@@ -152,5 +152,5 @@ register.all({
   'selection-option': { tw: 'flex cursor-pointer items-center gap-2.5 text-xs text-[var(--text)]' },
   'selection-copy': { tw: 'flex min-w-0 flex-col gap-1' },
   'is-disabled': { tw: 'cursor-not-allowed opacity-40' },
-  'breadcrumbs a': { tw: 'text-[var(--subtle)] no-underline hover:text-[var(--rgi-blue)]' },
+  'app-breadcrumbs a': { tw: 'text-[var(--subtle)] no-underline hover:text-[var(--rgi-blue)]' },
 });

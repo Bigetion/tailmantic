@@ -91,9 +91,14 @@ export function tailmantic(options = {}) {
 		const collector = await server.ssrLoadModule('tailmantic/collector');
 		collector.resetManifest();
 		const module = await server.ssrLoadModule(asViteModuleId(root, entryPath));
-		const manifest = module.default || module.manifest;
+		let manifest = module.default || module.manifest;
 		if (!manifest || typeof manifest !== 'object') {
-			throw new TypeError(`tailmantic/vite: ${entry} must export a manifest as default`);
+			// entry may be a styles-only file that registers via side-effects
+			const freshCollector = await server.ssrLoadModule('tailmantic/collector');
+			manifest = freshCollector.getManifest();
+		}
+		if (!manifest || typeof manifest !== 'object') {
+			throw new TypeError(`tailmantic/vite: ${entry} must export a manifest as default or register styles via side-effects`);
 		}
 		
 		// Pass through optimization options; compilation preserves CSS by default.
