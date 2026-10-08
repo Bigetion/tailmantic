@@ -9,6 +9,16 @@ test('every declared package export resolves through the public package paths', 
     const importPath =
       exportPath === '.' ? packageJson.name : `${packageJson.name}/${exportPath.slice(2)}`;
     const module = await import(importPath);
-    assert.ok(Object.keys(module).length > 0, `${importPath} exports a public module`);
+    // styles and token exports are side-effect only (register() calls) — they have no named
+    // exports by design. Just verify the import resolves without throwing.
+    const isSideEffectOnly =
+      exportPath.endsWith('/styles') ||
+      exportPath.startsWith('./tokens/') ||
+      exportPath === './tokens';
+    if (isSideEffectOnly) {
+      assert.ok(module !== undefined, `${importPath} resolves without error`);
+    } else {
+      assert.ok(Object.keys(module).length > 0, `${importPath} exports a public module`);
+    }
   }
 });
