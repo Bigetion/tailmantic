@@ -1,6 +1,6 @@
 {
   "name": "@tailmantic/ui-components",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Standalone React components styled with Tailmantic.",
   "homepage": "https://github.com/Bigetion/tailmantic/tree/main/packages/ui-components#readme",
   "repository": {
