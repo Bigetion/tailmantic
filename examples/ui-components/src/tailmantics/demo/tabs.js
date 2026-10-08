@@ -4,38 +4,6 @@ register('tabs-showcase', {
   base: { tw: 'flex w-full max-w-[680px] flex-col gap-3 rounded-lg border border-[#303a49] bg-[#111720] p-3 sm:p-4' },
 });
 
-register('rgi-tabs-list-centered', {
-  base: { tw: 'justify-center' },
-});
-
-register('rgi-tabs-list-scrollable', {
-  base: { tw: 'justify-start' },
-});
-
-register('rgi-tab-active', {
-  base: { tw: 'font-semibold text-[#e0eaff] hover:text-[#e0eaff]' },
-});
-
-register('rgi-tab[aria-selected="true"]', {
-  base: { tw: 'font-semibold text-[#e0eaff] hover:text-[#e0eaff]' },
-});
-
-register('rgi-tab[aria-selected="true"]:hover', {
-  base: { tw: 'bg-[#1b2431]' },
-});
-
-register('rgi-tab-indicator', {
-  base: { tw: 'absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-[#8baeff]' },
-});
-
-register('rgi-tab-with-icon', {
-  base: { tw: 'gap-1.5' },
-});
-
-register('rgi-tab-badge', {
-  base: { tw: 'inline-flex min-w-4 items-center justify-center rounded-full bg-[#263954] px-1 py-0.5 text-[7px] text-[#bfd2f6]' },
-});
-
 register('tabs-overview-card', {
   base: { tw: 'flex min-h-[76px] flex-wrap items-center gap-2.5 rounded-md border border-[#2c3746] bg-[#151d28] p-3' },
 });
