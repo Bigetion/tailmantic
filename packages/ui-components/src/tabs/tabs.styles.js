@@ -5,15 +5,15 @@ register('rgi-tabs', {
   modifiers: { vertical: { tw: 'flex-row' } },
 });
 register('rgi-tabs-list', {
-  base: { tw: 'flex min-w-0 overflow-x-auto border-b border-[var(--border,#d5d9e0)]' },
+  base: { tw: 'flex min-w-0 overflow-x-auto border-b border-[var(--border,#d5d9e0)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden' },
 });
 register('rgi-tabs-vertical .rgi-tabs-list', {
-  base: { tw: 'flex-col overflow-y-auto overflow-x-hidden border-b-0 border-r' },
+  base: { tw: 'flex-col overflow-y-auto overflow-x-hidden border-b-0 border-r [scrollbar-width:none] [&::-webkit-scrollbar]:hidden' },
 });
 register('rgi-tab', {
   base: {
     // No border-bottom here — indicator span handles the active underline
-    tw: 'relative inline-flex min-h-12 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-t-md border-0 bg-transparent px-4 text-sm font-medium text-[var(--muted,#626a75)] hover:bg-[var(--surface-hover,rgba(99,120,150,0.15))] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--accent,#315fc4)] disabled:cursor-not-allowed disabled:opacity-45',
+    tw: 'relative inline-flex min-h-12 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-t-md border-0 bg-transparent px-4 pb-px text-sm font-medium text-[var(--muted,#626a75)] hover:bg-[var(--surface-hover,rgba(99,120,150,0.15))] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--accent,#315fc4)] disabled:cursor-not-allowed disabled:opacity-45',
   },
 });
 register('rgi-tab-selected', {
