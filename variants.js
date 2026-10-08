@@ -167,7 +167,7 @@ export function mergeVariants(...configs) {
 				if (!merged.variants[key]) {
 					merged.variants[key] = {};
 				}
-				merged.variants[key] = { ...merged.variants[key], ...options };
+				merged.variants[key] = deepMerge(merged.variants[key], options);
 			}
 		}
 

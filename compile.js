@@ -1,5 +1,4 @@
-import { resolve } from 'node:path';
-import { dirname, resolve as resolvePath } from 'node:path';
+import { resolve, dirname, resolve as resolvePath } from 'node:path';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { createRegistry } from './core-runtime.js';
 import { optimizeCSS, getOptimizationStats } from './optimize.js';
@@ -359,12 +358,14 @@ function retargetSelectors(root, tokenSelectors, selectorParser, modifierSelecto
 	// Append base @layer blocks first, then modifier @layer blocks, so the
 	// cascade order matches non-layered rules: base before modifier.
 	for (const [layer, rules] of baseLayerRules) {
-		const layerAtRule = root.append({ name: 'layer', params: layer });
-		for (const rule of rules) layerAtRule.append(rule);
+		root.append({ name: 'layer', params: layer });
+		const layerNode = root.last;
+		for (const rule of rules) layerNode.append(rule.clone());
 	}
 	for (const [layer, rules] of modifierLayerRules) {
-		const layerAtRule = root.append({ name: 'layer', params: layer });
-		for (const rule of rules) layerAtRule.append(rule);
+		root.append({ name: 'layer', params: layer });
+		const layerNode = root.last;
+		for (const rule of rules) layerNode.append(rule.clone());
 	}
 
 	if (uncompiled.size) {

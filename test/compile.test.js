@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import test from 'node:test';
 import { compile, compileToFile } from '../compile.js';
 import { register } from '../core-entry.js';
+import { register as collectRegister, getManifest, resetManifest } from '../collector.js';
 
 test('compiles registered utilities with Tailwind v4 and semantic selectors', async () => {
 	const css = await compile({
@@ -252,4 +253,17 @@ test('preserves root tokens, universal reset, and global CSS declarations', asyn
 	assert.match(css, /:root\s*\{\s*--brand:\s*#123456/);
 	assert.match(css, /\*\s*\{[^}]*box-sizing:\s*border-box/);
 	assert.match(css, /body\s*\{[^}]*font-family:\s*sans-serif/);
+});
+
+test('layer option wraps compiled CSS in @layer block', async () => {
+resetManifest();
+collectRegister('btn-layered', { layer: 'components', tw: 'bg-blue-500 text-white' });
+const manifest = getManifest();
+try {
+const css = await compile(manifest);
+assert.match(css, /@layer components \{/);
+assert.match(css, /\.btn-layered/);
+} finally {
+resetManifest();
+}
 });

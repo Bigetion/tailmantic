@@ -88,3 +88,19 @@ const css = await compile(getManifest(), {
 import tailmantic from 'tailmantic/vite';
 export default { plugins: [tailmantic({ inputCss: '@import "./tailwind.css";' })] };
 ```
+
+## Concurrent SSR manifest construction
+
+The `tailmantic/collector` module uses a **process-level singleton**. It is designed for
+build-time use (Vite plugin, build scripts) where manifest construction is sequential.
+
+Do not use `tailmantic/collector` for per-request SSR manifest construction without
+synchronization — if two async compilation chains run concurrently (e.g., parallel Vite SSR
+loads), their `register()` calls will accumulate into the same shared manifest, producing
+incorrect output.
+
+**Safe pattern:** Call `resetManifest()` and load all registration modules sequentially
+before calling `getManifest()`. The Vite plugin does this automatically via `moduleGraph.invalidateAll()`.
+
+**Unsafe pattern:** Running multiple `ssrLoadModule()` chains concurrently without resetting
+between them.

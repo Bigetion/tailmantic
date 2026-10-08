@@ -1,6 +1,6 @@
 # API Reference
 
-This page documents the public Tailmantic v2 APIs. For choosing between runtime CSS, manual compilation, and Vite, see the [README](../README.md) or [documentation guide](./README.md).
+This page documents the public Tailmantic APIs. For choosing between runtime CSS, manual compilation, and Vite, see the [README](../README.md) or [documentation guide](./README.md).
 
 ## Runtime Registration
 

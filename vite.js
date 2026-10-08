@@ -186,7 +186,7 @@ export function tailmantic(options = {}) {
 					compiling = false;
 					if (pending) {
 						pending = false;
-					void rebuild();
+						void rebuild();
 					}
 				}
 			};
