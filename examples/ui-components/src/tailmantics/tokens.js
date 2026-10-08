@@ -1,22 +1,9 @@
 import { register } from 'tailmantic/collector';
 
+// App-specific global resets and base styles.
+// CSS variable tokens are provided by @tailmantic/ui-components/tokens/dark
+// (imported via index.js) — only app-level overrides belong here.
 register.all({
-  ':root': {
-    '--rgi-blue': '#9bbcff',
-    '--rgi-blue-dark': '#547be8',
-    '--rgi-blue-soft': 'rgba(125,159,255,.12)',
-    '--page': '#090c12',
-    '--panel': '#10151e',
-    '--panel-raised': '#171e2a',
-    '--border': '#273142',
-    '--text': '#edf2fb',
-    '--muted': '#a3aec0',
-    '--subtle': '#717f95',
-    '--green': '#7bd6b0',
-    '--orange': '#f4bd7a',
-    '--red': '#ff858e',
-    '--radius': '12px',
-  },
   '*': {
     'box-sizing': 'border-box',
     margin: '0',
