@@ -215,7 +215,7 @@ export default function App() {
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                 <UiButton variant="contained" color="secondary">Secondary</UiButton>
-                <UiButton variant="contained" color="error">Error</UiButton>
+                <UiButton variant="contained" color="danger">Danger</UiButton>
                 <UiButton variant="contained" size="small">Small</UiButton>
                 <UiButton variant="contained" size="large">Large</UiButton>
               </div>
@@ -235,8 +235,8 @@ export default function App() {
                   <strong style={{ color: '#edf2fb' }}>Outlined</strong>
                   <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#a3aec0' }}>variant=&quot;outlined&quot;</p>
                 </UiCard>
-                <UiCard variant="filled" interactive style={{ padding: '16px', minWidth: '160px', cursor: 'pointer' }}>
-                  <strong style={{ color: '#edf2fb' }}>Filled</strong>
+                <UiCard variant="flat" interactive style={{ padding: '16px', minWidth: '160px', cursor: 'pointer' }}>
+                  <strong style={{ color: '#edf2fb' }}>Flat</strong>
                   <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#a3aec0' }}>interactive</p>
                 </UiCard>
               </div>
@@ -251,7 +251,7 @@ export default function App() {
                 <UiAlert severity="info" title="Info">This is an informational message.</UiAlert>
                 <UiAlert severity="success" title="Success">Operation completed successfully.</UiAlert>
                 <UiAlert severity="warning" title="Warning">Check your configuration.</UiAlert>
-                <UiAlert severity="error" title="Error" variant="filled">Something went wrong.</UiAlert>
+                <UiAlert severity="error" title="Error" variant="standard">Something went wrong.</UiAlert>
               </div>
             </div>
 
@@ -305,12 +305,12 @@ export default function App() {
                     <Bell size={20} style={{ color: '#edf2fb' }} />
                   </span>
                 </UiBadge>
-                <UiBadge badgeContent={99} color="error">
+                <UiBadge badgeContent={99} color="danger">
                   <span style={{ display: 'inline-flex', padding: '8px', background: '#1f2937', borderRadius: '8px' }}>
                     <Mail size={20} style={{ color: '#edf2fb' }} />
                   </span>
                 </UiBadge>
-                <UiBadge badgeContent={200} max={99} color="secondary">
+                <UiBadge badgeContent={200} max={99} color="primary">
                   <span style={{ display: 'inline-flex', padding: '8px', background: '#1f2937', borderRadius: '8px' }}>
                     <ShoppingCart size={20} style={{ color: '#edf2fb' }} />
                   </span>
