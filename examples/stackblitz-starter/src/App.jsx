@@ -214,7 +214,7 @@ export default function App() {
                 <UiButton variant="text" color="primary">Text</UiButton>
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                <UiButton variant="contained" color="secondary">Secondary</UiButton>
+                <UiButton variant="contained" color="success">Success</UiButton>
                 <UiButton variant="contained" color="danger">Danger</UiButton>
                 <UiButton variant="contained" size="small">Small</UiButton>
                 <UiButton variant="contained" size="large">Large</UiButton>
