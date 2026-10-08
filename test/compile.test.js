@@ -267,3 +267,55 @@ assert.match(css, /\.btn-layered/);
 resetManifest();
 }
 });
+
+test('optimize: true produces minified output with no unnecessary whitespace between rules', async () => {
+	const manifest = {
+		classes: {
+			'opt-btn': { tw: 'inline-flex items-center px-4 py-2' },
+		},
+	};
+	const optimizedCss = await compile(manifest, { optimize: true });
+	// Minified output should not have blank lines between rules
+	assert.doesNotMatch(optimizedCss, /\}\s*\n\s*\n\s*\./);
+	// Declarations should have no space after colon
+	assert.match(optimizedCss, /display:inline-flex/);
+});
+
+test('deduplicate: true merges selectors but does NOT minify (retains whitespace)', async () => {
+	const manifest = {
+		classes: {
+			'dedup-btn': { tw: 'inline-flex items-center' },
+		},
+	};
+	const deduplicatedCss = await compile(manifest, { deduplicate: true });
+	// Should NOT be minified — declarations should still have spaces and newlines
+	assert.match(deduplicatedCss, /display:\s+inline-flex/);
+	// The output should contain newlines (not stripped to a single line)
+	assert.ok(deduplicatedCss.includes('\n'), 'deduplicate output should retain newlines');
+});
+
+test('minify: true still works (backwards compat) and triggers deprecation warning', async () => {
+	const manifest = {
+		classes: {
+			'legacy-btn': { tw: 'inline-flex px-4' },
+		},
+	};
+
+	const warnMessages = [];
+	const originalWarn = console.warn;
+	console.warn = (...args) => warnMessages.push(args.join(' '));
+	let css;
+	try {
+		css = await compile(manifest, { minify: true });
+	} finally {
+		console.warn = originalWarn;
+	}
+
+	// Should still produce minified output (backwards compat)
+	assert.match(css, /display:inline-flex/);
+	// Should have emitted a deprecation warning
+	assert.ok(
+		warnMessages.some((m) => m.includes('minify') && m.includes('deprecated')),
+		'Expected a deprecation warning mentioning "minify" and "deprecated"',
+	);
+});

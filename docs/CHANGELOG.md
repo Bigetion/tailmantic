@@ -18,6 +18,10 @@
 ### Changed
 
 - `mergeVariants` now uses deep merge for base styles (was shallow spread)
+- Clarified `optimize` vs `deduplicate` vs `minify` option semantics
+- `minify` option deprecated — use `optimize: true` instead
+- `optimize: true` now clearly documents full production optimization (merge + deduplicate + minify)
+- `deduplicate: true` now clearly documented as merge-only without minification
 
 ### Fixed
 

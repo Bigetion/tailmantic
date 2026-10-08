@@ -106,10 +106,15 @@ Both accept these options:
 | --- | --- |
 | `inputCss` | Tailwind CSS input; defaults to a reference plus the utilities import |
 | `baseDir` | Base directory used to resolve Tailwind CSS inputs |
-| `minify` | Minify generated CSS; off by default |
-| `deduplicate` | Merge safe adjacent duplicate rules; off by default |
-| `optimize` | Enable both minification and deduplication |
+| `optimize` | Enable full production optimization: merges duplicate selectors, deduplicates rules, and minifies output. Recommended for production builds. |
+| `deduplicate` | Merge duplicate selectors only, no minification — produces readable, optimized output. Useful for debugging. |
+| `minify` | **Deprecated.** Use `optimize: true` instead. Will be removed in a future version. |
 | `debug` | Print optimization statistics when optimization is enabled |
+
+**Which option should I use?**
+- Development: no options needed (readable output, fastest compile)
+- Production: `optimize: true` (smaller file, merged selectors)
+- Debug optimized output: `deduplicate: true` (merged but readable)
 
 ## Collector
 
@@ -149,7 +154,7 @@ Options:
 | `watch` | `src/tailmantics` | Directory watched for registration changes |
 | `outFile` | unset | Optional disk copy; otherwise use `virtual:tailmantic.css` |
 | `forceOutFile` | `false` | Force physical file output for environments like CodeSandbox |
-| Compiler options | See above | `inputCss`, `baseDir`, `minify`, `deduplicate`, `optimize`, `debug` |
+| Compiler options | See above | `inputCss`, `baseDir`, `deduplicate`, `optimize` (see compile options above; `minify` is deprecated) |
 
 Import `virtual:tailmantic.css` once from the app entry when `outFile` is not set. The plugin watches registration sources; it does not scan application markup for arbitrary class names.
 

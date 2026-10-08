@@ -542,14 +542,20 @@ export async function compile(manifest = {}, options = {}) {
 
   let finalCss = [rawCss, root.toString()].filter(Boolean).join('\n');
 
-  // Apply optimization only when explicitly requested.
-  const shouldOptimize =
-    options.optimize === true || options.minify === true || options.deduplicate === true;
+  // optimize: true  → full production optimization (merge + deduplicate + minify)
+  // deduplicate: true → merge duplicate selectors only, no minification
+  // minify: true    → deprecated alias for optimize: true (kept for backwards compat)
+  if (options.minify === true && options.optimize !== true) {
+    console.warn('[tailmantic] The `minify` option is deprecated. Use `optimize: true` instead.');
+  }
 
-  if (shouldOptimize) {
+  const isOptimize = options.optimize === true || options.minify === true; // minify = deprecated alias
+  const isDeduplicate = options.deduplicate === true;
+
+  if (isOptimize || isDeduplicate) {
     finalCss = await optimizeCSS(finalCss, {
-      minify: options.minify ?? options.optimize === true,
-      deduplicate: options.deduplicate ?? options.optimize === true,
+      minify: isOptimize,           // only minify when optimize (or deprecated minify) is true
+      deduplicate: isOptimize || isDeduplicate,  // both modes deduplicate
     });
 
     if (options.debug) {
