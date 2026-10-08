@@ -6,6 +6,7 @@ export interface TabDefinition {
   label: ReactNode;
   content: ReactNode;
   icon?: ReactNode;
+  badge?: ReactNode;
   disabled?: boolean;
   tabIndex?: number;
 }
@@ -20,6 +21,8 @@ export interface TabsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChang
   orientation?: 'horizontal' | 'vertical';
   activationMode?: 'automatic' | 'manual';
   ariaLabel?: string;
+  variant?: 'standard' | 'scrollable' | 'centered' | 'fullwidth';
+  size?: 'sm' | 'md' | 'lg';
 }
 declare const Tabs: import('react').ForwardRefExoticComponent<
   TabsProps & import('react').RefAttributes<HTMLDivElement>
