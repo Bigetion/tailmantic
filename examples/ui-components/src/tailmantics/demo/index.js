@@ -1,4 +1,3 @@
-import './autocomplete.js';
 import './button.js';
 import './button-group.js';
 import './floating-action-button.js';

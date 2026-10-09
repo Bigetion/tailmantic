@@ -11,7 +11,7 @@ npm run dev
 
 Run `npm run build` to verify the production bundle. Styles are defined in `src/tailmantics` and collected from `src/tailmantics/index.js`; the app loads the generated stylesheet through `virtual:tailmantic.css`.
 
-Reusable React APIs and their base styles for all 47 components live in the standalone `@tailmantic/ui-components` package under `packages/ui-components`; showcase pages and interactive demo data remain in this application. The app's Tailmantic manifest imports the package style manifest so component base rules are included in the generated stylesheet. Accordion examples use the package's Accordion and AccordionGroup directly; their appearance and group controls are implemented by the package rather than demo styles.
+Reusable React APIs and their base styles for all 47 components live in the standalone `@tailmantic/ui-components` package under `packages/ui-components`; showcase pages and interactive demo data remain in this application. The app's Tailmantic manifest imports the package style manifest so component base rules are included in the generated stylesheet. Accordion and Autocomplete examples use their package components directly; their appearance and interactions are implemented by the package rather than demo styles.
 
 Each component page retains its own demo and source context:
 

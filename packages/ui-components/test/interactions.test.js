@@ -215,6 +215,66 @@ test('Autocomplete filters and selects with keyboard and pointer, preserving inp
   }
 });
 
+test('Autocomplete supports removable multiple selections and free-solo creation', async () => {
+  const harness = await createHarness();
+  const selections = [];
+  const options = [
+    { label: 'React', value: 'react', description: 'UI library', group: 'Frontend', mark: 'R' },
+    { label: 'Vue', value: 'vue', description: 'UI framework', group: 'Frontend', mark: 'V' },
+  ];
+
+  try {
+    await harness.render(
+      React.createElement(Autocomplete, {
+        options,
+        multiple: true,
+        defaultSelectedValues: ['react'],
+        name: 'framework',
+        label: 'Frameworks',
+        helperText: 'Choose frameworks.',
+        onSelectedValuesChange: (values) => selections.push(values),
+      }),
+    );
+
+    let input = harness.mount.querySelector('[role="combobox"]');
+    assert.equal(harness.mount.querySelector('.rgi-autocomplete-tag').textContent, 'React');
+    assert.equal(harness.mount.querySelectorAll('input[type="hidden"]').length, 1);
+    assert.equal(harness.mount.querySelector('input[type="hidden"]').value, 'react');
+    await act(async () => input.focus());
+    await act(async () => {
+      input.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }));
+    });
+    await act(async () => {
+      input.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    });
+    assert.deepEqual(selections.at(-1), ['react', 'vue']);
+    assert.deepEqual(
+      [...harness.mount.querySelectorAll('input[type="hidden"]')].map((field) => field.value),
+      ['react', 'vue'],
+    );
+    assert.equal(harness.mount.querySelectorAll('.rgi-autocomplete-tag').length, 2);
+
+    await harness.render(
+      React.createElement(Autocomplete, {
+        key: 'free-solo',
+        options,
+        freeSolo: true,
+        defaultInputValue: 'Solid',
+        onValueChange: (nextValue, option) => selections.push([nextValue, option?.group]),
+      }),
+    );
+    input = harness.mount.querySelector('[role="combobox"]');
+    await act(async () => input.focus());
+    await act(async () => {
+      input.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    });
+    assert.equal(input.value, 'Solid');
+    assert.deepEqual(selections.at(-1), ['Solid', 'Custom']);
+  } finally {
+    await harness.dispose();
+  }
+});
+
 test('Tabs supports numeric values and manual keyboard activation', async () => {
   const harness = await createHarness();
   const changes = [];

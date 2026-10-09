@@ -60,6 +60,22 @@ import Accordion, { AccordionGroup } from '@tailmantic/ui-components/accordion';
 </AccordionGroup>
 ```
 
+`Autocomplete` supports single or multiple selection, removable tags, free-solo values, option descriptions and groups, and keyboard navigation. Its label, helper text, option list, and interaction styles are part of the package component:
+
+```jsx
+import Autocomplete from '@tailmantic/ui-components/autocomplete';
+
+<Autocomplete
+  label="Frameworks"
+  helperText="Select one or more options."
+  multiple
+  options={[
+    { label: 'React', description: 'User interface library', group: 'Frontend', mark: 'R' },
+    { label: 'Vue', description: 'Progressive JavaScript framework', group: 'Frontend', mark: 'V' },
+  ]}
+/>
+```
+
 For example, `Checkbox` supports native input props, controlled or uncontrolled state, and an `indeterminate` state. Its `ref` points to the native input element.
 
 ## Standalone component usage

@@ -1,5 +1,13 @@
 import type { PopperProps } from '@tailmantic/ui-components';
-import { Accordion, AccordionGroup, Button, Checkbox, Chip, IconGlyph } from '@tailmantic/ui-components';
+import {
+  Accordion,
+  AccordionGroup,
+  Autocomplete,
+  Button,
+  Checkbox,
+  Chip,
+  IconGlyph,
+} from '@tailmantic/ui-components';
 import AccordionOnly, { AccordionGroup as AccordionGroupOnly } from '@tailmantic/ui-components/accordion';
 import ButtonOnly from '@tailmantic/ui-components/button';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
@@ -18,6 +26,14 @@ export const rootExports = (
       <Accordion title="First" disabled disabledLabel="Unavailable">First answer</Accordion>
       <Accordion title="Second">Second answer</Accordion>
     </AccordionGroup>
+    <Autocomplete
+      options={[{ label: 'React', description: 'UI library', group: 'Frontend', mark: 'R' }]}
+      multiple
+      freeSolo
+      label="Frameworks"
+      helperText="Choose one or more."
+      onSelectedValuesChange={(values, options) => values.concat(options.map((option) => option.label))}
+    />
     <Button variant="outlined" ref={(button) => button?.focus()} />
     <IconGlyph name="home" />
     <Checkbox

@@ -8,7 +8,10 @@ const styleSources = import.meta.glob('../tailmantics/demo/*.js', {
 });
 
 const packageStyleSources = import.meta.glob(
-  '../../../../packages/ui-components/src/accordion/accordion.styles.js',
+  [
+    '../../../../packages/ui-components/src/accordion/accordion.styles.js',
+    '../../../../packages/ui-components/src/autocomplete/autocomplete.styles.js',
+  ],
   {
     eager: true,
     query: '?raw',
@@ -788,8 +791,12 @@ const DEMO_MAP = {
 
 export default function ComponentShowcase({ component }) {
   const stylePath = `../tailmantics/demo/${component.slug}.js`;
-  const styleSource = component.slug === 'accordion'
-    ? packageStyleSources['../../../../packages/ui-components/src/accordion/accordion.styles.js']
+  const packageStylePath = {
+    accordion: '../../../../packages/ui-components/src/accordion/accordion.styles.js',
+    autocomplete: '../../../../packages/ui-components/src/autocomplete/autocomplete.styles.js',
+  }[component.slug];
+  const styleSource = packageStylePath
+    ? packageStyleSources[packageStylePath]
     : styleSources[stylePath] ?? COMPONENT_STYLE_NOTES[component.slug];
 
   if (typeof styleSource !== 'string') {

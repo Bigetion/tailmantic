@@ -15,20 +15,26 @@ export default function ComponentPageLayout({ component, children }) {
   const previous = componentCatalog[(index - 1 + componentCatalog.length) % componentCatalog.length];
   const next = componentCatalog[(index + 1) % componentCatalog.length];
   const importName = component.name.replace(/\s+/g, '');
-  const importCode = `import ${importName} from './components/ui/${component.slug}/${importName}.jsx';\n\nexport default function ${importName}Example() {\n  return <${importName} />;\n}`;
+  const importCode = component.slug === 'autocomplete'
+    ? `import Autocomplete from '@tailmantic/ui-components/autocomplete';\n\nconst options = [\n  { label: 'React', description: 'User interface library', group: 'Frontend' },\n];\n\nexport default function AutocompleteExample() {\n  return <Autocomplete label=\"Framework\" options={options} />;\n}`
+    : `import ${importName} from './components/ui/${component.slug}/${importName}.jsx';\n\nexport default function ${importName}Example() {\n  return <${importName} />;\n}`;
   const implementationRows = IMPLEMENTATION_ROWS.map(([area, source, purpose]) => [
     area,
     area === 'Styles' && component.slug === 'accordion'
       ? 'packages/ui-components/src/accordion/accordion.styles.js'
-      : source
+      : area === 'Styles' && component.slug === 'autocomplete'
+        ? 'packages/ui-components/src/autocomplete/autocomplete.styles.js'
+        : source
         .replaceAll('{slug}', component.slug)
         .replace('{name}', importName)
         .replace('{count}', component.demos.length),
     area === 'Styles' && component.slug === 'accordion'
       ? 'Accordion styles are owned by the published package.'
-      : purpose,
+      : area === 'Styles' && component.slug === 'autocomplete'
+        ? 'Autocomplete styles are owned by the published package.'
+        : purpose,
   ]);
-  if (['chip', 'divider', 'icons', 'icon-glyph', 'list', 'table', 'tooltip', 'typography', 'alert', 'dialog', 'progress', 'snackbar', 'skeleton', 'accordion', 'app-bar', 'card', 'paper', 'popover', 'bottom-navigation', 'breadcrumbs', 'drawer', 'link', 'menu', 'pagination', 'speed-dial', 'stepper', 'tabs', 'click-away-listener', 'modal', 'popper', 'portal'].includes(component.slug)) {
+  if (['chip', 'divider', 'icons', 'icon-glyph', 'list', 'table', 'tooltip', 'typography', 'alert', 'dialog', 'progress', 'snackbar', 'skeleton', 'accordion', 'autocomplete', 'app-bar', 'card', 'paper', 'popover', 'bottom-navigation', 'breadcrumbs', 'drawer', 'link', 'menu', 'pagination', 'speed-dial', 'stepper', 'tabs', 'click-away-listener', 'modal', 'popper', 'portal'].includes(component.slug)) {
     implementationRows.splice(2, 0, [
       'Demo',
       `src/components/ui/${component.slug}/${importName}Demo.jsx`,

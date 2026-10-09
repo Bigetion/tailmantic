@@ -2,6 +2,7 @@ import type {
   ChangeEvent,
   ComponentPropsWithoutRef,
   ForwardRefExoticComponent,
+  ReactNode,
   RefAttributes,
 } from 'react';
 
@@ -9,6 +10,8 @@ export interface AutocompleteOption {
   label: string;
   value?: string;
   description?: string;
+  group?: string;
+  mark?: ReactNode;
 }
 
 export type AutocompleteOptionInput = string | AutocompleteOption;
@@ -24,6 +27,18 @@ export interface AutocompleteProps
   onInputValueChange?: (value: string, event?: ChangeEvent<HTMLInputElement>) => void;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   filterOptions?: (options: AutocompleteOption[], inputValue: string) => AutocompleteOption[];
+  label?: ReactNode;
+  helperText?: ReactNode;
+  leadingIcon?: ReactNode;
+  multiple?: boolean;
+  selectedValues?: string[];
+  defaultSelectedValues?: string[];
+  onSelectedValuesChange?: (values: string[], options: AutocompleteOption[]) => void;
+  freeSolo?: boolean;
+  emptyLabel?: ReactNode;
+  emptyDescription?: ReactNode;
+  createOptionLabel?: (inputValue: string) => ReactNode;
+  clearButtonLabel?: string;
 }
 
 declare const Autocomplete: ForwardRefExoticComponent<
