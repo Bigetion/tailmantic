@@ -43,7 +43,6 @@ register('rgi-step-completed .rgi-step-indicator', {
 register('rgi-step-copy', { base: { tw: 'flex flex-col gap-1' } });
 register('rgi-step-label', { base: { tw: 'text-sm font-medium' } });
 register('rgi-step-description', { base: { tw: 'text-xs text-[var(--muted,#626a75)]' } });
-register('rgi-stepper-alternative .rgi-step', { base: { tw: 'flex-col items-center' } });
 
 register('rgi-stepper-alternative', {
   base: { tw: 'm-0 flex w-full list-none items-start p-0' },
@@ -52,3 +51,5 @@ register('rgi-stepper-alternative', {
 register('rgi-step-alternative', {
   base: { tw: 'flex min-w-0 flex-1 items-start' },
 });
+
+register('rgi-stepper-alternative .rgi-step', { base: { tw: 'flex-col items-center' } });

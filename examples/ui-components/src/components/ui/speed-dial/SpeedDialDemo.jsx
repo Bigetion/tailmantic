@@ -46,7 +46,7 @@ function SpeedDial({ open, onToggle, direction = 'up', onSelect, label = 'Quick 
         ))}
       </div>
       <button
-        className="rgi-speed-dial-fab"
+        className="speed-dial-fab"
         type="button"
         ref={fabRef}
         aria-label={open ? 'Close quick actions' : label}
