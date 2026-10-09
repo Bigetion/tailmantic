@@ -1,1 +1,1 @@
-export { default } from './Accordion.jsx';
+export { default, AccordionGroup } from './Accordion.jsx';

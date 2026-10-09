@@ -21,6 +21,7 @@ const { act } = React;
 const { createRoot } = await import('react-dom/client');
 const { default: Autocomplete } = await import('../dist/autocomplete.js');
 const { default: Accordion } = await import('../dist/accordion.js');
+const { AccordionGroup } = await import('../dist/accordion.js');
 const { default: Alert } = await import('../dist/alert.js');
 const { default: Badge } = await import('../dist/badge.js');
 const { default: BottomNavigation } = await import('../dist/bottom-navigation.js');
@@ -419,13 +420,61 @@ test('Accordion supports controlled state, disabled state, and accessible panel 
           title: 'Disabled section',
           defaultExpanded: true,
           disabled: true,
+          disabledLabel: 'Unavailable',
         },
         'Still visible',
       ),
     );
     const disabledTrigger = harness.mount.querySelector('.rgi-accordion-trigger');
     assert.equal(disabledTrigger.disabled, true);
+    assert.equal(harness.mount.querySelector('.rgi-accordion-unavailable').textContent, 'Unavailable');
     assert.equal(harness.mount.querySelector('.rgi-accordion-panel').hidden, false);
+  } finally {
+    await harness.dispose();
+  }
+});
+
+test('AccordionGroup coordinates single and multiple expanded items and expand-all controls', async () => {
+  const harness = await createHarness();
+
+  try {
+    const group = (props) =>
+      React.createElement(
+        AccordionGroup,
+        props,
+        React.createElement(Accordion, { title: 'First', index: 0 }, 'First panel'),
+        React.createElement(Accordion, { title: 'Second', index: 1 }, 'Second panel'),
+        React.createElement(Accordion, { title: 'Third', index: 2 }, 'Third panel'),
+      );
+
+    await harness.render(group({ defaultExpanded: 0, helperText: 'Select a section to reveal its details.' }));
+    let triggers = [...harness.mount.querySelectorAll('.rgi-accordion-trigger')];
+    assert.deepEqual(triggers.map((trigger) => trigger.getAttribute('aria-expanded')), ['true', 'false', 'false']);
+    assert.deepEqual(triggers.map((trigger) => trigger.querySelector('.rgi-accordion-index').textContent), ['01', '02', '03']);
+    assert.equal(
+      harness.mount.querySelector('.rgi-accordion-group-helper').textContent,
+      'Select a section to reveal its details.',
+    );
+
+    await act(async () => triggers[1].click());
+    triggers = [...harness.mount.querySelectorAll('.rgi-accordion-trigger')];
+    assert.deepEqual(triggers.map((trigger) => trigger.getAttribute('aria-expanded')), ['false', 'true', 'false']);
+
+    await harness.render(group({ key: 'multiple', multiple: true, defaultExpanded: 0, showExpandAll: true }));
+    triggers = [...harness.mount.querySelectorAll('.rgi-accordion-trigger')];
+    await act(async () => triggers[1].click());
+    assert.deepEqual(
+      [...harness.mount.querySelectorAll('.rgi-accordion-trigger')].map((trigger) => trigger.getAttribute('aria-expanded')),
+      ['true', 'true', 'false'],
+    );
+
+    const expandAll = harness.mount.querySelector('.rgi-accordion-group-toggle');
+    await act(async () => expandAll.click());
+    assert.deepEqual(
+      [...harness.mount.querySelectorAll('.rgi-accordion-trigger')].map((trigger) => trigger.getAttribute('aria-expanded')),
+      ['true', 'true', 'true'],
+    );
+    assert.equal(expandAll.textContent, 'Collapse all');
   } finally {
     await harness.dispose();
   }

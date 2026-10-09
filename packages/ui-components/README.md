@@ -41,6 +41,25 @@ import Button from '@tailmantic/ui-components/button';
 import Tabs from '@tailmantic/ui-components/tabs';
 ```
 
+`AccordionGroup` composes package `Accordion` items with built-in single or multiple expansion, optional expand-all controls, and optional helper text. `Accordion` can show an optional label alongside a disabled trigger:
+
+```jsx
+import Accordion, { AccordionGroup } from '@tailmantic/ui-components/accordion';
+
+<AccordionGroup
+  multiple
+  defaultExpanded={0}
+  helperText="Choose a question to read its answer."
+  label="Frequently asked questions"
+  showExpandAll
+>
+  <Accordion title="What is Tailmantic?">A semantic component styling tool.</Accordion>
+  <Accordion title="Can I customize the theme?" disabled disabledLabel="Unavailable">
+    Yes, with your own design tokens.
+  </Accordion>
+</AccordionGroup>
+```
+
 For example, `Checkbox` supports native input props, controlled or uncontrolled state, and an `indeterminate` state. Its `ref` points to the native input element.
 
 ## Standalone component usage

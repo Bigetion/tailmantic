@@ -1,5 +1,6 @@
 import type { PopperProps } from '@tailmantic/ui-components';
-import { Button, Checkbox, Chip, IconGlyph } from '@tailmantic/ui-components';
+import { Accordion, AccordionGroup, Button, Checkbox, Chip, IconGlyph } from '@tailmantic/ui-components';
+import AccordionOnly, { AccordionGroup as AccordionGroupOnly } from '@tailmantic/ui-components/accordion';
 import ButtonOnly from '@tailmantic/ui-components/button';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
@@ -7,6 +8,16 @@ import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 
 export const rootExports = (
   <>
+    <AccordionGroup
+      multiple
+      defaultExpanded={0}
+      helperText="Select a question."
+      label="Questions"
+      showExpandAll
+    >
+      <Accordion title="First" disabled disabledLabel="Unavailable">First answer</Accordion>
+      <Accordion title="Second">Second answer</Accordion>
+    </AccordionGroup>
     <Button variant="outlined" ref={(button) => button?.focus()} />
     <IconGlyph name="home" />
     <Checkbox
@@ -26,6 +37,9 @@ export const rootExports = (
 
 export const subpathExports = (
   <>
+    <AccordionGroupOnly defaultExpanded={0}>
+      <AccordionOnly title="Package subpath">Accordion item</AccordionOnly>
+    </AccordionGroupOnly>
     <ButtonOnly size="small" />
     <CheckboxOnly defaultChecked />
     <ChipOnly variant="filled" />

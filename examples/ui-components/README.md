@@ -11,7 +11,7 @@ npm run dev
 
 Run `npm run build` to verify the production bundle. Styles are defined in `src/tailmantics` and collected from `src/tailmantics/index.js`; the app loads the generated stylesheet through `virtual:tailmantic.css`.
 
-Reusable React APIs and their base styles for all 47 components live in the standalone `@tailmantic/ui-components` package under `packages/ui-components`; showcase pages, interactive demos, and demo-only styles remain in this application. The app's Tailmantic manifest imports the package style manifest so component base rules are included in the generated stylesheet. Shared base style registrations have been removed from demo style modules to keep package styles and showcase-only styles separate.
+Reusable React APIs and their base styles for all 47 components live in the standalone `@tailmantic/ui-components` package under `packages/ui-components`; showcase pages and interactive demo data remain in this application. The app's Tailmantic manifest imports the package style manifest so component base rules are included in the generated stylesheet. Accordion examples use the package's Accordion and AccordionGroup directly; their appearance and group controls are implemented by the package rather than demo styles.
 
 Each component page retains its own demo and source context:
 
@@ -21,4 +21,4 @@ src/components/ui/button/Button.jsx
 src/tailmantics/components/button.js
 ```
 
-Component metadata, groups, and descriptions are defined in `src/data/components.js`; each page route is resolved to its own page module. Shared page layout, code panels, and interaction primitives stay reusable. Component-specific styles are imported by `src/tailmantics/components/index.js` and registered with Tailmantic's collector. Floating menus, tooltips, autocomplete/select examples, and popovers share a portal-based Popper implementation with flip and overflow handling, outside-click dismissal, and Escape-key support.
+Component metadata, groups, and descriptions are defined in `src/data/components.js`; each page route is resolved to its own page module. Shared page layout, code panels, and interaction primitives stay reusable. Component-specific demo styles are imported by `src/tailmantics/demo/index.js`; Accordion has no demo stylesheet. Floating menus, tooltips, autocomplete/select examples, and popovers share a portal-based Popper implementation with flip and overflow handling, outside-click dismissal, and Escape-key support.

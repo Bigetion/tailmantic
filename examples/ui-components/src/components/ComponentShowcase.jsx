@@ -7,6 +7,15 @@ const styleSources = import.meta.glob('../tailmantics/demo/*.js', {
   import: 'default',
 });
 
+const packageStyleSources = import.meta.glob(
+  '../../../../packages/ui-components/src/accordion/accordion.styles.js',
+  {
+    eager: true,
+    query: '?raw',
+    import: 'default',
+  },
+);
+
 const COMPONENT_STYLE_NOTES = {
   checkbox: 'Base component styles are provided by @tailmantic/ui-components/checkbox.',
 };
@@ -779,7 +788,9 @@ const DEMO_MAP = {
 
 export default function ComponentShowcase({ component }) {
   const stylePath = `../tailmantics/demo/${component.slug}.js`;
-  const styleSource = styleSources[stylePath] ?? COMPONENT_STYLE_NOTES[component.slug];
+  const styleSource = component.slug === 'accordion'
+    ? packageStyleSources['../../../../packages/ui-components/src/accordion/accordion.styles.js']
+    : styleSources[stylePath] ?? COMPONENT_STYLE_NOTES[component.slug];
 
   if (typeof styleSource !== 'string') {
     throw new Error(`Missing Tailmantic style source for "${component.slug}" at ${stylePath}`);

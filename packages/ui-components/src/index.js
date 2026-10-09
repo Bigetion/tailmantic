@@ -1,4 +1,4 @@
-export { default as Accordion } from './accordion/Accordion.jsx';
+export { default as Accordion, AccordionGroup } from './accordion/Accordion.jsx';
 export { default as Alert } from './alert/Alert.jsx';
 export { default as AppBar } from './app-bar/AppBar.jsx';
 export { default as Autocomplete } from './autocomplete/Autocomplete.jsx';
