@@ -1,11 +1,5 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-icon-button', {
-  base: {
-    tw: 'inline-flex size-9 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent text-[var(--muted)] hover:bg-[#ffffff12] hover:text-white',
-  },
-});
-
 register.group('favorite-button', {
   root: {
     tw: 'inline-flex size-9 items-center justify-center rounded-full text-[var(--muted)] transition-colors hover:bg-[#ffffff12] hover:text-[#ef5350]',

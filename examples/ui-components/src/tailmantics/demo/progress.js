@@ -32,10 +32,6 @@ register('progress-track', {
   base: { tw: 'relative' },
 });
 
-register('rgi-progress-bar', {
-  base: { tw: 'block h-full rounded-full bg-[var(--rgi-blue)] transition-[width] duration-300' },
-});
-
 register('progress-buffer-bar', {
   base: { tw: 'absolute inset-y-0 left-0 rounded-full bg-[#60799f] transition-[width] duration-300' },
 });

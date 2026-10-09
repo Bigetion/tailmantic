@@ -28,18 +28,6 @@ register('link-inline-row', {
   base: { tw: 'mt-1 flex flex-wrap items-center gap-2.5' },
 });
 
-register('rgi-link-underlined', {
-  base: { tw: 'underline' },
-});
-
-register('rgi-link-subtle', {
-  base: { tw: 'text-[#bac5d4] hover:text-white' },
-});
-
-register('rgi-link-external', {
-  base: { tw: 'text-[#87d4c2]' },
-});
-
 register('link-inline-divider', {
   base: { tw: 'h-3 w-px bg-[#394557]' },
 });
@@ -62,10 +50,6 @@ register('link-accessibility-card', {
 
 register('link-accessibility-row', {
   base: { tw: 'flex flex-wrap items-center gap-4' },
-});
-
-register('rgi-link-disabled', {
-  base: { tw: 'cursor-not-allowed text-[#6f7b8d] no-underline hover:text-[#6f7b8d] hover:no-underline' },
 });
 
 register('link-demo-footer', {

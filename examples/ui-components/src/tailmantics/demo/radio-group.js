@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register.group('rgi-radio', {
+register.group('radio-group-option', {
   root: {
     tw: 'relative mt-0.5 flex size-[18px] shrink-0 items-center justify-center rounded-full focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#86a6ff]',
   },

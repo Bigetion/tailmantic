@@ -24,3 +24,13 @@ register('rgi-chip button', {
     tw: 'inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-current opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-current disabled:cursor-not-allowed',
   },
 });
+
+register('rgi-chip-icon', {
+  base: { tw: 'shrink-0' },
+});
+
+register('rgi-chip-delete', {
+  base: {
+    tw: 'ml-0.5 inline-flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-current opacity-70 hover:bg-white/10 hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-current',
+  },
+});

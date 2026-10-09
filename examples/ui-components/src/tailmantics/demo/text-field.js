@@ -7,22 +7,8 @@ register('input-helper', {
   },
 });
 
-register('rgi-input', {
-  base: {
-    tw: 'h-10 w-full rounded border border-[#626a75] bg-transparent px-3 text-sm text-[var(--text)] outline-none placeholder:text-[var(--subtle)] hover:border-[var(--text)] focus:border-2 focus:border-[var(--rgi-blue)]',
-  },
-  modifiers: {
-    'wrap': { tw: 'flex w-[260px] flex-col gap-1.5' },
-    'filled': { tw: 'rounded-t border-0 border-b-2 border-[#626a75] bg-[#25282d] focus:border-[var(--rgi-blue)]' },
-  },
-});
-
 register('input-preview', {
   base: { tw: 'max-w-[620px] flex-row flex-wrap' },
-});
-
-register('rgi-label', {
-  base: { tw: 'text-xs text-[var(--muted)]' },
 });
 
 register('text-field-demo', {

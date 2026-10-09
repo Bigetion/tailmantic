@@ -24,22 +24,6 @@ register('avatar-neutral', {
   base: { tw: 'bg-[#303844] text-[#c0cad8]' },
 });
 
-register('rgi-avatar-xs', {
-  base: { tw: '!size-6 text-[8px]' },
-});
-
-register('rgi-avatar-sm', {
-  base: { tw: '!size-8 text-[10px]' },
-});
-
-register('rgi-avatar-lg', {
-  base: { tw: 'size-12 text-sm [&_svg]:size-5' },
-});
-
-register('rgi-avatar-xl', {
-  base: { tw: 'size-14 text-base [&_svg]:size-6' },
-});
-
 register('avatar-examples', {
   base: { tw: 'flex flex-wrap items-center gap-3' },
 });

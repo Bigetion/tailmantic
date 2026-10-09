@@ -96,14 +96,6 @@ register('stepper-alternative-showcase', {
   base: { tw: 'gap-3' },
 });
 
-register('rgi-stepper-alternative', {
-  base: { tw: 'm-0 flex w-full list-none items-start p-0' },
-});
-
-register('rgi-step-alternative', {
-  base: { tw: 'flex min-w-0 flex-1 items-start' },
-});
-
 register('stepper-alternative-button', {
   base: { tw: 'flex min-w-8 cursor-pointer flex-col items-center gap-1.5 border-0 bg-transparent p-0 text-[7px] focus-visible:outline-2 focus-visible:outline-[#8baeff] [&_.stepper-icon]:size-6 sm:min-w-10 sm:text-[8px] sm:[&_.stepper-icon]:size-7' },
 });

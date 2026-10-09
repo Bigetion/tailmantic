@@ -24,3 +24,27 @@ register('rgi-speed-dial-trigger', {
 });
 register('rgi-speed-dial-open .rgi-speed-dial-trigger', { base: { tw: 'rotate-45' } });
 register('rgi-speed-dial [hidden]', { base: { tw: 'hidden' } });
+
+register('rgi-speed-dial-actions-hidden', {
+  base: { tw: 'pointer-events-none invisible scale-95 opacity-0' },
+});
+
+register('rgi-speed-dial-up .rgi-speed-dial-actions', {
+  base: { tw: 'flex-col' },
+});
+
+register('rgi-speed-dial-down .rgi-speed-dial-actions', {
+  base: { tw: 'flex-col' },
+});
+
+register('rgi-speed-dial-action:hover .speed-dial-action-tooltip', {
+  base: { tw: 'opacity-100' },
+});
+
+register('rgi-speed-dial-action:focus-visible .speed-dial-action-tooltip', {
+  base: { tw: 'opacity-100' },
+});
+
+register('rgi-speed-dial-right .rgi-speed-dial-action span', {
+  base: { tw: 'left-[calc(100%+10px)] right-auto' },
+});

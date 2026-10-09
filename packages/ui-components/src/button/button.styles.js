@@ -1,5 +1,11 @@
 import { register } from 'tailmantic/collector';
 
+register('rgi-icon-button', {
+  base: {
+    tw: 'inline-flex size-9 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent text-[var(--muted)] hover:bg-[#ffffff12] hover:text-white',
+  },
+});
+
 register('rgi-button', {
   base: {
     tw: 'inline-flex h-9 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded border border-transparent px-4 text-[13px] font-medium uppercase tracking-[.02em] transition-[background-color,border-color,color,box-shadow,transform] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--rgi-blue,#9bbcff)] enabled:active:translate-y-px disabled:cursor-not-allowed disabled:opacity-40',

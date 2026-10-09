@@ -13,3 +13,15 @@ register('rgi-pagination-current', {
 register('rgi-pagination-ellipsis', {
   base: { tw: 'flex size-9 items-center justify-center text-[var(--muted,#626a75)]' },
 });
+
+register('rgi-pagination-outlined .rgi-pagination-button', {
+  base: { tw: 'border border-[#354154] bg-[#171f2c] hover:border-[#536985] hover:bg-[#202b3a]' },
+});
+
+register('rgi-pagination-outlined .rgi-pagination-current', {
+  base: { tw: 'border-[#789fe8] bg-[#263954] text-[#d2e0ff] hover:border-[#789fe8] hover:bg-[#263954]' },
+});
+
+register('rgi-pagination-outlined .rgi-pagination-button:disabled', {
+  base: { tw: 'border-[#2d3643] bg-[#141a23]' },
+});

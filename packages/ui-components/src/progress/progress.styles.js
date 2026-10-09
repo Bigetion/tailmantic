@@ -38,3 +38,7 @@ register('@keyframes rgi-progress-linear-indeterminate', {
   '50%': { transform: 'translateX(80%) scaleX(.9)' },
   '100%': { transform: 'translateX(260%) scaleX(.5)' },
 });
+
+register('rgi-progress-bar', {
+  base: { tw: 'block h-full rounded-full bg-[var(--rgi-blue)] transition-[width] duration-300' },
+});

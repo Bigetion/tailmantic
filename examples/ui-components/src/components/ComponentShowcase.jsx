@@ -727,6 +727,56 @@ function titleFromDemo(id) {
     .join(' ');
 }
 
+const DEMO_MAP = {
+  button: BUTTON_DEMOS,
+  autocomplete: AUTOCOMPLETE_DEMOS,
+  'button-group': BUTTON_GROUP_DEMOS,
+  checkbox: CHECKBOX_DEMOS,
+  'floating-action-button': FAB_DEMOS,
+  'number-field': NUMBER_FIELD_DEMOS,
+  'radio-group': RADIO_GROUP_DEMOS,
+  rating: RATING_DEMOS,
+  select: SELECT_DEMOS,
+  slider: SLIDER_DEMOS,
+  switch: SWITCH_DEMOS,
+  'text-field': TEXT_FIELD_DEMOS,
+  'transfer-list': TRANSFER_LIST_DEMOS,
+  'toggle-button': TOGGLE_BUTTON_DEMOS,
+  avatar: AVATAR_DEMOS,
+  badge: BADGE_DEMOS,
+  chip: CHIP_DEMOS,
+  divider: DIVIDER_DEMOS,
+  icons: ICONS_DEMOS,
+  'icon-glyph': MATERIAL_ICONS_DEMOS,
+  list: LIST_DEMOS,
+  table: TABLE_DEMOS,
+  tooltip: TOOLTIP_DEMOS,
+  typography: TYPOGRAPHY_DEMOS,
+  alert: ALERT_DEMOS,
+  dialog: DIALOG_DEMOS,
+  progress: PROGRESS_DEMOS,
+  snackbar: SNACKBAR_DEMOS,
+  skeleton: SKELETON_DEMOS,
+  accordion: ACCORDION_DEMOS,
+  'app-bar': APP_BAR_DEMOS,
+  card: CARD_DEMOS,
+  paper: PAPER_DEMOS,
+  popover: POPOVER_DEMOS,
+  'bottom-navigation': BOTTOM_NAVIGATION_DEMOS,
+  breadcrumbs: BREADCRUMBS_DEMOS,
+  drawer: DRAWER_DEMOS,
+  link: LINK_DEMOS,
+  menu: MENU_DEMOS,
+  pagination: PAGINATION_DEMOS,
+  'speed-dial': SPEED_DIAL_DEMOS,
+  stepper: STEPPER_DEMOS,
+  tabs: TABS_DEMOS,
+  'click-away-listener': CLICK_AWAY_DEMOS,
+  modal: MODAL_DEMOS,
+  popper: POPPER_DEMOS,
+  portal: PORTAL_DEMOS,
+};
+
 export default function ComponentShowcase({ component }) {
   const stylePath = `../tailmantics/demo/${component.slug}.js`;
   const styleSource = styleSources[stylePath] ?? COMPONENT_STYLE_NOTES[component.slug];
@@ -738,101 +788,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'button'
-          ? BUTTON_DEMOS[demoId]
-          : component.slug === 'autocomplete'
-            ? AUTOCOMPLETE_DEMOS[demoId]
-            : component.slug === 'button-group'
-              ? BUTTON_GROUP_DEMOS[demoId]
-              : component.slug === 'checkbox'
-                ? CHECKBOX_DEMOS[demoId]
-                : component.slug === 'floating-action-button'
-                  ? FAB_DEMOS[demoId]
-                  : component.slug === 'number-field'
-                    ? NUMBER_FIELD_DEMOS[demoId]
-                    : component.slug === 'radio-group'
-                      ? RADIO_GROUP_DEMOS[demoId]
-                      : component.slug === 'rating'
-                        ? RATING_DEMOS[demoId]
-                        : component.slug === 'select'
-                          ? SELECT_DEMOS[demoId]
-                          : component.slug === 'slider'
-                            ? SLIDER_DEMOS[demoId]
-                            : component.slug === 'switch'
-                              ? SWITCH_DEMOS[demoId]
-                              : component.slug === 'text-field'
-                                ? TEXT_FIELD_DEMOS[demoId]
-                                : component.slug === 'transfer-list'
-                                  ? TRANSFER_LIST_DEMOS[demoId]
-                                  : component.slug === 'toggle-button'
-                                    ? TOGGLE_BUTTON_DEMOS[demoId]
-                                    : component.slug === 'avatar'
-                                      ? AVATAR_DEMOS[demoId]
-                                      : component.slug === 'badge'
-                                        ? BADGE_DEMOS[demoId]
-                                        : component.slug === 'chip'
-                                          ? CHIP_DEMOS[demoId]
-                                          : component.slug === 'divider'
-                                            ? DIVIDER_DEMOS[demoId]
-                                            : component.slug === 'icons'
-                                              ? ICONS_DEMOS[demoId]
-                                              : component.slug === 'icon-glyph'
-                                                ? MATERIAL_ICONS_DEMOS[demoId]
-                                                : component.slug === 'list'
-                                                  ? LIST_DEMOS[demoId]
-                                                    : component.slug === 'table'
-                                                      ? TABLE_DEMOS[demoId]
-                                                        : component.slug === 'tooltip'
-                                                          ? TOOLTIP_DEMOS[demoId]
-                                                            : component.slug === 'typography'
-                                                              ? TYPOGRAPHY_DEMOS[demoId]
-                                                                : component.slug === 'alert'
-                                                                  ? ALERT_DEMOS[demoId]
-                                                                    : component.slug === 'dialog'
-                                                                      ? DIALOG_DEMOS[demoId]
-                                                                      : component.slug === 'progress'
-                                                                        ? PROGRESS_DEMOS[demoId]
-                                                                          : component.slug === 'snackbar'
-                                                                            ? SNACKBAR_DEMOS[demoId]
-                                                                              : component.slug === 'skeleton'
-                                                                                ? SKELETON_DEMOS[demoId]
-                                                                                  : component.slug === 'accordion'
-                                                                                    ? ACCORDION_DEMOS[demoId]
-                                                                                      : component.slug === 'app-bar'
-                                                                                        ? APP_BAR_DEMOS[demoId]
-                                                                                          : component.slug === 'card'
-                                                                                            ? CARD_DEMOS[demoId]
-                                                                                              : component.slug === 'paper'
-                                                                                                ? PAPER_DEMOS[demoId]
-                                                                                                  : component.slug === 'popover'
-                                                                                                    ? POPOVER_DEMOS[demoId]
-                                                                                                      : component.slug === 'bottom-navigation'
-                                                                                                        ? BOTTOM_NAVIGATION_DEMOS[demoId]
-                                                                                                          : component.slug === 'breadcrumbs'
-                                                                                                            ? BREADCRUMBS_DEMOS[demoId]
-                                                                                                              : component.slug === 'drawer'
-                                                                                                                ? DRAWER_DEMOS[demoId]
-                                                                                                                  : component.slug === 'link'
-                                                                                                                    ? LINK_DEMOS[demoId]
-                                                                                                                      : component.slug === 'menu'
-                                                                                                                        ? MENU_DEMOS[demoId]
-                                                                                                                              : component.slug === 'pagination'
-                                                                                                                                ? PAGINATION_DEMOS[demoId]
-                                                                                                                                  : component.slug === 'speed-dial'
-                                                                                                                                    ? SPEED_DIAL_DEMOS[demoId]
-                                                                                                                                      : component.slug === 'stepper'
-                                                                                                                                        ? STEPPER_DEMOS[demoId]
-                                                                                                                                          : component.slug === 'tabs'
-                                                                                                                                            ? TABS_DEMOS[demoId]
-                                                                                                                                              : component.slug === 'click-away-listener'
-                                                                                                                                                ? CLICK_AWAY_DEMOS[demoId]
-                                                                                                                                                  : component.slug === 'modal'
-                                                                                                                                                    ? MODAL_DEMOS[demoId]
-                                                                                                                                                      : component.slug === 'popper'
-                                                                                                                                                        ? POPPER_DEMOS[demoId]
-                                                                                                                                                          : component.slug === 'portal'
-                                                                                                                                                            ? PORTAL_DEMOS[demoId]
-            : undefined;
+        const demo = DEMO_MAP[component.slug]?.[demoId];
         return (
           <DemoPanel
             key={demoId}

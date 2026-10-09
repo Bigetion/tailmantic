@@ -7,7 +7,6 @@ import './radio-group.js';
 import './rating.js';
 import './select.js';
 import './slider.js';
-import './switch.js';
 import './text-field.js';
 import './transfer-list.js';
 import './toggle-button.js';

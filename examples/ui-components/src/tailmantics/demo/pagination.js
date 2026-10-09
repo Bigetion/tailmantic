@@ -32,18 +32,6 @@ register('pagination-outlined-demo', {
   base: { tw: 'rounded-lg border border-[#303a49] bg-[#111720] px-2 py-3 sm:p-4' },
 });
 
-register('rgi-pagination-outlined .pagination-button', {
-  base: { tw: 'border border-[#354154] bg-[#171f2c] hover:border-[#536985] hover:bg-[#202b3a]' },
-});
-
-register('rgi-pagination-outlined .pagination-button-active', {
-  base: { tw: 'border-[#789fe8] bg-[#263954] text-[#d2e0ff] hover:border-[#789fe8] hover:bg-[#263954]' },
-});
-
-register('rgi-pagination-outlined .pagination-button:disabled', {
-  base: { tw: 'border-[#2d3643] bg-[#141a23]' },
-});
-
 register('pagination-table-header', {
   base: { tw: 'flex flex-wrap items-end justify-between gap-3' },
 });
