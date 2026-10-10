@@ -8,7 +8,8 @@ import {
   History,
   Save,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useCallback, useId, useRef, useState } from 'react';
+import { useClickAway } from './FloatingSurface.jsx';
 
 const VIEWS = [
   { label: 'Preview', icon: Eye },
@@ -22,10 +23,16 @@ const ALIGNMENTS = [
 ];
 
 export default function ButtonGroup() {
+  const menuId = useId();
+  const groupRef = useRef(null);
+  const toggleRef = useRef(null);
   const [view, setView] = useState('Preview');
   const [alignment, setAlignment] = useState('Align left');
   const [menuOpen, setMenuOpen] = useState(false);
   const [announcement, setAnnouncement] = useState('');
+  const dismissMenu = useCallback(() => setMenuOpen(false), []);
+
+  useClickAway(menuOpen, groupRef, groupRef, dismissMenu);
 
   return (
     <>
@@ -81,13 +88,24 @@ export default function ButtonGroup() {
       </section>
       <section className="demo-section">
         <span className="demo-section-title">Split action menu</span>
-        <div className="demo-button-group-split">
+        <fieldset
+          className="demo-button-group-split"
+          ref={groupRef}
+          onKeyDown={(event) => {
+            if (event.key === 'Escape' && menuOpen) {
+              event.preventDefault();
+              dismissMenu();
+              toggleRef.current?.focus();
+            }
+          }}
+        >
+          <legend className="sr-only">Save actions</legend>
           <button
             type="button"
             className="demo-button-group-primary"
             onClick={() => {
               setAnnouncement('Draft saved.');
-              setMenuOpen(false);
+              dismissMenu();
             }}
           >
             <Save size={14} /> Save draft
@@ -97,27 +115,30 @@ export default function ButtonGroup() {
             className="demo-button-group-toggle"
             aria-label="More save options"
             aria-expanded={menuOpen}
+            aria-controls={menuId}
+            ref={toggleRef}
             onClick={() => setMenuOpen((value) => !value)}
           >
             <ChevronDown size={14} />
           </button>
           {menuOpen && (
-            <div className="demo-button-group-menu">
+            <fieldset className="demo-button-group-menu" id={menuId}>
+              <legend className="sr-only">More save options</legend>
               {['Publish now', 'Schedule publish'].map((action) => (
                 <button
                   type="button"
                   key={action}
                   onClick={() => {
                     setAnnouncement(`${action} selected.`);
-                    setMenuOpen(false);
+                    dismissMenu();
                   }}
                 >
                   {action}
                 </button>
               ))}
-            </div>
+            </fieldset>
           )}
-        </div>
+        </fieldset>
         <span className="demo-note" role="status">
           {announcement || 'Save now or choose another publishing action.'}
         </span>
