@@ -1,3 +1,4 @@
+import { X } from 'lucide-react';
 import { useEffect, useId, useState } from 'react';
 import { Button } from '../components/Button.jsx';
 
@@ -35,7 +36,7 @@ function Dialog({
           aria-label="Close dialog"
           onClick={onClose}
         >
-          ×
+          <X size={16} aria-hidden="true" />
         </button>
         <h2 className="demo-dialog-title" id={`${id}-title`}>
           {title}

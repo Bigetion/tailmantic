@@ -172,20 +172,20 @@ register('demo-alert', {
 });
 register.group('demo-alert', {
   icon: {
-    tw: 'flex size-5 shrink-0 items-center justify-center rounded-full border border-current text-xs font-bold',
+    tw: 'mt-0.5 flex size-5 shrink-0 items-center justify-center',
   },
-  copy: { tw: 'flex flex-col gap-1' },
-  title: { tw: 'font-semibold' },
+  copy: { tw: 'flex min-w-0 flex-1 flex-col gap-1' },
+  title: { tw: 'font-semibold leading-snug' },
 });
 register.all({
   'demo-alert-outlined': {
-    tw: 'bg-transparent',
+    tw: '!bg-transparent',
   },
   'demo-alert-action': {
-    tw: 'mt-2 w-fit cursor-pointer border-0 bg-transparent p-0 text-xs font-semibold underline underline-offset-2',
+    tw: 'mt-2 inline-flex w-fit cursor-pointer items-center rounded-md border border-current/25 bg-transparent px-2.5 py-1.5 text-xs font-semibold text-inherit transition-colors hover:bg-white/[.06] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current',
   },
   'demo-alert-dismiss': {
-    tw: 'ml-auto cursor-pointer border-0 bg-transparent text-lg leading-none text-current opacity-70 hover:opacity-100',
+    tw: 'ml-auto inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-0 text-inherit opacity-70 transition-colors hover:bg-white/[.08] hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-current',
   },
   'demo-alert-restore': {
     tw: 'w-fit cursor-pointer rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs text-[var(--text)] hover:border-[var(--rgi-blue)]',

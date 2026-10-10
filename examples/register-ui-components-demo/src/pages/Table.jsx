@@ -1,3 +1,4 @@
+import { ArrowDown, ArrowUp } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
 const INITIAL_ROWS = [
@@ -95,7 +96,18 @@ export default function TableDemo() {
                 className="demo-table-sort"
                 onClick={() => setSortAscending((value) => !value)}
               >
-                Project {sortAscending ? '↑' : '↓'}
+                Project
+                {sortAscending ? (
+                  <>
+                    <ArrowUp size={14} aria-hidden="true" />
+                    <span className="sr-only">Sorted ascending</span>
+                  </>
+                ) : (
+                  <>
+                    <ArrowDown size={14} aria-hidden="true" />
+                    <span className="sr-only">Sorted descending</span>
+                  </>
+                )}
               </button>
             </th>
             <th>Status</th>

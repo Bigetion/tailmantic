@@ -1,4 +1,4 @@
-import { Check, ChevronDown, Command, Search, X } from 'lucide-react';
+import { Check, ChevronDown, Command, Plus, Search, X } from 'lucide-react';
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import FloatingSurface, { useClickAway } from '../components/FloatingSurface.jsx';
 
@@ -293,7 +293,9 @@ export default function Autocomplete() {
                 })
               }
             >
-              <span className="demo-autocomplete-option-mark">+</span>
+              <span className="demo-autocomplete-option-mark">
+                <Plus size={14} aria-hidden="true" />
+              </span>
               <span className="demo-autocomplete-option-copy">
                 <strong>Add “{query.trim()}”</strong>
                 <small>Create a custom value</small>

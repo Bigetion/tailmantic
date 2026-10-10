@@ -1,3 +1,4 @@
+import { Check } from 'lucide-react';
 import { useEffect, useId, useRef, useState } from 'react';
 import { cx } from 'tailmantic';
 
@@ -68,15 +69,7 @@ function Checkbox({
           {indeterminate ? (
             <span className="demo-checkbox-dash" />
           ) : isChecked ? (
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path
-                d="m3.5 8.2 3 3 6-6.2"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <Check size={13} strokeWidth={2.5} aria-hidden="true" />
           ) : null}
         </span>
       </span>
