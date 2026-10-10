@@ -1,6 +1,7 @@
 import { Bookmark, Heart } from 'lucide-react';
 import { useState } from 'react';
 import CardComponent from '../components/Card.jsx';
+import Chip from '../components/Chip.jsx';
 
 export default function CardDemo() {
   const [liked, setLiked] = useState(false);
@@ -11,8 +12,8 @@ export default function CardDemo() {
         <h2>Project overview</h2>
         <p>Reusable interface components with consistent styles.</p>
         <div className="demo-row">
-          <span className="demo-chip demo-chip-success">Active</span>
-          <span className="demo-badge demo-badge-primary">12 updates</span>
+          <Chip color="success">Active</Chip>
+          <Chip color="primary">12 updates</Chip>
         </div>
       </CardComponent>
       <CardComponent variant="outlined">

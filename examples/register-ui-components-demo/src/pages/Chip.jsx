@@ -1,47 +1,6 @@
-import { Check, X } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { useState } from 'react';
-
-function Chip({
-  children,
-  color = 'default',
-  outlined = false,
-  disabled = false,
-  selected,
-  onClick,
-  onDelete,
-  leading,
-}) {
-  return (
-    <span
-      className={`demo-chip demo-chip-${color}${outlined ? ' demo-chip-outlined' : ''}${disabled ? ' demo-chip-disabled' : ''}${selected ? ' demo-chip-selected' : ''}`}
-    >
-      {leading}
-      {onClick ? (
-        <button
-          type="button"
-          className="demo-chip-select"
-          disabled={disabled}
-          aria-pressed={selected}
-          onClick={onClick}
-        >
-          {children}
-        </button>
-      ) : (
-        children
-      )}
-      {onDelete && (
-        <button
-          type="button"
-          className="demo-chip-delete"
-          aria-label={`Remove ${children}`}
-          onClick={onDelete}
-        >
-          <X size={12} />
-        </button>
-      )}
-    </span>
-  );
-}
+import Chip from '../components/Chip.jsx';
 
 export default function ChipDemo() {
   const [filters, setFilters] = useState(['Design']);
@@ -56,7 +15,7 @@ export default function ChipDemo() {
       <div className="demo-row">
         <Chip color="primary">Design</Chip>
         <Chip color="success">Ready</Chip>
-        <Chip outlined>Outlined</Chip>
+        <Chip variant="outlined">Outlined</Chip>
         <Chip disabled>Disabled</Chip>
       </div>
       <fieldset className="demo-chip-group">
@@ -67,8 +26,8 @@ export default function ChipDemo() {
             color="primary"
             selected={filters.includes(filter)}
             onClick={() => toggleFilter(filter)}
+            icon={filters.includes(filter) ? <Check size={12} /> : null}
           >
-            {filters.includes(filter) && <Check size={12} />}
             {filter}
           </Chip>
         ))}
@@ -83,7 +42,7 @@ export default function ChipDemo() {
             {tag}
           </Chip>
         ))}
-        <Chip color="success" leading={<Check size={12} />}>
+        <Chip color="success" icon={<Check size={12} />}>
           Compact
         </Chip>
       </fieldset>
