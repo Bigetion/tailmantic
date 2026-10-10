@@ -1,31 +1,13 @@
 import { FileText, Heart, Image, Mail, Plus, X } from 'lucide-react';
 import { useEffect, useId, useRef, useState } from 'react';
 import { cx } from 'tailmantic';
+import FloatingActionButtonComponent from '../components/FloatingActionButton.jsx';
 
 const ACTIONS = [
   { label: 'Upload image', icon: Image },
   { label: 'New document', icon: FileText },
   { label: 'Send email', icon: Mail },
 ];
-
-function FabButton({ children, className, label, buttonRef, size, variant = 'primary', ...props }) {
-  return (
-    <button
-      {...props}
-      ref={buttonRef}
-      className={cx(
-        'demo-fab',
-        variant !== 'primary' && `demo-fab-${variant}`,
-        size && `demo-fab-${size}`,
-        className,
-      )}
-      type="button"
-      aria-label={label}
-    >
-      {children}
-    </button>
-  );
-}
 
 export default function FloatingActionButton() {
   const actionsId = useId();
@@ -63,7 +45,7 @@ export default function FloatingActionButton() {
             <span>Create a draft or choose another common action.</span>
           </div>
           <div className="demo-fab-examples">
-            <FabButton
+            <FloatingActionButtonComponent
               label="Create draft"
               onClick={() => {
                 setCreated((count) => count + 1);
@@ -71,22 +53,22 @@ export default function FloatingActionButton() {
               }}
             >
               <Plus size={21} aria-hidden="true" />
-            </FabButton>
-            <FabButton
+            </FloatingActionButtonComponent>
+            <FloatingActionButtonComponent
               label="Add to favorites"
               variant="secondary"
               onClick={() => setPrimaryAnnouncement('Added to favorites.')}
             >
               <Heart size={18} aria-hidden="true" />
-            </FabButton>
-            <FabButton
+            </FloatingActionButtonComponent>
+            <FloatingActionButtonComponent
               label="Compose a message"
               variant="extended"
               onClick={() => setPrimaryAnnouncement('Message composer opened.')}
             >
               <Mail size={16} aria-hidden="true" />
               Compose
-            </FabButton>
+            </FloatingActionButtonComponent>
           </div>
         </div>
         <span className="demo-note" role="status" aria-live="polite">
@@ -100,15 +82,15 @@ export default function FloatingActionButton() {
         <span className="demo-section-title">Sizes</span>
         <fieldset className="demo-fab-size-group">
           <legend className="sr-only">Floating action button sizes</legend>
-          <FabButton label="Create, small size" size="small">
+          <FloatingActionButtonComponent label="Create, small size" size="small">
             <Plus size={17} aria-hidden="true" />
-          </FabButton>
-          <FabButton label="Create, default size">
+          </FloatingActionButtonComponent>
+          <FloatingActionButtonComponent label="Create, default size">
             <Plus size={21} aria-hidden="true" />
-          </FabButton>
-          <FabButton label="Create, large size" size="large">
+          </FloatingActionButtonComponent>
+          <FloatingActionButtonComponent label="Create, large size" size="large">
             <Plus size={25} aria-hidden="true" />
-          </FabButton>
+          </FloatingActionButtonComponent>
           <span className="demo-note">Small · Default · Large</span>
         </fieldset>
       </section>
@@ -137,11 +119,11 @@ export default function FloatingActionButton() {
               </button>
             ))}
           </fieldset>
-          <FabButton
+          <FloatingActionButtonComponent
             label={speedDialOpen ? 'Close quick actions' : 'Open quick actions'}
             aria-expanded={speedDialOpen}
             aria-controls={actionsId}
-            buttonRef={triggerRef}
+            ref={triggerRef}
             onClick={() => {
               setQuickActionAnnouncement('');
               setSpeedDialOpen((open) => !open);
@@ -152,7 +134,7 @@ export default function FloatingActionButton() {
             ) : (
               <Plus size={21} aria-hidden="true" />
             )}
-          </FabButton>
+          </FloatingActionButtonComponent>
         </div>
         <span className="demo-note" role="status" aria-live="polite">
           {quickActionAnnouncement ||
