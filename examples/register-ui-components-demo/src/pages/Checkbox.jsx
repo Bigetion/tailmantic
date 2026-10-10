@@ -1,6 +1,5 @@
-import { Check } from 'lucide-react';
-import { useEffect, useId, useRef, useState } from 'react';
-import { cx } from 'tailmantic';
+import { useState } from 'react';
+import Checkbox from '../components/Checkbox.jsx';
 
 const PREFERENCES = [
   {
@@ -19,71 +18,6 @@ const PREFERENCES = [
     description: 'Invitations to product sessions and community events.',
   },
 ];
-
-function Checkbox({
-  checked,
-  className,
-  defaultChecked = false,
-  description,
-  disabled = false,
-  indeterminate = false,
-  label,
-  onChange,
-}) {
-  const descriptionId = useId();
-  const inputRef = useRef(null);
-  const [internalChecked, setInternalChecked] = useState(defaultChecked);
-  const isChecked = checked ?? internalChecked;
-
-  useEffect(() => {
-    if (inputRef.current) inputRef.current.indeterminate = indeterminate;
-  }, [indeterminate]);
-
-  function handleChange(event) {
-    if (checked === undefined) setInternalChecked(event.currentTarget.checked);
-    onChange?.(event);
-  }
-
-  return (
-    <label className={cx('demo-checkbox', disabled && 'demo-checkbox-disabled', className)}>
-      <span className="demo-checkbox-control">
-        <input
-          ref={inputRef}
-          className="demo-checkbox-input"
-          type="checkbox"
-          checked={isChecked}
-          disabled={disabled}
-          aria-label={label}
-          aria-describedby={description ? descriptionId : undefined}
-          aria-checked={indeterminate ? 'mixed' : isChecked}
-          onChange={handleChange}
-        />
-        <span
-          className={cx(
-            'demo-checkbox-indicator',
-            isChecked && 'demo-checkbox-checked',
-            indeterminate && 'demo-checkbox-indeterminate',
-          )}
-          aria-hidden="true"
-        >
-          {indeterminate ? (
-            <span className="demo-checkbox-dash" />
-          ) : isChecked ? (
-            <Check size={13} strokeWidth={2.5} aria-hidden="true" />
-          ) : null}
-        </span>
-      </span>
-      <span className="demo-checkbox-copy">
-        <span className="demo-checkbox-label">{label}</span>
-        {description && (
-          <span className="demo-checkbox-description" id={descriptionId}>
-            {description}
-          </span>
-        )}
-      </span>
-    </label>
-  );
-}
 
 export default function CheckboxDemo() {
   const [basicChecked, setBasicChecked] = useState(true);

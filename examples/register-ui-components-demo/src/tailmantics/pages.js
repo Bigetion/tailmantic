@@ -435,7 +435,7 @@ register.all({
 });
 
 // checkbox.js
-register.group('demo-checkbox', {
+register.group('ui-checkbox', {
   root: {
     tw: 'inline-flex w-fit cursor-pointer items-start gap-3 text-xs text-[var(--text)] has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-45',
   },
