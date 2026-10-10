@@ -1,10 +1,4 @@
-export function Divider({ orientation = 'horizontal', inset = false }) {
-  return (
-    <hr
-      className={`demo-divider${orientation === 'vertical' ? ' demo-divider-vertical' : ''}${inset ? ' demo-divider-inset' : ''}`}
-    />
-  );
-}
+import Divider from '../components/Divider.jsx';
 
 export default function DividerDemo() {
   return (
