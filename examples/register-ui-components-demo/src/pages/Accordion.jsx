@@ -1,6 +1,6 @@
-import { ChevronDown } from 'lucide-react';
-import { useId, useState } from 'react';
-import { cx } from 'tailmantic';
+import { useState } from 'react';
+import Accordion from '../components/Accordion.jsx';
+import AccordionGroup from '../components/AccordionGroup.jsx';
 
 const ITEMS = [
   {
@@ -17,19 +17,18 @@ const ITEMS = [
   },
 ];
 
-function AccordionGroup({ multiple = false, disabledIndex = -1, label }) {
-  const id = useId();
-  const [expanded, setExpanded] = useState(multiple ? [0] : [0]);
-  const allExpanded = expanded.length === ITEMS.length - (disabledIndex >= 0 ? 1 : 0);
+function AccordionShowcaseGroup({ multiple = false, disabledIndex = -1, label }) {
+  const [expanded, setExpanded] = useState([0]);
+  const enabledItems = ITEMS.map((_, index) => index).filter((index) => index !== disabledIndex);
+  const allExpanded = enabledItems.every((index) => expanded.includes(index));
 
-  function toggle(index) {
-    if (multiple) {
-      setExpanded((current) =>
-        current.includes(index) ? current.filter((item) => item !== index) : [...current, index],
-      );
-    } else {
-      setExpanded((current) => (current.includes(index) ? [] : [index]));
-    }
+  function toggle(index, isExpanded) {
+    setExpanded((current) => {
+      if (multiple) {
+        return isExpanded ? [...current, index] : current.filter((item) => item !== index);
+      }
+      return isExpanded ? [index] : [];
+    });
   }
 
   return (
@@ -37,66 +36,35 @@ function AccordionGroup({ multiple = false, disabledIndex = -1, label }) {
       {multiple && (
         <div className="demo-accordion-toolbar">
           <span>{label}</span>
-          <button
-            type="button"
-            onClick={() =>
-              setExpanded(
-                allExpanded
-                  ? []
-                  : ITEMS.map((_, index) => index).filter((index) => index !== disabledIndex),
-              )
-            }
-          >
+          <button type="button" onClick={() => setExpanded(allExpanded ? [] : enabledItems)}>
             {allExpanded ? 'Collapse all' : 'Expand all'}
           </button>
         </div>
       )}
-      <div className="demo-accordion">
+      <AccordionGroup>
         {ITEMS.map((item, index) => {
-          const open = expanded.includes(index);
           const disabled = disabledIndex === index;
-          const triggerId = `${id}-trigger-${index}`;
-          const panelId = `${id}-panel-${index}`;
           return (
-            <section
-              className={cx('demo-accordion-item', disabled && 'demo-accordion-item-disabled')}
+            <Accordion
               key={item.title}
-            >
-              <h3 className="demo-accordion-heading">
-                <button
-                  type="button"
-                  className="demo-accordion-trigger"
-                  id={triggerId}
-                  aria-expanded={open}
-                  aria-controls={panelId}
-                  disabled={disabled}
-                  onClick={() => toggle(index)}
-                >
-                  <span className="demo-accordion-index">{String(index + 1).padStart(2, '0')}</span>
+              title={
+                <>
+                  <span className="demo-accordion-index" aria-hidden="true">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
                   <span>{item.title}</span>
-                  {disabled ? (
-                    <span className="demo-accordion-unavailable">Unavailable</span>
-                  ) : (
-                    <ChevronDown
-                      className={cx('demo-accordion-icon', open && 'demo-accordion-icon-open')}
-                      size={16}
-                      aria-hidden="true"
-                    />
-                  )}
-                </button>
-              </h3>
-              <section
-                className="demo-accordion-panel"
-                id={panelId}
-                aria-labelledby={triggerId}
-                hidden={!open}
-              >
-                {item.content}
-              </section>
-            </section>
+                  {disabled && <span className="demo-accordion-unavailable">Unavailable</span>}
+                </>
+              }
+              expanded={expanded.includes(index)}
+              disabled={disabled}
+              onChange={(_, isExpanded) => toggle(index, isExpanded)}
+            >
+              {item.content}
+            </Accordion>
           );
         })}
-      </div>
+      </AccordionGroup>
       <span className="demo-note">
         {disabledIndex >= 0
           ? 'The middle panel is disabled and cannot be opened.'
@@ -108,20 +76,31 @@ function AccordionGroup({ multiple = false, disabledIndex = -1, label }) {
   );
 }
 
-export default function AccordionDemo() {
+export default function AccordionPage() {
   return (
     <>
       <section className="demo-section">
-        <span className="demo-section-title">Single panel</span>
-        <AccordionGroup />
+        <span className="demo-section-title">Standalone component</span>
+        <AccordionGroup>
+          <Accordion title="What is Tailmantic?" defaultExpanded>
+            Tailmantic compiles registered Tailwind utilities into reusable component styles.
+          </Accordion>
+        </AccordionGroup>
+        <span className="demo-note">
+          This instance manages its own expanded state with the defaultExpanded prop.
+        </span>
       </section>
       <section className="demo-section">
-        <span className="demo-section-title">Controlled multiple panels</span>
-        <AccordionGroup multiple label="Workspace help" />
+        <span className="demo-section-title">Single-panel group</span>
+        <AccordionShowcaseGroup />
+      </section>
+      <section className="demo-section">
+        <span className="demo-section-title">Multiple panels</span>
+        <AccordionShowcaseGroup multiple label="Workspace help" />
       </section>
       <section className="demo-section">
         <span className="demo-section-title">Disabled state</span>
-        <AccordionGroup disabledIndex={1} />
+        <AccordionShowcaseGroup disabledIndex={1} />
       </section>
     </>
   );

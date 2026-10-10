@@ -88,9 +88,6 @@ register.all({
   'demo-card': {
     tw: 'flex flex-col gap-3 p-5',
   },
-  'demo-accordion': {
-    tw: 'flex w-full max-w-[700px] flex-col gap-2',
-  },
   'demo-note': {
     tw: 'text-xs leading-relaxed text-[var(--muted)]',
   },

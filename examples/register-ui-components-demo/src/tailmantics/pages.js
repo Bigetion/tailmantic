@@ -114,22 +114,25 @@ register.all({
 });
 
 // accordion.js
-register.group('demo-accordion', {
-  root: {
+register.all({
+  'demo-accordion-group': {
     tw: 'w-full max-w-[700px] overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--panel)]',
   },
-  item: { tw: 'border-b border-[var(--border)] last:border-b-0' },
-  heading: { tw: 'm-0' },
-  trigger: {
-    tw: 'flex min-h-12 w-full cursor-pointer items-center justify-between gap-4 border-0 bg-transparent px-4 py-3 text-left text-sm font-medium text-[var(--text)] hover:bg-white/[.03] focus-visible:outline-2 focus-visible:outline-[var(--rgi-blue)]',
+  'demo-accordion-item': {
+    tw: 'border-b border-[var(--border)] last:border-b-0',
   },
-  icon: { tw: 'text-[var(--muted)] transition-transform duration-150' },
-  panel: {
+  'demo-accordion-heading': { tw: 'm-0' },
+  'demo-accordion-title': { tw: 'flex min-w-0 flex-1 items-center gap-3' },
+  'demo-accordion-trigger': {
+    tw: 'flex min-h-12 w-full cursor-pointer items-center justify-between gap-4 border-0 bg-transparent px-4 py-3 text-left text-sm font-medium text-[var(--text)] hover:bg-white/[.03] focus-visible:outline-2 focus-visible:outline-[var(--rgi-blue)] disabled:cursor-not-allowed disabled:opacity-50',
+  },
+  'demo-accordion-icon': { tw: 'text-[var(--muted)] transition-transform duration-150' },
+  'demo-accordion-panel': {
     tw: 'border-t border-[var(--border)] px-4 py-3 text-sm leading-relaxed text-[var(--muted)]',
   },
+  'demo-accordion-panel[hidden]': { tw: 'hidden' },
 });
 register('demo-accordion-icon-open', { base: { tw: 'rotate-180 text-[var(--rgi-blue)]' } });
-register('demo-accordion-panel[hidden]', { base: { tw: 'hidden' } });
 register.all({
   'demo-accordion-example': {
     tw: 'flex w-full max-w-[700px] flex-col gap-3',
