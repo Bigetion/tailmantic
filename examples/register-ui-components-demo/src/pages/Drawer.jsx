@@ -1,5 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import DrawerComponent from '../components/Drawer.jsx';
 
 export default function Drawer() {
   const [open, setOpen] = useState(false);
@@ -8,10 +9,7 @@ export default function Drawer() {
 
   function renderDrawerContent(persistentMode = false) {
     return (
-      <aside
-        className={`demo-drawer${persistentMode ? ' demo-drawer-persistent' : ''}`}
-        aria-label="Workspace navigation"
-      >
+      <>
         <div className="demo-drawer-heading">
           <strong>Workspace</strong>
           {!persistentMode && (
@@ -34,7 +32,7 @@ export default function Drawer() {
             {item}
           </button>
         ))}
-      </aside>
+      </>
     );
   }
 
@@ -54,7 +52,14 @@ export default function Drawer() {
       </button>
       {persistent ? (
         <div className="demo-drawer-layout">
-          {renderDrawerContent(true)}
+          <DrawerComponent
+            open
+            variant="persistent"
+            className="demo-drawer demo-drawer-persistent"
+            aria-label="Workspace navigation"
+          >
+            {renderDrawerContent(true)}
+          </DrawerComponent>
           <div className="demo-drawer-content">
             <strong>{selected}</strong>
             <span>Page content remains visible beside a persistent drawer.</span>
@@ -65,17 +70,14 @@ export default function Drawer() {
           <Menu size={16} /> Open temporary drawer
         </button>
       )}
-      {open && !persistent && (
-        <div className="demo-drawer-backdrop">
-          <button
-            type="button"
-            className="demo-drawer-dismiss"
-            aria-label="Close drawer"
-            onClick={() => setOpen(false)}
-          />
-          {renderDrawerContent()}
-        </div>
-      )}
+      <DrawerComponent
+        open={open && !persistent}
+        className="demo-drawer"
+        aria-label="Workspace navigation"
+        onClose={() => setOpen(false)}
+      >
+        {renderDrawerContent()}
+      </DrawerComponent>
       <span className="demo-note">
         Temporary drawers dismiss on backdrop or selection; persistent drawers stay beside the page.
       </span>

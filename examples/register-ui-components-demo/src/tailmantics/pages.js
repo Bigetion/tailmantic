@@ -605,14 +605,22 @@ register.all({
   'demo-drawer-trigger': {
     tw: 'inline-flex cursor-pointer items-center gap-2 rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs font-medium text-[var(--text)] hover:border-[var(--rgi-blue)]',
   },
-  'demo-drawer-backdrop': {
-    tw: 'fixed inset-0 z-40 bg-black/60',
+  'ui-drawer-root': { tw: 'contents' },
+  'ui-drawer-temporary': { tw: 'contents' },
+  'ui-drawer-persistent': { tw: 'contents' },
+  'ui-drawer-open': { tw: 'visible' },
+  'ui-drawer-backdrop': {
+    tw: 'fixed inset-0 z-40 cursor-default border-0 bg-black/60 p-0',
   },
-  'demo-drawer-dismiss': {
-    tw: 'absolute inset-0 h-full w-full cursor-default border-0 bg-transparent',
+  'ui-drawer': {
+    tw: 'z-50 flex flex-col overflow-auto bg-[var(--panel)] p-5 text-[var(--text)] shadow-2xl',
   },
+  'ui-drawer-surface-temporary': {
+    tw: 'fixed inset-y-0 left-0 h-dvh w-[min(18rem,85vw)]',
+  },
+  'ui-drawer[hidden]': { tw: 'hidden' },
   'demo-drawer': {
-    tw: 'relative z-10 flex h-full w-72 flex-col gap-1 bg-[var(--panel)] p-5 shadow-2xl',
+    tw: 'flex flex-col gap-1',
   },
   'demo-drawer-heading': {
     tw: 'mb-4 flex items-center justify-between border-b border-[var(--border)] pb-4 text-sm text-white',
