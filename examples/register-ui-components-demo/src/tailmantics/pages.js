@@ -252,14 +252,23 @@ register('demo-badge', {
   },
 });
 register.all({
-  'demo-badge-anchor': {
-    tw: 'relative inline-flex items-center rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs text-[var(--text-muted)]',
+  'demo-badge-root': {
+    tw: 'relative inline-flex',
   },
-  'demo-badge-anchor .demo-badge': {
-    tw: 'absolute -right-2 -top-2',
+  'demo-badge-standard': {
+    tw: 'absolute -right-2 -top-2 z-10 h-5 min-w-5 justify-center !px-1.5 !py-0 text-[10px] leading-4 shadow-sm',
   },
   'demo-badge-dot': {
-    tw: 'absolute -right-1 -top-1 size-2.5 rounded-full border-2 border-[var(--panel)] bg-[var(--rgi-error)]',
+    tw: 'absolute -right-1 -top-1 z-10 !size-2.5 min-w-0 rounded-full border-2 border-[var(--panel)] !p-0',
+  },
+  'demo-badge-overlap-circular': {
+    tw: '-right-1 -top-1',
+  },
+  'demo-badge-overlap-rectangular': {
+    tw: '-right-2 -top-2',
+  },
+  'demo-badge-anchor': {
+    tw: 'relative inline-flex items-center rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs text-[var(--text-muted)]',
   },
   'demo-badge-control': {
     tw: 'w-fit cursor-pointer rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs text-[var(--text-muted)] hover:border-[var(--rgi-blue)]',
