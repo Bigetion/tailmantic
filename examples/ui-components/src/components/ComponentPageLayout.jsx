@@ -4,8 +4,7 @@ import { componentCatalog } from '../data/components.js';
 import DemoPanel from './DemoPanel.jsx';
 
 const IMPLEMENTATION_ROWS = [
-  ['Page', 'src/pages/components/{slug}/Page.jsx', 'Dedicated React Router page.'],
-  ['Component', 'src/components/ui/{slug}/{name}.jsx', 'Dedicated component page entry point.'],
+  ['Page', 'src/pages/components/{slug}/Page.jsx', 'Self-contained React Router page with inline demo logic.'],
   ['Styles', 'src/tailmantics/demo/{slug}.js', 'Component-specific styles and variants.'],
   ['Examples', '{count} live examples', 'Rendered in the examples section above.'],
 ];
@@ -15,7 +14,7 @@ export default function ComponentPageLayout({ component, children }) {
   const previous = componentCatalog[(index - 1 + componentCatalog.length) % componentCatalog.length];
   const next = componentCatalog[(index + 1) % componentCatalog.length];
   const importName = component.name.replace(/\s+/g, '');
-  const importCode = `import ${importName} from './components/ui/${component.slug}/${importName}.jsx';\n\nexport default function ${importName}Example() {\n  return <${importName} />;\n}`;
+  const importCode = `import { ${importName} } from '@tailmantic/ui-components';\n\nexport default function ${importName}Example() {\n  return <${importName} />;\n}`;
   const implementationRows = IMPLEMENTATION_ROWS.map(([area, source, purpose]) => [
     area,
     source
@@ -24,13 +23,6 @@ export default function ComponentPageLayout({ component, children }) {
       .replace('{count}', component.demos.length),
     purpose,
   ]);
-  if (['chip', 'divider', 'icons', 'icon-glyph', 'list', 'table', 'tooltip', 'typography', 'alert', 'dialog', 'progress', 'snackbar', 'skeleton', 'accordion', 'app-bar', 'card', 'paper', 'popover', 'bottom-navigation', 'breadcrumbs', 'drawer', 'link', 'menu', 'pagination', 'speed-dial', 'stepper', 'tabs', 'click-away-listener', 'modal', 'popper', 'portal'].includes(component.slug)) {
-    implementationRows.splice(2, 0, [
-      'Demo',
-      `src/components/ui/${component.slug}/${importName}Demo.jsx`,
-      'Interactive examples rendered in the showcase above.',
-    ]);
-  }
 
   return (
     <div className="content-width component-page">
