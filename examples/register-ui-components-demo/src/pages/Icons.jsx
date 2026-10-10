@@ -1,14 +1,15 @@
 import { Bell, Check, CircleHelp, Home, Search, Settings, UserRound } from 'lucide-react';
 import { useState } from 'react';
+import IconButton from '../components/IconButton.jsx';
 
 const ICONS = [
-  { label: 'Home', icon: Home },
-  { label: 'Search', icon: Search },
-  { label: 'Settings', icon: Settings },
-  { label: 'Profile', icon: UserRound },
-  { label: 'Alerts', icon: Bell },
-  { label: 'Help', icon: CircleHelp },
-  { label: 'Done', icon: Check },
+  { label: 'Home', icon: Home, color: 'primary' },
+  { label: 'Search', icon: Search, color: 'primary' },
+  { label: 'Settings', icon: Settings, color: 'warning' },
+  { label: 'Profile', icon: UserRound, color: 'primary' },
+  { label: 'Alerts', icon: Bell, color: 'danger' },
+  { label: 'Help', icon: CircleHelp, color: 'primary' },
+  { label: 'Done', icon: Check, color: 'success' },
 ];
 
 export default function Icons() {
@@ -17,19 +18,16 @@ export default function Icons() {
     <section className="demo-section">
       <span className="demo-section-title">Icon set</span>
       <div className="demo-icons-grid">
-        {ICONS.map(({ label, icon: Icon }) => (
-          <button
-            className={`demo-icons-item${selected === label ? ' demo-icons-item-selected' : ''}`}
+        {ICONS.map(({ label, icon, color }) => (
+          <IconButton
             key={label}
-            type="button"
-            aria-pressed={selected === label}
+            color={color}
+            icon={icon}
+            selected={selected === label}
             onClick={() => setSelected(label)}
           >
-            <span className={`demo-icons-symbol demo-icons-symbol-${label.toLowerCase()}`}>
-              <Icon size={19} strokeWidth={1.8} />
-            </span>
-            <span>{label}</span>
-          </button>
+            {label}
+          </IconButton>
         ))}
       </div>
       <span className="demo-note" role="status">
