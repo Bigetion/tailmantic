@@ -1,5 +1,5 @@
 import { useEffect, useId, useState } from 'react';
-import { Button } from './Button.jsx';
+import { Button } from '../components/Button.jsx';
 
 function Dialog({
   open,

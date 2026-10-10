@@ -1,6 +1,6 @@
 import { Check, ChevronDown, Command, Search, X } from 'lucide-react';
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
-import FloatingSurface, { useClickAway } from './FloatingSurface.jsx';
+import FloatingSurface, { useClickAway } from '../components/FloatingSurface.jsx';
 
 const OPTIONS = [
   { label: 'React', detail: 'User interface library', group: 'Frontend', mark: 'R' },

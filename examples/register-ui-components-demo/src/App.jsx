@@ -35,54 +35,16 @@ import {
   UserRound,
   WandSparkles,
 } from 'lucide-react';
-import { useState } from 'react';
-import Accordion from './components/Accordion.jsx';
-import Alert from './components/Alert.jsx';
-import AppBar from './components/AppBar.jsx';
-import Autocomplete from './components/Autocomplete.jsx';
-import Avatar from './components/Avatar.jsx';
-import Badge from './components/Badge.jsx';
-import BottomNavigation from './components/BottomNavigation.jsx';
-import Breadcrumbs from './components/Breadcrumbs.jsx';
-import Button from './components/Button.jsx';
-import ButtonGroup from './components/ButtonGroup.jsx';
-import Card from './components/Card.jsx';
-import Checkbox from './components/Checkbox.jsx';
-import Chip from './components/Chip.jsx';
-import ClickAwayListener from './components/ClickAwayListener.jsx';
-import Dialog from './components/Dialog.jsx';
-import Divider from './components/Divider.jsx';
-import Drawer from './components/Drawer.jsx';
-import FloatingActionButton from './components/FloatingActionButton.jsx';
-import IconGlyph from './components/IconGlyph.jsx';
-import Icons from './components/Icons.jsx';
-import Link from './components/Link.jsx';
-import List from './components/List.jsx';
-import Menu from './components/Menu.jsx';
-import Modal from './components/Modal.jsx';
-import NumberField from './components/NumberField.jsx';
-import Pagination from './components/Pagination.jsx';
-import Paper from './components/Paper.jsx';
-import Popover from './components/Popover.jsx';
-import Popper from './components/Popper.jsx';
-import Portal from './components/Portal.jsx';
-import Progress from './components/Progress.jsx';
-import RadioGroup from './components/RadioGroup.jsx';
-import Rating from './components/Rating.jsx';
-import Select from './components/Select.jsx';
-import Skeleton from './components/Skeleton.jsx';
-import Slider from './components/Slider.jsx';
-import Snackbar from './components/Snackbar.jsx';
-import SpeedDial from './components/SpeedDial.jsx';
-import Stepper from './components/Stepper.jsx';
-import Switch from './components/Switch.jsx';
-import Table from './components/Table.jsx';
-import Tabs from './components/Tabs.jsx';
-import TextField from './components/TextField.jsx';
-import ToggleButton from './components/ToggleButton.jsx';
-import Tooltip from './components/Tooltip.jsx';
-import TransferList from './components/TransferList.jsx';
-import Typography from './components/Typography.jsx';
+import {
+  BrowserRouter,
+  Navigate,
+  NavLink,
+  Route,
+  Link as RouterLink,
+  Routes,
+  useParams,
+} from 'react-router-dom';
+import { DEMOS } from './pages/index.js';
 
 const NAV = [
   {
@@ -213,115 +175,107 @@ const DESCRIPTIONS = {
   portal: 'Render temporary content outside the normal component tree.',
 };
 
-function DemoContent({ id }) {
-  const demos = {
-    accordion: Accordion,
-    alert: Alert,
-    'app-bar': AppBar,
-    autocomplete: Autocomplete,
-    avatar: Avatar,
-    badge: Badge,
-    'bottom-navigation': BottomNavigation,
-    breadcrumbs: Breadcrumbs,
-    button: Button,
-    'button-group': ButtonGroup,
-    card: Card,
-    checkbox: Checkbox,
-    chip: Chip,
-    'click-away-listener': ClickAwayListener,
-    dialog: Dialog,
-    divider: Divider,
-    drawer: Drawer,
-    'floating-action-button': FloatingActionButton,
-    'icon-glyph': IconGlyph,
-    icons: Icons,
-    link: Link,
-    list: List,
-    menu: Menu,
-    modal: Modal,
-    'number-field': NumberField,
-    pagination: Pagination,
-    paper: Paper,
-    popover: Popover,
-    popper: Popper,
-    portal: Portal,
-    progress: Progress,
-    'radio-group': RadioGroup,
-    rating: Rating,
-    select: Select,
-    skeleton: Skeleton,
-    slider: Slider,
-    snackbar: Snackbar,
-    'speed-dial': SpeedDial,
-    stepper: Stepper,
-    switch: Switch,
-    table: Table,
-    tabs: Tabs,
-    'text-field': TextField,
-    'toggle-button': ToggleButton,
-    tooltip: Tooltip,
-    'transfer-list': TransferList,
-    typography: Typography,
-  };
-  const Component = demos[id];
-  return <Component />;
-}
+function DemoRoute() {
+  const { componentId } = useParams();
+  const item = NAV.flatMap((group) => group.items).find(({ id }) => id === componentId);
+  const Component = DEMOS[componentId];
 
-export default function App() {
-  const [active, setActive] = useState('button');
-  const componentCount = NAV.reduce((count, group) => count + group.items.length, 0);
-  const activeGroup = NAV.find((group) => group.items.some((item) => item.id === active));
-  const activeItem = activeGroup.items.find((item) => item.id === active);
+  if (!item || !Component) {
+    return (
+      <section className="demo-stage" aria-labelledby="not-found-title">
+        <h1 className="demo-title" id="not-found-title">
+          Component not found
+        </h1>
+        <p className="demo-desc">The requested component page does not exist.</p>
+        <RouterLink className="demo-button demo-button-contained" to="/button">
+          Back to Button
+        </RouterLink>
+      </section>
+    );
+  }
+
+  const activeGroup = NAV.find((group) => group.items.some(({ id }) => id === componentId));
   const componentNumber = String(
-    NAV.flatMap((group) => group.items).findIndex((item) => item.id === active) + 1,
+    NAV.flatMap((group) => group.items).findIndex(({ id }) => id === componentId) + 1,
   ).padStart(2, '0');
 
   return (
-    <div className="app-shell">
-      <aside className="sidebar">
-        <div className="sidebar-brand">
-          <span className="brand-mark">t</span> tailmantic
+    <>
+      <header className="demo-header">
+        <div>
+          <span className="demo-eyebrow">
+            {activeGroup.group} / {componentNumber}
+          </span>
+          <h1 className="demo-title">{item.label}</h1>
+          <p className="demo-desc">{DESCRIPTIONS[componentId]}</p>
         </div>
-        <nav className="sidebar-nav" aria-label="Component examples">
-          {NAV.map((group) => (
-            <div className="sidebar-group" key={group.group}>
-              <span className="sidebar-group-label">{group.group}</span>
-              {group.items.map(({ id, label, icon: Icon }) => (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => setActive(id)}
-                  className={active === id ? 'sidebar-item-active' : 'sidebar-item'}
-                  aria-current={active === id ? 'page' : undefined}
-                >
-                  <Icon size={15} aria-hidden="true" />
-                  {label}
-                </button>
-              ))}
+      </header>
+      <section className="demo-stage" aria-label={`${item.label} examples`}>
+        <Component />
+      </section>
+    </>
+  );
+}
+
+function NotFoundRoute() {
+  return (
+    <section className="demo-stage" aria-labelledby="not-found-title">
+      <h1 className="demo-title" id="not-found-title">
+        Page not found
+      </h1>
+      <p className="demo-desc">The requested page does not exist.</p>
+      <RouterLink className="demo-button demo-button-contained" to="/button">
+        Back to Button
+      </RouterLink>
+    </section>
+  );
+}
+
+export default function App() {
+  const componentCount = NAV.reduce((count, group) => count + group.items.length, 0);
+
+  return (
+    <BrowserRouter>
+      <div className="app-shell">
+        <aside className="sidebar">
+          <RouterLink className="sidebar-brand" to="/button">
+            <span className="brand-mark">t</span> tailmantic
+          </RouterLink>
+          <nav className="sidebar-nav" aria-label="Component examples">
+            {NAV.map((group) => (
+              <div className="sidebar-group" key={group.group}>
+                <span className="sidebar-group-label">{group.group}</span>
+                {group.items.map(({ id, label, icon: Icon }) => (
+                  <NavLink
+                    key={id}
+                    to={`/${id}`}
+                    end
+                    className={({ isActive }) =>
+                      isActive ? 'sidebar-item-active' : 'sidebar-item'
+                    }
+                  >
+                    <Icon size={15} aria-hidden="true" />
+                    {label}
+                  </NavLink>
+                ))}
+              </div>
+            ))}
+          </nav>
+        </aside>
+        <main className="main-content">
+          <div className="content-frame">
+            <div className="demo-topline">
+              <span>Tailmantic / UI components</span>
+              <span>{componentCount} components</span>
             </div>
-          ))}
-        </nav>
-      </aside>
-      <main className="main-content">
-        <div className="content-frame">
-          <div className="demo-topline">
-            <span>Tailmantic / UI components</span>
-            <span>{componentCount} components</span>
+            <Routes>
+              <Route path="/" element={<Navigate to="/button" replace />} />
+              <Route path="/:componentId" element={<DemoRoute />} />
+              <Route path="*" element={<NotFoundRoute />} />
+            </Routes>
           </div>
-          <header className="demo-header">
-            <div>
-              <span className="demo-eyebrow">
-                {activeGroup.group} / {componentNumber}
-              </span>
-              <h1 className="demo-title">{activeItem.label}</h1>
-              <p className="demo-desc">{DESCRIPTIONS[active]}</p>
-            </div>
-          </header>
-          <section className="demo-stage" aria-label={`${activeItem.label} examples`}>
-            <DemoContent id={active} />
-          </section>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }

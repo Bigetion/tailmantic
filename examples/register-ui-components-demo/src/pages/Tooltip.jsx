@@ -1,6 +1,6 @@
 import { Check, CircleHelp, Keyboard, Sparkles } from 'lucide-react';
 import { useCallback, useMemo, useRef, useState } from 'react';
-import FloatingSurface from './FloatingSurface.jsx';
+import FloatingSurface from '../components/FloatingSurface.jsx';
 
 const PLACEMENTS = ['top', 'right', 'bottom', 'left'];
 

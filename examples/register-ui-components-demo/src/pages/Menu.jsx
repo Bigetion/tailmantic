@@ -1,6 +1,6 @@
 import { Check, ChevronDown, Copy, Pencil, Settings, Share2, Trash2 } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import FloatingSurface, { useClickAway } from './FloatingSurface.jsx';
+import FloatingSurface, { useClickAway } from '../components/FloatingSurface.jsx';
 
 const PLACEMENTS = ['bottom-start', 'bottom-end', 'top-start', 'top-end'];
 

@@ -1,6 +1,6 @@
 import { Check, FolderKanban, Layers, X } from 'lucide-react';
 import { useCallback, useRef, useState } from 'react';
-import FloatingSurface, { useClickAway } from './FloatingSurface.jsx';
+import FloatingSurface, { useClickAway } from '../components/FloatingSurface.jsx';
 
 const COLORS = [
   ['indigo', 'Indigo', '#8baeff'],

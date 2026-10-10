@@ -20,7 +20,7 @@ register.all({
     tw: 'sticky top-0 flex h-screen w-[250px] shrink-0 flex-col overflow-y-auto border-r border-[var(--demo-sidebar-border)] bg-[var(--demo-sidebar)] px-3 py-5 max-md:static max-md:h-auto max-md:w-full max-md:border-r-0 max-md:border-b max-md:py-3',
   },
   'sidebar-brand': {
-    tw: 'mb-6 flex items-center gap-2 px-3 text-sm font-bold tracking-wide text-white max-md:mb-3',
+    tw: 'mb-6 flex items-center gap-2 px-3 text-sm font-bold tracking-wide text-white no-underline max-md:mb-3',
   },
   'brand-mark': {
     tw: 'inline-flex size-7 items-center justify-center rounded-md bg-[var(--rgi-blue-dark)] text-sm font-bold text-white',
@@ -35,10 +35,10 @@ register.all({
     tw: 'mb-1 px-3 text-[10px] font-semibold uppercase tracking-[.12em] text-[var(--demo-sidebar-muted)] max-md:hidden',
   },
   'sidebar-item': {
-    tw: 'flex cursor-pointer items-center gap-2.5 rounded-md border-0 bg-transparent px-3 py-2 text-left text-xs font-medium text-[var(--demo-sidebar-muted)] transition-colors hover:bg-white/[.05] hover:text-white focus-visible:outline-2 focus-visible:outline-[var(--demo-accent)]',
+    tw: 'flex cursor-pointer items-center gap-2.5 rounded-md border-0 bg-transparent px-3 py-2 text-left text-xs font-medium text-[var(--demo-sidebar-muted)] no-underline transition-colors hover:bg-white/[.05] hover:text-white focus-visible:outline-2 focus-visible:outline-[var(--demo-accent)]',
   },
   'sidebar-item-active': {
-    tw: 'flex cursor-pointer items-center gap-2.5 rounded-md border-0 bg-[var(--rgi-blue-soft)] px-3 py-2 text-left text-xs font-semibold text-[var(--demo-accent)] focus-visible:outline-2 focus-visible:outline-[var(--demo-accent)]',
+    tw: 'flex cursor-pointer items-center gap-2.5 rounded-md border-0 bg-[var(--rgi-blue-soft)] px-3 py-2 text-left text-xs font-semibold text-[var(--demo-accent)] no-underline focus-visible:outline-2 focus-visible:outline-[var(--demo-accent)]',
   },
   'main-content': {
     tw: 'min-w-0 flex-1 px-[clamp(1.5rem,5vw,5rem)] py-10 max-sm:px-4 max-sm:py-6',

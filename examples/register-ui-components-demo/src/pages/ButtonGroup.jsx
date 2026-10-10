@@ -9,7 +9,7 @@ import {
   Save,
 } from 'lucide-react';
 import { useCallback, useId, useRef, useState } from 'react';
-import { useClickAway } from './FloatingSurface.jsx';
+import { useClickAway } from '../components/FloatingSurface.jsx';
 
 const VIEWS = [
   { label: 'Preview', icon: Eye },

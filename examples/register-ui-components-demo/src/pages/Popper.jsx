@@ -1,6 +1,6 @@
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, X } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import FloatingSurface, { useClickAway } from './FloatingSurface.jsx';
+import FloatingSurface, { useClickAway } from '../components/FloatingSurface.jsx';
 
 const PLACEMENTS = [
   ['top', ArrowUp],
