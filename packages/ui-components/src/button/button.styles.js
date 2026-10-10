@@ -6,6 +6,10 @@ register('rgi-icon-button', {
   },
 });
 
+register('rgi-button-spinner', {
+  base: { tw: 'shrink-0 animate-spin' },
+});
+
 register('rgi-button', {
   base: {
     tw: 'inline-flex h-9 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded border border-transparent px-4 text-[13px] font-medium uppercase tracking-[.02em] transition-[background-color,border-color,color,box-shadow,transform] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--rgi-blue,#9bbcff)] enabled:active:translate-y-px disabled:cursor-not-allowed disabled:opacity-40',
@@ -22,6 +26,8 @@ register('rgi-button', {
     },
     small: { tw: '!h-8 gap-1.5 !px-3 !text-[11px]' },
     large: { tw: 'h-11 gap-2.5 px-5 text-sm' },
+    'normal-case': { tw: '!normal-case !tracking-normal' },
+    'icon-only': { tw: 'size-9 !rounded-full !border-0 !bg-transparent !p-0 !text-[var(--muted)] !shadow-none hover:!bg-[#ffffff12] hover:!text-white' },
     'color-success': {
       tw: '!bg-[#276b53] text-white !shadow-[0_2px_4px_rgba(39,107,83,.22)] enabled:hover:!bg-[#328468]',
     },
@@ -32,4 +38,12 @@ register('rgi-button', {
       tw: '!bg-[#a94650] text-white !shadow-[0_2px_4px_rgba(169,70,80,.2)] enabled:hover:!bg-[#c45b66]',
     },
   },
+});
+
+register.group('rgi-button-example', {
+  root: { tw: 'flex w-full flex-col gap-3 text-[var(--text,#edf2fb)]' },
+  label: { tw: 'text-[9px] font-semibold uppercase tracking-[.14em] text-[var(--subtle)]' },
+  row: { tw: 'flex flex-wrap items-center gap-3' },
+  note: { tw: 'text-[11px] text-[var(--muted)]' },
+  status: { tw: 'text-[11px] text-[var(--muted)]' },
 });

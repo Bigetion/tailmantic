@@ -76,6 +76,26 @@ import Autocomplete from '@tailmantic/ui-components/autocomplete';
 />
 ```
 
+`Button` provides contained, outlined, and text variants, semantic colors, size options, and package-owned loading and icon-only states. Use `ButtonGroup` with `variant="segmented"` to connect related buttons, or `SplitButtonGroup` for a primary action with an accessible list of alternatives:
+
+```jsx
+import Button from '@tailmantic/ui-components/button';
+import ButtonGroup, { SplitButtonGroup } from '@tailmantic/ui-components/button-group';
+
+<Button loading>Saving changes</Button>
+
+<ButtonGroup variant="segmented" aria-label="Editor view">
+  <Button aria-pressed>Preview</Button>
+  <Button aria-pressed={false}>Source</Button>
+</ButtonGroup>
+
+<SplitButtonGroup
+  primaryLabel="Save draft"
+  actions={[{ value: 'publish', label: 'Publish now' }]}
+  onAction={(value) => publish(value)}
+/>
+```
+
 For example, `Checkbox` supports native input props, controlled or uncontrolled state, and an `indeterminate` state. Its `ref` points to the native input element.
 
 ## Standalone component usage

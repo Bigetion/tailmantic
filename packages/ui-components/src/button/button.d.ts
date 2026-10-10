@@ -7,7 +7,11 @@ export type ButtonColor = 'primary' | 'success' | 'warning' | 'danger';
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   color?: ButtonColor;
+  iconOnly?: boolean;
+  loading?: boolean;
+  loadingIndicator?: ReactNode;
   size?: ButtonSize;
+  uppercase?: boolean;
   variant?: ButtonVariant;
 }
 

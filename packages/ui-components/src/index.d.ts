@@ -26,8 +26,14 @@ export type { BreadcrumbsProps } from './breadcrumbs/breadcrumbs.js';
 export { default as Breadcrumbs } from './breadcrumbs/breadcrumbs.js';
 export type { ButtonColor, ButtonProps, ButtonSize, ButtonVariant } from './button/button.js';
 export { default as Button } from './button/button.js';
-export type { ButtonGroupOrientation, ButtonGroupProps } from './button-group/button-group.js';
-export { default as ButtonGroup } from './button-group/button-group.js';
+export type {
+  ButtonGroupOrientation,
+  ButtonGroupProps,
+  ButtonGroupVariant,
+  SplitButtonAction,
+  SplitButtonGroupProps,
+} from './button-group/button-group.js';
+export { default as ButtonGroup, SplitButtonGroup } from './button-group/button-group.js';
 export type { CardElevation, CardProps, CardVariant } from './card/card.js';
 export { default as Card } from './card/card.js';
 export type { CheckboxProps } from './checkbox/checkbox.js';

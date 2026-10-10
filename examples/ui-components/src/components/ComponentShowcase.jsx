@@ -11,6 +11,8 @@ const packageStyleSources = import.meta.glob(
   [
     '../../../../packages/ui-components/src/accordion/accordion.styles.js',
     '../../../../packages/ui-components/src/autocomplete/autocomplete.styles.js',
+    '../../../../packages/ui-components/src/button/button.styles.js',
+    '../../../../packages/ui-components/src/button-group/button-group.styles.js',
   ],
   {
     eager: true,
@@ -794,6 +796,8 @@ export default function ComponentShowcase({ component }) {
   const packageStylePath = {
     accordion: '../../../../packages/ui-components/src/accordion/accordion.styles.js',
     autocomplete: '../../../../packages/ui-components/src/autocomplete/autocomplete.styles.js',
+    button: '../../../../packages/ui-components/src/button/button.styles.js',
+    'button-group': '../../../../packages/ui-components/src/button-group/button-group.styles.js',
   }[component.slug];
   const styleSource = packageStylePath
     ? packageStyleSources[packageStylePath]

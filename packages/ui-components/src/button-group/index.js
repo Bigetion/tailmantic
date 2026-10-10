@@ -1,1 +1,1 @@
-export { default } from './ButtonGroup.jsx';
+export { default, SplitButtonGroup } from './ButtonGroup.jsx';

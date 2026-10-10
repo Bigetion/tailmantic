@@ -7,9 +7,11 @@ import {
   Checkbox,
   Chip,
   IconGlyph,
+  SplitButtonGroup,
 } from '@tailmantic/ui-components';
 import AccordionOnly, { AccordionGroup as AccordionGroupOnly } from '@tailmantic/ui-components/accordion';
 import ButtonOnly from '@tailmantic/ui-components/button';
+import ButtonGroupOnly, { SplitButtonGroup as SplitButtonGroupOnly } from '@tailmantic/ui-components/button-group';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
 import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
@@ -35,6 +37,12 @@ export const rootExports = (
       onSelectedValuesChange={(values, options) => values.concat(options.map((option) => option.label))}
     />
     <Button variant="outlined" ref={(button) => button?.focus()} />
+    <Button loading uppercase={false} iconOnly aria-label="Loading action" />
+    <SplitButtonGroup
+      primaryLabel="Save draft"
+      actions={[{ value: 'publish', label: 'Publish now' }]}
+      onAction={(value) => value.toUpperCase()}
+    />
     <IconGlyph name="home" />
     <Checkbox
       indeterminate
@@ -57,6 +65,11 @@ export const subpathExports = (
       <AccordionOnly title="Package subpath">Accordion item</AccordionOnly>
     </AccordionGroupOnly>
     <ButtonOnly size="small" />
+    <ButtonGroupOnly orientation="vertical" variant="segmented" />
+    <SplitButtonGroupOnly
+      primaryLabel="Save"
+      actions={[{ value: 'publish', label: 'Publish' }]}
+    />
     <CheckboxOnly defaultChecked />
     <ChipOnly variant="filled" />
     <IconGlyphOnly name="search" />

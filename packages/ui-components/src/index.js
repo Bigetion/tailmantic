@@ -7,7 +7,7 @@ export { default as Badge } from './badge/Badge.jsx';
 export { BottomNavigationItem, default as BottomNavigation } from './bottom-navigation/index.js';
 export { default as Breadcrumbs } from './breadcrumbs/Breadcrumbs.jsx';
 export { default as Button } from './button/Button.jsx';
-export { default as ButtonGroup } from './button-group/ButtonGroup.jsx';
+export { default as ButtonGroup, SplitButtonGroup } from './button-group/ButtonGroup.jsx';
 export { default as Card } from './card/Card.jsx';
 export { default as Checkbox } from './checkbox/Checkbox.jsx';
 export { default as Chip } from './chip/Chip.jsx';

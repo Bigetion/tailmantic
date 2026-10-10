@@ -17,24 +17,24 @@ export default function ComponentPageLayout({ component, children }) {
   const importName = component.name.replace(/\s+/g, '');
   const importCode = component.slug === 'autocomplete'
     ? `import Autocomplete from '@tailmantic/ui-components/autocomplete';\n\nconst options = [\n  { label: 'React', description: 'User interface library', group: 'Frontend' },\n];\n\nexport default function AutocompleteExample() {\n  return <Autocomplete label=\"Framework\" options={options} />;\n}`
+    : component.slug === 'button'
+      ? `import Button from '@tailmantic/ui-components/button';\n\nexport default function ButtonExample() {\n  return <Button variant=\"contained\">Save changes</Button>;\n}`
+      : component.slug === 'button-group'
+        ? `import Button from '@tailmantic/ui-components/button';\nimport ButtonGroup from '@tailmantic/ui-components/button-group';\n\nexport default function ButtonGroupExample() {\n  return (\n    <ButtonGroup variant=\"segmented\" aria-label=\"Editor view\">\n      <Button aria-pressed>Preview</Button>\n      <Button aria-pressed={false}>Source</Button>\n    </ButtonGroup>\n  );\n}`
     : `import ${importName} from './components/ui/${component.slug}/${importName}.jsx';\n\nexport default function ${importName}Example() {\n  return <${importName} />;\n}`;
   const implementationRows = IMPLEMENTATION_ROWS.map(([area, source, purpose]) => [
     area,
-    area === 'Styles' && component.slug === 'accordion'
-      ? 'packages/ui-components/src/accordion/accordion.styles.js'
-      : area === 'Styles' && component.slug === 'autocomplete'
-        ? 'packages/ui-components/src/autocomplete/autocomplete.styles.js'
+    area === 'Styles' && ['accordion', 'autocomplete', 'button', 'button-group'].includes(component.slug)
+      ? `packages/ui-components/src/${component.slug === 'button-group' ? 'button-group' : component.slug}/${component.slug === 'button-group' ? 'button-group' : component.slug}.styles.js`
         : source
         .replaceAll('{slug}', component.slug)
         .replace('{name}', importName)
         .replace('{count}', component.demos.length),
-    area === 'Styles' && component.slug === 'accordion'
-      ? 'Accordion styles are owned by the published package.'
-      : area === 'Styles' && component.slug === 'autocomplete'
-        ? 'Autocomplete styles are owned by the published package.'
+    area === 'Styles' && ['accordion', 'autocomplete', 'button', 'button-group'].includes(component.slug)
+      ? `${component.name} styles are owned by the published package.`
         : purpose,
   ]);
-  if (['chip', 'divider', 'icons', 'icon-glyph', 'list', 'table', 'tooltip', 'typography', 'alert', 'dialog', 'progress', 'snackbar', 'skeleton', 'accordion', 'autocomplete', 'app-bar', 'card', 'paper', 'popover', 'bottom-navigation', 'breadcrumbs', 'drawer', 'link', 'menu', 'pagination', 'speed-dial', 'stepper', 'tabs', 'click-away-listener', 'modal', 'popper', 'portal'].includes(component.slug)) {
+  if (['chip', 'divider', 'icons', 'icon-glyph', 'list', 'table', 'tooltip', 'typography', 'alert', 'dialog', 'progress', 'snackbar', 'skeleton', 'accordion', 'autocomplete', 'button', 'button-group', 'app-bar', 'card', 'paper', 'popover', 'bottom-navigation', 'breadcrumbs', 'drawer', 'link', 'menu', 'pagination', 'speed-dial', 'stepper', 'tabs', 'click-away-listener', 'modal', 'popper', 'portal'].includes(component.slug)) {
     implementationRows.splice(2, 0, [
       'Demo',
       `src/components/ui/${component.slug}/${importName}Demo.jsx`,

@@ -28,7 +28,7 @@ const { default: BottomNavigation } = await import('../dist/bottom-navigation.js
 const { BottomNavigationItem } = await import('../dist/bottom-navigation.js');
 const { default: Breadcrumbs } = await import('../dist/breadcrumbs.js');
 const { default: Button } = await import('../dist/button.js');
-const { default: ButtonGroup } = await import('../dist/button-group.js');
+const { default: ButtonGroup, SplitButtonGroup } = await import('../dist/button-group.js');
 const { default: Card } = await import('../dist/card.js');
 const { default: Checkbox } = await import('../dist/checkbox.js');
 const { default: ClickAwayListener } = await import('../dist/click-away-listener.js');
@@ -936,6 +936,55 @@ test('buttons, chips, navigation, and presentational primitives preserve semanti
     assert.equal(harness.mount.querySelector('ol.rgi-list').tagName, 'OL');
     assert.equal(harness.mount.querySelector('.rgi-list-primary').textContent, 'Primary');
     assert.ok(harness.mount.querySelector('.rgi-paper').className.includes('rgi-paper-square'));
+  } finally {
+    await harness.dispose();
+  }
+});
+
+test('Button loading and icon-only states and segmented/split ButtonGroups expose accessible behavior', async () => {
+  const harness = await createHarness();
+  const actions = [];
+  const openChanges = [];
+
+  try {
+    await harness.render(
+      React.createElement(
+        React.Fragment,
+        null,
+        React.createElement(Button, { loading: true, iconOnly: true, 'aria-label': 'Saving' }, 'Save'),
+        React.createElement(
+          ButtonGroup,
+          { variant: 'segmented', 'aria-label': 'Editor view' },
+          React.createElement(Button, { 'aria-pressed': true }, 'Preview'),
+          React.createElement(Button, { 'aria-pressed': false }, 'Source'),
+        ),
+        React.createElement(SplitButtonGroup, {
+          primaryLabel: 'Save draft',
+          actions: [{ value: 'publish', label: 'Publish now' }],
+          onAction: (value) => actions.push(value),
+          onOpenChange: (open) => openChanges.push(open),
+        }),
+      ),
+    );
+
+    const loadingButton = harness.mount.querySelector('button[aria-label="Saving"]');
+    assert.equal(loadingButton.disabled, true);
+    assert.equal(loadingButton.getAttribute('aria-busy'), 'true');
+    assert.ok(loadingButton.querySelector('.rgi-button-spinner'));
+    assert.ok(loadingButton.className.includes('rgi-button-icon-only'));
+
+    const segmented = harness.mount.querySelector('.rgi-button-group-segmented');
+    assert.equal(segmented.getAttribute('aria-label'), 'Editor view');
+    assert.equal(segmented.querySelectorAll('.rgi-button').length, 2);
+
+    const splitToggle = harness.mount.querySelector('.rgi-split-button-toggle');
+    await act(async () => splitToggle.click());
+    assert.equal(splitToggle.getAttribute('aria-expanded'), 'true');
+    assert.equal(harness.mount.querySelector('.rgi-split-button-menu-item').textContent, 'Publish now');
+    await act(async () => harness.mount.querySelector('.rgi-split-button-menu-item').click());
+    assert.deepEqual(actions, ['publish']);
+    assert.deepEqual(openChanges, [true, false]);
+    assert.equal(harness.mount.querySelector('.rgi-split-button-menu'), null);
   } finally {
     await harness.dispose();
   }

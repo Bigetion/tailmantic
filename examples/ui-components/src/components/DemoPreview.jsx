@@ -24,7 +24,6 @@ import {
   X,
 } from 'lucide-react';
 import { cx } from 'tailmantic';
-import { Button } from '@tailmantic/ui-components';
 import { PopperSurface, useClickAway } from './Popper.jsx';
 import AutocompleteDemo from './ui/autocomplete/AutocompleteDemo.jsx';
 import AvatarDemo from './ui/avatar/AvatarDemo.jsx';
@@ -72,6 +71,7 @@ import SwitchDemo from './ui/switch/SwitchDemo.jsx';
 import TextFieldDemo from './ui/text-field/TextFieldDemo.jsx';
 import TransferListDemo from './ui/transfer-list/TransferListDemo.jsx';
 import ToggleButtonDemo from './ui/toggle-button/ToggleButtonDemo.jsx';
+import ButtonDemo from './ui/button/ButtonDemo.jsx';
 
 function FloatingDemo({ demoId }) {
   const anchorRef = useRef(null);
@@ -153,97 +153,6 @@ function FloatingDemo({ demoId }) {
       </PopperSurface>
       {selected && !open && <span className="floating-selected">Selected: {selected}</span>}
       {isClickAway && <span className="floating-hint">Click outside or press Escape to dismiss.</span>}
-    </div>
-  );
-}
-
-function ButtonPreview({ demoId }) {
-  const [loading, setLoading] = useState(false);
-  const [pressed, setPressed] = useState(false);
-  const timerRef = useRef(null);
-
-  useEffect(() => () => window.clearTimeout(timerRef.current), []);
-
-  if (demoId === 'button-colors') {
-    return (
-      <div className="button-example-section">
-        <span className="button-example-label">Semantic variants</span>
-        <div className="button-example-row">
-          <Button color="success"><Check size={14} /> Success</Button>
-          <Button color="warning"><Info size={14} /> Warning</Button>
-          <Button color="danger"><Trash2 size={14} /> Delete</Button>
-        </div>
-        <span className="preview-note">Reserve semantic colors for actions where intent matters.</span>
-      </div>
-    );
-  }
-
-  if (demoId === 'button-sizes') {
-    return (
-      <div className="button-example-section">
-        <span className="button-example-label">Adjust the visual density</span>
-        <div className="button-example-row">
-          <Button variant="text" size="small">Small</Button>
-          <Button variant="outlined">Medium</Button>
-          <Button size="large">Large action</Button>
-        </div>
-        <span className="preview-note">Use one consistent size within a related control group.</span>
-      </div>
-    );
-  }
-
-  if (demoId === 'button-icons') {
-    return (
-      <div className="button-example-section">
-        <span className="button-example-label">Icon placement</span>
-        <div className="button-example-row">
-          <Button><Plus size={15} /> Create project</Button>
-          <Button variant="outlined">Continue <ArrowRight size={15} /></Button>
-          <button className="button-example-icon-button" type="button" aria-label="Add item"><Plus size={17} /></button>
-        </div>
-        <span className="preview-note">Icon-only actions include an accessible label.</span>
-      </div>
-    );
-  }
-
-  if (demoId === 'button-loading') {
-    return (
-      <div className="button-example-section">
-        <span className="button-example-label">Async action state</span>
-        <div className="button-example-row">
-          <Button
-            type="button"
-            disabled={loading}
-            aria-busy={loading}
-            onClick={() => {
-              setLoading(true);
-              timerRef.current = window.setTimeout(() => {
-                setLoading(false);
-                setPressed(true);
-              }, 1000);
-            }}
-          >
-            {loading ? <Activity className="spin" size={14} /> : <Check size={14} />}
-            {loading ? 'Saving changes…' : pressed ? 'Saved' : 'Save changes'}
-          </Button>
-          <span className="button-example-status" role="status">
-            {loading ? 'Please wait while your changes are saved.' : pressed ? 'Your changes are saved.' : 'Click to preview a pending action.'}
-          </span>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="button-example-section">
-      <span className="button-example-label">Choose a visual hierarchy</span>
-      <div className="button-example-row">
-        <Button onClick={() => setPressed(true)}>Contained</Button>
-        <Button variant="outlined">Outlined</Button>
-        <Button variant="text">Text button</Button>
-        <Button disabled>Disabled</Button>
-      </div>
-      {pressed && <span className="preview-note" role="status">Button action selected.</span>}
     </div>
   );
 }
@@ -361,7 +270,7 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'radio-group') return <RadioGroupDemo demoId={demoId} />;
   if (component.slug === 'rating') return <RatingDemo demoId={demoId} />;
   if (demoId.startsWith('tooltip') || demoId.startsWith('popover') || demoId.startsWith('autocomplete')) return <FloatingDemo demoId={demoId} />;
-  if (demoId.startsWith('button')) return <ButtonPreview demoId={demoId} />;
+  if (demoId.startsWith('button')) return <ButtonDemo demoId={demoId} />;
   if (demoId.startsWith('checkbox')) return <SelectionPreview demoId={demoId} />;
   if (demoId.startsWith('text-field')) return <InputPreview demoId={demoId} />;
   if (demoId.startsWith('avatar') || demoId.startsWith('badge') || demoId.startsWith('chip') || demoId.startsWith('divider') || demoId.startsWith('icons') || demoId.startsWith('icon-glyph') || demoId.startsWith('list') || demoId.startsWith('table') || demoId.startsWith('typography')) return <DisplayPreview demoId={demoId} />;
