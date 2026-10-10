@@ -1,5 +1,6 @@
 import { Bell, Check, ChevronDown, CircleHelp, Search, Settings, X } from 'lucide-react';
 import { useState } from 'react';
+import IconGlyphComponent from '../components/IconGlyph.jsx';
 
 const GLYPHS = [
   { label: 'Search', icon: Search },
@@ -39,7 +40,7 @@ export default function IconGlyph() {
             aria-label={label}
             onClick={() => setAction(label)}
           >
-            <Icon size={size} strokeWidth={1.8} />
+            <IconGlyphComponent icon={Icon} size={size} strokeWidth={1.8} />
             <span>
               {label}
               {index < 3 ? ' · navigation' : ' · action'}

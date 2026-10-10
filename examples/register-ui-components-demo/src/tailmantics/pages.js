@@ -695,6 +695,7 @@ register.all({
 
 // icon-glyph.js
 register.all({
+  'ui-icon-glyph': { tw: 'inline-block shrink-0 align-middle' },
   'demo-icon-glyph-grid': {
     tw: 'grid w-full max-w-[600px] grid-cols-4 gap-3 sm:grid-cols-7',
   },
