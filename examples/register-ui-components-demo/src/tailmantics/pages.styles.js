@@ -1,31 +1,10 @@
 import { register } from 'tailmantic/collector';
 
 // app-bar.js
-register('demo-app-bar', {
-  base: {
-    tw: 'z-10 flex min-h-14 w-full items-center gap-4 border-b border-[var(--border)] bg-[var(--panel)] px-4 py-2 text-[var(--text)]',
-  },
-  modifiers: {
-    static: { tw: 'relative' },
-    sticky: { tw: 'sticky top-0' },
-    fixed: { tw: 'fixed inset-x-0 top-0' },
-    'elevation-0': { tw: 'shadow-none' },
-    'elevation-1': { tw: 'shadow-[0_2px_6px_rgba(0,0,0,.16)]' },
-    'elevation-2': { tw: 'shadow-[0_4px_12px_rgba(0,0,0,.2)]' },
-    'elevation-3': { tw: 'shadow-[0_8px_24px_rgba(0,0,0,.24)]' },
-  },
-});
 register.all({
   'demo-app-bar-preview': {
     tw: 'rounded-lg border bg-[var(--panel)]',
   },
-  'demo-app-bar-static': { tw: 'relative' },
-  'demo-app-bar-sticky': { tw: 'sticky top-0' },
-  'demo-app-bar-fixed': { tw: 'fixed inset-x-0 top-0' },
-  'demo-app-bar-elevation-0': { tw: 'shadow-none' },
-  'demo-app-bar-elevation-1': { tw: 'shadow-[0_2px_6px_rgba(0,0,0,.16)]' },
-  'demo-app-bar-elevation-2': { tw: 'shadow-[0_4px_12px_rgba(0,0,0,.2)]' },
-  'demo-app-bar-elevation-3': { tw: 'shadow-[0_8px_24px_rgba(0,0,0,.24)]' },
   'demo-app-bar-compact': {
     tw: 'flex-wrap gap-2',
   },
@@ -136,25 +115,6 @@ register.all({
 
 // accordion.js
 register.all({
-  'demo-accordion-group': {
-    tw: 'w-full max-w-[700px] overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--panel)]',
-  },
-  'demo-accordion-item': {
-    tw: 'border-b border-[var(--border)] last:border-b-0',
-  },
-  'demo-accordion-heading': { tw: 'm-0' },
-  'demo-accordion-title': { tw: 'flex min-w-0 flex-1 items-center gap-3' },
-  'demo-accordion-trigger': {
-    tw: 'flex min-h-12 w-full cursor-pointer items-center justify-between gap-4 border-0 bg-transparent px-4 py-3 text-left text-sm font-medium text-[var(--text)] hover:bg-white/[.03] focus-visible:outline-2 focus-visible:outline-[var(--rgi-blue)] disabled:cursor-not-allowed disabled:opacity-50',
-  },
-  'demo-accordion-icon': { tw: 'text-[var(--muted)] transition-transform duration-150' },
-  'demo-accordion-panel': {
-    tw: 'border-t border-[var(--border)] px-4 py-3 text-sm leading-relaxed text-[var(--muted)]',
-  },
-  'demo-accordion-panel[hidden]': { tw: 'hidden' },
-});
-register('demo-accordion-icon-open', { base: { tw: 'rotate-180 text-[var(--rgi-blue)]' } });
-register.all({
   'demo-accordion-example': {
     tw: 'flex w-full max-w-[700px] flex-col gap-3',
   },
@@ -170,43 +130,12 @@ register.all({
   'demo-accordion-unavailable': {
     tw: 'text-[10px] text-[var(--muted)]',
   },
-  'demo-accordion-item-disabled .demo-accordion-trigger': {
-    tw: 'cursor-not-allowed opacity-40',
-  },
 });
 
 // alert.js
-register('demo-alert', {
-  base: { tw: 'flex items-start gap-3 rounded-lg border px-4 py-3 text-sm' },
-  modifiers: {
-    info: { tw: 'border-[var(--rgi-info-border)] bg-[var(--rgi-info-bg)] text-[var(--rgi-info)]' },
-    success: {
-      tw: 'border-[var(--rgi-success-border)] bg-[var(--rgi-success-bg)] text-[var(--rgi-success)]',
-    },
-    warning: {
-      tw: 'border-[var(--rgi-warning-border)] bg-[var(--rgi-warning-bg)] text-[var(--rgi-warning)]',
-    },
-    error: {
-      tw: 'border-[var(--rgi-error-border)] bg-[var(--rgi-error-bg)] text-[var(--rgi-error)]',
-    },
-  },
-});
-register.group('demo-alert', {
-  icon: {
-    tw: 'mt-0.5 flex size-5 shrink-0 items-center justify-center',
-  },
-  copy: { tw: 'flex min-w-0 flex-1 flex-col gap-1' },
-  title: { tw: 'font-semibold leading-snug' },
-});
 register.all({
-  'demo-alert-outlined': {
-    tw: '!bg-transparent',
-  },
   'demo-alert-action': {
     tw: 'mt-2 inline-flex w-fit cursor-pointer items-center rounded-md border border-current/25 bg-transparent px-2.5 py-1.5 text-xs font-semibold text-inherit transition-colors hover:bg-white/[.06] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current',
-  },
-  'demo-alert-dismiss': {
-    tw: 'ml-auto inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-0 text-inherit opacity-70 transition-colors hover:bg-white/[.08] hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-current',
   },
   'demo-alert-restore': {
     tw: 'w-fit cursor-pointer rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs text-[var(--text)] hover:border-[var(--rgi-blue)]',
@@ -214,25 +143,9 @@ register.all({
 });
 
 // avatar.js
-register('demo-avatar', {
-  base: {
-    tw: 'inline-flex size-10 items-center justify-center rounded-full bg-[var(--panel-raised)] text-xs font-semibold text-[var(--text)]',
-  },
-  modifiers: {
-    primary: { tw: 'bg-[var(--rgi-blue-soft)] text-[var(--rgi-blue)]' },
-    success: { tw: 'bg-[var(--rgi-success-bg)] text-[var(--rgi-success)]' },
-    warning: { tw: 'bg-[var(--rgi-warning-bg)] text-[var(--rgi-warning)]' },
-    large: { tw: 'size-14 text-sm' },
-  },
-});
 register.all({
-  'demo-avatar-xs': { tw: 'size-6 text-[9px]' },
-  'demo-avatar-small': { tw: 'size-8 text-[10px]' },
-  'demo-avatar-medium': { tw: 'size-10 text-xs' },
-  'demo-avatar-xl': { tw: 'size-16 text-base' },
-  'demo-avatar img': { tw: 'size-full rounded-full object-cover' },
   'demo-avatar-group': {
-    tw: 'm-0 flex items-center border-0 p-0 pl-3 [&>.demo-avatar]:-ml-3 [&>.demo-avatar]:ring-2 [&>.demo-avatar]:ring-[var(--panel)]',
+    tw: 'm-0 flex items-center border-0 p-0 pl-3 [&>.ui-avatar]:-ml-3 [&>.ui-avatar]:ring-2 [&>.ui-avatar]:ring-[var(--panel)]',
   },
   'demo-avatar-control': {
     tw: 'cursor-pointer rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs text-[var(--text-muted)] hover:border-[var(--rgi-blue)]',
@@ -240,33 +153,7 @@ register.all({
 });
 
 // badge.js
-register('demo-badge', {
-  base: {
-    tw: 'inline-flex items-center rounded-full border border-transparent px-2.5 py-1 text-[11px] font-medium',
-  },
-  modifiers: {
-    primary: { tw: 'bg-[var(--rgi-blue-soft)] text-[var(--rgi-blue)]' },
-    success: { tw: 'bg-[var(--rgi-success-bg)] text-[var(--rgi-success)]' },
-    warning: { tw: 'bg-[var(--rgi-warning-bg)] text-[var(--rgi-warning)]' },
-    danger: { tw: 'bg-[var(--rgi-error-bg)] text-[var(--rgi-error)]' },
-  },
-});
 register.all({
-  'demo-badge-root': {
-    tw: 'relative inline-flex',
-  },
-  'demo-badge-standard': {
-    tw: 'absolute -right-2 -top-2 z-10 h-5 min-w-5 justify-center !px-1.5 !py-0 text-[10px] leading-4 shadow-sm',
-  },
-  'demo-badge-dot': {
-    tw: 'absolute -right-1 -top-1 z-10 !size-2.5 min-w-0 rounded-full border-2 border-[var(--panel)] !p-0',
-  },
-  'demo-badge-overlap-circular': {
-    tw: '-right-1 -top-1',
-  },
-  'demo-badge-overlap-rectangular': {
-    tw: '-right-2 -top-2',
-  },
   'demo-badge-anchor': {
     tw: 'relative inline-flex items-center rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs text-[var(--text-muted)]',
   },
@@ -277,22 +164,7 @@ register.all({
 
 // bottom-navigation.js
 register.all({
-  'ui-bottom-navigation': {
-    tw: 'flex w-full items-center justify-around',
-  },
-  'ui-bottom-navigation-item': {
-    tw: 'relative flex min-w-20 cursor-pointer flex-col items-center gap-1 rounded-lg border-0 bg-transparent px-4 py-2 text-[11px] text-[var(--muted)] transition-colors',
-  },
-  'ui-bottom-navigation-item-selected': {
-    tw: 'bg-[var(--rgi-blue-soft)] font-semibold text-[var(--rgi-blue)]',
-  },
-  'ui-bottom-navigation-icon': {
-    tw: 'flex h-6 items-center justify-center leading-none',
-  },
-  'ui-bottom-navigation-label': { tw: 'truncate' },
   'demo-bottom-nav-icon-wrap': { tw: 'relative flex items-center justify-center' },
-});
-register.all({
   'demo-bottom-navigation': {
     tw: 'flex w-full max-w-[420px] items-center justify-around rounded-xl border border-[var(--border)] bg-[var(--panel)] p-2',
   },
@@ -307,17 +179,6 @@ register.all({
 
 // breadcrumbs.js
 register.all({
-  'ui-breadcrumbs': { tw: 'text-sm text-[var(--muted)]' },
-  'ui-breadcrumbs-list': { tw: 'm-0 flex list-none flex-wrap items-center gap-2 p-0' },
-  'ui-breadcrumbs-item': { tw: 'inline-flex min-w-0 items-center gap-2' },
-  'ui-breadcrumbs-separator': { tw: 'select-none text-[var(--muted)]' },
-  'ui-breadcrumbs-link': {
-    tw: 'truncate text-[var(--rgi-blue)] no-underline hover:underline',
-  },
-  'ui-breadcrumbs-current': { tw: 'font-medium text-[var(--text)]' },
-  'ui-breadcrumbs-ellipsis': {
-    tw: 'cursor-pointer border-0 bg-transparent p-0 text-[var(--rgi-blue)] hover:underline',
-  },
   'demo-breadcrumb-control': {
     tw: 'flex w-fit items-center gap-2 text-xs text-[var(--text-muted)]',
   },
@@ -327,34 +188,6 @@ register.all({
 });
 
 // button.js
-register('demo-button', {
-  base: {
-    tw: 'inline-flex h-9 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded border border-transparent px-4 text-[13px] font-medium transition-[background-color,border-color,color,box-shadow,transform] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rgi-blue)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--page)] enabled:active:translate-y-px disabled:cursor-not-allowed disabled:opacity-40',
-  },
-  modifiers: {
-    contained: {
-      tw: 'bg-[var(--rgi-blue-dark)] text-white shadow-[0_2px_4px_rgba(72,111,216,.24)] enabled:hover:bg-[#6689ed] enabled:hover:shadow-[0_4px_12px_rgba(72,111,216,.3)]',
-    },
-    outlined: {
-      tw: '!border-[#607db9] bg-transparent text-[var(--rgi-blue)] enabled:hover:!border-[var(--rgi-blue)] enabled:hover:bg-[var(--rgi-blue-soft)]',
-    },
-    text: {
-      tw: 'bg-transparent text-[var(--rgi-blue)] enabled:hover:bg-[var(--rgi-blue-soft)]',
-    },
-    small: { tw: '!h-8 gap-1.5 !px-3 !text-[11px]' },
-    large: { tw: 'h-11 gap-2.5 px-5 text-sm' },
-    'color-success': {
-      tw: '!bg-[#276b53] text-white !shadow-[0_2px_4px_rgba(39,107,83,.22)] enabled:hover:!bg-[#328468]',
-    },
-    'color-warning': {
-      tw: '!bg-[#a75c1b] text-white !shadow-[0_2px_4px_rgba(167,92,27,.2)] enabled:hover:!bg-[#c5752a]',
-    },
-    'color-danger': {
-      tw: '!bg-[#a94650] text-white !shadow-[0_2px_4px_rgba(169,70,80,.2)] enabled:hover:!bg-[#c45b66]',
-    },
-  },
-});
-
 register.group('demo-button-example', {
   section: { tw: 'flex w-full flex-col gap-3' },
   label: { tw: 'text-[9px] font-semibold uppercase tracking-[.14em] text-[var(--muted)]' },
@@ -370,8 +203,6 @@ register('demo-button-spinner', {
 
 // button-group.js
 register.all({
-  'ui-button-group': { tw: 'inline-flex items-center gap-1 text-[var(--text)]' },
-  'ui-button-group-vertical': { tw: 'flex-col items-stretch' },
   'demo-button-group': {
     tw: 'm-0 inline-flex w-fit overflow-hidden rounded-md border border-[var(--border)] bg-[var(--panel)] p-0',
   },
@@ -380,9 +211,6 @@ register.all({
   },
   'demo-button-group-selected': {
     tw: 'bg-[#21304b] text-[#b9ccff] hover:bg-[#21304b] hover:text-[#b9ccff]',
-  },
-  'ui-button-group-vertical .demo-button-group-item': {
-    tw: 'justify-center border-r-0 border-b border-[var(--border)] last:border-b-0',
   },
   'demo-button-group-split': {
     tw: 'relative m-0 inline-flex !gap-0 overflow-visible rounded-lg border-0 p-0',
@@ -405,25 +233,6 @@ register.all({
 });
 
 // card.js
-register('ui-card', {
-  base: {
-    tw: 'flex flex-col gap-3 overflow-hidden rounded-xl bg-[var(--panel)] p-5 text-[var(--text)]',
-  },
-  modifiers: {
-    elevated: {
-      tw: 'border border-[var(--border)] shadow-[0_2px_8px_rgba(0,0,0,.16)]',
-    },
-    outlined: { tw: 'border border-[#354257] shadow-none' },
-    flat: { tw: 'border border-transparent shadow-none' },
-    'elevation-0': { tw: 'shadow-none' },
-    'elevation-1': { tw: 'shadow-[0_2px_8px_rgba(0,0,0,.16)]' },
-    'elevation-2': { tw: 'shadow-[0_5px_16px_rgba(0,0,0,.2)]' },
-    'elevation-3': { tw: 'shadow-[0_10px_28px_rgba(0,0,0,.25)]' },
-    interactive: {
-      tw: 'transition-[border-color,box-shadow,transform] duration-150 hover:-translate-y-px hover:border-[var(--rgi-blue)] focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--rgi-blue)]',
-    },
-  },
-});
 register.all({
   'demo-card-media': {
     tw: 'h-28 rounded-lg bg-[linear-gradient(135deg,#273e67,#3c6792_48%,#b1c5dd)]',
@@ -435,28 +244,6 @@ register.all({
 });
 
 // checkbox.js
-register.group('ui-checkbox', {
-  root: {
-    tw: 'inline-flex w-fit cursor-pointer items-start gap-3 text-xs text-[var(--text)] has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-45',
-  },
-  control: {
-    tw: 'relative mt-0.5 inline-flex size-[18px] shrink-0 items-center justify-center rounded-[5px] focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-[var(--page)] focus-within:ring-[#86a6ff]',
-  },
-  input: {
-    tw: 'absolute inset-0 z-10 m-0 size-full cursor-pointer opacity-0 disabled:cursor-not-allowed',
-  },
-  indicator: {
-    tw: 'flex size-[18px] items-center justify-center rounded-[5px] border border-[#53627a] bg-[#0e1420] text-[#101722] transition-[background-color,border-color,box-shadow]',
-  },
-  checked: { tw: 'border-[#84a2f1] bg-[#84a2f1]' },
-  indeterminate: { tw: 'border-[#84a2f1] bg-[#84a2f1]' },
-  disabled: { tw: 'cursor-not-allowed' },
-  dash: { tw: 'h-0.5 w-2 rounded-full bg-[#101722]' },
-  copy: { tw: 'flex min-w-0 flex-col gap-1' },
-  label: { tw: 'font-medium text-[var(--text)]' },
-  description: { tw: 'text-[11px] leading-relaxed text-[var(--muted)]' },
-});
-
 register.all({
   'demo-checkbox-list': {
     tw: 'm-0 flex max-w-[620px] flex-col items-start gap-4 border-0 p-0',
@@ -494,30 +281,8 @@ register.all({
 });
 
 // chip.js
-register('ui-chip', {
-  base: {
-    tw: 'inline-flex h-8 shrink-0 items-center gap-1.5 rounded-full border border-[var(--border)] px-3 text-xs font-medium text-[var(--text)] transition-colors',
-  },
-  modifiers: {
-    filled: { tw: 'border-transparent bg-[var(--panel-raised)]' },
-    outlined: { tw: 'bg-transparent' },
-    primary: { tw: 'border-transparent bg-[var(--rgi-blue-soft)] text-[var(--rgi-blue)]' },
-    success: { tw: 'border-transparent bg-[var(--rgi-success-bg)] text-[var(--rgi-success)]' },
-    warning: { tw: 'border-transparent bg-[var(--rgi-warning-bg)] text-[var(--rgi-warning)]' },
-    small: { tw: '!h-6 px-2 text-[10px]' },
-    interactive: {
-      tw: 'cursor-pointer hover:border-[var(--rgi-blue)] hover:bg-[var(--panel-raised)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--rgi-blue)]',
-    },
-    selected: { tw: 'border-transparent bg-[var(--rgi-blue-dark)] text-white' },
-    disabled: { tw: 'cursor-not-allowed opacity-45' },
-  },
-});
 register.all({
   'demo-chip-group': { tw: 'm-0 flex flex-wrap gap-2 border-0 p-0' },
-  'ui-chip-icon': { tw: 'inline-flex shrink-0 items-center justify-center' },
-  'ui-chip button': {
-    tw: 'ml-1 inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-current opacity-70 hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-current disabled:cursor-not-allowed',
-  },
 });
 
 // click-away-listener.js
@@ -534,22 +299,6 @@ register.all({
 });
 
 // dialog.js
-register('ui-dialog-backdrop', {
-  base: { tw: 'fixed inset-0 z-50 flex items-center justify-center bg-[rgba(0,0,0,.65)] p-4' },
-});
-register('ui-dialog', {
-  root: {
-    tw: 'my-auto flex max-h-[min(90vh,48rem)] w-full max-w-[440px] flex-col overflow-y-auto rounded-xl border border-[var(--border)] bg-[var(--panel-raised)] p-6 text-[var(--text)] shadow-[0_20px_60px_rgba(0,0,0,.5)] outline-none',
-  },
-  close: {
-    tw: 'inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded border-0 bg-transparent p-0 text-[var(--muted)] hover:bg-white/10 hover:text-[var(--text)] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--rgi-blue)]',
-  },
-  header: { tw: 'flex items-start justify-between gap-4' },
-  title: { tw: 'm-0 text-lg font-semibold' },
-  description: { tw: 'mt-2 text-sm leading-relaxed text-[var(--muted)]' },
-  content: { tw: 'mt-4 min-h-0 text-sm leading-relaxed' },
-  actions: { tw: 'mt-5 flex flex-wrap justify-end gap-2' },
-});
 register.all({
   'demo-dialog-demo': {
     tw: 'flex flex-col items-start gap-4',
@@ -569,24 +318,6 @@ register.all({
 });
 
 // divider.js
-register('ui-divider', {
-  base: { tw: 'my-1 shrink-0 border-0 border-[var(--border)] text-[var(--muted)]' },
-  modifiers: {
-    horizontal: { tw: 'w-full border-t' },
-    vertical: { tw: 'mx-1 my-0 h-5 w-px shrink-0 bg-[var(--border)]' },
-    inset: { tw: 'ml-5' },
-    'flex-item': { tw: 'self-stretch' },
-    'text-center': {
-      tw: 'flex items-center gap-3 before:flex-1 after:flex-1 before:border-t after:border-t',
-    },
-    'text-left': { tw: 'flex items-center gap-3 after:flex-1 after:border-t' },
-    'text-right': { tw: 'flex items-center gap-3 before:flex-1 before:border-t' },
-  },
-});
-register('ui-divider-inset-horizontal', {
-  base: { tw: '!w-[calc(100%-1.25rem)]' },
-});
-register('ui-divider-content', { base: { tw: 'shrink-0 px-1 text-xs' } });
 register('demo-typography', {
   base: { tw: 'm-0 text-sm leading-relaxed text-[var(--text)]' },
   modifiers: {
@@ -605,20 +336,6 @@ register.all({
   'demo-drawer-trigger': {
     tw: 'inline-flex cursor-pointer items-center gap-2 rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs font-medium text-[var(--text)] hover:border-[var(--rgi-blue)]',
   },
-  'ui-drawer-root': { tw: 'contents' },
-  'ui-drawer-temporary': { tw: 'contents' },
-  'ui-drawer-persistent': { tw: 'contents' },
-  'ui-drawer-open': { tw: 'visible' },
-  'ui-drawer-backdrop': {
-    tw: 'fixed inset-0 z-40 cursor-default border-0 bg-black/60 p-0',
-  },
-  'ui-drawer': {
-    tw: 'z-50 flex flex-col overflow-auto bg-[var(--panel)] p-5 text-[var(--text)] shadow-2xl',
-  },
-  'ui-drawer-surface-temporary': {
-    tw: 'fixed inset-y-0 left-0 h-dvh w-[min(18rem,85vw)]',
-  },
-  'ui-drawer[hidden]': { tw: 'hidden' },
   'demo-drawer': {
     tw: 'flex flex-col gap-1',
   },
@@ -642,20 +359,6 @@ register.all({
 });
 
 // floating-action-button.js
-register('ui-floating-action-button', {
-  base: {
-    tw: 'inline-flex size-14 shrink-0 cursor-pointer select-none items-center justify-center gap-2 rounded-full border border-transparent bg-[#547be8] p-0 text-white shadow-[0_5px_16px_rgba(0,0,0,.38),0_2px_5px_rgba(84,123,232,.28)] transition-[background-color,box-shadow,transform] duration-150 hover:bg-[#6689ed] hover:shadow-[0_8px_22px_rgba(0,0,0,.42),0_3px_8px_rgba(84,123,232,.32)] active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--page)] focus-visible:ring-[#9bbcff] disabled:cursor-not-allowed disabled:opacity-45',
-  },
-  modifiers: {
-    primary: { tw: '' },
-    secondary: {
-      tw: 'border-[#354158] bg-[#171e2a] text-[#b9ccff] shadow-[0_4px_12px_rgba(0,0,0,.28)] hover:bg-[#222d40] hover:shadow-[0_7px_18px_rgba(0,0,0,.36)]',
-    },
-    extended: { tw: '!h-12 !w-auto min-w-14 rounded-2xl px-5 text-xs font-semibold' },
-    small: { tw: '!size-10' },
-    large: { tw: '!size-16' },
-  },
-});
 register.all({
   'demo-fab-stage': {
     tw: 'flex w-full max-w-[620px] flex-wrap items-center justify-between gap-5 rounded-xl border border-[var(--border)] bg-[var(--panel)] p-5 max-sm:p-4',
@@ -695,7 +398,6 @@ register.all({
 
 // icon-glyph.js
 register.all({
-  'ui-icon-glyph': { tw: 'inline-block shrink-0 align-middle' },
   'demo-icon-glyph-grid': {
     tw: 'grid w-full max-w-[600px] grid-cols-4 gap-3 sm:grid-cols-7',
   },
@@ -717,58 +419,6 @@ register.all({
 register.all({
   'demo-icons-grid': {
     tw: 'grid w-full max-w-[600px] grid-cols-2 gap-3 sm:grid-cols-4',
-  },
-  'ui-icon-button': {
-    tw: 'flex cursor-pointer items-center gap-3 rounded-lg border border-[var(--border)] bg-[var(--panel)] p-3 text-left text-xs text-[var(--text-muted)] hover:border-[var(--rgi-blue)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--rgi-blue)]',
-  },
-  'ui-icon-button-symbol': {
-    tw: 'inline-flex size-8 items-center justify-center rounded-md bg-[var(--rgi-blue-soft)] text-[var(--rgi-blue)]',
-  },
-  'ui-icon-button-selected': { tw: 'ring-1 ring-[var(--rgi-blue)]' },
-  'ui-icon-button-symbol-warning': {
-    tw: 'bg-[var(--rgi-warning-bg)] text-[var(--rgi-warning)]',
-  },
-  'ui-icon-button-symbol-danger': { tw: 'bg-[var(--rgi-error-bg)] text-[var(--rgi-error)]' },
-  'ui-icon-button-symbol-success': { tw: 'bg-[var(--rgi-success-bg)] text-[var(--rgi-success)]' },
-});
-
-// link.js
-register('ui-link', {
-  base: {
-    tw: 'font-medium text-[var(--rgi-blue)] underline underline-offset-4 hover:text-white focus-visible:outline-2 focus-visible:outline-[var(--rgi-blue)]',
-  },
-  modifiers: { hover: { tw: 'no-underline hover:underline' } },
-});
-register('ui-link-disabled', {
-  base: { tw: 'cursor-not-allowed text-[var(--muted)] no-underline opacity-55' },
-});
-
-// list.js
-register.all({
-  'ui-list': {
-    tw: 'm-0 flex w-full max-w-[520px] list-none flex-col overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--panel)] p-0',
-  },
-  'ui-list-dense': { tw: 'py-1' },
-  'ui-list-no-padding': { tw: 'p-0' },
-  'ui-list-item': {
-    tw: 'flex w-full items-center last:border-b-0',
-  },
-  'ui-list-item-divider': { tw: 'border-b border-[var(--border)]' },
-  'ui-list-item-no-gutters > button': { tw: 'px-0' },
-  'ui-list-item-button': {
-    tw: 'flex min-h-12 w-full cursor-pointer items-center justify-between gap-3 border-0 bg-transparent px-4 py-3 text-left text-[var(--text-muted)] last:border-b-0 hover:bg-white/[.03] focus-visible:outline-2 focus-visible:outline-[var(--rgi-blue)]',
-  },
-  'ui-list-item-button-selected': {
-    tw: 'bg-[var(--rgi-blue-soft)] text-[var(--rgi-blue)]',
-  },
-  'ui-list-item-text': {
-    tw: 'flex min-w-0 flex-1 flex-col gap-1',
-  },
-  'ui-list-primary': {
-    tw: 'text-xs font-medium text-[var(--text)]',
-  },
-  'ui-list-secondary': {
-    tw: 'text-[10px] text-[var(--muted)]',
   },
 });
 
@@ -800,18 +450,6 @@ register.all({
   },
   'demo-menu-trigger': {
     tw: 'inline-flex size-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-[var(--text-muted)] hover:bg-white/[.06] hover:text-white',
-  },
-  'ui-menu': {
-    tw: 'z-50 w-52 rounded-lg border border-[var(--border)] bg-[var(--panel)] p-1 shadow-2xl',
-  },
-  'ui-menu-item': {
-    tw: 'flex w-full cursor-pointer items-center gap-2 rounded-md border-0 bg-transparent px-3 py-2 text-left text-xs text-[var(--text-muted)] hover:bg-white/[.05] hover:text-white focus-visible:outline-2 focus-visible:outline-[var(--rgi-blue)]',
-  },
-  'ui-menu-item span': {
-    tw: 'flex-1',
-  },
-  'ui-menu-item-danger': {
-    tw: 'text-rose-400 hover:text-rose-300',
   },
 });
 

@@ -32,22 +32,22 @@ const Accordion = forwardRef(function Accordion(
     <section
       {...props}
       ref={ref}
-      className={cx('demo-accordion-item', disabled && 'demo-accordion-item-disabled', className)}
+      className={cx('ui-accordion-item', disabled && 'ui-accordion-item-disabled', className)}
     >
-      <h3 className="demo-accordion-heading">
+      <h3 className="ui-accordion-heading">
         <button
           type="button"
-          className="demo-accordion-trigger"
+          className="ui-accordion-trigger"
           id={triggerId}
           aria-expanded={isExpanded}
           aria-controls={panelId}
           disabled={disabled}
           onClick={toggle}
         >
-          <span className="demo-accordion-title">{title}</span>
+          <span className="ui-accordion-title">{title}</span>
           {expandIcon ?? (
             <ChevronDown
-              className={cx('demo-accordion-icon', isExpanded && 'demo-accordion-icon-open')}
+              className={cx('ui-accordion-icon', isExpanded && 'ui-accordion-icon-open')}
               size={16}
               aria-hidden="true"
             />
@@ -55,7 +55,7 @@ const Accordion = forwardRef(function Accordion(
         </button>
       </h3>
       <section
-        className="demo-accordion-panel"
+        className="ui-accordion-panel"
         id={panelId}
         aria-labelledby={triggerId}
         hidden={!isExpanded}

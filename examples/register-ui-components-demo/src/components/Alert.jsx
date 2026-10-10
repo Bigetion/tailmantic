@@ -32,27 +32,27 @@ const Alert = forwardRef(function Alert(
       {...props}
       ref={ref}
       className={cx(
-        'demo-alert',
-        `demo-alert-${severity}`,
-        variant === 'outlined' && 'demo-alert-outlined',
+        'ui-alert',
+        `ui-alert-${severity}`,
+        variant === 'outlined' && 'ui-alert-outlined',
         className,
       )}
       role={role ?? (severity === 'error' ? 'alert' : 'status')}
     >
       {iconContent !== null && (
-        <span className="demo-alert-icon" aria-hidden="true">
+        <span className="ui-alert-icon" aria-hidden="true">
           {iconContent}
         </span>
       )}
-      <div className="demo-alert-copy">
-        {title != null && <strong className="demo-alert-title">{title}</strong>}
+      <div className="ui-alert-copy">
+        {title != null && <strong className="ui-alert-title">{title}</strong>}
         {children != null && <span>{children}</span>}
         {action}
       </div>
       {onClose && (
         <button
           type="button"
-          className="demo-alert-dismiss"
+          className="ui-alert-dismiss"
           aria-label={closeLabel}
           onClick={onClose}
         >

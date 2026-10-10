@@ -27,22 +27,22 @@ const Badge = forwardRef(function Badge(
 
   if (badgeContent === undefined && !isDot) {
     return (
-      <span {...props} ref={ref} className={cx('demo-badge', `demo-badge-${color}`, className)}>
+      <span {...props} ref={ref} className={cx('ui-badge', `ui-badge-${color}`, className)}>
         {children}
       </span>
     );
   }
 
   return (
-    <span {...props} ref={ref} className={cx('demo-badge-root', className)}>
+    <span {...props} ref={ref} className={cx('ui-badge-root', className)}>
       {children}
       {!invisible && (isDot || !isEmpty) && (
         <span
           className={cx(
-            'demo-badge',
-            `demo-badge-${color}`,
-            `demo-badge-${variant}`,
-            `demo-badge-overlap-${overlap}`,
+            'ui-badge',
+            `ui-badge-${color}`,
+            `ui-badge-${variant}`,
+            `ui-badge-overlap-${overlap}`,
           )}
           {...badgeAccessibility}
         >

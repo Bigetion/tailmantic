@@ -14,7 +14,7 @@ const Avatar = forwardRef(function Avatar(
     <span
       {...props}
       ref={ref}
-      className={cx('demo-avatar', `demo-avatar-${color}`, `demo-avatar-${size}`, className)}
+      className={cx('ui-avatar', `ui-avatar-${color}`, `ui-avatar-${size}`, className)}
       {...accessibleProps}
     >
       {showImage ? <img src={src} alt="" onError={() => setFailedSource(src)} /> : children}

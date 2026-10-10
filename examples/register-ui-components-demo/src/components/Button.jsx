@@ -14,10 +14,10 @@ export function DemoButton({
     <button
       {...props}
       className={cx(
-        'demo-button',
-        `demo-button-${variant}`,
-        size !== 'medium' && `demo-button-${size}`,
-        color !== 'primary' && `demo-button-color-${color}`,
+        'ui-button',
+        `ui-button-${variant}`,
+        size !== 'medium' && `ui-button-${size}`,
+        color !== 'primary' && `ui-button-color-${color}`,
         className,
       )}
       disabled={disabled}

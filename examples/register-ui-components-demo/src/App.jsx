@@ -187,7 +187,7 @@ function DemoRoute() {
           Component not found
         </h1>
         <p className="demo-desc">The requested component page does not exist.</p>
-        <RouterLink className="demo-button demo-button-contained" to="/button">
+        <RouterLink className="ui-button ui-button-contained" to="/button">
           Back to Button
         </RouterLink>
       </section>
@@ -224,7 +224,7 @@ function NotFoundRoute() {
         Page not found
       </h1>
       <p className="demo-desc">The requested page does not exist.</p>
-      <RouterLink className="demo-button demo-button-contained" to="/button">
+      <RouterLink className="ui-button ui-button-contained" to="/button">
         Back to Button
       </RouterLink>
     </section>
