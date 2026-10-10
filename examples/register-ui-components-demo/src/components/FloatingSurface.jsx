@@ -30,6 +30,7 @@ export default function FloatingSurface({
   className,
   role,
   onEscape,
+  onPositioned,
   children,
 }) {
   const internalRef = useRef(null);
@@ -54,6 +55,10 @@ export default function FloatingSurface({
     });
     return () => instance.destroy();
   }, [modifiers, open, placement, referenceRef]);
+
+  useEffect(() => {
+    if (open && positioned) onPositioned?.();
+  }, [onPositioned, open, positioned]);
 
   useEffect(() => {
     if (!open || !onEscape) return undefined;

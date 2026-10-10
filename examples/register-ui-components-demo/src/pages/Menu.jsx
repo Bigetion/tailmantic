@@ -1,16 +1,13 @@
 import { Check, ChevronDown, Copy, Pencil, Settings, Share2, Trash2 } from 'lucide-react';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import FloatingSurface, { useClickAway } from '../components/FloatingSurface.jsx';
+import { useCallback, useRef, useState } from 'react';
+import UIMenu, { MenuItem } from '../components/Menu.jsx';
 
 const PLACEMENTS = ['bottom-start', 'bottom-end', 'top-start', 'top-end'];
 
 export default function Menu() {
   const anchorRef = useRef(null);
-  const floatingRef = useRef(null);
-  const itemRefs = useRef([]);
   const [mode, setMode] = useState('actions');
   const [open, setOpen] = useState(false);
-  const [focusedIndex, setFocusedIndex] = useState(0);
   const [placement, setPlacement] = useState('bottom-end');
   const [selected, setSelected] = useState('');
   const actions = [
@@ -25,33 +22,6 @@ export default function Menu() {
       ? ['Recently updated', 'Name A to Z', 'Created date'].map((label) => ({ label }))
       : actions;
   const dismiss = useCallback(() => setOpen(false), []);
-  useClickAway(open, anchorRef, floatingRef, dismiss);
-
-  useEffect(() => {
-    if (!open) return undefined;
-    const current = Math.min(focusedIndex, items.length - 1);
-    itemRefs.current[current]?.focus();
-    function handleKeyDown(event) {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        dismiss();
-        anchorRef.current?.focus();
-      } else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
-        event.preventDefault();
-        const active = itemRefs.current.indexOf(document.activeElement);
-        const next =
-          event.key === 'Home'
-            ? 0
-            : event.key === 'End'
-              ? items.length - 1
-              : (active + (event.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
-        setFocusedIndex(next);
-        itemRefs.current[next]?.focus();
-      }
-    }
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [dismiss, focusedIndex, items.length, open]);
 
   function select(label) {
     setSelected(label);
@@ -77,7 +47,6 @@ export default function Menu() {
             onClick={() => {
               setMode(value);
               setOpen(value === 'placement');
-              setFocusedIndex(0);
             }}
           >
             {label}
@@ -131,33 +100,21 @@ export default function Menu() {
               : 'Open the menu to choose an action.'}
         </span>
       </div>
-      <FloatingSurface
+      <UIMenu
         open={open}
-        referenceRef={anchorRef}
-        floatingRef={floatingRef}
+        anchorRef={anchorRef}
         placement={mode === 'placement' ? placement : 'bottom-end'}
-        className="demo-menu-surface"
-        role="menu"
+        className="ui-menu-surface"
+        onClose={dismiss}
       >
-        {items.map(({ label, icon: Icon, danger }, index) => (
-          <button
-            type="button"
-            role="menuitem"
-            tabIndex={focusedIndex === index ? 0 : -1}
-            className={danger ? 'demo-menu-item demo-menu-item-danger' : 'demo-menu-item'}
-            key={label}
-            ref={(node) => {
-              itemRefs.current[index] = node;
-            }}
-            onFocus={() => setFocusedIndex(index)}
-            onClick={() => select(label)}
-          >
-            {Icon && <Icon size={14} />}
+        {items.map(({ label, icon: Icon, danger }) => (
+          <MenuItem key={label} danger={danger} onClick={() => select(label)}>
+            {Icon && <Icon size={14} aria-hidden="true" />}
             <span>{label}</span>
-            {selected === label && <Check size={14} />}
-          </button>
+            {selected === label && <Check size={14} aria-hidden="true" />}
+          </MenuItem>
         ))}
-      </FloatingSurface>
+      </UIMenu>
     </section>
   );
 }
