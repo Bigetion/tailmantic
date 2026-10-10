@@ -370,11 +370,10 @@ register('demo-button-spinner', {
 
 // button-group.js
 register.all({
+  'ui-button-group': { tw: 'inline-flex items-center gap-1 text-[var(--text)]' },
+  'ui-button-group-vertical': { tw: 'flex-col items-stretch' },
   'demo-button-group': {
     tw: 'm-0 inline-flex w-fit overflow-hidden rounded-md border border-[var(--border)] bg-[var(--panel)] p-0',
-  },
-  'demo-button-group legend': {
-    tw: 'sr-only',
   },
   'demo-button-group-item': {
     tw: 'relative inline-flex min-h-9 cursor-pointer select-none items-center justify-center gap-2 border-0 border-r border-[var(--border)] bg-transparent px-3.5 text-[11px] font-medium text-[var(--text-muted)] transition-colors last:border-r-0 hover:bg-white/[.05] hover:text-white focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#86a6ff] disabled:cursor-not-allowed disabled:opacity-40',
@@ -382,14 +381,11 @@ register.all({
   'demo-button-group-selected': {
     tw: 'bg-[#21304b] text-[#b9ccff] hover:bg-[#21304b] hover:text-[#b9ccff]',
   },
-  'demo-button-group-vertical': {
-    tw: 'flex-col',
-  },
-  'demo-button-group-vertical .demo-button-group-item': {
+  'ui-button-group-vertical .demo-button-group-item': {
     tw: 'justify-center border-r-0 border-b border-[var(--border)] last:border-b-0',
   },
   'demo-button-group-split': {
-    tw: 'relative m-0 inline-flex overflow-visible rounded-lg border-0 p-0',
+    tw: 'relative m-0 inline-flex !gap-0 overflow-visible rounded-lg border-0 p-0',
   },
   'demo-button-group-primary': {
     tw: 'inline-flex min-h-9 cursor-pointer select-none items-center gap-2 rounded-l-[7px] border border-[var(--rgi-blue-dark)] bg-[#344e81] px-4 text-[11px] font-medium text-white transition-colors hover:bg-[#405f9e] focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#86a6ff] disabled:cursor-not-allowed disabled:opacity-40',

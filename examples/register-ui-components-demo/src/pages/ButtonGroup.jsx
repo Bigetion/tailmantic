@@ -9,6 +9,7 @@ import {
   Save,
 } from 'lucide-react';
 import { useCallback, useId, useRef, useState } from 'react';
+import ButtonGroupComponent from '../components/ButtonGroup.jsx';
 import { useClickAway } from '../components/FloatingSurface.jsx';
 
 const VIEWS = [
@@ -38,8 +39,7 @@ export default function ButtonGroup() {
     <>
       <section className="demo-section">
         <span className="demo-section-title">Exclusive horizontal selection</span>
-        <fieldset className="demo-button-group">
-          <legend className="sr-only">Editor view</legend>
+        <ButtonGroupComponent className="demo-button-group" aria-label="Editor view">
           {VIEWS.map(({ label, icon: Icon }) => (
             <button
               className={
@@ -56,15 +56,18 @@ export default function ButtonGroup() {
               {label}
             </button>
           ))}
-        </fieldset>
+        </ButtonGroupComponent>
         <span className="demo-note" role="status">
           {view} view selected.
         </span>
       </section>
       <section className="demo-section">
         <span className="demo-section-title">Vertical icon group</span>
-        <fieldset className="demo-button-group demo-button-group-vertical">
-          <legend className="sr-only">Text alignment</legend>
+        <ButtonGroupComponent
+          orientation="vertical"
+          className="demo-button-group"
+          aria-label="Text alignment"
+        >
           {ALIGNMENTS.map(({ label, icon: Icon }) => (
             <button
               type="button"
@@ -81,16 +84,17 @@ export default function ButtonGroup() {
               <Icon size={15} />
             </button>
           ))}
-        </fieldset>
+        </ButtonGroupComponent>
         <span className="demo-note" role="status">
           {alignment} selected.
         </span>
       </section>
       <section className="demo-section">
         <span className="demo-section-title">Split action menu</span>
-        <fieldset
+        <ButtonGroupComponent
           className="demo-button-group-split"
           ref={groupRef}
+          aria-label="Save actions"
           onKeyDown={(event) => {
             if (event.key === 'Escape' && menuOpen) {
               event.preventDefault();
@@ -99,7 +103,6 @@ export default function ButtonGroup() {
             }
           }}
         >
-          <legend className="sr-only">Save actions</legend>
           <button
             type="button"
             className="demo-button-group-primary"
@@ -138,7 +141,7 @@ export default function ButtonGroup() {
               ))}
             </fieldset>
           )}
-        </fieldset>
+        </ButtonGroupComponent>
         <span className="demo-note" role="status">
           {announcement || 'Save now or choose another publishing action.'}
         </span>
