@@ -1,42 +1,5 @@
 import { useState } from 'react';
-
-function Breadcrumbs({ items, separator, collapsible, expanded, onExpand }) {
-  const visibleItems =
-    collapsible && !expanded && items.length > 3
-      ? [items[0], { label: '…', collapsed: true, onClick: onExpand }, ...items.slice(-2)]
-      : items;
-  return (
-    <nav className="demo-breadcrumbs" aria-label="Breadcrumb">
-      {visibleItems.map((item, index) => (
-        <span className="demo-breadcrumb-entry" key={item.label}>
-          {index > 0 && (
-            <span className="demo-breadcrumb-separator" aria-hidden="true">
-              {separator}
-            </span>
-          )}
-          {item.collapsed ? (
-            <button
-              type="button"
-              className="demo-breadcrumb-expand"
-              aria-label="Expand breadcrumb path"
-              onClick={item.onClick}
-            >
-              …
-            </button>
-          ) : item.href && index < visibleItems.length - 1 ? (
-            <a className="demo-breadcrumb-link" href={item.href}>
-              {item.label}
-            </a>
-          ) : (
-            <span className="demo-breadcrumb-current" aria-current="page">
-              {item.label}
-            </span>
-          )}
-        </span>
-      ))}
-    </nav>
-  );
-}
+import BreadcrumbsComponent from '../components/Breadcrumbs.jsx';
 
 export default function BreadcrumbsDemo() {
   const [separator, setSeparator] = useState('/');
@@ -58,10 +21,11 @@ export default function BreadcrumbsDemo() {
           <option value="·">Dot</option>
         </select>
       </label>
-      <Breadcrumbs
+      <BreadcrumbsComponent
         items={items}
         separator={separator}
         collapsible
+        maxItems={3}
         expanded={expanded}
         onExpand={() => setExpanded(true)}
       />
