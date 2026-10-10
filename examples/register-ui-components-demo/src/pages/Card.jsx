@@ -1,28 +1,25 @@
 import { Bookmark, Heart } from 'lucide-react';
 import { useState } from 'react';
-
-function Card({ children, variant = 'elevated' }) {
-  return <article className={`demo-card demo-card-${variant}`}>{children}</article>;
-}
+import CardComponent from '../components/Card.jsx';
 
 export default function CardDemo() {
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
   return (
     <div className="demo-grid">
-      <Card>
+      <CardComponent>
         <h2>Project overview</h2>
         <p>Reusable interface components with consistent styles.</p>
         <div className="demo-row">
           <span className="demo-chip demo-chip-success">Active</span>
           <span className="demo-badge demo-badge-primary">12 updates</span>
         </div>
-      </Card>
-      <Card variant="outlined">
+      </CardComponent>
+      <CardComponent variant="outlined">
         <h2>Card variants</h2>
         <p>Elevated and outlined surfaces built with local Tailmantic styles.</p>
-      </Card>
-      <Card>
+      </CardComponent>
+      <CardComponent>
         <div className="demo-card-media" role="img" aria-label="Abstract blue landscape" />
         <span className="demo-note">FIELD NOTES · 5 MIN READ</span>
         <h2>Building a design system that scales</h2>
@@ -45,7 +42,7 @@ export default function CardDemo() {
             <Bookmark size={15} fill={saved ? 'currentColor' : 'none'} /> {saved ? 'Saved' : 'Save'}
           </button>
         </div>
-      </Card>
+      </CardComponent>
     </div>
   );
 }
