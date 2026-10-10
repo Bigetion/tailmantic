@@ -1,7 +1,8 @@
 import { Bell, Menu, Search, X } from 'lucide-react';
 import { useState } from 'react';
+import AppBarComponent from '../components/AppBar.jsx';
 
-export default function AppBar() {
+export default function AppBarPage() {
   const [compact, setCompact] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -24,7 +25,10 @@ export default function AppBar() {
           {compact ? 'Use full navigation' : 'Use compact navigation'}
         </button>
       </div>
-      <header className={`demo-app-bar${compact ? ' demo-app-bar-compact' : ''}`}>
+      <AppBarComponent
+        aria-label="Workspace toolbar"
+        className={`demo-app-bar-preview${compact ? ' demo-app-bar-compact' : ''}`}
+      >
         <button
           className="demo-app-bar-icon"
           type="button"
@@ -89,7 +93,7 @@ export default function AppBar() {
             JD
           </span>
         </div>
-      </header>
+      </AppBarComponent>
       {notice && (
         <span className="demo-note" role="status">
           {notice}
