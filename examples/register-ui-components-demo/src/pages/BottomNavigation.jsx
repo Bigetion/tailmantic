@@ -1,5 +1,8 @@
 import { Compass, Home, UserRound } from 'lucide-react';
 import { useState } from 'react';
+import BottomNavigationComponent, {
+  BottomNavigationItem,
+} from '../components/BottomNavigation.jsx';
 
 const ITEMS = [
   { label: 'Home', icon: Home },
@@ -22,30 +25,32 @@ export default function BottomNavigation() {
       >
         {labels ? 'Use icons only' : 'Show inactive labels'}
       </button>
-      <nav className="demo-bottom-navigation" aria-label="Primary">
+      <BottomNavigationComponent
+        className="demo-bottom-navigation"
+        aria-label="Primary"
+        value={active}
+        onChange={(_, value) => setActive(value)}
+      >
         {ITEMS.map(({ label, icon: Icon }) => (
-          <button
+          <BottomNavigationItem
             key={label}
-            type="button"
-            className={`${
-              active === label
-                ? 'demo-bottom-nav-item demo-bottom-nav-item-active'
-                : 'demo-bottom-nav-item'
-            }${!labels && active !== label ? ' demo-bottom-nav-item-compact' : ''}`}
-            aria-current={active === label ? 'page' : undefined}
-            aria-label={label === 'Explore' ? 'Explore, 2 unread items' : undefined}
-            onClick={() => setActive(label)}
-          >
-            <Icon size={18} />
-            {labels || active === label ? <span>{label}</span> : null}
-            {label === 'Explore' && (
-              <span className="demo-bottom-nav-badge" aria-hidden="true">
-                2
+            value={label}
+            label={labels || active === label ? label : ''}
+            aria-label={label === 'Explore' ? 'Explore, 2 unread items' : label}
+            className={!labels && active !== label ? 'demo-bottom-nav-item-compact' : undefined}
+            icon={
+              <span className="demo-bottom-nav-icon-wrap">
+                <Icon size={18} />
+                {label === 'Explore' && (
+                  <span className="demo-bottom-nav-badge" aria-hidden="true">
+                    2
+                  </span>
+                )}
               </span>
-            )}
-          </button>
+            }
+          />
         ))}
-      </nav>
+      </BottomNavigationComponent>
       <span className="demo-note">Current destination: {active}</span>
     </section>
   );
