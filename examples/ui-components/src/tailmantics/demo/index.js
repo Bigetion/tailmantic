@@ -1,3 +1,4 @@
+import './button-showcase.js';
 import './floating-action-button.js';
 import './number-field.js';
 import './rating.js';

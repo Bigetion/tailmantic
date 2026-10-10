@@ -21,11 +21,6 @@ register('rgi-button-group-spaced', {
   base: { tw: 'gap-3' },
 });
 
-register.group('rgi-button-group-example', {
-  root: { tw: 'relative flex flex-col items-start gap-2.5 text-[var(--text,#edf2fb)]' },
-  status: { tw: 'text-[10px] text-[#8290a8]' },
-});
-
 register('rgi-button-group-segmented .rgi-button[aria-pressed="true"]', {
   base: {
     tw: 'bg-[#21304b] text-[#b9ccff] shadow-none hover:!bg-[#21304b] hover:!text-[#b9ccff]',
