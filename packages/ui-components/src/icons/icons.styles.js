@@ -1,5 +1,5 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-icons', {
-  base: { tw: 'inline-block shrink-0 align-middle text-[var(--rgi-icon-color,currentColor)]' },
+register('tm-icons', {
+  base: { tw: 'inline-block shrink-0 align-middle text-[var(--tm-icon-color,currentColor)]' },
 });

@@ -1,5 +1,5 @@
 import { User } from 'lucide-react';
-import { cx } from 'tailmantic';
+import { Avatar } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -22,26 +22,14 @@ const DEMOS = {
   },
 };
 
-function Avatar({ label, initials, variant, size = 'medium', children }) {
-  return (
-    <span
-      className={cx('rgi-avatar', variant, size !== 'medium' && `rgi-avatar-${size}`)}
-      role="img"
-      aria-label={label}
-    >
-      {children ?? initials}
-    </span>
-  );
-}
-
 function AvatarFallbacks() {
   return (
     <div className="preview-stack">
       <div className="avatar-examples" role="list" aria-label="Avatar fallback examples">
-        <Avatar label="Jordan Davis" initials="JD" variant="avatar-indigo" />
-        <Avatar label="Morgan Kim" variant="avatar-teal"><User size={18} aria-hidden="true" /></Avatar>
-        <Avatar label="Alex Lee" initials="AL" variant="avatar-amber" />
-        <Avatar label="No profile image" initials="?" variant="avatar-neutral" />
+        <Avatar aria-label="Jordan Davis" className="avatar-indigo">JD</Avatar>
+        <Avatar aria-label="Morgan Kim" className="avatar-teal"><User size={18} aria-hidden="true" /></Avatar>
+        <Avatar aria-label="Alex Lee" className="avatar-amber">AL</Avatar>
+        <Avatar aria-label="No profile image" className="avatar-neutral">?</Avatar>
       </div>
       <span className="preview-note">Use initials or an icon when a profile image is unavailable.</span>
     </div>
@@ -63,11 +51,11 @@ function AvatarSizes() {
         {sizes.map(([size, pixels]) => (
           <div className="avatar-size-item" key={size}>
             <Avatar
-              label={`${pixels} pixel avatar`}
-              initials="JD"
-              variant="avatar-indigo"
-              size={size}
-            />
+              aria-label={`${pixels} pixel avatar`}
+              className={`avatar-indigo${size !== 'medium' ? ` tm-avatar-${size}` : ''}`}
+            >
+              JD
+            </Avatar>
             <span className="avatar-size-label">{pixels}px</span>
           </div>
         ))}
@@ -79,17 +67,19 @@ function AvatarSizes() {
 
 function AvatarGroup() {
   const members = [
-    { label: 'Jordan Davis', initials: 'JD', variant: 'avatar-indigo' },
-    { label: 'Morgan Kim', initials: 'MK', variant: 'avatar-teal' },
-    { label: 'Alex Lee', initials: 'AL', variant: 'avatar-amber' },
-    { label: 'Taylor Chen', initials: 'TC', variant: 'avatar-violet' },
+    { label: 'Jordan Davis', initials: 'JD', colorClass: 'avatar-indigo' },
+    { label: 'Morgan Kim', initials: 'MK', colorClass: 'avatar-teal' },
+    { label: 'Alex Lee', initials: 'AL', colorClass: 'avatar-amber' },
+    { label: 'Taylor Chen', initials: 'TC', colorClass: 'avatar-violet' },
   ];
 
   return (
     <div className="preview-stack">
       <div className="avatar-group" role="group" aria-label="Project team: four members and two more">
         {members.map((member) => (
-          <Avatar key={member.label} {...member} />
+          <Avatar key={member.label} aria-label={member.label} className={member.colorClass}>
+            {member.initials}
+          </Avatar>
         ))}
         <span className="avatar-group-overflow" aria-label="2 additional team members">+2</span>
       </div>

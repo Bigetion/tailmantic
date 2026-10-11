@@ -7,7 +7,7 @@ const Tooltip = forwardRef(function Tooltip(
   ref,
 ) {
   const generatedId = useId();
-  const tooltipId = id ? `${id}-tooltip` : `rgi-tooltip-${generatedId}`;
+  const tooltipId = id ? `${id}-tooltip` : `tm-tooltip-${generatedId}`;
   const isOpen = open ?? defaultOpen;
   const hasElementTrigger =
     content != null && isValidElement(children) && children.type !== Fragment;
@@ -32,10 +32,10 @@ const Tooltip = forwardRef(function Tooltip(
       ref={ref}
       id={id}
       className={cx(
-        'rgi-tooltip-root',
-        `rgi-tooltip-${placement}`,
-        isOpen && 'rgi-tooltip-open',
-        open === false && 'rgi-tooltip-closed',
+        'tm-tooltip-root',
+        `tm-tooltip-${placement}`,
+        isOpen && 'tm-tooltip-open',
+        open === false && 'tm-tooltip-closed',
         className,
       )}
       aria-describedby={!hasElementTrigger && content ? tooltipId : undefined}
@@ -43,7 +43,7 @@ const Tooltip = forwardRef(function Tooltip(
     >
       {trigger}
       {content != null && (
-        <span id={tooltipId} className="rgi-tooltip-content" role="tooltip">
+        <span id={tooltipId} className="tm-tooltip-content" role="tooltip">
           {content}
         </span>
       )}

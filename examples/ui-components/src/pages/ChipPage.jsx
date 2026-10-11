@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Check, Clock3, Code2, X } from 'lucide-react';
-import { Chip } from '@tailmantic/ui-components';
+import { Chip, Button } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -82,9 +82,9 @@ function ChipDeletable() {
       </div>
       <div className="chip-actions">
         <span className="preview-note" role="status" aria-live="polite">{tags.length} tags remaining</span>
-        <button className="rgi-button rgi-button-text" type="button" onClick={() => setTags(['Design system', 'React', 'Accessibility'])} disabled={tags.length === 3}>
+        <Button variant="text" onClick={() => setTags(['Design system', 'React', 'Accessibility'])} disabled={tags.length === 3}>
           Restore tags
-        </button>
+        </Button>
       </div>
     </div>
   );

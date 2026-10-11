@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-list', {
+register('tm-list', {
   base: { tw: 'm-0 flex list-none flex-col p-2 text-[var(--text,#edf2fb)]' },
   modifiers: {
     dense: { tw: 'py-1' },
@@ -8,7 +8,7 @@ register('rgi-list', {
   },
 });
 
-register('rgi-list-item', {
+register('tm-list-item', {
   base: { tw: 'flex min-h-12 items-center gap-3 px-4 py-2 text-sm' },
   modifiers: {
     divider: { tw: 'border-b border-[var(--border,#273142)] last:border-b-0' },
@@ -16,14 +16,14 @@ register('rgi-list-item', {
   },
 });
 
-register('rgi-list-item-text', {
+register('tm-list-item-text', {
   base: { tw: 'flex min-w-0 flex-col gap-1' },
 });
 
-register('rgi-list-primary', {
+register('tm-list-primary', {
   base: { tw: 'font-medium' },
 });
 
-register('rgi-list-secondary', {
+register('tm-list-secondary', {
   base: { tw: 'text-xs text-[var(--muted,#9aa8bd)]' },
 });

@@ -109,7 +109,7 @@ const IconGlyph = forwardRef(function IconGlyph(
     <svg
       {...props}
       ref={ref}
-      className={cx('rgi-icon-glyph', className)}
+      className={cx('tm-icon-glyph', className)}
       width={size}
       height={size}
       viewBox="0 0 24 24"

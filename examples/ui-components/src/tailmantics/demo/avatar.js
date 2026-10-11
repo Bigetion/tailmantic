@@ -1,7 +1,7 @@
 import { register } from 'tailmantic/collector';
 
 register('avatar-stack', {
-  base: { tw: 'flex -space-x-2 [&_.rgi-avatar]:border-2 [&_.rgi-avatar]:border-[var(--panel)]' },
+  base: { tw: 'flex -space-x-2 [&_.tm-avatar]:border-2 [&_.tm-avatar]:border-[var(--panel)]' },
 });
 
 register('avatar-indigo', {
@@ -24,19 +24,19 @@ register('avatar-neutral', {
   base: { tw: 'bg-[#303844] text-[#c0cad8]' },
 });
 
-register('rgi-avatar-xs', {
+register('tm-avatar-xs', {
   base: { tw: '!size-6 text-[8px]' },
 });
 
-register('rgi-avatar-sm', {
+register('tm-avatar-sm', {
   base: { tw: '!size-8 text-[10px]' },
 });
 
-register('rgi-avatar-lg', {
+register('tm-avatar-lg', {
   base: { tw: 'size-12 text-sm [&_svg]:size-5' },
 });
 
-register('rgi-avatar-xl', {
+register('tm-avatar-xl', {
   base: { tw: 'size-14 text-base [&_svg]:size-6' },
 });
 
@@ -57,7 +57,7 @@ register('avatar-size-label', {
 });
 
 register('avatar-group', {
-  base: { tw: 'flex items-center -space-x-2 [&_.rgi-avatar]:border-2 [&_.rgi-avatar]:border-[#111720]' },
+  base: { tw: 'flex items-center -space-x-2 [&_.tm-avatar]:border-2 [&_.tm-avatar]:border-[#111720]' },
 });
 
 register('avatar-group-overflow', {

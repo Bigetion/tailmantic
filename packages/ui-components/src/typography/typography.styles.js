@@ -1,7 +1,7 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-typography', {
-  base: { tw: 'm-0 text-[var(--rgi-typography-color,var(--text,#edf2fb))]' },
+register('tm-typography', {
+  base: { tw: 'm-0 text-[var(--tm-typography-color,var(--text,#edf2fb))]' },
   modifiers: {
     h1: { tw: 'text-4xl leading-tight tracking-tight' },
     h2: { tw: 'text-3xl leading-tight tracking-tight' },
@@ -21,10 +21,10 @@ register('rgi-typography', {
     'weight-regular': { tw: 'font-normal' },
     'weight-medium': { tw: 'font-medium' },
     'weight-bold': { tw: 'font-bold' },
-    'color-primary': { tw: '[--rgi-typography-color:var(--rgi-blue,#9bbcff)]' },
-    'color-secondary': { tw: '[--rgi-typography-color:var(--muted,#9aa8bd)]' },
-    'color-success': { tw: '[--rgi-typography-color:#69b890]' },
-    'color-warning': { tw: '[--rgi-typography-color:#e9ad64]' },
-    'color-danger': { tw: '[--rgi-typography-color:#e47b84]' },
+    'color-primary': { tw: '[--tm-typography-color:var(--rgi-blue,#9bbcff)]' },
+    'color-secondary': { tw: '[--tm-typography-color:var(--muted,#9aa8bd)]' },
+    'color-success': { tw: '[--tm-typography-color:#69b890]' },
+    'color-warning': { tw: '[--tm-typography-color:#e9ad64]' },
+    'color-danger': { tw: '[--tm-typography-color:#e47b84]' },
   },
 });

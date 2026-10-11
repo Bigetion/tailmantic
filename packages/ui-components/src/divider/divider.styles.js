@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-divider', {
+register('tm-divider', {
   base: { tw: 'm-0 shrink-0 border-0 border-[var(--border,#273142)] text-[var(--muted,#9aa8bd)]' },
   modifiers: {
     horizontal: { tw: 'w-full border-t' },
@@ -15,6 +15,6 @@ register('rgi-divider', {
   },
 });
 
-register('rgi-divider-content', {
+register('tm-divider-content', {
   base: { tw: 'shrink-0 px-1 text-xs' },
 });

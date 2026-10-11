@@ -22,17 +22,17 @@ const Divider = forwardRef(function Divider(
       {...props}
       ref={ref}
       className={cx(
-        'rgi-divider',
-        `rgi-divider-${orientation}`,
-        children && `rgi-divider-text-${textAlign}`,
-        inset && 'rgi-divider-inset',
-        flexItem && 'rgi-divider-flex-item',
+        'tm-divider',
+        `tm-divider-${orientation}`,
+        children && `tm-divider-text-${textAlign}`,
+        inset && 'tm-divider-inset',
+        flexItem && 'tm-divider-flex-item',
         className,
       )}
       role={children ? 'separator' : undefined}
       aria-orientation={vertical ? 'vertical' : undefined}
     >
-      {children && <span className="rgi-divider-content">{children}</span>}
+      {children && <span className="tm-divider-content">{children}</span>}
     </Tag>
   );
 });

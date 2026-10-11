@@ -16,10 +16,6 @@ register('divider-toolbar button', {
   base: { tw: 'inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-md border-0 bg-transparent px-1 text-xs font-medium text-[var(--text)] hover:bg-[var(--panel-raised)] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--rgi-blue)]' },
 });
 
-register('rgi-divider-vertical', {
-  base: { tw: 'h-6 w-px shrink-0 bg-[var(--border)]' },
-});
-
 register('divider-list', {
   base: { tw: 'flex w-full max-w-[520px] flex-col rounded-lg border border-[var(--border)] bg-[var(--panel)]' },
 });
@@ -42,8 +38,4 @@ register('divider-list-item small', {
 
 register('divider-list-icon', {
   base: { tw: 'inline-flex size-8 shrink-0 items-center justify-center rounded-md bg-[var(--panel-raised)] text-[var(--muted)]' },
-});
-
-register('rgi-divider-inset', {
-  base: { tw: '!ml-[60px] !w-[calc(100%_-_60px)]' },
 });

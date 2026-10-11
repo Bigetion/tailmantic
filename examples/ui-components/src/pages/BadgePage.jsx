@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Bell, Mail, MessageCircle, ShoppingCart } from 'lucide-react';
-import { cx } from 'tailmantic';
+import { Badge, Button } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -23,30 +23,6 @@ const DEMOS = {
   },
 };
 
-function Badge({ children, content, label, variant = 'badge-count', hidden = false, overlap = 'circular' }) {
-  return (
-    <span
-      className={cx('badge-anchor', overlap === 'rectangular' && 'badge-anchor-rectangular')}
-      role="img"
-      aria-label={label}
-    >
-      {children}
-      {!hidden && content !== null && (
-        <span
-          className={cx(
-            variant,
-            typeof content === 'number' && content > 99 && 'badge-count-max',
-            content === 0 && 'badge-count-zero',
-          )}
-          aria-hidden="true"
-        >
-          {typeof content === 'number' && content > 99 ? '99+' : content}
-        </span>
-      )}
-    </span>
-  );
-}
-
 function BadgeCounts() {
   const [unread, setUnread] = useState(4);
   const [messages, setMessages] = useState(104);
@@ -54,13 +30,25 @@ function BadgeCounts() {
   return (
     <div className="preview-stack">
       <div className="badge-examples" role="group" aria-label="Notification badge counts">
-        <Badge content={unread} label={`${unread} unread notifications`}><Bell size={21} aria-hidden="true" /></Badge>
-        <Badge content={messages} label="99 plus unread messages"><Mail size={21} aria-hidden="true" /></Badge>
-        <Badge content={0} label="No unread messages"><MessageCircle size={21} aria-hidden="true" /></Badge>
+        <span className="badge-anchor">
+          <Badge badgeContent={unread} badgeLabel={`${unread} unread notifications`}>
+            <Bell size={21} aria-hidden="true" />
+          </Badge>
+        </span>
+        <span className="badge-anchor">
+          <Badge badgeContent={messages} max={99} badgeLabel="99 plus unread messages">
+            <Mail size={21} aria-hidden="true" />
+          </Badge>
+        </span>
+        <span className="badge-anchor">
+          <Badge badgeContent={0} showZero badgeLabel="No unread messages">
+            <MessageCircle size={21} aria-hidden="true" />
+          </Badge>
+        </span>
       </div>
       <div className="badge-actions">
-        <button className="rgi-button rgi-button-outlined" type="button" onClick={() => setUnread((count) => Math.max(0, count - 1))}>Mark one read</button>
-        <button className="rgi-button rgi-button-outlined" type="button" onClick={() => setMessages((count) => Math.min(120, count + 1))}>Add message</button>
+        <Button variant="outlined" onClick={() => setUnread((count) => Math.max(0, count - 1))}>Mark one read</Button>
+        <Button variant="outlined" onClick={() => setMessages((count) => Math.min(120, count + 1))}>Add message</Button>
       </div>
       <span className="preview-note" role="status" aria-live="polite">
         {unread} unread notifications · {messages} total messages
@@ -76,29 +64,33 @@ function BadgeDots() {
   return (
     <div className="preview-stack">
       <div className="badge-examples" role="group" aria-label="Dot and compact badges">
-        <Badge
-          variant="badge-dot"
-          content=""
-          label={`Morgan Kim is ${online ? 'online' : 'offline'}`}
-          overlap="rectangular"
-        >
-          <span className="badge-avatar" aria-hidden="true">MK</span>
-        </Badge>
-        <Badge
-          content={cartItems}
-          label={`Shopping cart with ${cartItems} ${cartItems === 1 ? 'item' : 'items'}`}
-          overlap="rectangular"
-        >
-          <ShoppingCart size={21} aria-hidden="true" />
-        </Badge>
+        <span className="badge-anchor">
+          <Badge
+            variant="dot"
+            color="success"
+            badgeLabel={`Morgan Kim is ${online ? 'online' : 'offline'}`}
+            overlap="rectangular"
+          >
+            <span className="badge-avatar" aria-hidden="true">MK</span>
+          </Badge>
+        </span>
+        <span className="badge-anchor">
+          <Badge
+            badgeContent={cartItems}
+            badgeLabel={`Shopping cart with ${cartItems} ${cartItems === 1 ? 'item' : 'items'}`}
+            overlap="rectangular"
+          >
+            <ShoppingCart size={21} aria-hidden="true" />
+          </Badge>
+        </span>
       </div>
       <div className="badge-actions">
-        <button className="rgi-button rgi-button-outlined" type="button" onClick={() => setOnline((value) => !value)}>
+        <Button variant="outlined" onClick={() => setOnline((value) => !value)}>
           Set {online ? 'offline' : 'online'}
-        </button>
-        <button className="rgi-button rgi-button-outlined" type="button" onClick={() => setCartItems((count) => count + 1)}>
+        </Button>
+        <Button variant="outlined" onClick={() => setCartItems((count) => count + 1)}>
           Add to cart
-        </button>
+        </Button>
       </div>
       <span className="preview-note" role="status" aria-live="polite">
         Morgan is {online ? 'online' : 'offline'} · {cartItems} items in cart
@@ -113,16 +105,24 @@ function BadgeVisibility() {
   return (
     <div className="preview-stack">
       <div className="badge-examples" role="group" aria-label="Badge visibility examples">
-        <Badge content={8} label={visible ? '8 unread notifications' : 'Notifications badge hidden'} hidden={!visible}>
-          <Bell size={21} aria-hidden="true" />
-        </Badge>
-        <Badge content={3} label="3 tasks remaining" variant="badge-count badge-count-secondary">
-          <span className="badge-task-anchor" aria-hidden="true">Tasks</span>
-        </Badge>
+        <span className="badge-anchor">
+          <Badge
+            badgeContent={8}
+            invisible={!visible}
+            badgeLabel={visible ? '8 unread notifications' : 'Notifications badge hidden'}
+          >
+            <Bell size={21} aria-hidden="true" />
+          </Badge>
+        </span>
+        <span className="badge-anchor">
+          <Badge badgeContent={3} color="default" badgeLabel="3 tasks remaining" overlap="rectangular">
+            <span className="badge-task-anchor" aria-hidden="true">Tasks</span>
+          </Badge>
+        </span>
       </div>
-      <button className="rgi-button rgi-button-outlined" type="button" onClick={() => setVisible((value) => !value)}>
+      <Button variant="outlined" onClick={() => setVisible((value) => !value)}>
         {visible ? 'Hide notification badge' : 'Show notification badge'}
-      </button>
+      </Button>
       <span className="preview-note" role="status" aria-live="polite">
         Notification badge {visible ? 'visible' : 'hidden'}.
       </span>
