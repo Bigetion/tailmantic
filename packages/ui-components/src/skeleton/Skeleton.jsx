@@ -12,9 +12,9 @@ const Skeleton = forwardRef(function Skeleton(
       ref={ref}
       aria-hidden={props['aria-hidden'] ?? true}
       className={cx(
-        'rgi-skeleton',
-        `rgi-skeleton-${variant}`,
-        animation !== 'none' && `rgi-skeleton-${animation}`,
+        'tm-skeleton',
+        `tm-skeleton-${variant}`,
+        animation !== 'none' && `tm-skeleton-${animation}`,
         className,
       )}
       style={{ width, height, ...style }}

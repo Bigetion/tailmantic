@@ -22,7 +22,7 @@ const Progress = forwardRef(function Progress(
     <div
       {...props}
       ref={ref}
-      className={cx('rgi-progress', `rgi-progress-${variant}`, className)}
+      className={cx('tm-progress', `tm-progress-${variant}`, className)}
       role="progressbar"
       aria-label={label}
       aria-valuemin={0}
@@ -31,15 +31,15 @@ const Progress = forwardRef(function Progress(
     >
       {variant === 'circular' ? (
         <svg
-          className="rgi-progress-circle"
+          className="tm-progress-circle"
           width={size}
           height={size}
           viewBox="0 0 40 40"
           aria-hidden="true"
         >
-          <circle className="rgi-progress-track" cx="20" cy="20" r="17" />
+          <circle className="tm-progress-track" cx="20" cy="20" r="17" />
           <circle
-            className={cx('rgi-progress-indicator', !determinate && 'rgi-progress-indeterminate')}
+            className={cx('tm-progress-indicator', !determinate && 'tm-progress-indeterminate')}
             cx="20"
             cy="20"
             r="17"
@@ -51,9 +51,9 @@ const Progress = forwardRef(function Progress(
           />
         </svg>
       ) : (
-        <span className="rgi-progress-track">
+        <span className="tm-progress-track">
           <span
-            className={cx('rgi-progress-indicator', !determinate && 'rgi-progress-indeterminate')}
+            className={cx('tm-progress-indicator', !determinate && 'tm-progress-indeterminate')}
             style={determinate ? { width: `${percentage}%` } : undefined}
           />
         </span>

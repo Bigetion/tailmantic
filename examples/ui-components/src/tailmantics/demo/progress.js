@@ -32,8 +32,8 @@ register('progress-track', {
   base: { tw: 'relative' },
 });
 
-register('rgi-progress-bar', {
-  base: { tw: 'block h-full rounded-full bg-[var(--rgi-blue)] transition-[width] duration-300' },
+register('tm-progress-bar', {
+  base: { tw: 'block h-full rounded-full bg-[var(--tm-blue,#8eacff)] transition-[width] duration-300' },
 });
 
 register('progress-buffer-bar', {
@@ -97,7 +97,7 @@ register('progress-buffer-legend span', {
 });
 
 register('progress-buffer-legend i', {
-  base: { tw: 'size-2 rounded-full bg-[var(--rgi-blue)]' },
+  base: { tw: 'size-2 rounded-full bg-[var(--tm-blue,#8eacff)]' },
 });
 
 register('progress-buffer-legend .progress-legend-buffered', {
@@ -105,5 +105,5 @@ register('progress-buffer-legend .progress-legend-buffered', {
 });
 
 register('progress-legend-played', {
-  base: { tw: 'bg-[var(--rgi-blue)]' },
+  base: { tw: 'bg-[var(--tm-blue,#8eacff)]' },
 });

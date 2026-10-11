@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Activity, Check, Info, RotateCcw, X } from 'lucide-react';
-import { cx } from 'tailmantic';
+import { Alert, Button } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -30,38 +30,21 @@ const ALERTS = [
   ['error', X, 'Sync paused', 'Check your connection, then try syncing again.'],
 ];
 
-function Alert({ variant, Icon, title, description, outlined = false, children, onDismiss }) {
-  const role = variant === 'error' ? 'alert' : 'status';
-
-  return (
-    <div className={cx('rgi-alert', `rgi-alert-${variant}`, outlined && 'rgi-alert-outlined')} role={role}>
-      <Icon className="alert-icon" size={17} aria-hidden="true" />
-      <span className="alert-copy">
-        <strong>{title}</strong>
-        <small>{description}</small>
-      </span>
-      {children}
-      {onDismiss && (
-        <button className="alert-dismiss" type="button" aria-label={`Dismiss ${title}`} onClick={onDismiss}>
-          <X size={14} aria-hidden="true" />
-        </button>
-      )}
-    </div>
-  );
-}
-
 function AlertVariants({ outlined = false }) {
   return (
     <div className="alert-stack">
-      {ALERTS.map(([variant, Icon, title, description]) => (
+      {ALERTS.map(([severity, Icon, title, description]) => (
         <Alert
-          key={variant}
-          variant={variant}
-          Icon={Icon}
+          key={severity}
+          severity={severity}
+          variant={outlined ? 'outlined' : 'standard'}
+          icon={<Icon className="alert-icon" size={17} aria-hidden="true" />}
           title={title}
-          description={description}
-          outlined={outlined}
-        />
+        >
+          <span className="alert-copy">
+            <small>{description}</small>
+          </span>
+        </Alert>
       ))}
     </div>
   );
@@ -75,20 +58,32 @@ function AlertActions() {
     <div className="preview-stack">
       {visible ? (
         <Alert
-          variant="success"
-          Icon={Check}
+          severity="success"
+          icon={<Check className="alert-icon" size={17} aria-hidden="true" />}
           title="Draft published"
-          description="Your announcement is now visible to workspace members."
-          onDismiss={() => {
+          onClose={() => {
             setVisible(false);
             setMessage('Announcement dismissed.');
           }}
+          closeLabel="Dismiss Draft published alert"
         >
+          <span className="alert-copy">
+            <small>Your announcement is now visible to workspace members.</small>
+          </span>
           <div className="alert-actions">
-            <button className="alert-action-link" type="button" onClick={() => setMessage('Publication reverted.')}>
+            <button
+              className="alert-action-link"
+              type="button"
+              onClick={() => setMessage('Publication reverted.')}
+            >
               Undo
             </button>
-            <button className="alert-action-link alert-action-icon" type="button" aria-label="Restore default message" onClick={() => setMessage('')}>
+            <button
+              className="alert-action-link alert-action-icon"
+              type="button"
+              aria-label="Restore default message"
+              onClick={() => setMessage('')}
+            >
               <RotateCcw size={13} aria-hidden="true" />
             </button>
           </div>
@@ -96,13 +91,21 @@ function AlertActions() {
       ) : (
         <div className="alert-empty">
           <span>{message || 'Alert dismissed.'}</span>
-          <button className="rgi-button rgi-button-text" type="button" onClick={() => { setVisible(true); setMessage(''); }}>
+          <Button
+            variant="text"
+            type="button"
+            onClick={() => { setVisible(true); setMessage(''); }}
+          >
             Restore alert
-          </button>
+          </Button>
         </div>
       )}
-      {message && visible && <span className="preview-note" role="status" aria-live="polite">{message}</span>}
-      {!visible && <span className="preview-note" role="status" aria-live="polite">{message}</span>}
+      {message && visible && (
+        <span className="preview-note" role="status" aria-live="polite">{message}</span>
+      )}
+      {!visible && (
+        <span className="preview-note" role="status" aria-live="polite">{message}</span>
+      )}
     </div>
   );
 }

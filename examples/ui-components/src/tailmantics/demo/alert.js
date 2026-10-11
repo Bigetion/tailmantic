@@ -20,7 +20,7 @@ register('alert-icon', {
   base: { tw: 'mt-0.5 shrink-0' },
 });
 
-register('rgi-alert-outlined', {
+register('tm-alert-outlined', {
   base: { tw: '!bg-transparent' },
 });
 

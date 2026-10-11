@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Check, Image, RotateCcw, UserRound } from 'lucide-react';
 import { cx } from 'tailmantic';
+import { Button } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -65,9 +66,9 @@ function ProfileSkeletonDemo() {
         <ProfileCard loaded={loaded} />
       </div>
       <div className="skeleton-controls">
-        <button className="rgi-button rgi-button-outlined" type="button" onClick={() => setLoaded((current) => !current)}>
+        <Button variant="outlined" type="button" onClick={() => setLoaded((current) => !current)}>
           {loaded ? <><RotateCcw size={13} aria-hidden="true" /> Show loading state</> : <><Check size={13} aria-hidden="true" /> Load profile</>}
-        </button>
+        </Button>
         <span className="preview-note" role="status">{loaded ? 'Profile content is ready.' : 'Loading profile details…'}</span>
       </div>
     </div>

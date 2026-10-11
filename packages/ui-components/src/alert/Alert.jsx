@@ -22,20 +22,20 @@ const Alert = forwardRef(function Alert(
     <div
       {...props}
       ref={ref}
-      className={cx('rgi-alert', `rgi-alert-${severity}`, `rgi-alert-${variant}`, className)}
+      className={cx('tm-alert', `tm-alert-${severity}`, `tm-alert-${variant}`, className)}
       role={severity === 'error' ? 'alert' : 'status'}
     >
       {icon !== null && (
-        <span className="rgi-alert-icon" aria-hidden="true">
+        <span className="tm-alert-icon" aria-hidden="true">
           {icon === undefined ? defaultIcons[severity] : icon}
         </span>
       )}
-      <div className="rgi-alert-content">
-        {title != null && <strong className="rgi-alert-title">{title}</strong>}
-        {children != null && <div className="rgi-alert-message">{children}</div>}
+      <div className="tm-alert-content">
+        {title != null && <strong className="tm-alert-title">{title}</strong>}
+        {children != null && <div className="tm-alert-message">{children}</div>}
       </div>
       {onClose && (
-        <button type="button" className="rgi-alert-close" aria-label={closeLabel} onClick={onClose}>
+        <button type="button" className="tm-alert-close" aria-label={closeLabel} onClick={onClose}>
           <span aria-hidden="true">×</span>
         </button>
       )}

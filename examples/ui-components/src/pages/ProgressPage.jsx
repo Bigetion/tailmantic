@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -57,7 +58,7 @@ function ProgressTrack({ label, value, buffer }) {
 
   return (
     <div
-      className="rgi-progress-track progress-track"
+      className="tm-progress-track progress-track"
       role="progressbar"
       aria-label={label}
       aria-valuemin={0}
@@ -67,7 +68,7 @@ function ProgressTrack({ label, value, buffer }) {
     >
       {buffer !== undefined && <span className="progress-buffer-bar" style={{ width: `${buffer}%` }} />}
       <span
-        className={`rgi-progress-bar${indeterminate ? ' progress-indeterminate-bar' : ''}`}
+        className={`tm-progress-bar${indeterminate ? ' progress-indeterminate-bar' : ''}`}
         style={indeterminate ? { animation: INDETERMINATE_ANIMATION } : { width: `${value}%` }}
       />
     </div>
@@ -90,12 +91,12 @@ function LinearProgressDemo() {
         </div>
         <ProgressTrack label="Project file upload" value={value} />
         <div className="progress-actions">
-          <button className="rgi-button rgi-button-outlined" type="button" disabled={value === 0} onClick={() => setValue((current) => Math.max(0, current - 10))}>
+          <Button variant="outlined" type="button" disabled={value === 0} onClick={() => setValue((current) => Math.max(0, current - 10))}>
             − 10%
-          </button>
-          <button className="rgi-button rgi-button-outlined" type="button" disabled={value === 100} onClick={() => setValue((current) => Math.min(100, current + 10))}>
+          </Button>
+          <Button variant="outlined" type="button" disabled={value === 100} onClick={() => setValue((current) => Math.min(100, current + 10))}>
             + 10%
-          </button>
+          </Button>
         </div>
       </div>
       <div className="progress-example progress-example-indeterminate">
@@ -131,12 +132,12 @@ function CircularProgressDemo() {
         </div>
       </div>
       <div className="progress-actions">
-        <button className="rgi-button rgi-button-outlined" type="button" disabled={value === 0} onClick={() => setValue((current) => Math.max(0, current - 10))}>
+        <Button variant="outlined" type="button" disabled={value === 0} onClick={() => setValue((current) => Math.max(0, current - 10))}>
           − 10%
-        </button>
-        <button className="rgi-button rgi-button-outlined" type="button" disabled={value === 100} onClick={() => setValue((current) => Math.min(100, current + 10))}>
+        </Button>
+        <Button variant="outlined" type="button" disabled={value === 100} onClick={() => setValue((current) => Math.min(100, current + 10))}>
           + 10%
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -173,12 +174,12 @@ function BufferedProgressDemo() {
         </div>
       </div>
       <div className="progress-actions">
-        <button className="rgi-button rgi-button-contained" type="button" disabled={value === 100} onClick={receiveChunk}>
+        <Button variant="contained" type="button" disabled={value === 100} onClick={receiveChunk}>
           Buffer next segment
-        </button>
-        <button className="rgi-button rgi-button-outlined" type="button" onClick={reset}>
+        </Button>
+        <Button variant="outlined" type="button" onClick={reset}>
           Reset
-        </button>
+        </Button>
       </div>
     </div>
   );
