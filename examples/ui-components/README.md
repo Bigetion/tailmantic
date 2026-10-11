@@ -16,7 +16,7 @@ Reusable React APIs and their base styles for all 47 components live in the stan
 Each component page owns its own demo logic and source context:
 
 ```text
-src/pages/components/button/Page.jsx
+src/pages/ButtonPage.jsx
 src/tailmantics/components/button.js
 ```
 
