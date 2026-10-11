@@ -2,6 +2,8 @@ import { useCallback, useId, useRef, useState } from 'react';
 import { ArrowUpRight, Check, ChevronDown, FolderKanban, Layers, X } from 'lucide-react';
 import { cx } from 'tailmantic';
 import { Button } from '@tailmantic/ui-components';
+// Ensure tm-popover styles are registered even though PopperSurface is used as the surface element.
+import '@tailmantic/ui-components/popover/styles';
 import { PopperSurface, useClickAway } from '../components/Popper.jsx';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
