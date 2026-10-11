@@ -16,7 +16,7 @@ const Switch = forwardRef(function Switch(
       {...props}
       ref={ref}
       id={inputId}
-      className={cx('rgi-switch', label == null && className, inputClassName)}
+      className={cx('tm-switch', label == null && className, inputClassName)}
       type="checkbox"
       role="switch"
       checked={isChecked}
@@ -31,9 +31,9 @@ const Switch = forwardRef(function Switch(
   if (label == null) return input;
 
   return (
-    <label className={cx('rgi-switch-field', className)} htmlFor={inputId}>
+    <label className={cx('tm-switch-field', className)} htmlFor={inputId}>
       {input}
-      <span className="rgi-switch-label">{label}</span>
+      <span className="tm-switch-label">{label}</span>
     </label>
   );
 });

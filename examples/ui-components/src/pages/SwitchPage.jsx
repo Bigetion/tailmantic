@@ -85,14 +85,14 @@ function SwitchColors() {
           label="Success green"
           checked={values.green}
           onChange={(checked) => update('green', checked)}
-          variant="rgi-switch-success"
+          variant="tm-switch-success"
         />
         <SwitchControl
           id="switch-color-orange"
           label="Warning orange"
           checked={values.orange}
           onChange={(checked) => update('orange', checked)}
-          variant="rgi-switch-warning"
+          variant="tm-switch-warning"
         />
       </div>
       <span className="preview-note">

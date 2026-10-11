@@ -1,6 +1,7 @@
 import './autocomplete.js';
 import './button.js';
 import './button-group.js';
+import './checkbox.js';
 import './floating-action-button.js';
 import './number-field.js';
 import './radio-group.js';

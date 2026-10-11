@@ -25,9 +25,9 @@ const TextField = forwardRef(function TextField(
   const hasError = error || errorText != null;
 
   return (
-    <div className={cx('rgi-text-field', className)}>
+    <div className={cx('tm-text-field', className)}>
       {label != null && (
-        <label className="rgi-text-field-label" htmlFor={id}>
+        <label className="tm-text-field-label" htmlFor={id}>
           {label}
         </label>
       )}
@@ -35,13 +35,13 @@ const TextField = forwardRef(function TextField(
         {...props}
         ref={ref}
         id={id}
-        className={cx('rgi-text-field-control', hasError && 'rgi-text-field-error', inputClassName)}
+        className={cx('tm-text-field-control', hasError && 'tm-text-field-error', inputClassName)}
         aria-describedby={description}
         aria-invalid={hasError || ariaInvalid || undefined}
       />
       {message != null && (
         <span
-          className={cx('rgi-text-field-message', hasError && 'rgi-text-field-message-error')}
+          className={cx('tm-text-field-message', hasError && 'tm-text-field-message-error')}
           id={messageId}
         >
           {message}

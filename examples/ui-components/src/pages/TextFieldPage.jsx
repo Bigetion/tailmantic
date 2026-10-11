@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextField } from '@tailmantic/ui-components';
+import { TextField, Button } from '@tailmantic/ui-components';
 import { Search, X } from 'lucide-react';
 import { cx } from 'tailmantic';
 import { getComponentBySlug } from '../data/components.js';
@@ -82,9 +82,9 @@ function ValidationTextField() {
         onChange={handleChange}
       />
       <div className="text-field-actions">
-        <button className="rgi-button rgi-button-contained" type="submit">
+        <Button type="submit">
           Continue
-        </button>
+        </Button>
         <span className="text-field-helper" role="status" aria-live="polite">
           {submitted && !hasError ? 'Email looks good.' : ''}
         </span>

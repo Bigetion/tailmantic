@@ -1,9 +1,3 @@
-import { register } from 'tailmantic/collector';
-
-register('rgi-switch-success', {
-  base: { tw: 'checked:!bg-[#2d9b72]' },
-});
-
-register('rgi-switch-warning', {
-  base: { tw: 'checked:!bg-[#d08b42]' },
-});
+// tm-switch-success and tm-switch-warning modifier classes have been moved
+// into packages/ui-components/src/switch/switch.styles.js as package-level classes.
+import 'tailmantic/collector';
