@@ -13,11 +13,10 @@ Run `npm run build` to verify the production bundle. Styles are defined in `src/
 
 Reusable React APIs and their base styles for all 47 components live in the standalone `@tailmantic/ui-components` package under `packages/ui-components`; showcase pages, interactive demos, and demo-only styles remain in this application. The app's Tailmantic manifest imports the package style manifest so component base rules are included in the generated stylesheet. Shared base style registrations have been removed from demo style modules to keep package styles and showcase-only styles separate.
 
-Each component page retains its own demo and source context:
+Each component page owns its own demo logic and source context:
 
 ```text
 src/pages/components/button/Page.jsx
-src/components/ui/button/Button.jsx
 src/tailmantics/components/button.js
 ```
 
