@@ -33,7 +33,7 @@ register('tm-accordion-item-expanded .tm-accordion-chevron', {
 });
 
 register('tm-accordion-panel', {
-  base: { tw: 'px-12 pb-4 pr-8 text-[9px] leading-relaxed text-[var(--muted)]' },
+  base: { tw: 'px-12 pb-4 pt-2 pr-8 text-[9px] leading-relaxed text-[var(--muted)]' },
 });
 
 register('tm-accordion-panel[hidden]', {
@@ -57,7 +57,7 @@ register('tm-accordion-unavailable', {
 });
 
 register('tm-accordion-toolbar', {
-  base: { tw: 'flex items-center justify-between border-b border-[var(--border)] bg-[#151c27] px-4 py-2.5 text-[9px] font-semibold text-[var(--text)]' },
+  base: { tw: 'flex items-center justify-between border-b border-[var(--border)] bg-[#151c27] px-4 py-2.5 text-[9px] font-semibold text-[var(--text)] hover:bg-[#151c27]' },
 });
 
 register('tm-accordion-toolbar button', {
