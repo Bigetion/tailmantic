@@ -1,14 +1,25 @@
 import { Link, useParams } from 'react-router-dom';
 import { componentCatalog } from '../data/components.js';
 
-const componentPages = import.meta.glob('./components/*/Page.jsx', {
-  eager: true,
-  import: 'default',
-});
+// Match every flattened component page (pages/<PascalCase>Page.jsx).
+// NotFoundPage.jsx also matches the glob but is a top-level 404 page,
+// not a component demo, so it is filtered out to keep unknown slugs
+// falling through to the in-route 404 fallback.
+const componentPages = Object.fromEntries(
+  Object.entries(
+    import.meta.glob('./*Page.jsx', { eager: true, import: 'default' }),
+  ).filter(([key]) => key !== './NotFoundPage.jsx'),
+);
+
+const toPascalCase = (slug) =>
+  slug
+    .split('-')
+    .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
+    .join('') + 'Page';
 
 export default function ComponentPageRoute() {
   const { slug } = useParams();
-  const Page = componentPages[`./components/${slug}/Page.jsx`];
+  const Page = componentPages[`./${toPascalCase(slug)}.jsx`];
 
   if (Page) return <Page />;
 

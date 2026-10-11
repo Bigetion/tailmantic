@@ -4,7 +4,7 @@ import { componentCatalog } from '../data/components.js';
 import DemoPanel from './DemoPanel.jsx';
 
 const IMPLEMENTATION_ROWS = [
-  ['Page', 'src/pages/components/{slug}/Page.jsx', 'Self-contained React Router page with inline demo logic.'],
+  ['Page', 'src/pages/{name}Page.jsx', 'Self-contained React Router page with inline demo logic.'],
   ['Styles', 'src/tailmantics/demo/{slug}.js', 'Component-specific styles and variants.'],
   ['Examples', '{count} live examples', 'Rendered in the examples section above.'],
 ];
