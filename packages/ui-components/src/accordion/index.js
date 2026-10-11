@@ -1,1 +1,1 @@
-export { default } from './Accordion.jsx';
+export { default, AccordionItem, AccordionHelper, AccordionToolbar } from './Accordion.jsx';
