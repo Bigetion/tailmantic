@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-paper', {
+register('tm-paper', {
   base: { tw: 'bg-[var(--panel,#111824)] text-[var(--text,#edf2fb)]' },
   modifiers: {
     'elevation-0': { tw: 'shadow-none' },

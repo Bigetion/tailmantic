@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowUpRight, Bookmark, Check, Heart, Image, MoreHorizontal, Users } from 'lucide-react';
 import { cx } from 'tailmantic';
+import { Card } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -25,7 +26,7 @@ const DEMOS = {
 
 function ProjectCard() {
   return (
-    <article className="rgi-card project-card">
+    <Card className="project-card">
       <div className="card-project-top">
         <span className="card-project-icon"><Image size={16} aria-hidden="true" /></span>
         <button className="card-more-button" type="button" aria-label="More project actions">
@@ -47,7 +48,7 @@ function ProjectCard() {
         </div>
         <button className="card-open-button" type="button">Open project <ArrowUpRight size={13} aria-hidden="true" /></button>
       </div>
-    </article>
+    </Card>
   );
 }
 
@@ -56,7 +57,7 @@ function ActionCard() {
   const [saved, setSaved] = useState(false);
 
   return (
-    <article className="rgi-card action-card">
+    <Card className="action-card">
       <div className="card-author">
         <span className="card-author-avatar">AM</span>
         <span><strong>Alex Morgan</strong><small>Product design · 2 hours ago</small></span>
@@ -75,13 +76,13 @@ function ActionCard() {
           {saved ? <Check size={14} aria-hidden="true" /> : <Bookmark size={14} aria-hidden="true" />} {saved ? 'Saved' : 'Save'}
         </button>
       </div>
-    </article>
+    </Card>
   );
 }
 
 function MediaCard() {
   return (
-    <article className="rgi-card media-card">
+    <Card className="media-card">
       <div className="card-media-visual">
         <div className="card-media-orbit card-media-orbit-one" />
         <div className="card-media-orbit card-media-orbit-two" />
@@ -97,7 +98,7 @@ function MediaCard() {
           <button className="card-inline-action" type="button" aria-label="Open article by Jordan Lee"><ArrowUpRight size={15} aria-hidden="true" /></button>
         </div>
       </div>
-    </article>
+    </Card>
   );
 }
 

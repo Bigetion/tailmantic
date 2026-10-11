@@ -10,6 +10,7 @@ import {
   X,
 } from 'lucide-react';
 import { cx } from 'tailmantic';
+import { AppBar } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -66,7 +67,7 @@ function AppBarDemoContent({ demoId }) {
   return (
     <div className={cx('appbar-demo', isResponsive && 'appbar-demo-responsive')}>
       <div className="appbar-preview">
-        <header className={cx('rgi-appbar', isSearch && 'rgi-appbar-search', isResponsive && 'rgi-appbar-responsive')}>
+        <AppBar className={cx(isSearch && 'appbar-search-mode', isResponsive && 'appbar-responsive-mode')}>
           {isResponsive && (
             <button
               className="appbar-icon-button appbar-mobile-menu"
@@ -132,7 +133,7 @@ function AppBarDemoContent({ demoId }) {
             <span className="appbar-avatar">JL</span>
             <ChevronDown size={12} aria-hidden="true" />
           </button>
-        </header>
+        </AppBar>
         {isResponsive && menuOpen && (
           <nav className="appbar-mobile-panel" aria-label="Mobile workspace">
             {items.map((item) => (

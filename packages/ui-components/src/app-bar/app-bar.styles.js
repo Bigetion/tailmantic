@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-app-bar', {
+register('tm-app-bar', {
   base: {
     tw: 'z-10 flex min-h-14 w-full items-center gap-4 border-b border-[var(--border,#273142)] bg-[var(--panel,#111824)] px-4 py-2 text-[var(--text,#edf2fb)]',
   },

@@ -11,9 +11,9 @@ const Paper = forwardRef(function Paper(
       {...props}
       ref={ref}
       className={cx(
-        'rgi-paper',
-        `rgi-paper-elevation-${elevation}`,
-        square && 'rgi-paper-square',
+        'tm-paper',
+        `tm-paper-elevation-${elevation}`,
+        square && 'tm-paper-square',
         className,
       )}
     >

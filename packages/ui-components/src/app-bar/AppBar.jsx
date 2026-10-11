@@ -11,9 +11,9 @@ const AppBar = forwardRef(function AppBar(
       {...props}
       ref={ref}
       className={cx(
-        'rgi-app-bar',
-        `rgi-app-bar-${position}`,
-        `rgi-app-bar-elevation-${elevation}`,
+        'tm-app-bar',
+        `tm-app-bar-${position}`,
+        `tm-app-bar-elevation-${elevation}`,
         className,
       )}
     >

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Layers, Plus } from 'lucide-react';
 import { cx } from 'tailmantic';
+import { Paper } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -40,7 +41,7 @@ function SurfaceElevationDemo() {
       <div className="paper-elevation-grid">
         {[0, 1, 3].map((level) => (
           <div className="paper-elevation-example" key={level}>
-            <div className={`rgi-paper paper-elevation-${level}`}><SurfaceContent label={`Elevation ${level}`} /></div>
+            <Paper className={`paper-elevation-${level}`}><SurfaceContent label={`Elevation ${level}`} /></Paper>
             <span>Level {level}</span>
           </div>
         ))}
@@ -69,9 +70,9 @@ function ElevationScaleDemo() {
         ))}
       </div>
       <div className="paper-scale-stage">
-        <div className={cx('rgi-paper', 'paper-selected-elevation')} style={{ '--paper-level': level }}>
+        <Paper className={cx('paper-selected-elevation')} style={{ '--paper-level': level }}>
           <SurfaceContent label={`Elevation ${level}`} />
-        </div>
+        </Paper>
       </div>
       <span className="preview-note" role="status">Selected elevation: {level}</span>
     </div>
@@ -84,22 +85,22 @@ function PaperVariantsDemo() {
   return (
     <div className="paper-demo">
       <div className="paper-variants-grid">
-        <div className="rgi-paper paper-contained">
+        <Paper className="paper-contained">
           <span className="paper-variant-label">CONTAINED</span>
           <SurfaceContent label="Default surface" />
-        </div>
-        <div className="rgi-paper paper-outlined">
+        </Paper>
+        <Paper className="paper-outlined">
           <span className="paper-variant-label">OUTLINED</span>
           <SurfaceContent label="Border emphasis" />
-        </div>
-        <div className="rgi-paper paper-nested">
+        </Paper>
+        <Paper className="paper-nested">
           <span className="paper-variant-label">NESTED</span>
           <p>Use layered surfaces to group related sections.</p>
           <div className="paper-nested-inner"><SurfaceContent label="Nested panel" /></div>
           <button className="paper-add-button" type="button" onClick={() => setCount((value) => value + 1)}>
             <Plus size={13} aria-hidden="true" /> Add item <span>{count}</span>
           </button>
-        </div>
+        </Paper>
       </div>
       <span className="preview-note">Containment, borders, and nesting create hierarchy with the same surface primitive.</span>
     </div>

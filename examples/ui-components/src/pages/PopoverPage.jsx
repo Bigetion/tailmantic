@@ -1,6 +1,7 @@
 import { useCallback, useId, useRef, useState } from 'react';
 import { ArrowUpRight, Check, ChevronDown, FolderKanban, Layers, X } from 'lucide-react';
 import { cx } from 'tailmantic';
+import { Button } from '@tailmantic/ui-components';
 import { PopperSurface, useClickAway } from '../components/Popper.jsx';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
@@ -75,9 +76,10 @@ function PopoverDemoContent({ demoId }) {
         </div>
       )}
       <div className="popover-stage">
-        <button
+        <Button
           ref={anchorRef}
-          className={cx('rgi-button', 'rgi-button-outlined', 'popover-trigger')}
+          variant="outlined"
+          className="popover-trigger"
           type="button"
           aria-haspopup="dialog"
           aria-expanded={open}
@@ -85,7 +87,7 @@ function PopoverDemoContent({ demoId }) {
         >
           {isInteractive ? 'Choose workspace color' : isPlacement ? `${placement.charAt(0).toUpperCase()}${placement.slice(1)} placement` : 'View project details'}
           <ChevronDown size={13} aria-hidden="true" />
-        </button>
+        </Button>
       </div>
       <PopperSurface
         open={open}
@@ -93,7 +95,7 @@ function PopoverDemoContent({ demoId }) {
         surfaceRef={surfaceRef}
         placement={placement}
         fallbackPlacements={FALLBACK_PLACEMENTS}
-        className="rgi-popover"
+        className="tm-popover"
         role="dialog"
         ariaLabel={isInteractive ? 'Choose workspace color' : isPlacement ? 'Popover placement preview' : 'Project details'}
         onEscape={dismiss}
