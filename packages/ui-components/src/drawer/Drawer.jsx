@@ -46,11 +46,11 @@ const Drawer = forwardRef(function Drawer(
   if (variant === 'temporary' && !open) return null;
   const DrawerSurface = variant === 'temporary' ? 'div' : 'aside';
   return (
-    <div className={cx('rgi-drawer-root', `rgi-drawer-${variant}`, open && 'rgi-drawer-open')}>
+    <div className={cx('tm-drawer-root', `tm-drawer-${variant}`, open && 'tm-drawer-open')}>
       {variant === 'temporary' && (
         <button
           type="button"
-          className="rgi-drawer-backdrop"
+          className="tm-drawer-backdrop"
           aria-label="Close drawer"
           tabIndex={open ? 0 : -1}
           onClick={(event) => closeOnBackdrop && onClose?.(event)}
@@ -59,7 +59,7 @@ const Drawer = forwardRef(function Drawer(
       <DrawerSurface
         {...props}
         ref={setDrawerRef}
-        className={cx('rgi-drawer', `rgi-drawer-anchor-${anchor}`, className)}
+        className={cx('tm-drawer', `tm-drawer-anchor-${anchor}`, className)}
         role={variant === 'temporary' ? 'dialog' : undefined}
         aria-label={ariaLabel}
         aria-modal={variant === 'temporary' ? 'true' : undefined}

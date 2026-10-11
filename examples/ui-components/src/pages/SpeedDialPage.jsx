@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { FilePlus2, Image, Mail, Plus, Share2, X } from 'lucide-react';
 import { cx } from 'tailmantic';
+import { SpeedDial } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -23,71 +24,33 @@ const DEMOS = {
   },
 };
 
-const ACTIONS = [
-  { label: 'Upload image', Icon: Image },
-  { label: 'New document', Icon: FilePlus2 },
-  { label: 'Send email', Icon: Mail },
+const ACTIONS_DATA = [
+  { name: 'Upload image', Icon: Image },
+  { name: 'New document', Icon: FilePlus2 },
+  { name: 'Send email', Icon: Mail },
 ];
 
 const DIRECTIONS = ['up', 'right', 'down', 'left'];
 
-function SpeedDial({ open, onToggle, direction = 'up', onSelect, label = 'Quick actions' }) {
-  const fabRef = useRef(null);
-
-  function selectAction(action) {
-    onSelect(action);
-    fabRef.current?.focus();
-  }
-
-  return (
-    <div
-      className={cx('rgi-speed-dial', `rgi-speed-dial-${direction}`)}
-      onKeyDown={(event) => {
-        if (event.key === 'Escape' && open) {
-          event.preventDefault();
-          onToggle();
-          fabRef.current?.focus();
-        }
-      }}
-    >
-      <div className={cx('rgi-speed-dial-actions', !open && 'rgi-speed-dial-actions-hidden')} aria-hidden={!open}>
-        {ACTIONS.map(({ label: action, Icon }) => (
-          <button
-            className="rgi-speed-dial-action"
-            type="button"
-            key={action}
-            tabIndex={open ? 0 : -1}
-            aria-label={action}
-            title={action}
-            onClick={() => selectAction(action)}
-          >
-            <Icon size={15} aria-hidden="true" />
-            <span className="speed-dial-action-tooltip">{action}</span>
-          </button>
-        ))}
-      </div>
-      <button
-        className="rgi-speed-dial-fab"
-        type="button"
-        ref={fabRef}
-        aria-label={open ? 'Close quick actions' : label}
-        aria-expanded={open}
-        onClick={onToggle}
-      >
-        {open ? <X size={19} aria-hidden="true" /> : <Plus size={20} aria-hidden="true" />}
-      </button>
-    </div>
-  );
-}
-
 function StandardSpeedDialDemo() {
+  const fabRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
 
-  function selectAction(action) {
-    setOpen(false);
-    setMessage(`${action} selected.`);
-  }
+  const actions = ACTIONS_DATA.map(({ name, Icon }) => ({
+    name,
+    icon: (
+      <>
+        <Icon size={15} aria-hidden="true" />
+        <span className="speed-dial-action-tooltip">{name}</span>
+      </>
+    ),
+    onClick: () => {
+      setMessage(`${name} selected.`);
+      setOpen(false);
+      fabRef.current?.focus();
+    },
+  }));
 
   return (
     <div className="speed-dial-showcase">
@@ -98,9 +61,13 @@ function StandardSpeedDialDemo() {
           <span>Open the speed dial to get started.</span>
         </div>
         <SpeedDial
+          ref={fabRef}
+          actions={actions}
           open={open}
-          onToggle={() => { setMessage(''); setOpen((value) => !value); }}
-          onSelect={selectAction}
+          icon={open ? <X size={19} aria-hidden="true" /> : <Plus size={20} aria-hidden="true" />}
+          onOpen={() => { setMessage(''); setOpen(true); }}
+          onClose={() => setOpen(false)}
+          ariaLabel="Quick actions"
         />
       </div>
       <span className="preview-note" role="status">{message || (open ? 'Choose an action or close the speed dial.' : 'Quick actions are grouped behind one floating button.')}</span>
@@ -113,10 +80,19 @@ function DirectionSpeedDialDemo() {
   const [open, setOpen] = useState(true);
   const [message, setMessage] = useState('');
 
-  function selectAction(action) {
-    setOpen(false);
-    setMessage(`${action} selected.`);
-  }
+  const actions = ACTIONS_DATA.map(({ name, Icon }) => ({
+    name,
+    icon: (
+      <>
+        <Icon size={15} aria-hidden="true" />
+        <span className="speed-dial-action-tooltip">{name}</span>
+      </>
+    ),
+    onClick: () => {
+      setMessage(`${name} selected.`);
+      setOpen(false);
+    },
+  }));
 
   return (
     <div className="speed-dial-showcase">
@@ -135,11 +111,13 @@ function DirectionSpeedDialDemo() {
       </div>
       <div className="speed-dial-direction-stage">
         <SpeedDial
+          actions={actions}
           open={open}
           direction={direction}
-          onToggle={() => setOpen((value) => !value)}
-          onSelect={selectAction}
-          label="Open directional actions"
+          icon={open ? <X size={19} aria-hidden="true" /> : <Plus size={20} aria-hidden="true" />}
+          onOpen={() => setOpen(true)}
+          onClose={() => setOpen(false)}
+          ariaLabel="Open directional actions"
         />
         <span className="preview-note" role="status">{message || `Actions expand ${direction} from the floating button.`}</span>
       </div>
@@ -151,6 +129,20 @@ function AlwaysOpenSpeedDialDemo() {
   const [message, setMessage] = useState('');
   const [open, setOpen] = useState(true);
 
+  const actions = ACTIONS_DATA.map(({ name, Icon }) => ({
+    name,
+    icon: (
+      <>
+        <Icon size={15} aria-hidden="true" />
+        <span className="speed-dial-action-tooltip">{name}</span>
+      </>
+    ),
+    onClick: () => {
+      setMessage(`${name} selected.`);
+      setOpen(false);
+    },
+  }));
+
   return (
     <div className="speed-dial-showcase">
       <div className="speed-dial-open-stage">
@@ -159,10 +151,12 @@ function AlwaysOpenSpeedDialDemo() {
           <span><strong>Share this workspace</strong><small>Invite a teammate or share a link.</small></span>
         </div>
         <SpeedDial
+          actions={actions}
           open={open}
-          onToggle={() => setOpen((value) => !value)}
-          onSelect={(action) => { setMessage(`${action} selected.`); setOpen(false); }}
-          label="Open sharing actions"
+          icon={open ? <X size={19} aria-hidden="true" /> : <Plus size={20} aria-hidden="true" />}
+          onOpen={() => setOpen(true)}
+          onClose={() => setOpen(false)}
+          ariaLabel="Open sharing actions"
         />
       </div>
       <span className="preview-note" role="status">{message || (open ? 'The actions are expanded and ready to select.' : 'Open the speed dial to show the available actions.')}</span>

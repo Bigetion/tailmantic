@@ -14,7 +14,7 @@ const MenuItem = forwardRef(function MenuItem(
       role="menuitem"
       aria-disabled={disabled || undefined}
       tabIndex={disabled ? -1 : 0}
-      className={cx('rgi-menu-item', disabled && 'rgi-menu-item-disabled', className)}
+      className={cx('tm-menu-item', disabled && 'tm-menu-item-disabled', className)}
       onClick={(event) => {
         if (disabled) {
           event.preventDefault();

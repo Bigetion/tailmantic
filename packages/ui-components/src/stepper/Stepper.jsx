@@ -23,32 +23,32 @@ const Step = forwardRef(function Step(
       {...props}
       ref={ref}
       className={cx(
-        'rgi-step',
-        active && 'rgi-step-active',
-        completed && 'rgi-step-completed',
-        disabled && 'rgi-step-disabled',
+        'tm-step',
+        active && 'tm-step-active',
+        completed && 'tm-step-completed',
+        disabled && 'tm-step-disabled',
         className,
       )}
       aria-current={active ? 'step' : undefined}
     >
       {onClick ? (
-        <button type="button" className="rgi-step-button" disabled={disabled} onClick={onClick}>
-          <span className="rgi-step-indicator" aria-hidden="true">
+        <button type="button" className="tm-step-button" disabled={disabled} onClick={onClick}>
+          <span className="tm-step-indicator" aria-hidden="true">
             {completed ? '✓' : index + 1}
           </span>
-          <span className="rgi-step-copy">
-            <span className="rgi-step-label">{content}</span>
-            {description && <span className="rgi-step-description">{description}</span>}
+          <span className="tm-step-copy">
+            <span className="tm-step-label">{content}</span>
+            {description && <span className="tm-step-description">{description}</span>}
           </span>
         </button>
       ) : (
-        <span className="rgi-step-content">
-          <span className="rgi-step-indicator" aria-hidden="true">
+        <span className="tm-step-content">
+          <span className="tm-step-indicator" aria-hidden="true">
             {completed ? '✓' : index + 1}
           </span>
-          <span className="rgi-step-copy">
-            <span className="rgi-step-label">{content}</span>
-            {description && <span className="rgi-step-description">{description}</span>}
+          <span className="tm-step-copy">
+            <span className="tm-step-label">{content}</span>
+            {description && <span className="tm-step-description">{description}</span>}
           </span>
         </span>
       )}
@@ -75,9 +75,9 @@ const Stepper = forwardRef(function Stepper(
       {...props}
       ref={ref}
       className={cx(
-        'rgi-stepper',
-        `rgi-stepper-${orientation}`,
-        alternativeLabel && 'rgi-stepper-alternative',
+        'tm-stepper',
+        `tm-stepper-${orientation}`,
+        alternativeLabel && 'tm-stepper-alternative',
         className,
       )}
     >

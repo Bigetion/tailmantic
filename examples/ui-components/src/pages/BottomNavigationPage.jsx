@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Bell, Bookmark, Compass, Home, Search, UserRound } from 'lucide-react';
 import { cx } from 'tailmantic';
+import { BottomNavigation } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -36,7 +37,7 @@ function NavigationBar({ demoId, selected, onSelect }) {
   const iconsOnly = demoId === 'bottom-navigation-icons';
 
   return (
-    <nav className={cx('rgi-bottom-navigation', isCompactLabel && 'bottom-navigation-compact-labels', iconsOnly && 'bottom-navigation-icons-only')} aria-label="Primary navigation">
+    <BottomNavigation className={cx(isCompactLabel && 'bottom-navigation-compact-labels', iconsOnly && 'bottom-navigation-icons-only')} aria-label="Primary navigation">
       {DESTINATIONS.map(({ label, Icon }) => {
         const active = selected === label;
         return (
@@ -57,7 +58,7 @@ function NavigationBar({ demoId, selected, onSelect }) {
           </button>
         );
       })}
-    </nav>
+    </BottomNavigation>
   );
 }
 

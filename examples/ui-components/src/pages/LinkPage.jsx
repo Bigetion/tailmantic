@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowUpRight, ExternalLink, FileText, Link as LinkIcon } from 'lucide-react';
+import { Link } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -38,13 +39,13 @@ function InlineLinksDemo() {
           <strong>Keep exploring</strong>
           <p>Browse the workspace guide or visit the project overview to learn more about your team.</p>
           <div className="link-inline-row">
-            <a className="rgi-link" href="#workspace-guide" onClick={(event) => preventNavigation(event, setNotice, 'Workspace guide')}>
+            <Link href="#workspace-guide" onClick={(event) => preventNavigation(event, setNotice, 'Workspace guide')}>
               Workspace guide <ArrowUpRight size={12} aria-hidden="true" />
-            </a>
+            </Link>
             <span className="link-inline-divider" aria-hidden="true" />
-            <a className="rgi-link" href="#project-overview" onClick={(event) => preventNavigation(event, setNotice, 'Project overview')}>
+            <Link href="#project-overview" onClick={(event) => preventNavigation(event, setNotice, 'Project overview')}>
               Project overview
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -55,25 +56,35 @@ function InlineLinksDemo() {
 
 function LinkVariantsDemo() {
   const [notice, setNotice] = useState('');
-  const links = [
-    ['Default', 'rgi-link', 'Default destination'],
-    ['Underlined', 'rgi-link rgi-link-underlined', 'Underlined destination'],
-    ['Subtle', 'rgi-link rgi-link-subtle', 'Subtle destination'],
-    ['External', 'rgi-link rgi-link-external', 'External documentation'],
-  ];
 
   return (
     <div className="link-demo">
       <div className="link-variant-list">
-        {links.map(([label, className, destination]) => (
-          <div className="link-variant-row" key={label}>
-            <span>{label}</span>
-            <a className={className} href={`#${destination.toLowerCase().replaceAll(' ', '-')}`} onClick={(event) => preventNavigation(event, setNotice, destination)}>
-              {destination}
-              {label === 'External' && <><ExternalLink size={12} aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></>}
-            </a>
-          </div>
-        ))}
+        <div className="link-variant-row">
+          <span>Default</span>
+          <Link href="#default-destination" onClick={(event) => preventNavigation(event, setNotice, 'Default destination')}>
+            Default destination
+          </Link>
+        </div>
+        <div className="link-variant-row">
+          <span>Underlined</span>
+          <Link href="#underlined-destination" underline="always" onClick={(event) => preventNavigation(event, setNotice, 'Underlined destination')}>
+            Underlined destination
+          </Link>
+        </div>
+        <div className="link-variant-row">
+          <span>Subtle</span>
+          <Link href="#subtle-destination" className="rgi-link-subtle" onClick={(event) => preventNavigation(event, setNotice, 'Subtle destination')}>
+            Subtle destination
+          </Link>
+        </div>
+        <div className="link-variant-row">
+          <span>External</span>
+          <Link href="#external-documentation" className="rgi-link-external" onClick={(event) => preventNavigation(event, setNotice, 'External documentation')}>
+            External documentation
+            <ExternalLink size={12} aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span>
+          </Link>
+        </div>
       </div>
       <span className="preview-note" role="status">{notice || 'Link emphasis can change independently from its destination.'}</span>
     </div>
@@ -92,11 +103,11 @@ function LinkAccessibilityDemo() {
           <strong>Keyboard-friendly navigation</strong>
           <p>Use Tab to focus each available link. Focus styling remains visible and the unavailable destination is not focusable.</p>
           <div className="link-accessibility-row">
-            <a className="rgi-link rgi-link-underlined" href="#accessibility-guide" onClick={(event) => preventNavigation(event, setNotice, 'Accessibility guide')}>
+            <Link href="#accessibility-guide" underline="always" onClick={(event) => preventNavigation(event, setNotice, 'Accessibility guide')}>
               Read accessibility guide <ArrowUpRight size={12} aria-hidden="true" />
-            </a>
+            </Link>
             {available && (
-              <a className="rgi-link rgi-link-disabled" href="#coming-soon" aria-disabled="true" tabIndex={-1} onClick={(event) => event.preventDefault()}>
+              <a className="rgi-link-disabled" href="#coming-soon" aria-disabled="true" tabIndex={-1} onClick={(event) => event.preventDefault()}>
                 Coming soon
               </a>
             )}

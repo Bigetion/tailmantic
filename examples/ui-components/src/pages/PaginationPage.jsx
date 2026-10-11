@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 import { cx } from 'tailmantic';
+import { Pagination } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -48,7 +49,7 @@ function PaginationControl({ page, pageCount, onChange, variant = 'standard', la
   );
 
   return (
-    <nav className={cx('rgi-pagination', variant === 'outlined' && 'rgi-pagination-outlined')} aria-label={label}>
+    <nav className={cx('tm-pagination', variant === 'outlined' && 'rgi-pagination-outlined')} aria-label={label}>
       <button
         className={buttonClass(false, 'pagination-edge-button')}
         type="button"

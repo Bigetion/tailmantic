@@ -46,11 +46,11 @@ register('menu-preview-note', {
   base: { tw: 'min-h-8 border-t border-[#303a49] px-3 py-2 text-[8px] text-[var(--muted)]' },
 });
 
-register('rgi-menu-surface', {
+register('tm-menu-surface', {
   base: { tw: 'z-50 w-[min(220px,calc(100vw-24px))] overflow-hidden rounded-lg border border-[#354154] bg-[#171f2c] text-[var(--text)] shadow-[0_16px_38px_rgba(0,0,0,.48)]' },
 });
 
-register('rgi-menu-list', {
+register('tm-menu-list', {
   base: { tw: 'flex flex-col p-1' },
 });
 
@@ -98,6 +98,6 @@ register('menu-selection-card + .preview-note', {
   base: { tw: 'text-center text-[8px]' },
 });
 
-register('rgi-menu-item[aria-checked="true"]', {
+register('tm-menu-item[aria-checked="true"]', {
   base: { tw: 'bg-[#20304a] text-[#d9e5ff] [&_svg]:ml-auto [&_svg]:text-[#9edab7]' },
 });

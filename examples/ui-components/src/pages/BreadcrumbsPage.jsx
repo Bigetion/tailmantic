@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronRight, Dot, MoreHorizontal, Slash } from 'lucide-react';
 import { cx } from 'tailmantic';
+import { Breadcrumbs } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -50,7 +51,7 @@ function BreadcrumbsDemoContent({ demoId }) {
 
   return (
     <div className={cx('breadcrumbs-demo', isCollapsed && 'breadcrumbs-collapsed-demo')}>
-      <nav className="rgi-breadcrumbs" aria-label="Breadcrumb">
+      <nav className="tm-breadcrumbs" aria-label="Breadcrumb">
         <ol>
           {visiblePath.map((label, index) => {
             const last = index === visiblePath.length - 1;

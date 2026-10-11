@@ -1,6 +1,6 @@
 import { Activity, Bell, FileText, LayoutDashboard, Settings, Users } from 'lucide-react';
 import { cx } from 'tailmantic';
-import Tabs from '@tailmantic/ui-components/tabs';
+import { Tabs } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';

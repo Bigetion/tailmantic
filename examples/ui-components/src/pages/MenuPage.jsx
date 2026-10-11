@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Check, ChevronDown, Copy, Download, MoreHorizontal, Pencil, Settings, Share2, Trash2 } from 'lucide-react';
-import { cx } from 'tailmantic';
-import { PopperSurface, useClickAway } from '../components/Popper.jsx';
+import { Menu, MenuItem } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -24,72 +23,12 @@ const DEMOS = {
   },
 };
 
-const FALLBACK_PLACEMENTS = ['top-start', 'bottom-end', 'top-end'];
 const SORT_OPTIONS = ['Recently updated', 'Name A to Z', 'Created date'];
 const PLACEMENTS = ['bottom-start', 'bottom-end', 'top-start', 'top-end'];
 
-function MenuList({ items, selectedIndex, onSelect, listRef, label = 'Menu options' }) {
-  return (
-    <div className="rgi-menu-list" role="menu" aria-label={label}>
-      {items.map(({ label: itemLabel, Icon, danger = false }, index) => (
-        <button
-          className={cx('rgi-menu-item', danger && 'rgi-menu-item-danger')}
-          key={itemLabel}
-          type="button"
-          role="menuitem"
-          tabIndex={selectedIndex === index ? 0 : -1}
-          onClick={() => onSelect(itemLabel)}
-          ref={(node) => {
-            if (node) listRef.current.currentItems[index] = node;
-          }}
-        >
-          {Icon && <Icon size={14} aria-hidden="true" />}
-          <span>{itemLabel}</span>
-          {danger && <span className="menu-item-hint">⌫</span>}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function useMenuKeyboard(open, listRef, setFocusedIndex, itemCount, onDismiss) {
-  useEffect(() => {
-    if (!open) return undefined;
-    const items = listRef.current.currentItems;
-    const activeIndex = items.findIndex((item) => item === document.activeElement);
-    const initial = activeIndex >= 0 ? activeIndex : 0;
-    setFocusedIndex(initial);
-    items[initial]?.focus();
-
-    function handleKeyDown(event) {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        onDismiss();
-        return;
-      }
-      if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
-      event.preventDefault();
-      const current = items.findIndex((item) => item === document.activeElement);
-      const next = event.key === 'Home'
-        ? 0
-        : event.key === 'End'
-          ? itemCount - 1
-          : (current + (event.key === 'ArrowDown' ? 1 : -1) + itemCount) % itemCount;
-      setFocusedIndex(next);
-      items[next]?.focus();
-    }
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [itemCount, listRef, onDismiss, open, setFocusedIndex]);
-}
-
 function ContextMenuDemo() {
   const anchorRef = useRef(null);
-  const surfaceRef = useRef(null);
-  const listRef = useRef({ currentItems: [] });
   const [open, setOpen] = useState(false);
-  const [focusedIndex, setFocusedIndex] = useState(0);
   const [notice, setNotice] = useState('');
   const items = [
     { label: 'Edit project', Icon: Pencil },
@@ -99,13 +38,10 @@ function ContextMenuDemo() {
     { label: 'Settings', Icon: Settings },
     { label: 'Delete', Icon: Trash2, danger: true },
   ];
-  const dismiss = useCallback(() => setOpen(false), []);
-  const dismissAndRestoreFocus = useCallback(() => {
+  const dismiss = useCallback(() => {
     setOpen(false);
     anchorRef.current?.focus();
   }, []);
-  useClickAway(open, anchorRef, surfaceRef, dismiss);
-  useMenuKeyboard(open, listRef, setFocusedIndex, items.length, dismissAndRestoreFocus);
 
   function select(item) {
     setOpen(false);
@@ -134,65 +70,48 @@ function ContextMenuDemo() {
         <div className="menu-preview-note">{notice || 'Open the project action menu.'}</div>
       </div>
       <span className="preview-note">{open ? 'Use ↑ ↓ to move, Home / End to jump, and Escape to close.' : 'Click away or press Escape to dismiss.'}</span>
-      <PopperSurface
+      <Menu
+        anchorEl={anchorRef.current}
         open={open}
-        anchorRef={anchorRef}
-        surfaceRef={surfaceRef}
+        onClose={dismiss}
         placement="bottom-end"
-        fallbackPlacements={FALLBACK_PLACEMENTS}
-        className="rgi-menu-surface"
-        role="presentation"
-        onEscape={dismissAndRestoreFocus}
+        aria-label="Project actions"
       >
-        <MenuList
-          items={items}
-          selectedIndex={focusedIndex}
-          onSelect={select}
-          listRef={listRef}
-          label="Project actions"
-        />
-      </PopperSurface>
+        {items.map(({ label, Icon, danger = false }) => (
+          <MenuItem
+            key={label}
+            className={danger ? 'rgi-menu-item-danger' : undefined}
+            onClick={() => select(label)}
+          >
+            <Icon size={14} aria-hidden="true" />
+            <span>{label}</span>
+            {danger && <span className="menu-item-hint">⌫</span>}
+          </MenuItem>
+        ))}
+      </Menu>
     </div>
   );
 }
 
 function PlacementMenuDemo() {
   const anchorRef = useRef(null);
-  const surfaceRef = useRef(null);
-  const listRef = useRef({ currentItems: [] });
   const [open, setOpen] = useState(false);
-  const [focusedIndex, setFocusedIndex] = useState(0);
   const [placement, setPlacement] = useState('bottom-start');
-  const [actualPlacement, setActualPlacement] = useState('');
   const [notice, setNotice] = useState('');
-  const dismiss = useCallback(() => setOpen(false), []);
-  const dismissAndRestoreFocus = useCallback(() => {
+  const dismiss = useCallback(() => {
     setOpen(false);
     anchorRef.current?.focus();
   }, []);
-  useClickAway(open, anchorRef, surfaceRef, dismiss);
-  useMenuKeyboard(open, listRef, setFocusedIndex, 3, dismissAndRestoreFocus);
-
-  useEffect(() => {
-    if (!open || !surfaceRef.current) return undefined;
-    const observer = new MutationObserver(() => {
-      const actual = surfaceRef.current?.getAttribute('data-popper-placement');
-      if (actual) setActualPlacement(actual);
-    });
-    observer.observe(surfaceRef.current, { attributes: true, attributeFilter: ['data-popper-placement'] });
-    return () => observer.disconnect();
-  }, [open, placement]);
 
   function choosePlacement(value) {
     setPlacement(value);
-    setActualPlacement('');
+    setNotice('');
     setOpen(true);
   }
 
   function select(item) {
     setNotice(`${item} selected.`);
     dismiss();
-    anchorRef.current?.focus();
   }
 
   return (
@@ -200,7 +119,7 @@ function PlacementMenuDemo() {
       <div className="menu-placement-controls" role="group" aria-label="Menu placement">
         {PLACEMENTS.map((value) => (
           <button
-            className={cx('menu-placement-option', value === placement && 'menu-placement-option-active')}
+            className={`menu-placement-option${value === placement ? ' menu-placement-option-active' : ''}`}
             key={value}
             type="button"
             aria-pressed={value === placement}
@@ -221,44 +140,33 @@ function PlacementMenuDemo() {
         >
           Anchor menu <ChevronDown size={13} aria-hidden="true" />
         </button>
-        <span className="preview-note">{notice || (actualPlacement ? `Actual placement: ${actualPlacement}` : 'Choose a placement to preview.')}</span>
+        <span className="preview-note">{notice || `Placement: ${placement}`}</span>
       </div>
-      <PopperSurface
+      <Menu
+        anchorEl={anchorRef.current}
         open={open}
-        anchorRef={anchorRef}
-        surfaceRef={surfaceRef}
+        onClose={dismiss}
         placement={placement}
-        fallbackPlacements={FALLBACK_PLACEMENTS}
-        className="rgi-menu-surface"
-        role="presentation"
-        onEscape={dismissAndRestoreFocus}
+        aria-label="Placement example menu"
       >
-        <MenuList
-          items={[{ label: 'Open' }, { label: 'Rename' }, { label: 'Archive' }]}
-          selectedIndex={focusedIndex}
-          onSelect={select}
-          listRef={listRef}
-          label="Placement example menu"
-        />
-      </PopperSurface>
+        {['Open', 'Rename', 'Archive'].map((label) => (
+          <MenuItem key={label} onClick={() => select(label)}>
+            <span>{label}</span>
+          </MenuItem>
+        ))}
+      </Menu>
     </div>
   );
 }
 
 function SelectionMenuDemo() {
   const anchorRef = useRef(null);
-  const surfaceRef = useRef(null);
-  const listRef = useRef({ currentItems: [] });
   const [open, setOpen] = useState(false);
-  const [focusedIndex, setFocusedIndex] = useState(0);
   const [selected, setSelected] = useState(SORT_OPTIONS[0]);
-  const dismiss = useCallback(() => setOpen(false), []);
-  const dismissAndRestoreFocus = useCallback(() => {
+  const dismiss = useCallback(() => {
     setOpen(false);
     anchorRef.current?.focus();
   }, []);
-  useClickAway(open, anchorRef, surfaceRef, dismiss);
-  useMenuKeyboard(open, listRef, setFocusedIndex, SORT_OPTIONS.length, dismissAndRestoreFocus);
 
   function select(item) {
     setSelected(item);
@@ -283,34 +191,25 @@ function SelectionMenuDemo() {
         </button>
       </div>
       <span className="preview-note" role="status">Current sort order: <strong>{selected}</strong></span>
-      <PopperSurface
+      <Menu
+        anchorEl={anchorRef.current}
         open={open}
-        anchorRef={anchorRef}
-        surfaceRef={surfaceRef}
+        onClose={dismiss}
         placement="bottom-end"
-        fallbackPlacements={FALLBACK_PLACEMENTS}
-        className="rgi-menu-surface"
-        role="presentation"
-        onEscape={dismissAndRestoreFocus}
+        aria-label="Sort projects"
       >
-        <div className="rgi-menu-list" role="menu" aria-label="Sort projects">
-          {SORT_OPTIONS.map((item, index) => (
-            <button
-              className="rgi-menu-item"
-              type="button"
-              role="menuitemradio"
-              aria-checked={selected === item}
-              tabIndex={focusedIndex === index ? 0 : -1}
-              key={item}
-              ref={(node) => { if (node) listRef.current.currentItems[index] = node; }}
-              onClick={() => select(item)}
-            >
-              <span>{item}</span>
-              {selected === item && <Check size={13} aria-hidden="true" />}
-            </button>
-          ))}
-        </div>
-      </PopperSurface>
+        {SORT_OPTIONS.map((item) => (
+          <MenuItem
+            key={item}
+            role="menuitemradio"
+            aria-checked={selected === item}
+            onClick={() => select(item)}
+          >
+            <span>{item}</span>
+            {selected === item && <Check size={13} aria-hidden="true" />}
+          </MenuItem>
+        ))}
+      </Menu>
     </div>
   );
 }

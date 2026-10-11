@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Check, CreditCard, MapPin, PackageCheck, UserRound } from 'lucide-react';
 import { cx } from 'tailmantic';
+import { Stepper, Step } from '@tailmantic/ui-components';
 import { getComponentBySlug } from '../data/components.js';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -72,17 +73,19 @@ function HorizontalStepperDemo() {
 
   return (
     <div className="stepper-showcase">
-      <ol className="rgi-stepper" aria-label="Checkout steps">
+      <Stepper activeStep={step} orientation="horizontal" aria-label="Checkout steps">
         {STEPS.map(({ label, Icon }, index) => (
-          <li className={cx('rgi-step', index < STEPS.length - 1 && 'rgi-step-with-connector')} key={label}>
-            <span className="stepper-indicator">
-              <StepIcon index={index} activeStep={step} Icon={Icon} />
-              {index < STEPS.length - 1 && <i className={cx('stepper-connector', index < step && 'stepper-connector-complete')} />}
-            </span>
-            <span className={cx('stepper-label', index === step && 'stepper-label-active', index < step && 'stepper-label-complete')}>{label}</span>
-          </li>
+          <Step key={label} label={
+            <>
+              <span className="stepper-indicator">
+                <StepIcon index={index} activeStep={step} Icon={Icon} />
+                {index < STEPS.length - 1 && <i className={cx('stepper-connector', index < step && 'stepper-connector-complete')} />}
+              </span>
+              <span className={cx('stepper-label', index === step && 'stepper-label-active', index < step && 'stepper-label-complete')}>{label}</span>
+            </>
+          } />
         ))}
-      </ol>
+      </Stepper>
       <div className="stepper-content">
         {complete ? (
           <div className="stepper-complete-message" role="status"><span><Check size={14} aria-hidden="true" /></span><strong>Checkout ready</strong><small>Your information has been reviewed.</small></div>
@@ -123,35 +126,41 @@ function VerticalStepperDemo() {
 
   return (
     <div className="stepper-showcase stepper-vertical-showcase">
-      <ol className="rgi-stepper-vertical" aria-label="Setup steps">
+      <Stepper orientation="vertical" activeStep={complete ? STEPS.length : step} aria-label="Setup steps">
         {STEPS.map(({ label, detail, Icon }, index) => (
-          <li className="rgi-step-vertical" key={label}>
-            <button
-              className={cx('stepper-vertical-heading', index === step && !complete && 'stepper-vertical-heading-active', index < step && 'stepper-vertical-heading-complete')}
-              type="button"
-              aria-current={index === step && !complete ? 'step' : undefined}
-              aria-expanded={index === step && !complete}
-              onClick={() => { setComplete(false); setStep(index); }}
-            >
-              <StepIcon index={index} activeStep={complete ? STEPS.length : step} Icon={Icon} />
-              <span>{label}</span>
-            </button>
-            <i className={cx('stepper-vertical-connector', index < step && 'stepper-vertical-connector-complete')} aria-hidden="true" />
-            {index === step && !complete && (
-              <div className="stepper-vertical-content">
-                <p>{detail}</p>
-                <StepperActions step={step} onBack={() => setStep((value) => Math.max(0, value - 1))} onNext={advance} onReset={reset} lastStep={STEPS.length - 1} />
-              </div>
-            )}
-          </li>
+          <Step
+            key={label}
+            onClick={() => { setComplete(false); setStep(index); }}
+            label={
+              <>
+                <button
+                  className={cx('stepper-vertical-heading', index === step && !complete && 'stepper-vertical-heading-active', index < step && 'stepper-vertical-heading-complete')}
+                  type="button"
+                  aria-current={index === step && !complete ? 'step' : undefined}
+                  aria-expanded={index === step && !complete}
+                  tabIndex={-1}
+                >
+                  <StepIcon index={index} activeStep={complete ? STEPS.length : step} Icon={Icon} />
+                  <span>{label}</span>
+                </button>
+                <i className={cx('stepper-vertical-connector', index < step && 'stepper-vertical-connector-complete')} aria-hidden="true" />
+                {index === step && !complete && (
+                  <div className="stepper-vertical-content">
+                    <p>{detail}</p>
+                    <StepperActions step={step} onBack={() => setStep((value) => Math.max(0, value - 1))} onNext={advance} onReset={reset} lastStep={STEPS.length - 1} />
+                  </div>
+                )}
+              </>
+            }
+          />
         ))}
-        {complete && (
-          <li className="stepper-vertical-success" role="status">
-            <Check size={13} /> Setup complete. Your workspace is ready.
-            <button className="stepper-text-button" type="button" onClick={reset}>Start over</button>
-          </li>
-        )}
-      </ol>
+      </Stepper>
+      {complete && (
+        <div className="stepper-vertical-success" role="status">
+          <Check size={13} /> Setup complete. Your workspace is ready.
+          <button className="stepper-text-button" type="button" onClick={reset}>Start over</button>
+        </div>
+      )}
     </div>
   );
 }
@@ -171,23 +180,20 @@ function AlternativeStepperDemo() {
 
   return (
     <div className="stepper-showcase stepper-alternative-showcase">
-      <ol className="rgi-stepper-alternative" aria-label="Project launch milestones">
+      <Stepper alternativeLabel activeStep={step} aria-label="Project launch milestones" onStepClick={(event, index) => changeStep(index)}>
         {STEPS.map(({ label, Icon }, index) => (
-          <li className="rgi-step-alternative" key={label}>
-            <button
-              className="stepper-alternative-button"
-              type="button"
-              aria-label={`${label}${index === step ? ', current step' : ''}`}
-              aria-current={index === step ? 'step' : undefined}
-              onClick={() => changeStep(index)}
-            >
-              <StepIcon index={index} activeStep={step} Icon={Icon} alternative />
-              <span className={cx('stepper-label', index === step && 'stepper-label-active', index < step && 'stepper-label-complete')}>{label}</span>
-            </button>
-            {index < STEPS.length - 1 && <i className={cx('stepper-connector', index < step && 'stepper-connector-complete')} aria-hidden="true" />}
-          </li>
+          <Step
+            key={label}
+            label={
+              <>
+                <StepIcon index={index} activeStep={step} Icon={Icon} alternative />
+                <span className={cx('stepper-label', index === step && 'stepper-label-active', index < step && 'stepper-label-complete')}>{label}</span>
+                {index < STEPS.length - 1 && <i className={cx('stepper-connector', index < step && 'stepper-connector-complete')} aria-hidden="true" />}
+              </>
+            }
+          />
         ))}
-      </ol>
+      </Stepper>
       <div className="stepper-alternative-summary">
         <span className="stepper-content-eyebrow">MILESTONE {step + 1} / {STEPS.length}</span>
         <strong>{complete ? 'Project ready to launch' : STEPS[step].label}</strong>
