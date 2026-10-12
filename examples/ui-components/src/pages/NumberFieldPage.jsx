@@ -54,7 +54,7 @@ function NumberFieldControl({ id, label, value, onChange, step = 1, min, max, un
 
   return (
     <div className="preview-stack">
-      <label className="rgi-label" htmlFor={id}>{label}</label>
+      <label className="tm-label" htmlFor={id}>{label}</label>
       <div className={cx('number-field', invalid && 'number-field-invalid')}>
         {unit && unitPosition === 'start' && <span className="number-field-unit">{unit}</span>}
         <button

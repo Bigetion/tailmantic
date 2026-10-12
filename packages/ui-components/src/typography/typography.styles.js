@@ -21,7 +21,7 @@ register('tm-typography', {
     'weight-regular': { tw: 'font-normal' },
     'weight-medium': { tw: 'font-medium' },
     'weight-bold': { tw: 'font-bold' },
-    'color-primary': { tw: '[--tm-typography-color:var(--rgi-blue,#9bbcff)]' },
+    'color-primary': { tw: '[--tm-typography-color:var(--tm-blue,#9bbcff)]' },
     'color-secondary': { tw: '[--tm-typography-color:var(--muted,#9aa8bd)]' },
     'color-success': { tw: '[--tm-typography-color:#69b890]' },
     'color-warning': { tw: '[--tm-typography-color:#e9ad64]' },

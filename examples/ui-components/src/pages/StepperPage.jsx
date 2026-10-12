@@ -126,19 +126,18 @@ function VerticalStepperDemo() {
 
   return (
     <div className="stepper-showcase stepper-vertical-showcase">
-      <Stepper orientation="vertical" activeStep={complete ? STEPS.length : step} aria-label="Setup steps">
+      <Stepper orientation="vertical" nonLinear activeStep={complete ? STEPS.length : step} aria-label="Setup steps">
         {STEPS.map(({ label, detail, Icon }, index) => (
           <Step
             key={label}
-            onClick={() => { setComplete(false); setStep(index); }}
             label={
               <>
                 <button
                   className={cx('stepper-vertical-heading', index === step && !complete && 'stepper-vertical-heading-active', index < step && 'stepper-vertical-heading-complete')}
                   type="button"
+                  onClick={() => { setComplete(false); setStep(index); }}
                   aria-current={index === step && !complete ? 'step' : undefined}
                   aria-expanded={index === step && !complete}
-                  tabIndex={-1}
                 >
                   <StepIcon index={index} activeStep={complete ? STEPS.length : step} Icon={Icon} />
                   <span>{label}</span>

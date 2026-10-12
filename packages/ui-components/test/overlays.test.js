@@ -63,7 +63,7 @@ test('Dialog handles Escape and backdrop dismissal and restores focus', async ()
   try {
     await harness.render(dialog(true));
     const surface = document.querySelector('[role="dialog"]');
-    const backdrop = document.querySelector('.rgi-dialog-backdrop');
+    const backdrop = document.querySelector('.tm-dialog-backdrop');
     assert.ok(surface);
     assert.equal(surface.getAttribute('aria-modal'), 'true');
     assert.equal(surface.getAttribute('aria-labelledby') !== null, true);
@@ -111,8 +111,8 @@ test('Modal honors dismissal options and restores body state and focus', async (
 
   try {
     await harness.render(modal({ closeOnEscape: false }));
-    const surface = document.querySelector('.rgi-modal');
-    const backdrop = document.querySelector('.rgi-modal-backdrop');
+    const surface = document.querySelector('.tm-modal');
+    const backdrop = document.querySelector('.tm-modal-backdrop');
     assert.ok(surface);
     assert.equal(surface.getAttribute('aria-label'), 'Account settings');
     assert.equal(document.activeElement, surface);
@@ -124,7 +124,7 @@ test('Modal honors dismissal options and restores body state and focus', async (
     assert.deepEqual(closeReasons, ['backdropClick']);
 
     await harness.render(React.createElement(Modal, { open: false }));
-    assert.equal(document.querySelector('.rgi-modal'), null);
+    assert.equal(document.querySelector('.tm-modal'), null);
     assert.equal(document.body.style.overflow, '');
     assert.equal(document.activeElement, harness.opener);
   } finally {
@@ -148,8 +148,8 @@ test('temporary Drawer handles keyboard and backdrop dismissal and restores focu
 
   try {
     await harness.render(drawer(true));
-    const surface = document.querySelector('.rgi-drawer');
-    const backdrop = document.querySelector('.rgi-drawer-backdrop');
+    const surface = document.querySelector('.tm-drawer');
+    const backdrop = document.querySelector('.tm-drawer-backdrop');
     assert.ok(surface);
     assert.equal(surface.getAttribute('role'), 'dialog');
     assert.equal(surface.getAttribute('aria-modal'), 'true');
@@ -161,7 +161,7 @@ test('temporary Drawer handles keyboard and backdrop dismissal and restores focu
     assert.equal(closeCount, 2);
 
     await harness.render(drawer(false));
-    assert.equal(document.querySelector('.rgi-drawer'), null);
+    assert.equal(document.querySelector('.tm-drawer'), null);
     assert.equal(document.activeElement, harness.opener);
   } finally {
     await harness.dispose();

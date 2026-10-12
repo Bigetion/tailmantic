@@ -8,9 +8,9 @@ register.all({
     '--rgi-blue': '#9bbcff',
     '--rgi-blue-dark': '#547be8',
     '--rgi-blue-soft': 'rgba(125,159,255,.12)',
-    '--tm-blue': '#9bbcff',
-    '--tm-blue-dark': '#547be8',
-    '--tm-blue-soft': 'rgba(125,159,255,.12)',
+    '--tm-blue': 'var(--rgi-blue)',
+    '--tm-blue-dark': 'var(--rgi-blue-dark)',
+    '--tm-blue-soft': 'var(--rgi-blue-soft)',
     '--accent': '#547be8',
 
     // Page & panel surfaces

@@ -1,3 +1,3 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-portal', { base: { tw: 'contents' } });
+register('tm-portal', { base: { tw: 'contents' } });

@@ -1,3 +1,3 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-popper', { base: { tw: 'z-50 max-w-[calc(100vw-1rem)]' } });
+register('tm-popper', { base: { tw: 'z-50 max-w-[calc(100vw-1rem)]' } });

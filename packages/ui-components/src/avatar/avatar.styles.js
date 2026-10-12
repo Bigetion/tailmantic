@@ -7,7 +7,7 @@ register('tm-avatar', {
   modifiers: {
     small: { tw: 'size-8 text-xs' },
     large: { tw: 'size-14 text-lg' },
-    primary: { tw: '[--tm-avatar-bg:var(--rgi-blue-dark,#547be8)] [--tm-avatar-color:white]' },
+    primary: { tw: '[--tm-avatar-bg:var(--tm-blue-dark,#547be8)] [--tm-avatar-color:white]' },
     success: { tw: '[--tm-avatar-bg:#276b53] [--tm-avatar-color:white]' },
     warning: { tw: '[--tm-avatar-bg:#a75c1b] [--tm-avatar-color:white]' },
   },

@@ -74,13 +74,13 @@ function LinkVariantsDemo() {
         </div>
         <div className="link-variant-row">
           <span>Subtle</span>
-          <Link href="#subtle-destination" className="rgi-link-subtle" onClick={(event) => preventNavigation(event, setNotice, 'Subtle destination')}>
+          <Link href="#subtle-destination" className="tm-link-subtle" onClick={(event) => preventNavigation(event, setNotice, 'Subtle destination')}>
             Subtle destination
           </Link>
         </div>
         <div className="link-variant-row">
           <span>External</span>
-          <Link href="#external-documentation" className="rgi-link-external" onClick={(event) => preventNavigation(event, setNotice, 'External documentation')}>
+          <Link href="#external-documentation" className="tm-link-external" onClick={(event) => preventNavigation(event, setNotice, 'External documentation')}>
             External documentation
             <ExternalLink size={12} aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span>
           </Link>
@@ -107,11 +107,11 @@ function LinkAccessibilityDemo() {
               Read accessibility guide <ArrowUpRight size={12} aria-hidden="true" />
             </Link>
             {available && (
-              <a className="rgi-link-disabled" href="#coming-soon" aria-disabled="true" tabIndex={-1} onClick={(event) => event.preventDefault()}>
+              <a className="tm-link-disabled" href="#coming-soon" aria-disabled="true" tabIndex={-1} onClick={(event) => event.preventDefault()}>
                 Coming soon
               </a>
             )}
-            {!available && <span className="rgi-link-disabled" aria-disabled="true">Unavailable</span>}
+            {!available && <span className="tm-link-disabled" aria-disabled="true">Unavailable</span>}
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { register } from 'tailmantic/collector';
 
 register('tm-tooltip-root', {
   base: {
-    tw: 'relative inline-flex w-fit align-middle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--rgi-blue,#9bbcff)] [&:hover_.tm-tooltip-content]:visible [&:hover_.tm-tooltip-content]:opacity-100 [&:focus-within_.tm-tooltip-content]:visible [&:focus-within_.tm-tooltip-content]:opacity-100',
+    tw: 'relative inline-flex w-fit align-middle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--tm-blue,#9bbcff)] [&:hover_.tm-tooltip-content]:visible [&:hover_.tm-tooltip-content]:opacity-100 [&:focus-within_.tm-tooltip-content]:visible [&:focus-within_.tm-tooltip-content]:opacity-100',
   },
   modifiers: {
     top: {

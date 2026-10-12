@@ -13,7 +13,7 @@ register('floating-hint', {
 });
 
 register('floating-selected', {
-  base: { tw: 'text-xs text-[var(--rgi-blue)]' },
+  base: { tw: 'text-xs text-[var(--tm-blue)]' },
 });
 
 register('popper-surface', {
@@ -35,7 +35,7 @@ register('placement-button', {
 });
 
 register('placement-active', {
-  base: { tw: 'cursor-pointer rounded border border-[var(--rgi-blue)] bg-[var(--rgi-blue-soft)] px-2 py-1 text-[10px] capitalize text-[var(--rgi-blue)]' },
+  base: { tw: 'cursor-pointer rounded border border-[var(--tm-blue)] bg-[var(--tm-blue-soft)] px-2 py-1 text-[10px] capitalize text-[var(--tm-blue)]' },
 });
 
 register('popper-demo', {

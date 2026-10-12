@@ -81,5 +81,5 @@ register('list-switch-on', {
 });
 
 register('demo-list-setting', {
-  base: { tw: 'min-h-[64px] hover:bg-[#ffffff08] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--rgi-blue)]' },
+  base: { tw: 'min-h-[64px] hover:bg-[#ffffff08] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--tm-blue)]' },
 });

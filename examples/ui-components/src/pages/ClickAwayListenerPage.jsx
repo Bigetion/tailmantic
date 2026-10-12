@@ -66,7 +66,7 @@ function ClickAwayDemoContent({ demoId }) {
           </span>
         </div>
         <button
-          className="rgi-button rgi-button-outlined click-away-trigger"
+          className="tm-button tm-button-outlined click-away-trigger"
           type="button"
           ref={anchorRef}
           aria-expanded={open}

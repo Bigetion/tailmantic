@@ -11,7 +11,7 @@ register('floating-menu button', {
 });
 
 register('floating-menu button svg:last-child', {
-  base: { tw: 'ml-auto text-[var(--rgi-blue)]' },
+  base: { tw: 'ml-auto text-[var(--tm-blue)]' },
 });
 
 register('menu-demo', {
@@ -54,7 +54,7 @@ register('tm-menu-list', {
   base: { tw: 'flex flex-col p-1' },
 });
 
-register('rgi-menu-item-danger', {
+register('tm-menu-item-danger', {
   base: { tw: 'text-[#f09a9a] hover:bg-[#4a252c] hover:text-[#ffb4b4] focus-visible:bg-[#4a252c] [&_svg]:text-[#e78d96]' },
 });
 
@@ -75,7 +75,7 @@ register('menu-placement-option-active', {
 });
 
 register('menu-placement-stage', {
-  base: { tw: 'flex min-h-[150px] flex-col items-center justify-center gap-3 rounded-lg border border-dashed border-[#303a49] bg-[#0d121b] p-5 [&_.rgi-button]:gap-2' },
+  base: { tw: 'flex min-h-[150px] flex-col items-center justify-center gap-3 rounded-lg border border-dashed border-[#303a49] bg-[#0d121b] p-5 [&_.tm-button]:gap-2' },
 });
 
 register('menu-placement-stage .preview-note', {

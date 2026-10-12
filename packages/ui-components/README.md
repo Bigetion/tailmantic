@@ -45,7 +45,7 @@ For example, `Checkbox` supports native input props, controlled or uncontrolled 
 
 ## Standalone component usage
 
-Each component ships its own style file and a corresponding token file so you can load only what you need.
+Each component ships its own style entry, separate from the shared theme tokens. Load one theme and only the component styles your application uses.
 
 ```js
 // Load tokens (design variables) and styles for a single component
@@ -56,20 +56,22 @@ import '@tailmantic/ui-components/button/styles';
 import '@tailmantic/ui-components/styles';
 ```
 
-**Token files** (`/tokens/dark`, `/tokens/light`) set CSS custom properties — colors, spacing, border radii, shadows — on `:root`. They are the design-token layer that all component styles reference via `var(--...)` variables. Import exactly one token file per page.
+**Token files** (`/tokens/dark`, `/tokens/light`) set CSS custom properties on `:root`. They are the design-token layer that component styles reference via `var(--...)` variables. Import exactly one token file per page.
 
 **Customizing tokens** — override any CSS variable in your own stylesheet after the token import:
 
 ```css
 :root {
-  --color-primary: #7c3aed;
-  --radius-md: 0.5rem;
+  --tm-blue: #7c3aed;
+  --tm-blue-dark: #5b21b6;
+  --tm-blue-soft: rgb(124 58 237 / 12%);
+  --radius: 0.5rem;
 }
 ```
 
-**Mix and match** — you can import styles for only the components your page uses. Each `*/styles` file is self-contained and registers its tokens with Tailmantic's collector independently.
+**Mix and match** — you can import styles for only the components your page uses. Each `*/styles` entry registers that component's utility styles with Tailmantic's collector. Theme tokens are loaded separately.
 
-**ButtonGroup dependency** — `ButtonGroup` renders `Button` children and its styles target `rgi-button` descendants. Always import `button/styles` alongside `button-group/styles`:
+**ButtonGroup dependency** — `ButtonGroup` renders `Button` children and its styles target `tm-button` descendants. Always import `button/styles` alongside `button-group/styles`:
 
 ```js
 import '@tailmantic/ui-components/button/styles';

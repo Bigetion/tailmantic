@@ -96,12 +96,12 @@ const Autocomplete = forwardRef(function Autocomplete(
   }
 
   return (
-    <div className={cx('rgi-autocomplete', className)}>
+    <div className={cx('tm-autocomplete', className)}>
       <input
         {...inputProps}
         ref={ref}
         id={inputId}
-        className="rgi-autocomplete-input"
+        className="tm-autocomplete-input"
         type="text"
         role="combobox"
         aria-autocomplete="list"
@@ -136,7 +136,7 @@ const Autocomplete = forwardRef(function Autocomplete(
       />
       {name && <input type="hidden" name={name} value={selected ?? ''} />}
       <div
-        className="rgi-autocomplete-listbox"
+        className="tm-autocomplete-listbox"
         id={listboxId}
         role="listbox"
         hidden={!open || disabled}
@@ -145,8 +145,8 @@ const Autocomplete = forwardRef(function Autocomplete(
           filteredOptions.map((option, index) => (
             <div
               className={cx(
-                'rgi-autocomplete-option',
-                activeIndex === index && 'rgi-autocomplete-option-active',
+                'tm-autocomplete-option',
+                activeIndex === index && 'tm-autocomplete-option-active',
               )}
               id={`${listboxId}-option-${index}`}
               key={option.value}
@@ -165,12 +165,12 @@ const Autocomplete = forwardRef(function Autocomplete(
             >
               {option.label}
               {option.description && (
-                <span className="rgi-autocomplete-description">{option.description}</span>
+                <span className="tm-autocomplete-description">{option.description}</span>
               )}
             </div>
           ))
         ) : (
-          <div className="rgi-autocomplete-empty" role="presentation">
+          <div className="tm-autocomplete-empty" role="presentation">
             No matching options
           </div>
         )}

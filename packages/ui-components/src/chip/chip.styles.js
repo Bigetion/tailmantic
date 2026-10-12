@@ -7,14 +7,14 @@ register('tm-chip', {
   modifiers: {
     outlined: { tw: 'bg-transparent' },
     filled: { tw: 'border-transparent bg-[var(--panel-raised,#171e2a)]' },
-    primary: { tw: 'border-transparent !bg-[var(--rgi-blue-dark,#547be8)] !text-white' },
+    primary: { tw: 'border-transparent !bg-[var(--tm-blue-dark,#547be8)] !text-white' },
     success: { tw: 'border-transparent !bg-[#1b5e20] text-[#c8e6c9]' },
     warning: { tw: 'border-transparent !bg-[#684b28] !text-[#ffe0ae]' },
     small: { tw: '!h-6 px-2 text-[10px]' },
     interactive: {
-      tw: 'cursor-pointer hover:border-[var(--rgi-blue,#9bbcff)] hover:bg-[var(--panel-raised,#171e2a)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--rgi-blue,#9bbcff)]',
+      tw: 'cursor-pointer hover:border-[var(--tm-blue,#9bbcff)] hover:bg-[var(--panel-raised,#171e2a)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--tm-blue,#9bbcff)]',
     },
-    selected: { tw: 'border-transparent !bg-[var(--rgi-blue-dark,#547be8)] !text-white' },
+    selected: { tw: 'border-transparent !bg-[var(--tm-blue-dark,#547be8)] !text-white' },
     disabled: { tw: 'cursor-not-allowed opacity-45' },
   },
 });

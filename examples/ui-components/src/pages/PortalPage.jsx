@@ -35,7 +35,7 @@ function BodyPortalDemo() {
           <strong>Move content to document.body</strong>
           <span>The React component stays here while its notification is mounted elsewhere in the DOM.</span>
         </div>
-        <button className="rgi-button rgi-button-outlined" type="button" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
+        <button className="tm-button tm-button-outlined" type="button" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
           {open ? 'Hide notification' : 'Show notification'}
           <ArrowUpRight size={13} aria-hidden="true" />
         </button>
@@ -68,7 +68,7 @@ function CustomTargetDemo() {
           <strong>Choose where portal content mounts</strong>
           <span>Send the surface into a specific target while React events still follow the component tree.</span>
         </div>
-        <button className="rgi-button rgi-button-outlined" type="button" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
+        <button className="tm-button tm-button-outlined" type="button" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
           {open ? 'Unmount content' : 'Mount content'}
         </button>
         <div className="portal-custom-target" ref={targetRef}>
@@ -130,7 +130,7 @@ function ClippingDemo() {
         <span className="portal-demo-eyebrow">CLIPPING CONTAINER · OVERFLOW HIDDEN</span>
         <p>This frame clips anything rendered inside its bounds.</p>
         <button
-          className="rgi-button rgi-button-outlined"
+          className="tm-button tm-button-outlined"
           type="button"
           ref={anchorRef}
           aria-expanded={open}

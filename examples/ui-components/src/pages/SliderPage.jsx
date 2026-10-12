@@ -27,7 +27,7 @@ const MARKS = [0, 25, 50, 75, 100];
 function SliderInput({ id, label, value, min = 0, max = 100, step = 1, onChange }) {
   return (
     <input
-      className="rgi-slider"
+      className="tm-slider"
       id={id}
       type="range"
       min={min}
@@ -49,7 +49,7 @@ function SingleSlider({ demoId }) {
   return (
     <div className="slider-example">
       <div className="slider-heading">
-        <label className="rgi-label" htmlFor={`${demoId}-input`}>{title}</label>
+        <label className="tm-label" htmlFor={`${demoId}-input`}>{title}</label>
         <output className="slider-value" htmlFor={`${demoId}-input`}>{valueLabel}</output>
       </div>
       <SliderInput
@@ -77,7 +77,7 @@ function RangeSlider() {
   return (
     <div className="slider-example">
       <div className="slider-heading">
-        <span className="rgi-label">Price range</span>
+        <span className="tm-label">Price range</span>
         <output className="slider-value">${range[0]} – ${range[1]}</output>
       </div>
       <div className="range-inputs">

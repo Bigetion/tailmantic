@@ -59,7 +59,7 @@ test('Popper portals, flips, updates placement and offset, and cleans up listene
   );
   window.HTMLElement.prototype.getBoundingClientRect = function getBoundingClientRect() {
     if (this.dataset.testid === 'anchor') return anchorBounds;
-    if (this.classList.contains('rgi-popper')) return popperBounds;
+    if (this.classList.contains('tm-popper')) return popperBounds;
     return getRect.call(this);
   };
   Object.defineProperties(window.HTMLElement.prototype, {
@@ -67,7 +67,7 @@ test('Popper portals, flips, updates placement and offset, and cleans up listene
       configurable: true,
       get() {
         if (this.dataset.testid === 'anchor') return anchorBounds.width;
-        if (this.classList.contains('rgi-popper')) return popperBounds.width;
+        if (this.classList.contains('tm-popper')) return popperBounds.width;
         return offsetWidth?.get?.call(this) ?? 0;
       },
     },
@@ -75,7 +75,7 @@ test('Popper portals, flips, updates placement and offset, and cleans up listene
       configurable: true,
       get() {
         if (this.dataset.testid === 'anchor') return anchorBounds.height;
-        if (this.classList.contains('rgi-popper')) return popperBounds.height;
+        if (this.classList.contains('tm-popper')) return popperBounds.height;
         return offsetHeight?.get?.call(this) ?? 0;
       },
     },
@@ -132,9 +132,9 @@ test('Popper portals, flips, updates placement and offset, and cleans up listene
 
   try {
     await render({});
-    const popper = portalContainer.querySelector('.rgi-popper');
+    const popper = portalContainer.querySelector('.tm-popper');
     assert.ok(popper, 'renders into the configured portal');
-    assert.equal(popper.parentElement.className, 'rgi-portal');
+    assert.equal(popper.parentElement.className, 'tm-portal');
     assert.equal(
       popper.getAttribute('data-popper-placement'),
       'top',
@@ -151,7 +151,7 @@ test('Popper portals, flips, updates placement and offset, and cleans up listene
 
     await render({ placement: 'left' });
     assert.equal(
-      portalContainer.querySelector('.rgi-popper')?.getAttribute('data-popper-placement'),
+      portalContainer.querySelector('.tm-popper')?.getAttribute('data-popper-placement'),
       'left',
     );
 
@@ -161,16 +161,16 @@ test('Popper portals, flips, updates placement and offset, and cleans up listene
       await new Promise((resolve) => setTimeout(resolve, 40));
     });
     assert.equal(
-      portalContainer.querySelector('.rgi-popper')?.getAttribute('data-popper-placement'),
+      portalContainer.querySelector('.tm-popper')?.getAttribute('data-popper-placement'),
       'right',
       'flips after the reference moves',
     );
 
     anchorBounds = bounds(120, 20, 40, 20);
     await render({ placement: 'bottom' });
-    const beforeOffset = portalContainer.querySelector('.rgi-popper').style.transform;
+    const beforeOffset = portalContainer.querySelector('.tm-popper').style.transform;
     await render({ placement: 'bottom', modifiers: customOffset });
-    const offsetPopper = portalContainer.querySelector('.rgi-popper');
+    const offsetPopper = portalContainer.querySelector('.tm-popper');
     assert.equal(offsetPopper.getAttribute('data-popper-placement'), 'bottom');
     assert.notEqual(
       offsetPopper.style.transform,
@@ -178,9 +178,9 @@ test('Popper portals, flips, updates placement and offset, and cleans up listene
       'applies caller modifiers when recomputing position',
     );
 
-    const closedPopper = portalContainer.querySelector('.rgi-popper');
+    const closedPopper = portalContainer.querySelector('.tm-popper');
     await render({ open: false });
-    assert.equal(portalContainer.querySelector('.rgi-popper'), null);
+    assert.equal(portalContainer.querySelector('.tm-popper'), null);
     assert.equal(
       closedPopper.getAttribute('data-popper-placement'),
       null,
@@ -190,10 +190,10 @@ test('Popper portals, flips, updates placement and offset, and cleans up listene
     assert.equal(activeWindowListeners.get('scroll').size, 0, 'removes scroll listeners on close');
 
     await render({ open: true, placement: 'bottom' });
-    assert.ok(portalContainer.querySelector('.rgi-popper'));
+    assert.ok(portalContainer.querySelector('.tm-popper'));
     await act(async () => root.unmount());
     mounted = false;
-    assert.equal(portalContainer.querySelector('.rgi-popper'), null);
+    assert.equal(portalContainer.querySelector('.tm-popper'), null);
     assert.equal(
       activeWindowListeners.get('resize').size,
       0,

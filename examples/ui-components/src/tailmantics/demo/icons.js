@@ -5,11 +5,11 @@ register('icon-gallery', {
 });
 
 register('icon-gallery button', {
-  base: { tw: 'flex cursor-pointer flex-col items-center gap-2 rounded-md border border-[var(--border)] bg-transparent py-3 text-[var(--muted)] hover:bg-[var(--panel-raised)] hover:text-[var(--rgi-blue)] [&_span]:text-[10px]' },
+  base: { tw: 'flex cursor-pointer flex-col items-center gap-2 rounded-md border border-[var(--border)] bg-transparent py-3 text-[var(--muted)] hover:bg-[var(--panel-raised)] hover:text-[var(--tm-blue)] [&_span]:text-[10px]' },
 });
 
 register('icon-search', {
-  base: { tw: 'flex h-9 w-full max-w-[360px] items-center gap-2 rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 text-[var(--muted)] focus-within:border-[var(--rgi-blue)]' },
+  base: { tw: 'flex h-9 w-full max-w-[360px] items-center gap-2 rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 text-[var(--muted)] focus-within:border-[var(--tm-blue)]' },
 });
 
 register('icon-search input', {
@@ -29,7 +29,7 @@ register('icon-category', {
 });
 
 register('icon-category-active', {
-  base: { tw: 'border-transparent bg-[var(--rgi-blue-dark)] text-white hover:bg-[var(--rgi-blue-dark)] hover:text-white' },
+  base: { tw: 'border-transparent bg-[var(--tm-blue-dark)] text-white hover:bg-[var(--tm-blue-dark)] hover:text-white' },
 });
 
 register('icon-library-grid', {
@@ -37,7 +37,7 @@ register('icon-library-grid', {
 });
 
 register('icon-library-item', {
-  base: { tw: 'flex min-h-[68px] cursor-pointer flex-col items-center justify-center gap-2 rounded-md border border-[var(--border)] bg-transparent px-1 py-2 text-[var(--muted)] hover:border-[var(--rgi-blue)] hover:bg-[var(--panel-raised)] hover:text-[var(--rgi-blue)] [&_span]:text-[9px]' },
+  base: { tw: 'flex min-h-[68px] cursor-pointer flex-col items-center justify-center gap-2 rounded-md border border-[var(--border)] bg-transparent px-1 py-2 text-[var(--muted)] hover:border-[var(--tm-blue)] hover:bg-[var(--panel-raised)] hover:text-[var(--tm-blue)] [&_span]:text-[9px]' },
 });
 
 register('icon-library-item-selected', {
@@ -85,7 +85,7 @@ register('icon-action-row', {
 });
 
 register('icon-action-button', {
-  base: { tw: 'inline-flex size-9 cursor-pointer items-center justify-center rounded-md border border-[var(--border)] bg-[var(--panel)] text-[var(--muted)] hover:border-[var(--rgi-blue)] hover:bg-[var(--panel-raised)] hover:text-[var(--text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--rgi-blue)]' },
+  base: { tw: 'inline-flex size-9 cursor-pointer items-center justify-center rounded-md border border-[var(--border)] bg-[var(--panel)] text-[var(--muted)] hover:border-[var(--tm-blue)] hover:bg-[var(--panel-raised)] hover:text-[var(--text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--tm-blue)]' },
 });
 
 register('icon-action-button-active', {

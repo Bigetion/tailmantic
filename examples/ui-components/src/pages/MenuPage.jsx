@@ -80,7 +80,7 @@ function ContextMenuDemo() {
         {items.map(({ label, Icon, danger = false }) => (
           <MenuItem
             key={label}
-            className={danger ? 'rgi-menu-item-danger' : undefined}
+            className={danger ? 'tm-menu-item-danger' : undefined}
             onClick={() => select(label)}
           >
             <Icon size={14} aria-hidden="true" />
@@ -131,7 +131,7 @@ function PlacementMenuDemo() {
       </div>
       <div className="menu-placement-stage">
         <button
-          className="rgi-button rgi-button-outlined"
+          className="tm-button tm-button-outlined"
           type="button"
           ref={anchorRef}
           aria-haspopup="menu"

@@ -29,7 +29,7 @@ register('table-toolbar-button', {
 });
 
 register('table-sort-button', {
-  base: { tw: 'inline-flex cursor-pointer items-center gap-1.5 border-0 bg-transparent p-0 text-[9px] font-medium text-[var(--subtle)] hover:text-[var(--text)] focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-[var(--rgi-blue)]' },
+  base: { tw: 'inline-flex cursor-pointer items-center gap-1.5 border-0 bg-transparent p-0 text-[9px] font-medium text-[var(--subtle)] hover:text-[var(--text)] focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-[var(--tm-blue)]' },
 });
 
 register('table-sort-button-active', {

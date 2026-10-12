@@ -14,6 +14,6 @@ register.all({
   },
   '::selection': {
     color: '#fff',
-    'background-color': 'var(--rgi-blue-dark)',
+    'background-color': 'var(--tm-blue-dark)',
   },
 });

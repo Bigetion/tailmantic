@@ -21,6 +21,7 @@ const { act } = React;
 const { createRoot } = await import('react-dom/client');
 const { default: Autocomplete } = await import('../dist/autocomplete.js');
 const { default: Accordion } = await import('../dist/accordion.js');
+const { AccordionItem } = await import('../dist/accordion.js');
 const { default: Alert } = await import('../dist/alert.js');
 const { default: Badge } = await import('../dist/badge.js');
 const { default: BottomNavigation } = await import('../dist/bottom-navigation.js');
@@ -144,7 +145,7 @@ test('Popover ignores inside pointer events and reports outside and Escape reaso
         React.createElement('button', null, 'Inside'),
       ),
     );
-    const popover = document.querySelector('.rgi-popover');
+    const popover = document.querySelector('.tm-popover');
     assert.ok(popover);
     assert.equal(popover.getAttribute('aria-label'), 'More information');
     popover.dispatchEvent(new window.MouseEvent('pointerdown', { bubbles: true }));
@@ -305,7 +306,7 @@ test('Checkbox, RadioGroup, and TextField expose native form and validation beha
     assert.equal(radios[1].checked, true);
 
     const input = harness.mount.querySelector('input[type="email"]');
-    const label = harness.mount.querySelector('.rgi-text-field-label');
+    const label = harness.mount.querySelector('.tm-text-field-label');
     assert.equal(label.htmlFor, input.id);
     assert.equal(input.getAttribute('aria-invalid'), 'true');
     assert.ok(document.getElementById(input.getAttribute('aria-describedby')));
@@ -388,19 +389,23 @@ test('Accordion supports controlled state, disabled state, and accessible panel 
     await harness.render(
       React.createElement(
         Accordion,
-        {
-          title: 'Advanced settings',
-          expanded: false,
-          onChange: (_event, expanded) => changes.push(expanded),
-        },
-        'Settings content',
+        null,
+        React.createElement(
+          AccordionItem,
+          {
+            title: 'Advanced settings',
+            expanded: false,
+            onChange: (expanded) => changes.push(expanded),
+          },
+          'Settings content',
+        ),
       ),
     );
-    const trigger = harness.mount.querySelector('.rgi-accordion-trigger');
-    const panel = harness.mount.querySelector('.rgi-accordion-panel');
+    const trigger = harness.mount.querySelector('.tm-accordion-trigger');
+    const panel = harness.mount.querySelector('.tm-accordion-panel');
     assert.equal(trigger.getAttribute('aria-expanded'), 'false');
     assert.equal(trigger.getAttribute('aria-controls'), panel.id);
-    assert.equal(panel.tagName, 'SECTION');
+    assert.equal(panel.tagName, 'DIV');
     assert.equal(panel.getAttribute('aria-labelledby'), trigger.id);
     assert.equal(panel.hidden, true);
     await act(async () => trigger.click());
@@ -414,18 +419,22 @@ test('Accordion supports controlled state, disabled state, and accessible panel 
     await harness.render(
       React.createElement(
         Accordion,
-        {
-          key: 'disabled',
-          title: 'Disabled section',
-          defaultExpanded: true,
-          disabled: true,
-        },
-        'Still visible',
+        null,
+        React.createElement(
+          AccordionItem,
+          {
+            key: 'disabled',
+            title: 'Disabled section',
+            defaultExpanded: true,
+            disabled: true,
+          },
+          'Still visible',
+        ),
       ),
     );
-    const disabledTrigger = harness.mount.querySelector('.rgi-accordion-trigger');
+    const disabledTrigger = harness.mount.querySelector('.tm-accordion-trigger');
     assert.equal(disabledTrigger.disabled, true);
-    assert.equal(harness.mount.querySelector('.rgi-accordion-panel').hidden, false);
+    assert.equal(harness.mount.querySelector('.tm-accordion-panel').hidden, false);
   } finally {
     await harness.dispose();
   }
@@ -463,13 +472,13 @@ test('Alert and Snackbar expose severity semantics and explicit/timeout dismissa
         ),
       ),
     );
-    const alert = harness.mount.querySelector('.rgi-alert');
-    const snackbar = harness.mount.querySelector('.rgi-snackbar');
+    const alert = harness.mount.querySelector('.tm-alert');
+    const snackbar = harness.mount.querySelector('.tm-snackbar');
     assert.equal(alert.getAttribute('role'), 'alert');
-    assert.equal(alert.querySelector('.rgi-alert-icon'), null);
+    assert.equal(alert.querySelector('.tm-alert-icon'), null);
     assert.equal(snackbar.getAttribute('role'), 'alert');
     assert.equal(snackbar.getAttribute('aria-live'), 'assertive');
-    await act(async () => harness.mount.querySelector('.rgi-alert-close').click());
+    await act(async () => harness.mount.querySelector('.tm-alert-close').click());
     assert.deepEqual(alertClose, ['closed']);
     await act(async () => new Promise((resolve) => setTimeout(resolve, 40)));
     assert.deepEqual(snackbarClose, ['timeout']);
@@ -485,7 +494,7 @@ test('Alert and Snackbar expose severity semantics and explicit/timeout dismissa
         'Persistent',
       ),
     );
-    await act(async () => harness.mount.querySelector('.rgi-snackbar-close').click());
+    await act(async () => harness.mount.querySelector('.tm-snackbar-close').click());
     assert.deepEqual(snackbarClose, ['timeout', 'closeButtonClick']);
   } finally {
     await harness.dispose();
@@ -545,13 +554,13 @@ test('Rating, Pagination, ToggleButton, and Stepper honor keyboard, boundary, an
     await act(async () => pagination.querySelector('[aria-label="Go to next page"]').click());
     assert.deepEqual(pages, [3]);
 
-    const toggle = harness.mount.querySelector('.rgi-toggle-button');
+    const toggle = harness.mount.querySelector('.tm-toggle-button');
     assert.equal(toggle.getAttribute('aria-pressed'), 'true');
 
-    const steps = [...harness.mount.querySelectorAll('.rgi-step')];
+    const steps = [...harness.mount.querySelectorAll('.tm-step')];
     assert.equal(steps[0].getAttribute('aria-current'), null);
     assert.equal(steps[1].getAttribute('aria-current'), 'step');
-    assert.equal(steps[0].querySelector('.rgi-step-indicator').textContent, '✓');
+    assert.equal(steps[0].querySelector('.tm-step-indicator').textContent, '✓');
     assert.equal(steps[2].querySelector('button').disabled, true);
     await act(async () => steps[1].querySelector('button').click());
     assert.deepEqual(stepClicks, [1]);
@@ -585,16 +594,16 @@ test('SpeedDial and TransferList update state and announce user actions', async 
       ),
     );
 
-    const speedDial = harness.mount.querySelector('.rgi-speed-dial');
-    const trigger = speedDial.querySelector('.rgi-speed-dial-trigger');
+    const speedDial = harness.mount.querySelector('.tm-speed-dial');
+    const trigger = speedDial.querySelector('.tm-speed-dial-trigger');
     assert.equal(trigger.getAttribute('aria-expanded'), 'false');
     await act(async () => trigger.click());
     assert.equal(trigger.getAttribute('aria-expanded'), 'true');
     await act(async () => speedDial.querySelector('[aria-label="Create"]').click());
     assert.deepEqual(actions, ['Create', 'Create']);
-    assert.equal(speedDial.querySelector('.rgi-speed-dial-actions').hidden, true);
+    assert.equal(speedDial.querySelector('.tm-speed-dial-actions').hidden, true);
 
-    const transfer = harness.mount.querySelector('.rgi-transfer-list');
+    const transfer = harness.mount.querySelector('.tm-transfer-list');
     const sourceCheckbox = transfer.querySelector('input[type="checkbox"]');
     await act(async () => sourceCheckbox.click());
     const moveButton = transfer.querySelector('[aria-label="Move selected to Selected"]');
@@ -602,7 +611,7 @@ test('SpeedDial and TransferList update state and announce user actions', async 
     await act(async () => moveButton.click());
     assert.deepEqual(changes, [[['alpha'], ['alpha']]]);
     assert.equal(
-      transfer.querySelector('[aria-label="Selected"] .rgi-transfer-item-label').textContent,
+      transfer.querySelector('[aria-label="Selected"] .tm-transfer-item-label').textContent,
       'Alpha',
     );
     assert.match(transfer.querySelector('[role="status"]').textContent, /1 item moved to Selected/);
@@ -639,15 +648,15 @@ test('BottomNavigation, Badge, Progress, and Card expose expected semantic outpu
       ),
     );
 
-    const navItems = [...harness.mount.querySelectorAll('.rgi-bottom-navigation-item')];
+    const navItems = [...harness.mount.querySelectorAll('.tm-bottom-navigation-item')];
     assert.equal(navItems[0].getAttribute('aria-current'), 'page');
     await act(async () => navItems[1].click());
     assert.deepEqual(selected, ['settings']);
-    assert.equal(harness.mount.querySelector('.rgi-badge').textContent, '99+');
+    assert.equal(harness.mount.querySelector('.tm-badge').textContent, '99+');
     const progress = harness.mount.querySelector('[role="progressbar"]');
     assert.equal(progress.getAttribute('aria-valuenow'), '25');
     assert.equal(progress.getAttribute('aria-valuemax'), '50');
-    assert.equal(harness.mount.querySelector('.rgi-card').tagName, 'SECTION');
+    assert.equal(harness.mount.querySelector('.tm-card').tagName, 'SECTION');
   } finally {
     await harness.dispose();
   }
@@ -795,38 +804,38 @@ test('buttons, chips, navigation, and presentational primitives preserve semanti
       ),
     );
 
-    const button = harness.mount.querySelector('.rgi-button');
+    const button = harness.mount.querySelector('.tm-button');
     assert.equal(button.type, 'button');
-    assert.ok(button.className.includes('rgi-button-outlined'));
-    assert.ok(button.className.includes('rgi-button-small'));
-    assert.equal(harness.mount.querySelector('.rgi-button-group').getAttribute('role'), 'group');
+    assert.ok(button.className.includes('tm-button-outlined'));
+    assert.ok(button.className.includes('tm-button-small'));
+    assert.equal(harness.mount.querySelector('.tm-button-group').getAttribute('role'), 'group');
 
-    const chips = harness.mount.querySelectorAll('.rgi-chip');
+    const chips = harness.mount.querySelectorAll('.tm-chip');
     assert.equal(chips[0].tagName, 'BUTTON');
     assert.equal(chips[0].getAttribute('aria-pressed'), 'true');
-    await act(async () => chips[1].querySelector('.rgi-chip-delete').click());
+    await act(async () => chips[1].querySelector('.tm-chip-delete').click());
     assert.deepEqual(deleted, ['React']);
 
-    const crumbs = harness.mount.querySelectorAll('.rgi-breadcrumbs-item');
+    const crumbs = harness.mount.querySelectorAll('.tm-breadcrumbs-item');
     assert.equal(crumbs.length, 3);
     assert.equal(crumbs[0].textContent.includes('Home'), true);
     assert.equal(
-      harness.mount.querySelector('.rgi-breadcrumbs-ellipsis .sr-only').textContent,
+      harness.mount.querySelector('.tm-breadcrumbs-ellipsis .sr-only').textContent,
       'More breadcrumb items',
     );
     assert.equal(
       harness.mount
-        .querySelector('.rgi-breadcrumbs-item:last-child > span')
+        .querySelector('.tm-breadcrumbs-item:last-child > span')
         .getAttribute('aria-current'),
       'page',
     );
 
     assert.equal(harness.mount.querySelector('h2').textContent, 'Heading');
     assert.equal(harness.mount.querySelector('[aria-orientation="vertical"]').tagName, 'HR');
-    assert.equal(harness.mount.querySelector('.rgi-skeleton').getAttribute('aria-hidden'), 'true');
-    assert.equal(harness.mount.querySelector('ol.rgi-list').tagName, 'OL');
-    assert.equal(harness.mount.querySelector('.rgi-list-primary').textContent, 'Primary');
-    assert.ok(harness.mount.querySelector('.rgi-paper').className.includes('rgi-paper-square'));
+    assert.equal(harness.mount.querySelector('.tm-skeleton').getAttribute('aria-hidden'), 'true');
+    assert.equal(harness.mount.querySelector('ol.tm-list').tagName, 'OL');
+    assert.equal(harness.mount.querySelector('.tm-list-primary').textContent, 'Primary');
+    assert.ok(harness.mount.querySelector('.tm-paper').className.includes('tm-paper-square'));
   } finally {
     await harness.dispose();
   }

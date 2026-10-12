@@ -13,7 +13,7 @@ register('divider-toolbar', {
 });
 
 register('divider-toolbar button', {
-  base: { tw: 'inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-md border-0 bg-transparent px-1 text-xs font-medium text-[var(--text)] hover:bg-[var(--panel-raised)] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--rgi-blue)]' },
+  base: { tw: 'inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-md border-0 bg-transparent px-1 text-xs font-medium text-[var(--text)] hover:bg-[var(--panel-raised)] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--tm-blue)]' },
 });
 
 register('divider-list', {

@@ -13,7 +13,7 @@ register.group('autocomplete', {
   'leading-icon': { tw: 'shrink-0 text-[#7f8ba2]' },
   actions: { tw: 'flex shrink-0 items-center gap-1 text-[#8b98af]' },
   action: {
-    tw: 'inline-flex size-6 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-current transition-colors hover:bg-[#ffffff10] hover:text-white focus-visible:outline-2 focus-visible:outline-[var(--rgi-blue)]',
+    tw: 'inline-flex size-6 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-current transition-colors hover:bg-[#ffffff10] hover:text-white focus-visible:outline-2 focus-visible:outline-[var(--tm-blue)]',
   },
   tags: { tw: 'flex min-w-0 flex-wrap items-center gap-1.5 py-1' },
   tag: {

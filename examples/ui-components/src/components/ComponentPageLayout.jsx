@@ -52,7 +52,7 @@ export default function ComponentPageLayout({ component, children }) {
           <span className="hero-emblem-spark"><Sparkles size={15} /></span>
         </div>
         <a
-          className="rgi-button rgi-button-outlined docs-button"
+          className="tm-button tm-button-outlined docs-button"
           href="https://github.com/Bigetion/tailmantic/tree/main/packages/ui-components"
           target="_blank"
           rel="noreferrer"
