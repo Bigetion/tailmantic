@@ -1,4 +1,3 @@
-import './rating.js';
 import './select.js';
 import './slider.js';
 import './switch.js';

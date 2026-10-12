@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const RATING_DEMOS = {
-  rating: {
-    title: 'Interactive rating',
-    caption: 'Collect a single star rating with pointer or keyboard input.',
-  },
-  'rating-precision': {
-    title: 'Half-star precision',
-    caption: 'Allow ratings in half-star increments for more nuanced feedback.',
-  },
-  'rating-readonly': {
-    title: 'Read-only rating',
-    caption: 'Present an existing rating without implying that it can be changed.',
-  },
-};
-
 const SELECT_DEMOS = {
   select: {
     title: 'Single selection',
@@ -613,9 +598,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'rating'
-                        ? RATING_DEMOS[demoId]
-                        : component.slug === 'select'
+        const demo = component.slug === 'select'
                           ? SELECT_DEMOS[demoId]
                           : component.slug === 'slider'
                             ? SLIDER_DEMOS[demoId]

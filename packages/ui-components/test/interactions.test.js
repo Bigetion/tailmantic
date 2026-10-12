@@ -598,6 +598,7 @@ test('Alert and Snackbar expose severity semantics and explicit/timeout dismissa
 test('Rating, Pagination, ToggleButton, and Stepper honor keyboard, boundary, and state semantics', async () => {
   const harness = await createHarness();
   const ratings = [];
+  const precisionRatings = [];
   const pages = [];
   const stepClicks = [];
 
@@ -611,6 +612,11 @@ test('Rating, Pagination, ToggleButton, and Stepper honor keyboard, boundary, an
           defaultValue: 2,
           name: 'score',
           onChange: (value) => ratings.push(value),
+        }),
+        React.createElement(Rating, {
+          precision: 0.5,
+          defaultValue: 3.5,
+          onChange: (value) => precisionRatings.push(value),
         }),
         React.createElement(Pagination, {
           count: 5,
@@ -642,6 +648,16 @@ test('Rating, Pagination, ToggleButton, and Stepper honor keyboard, boundary, an
     );
     assert.deepEqual(ratings, [3]);
     assert.equal(document.activeElement, ratingButtons[2]);
+
+    const precisionSlider = harness.mount.querySelector('[role="slider"]');
+    assert.equal(precisionSlider.getAttribute('aria-valuenow'), '3.5');
+    await act(async () =>
+      precisionSlider.dispatchEvent(
+        new window.KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+      ),
+    );
+    assert.equal(precisionSlider.getAttribute('aria-valuenow'), '4');
+    assert.deepEqual(precisionRatings, [4]);
 
     const pagination = harness.mount.querySelector('nav[aria-label="Pagination"]');
     assert.equal(pagination.querySelector('[aria-current="page"]').textContent, '2');

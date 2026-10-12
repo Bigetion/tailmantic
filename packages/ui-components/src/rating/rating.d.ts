@@ -5,6 +5,7 @@ export interface RatingProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCha
   defaultValue?: number;
   onChange?: (value: number) => void;
   max?: number;
+  precision?: number;
   name?: string;
   label?: string;
   disabled?: boolean;
