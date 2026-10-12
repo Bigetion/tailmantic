@@ -33,7 +33,6 @@ import DialogDemo from './ui/dialog/DialogDemo.jsx';
 import ProgressDemo from './ui/progress/ProgressDemo.jsx';
 import SnackbarDemo from './ui/snackbar/SnackbarDemo.jsx';
 import SkeletonDemo from './ui/skeleton/SkeletonDemo.jsx';
-import AccordionDemo from './ui/accordion/AccordionDemo.jsx';
 import AppBarDemo from './ui/app-bar/AppBarDemo.jsx';
 import CardDemo from './ui/card/CardDemo.jsx';
 import PaperDemo from './ui/paper/PaperDemo.jsx';
@@ -327,7 +326,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'drawer') return <DrawerDemo demoId={demoId} />;
   if (component.slug === 'breadcrumbs') return <BreadcrumbsDemo demoId={demoId} />;
   if (component.slug === 'bottom-navigation') return <BottomNavigationDemo demoId={demoId} />;
-  if (component.slug === 'accordion') return <AccordionDemo demoId={demoId} />;
   if (component.slug === 'app-bar') return <AppBarDemo demoId={demoId} />;
   if (component.slug === 'card') return <CardDemo demoId={demoId} />;
   if (component.slug === 'paper') return <PaperDemo demoId={demoId} />;

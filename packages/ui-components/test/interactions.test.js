@@ -20,7 +20,12 @@ const React = await import('react');
 const { act } = React;
 const { createRoot } = await import('react-dom/client');
 const { default: Autocomplete } = await import('../dist/autocomplete.js');
-const { default: Accordion } = await import('../dist/accordion.js');
+const {
+  default: Accordion,
+  AccordionHelper,
+  AccordionItem,
+  AccordionToolbar,
+} = await import('../dist/accordion.js');
 const { default: Alert } = await import('../dist/alert.js');
 const { default: Badge } = await import('../dist/badge.js');
 const { default: BottomNavigation } = await import('../dist/bottom-navigation.js');
@@ -386,18 +391,24 @@ test('Accordion supports controlled state, disabled state, and accessible panel 
 
   try {
     await harness.render(
-      React.createElement(
-        Accordion,
-        {
-          title: 'Advanced settings',
-          expanded: false,
-          onChange: (_event, expanded) => changes.push(expanded),
-        },
-        'Settings content',
+      React.createElement(Accordion, null,
+        React.createElement(AccordionToolbar, null, 'Settings'),
+        React.createElement(
+          AccordionItem,
+          {
+            title: 'Advanced settings',
+            expanded: false,
+            onChange: (expanded) => changes.push(expanded),
+          },
+          'Settings content',
+        ),
+        React.createElement(AccordionHelper, null, 'Choose a section'),
       ),
     );
-    const trigger = harness.mount.querySelector('.rgi-accordion-trigger');
-    const panel = harness.mount.querySelector('.rgi-accordion-panel');
+    const trigger = harness.mount.querySelector('.tm-accordion-trigger');
+    const panel = harness.mount.querySelector('.tm-accordion-panel');
+    assert.equal(harness.mount.querySelector('.tm-accordion-toolbar').textContent, 'Settings');
+    assert.equal(harness.mount.querySelector('.tm-accordion-helper').textContent, 'Choose a section');
     assert.equal(trigger.getAttribute('aria-expanded'), 'false');
     assert.equal(trigger.getAttribute('aria-controls'), panel.id);
     assert.equal(panel.tagName, 'SECTION');
@@ -412,20 +423,22 @@ test('Accordion supports controlled state, disabled state, and accessible panel 
     );
 
     await harness.render(
-      React.createElement(
-        Accordion,
-        {
-          key: 'disabled',
-          title: 'Disabled section',
-          defaultExpanded: true,
-          disabled: true,
-        },
-        'Still visible',
+      React.createElement(Accordion, null,
+        React.createElement(
+          AccordionItem,
+          {
+            key: 'disabled',
+            title: 'Disabled section',
+            defaultExpanded: true,
+            disabled: true,
+          },
+          'Still visible',
+        ),
       ),
     );
-    const disabledTrigger = harness.mount.querySelector('.rgi-accordion-trigger');
+    const disabledTrigger = harness.mount.querySelector('.tm-accordion-trigger');
     assert.equal(disabledTrigger.disabled, true);
-    assert.equal(harness.mount.querySelector('.rgi-accordion-panel').hidden, false);
+    assert.equal(harness.mount.querySelector('.tm-accordion-panel').hidden, false);
   } finally {
     await harness.dispose();
   }

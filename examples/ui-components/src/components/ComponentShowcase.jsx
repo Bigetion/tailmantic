@@ -8,6 +8,7 @@ const styleSources = import.meta.glob('../tailmantics/demo/*.js', {
 });
 
 const COMPONENT_STYLE_NOTES = {
+  accordion: 'Base component styles are provided by @tailmantic/ui-components/accordion/styles.',
   checkbox: 'Base component styles are provided by @tailmantic/ui-components/checkbox.',
 };
 
@@ -450,21 +451,6 @@ const SKELETON_DEMOS = {
   },
 };
 
-const ACCORDION_DEMOS = {
-  accordion: {
-    title: 'Single panel expansion',
-    caption: 'Expand one section at a time and collapse the open section when it is activated again.',
-  },
-  'accordion-controlled': {
-    title: 'Multiple panel expansion',
-    caption: 'Open several sections independently and use the controls to expand or collapse all panels.',
-  },
-  'accordion-disabled': {
-    title: 'Disabled panel',
-    caption: 'Keep unavailable content visible in the list while communicating that it cannot be expanded.',
-  },
-};
-
 const APP_BAR_DEMOS = {
   'app-bar': {
     title: 'Workspace toolbar',
@@ -796,9 +782,7 @@ export default function ComponentShowcase({ component }) {
                                                                             ? SNACKBAR_DEMOS[demoId]
                                                                               : component.slug === 'skeleton'
                                                                                 ? SKELETON_DEMOS[demoId]
-                                                                                  : component.slug === 'accordion'
-                                                                                    ? ACCORDION_DEMOS[demoId]
-                                                                                      : component.slug === 'app-bar'
+                                                                                  : component.slug === 'app-bar'
                                                                                         ? APP_BAR_DEMOS[demoId]
                                                                                           : component.slug === 'card'
                                                                                             ? CARD_DEMOS[demoId]

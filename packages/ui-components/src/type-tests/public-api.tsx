@@ -1,12 +1,33 @@
 import type { PopperProps } from '@tailmantic/ui-components';
-import { Button, Checkbox, Chip, IconGlyph } from '@tailmantic/ui-components';
+import {
+  Accordion,
+  AccordionHelper,
+  AccordionItem,
+  AccordionToolbar,
+  Button,
+  Checkbox,
+  Chip,
+  IconGlyph,
+} from '@tailmantic/ui-components';
 import ButtonOnly from '@tailmantic/ui-components/button';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
 import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
+import AccordionOnly, {
+  AccordionHelper as AccordionHelperOnly,
+  AccordionItem as AccordionItemOnly,
+  AccordionToolbar as AccordionToolbarOnly,
+} from '@tailmantic/ui-components/accordion';
 
 export const rootExports = (
   <>
+    <Accordion aria-label="Settings">
+      <AccordionToolbar>Settings</AccordionToolbar>
+      <AccordionItem title="Advanced settings" onChange={(expanded) => expanded}>
+        Settings content
+      </AccordionItem>
+      <AccordionHelper>Choose a section</AccordionHelper>
+    </Accordion>
     <Button variant="outlined" ref={(button) => button?.focus()} />
     <IconGlyph name="home" />
     <Checkbox
@@ -26,6 +47,13 @@ export const rootExports = (
 
 export const subpathExports = (
   <>
+    <AccordionOnly aria-label="Subpath settings">
+      <AccordionToolbarOnly>Settings</AccordionToolbarOnly>
+      <AccordionItemOnly title="Advanced settings" defaultExpanded>
+        Settings content
+      </AccordionItemOnly>
+      <AccordionHelperOnly>Choose a section</AccordionHelperOnly>
+    </AccordionOnly>
     <ButtonOnly size="small" />
     <CheckboxOnly defaultChecked />
     <ChipOnly variant="filled" />

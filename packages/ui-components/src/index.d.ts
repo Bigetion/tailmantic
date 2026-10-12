@@ -1,5 +1,15 @@
-export type { AccordionProps } from './accordion/accordion.js';
-export { default as Accordion } from './accordion/accordion.js';
+export type {
+  AccordionHelperProps,
+  AccordionItemProps,
+  AccordionProps,
+  AccordionToolbarProps,
+} from './accordion/accordion.js';
+export {
+  AccordionHelper,
+  AccordionItem,
+  AccordionToolbar,
+  default as Accordion,
+} from './accordion/accordion.js';
 export type { AlertProps, AlertSeverity, AlertVariant } from './alert/alert.js';
 export { default as Alert } from './alert/alert.js';
 export type { AppBarElevation, AppBarPosition, AppBarProps } from './app-bar/app-bar.js';

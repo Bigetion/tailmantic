@@ -10,21 +10,32 @@ const IMPLEMENTATION_ROWS = [
   ['Examples', '{count} live examples', 'Rendered in the examples section above.'],
 ];
 
-export default function ComponentPageLayout({ component, children }) {
+export default function ComponentPageLayout({
+  component,
+  children,
+  implementationRows: customImplementationRows,
+  usageCode,
+  usageCaption,
+  usageDescription,
+}) {
   const index = componentCatalog.findIndex((item) => item.slug === component.slug);
   const previous = componentCatalog[(index - 1 + componentCatalog.length) % componentCatalog.length];
   const next = componentCatalog[(index + 1) % componentCatalog.length];
   const importName = component.name.replace(/\s+/g, '');
-  const importCode = `import ${importName} from './components/ui/${component.slug}/${importName}.jsx';\n\nexport default function ${importName}Example() {\n  return <${importName} />;\n}`;
-  const implementationRows = IMPLEMENTATION_ROWS.map(([area, source, purpose]) => [
-    area,
-    source
-      .replaceAll('{slug}', component.slug)
-      .replace('{name}', importName)
-      .replace('{count}', component.demos.length),
-    purpose,
-  ]);
-  if (['chip', 'divider', 'icons', 'icon-glyph', 'list', 'table', 'tooltip', 'typography', 'alert', 'dialog', 'progress', 'snackbar', 'skeleton', 'accordion', 'app-bar', 'card', 'paper', 'popover', 'bottom-navigation', 'breadcrumbs', 'drawer', 'link', 'menu', 'pagination', 'speed-dial', 'stepper', 'tabs', 'click-away-listener', 'modal', 'popper', 'portal'].includes(component.slug)) {
+  const importCode =
+    usageCode ??
+    `import ${importName} from './components/ui/${component.slug}/${importName}.jsx';\n\nexport default function ${importName}Example() {\n  return <${importName} />;\n}`;
+  const implementationRows =
+    customImplementationRows ??
+    IMPLEMENTATION_ROWS.map(([area, source, purpose]) => [
+      area,
+      source
+        .replaceAll('{slug}', component.slug)
+        .replace('{name}', importName)
+        .replace('{count}', component.demos.length),
+      purpose,
+    ]);
+  if (!customImplementationRows && ['chip', 'divider', 'icons', 'icon-glyph', 'list', 'table', 'tooltip', 'typography', 'alert', 'dialog', 'progress', 'snackbar', 'skeleton', 'app-bar', 'card', 'paper', 'popover', 'bottom-navigation', 'breadcrumbs', 'drawer', 'link', 'menu', 'pagination', 'speed-dial', 'stepper', 'tabs', 'click-away-listener', 'modal', 'popper', 'portal'].includes(component.slug)) {
     implementationRows.splice(2, 0, [
       'Demo',
       `src/components/ui/${component.slug}/${importName}Demo.jsx`,
@@ -108,14 +119,14 @@ export default function ComponentPageLayout({ component, children }) {
         </div>
         <DemoPanel
           title="Import component"
-          caption="Import this component's dedicated React module to render its interactive examples."
+          caption={usageCaption ?? "Import this component's dedicated React module to render its interactive examples."}
           code={importCode}
         >
           <div className="usage-preview">
             <span className="usage-preview-icon">&lt;/&gt;</span>
             <div>
               <strong>{importName}</strong>
-              <p>Interactive examples and styles are maintained in component-specific modules.</p>
+              <p>{usageDescription ?? 'Interactive examples and styles are maintained in component-specific modules.'}</p>
             </div>
           </div>
         </DemoPanel>

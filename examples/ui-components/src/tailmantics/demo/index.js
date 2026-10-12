@@ -26,7 +26,6 @@ import './dialog.js';
 import './progress.js';
 import './snackbar.js';
 import './skeleton.js';
-import './accordion.js';
 import './app-bar.js';
 import './card.js';
 import './paper.js';

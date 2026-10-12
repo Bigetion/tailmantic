@@ -43,6 +43,41 @@ import Tabs from '@tailmantic/ui-components/tabs';
 
 For example, `Checkbox` supports native input props, controlled or uncontrolled state, and an `indeterminate` state. Its `ref` points to the native input element.
 
+## Accordion
+
+Accordion is a compound component. Each item owns its controlled or uncontrolled expanded state, while `AccordionHelper` and `AccordionToolbar` are optional parts of the shared layout:
+
+```jsx
+import { useState } from 'react';
+import {
+  Accordion,
+  AccordionHelper,
+  AccordionItem,
+  AccordionToolbar,
+} from '@tailmantic/ui-components';
+
+function SettingsAccordion() {
+  const [notificationsExpanded, setNotificationsExpanded] = useState(false);
+
+  return (
+    <Accordion>
+      <AccordionToolbar>Workspace settings</AccordionToolbar>
+      <AccordionItem title="Profile" defaultExpanded>
+        Manage your workspace profile.
+      </AccordionItem>
+      <AccordionItem
+        title="Notifications"
+        expanded={notificationsExpanded}
+        onChange={setNotificationsExpanded}
+      >
+        Choose which updates to receive.
+      </AccordionItem>
+      <AccordionHelper>Select a section to reveal its details.</AccordionHelper>
+    </Accordion>
+  );
+}
+```
+
 ## Standalone component usage
 
 Each component ships its own style file and a corresponding token file so you can load only what you need.
