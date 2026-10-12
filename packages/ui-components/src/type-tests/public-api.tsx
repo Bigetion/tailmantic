@@ -11,6 +11,7 @@ import {
   IconGlyph,
   Select,
   TextField,
+  TransferList,
 } from '@tailmantic/ui-components';
 import AccordionOnly, {
   AccordionHelper as AccordionHelperOnly,
@@ -73,6 +74,12 @@ export const rootExports = (
       label="Search"
       startAdornment="Search"
       endAdornment={<button type="button">Clear</button>}
+    />
+    <TransferList
+      items={[{ id: 'react', label: 'React' }]}
+      showAllActions
+      showSelectAll
+      onChange={(value, movedItems) => [value, movedItems]}
     />
   </>
 );

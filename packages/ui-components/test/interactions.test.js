@@ -818,6 +818,8 @@ test('SpeedDial and TransferList update state and announce user actions', async 
         }),
         React.createElement(TransferList, {
           items,
+          showAllActions: true,
+          showSelectAll: true,
           onChange: (value, moved) => changes.push([value, moved.map(({ id }) => id)]),
         }),
       ),
@@ -833,8 +835,13 @@ test('SpeedDial and TransferList update state and announce user actions', async 
     assert.equal(speedDial.querySelector('.rgi-speed-dial-actions').hidden, true);
 
     const transfer = harness.mount.querySelector('.rgi-transfer-list');
-    const sourceCheckbox = transfer.querySelector('input[type="checkbox"]');
+    const sourceCheckbox = transfer.querySelector('.rgi-transfer-item input[type="checkbox"]');
+    const selectAllSource = transfer.querySelector('[aria-label="Select all available items"]');
+    assert.equal(sourceCheckbox.getAttribute('aria-label'), 'Alpha Available');
+    assert.equal(transfer.querySelector('.rgi-transfer-item .sr-only'), null);
     await act(async () => sourceCheckbox.click());
+    assert.equal(selectAllSource.indeterminate, true);
+    assert.equal(selectAllSource.getAttribute('aria-checked'), 'mixed');
     const moveButton = transfer.querySelector('[aria-label="Move selected to Selected"]');
     assert.equal(moveButton.disabled, false);
     await act(async () => moveButton.click());
@@ -844,6 +851,16 @@ test('SpeedDial and TransferList update state and announce user actions', async 
       'Alpha',
     );
     assert.match(transfer.querySelector('[role="status"]').textContent, /1 item moved to Selected/);
+    assert.equal(selectAllSource.checked, false);
+    await act(async () => selectAllSource.click());
+    assert.equal(selectAllSource.checked, true);
+    await act(async () =>
+      transfer.querySelector('[aria-label="Move selected to Selected"]').click(),
+    );
+    assert.deepEqual(changes[1], [['alpha', 'beta'], ['beta']]);
+    await act(async () => transfer.querySelector('[aria-label="Move all to Available"]').click());
+    assert.deepEqual(changes[2], [[], ['alpha', 'beta']]);
+    assert.equal(transfer.querySelector('[aria-label="Move all to Available"]').disabled, true);
   } finally {
     await harness.dispose();
   }

@@ -11,6 +11,8 @@ export interface TransferListProps {
   defaultValue?: string[];
   items: TransferListItem[];
   onChange?: (value: string[], movedItems: TransferListItem[]) => void;
+  showAllActions?: boolean;
+  showSelectAll?: boolean;
   sourceTitle?: string;
   targetTitle?: string;
   value?: string[];
