@@ -8,6 +8,7 @@ const styleSources = import.meta.glob('../tailmantics/demo/*.js', {
 });
 
 const COMPONENT_STYLE_NOTES = {
+  autocomplete: 'Base component styles are provided by @tailmantic/ui-components/autocomplete/styles.',
   accordion: 'Base component styles are provided by @tailmantic/ui-components/accordion/styles.',
   checkbox: 'Base component styles are provided by @tailmantic/ui-components/checkbox.',
 };
@@ -32,21 +33,6 @@ const BUTTON_DEMOS = {
   'button-loading': {
     title: 'Loading and disabled',
     caption: 'Give feedback while an action is running and prevent duplicate submissions.',
-  },
-};
-
-const AUTOCOMPLETE_DEMOS = {
-  autocomplete: {
-    title: 'Search and select',
-    caption: 'Filter a curated list and select one framework with keyboard or pointer.',
-  },
-  'autocomplete-multiple': {
-    title: 'Multiple selection',
-    caption: 'Build a compact selection of frameworks with removable tags.',
-  },
-  'autocomplete-free': {
-    title: 'Free solo',
-    caption: 'Choose a suggestion or create a custom value that is not in the list.',
   },
 };
 
@@ -726,9 +712,7 @@ export default function ComponentShowcase({ component }) {
       {component.demos.map((demoId) => {
         const demo = component.slug === 'button'
           ? BUTTON_DEMOS[demoId]
-          : component.slug === 'autocomplete'
-            ? AUTOCOMPLETE_DEMOS[demoId]
-            : component.slug === 'button-group'
+          : component.slug === 'button-group'
               ? BUTTON_GROUP_DEMOS[demoId]
               : component.slug === 'checkbox'
                 ? CHECKBOX_DEMOS[demoId]

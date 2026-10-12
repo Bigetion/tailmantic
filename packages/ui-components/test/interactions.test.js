@@ -219,6 +219,91 @@ test('Autocomplete filters and selects with keyboard and pointer, preserving inp
   }
 });
 
+test('Autocomplete supports controlled multiple values and free-solo creation', async () => {
+  const harness = await createHarness();
+  const changes = [];
+  const created = [];
+  const options = [
+    { label: 'React', value: 'react', description: 'UI library' },
+    { label: 'Vue', value: 'vue', description: 'UI framework' },
+  ];
+
+  try {
+    await harness.render(
+      React.createElement(Autocomplete, {
+        options,
+        name: 'framework',
+        multiple: true,
+        defaultSelectedValues: ['react'],
+        onSelectedValuesChange: (values, option) => changes.push([values, option?.value ?? null]),
+      }),
+    );
+    const input = harness.mount.querySelector('[role="combobox"]');
+    await act(async () => input.focus());
+    const vueOption = document.getElementById(`${input.id}-listbox-option-0`);
+    assert.match(vueOption.textContent, /Vue/);
+    await act(async () => vueOption.click());
+    assert.deepEqual(changes, [[['react', 'vue'], 'vue']]);
+    assert.deepEqual(
+      [...harness.mount.querySelectorAll('input[type="hidden"]')].map((item) => item.value),
+      ['react', 'vue'],
+    );
+
+    const removeReact = harness.mount.querySelector('button[aria-label="Remove React"]');
+    await act(async () => removeReact.click());
+    assert.deepEqual(changes.at(-1), [['vue'], null]);
+
+    await harness.render(
+      React.createElement(Autocomplete, {
+        key: 'free-solo',
+        options,
+        freeSolo: true,
+        defaultInputValue: 'Solid',
+        onValueChange: (value, option) => created.push([value, option?.label]),
+      }),
+    );
+    const freeSoloInput = harness.mount.querySelector('[role="combobox"]');
+    await act(async () => freeSoloInput.focus());
+    await act(async () =>
+      freeSoloInput.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Enter', bubbles: true })),
+    );
+    assert.deepEqual(created, [['Solid', 'Solid']]);
+    assert.equal(freeSoloInput.value, 'Solid');
+    assert.equal(freeSoloInput.getAttribute('aria-expanded'), 'false');
+  } finally {
+    await harness.dispose();
+  }
+});
+
+test('Autocomplete keeps the typed query when clearing a controlled selection', async () => {
+  const harness = await createHarness();
+
+  function ControlledAutocomplete() {
+    const [value, setValue] = React.useState('apple');
+    return React.createElement(Autocomplete, {
+      options: [{ label: 'Apple', value: 'apple' }],
+      value,
+      onValueChange: setValue,
+    });
+  }
+
+  try {
+    await harness.render(React.createElement(ControlledAutocomplete));
+    const input = harness.mount.querySelector('[role="combobox"]');
+    assert.equal(input.value, 'Apple');
+    await act(async () => {
+      Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set.call(
+        input,
+        'App',
+      );
+      input.dispatchEvent(new window.Event('input', { bubbles: true }));
+    });
+    assert.equal(input.value, 'App');
+  } finally {
+    await harness.dispose();
+  }
+});
+
 test('Tabs supports numeric values and manual keyboard activation', async () => {
   const harness = await createHarness();
   const changes = [];

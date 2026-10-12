@@ -78,6 +78,25 @@ function SettingsAccordion() {
 }
 ```
 
+## Autocomplete
+
+Autocomplete supports controlled or uncontrolled single selection, multiple selections, and custom free-solo values:
+
+```jsx
+import { Autocomplete } from '@tailmantic/ui-components';
+
+<Autocomplete
+  options={[
+    { label: 'React', value: 'react', description: 'UI library' },
+    { label: 'Vue', value: 'vue', description: 'UI framework' },
+  ]}
+  value={framework}
+  onValueChange={setFramework}
+/>;
+```
+
+Set `multiple` and use `selectedValues`/`onSelectedValuesChange` for a removable selection list. Set `freeSolo` to offer a custom option when the query does not match an existing label. Both modes support keyboard navigation and work with string options as well as `{ label, value, description }` objects.
+
 ## Standalone component usage
 
 Each component ships its own style file and a corresponding token file so you can load only what you need.

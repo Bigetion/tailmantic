@@ -26,7 +26,6 @@ import {
 import { cx } from 'tailmantic';
 import { Button } from '@tailmantic/ui-components';
 import { PopperSurface, useClickAway } from './Popper.jsx';
-import AutocompleteDemo from './ui/autocomplete/AutocompleteDemo.jsx';
 import AvatarDemo from './ui/avatar/AvatarDemo.jsx';
 import AlertDemo from './ui/alert/AlertDemo.jsx';
 import DialogDemo from './ui/dialog/DialogDemo.jsx';
@@ -351,7 +350,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'text-field') return <TextFieldDemo demoId={demoId} />;
   if (component.slug === 'transfer-list') return <TransferListDemo demoId={demoId} />;
   if (component.slug === 'toggle-button') return <ToggleButtonDemo demoId={demoId} />;
-  if (component.slug === 'autocomplete') return <AutocompleteDemo demoId={demoId} />;
   if (component.slug === 'button-group') return <ButtonGroupDemo demoId={demoId} />;
   if (component.slug === 'checkbox') return <CheckboxDemo demoId={demoId} />;
   if (component.slug === 'floating-action-button') return <FloatingActionButtonDemo demoId={demoId} />;

@@ -4,6 +4,7 @@ import {
   AccordionHelper,
   AccordionItem,
   AccordionToolbar,
+  Autocomplete,
   Button,
   Checkbox,
   Chip,
@@ -21,6 +22,14 @@ import AccordionOnly, {
 
 export const rootExports = (
   <>
+    <Autocomplete options={['React']} value="React" onValueChange={(value) => value} />
+    <Autocomplete
+      multiple
+      freeSolo
+      options={['React']}
+      selectedValues={['React']}
+      onSelectedValuesChange={(values) => values}
+    />
     <Accordion aria-label="Settings">
       <AccordionToolbar>Settings</AccordionToolbar>
       <AccordionItem title="Advanced settings" onChange={(expanded) => expanded}>

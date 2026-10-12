@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { componentCatalog } from '../data/components.js';
 import AccordionPage from './AccordionPage.jsx';
+import AutocompletePage from './AutocompletePage.jsx';
 
 const componentPages = import.meta.glob('./components/*/Page.jsx', {
   eager: true,
@@ -12,6 +13,7 @@ export default function ComponentPageRoute() {
   const Page = componentPages[`./components/${slug}/Page.jsx`];
 
   if (slug === 'accordion') return <AccordionPage />;
+  if (slug === 'autocomplete') return <AutocompletePage />;
   if (Page) return <Page />;
 
   return (
