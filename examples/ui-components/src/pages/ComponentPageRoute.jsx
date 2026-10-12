@@ -9,6 +9,7 @@ import FloatingActionButtonPage from './FloatingActionButtonPage.jsx';
 import NumberFieldPage from './NumberFieldPage.jsx';
 import RadioGroupPage from './RadioGroupPage.jsx';
 import RatingPage from './RatingPage.jsx';
+import SelectPage from './SelectPage.jsx';
 
 const componentPages = import.meta.glob('./components/*/Page.jsx', {
   eager: true,
@@ -28,6 +29,7 @@ export default function ComponentPageRoute() {
   if (slug === 'number-field') return <NumberFieldPage />;
   if (slug === 'radio-group') return <RadioGroupPage />;
   if (slug === 'rating') return <RatingPage />;
+  if (slug === 'select') return <SelectPage />;
   if (Page) return <Page />;
 
   return (

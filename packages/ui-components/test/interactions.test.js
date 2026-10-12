@@ -265,7 +265,9 @@ test('Autocomplete supports controlled multiple values and free-solo creation', 
     const freeSoloInput = harness.mount.querySelector('[role="combobox"]');
     await act(async () => freeSoloInput.focus());
     await act(async () =>
-      freeSoloInput.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Enter', bubbles: true })),
+      freeSoloInput.dispatchEvent(
+        new window.KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
+      ),
     );
     assert.deepEqual(created, [['Solid', 'Solid']]);
     assert.equal(freeSoloInput.value, 'Solid');
@@ -354,6 +356,95 @@ test('Tabs supports numeric values and manual keyboard activation', async () => 
   }
 });
 
+test('Select supports custom single and multiple combobox interactions', async () => {
+  const harness = await createHarness();
+  const singleChanges = [];
+  const multipleChanges = [];
+  const options = [
+    { value: 'engineering', label: 'Engineering', detail: 'Product and platform teams' },
+    { value: 'design', label: 'Design', detail: 'Research and user experience' },
+    { value: 'research', label: 'Research', disabled: true },
+  ];
+
+  try {
+    await harness.render(
+      React.createElement(
+        React.Fragment,
+        null,
+        React.createElement(Select, {
+          label: 'Department',
+          name: 'department',
+          options,
+          defaultValue: 'engineering',
+          helperText: 'Choose your department.',
+          error: true,
+          onValueChange: (value, option) => singleChanges.push([value, option?.label]),
+        }),
+        React.createElement(Select, {
+          label: 'Project teams',
+          name: 'teams',
+          options,
+          multiple: true,
+          defaultSelectedValues: ['design'],
+          onSelectedValuesChange: (values, option) =>
+            multipleChanges.push([values, option?.value ?? null]),
+        }),
+      ),
+    );
+
+    const [single, multiple] = harness.mount.querySelectorAll('[role="combobox"]');
+    assert.equal(single.getAttribute('aria-expanded'), 'false');
+    assert.equal(single.textContent, 'Engineering');
+    assert.equal(single.getAttribute('aria-invalid'), 'true');
+    assert.ok(document.getElementById(single.getAttribute('aria-describedby')));
+    assert.equal(harness.mount.querySelector('input[name="department"]').value, 'engineering');
+
+    await act(async () => {
+      single.focus();
+      single.dispatchEvent(
+        new window.KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }),
+      );
+    });
+    assert.equal(single.getAttribute('aria-expanded'), 'true');
+    assert.equal(single.getAttribute('aria-activedescendant'), `${single.id}-listbox-option-0`);
+    const singleOptions = document.getElementById(`${single.id}-listbox`);
+    assert.equal(singleOptions.getAttribute('role'), 'listbox');
+    const design = document.getElementById(`${single.id}-listbox-option-1`);
+    await act(async () => design.click());
+    assert.equal(single.textContent, 'Design');
+    assert.equal(single.getAttribute('aria-expanded'), 'false');
+    assert.deepEqual(singleChanges, [['design', 'Design']]);
+    assert.equal(harness.mount.querySelector('input[name="department"]').value, 'design');
+
+    await act(async () => {
+      multiple.click();
+    });
+    const multiListbox = document.getElementById(`${multiple.id}-listbox`);
+    const engineering = document.getElementById(`${multiple.id}-listbox-option-0`);
+    await act(async () => engineering.click());
+    assert.equal(multiple.getAttribute('aria-expanded'), 'true');
+    assert.deepEqual(multipleChanges.at(-1), [['design', 'engineering'], 'engineering']);
+    assert.deepEqual(
+      [...harness.mount.querySelectorAll('input[name="teams"]')].map((input) => input.value),
+      ['design', 'engineering'],
+    );
+    assert.equal(
+      multiListbox.querySelector('[aria-disabled="true"]').getAttribute('aria-selected'),
+      'false',
+    );
+    await act(async () => harness.mount.querySelector('[aria-label="Remove Design"]').click());
+    assert.deepEqual(multipleChanges.at(-1), [['engineering'], null]);
+    assert.equal(multiple.getAttribute('aria-expanded'), 'true');
+
+    await act(async () => {
+      multiple.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    });
+    assert.equal(multiple.getAttribute('aria-expanded'), 'false');
+  } finally {
+    await harness.dispose();
+  }
+});
+
 test('Checkbox, RadioGroup, and TextField expose native form and validation behavior', async () => {
   const harness = await createHarness();
   const radioChanges = [];
@@ -405,7 +496,7 @@ test('Checkbox, RadioGroup, and TextField expose native form and validation beha
   }
 });
 
-test('Select, Switch, Slider, and NumberField preserve native constraints and callbacks', async () => {
+test('Switch, Slider, and NumberField preserve native constraints and callbacks', async () => {
   const harness = await createHarness();
   const numberChanges = [];
 
@@ -414,17 +505,6 @@ test('Select, Switch, Slider, and NumberField preserve native constraints and ca
       React.createElement(
         React.Fragment,
         null,
-        React.createElement(
-          Select,
-          {
-            label: 'Region',
-            defaultValue: 'west',
-            error: true,
-            helperText: 'Choose a region',
-          },
-          React.createElement('option', { value: 'west' }, 'West'),
-          React.createElement('option', { value: 'east' }, 'East'),
-        ),
         React.createElement(Switch, { label: 'Email alerts', defaultChecked: true }),
         React.createElement(Slider, { 'aria-label': 'Volume', min: 0, max: 10, defaultValue: 5 }),
         React.createElement(NumberField, {
@@ -437,11 +517,6 @@ test('Select, Switch, Slider, and NumberField preserve native constraints and ca
         }),
       ),
     );
-
-    const select = harness.mount.querySelector('select');
-    assert.equal(select.value, 'west');
-    assert.equal(select.getAttribute('aria-invalid'), 'true');
-    assert.ok(document.getElementById(select.getAttribute('aria-describedby')));
 
     const switchInput = harness.mount.querySelector('[role="switch"]');
     assert.equal(switchInput.checked, true);
@@ -481,7 +556,9 @@ test('Accordion supports controlled state, disabled state, and accessible panel 
 
   try {
     await harness.render(
-      React.createElement(Accordion, null,
+      React.createElement(
+        Accordion,
+        null,
         React.createElement(AccordionToolbar, null, 'Settings'),
         React.createElement(
           AccordionItem,
@@ -498,7 +575,10 @@ test('Accordion supports controlled state, disabled state, and accessible panel 
     const trigger = harness.mount.querySelector('.tm-accordion-trigger');
     const panel = harness.mount.querySelector('.tm-accordion-panel');
     assert.equal(harness.mount.querySelector('.tm-accordion-toolbar').textContent, 'Settings');
-    assert.equal(harness.mount.querySelector('.tm-accordion-helper').textContent, 'Choose a section');
+    assert.equal(
+      harness.mount.querySelector('.tm-accordion-helper').textContent,
+      'Choose a section',
+    );
     assert.equal(trigger.getAttribute('aria-expanded'), 'false');
     assert.equal(trigger.getAttribute('aria-controls'), panel.id);
     assert.equal(panel.tagName, 'SECTION');
@@ -513,7 +593,9 @@ test('Accordion supports controlled state, disabled state, and accessible panel 
     );
 
     await harness.render(
-      React.createElement(Accordion, null,
+      React.createElement(
+        Accordion,
+        null,
         React.createElement(
           AccordionItem,
           {

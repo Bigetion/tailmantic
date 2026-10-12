@@ -44,7 +44,6 @@ import IconGlyphDemo from './ui/icon-glyph/IconGlyphDemo.jsx';
 import TableDemo from './ui/table/TableDemo.jsx';
 import TooltipDemo from './ui/tooltip/TooltipDemo.jsx';
 import TypographyDemo from './ui/typography/TypographyDemo.jsx';
-import SelectDemo from './ui/select/SelectDemo.jsx';
 import SliderDemo from './ui/slider/SliderDemo.jsx';
 import SwitchDemo from './ui/switch/SwitchDemo.jsx';
 import TextFieldDemo from './ui/text-field/TextFieldDemo.jsx';
@@ -151,20 +150,12 @@ function SelectionPreview({ demoId }) {
 
 function InputPreview({ demoId }) {
   const [value, setValue] = useState(demoId.startsWith('number') ? 3 : '');
-  const [selected, setSelected] = useState('');
-  const choices = ['Design', 'Engineering', 'Marketing'];
-  const isSelect = demoId.startsWith('select') || demoId.startsWith('autocomplete');
   const isNumber = demoId.startsWith('number');
   return (
     <div className="preview-stack input-preview">
       <label className="rgi-input-wrap">
-        <span className="rgi-label">{isNumber ? 'Quantity' : isSelect ? 'Department' : 'Email address'}</span>
-        {isSelect ? (
-          <select className="rgi-input select-control" value={selected} onChange={(event) => setSelected(event.target.value)}>
-            <option value="">Select a department</option>
-            {choices.map((choice) => <option key={choice}>{choice}</option>)}
-          </select>
-        ) : isNumber ? (
+        <span className="rgi-label">{isNumber ? 'Quantity' : 'Email address'}</span>
+        {isNumber ? (
           <span className="number-field"><button type="button" aria-label="Decrease" onClick={() => setValue((number) => Math.max(0, Number(number) - 1))}>−</button><input className="rgi-input" type="number" value={value} min={0} max={10} onChange={(event) => setValue(event.target.value)} aria-label="Quantity" /><button type="button" aria-label="Increase" onClick={() => setValue((number) => Math.min(10, Number(number) + 1))}>+</button></span>
         ) : (
           <input className="rgi-input" type={demoId.includes('validation') ? 'email' : 'text'} placeholder={demoId.includes('adornments') ? 'Search settings' : 'name@example.com'} value={value} onChange={(event) => setValue(event.target.value)} />
@@ -231,7 +222,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'tooltip') return <TooltipDemo demoId={demoId} />;
   if (component.slug === 'typography') return <TypographyDemo demoId={demoId} />;
   if (component.slug === 'icon-glyph') return <IconGlyphDemo demoId={demoId} />;
-  if (component.slug === 'select') return <SelectDemo demoId={demoId} />;
   if (component.slug === 'slider') return <SliderDemo demoId={demoId} />;
   if (component.slug === 'switch') return <SwitchDemo demoId={demoId} />;
   if (component.slug === 'text-field') return <TextFieldDemo demoId={demoId} />;

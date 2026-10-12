@@ -97,7 +97,7 @@ export type {
 export { default as RadioGroup } from './src/radio-group/radio-group.js';
 export type { RatingProps } from './src/rating/rating.js';
 export { default as Rating } from './src/rating/rating.js';
-export type { SelectProps } from './src/select/select.js';
+export type { SelectOption, SelectOptionInput, SelectProps } from './src/select/select.js';
 export { default as Select } from './src/select/select.js';
 export type { SkeletonAnimation, SkeletonProps, SkeletonVariant } from './src/skeleton/skeleton.js';
 export { default as Skeleton } from './src/skeleton/skeleton.js';

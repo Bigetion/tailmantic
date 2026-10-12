@@ -9,16 +9,17 @@ import {
   Checkbox,
   Chip,
   IconGlyph,
+  Select,
 } from '@tailmantic/ui-components';
-import ButtonOnly from '@tailmantic/ui-components/button';
-import CheckboxOnly from '@tailmantic/ui-components/checkbox';
-import ChipOnly from '@tailmantic/ui-components/chip';
-import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import AccordionOnly, {
   AccordionHelper as AccordionHelperOnly,
   AccordionItem as AccordionItemOnly,
   AccordionToolbar as AccordionToolbarOnly,
 } from '@tailmantic/ui-components/accordion';
+import ButtonOnly from '@tailmantic/ui-components/button';
+import CheckboxOnly from '@tailmantic/ui-components/checkbox';
+import ChipOnly from '@tailmantic/ui-components/chip';
+import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 
 export const rootExports = (
   <>
@@ -29,6 +30,22 @@ export const rootExports = (
       options={['React']}
       selectedValues={['React']}
       onSelectedValuesChange={(values) => values}
+    />
+    <Select
+      label="Department"
+      options={[
+        { value: 'engineering', label: 'Engineering', detail: 'Product team' },
+        { value: 'design', label: 'Design' },
+      ]}
+      value="engineering"
+      onValueChange={(value, option) => [value, option?.detail]}
+      ref={(button) => button?.focus()}
+    />
+    <Select
+      multiple
+      options={['React', 'Tailwind']}
+      selectedValues={['React']}
+      onSelectedValuesChange={(values, option) => [values, option?.label]}
     />
     <Accordion aria-label="Settings">
       <AccordionToolbar>Settings</AccordionToolbar>

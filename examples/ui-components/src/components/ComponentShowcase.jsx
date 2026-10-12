@@ -14,17 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const SELECT_DEMOS = {
-  select: {
-    title: 'Single selection',
-    caption: 'Choose one available option with pointer or keyboard input.',
-  },
-  'select-multiple': {
-    title: 'Multiple selection',
-    caption: 'Choose several related options and remove selections individually.',
-  },
-};
-
 const SLIDER_DEMOS = {
   slider: {
     title: 'Continuous value',
@@ -598,9 +587,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'select'
-                          ? SELECT_DEMOS[demoId]
-                          : component.slug === 'slider'
+        const demo = component.slug === 'slider'
                             ? SLIDER_DEMOS[demoId]
                             : component.slug === 'switch'
                               ? SWITCH_DEMOS[demoId]

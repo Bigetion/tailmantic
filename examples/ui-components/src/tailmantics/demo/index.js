@@ -1,4 +1,3 @@
-import './select.js';
 import './slider.js';
 import './switch.js';
 import './text-field.js';
