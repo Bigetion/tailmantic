@@ -28,6 +28,8 @@ const {
 } = await import('../dist/accordion.js');
 const { default: Alert } = await import('../dist/alert.js');
 const { default: Badge } = await import('../dist/badge.js');
+const { default: Avatar } = await import('../dist/avatar.js');
+const { AvatarGroup } = await import('../dist/avatar.js');
 const { default: BottomNavigation } = await import('../dist/bottom-navigation.js');
 const { BottomNavigationItem } = await import('../dist/bottom-navigation.js');
 const { default: Breadcrumbs } = await import('../dist/breadcrumbs.js');
@@ -1046,6 +1048,14 @@ test('buttons, chips, navigation, and presentational primitives preserve semanti
             React.createElement(ListItemText, { primary: 'Primary', secondary: 'Secondary' }),
           ),
         ),
+        React.createElement(Avatar, { alt: 'Jordan Davis', color: 'indigo', size: 'xs' }),
+        React.createElement(
+          AvatarGroup,
+          { 'aria-label': 'Project team', max: 2, total: 5 },
+          React.createElement(Avatar, { key: 'jordan', alt: 'Jordan Davis' }, 'JD'),
+          React.createElement(Avatar, { key: 'morgan', alt: 'Morgan Kim' }, 'MK'),
+          React.createElement(Avatar, { key: 'alex', alt: 'Alex Lee' }, 'AL'),
+        ),
         React.createElement(Paper, { square: true }, 'Paper'),
       ),
     );
@@ -1081,6 +1091,18 @@ test('buttons, chips, navigation, and presentational primitives preserve semanti
     assert.equal(harness.mount.querySelector('.rgi-skeleton').getAttribute('aria-hidden'), 'true');
     assert.equal(harness.mount.querySelector('ol.rgi-list').tagName, 'OL');
     assert.equal(harness.mount.querySelector('.rgi-list-primary').textContent, 'Primary');
+    const avatar = harness.mount.querySelector('[aria-label="Jordan Davis"]');
+    assert.equal(avatar.textContent, 'JD');
+    assert.ok(avatar.className.includes('rgi-avatar-indigo'));
+    assert.ok(avatar.className.includes('rgi-avatar-xs'));
+    const avatarGroup = harness.mount.querySelector('[aria-label="Project team"]');
+    assert.equal(avatarGroup.getAttribute('role'), 'group');
+    assert.equal(avatarGroup.querySelectorAll(':scope > .rgi-avatar').length, 3);
+    assert.equal(avatarGroup.querySelector('.rgi-avatar-overflow').textContent, '+3');
+    assert.equal(
+      avatarGroup.querySelector('.rgi-avatar-overflow').getAttribute('aria-label'),
+      '3 additional members',
+    );
     assert.ok(harness.mount.querySelector('.rgi-paper').className.includes('rgi-paper-square'));
   } finally {
     await harness.dispose();

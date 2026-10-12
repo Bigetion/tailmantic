@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from './Popper.jsx';
-import AvatarDemo from './ui/avatar/AvatarDemo.jsx';
 import AlertDemo from './ui/alert/AlertDemo.jsx';
 import DialogDemo from './ui/dialog/DialogDemo.jsx';
 import ProgressDemo from './ui/progress/ProgressDemo.jsx';
@@ -188,7 +187,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'progress') return <ProgressDemo demoId={demoId} />;
   if (component.slug === 'snackbar') return <SnackbarDemo demoId={demoId} />;
   if (component.slug === 'skeleton') return <SkeletonDemo demoId={demoId} />;
-  if (component.slug === 'avatar') return <AvatarDemo demoId={demoId} />;
   if (component.slug === 'badge') return <BadgeDemo demoId={demoId} />;
   if (component.slug === 'chip') return <ChipDemo demoId={demoId} />;
   if (component.slug === 'divider') return <DividerDemo demoId={demoId} />;

@@ -4,6 +4,8 @@ import {
   AccordionHelper,
   AccordionItem,
   AccordionToolbar,
+  Avatar,
+  AvatarGroup,
   Autocomplete,
   Button,
   Checkbox,
@@ -18,6 +20,7 @@ import AccordionOnly, {
   AccordionItem as AccordionItemOnly,
   AccordionToolbar as AccordionToolbarOnly,
 } from '@tailmantic/ui-components/accordion';
+import AvatarOnly, { AvatarGroup as AvatarGroupOnly } from '@tailmantic/ui-components/avatar';
 import ButtonOnly from '@tailmantic/ui-components/button';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
@@ -57,6 +60,10 @@ export const rootExports = (
       <AccordionHelper>Choose a section</AccordionHelper>
     </Accordion>
     <Button variant="outlined" ref={(button) => button?.focus()} />
+    <Avatar alt="Jordan Davis" color="indigo" size="xs" />
+    <AvatarGroup aria-label="Project team" max={4}>
+      <Avatar alt="Jordan Davis">JD</Avatar>
+    </AvatarGroup>
     <IconGlyph name="home" />
     <Checkbox
       indeterminate
@@ -95,6 +102,10 @@ export const subpathExports = (
     </AccordionOnly>
     <ButtonOnly size="small" />
     <CheckboxOnly defaultChecked />
+    <AvatarOnly alt="Morgan Kim" size="sm" />
+    <AvatarGroupOnly aria-label="Team" total={3}>
+      <AvatarOnly alt="Morgan Kim">MK</AvatarOnly>
+    </AvatarGroupOnly>
     <ChipOnly variant="filled" />
     <IconGlyphOnly name="search" />
   </>

@@ -7,7 +7,7 @@ export {
 export { default as Alert } from './alert/Alert.jsx';
 export { default as AppBar } from './app-bar/AppBar.jsx';
 export { default as Autocomplete } from './autocomplete/Autocomplete.jsx';
-export { default as Avatar } from './avatar/Avatar.jsx';
+export { default as Avatar, AvatarGroup } from './avatar/index.js';
 export { default as Badge } from './badge/Badge.jsx';
 export { BottomNavigationItem, default as BottomNavigation } from './bottom-navigation/index.js';
 export { default as Breadcrumbs } from './breadcrumbs/Breadcrumbs.jsx';

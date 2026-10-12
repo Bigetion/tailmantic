@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { componentCatalog } from '../data/components.js';
 import AccordionPage from './AccordionPage.jsx';
+import AvatarPage from './AvatarPage.jsx';
 import AutocompletePage from './AutocompletePage.jsx';
 import ButtonGroupPage from './ButtonGroupPage.jsx';
 import ButtonPage from './ButtonPage.jsx';
@@ -26,6 +27,7 @@ export default function ComponentPageRoute() {
   const Page = componentPages[`./components/${slug}/Page.jsx`];
 
   if (slug === 'accordion') return <AccordionPage />;
+  if (slug === 'avatar') return <AvatarPage />;
   if (slug === 'autocomplete') return <AutocompletePage />;
   if (slug === 'button') return <ButtonPage />;
   if (slug === 'button-group') return <ButtonGroupPage />;

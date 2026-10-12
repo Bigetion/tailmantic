@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const AVATAR_DEMOS = {
-  avatar: {
-    title: 'Avatar fallbacks',
-    caption: 'Represent a person with initials, an icon, or a neutral fallback.',
-  },
-  'avatar-sizes': {
-    title: 'Avatar sizes',
-    caption: 'Choose a size that fits the density and hierarchy of the surrounding interface.',
-  },
-  'avatar-group': {
-    title: 'Avatar group',
-    caption: 'Show a compact team of people and summarize additional members.',
-  },
-};
-
 const BADGE_DEMOS = {
   badge: {
     title: 'Notification counts',
@@ -512,9 +497,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'avatar'
-                                      ? AVATAR_DEMOS[demoId]
-                                      : component.slug === 'badge'
+        const demo = component.slug === 'badge'
                                         ? BADGE_DEMOS[demoId]
                                         : component.slug === 'chip'
                                           ? CHIP_DEMOS[demoId]

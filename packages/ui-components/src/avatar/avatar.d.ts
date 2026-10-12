@@ -1,7 +1,16 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 
-export type AvatarColor = 'default' | 'primary' | 'success' | 'warning';
-export type AvatarSize = 'small' | 'medium' | 'large';
+export type AvatarColor =
+  | 'default'
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'indigo'
+  | 'teal'
+  | 'amber'
+  | 'violet'
+  | 'neutral';
+export type AvatarSize = 'xs' | 'sm' | 'small' | 'medium' | 'lg' | 'large' | 'xl';
 
 export interface AvatarProps extends HTMLAttributes<HTMLSpanElement> {
   alt?: string;
@@ -16,3 +25,13 @@ declare const Avatar: import('react').ForwardRefExoticComponent<
 >;
 
 export default Avatar;
+
+export interface AvatarGroupProps extends HTMLAttributes<HTMLSpanElement> {
+  children?: ReactNode;
+  max?: number;
+  total?: number;
+}
+
+export declare const AvatarGroup: import('react').ForwardRefExoticComponent<
+  AvatarGroupProps & import('react').RefAttributes<HTMLSpanElement>
+>;

@@ -20,8 +20,8 @@ export type {
   AutocompleteProps,
 } from './autocomplete/autocomplete.js';
 export { default as Autocomplete } from './autocomplete/autocomplete.js';
-export type { AvatarColor, AvatarProps, AvatarSize } from './avatar/avatar.js';
-export { default as Avatar } from './avatar/avatar.js';
+export type { AvatarColor, AvatarGroupProps, AvatarProps, AvatarSize } from './avatar/avatar.js';
+export { default as Avatar, AvatarGroup } from './avatar/avatar.js';
 export type { BadgeColor, BadgeOverlap, BadgeProps, BadgeVariant } from './badge/badge.js';
 export { default as Badge } from './badge/badge.js';
 export type {

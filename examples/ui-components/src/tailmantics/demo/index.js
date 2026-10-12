@@ -1,4 +1,3 @@
-import './avatar.js';
 import './badge.js';
 import './chip.js';
 import './divider.js';

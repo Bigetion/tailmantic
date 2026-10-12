@@ -5,14 +5,49 @@ register('rgi-avatar', {
     tw: 'inline-flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[var(--rgi-avatar-bg,var(--panel-raised,#273142))] text-sm font-medium text-[var(--rgi-avatar-color,var(--text,#edf2fb))] align-middle',
   },
   modifiers: {
+    xs: { tw: '!size-6 text-[8px] [&_svg]:size-3' },
+    sm: { tw: '!size-8 text-[10px] [&_svg]:size-3.5' },
     small: { tw: 'size-8 text-xs' },
+    lg: { tw: 'size-12 text-sm [&_svg]:size-5' },
     large: { tw: 'size-14 text-lg' },
+    xl: { tw: 'size-14 text-base [&_svg]:size-6' },
     primary: { tw: '[--rgi-avatar-bg:var(--rgi-blue-dark,#547be8)] [--rgi-avatar-color:white]' },
     success: { tw: '[--rgi-avatar-bg:#276b53] [--rgi-avatar-color:white]' },
     warning: { tw: '[--rgi-avatar-bg:#a75c1b] [--rgi-avatar-color:white]' },
+    indigo: { tw: '[--rgi-avatar-bg:#334a72] [--rgi-avatar-color:#e6eeff]' },
+    teal: { tw: '[--rgi-avatar-bg:#21594f] [--rgi-avatar-color:#c9f2e7]' },
+    amber: { tw: '[--rgi-avatar-bg:#65472d] [--rgi-avatar-color:#ffe1bd]' },
+    violet: { tw: '[--rgi-avatar-bg:#514276] [--rgi-avatar-color:#e5dcff]' },
+    neutral: { tw: '[--rgi-avatar-bg:#303844] [--rgi-avatar-color:#c0cad8]' },
   },
 });
 
 register('rgi-avatar img', {
   base: { tw: 'size-full object-cover' },
+});
+
+register('rgi-avatar-group', {
+  base: { tw: 'inline-flex items-center [&_.rgi-avatar]:border-2 [&_.rgi-avatar]:border-[var(--panel,#10151e)]' },
+});
+
+register('rgi-avatar-group-stacked', {
+  base: { tw: '-space-x-2' },
+});
+
+register('rgi-avatar-overflow', {
+  base: {
+    tw: 'relative z-0 size-10 shrink-0 border-[#111720] bg-[#252f40] text-[10px] font-semibold text-[#c0ccdf]',
+  },
+});
+
+register('rgi-avatar-size-list', {
+  base: { tw: 'flex flex-wrap items-end gap-4' },
+});
+
+register('rgi-avatar-size-item', {
+  base: { tw: 'flex flex-col items-center gap-2' },
+});
+
+register('rgi-avatar-size-label', {
+  base: { tw: 'font-mono text-[9px] text-[#8491a5]' },
 });
