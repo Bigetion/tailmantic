@@ -8,8 +8,8 @@ register('rgi-floating-action-button', {
     primary: { tw: '' },
     secondary: { tw: 'bg-[var(--surface-raised,#334155)] text-[var(--text,#edf2fb)]' },
     extended: { tw: 'h-14 w-auto min-w-14 rounded-full' },
-    action: { tw: 'size-11 bg-[var(--surface-raised,#334155)] text-[var(--text,#edf2fb)]' },
-    small: { tw: 'size-11' },
+    action: { tw: '!size-11 bg-[var(--surface-raised,#334155)] text-[var(--text,#edf2fb)]' },
+    small: { tw: '!size-11' },
     large: { tw: 'size-16' },
   },
 });

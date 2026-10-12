@@ -10,37 +10,8 @@ const styleSources = import.meta.glob('../tailmantics/demo/*.js', {
 const COMPONENT_STYLE_NOTES = {
   autocomplete: 'Base component styles are provided by @tailmantic/ui-components/autocomplete/styles.',
   accordion: 'Base component styles are provided by @tailmantic/ui-components/accordion/styles.',
-  checkbox: 'Base component styles are provided by @tailmantic/ui-components/checkbox.',
-};
-
-const CHECKBOX_DEMOS = {
-  checkbox: {
-    title: 'Checkbox states',
-    caption: 'Make independent choices clear with checked, unchecked, and disabled states.',
-  },
-  'checkbox-indeterminate': {
-    title: 'Select all and indeterminate',
-    caption: 'Show partial selection clearly and let one control update a related set.',
-  },
-  'checkbox-group': {
-    title: 'Checkbox group',
-    caption: 'Collect multiple related choices and summarize the current selection.',
-  },
-};
-
-const FAB_DEMOS = {
-  fab: {
-    title: 'Floating actions',
-    caption: 'Keep the screen’s primary action easy to reach and visually distinct.',
-  },
-  'fab-sizes': {
-    title: 'FAB sizes',
-    caption: 'Choose a control size that fits the action’s prominence and available space.',
-  },
-  'fab-group': {
-    title: 'Quick action group',
-    caption: 'Reveal secondary actions from one compact floating action button.',
-  },
+  'floating-action-button':
+    'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
 const NUMBER_FIELD_DEMOS = {
@@ -672,11 +643,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'checkbox'
-                ? CHECKBOX_DEMOS[demoId]
-                : component.slug === 'floating-action-button'
-                  ? FAB_DEMOS[demoId]
-                  : component.slug === 'number-field'
+        const demo = component.slug === 'number-field'
                     ? NUMBER_FIELD_DEMOS[demoId]
                     : component.slug === 'radio-group'
                       ? RADIO_GROUP_DEMOS[demoId]

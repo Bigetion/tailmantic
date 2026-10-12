@@ -4,12 +4,8 @@ import {
   Check,
   ChevronDown,
   Copy,
-  FileText,
   Home,
-  Image,
   Layers,
-  Mail,
-  Plus,
   Settings,
   Trash2,
   X,
@@ -41,9 +37,7 @@ import PopperDemo from './ui/popper/PopperDemo.jsx';
 import PortalDemo from './ui/portal/PortalDemo.jsx';
 import BadgeDemo from './ui/badge/BadgeDemo.jsx';
 import ChipDemo from './ui/chip/ChipDemo.jsx';
-import CheckboxDemo from './ui/checkbox/CheckboxDemo.jsx';
 import DividerDemo from './ui/divider/DividerDemo.jsx';
-import FloatingActionButtonDemo from './ui/floating-action-button/FloatingActionButtonDemo.jsx';
 import IconsDemo from './ui/icons/IconsDemo.jsx';
 import ListDemo from './ui/list/ListDemo.jsx';
 import IconGlyphDemo from './ui/icon-glyph/IconGlyphDemo.jsx';
@@ -202,9 +196,7 @@ function SurfacePreview({ demoId }) {
 function NavigationPreview({ demoId }) {
   const [selected, setSelected] = useState(0);
   const [step, setStep] = useState(1);
-  const [open, setOpen] = useState(false);
   if (demoId.startsWith('stepper')) return <div className="stepper-demo">{['Details', 'Address', 'Payment'].map((name, index) => <button key={name} type="button" onClick={() => setStep(index)}><span className={cx('step-number', index < step && 'step-complete')}>{index < step ? <Check size={13} /> : index + 1}</span><span className={cx(index === step && 'step-current')}>{name}</span>{index < 2 && <i />}</button>)}</div>;
-  if (demoId.startsWith('speed-dial')) return <div className="speed-dial-demo"><button className="fab-control" type="button" aria-expanded={open} aria-label={open ? 'Close quick actions' : 'Open quick actions'} onClick={() => setOpen((value) => !value)}>{open ? <X size={19} /> : <Plus size={20} />}</button>{open && <div className="speed-dial-actions">{[[Image, 'Upload image'], [FileText, 'New document'], [Mail, 'Send email']].map(([Icon, name]) => <button key={name} type="button" onClick={() => { setSelected(name); setOpen(false); }}><span>{name}</span><i><Icon size={15} /></i></button>)}</div>}<span className="preview-note">{typeof selected === 'string' ? selected : 'Quick actions'}</span></div>;
   if (demoId.startsWith('tabs') || demoId.startsWith('bottom-navigation')) return <div className={cx('tab-demo', demoId.startsWith('bottom-navigation') && 'bottom-navigation-demo')}>{['Overview', 'Activity', 'Settings'].map((name, index) => <button className={cx(selected === index && 'tab-active')} key={name} type="button" onClick={() => setSelected(index)}>{demoId.startsWith('bottom') && [Home, Activity, Settings].map((Icon, iconIndex) => iconIndex === index && <Icon key={name} size={16} />)}{name}</button>)}</div>;
   return <div className="preview-row"><button className="rgi-button rgi-button-outlined" type="button" onClick={() => setSelected((value) => value + 1)}><Menu size={14} /> Open navigation</button><span className="preview-note">Selected destination: {selected ? 'Components' : 'Overview'}</span></div>;
 }
@@ -248,8 +240,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'text-field') return <TextFieldDemo demoId={demoId} />;
   if (component.slug === 'transfer-list') return <TransferListDemo demoId={demoId} />;
   if (component.slug === 'toggle-button') return <ToggleButtonDemo demoId={demoId} />;
-  if (component.slug === 'checkbox') return <CheckboxDemo demoId={demoId} />;
-  if (component.slug === 'floating-action-button') return <FloatingActionButtonDemo demoId={demoId} />;
   if (component.slug === 'number-field') return <NumberFieldDemo demoId={demoId} />;
   if (component.slug === 'radio-group') return <RadioGroupDemo demoId={demoId} />;
   if (component.slug === 'rating') return <RatingDemo demoId={demoId} />;

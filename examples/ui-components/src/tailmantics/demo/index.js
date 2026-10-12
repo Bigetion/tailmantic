@@ -1,4 +1,3 @@
-import './floating-action-button.js';
 import './number-field.js';
 import './radio-group.js';
 import './rating.js';
