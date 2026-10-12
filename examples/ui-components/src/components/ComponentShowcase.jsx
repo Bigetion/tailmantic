@@ -13,29 +13,6 @@ const COMPONENT_STYLE_NOTES = {
   checkbox: 'Base component styles are provided by @tailmantic/ui-components/checkbox.',
 };
 
-const BUTTON_DEMOS = {
-  button: {
-    title: 'Button variants',
-    caption: 'Choose the right visual weight for each action in your interface.',
-  },
-  'button-colors': {
-    title: 'Semantic colors',
-    caption: 'Use color to reinforce intent without changing the button behavior.',
-  },
-  'button-sizes': {
-    title: 'Button sizes',
-    caption: 'Balance compact controls with comfortable, prominent actions.',
-  },
-  'button-icons': {
-    title: 'Icons and actions',
-    caption: 'Pair icons with labels to make common actions easier to scan.',
-  },
-  'button-loading': {
-    title: 'Loading and disabled',
-    caption: 'Give feedback while an action is running and prevent duplicate submissions.',
-  },
-};
-
 const BUTTON_GROUP_DEMOS = {
   'button-group': {
     title: 'Segmented choices',
@@ -710,9 +687,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'button'
-          ? BUTTON_DEMOS[demoId]
-          : component.slug === 'button-group'
+        const demo = component.slug === 'button-group'
               ? BUTTON_GROUP_DEMOS[demoId]
               : component.slug === 'checkbox'
                 ? CHECKBOX_DEMOS[demoId]

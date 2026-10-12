@@ -7,6 +7,9 @@ register.all({
   'topbar': {
     tw: 'fixed inset-x-0 top-0 z-20 flex h-14 items-center gap-3 border-b border-[var(--border)] bg-[#090c12]/90 px-5 backdrop-blur-xl max-md:gap-2.5 max-md:px-4 max-sm:gap-2 max-sm:px-3',
   },
+  'rgi-icon-button': {
+    tw: 'inline-flex size-9 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent text-[var(--muted)] hover:bg-[#ffffff12] hover:text-white',
+  },
   'brand-mark': {
     tw: 'flex size-8 shrink-0 items-center justify-center rounded-[10px] bg-[linear-gradient(145deg,#91b5ff,#4568d9)] text-base font-bold text-white shadow-[0_4px_16px_rgba(84,123,232,.32)]',
   },
