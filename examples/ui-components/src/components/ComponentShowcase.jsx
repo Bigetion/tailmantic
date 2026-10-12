@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const BADGE_DEMOS = {
-  badge: {
-    title: 'Notification counts',
-    caption: 'Show unread counts clearly, including zero and capped large values.',
-  },
-  'badge-colors': {
-    title: 'Visibility and emphasis',
-    caption: 'Control when a badge appears and vary its emphasis for secondary counts.',
-  },
-  'badge-dot': {
-    title: 'Status and compact badges',
-    caption: 'Use a dot for presence and a count badge for compact action indicators.',
-  },
-};
-
 const CHIP_DEMOS = {
   chip: {
     title: 'Chip variants',
@@ -497,9 +482,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'badge'
-                                        ? BADGE_DEMOS[demoId]
-                                        : component.slug === 'chip'
+        const demo = component.slug === 'chip'
                                           ? CHIP_DEMOS[demoId]
                                           : component.slug === 'divider'
                                             ? DIVIDER_DEMOS[demoId]

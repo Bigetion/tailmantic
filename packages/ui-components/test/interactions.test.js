@@ -910,6 +910,45 @@ test('BottomNavigation, Badge, Progress, and Card expose expected semantic outpu
   }
 });
 
+test('Badge supports zero counts, labeled dots, and hidden state', async () => {
+  const harness = await createHarness();
+
+  try {
+    await harness.render(
+      React.createElement(
+        React.Fragment,
+        null,
+        React.createElement(Badge, { badgeContent: 0 }, React.createElement('span', null, 'Inbox')),
+        React.createElement(
+          Badge,
+          { badgeContent: 0, badgeLabel: 'No unread messages', showZero: true, color: 'default' },
+          React.createElement('span', null, 'Messages'),
+        ),
+        React.createElement(
+          Badge,
+          { variant: 'dot', badgeLabel: 'Morgan is online', color: 'success' },
+          React.createElement('span', null, 'Morgan'),
+        ),
+        React.createElement(
+          Badge,
+          { badgeContent: 3, badgeLabel: '3 tasks', invisible: true },
+          React.createElement('span', null, 'Tasks'),
+        ),
+      ),
+    );
+
+    const badges = [...harness.mount.querySelectorAll('.rgi-badge')];
+    assert.equal(badges.length, 2);
+    assert.equal(badges[0].textContent, '0');
+    assert.equal(badges[0].getAttribute('aria-label'), 'No unread messages');
+    assert.equal(badges[1].textContent, '');
+    assert.equal(badges[1].getAttribute('aria-label'), 'Morgan is online');
+    assert.equal(harness.mount.querySelectorAll('.rgi-badge-root')[3].children.length, 1);
+  } finally {
+    await harness.dispose();
+  }
+});
+
 test('click-away, menu, popover, and snackbar release listeners and timers on close', async () => {
   const documentListeners = new Map();
   const windowListeners = new Map();

@@ -3,6 +3,7 @@ import { componentCatalog } from '../data/components.js';
 import AccordionPage from './AccordionPage.jsx';
 import AvatarPage from './AvatarPage.jsx';
 import AutocompletePage from './AutocompletePage.jsx';
+import BadgePage from './BadgePage.jsx';
 import ButtonGroupPage from './ButtonGroupPage.jsx';
 import ButtonPage from './ButtonPage.jsx';
 import CheckboxPage from './CheckboxPage.jsx';
@@ -29,6 +30,7 @@ export default function ComponentPageRoute() {
   if (slug === 'accordion') return <AccordionPage />;
   if (slug === 'avatar') return <AvatarPage />;
   if (slug === 'autocomplete') return <AutocompletePage />;
+  if (slug === 'badge') return <BadgePage />;
   if (slug === 'button') return <ButtonPage />;
   if (slug === 'button-group') return <ButtonGroupPage />;
   if (slug === 'checkbox') return <CheckboxPage />;

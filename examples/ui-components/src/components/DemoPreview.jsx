@@ -34,7 +34,6 @@ import ClickAwayListenerDemo from './ui/click-away-listener/ClickAwayListenerDem
 import ModalDemo from './ui/modal/ModalDemo.jsx';
 import PopperDemo from './ui/popper/PopperDemo.jsx';
 import PortalDemo from './ui/portal/PortalDemo.jsx';
-import BadgeDemo from './ui/badge/BadgeDemo.jsx';
 import ChipDemo from './ui/chip/ChipDemo.jsx';
 import DividerDemo from './ui/divider/DividerDemo.jsx';
 import IconsDemo from './ui/icons/IconsDemo.jsx';
@@ -187,7 +186,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'progress') return <ProgressDemo demoId={demoId} />;
   if (component.slug === 'snackbar') return <SnackbarDemo demoId={demoId} />;
   if (component.slug === 'skeleton') return <SkeletonDemo demoId={demoId} />;
-  if (component.slug === 'badge') return <BadgeDemo demoId={demoId} />;
   if (component.slug === 'chip') return <ChipDemo demoId={demoId} />;
   if (component.slug === 'divider') return <DividerDemo demoId={demoId} />;
   if (component.slug === 'icons') return <IconsDemo demoId={demoId} />;
