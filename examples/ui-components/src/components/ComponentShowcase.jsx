@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const TOGGLE_BUTTON_DEMOS = {
-  'toggle-button': {
-    title: 'View selection',
-    caption: 'Switch between related content views with an exclusive pressed state.',
-  },
-  'toggle-button-exclusive': {
-    title: 'Clearable selection',
-    caption: 'Allow an active toggle to be pressed again to clear the selection.',
-  },
-  'toggle-button-sizes': {
-    title: 'Compact icon controls',
-    caption: 'Use concise icon-only toggles with accessible labels when space is limited.',
-  },
-};
-
 const AVATAR_DEMOS = {
   avatar: {
     title: 'Avatar fallbacks',
@@ -527,9 +512,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'toggle-button'
-                                    ? TOGGLE_BUTTON_DEMOS[demoId]
-                                    : component.slug === 'avatar'
+        const demo = component.slug === 'avatar'
                                       ? AVATAR_DEMOS[demoId]
                                       : component.slug === 'badge'
                                         ? BADGE_DEMOS[demoId]

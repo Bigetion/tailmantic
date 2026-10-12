@@ -44,7 +44,6 @@ import IconGlyphDemo from './ui/icon-glyph/IconGlyphDemo.jsx';
 import TableDemo from './ui/table/TableDemo.jsx';
 import TooltipDemo from './ui/tooltip/TooltipDemo.jsx';
 import TypographyDemo from './ui/typography/TypographyDemo.jsx';
-import ToggleButtonDemo from './ui/toggle-button/ToggleButtonDemo.jsx';
 
 function FloatingDemo({ demoId }) {
   const anchorRef = useRef(null);
@@ -199,7 +198,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'tooltip') return <TooltipDemo demoId={demoId} />;
   if (component.slug === 'typography') return <TypographyDemo demoId={demoId} />;
   if (component.slug === 'icon-glyph') return <IconGlyphDemo demoId={demoId} />;
-  if (component.slug === 'toggle-button') return <ToggleButtonDemo demoId={demoId} />;
   if (demoId.startsWith('tooltip') || demoId.startsWith('popover') || demoId.startsWith('autocomplete')) return <FloatingDemo demoId={demoId} />;
   if (demoId.startsWith('checkbox')) return <SelectionPreview demoId={demoId} />;
   if (demoId.startsWith('avatar') || demoId.startsWith('badge') || demoId.startsWith('chip') || demoId.startsWith('divider') || demoId.startsWith('icons') || demoId.startsWith('icon-glyph') || demoId.startsWith('list') || demoId.startsWith('table') || demoId.startsWith('typography')) return <DisplayPreview demoId={demoId} />;

@@ -13,6 +13,7 @@ import SelectPage from './SelectPage.jsx';
 import SliderPage from './SliderPage.jsx';
 import SwitchPage from './SwitchPage.jsx';
 import TextFieldPage from './TextFieldPage.jsx';
+import ToggleButtonPage from './ToggleButtonPage.jsx';
 import TransferListPage from './TransferListPage.jsx';
 
 const componentPages = import.meta.glob('./components/*/Page.jsx', {
@@ -37,6 +38,7 @@ export default function ComponentPageRoute() {
   if (slug === 'slider') return <SliderPage />;
   if (slug === 'switch') return <SwitchPage />;
   if (slug === 'text-field') return <TextFieldPage />;
+  if (slug === 'toggle-button') return <ToggleButtonPage />;
   if (slug === 'transfer-list') return <TransferListPage />;
   if (Page) return <Page />;
 

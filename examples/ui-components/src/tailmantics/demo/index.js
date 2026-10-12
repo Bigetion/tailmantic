@@ -1,4 +1,3 @@
-import './toggle-button.js';
 import './avatar.js';
 import './badge.js';
 import './chip.js';
