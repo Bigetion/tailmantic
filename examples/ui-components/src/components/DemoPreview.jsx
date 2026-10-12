@@ -40,7 +40,6 @@ import ModalDemo from './ui/modal/ModalDemo.jsx';
 import PopperDemo from './ui/popper/PopperDemo.jsx';
 import PortalDemo from './ui/portal/PortalDemo.jsx';
 import BadgeDemo from './ui/badge/BadgeDemo.jsx';
-import ButtonGroupDemo from './ui/button-group/ButtonGroupDemo.jsx';
 import ChipDemo from './ui/chip/ChipDemo.jsx';
 import CheckboxDemo from './ui/checkbox/CheckboxDemo.jsx';
 import DividerDemo from './ui/divider/DividerDemo.jsx';
@@ -249,7 +248,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'text-field') return <TextFieldDemo demoId={demoId} />;
   if (component.slug === 'transfer-list') return <TransferListDemo demoId={demoId} />;
   if (component.slug === 'toggle-button') return <ToggleButtonDemo demoId={demoId} />;
-  if (component.slug === 'button-group') return <ButtonGroupDemo demoId={demoId} />;
   if (component.slug === 'checkbox') return <CheckboxDemo demoId={demoId} />;
   if (component.slug === 'floating-action-button') return <FloatingActionButtonDemo demoId={demoId} />;
   if (component.slug === 'number-field') return <NumberFieldDemo demoId={demoId} />;

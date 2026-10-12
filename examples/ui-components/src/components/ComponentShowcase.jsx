@@ -13,21 +13,6 @@ const COMPONENT_STYLE_NOTES = {
   checkbox: 'Base component styles are provided by @tailmantic/ui-components/checkbox.',
 };
 
-const BUTTON_GROUP_DEMOS = {
-  'button-group': {
-    title: 'Segmented choices',
-    caption: 'Keep a small set of mutually exclusive views in one compact control.',
-  },
-  'button-group-vertical': {
-    title: 'Vertical controls',
-    caption: 'Change orientation while keeping related actions visually connected.',
-  },
-  'button-group-split': {
-    title: 'Split action',
-    caption: 'Pair a primary action with clearly discoverable alternatives.',
-  },
-};
-
 const CHECKBOX_DEMOS = {
   checkbox: {
     title: 'Checkbox states',
@@ -687,9 +672,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'button-group'
-              ? BUTTON_GROUP_DEMOS[demoId]
-              : component.slug === 'checkbox'
+        const demo = component.slug === 'checkbox'
                 ? CHECKBOX_DEMOS[demoId]
                 : component.slug === 'floating-action-button'
                   ? FAB_DEMOS[demoId]
