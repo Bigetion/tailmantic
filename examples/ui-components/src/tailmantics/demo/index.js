@@ -1,4 +1,3 @@
-import './number-field.js';
 import './radio-group.js';
 import './rating.js';
 import './select.js';

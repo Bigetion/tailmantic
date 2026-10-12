@@ -44,7 +44,6 @@ import IconGlyphDemo from './ui/icon-glyph/IconGlyphDemo.jsx';
 import TableDemo from './ui/table/TableDemo.jsx';
 import TooltipDemo from './ui/tooltip/TooltipDemo.jsx';
 import TypographyDemo from './ui/typography/TypographyDemo.jsx';
-import NumberFieldDemo from './ui/number-field/NumberFieldDemo.jsx';
 import RadioGroupDemo from './ui/radio-group/RadioGroupDemo.jsx';
 import RatingDemo from './ui/rating/RatingDemo.jsx';
 import SelectDemo from './ui/select/SelectDemo.jsx';
@@ -240,7 +239,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'text-field') return <TextFieldDemo demoId={demoId} />;
   if (component.slug === 'transfer-list') return <TransferListDemo demoId={demoId} />;
   if (component.slug === 'toggle-button') return <ToggleButtonDemo demoId={demoId} />;
-  if (component.slug === 'number-field') return <NumberFieldDemo demoId={demoId} />;
   if (component.slug === 'radio-group') return <RadioGroupDemo demoId={demoId} />;
   if (component.slug === 'rating') return <RatingDemo demoId={demoId} />;
   if (demoId.startsWith('tooltip') || demoId.startsWith('popover') || demoId.startsWith('autocomplete')) return <FloatingDemo demoId={demoId} />;

@@ -64,7 +64,7 @@ const NumberField = forwardRef(function NumberField(
         </span>
       )}
       <button
-        className="rgi-number-field-button"
+        className="rgi-number-field-button rgi-number-field-decrement"
         type="button"
         aria-label={decrementLabel}
         aria-controls={inputId}
@@ -92,7 +92,7 @@ const NumberField = forwardRef(function NumberField(
         }}
       />
       <button
-        className="rgi-number-field-button"
+        className="rgi-number-field-button rgi-number-field-increment"
         type="button"
         aria-label={incrementLabel}
         aria-controls={inputId}

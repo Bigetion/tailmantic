@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const NUMBER_FIELD_DEMOS = {
-  'number-field': {
-    title: 'Stepped quantity',
-    caption: 'Adjust a whole-number value with keyboard input or increment controls.',
-  },
-  'number-field-steps': {
-    title: 'Custom step size',
-    caption: 'Use fractional steps when a value needs more precise adjustments.',
-  },
-  'number-field-limits': {
-    title: 'Minimum and maximum',
-    caption: 'Keep changes inside an allowed range and disable controls at its limits.',
-  },
-};
-
 const RADIO_GROUP_DEMOS = {
   'radio-group': {
     title: 'Single selection',
@@ -643,9 +628,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'number-field'
-                    ? NUMBER_FIELD_DEMOS[demoId]
-                    : component.slug === 'radio-group'
+        const demo = component.slug === 'radio-group'
                       ? RADIO_GROUP_DEMOS[demoId]
                       : component.slug === 'rating'
                         ? RATING_DEMOS[demoId]

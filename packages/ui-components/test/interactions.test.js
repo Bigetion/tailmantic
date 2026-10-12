@@ -458,7 +458,12 @@ test('Select, Switch, Slider, and NumberField preserve native constraints and ca
 
     const numberInput = harness.mount.querySelector('input[type="number"]');
     const increment = harness.mount.querySelector('[aria-label="Increase value"]');
+    const decrement = harness.mount.querySelector('[aria-label="Decrease value"]');
     assert.equal(numberInput.value, '1.5');
+    assert.ok(increment.classList.contains('rgi-number-field-button'));
+    assert.ok(increment.classList.contains('rgi-number-field-increment'));
+    assert.ok(decrement.classList.contains('rgi-number-field-button'));
+    assert.ok(decrement.classList.contains('rgi-number-field-decrement'));
     await act(async () => increment.click());
     assert.equal(numberInput.value, '1.75');
     await act(async () => increment.click());
