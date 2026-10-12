@@ -7,6 +7,7 @@ import ButtonPage from './ButtonPage.jsx';
 import CheckboxPage from './CheckboxPage.jsx';
 import FloatingActionButtonPage from './FloatingActionButtonPage.jsx';
 import NumberFieldPage from './NumberFieldPage.jsx';
+import RadioGroupPage from './RadioGroupPage.jsx';
 
 const componentPages = import.meta.glob('./components/*/Page.jsx', {
   eager: true,
@@ -24,6 +25,7 @@ export default function ComponentPageRoute() {
   if (slug === 'checkbox') return <CheckboxPage />;
   if (slug === 'floating-action-button') return <FloatingActionButtonPage />;
   if (slug === 'number-field') return <NumberFieldPage />;
+  if (slug === 'radio-group') return <RadioGroupPage />;
   if (Page) return <Page />;
 
   return (

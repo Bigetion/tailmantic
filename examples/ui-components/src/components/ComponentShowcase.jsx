@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const RADIO_GROUP_DEMOS = {
-  'radio-group': {
-    title: 'Single selection',
-    caption: 'Present related options with clear supporting details and one selected value.',
-  },
-  'radio-group-row': {
-    title: 'Horizontal layout',
-    caption: 'Arrange short choices in a row when there is enough room.',
-  },
-  'radio-group-disabled': {
-    title: 'Disabled option',
-    caption: 'Communicate when an option is unavailable without making it selectable.',
-  },
-};
-
 const RATING_DEMOS = {
   rating: {
     title: 'Interactive rating',
@@ -628,9 +613,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'radio-group'
-                      ? RADIO_GROUP_DEMOS[demoId]
-                      : component.slug === 'rating'
+        const demo = component.slug === 'rating'
                         ? RATING_DEMOS[demoId]
                         : component.slug === 'select'
                           ? SELECT_DEMOS[demoId]
