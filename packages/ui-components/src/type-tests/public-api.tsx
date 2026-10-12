@@ -10,6 +10,7 @@ import {
   Chip,
   IconGlyph,
   Select,
+  TextField,
 } from '@tailmantic/ui-components';
 import AccordionOnly, {
   AccordionHelper as AccordionHelperOnly,
@@ -67,6 +68,11 @@ export const rootExports = (
       color="primary"
       onDelete={(event) => event.currentTarget.disabled}
       ref={(element) => element?.focus()}
+    />
+    <TextField
+      label="Search"
+      startAdornment="Search"
+      endAdornment={<button type="button">Clear</button>}
     />
   </>
 );

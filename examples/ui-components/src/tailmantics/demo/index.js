@@ -1,4 +1,3 @@
-import './text-field.js';
 import './transfer-list.js';
 import './toggle-button.js';
 import './avatar.js';

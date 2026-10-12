@@ -448,6 +448,7 @@ test('Select supports custom single and multiple combobox interactions', async (
 test('Checkbox, RadioGroup, and TextField expose native form and validation behavior', async () => {
   const harness = await createHarness();
   const radioChanges = [];
+  const adornmentClicks = [];
 
   try {
     await harness.render(
@@ -471,6 +472,19 @@ test('Checkbox, RadioGroup, and TextField expose native form and validation beha
           errorText: 'Enter a valid email',
           required: true,
         }),
+        React.createElement(TextField, {
+          label: 'Search',
+          startAdornment: React.createElement('span', { 'aria-hidden': true }, 'Search'),
+          endAdornment: React.createElement(
+            'button',
+            {
+              type: 'button',
+              'aria-label': 'Clear search',
+              onClick: () => adornmentClicks.push(true),
+            },
+            'Clear',
+          ),
+        }),
       ),
     );
 
@@ -491,6 +505,13 @@ test('Checkbox, RadioGroup, and TextField expose native form and validation beha
     assert.equal(input.getAttribute('aria-invalid'), 'true');
     assert.ok(document.getElementById(input.getAttribute('aria-describedby')));
     assert.equal(input.required, true);
+
+    const searchInput = harness.mount.querySelector('.rgi-text-field-shell input');
+    assert.ok(searchInput.classList.contains('rgi-text-field-control-leading'));
+    assert.ok(searchInput.classList.contains('rgi-text-field-control-trailing'));
+    assert.equal(harness.mount.querySelector('.rgi-text-field-adornment-start').textContent, 'Search');
+    await act(async () => harness.mount.querySelector('[aria-label="Clear search"]').click());
+    assert.deepEqual(adornmentClicks, [true]);
   } finally {
     await harness.dispose();
   }

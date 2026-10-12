@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const TEXT_FIELD_DEMOS = {
-  'text-field': {
-    title: 'Basic field',
-    caption: 'Collect a short text value with a clear label and helpful guidance.',
-  },
-  'text-field-validation': {
-    title: 'Validation',
-    caption: 'Show a useful email error when submitted and confirm valid input.',
-  },
-  'text-field-adornments': {
-    title: 'Search adornment',
-    caption: 'Add a leading icon and a clear action without obscuring the text input.',
-  },
-};
-
 const TRANSFER_LIST_DEMOS = {
   'transfer-list': {
     title: 'Move selected items',
@@ -557,9 +542,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'text-field'
-                                ? TEXT_FIELD_DEMOS[demoId]
-                                : component.slug === 'transfer-list'
+        const demo = component.slug === 'transfer-list'
                                   ? TRANSFER_LIST_DEMOS[demoId]
                                   : component.slug === 'toggle-button'
                                     ? TOGGLE_BUTTON_DEMOS[demoId]

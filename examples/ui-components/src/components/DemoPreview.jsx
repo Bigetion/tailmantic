@@ -44,7 +44,6 @@ import IconGlyphDemo from './ui/icon-glyph/IconGlyphDemo.jsx';
 import TableDemo from './ui/table/TableDemo.jsx';
 import TooltipDemo from './ui/tooltip/TooltipDemo.jsx';
 import TypographyDemo from './ui/typography/TypographyDemo.jsx';
-import TextFieldDemo from './ui/text-field/TextFieldDemo.jsx';
 import TransferListDemo from './ui/transfer-list/TransferListDemo.jsx';
 import ToggleButtonDemo from './ui/toggle-button/ToggleButtonDemo.jsx';
 
@@ -146,25 +145,6 @@ function SelectionPreview({ demoId }) {
   );
 }
 
-function InputPreview({ demoId }) {
-  const [value, setValue] = useState(demoId.startsWith('number') ? 3 : '');
-  const isNumber = demoId.startsWith('number');
-  return (
-    <div className="preview-stack input-preview">
-      <label className="rgi-input-wrap">
-        <span className="rgi-label">{isNumber ? 'Quantity' : 'Email address'}</span>
-        {isNumber ? (
-          <span className="number-field"><button type="button" aria-label="Decrease" onClick={() => setValue((number) => Math.max(0, Number(number) - 1))}>−</button><input className="rgi-input" type="number" value={value} min={0} max={10} onChange={(event) => setValue(event.target.value)} aria-label="Quantity" /><button type="button" aria-label="Increase" onClick={() => setValue((number) => Math.min(10, Number(number) + 1))}>+</button></span>
-        ) : (
-          <input className="rgi-input" type={demoId.includes('validation') ? 'email' : 'text'} placeholder={demoId.includes('adornments') ? 'Search settings' : 'name@example.com'} value={value} onChange={(event) => setValue(event.target.value)} />
-        )}
-      </label>
-      {demoId.includes('validation') && <span className={cx('input-helper', value.includes('@') && 'input-helper-success')}>{value && !value.includes('@') ? 'Enter a valid email address' : value.includes('@') ? 'Looks good' : 'We will never share your email.'}</span>}
-      {demoId.includes('multiple') && <div className="preview-row"><span className="rgi-chip rgi-chip-primary">React <button type="button" aria-label="Remove React"><X size={12} /></button></span><span className="rgi-chip rgi-chip-filled">Vue <button type="button" aria-label="Remove Vue"><X size={12} /></button></span></div>}
-    </div>
-  );
-}
-
 function DisplayPreview({ demoId }) {
   return <div className="preview-row"><span className="rgi-chip rgi-chip-filled">Data display</span><span className="rgi-chip rgi-chip-primary">Tailmantic UI</span><span className="preview-note">Responsive component preview</span></div>;
 }
@@ -220,12 +200,10 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'tooltip') return <TooltipDemo demoId={demoId} />;
   if (component.slug === 'typography') return <TypographyDemo demoId={demoId} />;
   if (component.slug === 'icon-glyph') return <IconGlyphDemo demoId={demoId} />;
-  if (component.slug === 'text-field') return <TextFieldDemo demoId={demoId} />;
   if (component.slug === 'transfer-list') return <TransferListDemo demoId={demoId} />;
   if (component.slug === 'toggle-button') return <ToggleButtonDemo demoId={demoId} />;
   if (demoId.startsWith('tooltip') || demoId.startsWith('popover') || demoId.startsWith('autocomplete')) return <FloatingDemo demoId={demoId} />;
   if (demoId.startsWith('checkbox')) return <SelectionPreview demoId={demoId} />;
-  if (demoId.startsWith('text-field')) return <InputPreview demoId={demoId} />;
   if (demoId.startsWith('avatar') || demoId.startsWith('badge') || demoId.startsWith('chip') || demoId.startsWith('divider') || demoId.startsWith('icons') || demoId.startsWith('icon-glyph') || demoId.startsWith('list') || demoId.startsWith('table') || demoId.startsWith('typography')) return <DisplayPreview demoId={demoId} />;
   if (demoId.startsWith('alert') || demoId.startsWith('dialog') || demoId.startsWith('progress') || demoId.startsWith('snackbar')) return <FeedbackPreview demoId={demoId} />;
   if (demoId.startsWith('accordion') || demoId.startsWith('app-bar') || demoId.startsWith('card') || demoId.startsWith('paper')) return <SurfacePreview demoId={demoId} />;
