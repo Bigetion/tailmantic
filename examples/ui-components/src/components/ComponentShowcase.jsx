@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const SLIDER_DEMOS = {
-  slider: {
-    title: 'Continuous value',
-    caption: 'Adjust a value smoothly across a range with pointer or keyboard input.',
-  },
-  'slider-range': {
-    title: 'Range selection',
-    caption: 'Set minimum and maximum values while keeping the selected range valid.',
-  },
-  'slider-marks': {
-    title: 'Discrete steps',
-    caption: 'Snap to labeled values when only specific increments are meaningful.',
-  },
-};
-
 const SWITCH_DEMOS = {
   switch: {
     title: 'Switch states',
@@ -587,9 +572,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'slider'
-                            ? SLIDER_DEMOS[demoId]
-                            : component.slug === 'switch'
+        const demo = component.slug === 'switch'
                               ? SWITCH_DEMOS[demoId]
                               : component.slug === 'text-field'
                                 ? TEXT_FIELD_DEMOS[demoId]

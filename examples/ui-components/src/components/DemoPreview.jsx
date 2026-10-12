@@ -44,7 +44,6 @@ import IconGlyphDemo from './ui/icon-glyph/IconGlyphDemo.jsx';
 import TableDemo from './ui/table/TableDemo.jsx';
 import TooltipDemo from './ui/tooltip/TooltipDemo.jsx';
 import TypographyDemo from './ui/typography/TypographyDemo.jsx';
-import SliderDemo from './ui/slider/SliderDemo.jsx';
 import SwitchDemo from './ui/switch/SwitchDemo.jsx';
 import TextFieldDemo from './ui/text-field/TextFieldDemo.jsx';
 import TransferListDemo from './ui/transfer-list/TransferListDemo.jsx';
@@ -222,7 +221,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'tooltip') return <TooltipDemo demoId={demoId} />;
   if (component.slug === 'typography') return <TypographyDemo demoId={demoId} />;
   if (component.slug === 'icon-glyph') return <IconGlyphDemo demoId={demoId} />;
-  if (component.slug === 'slider') return <SliderDemo demoId={demoId} />;
   if (component.slug === 'switch') return <SwitchDemo demoId={demoId} />;
   if (component.slug === 'text-field') return <TextFieldDemo demoId={demoId} />;
   if (component.slug === 'transfer-list') return <TransferListDemo demoId={demoId} />;

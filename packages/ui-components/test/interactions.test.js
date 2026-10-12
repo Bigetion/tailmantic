@@ -499,6 +499,7 @@ test('Checkbox, RadioGroup, and TextField expose native form and validation beha
 test('Switch, Slider, and NumberField preserve native constraints and callbacks', async () => {
   const harness = await createHarness();
   const numberChanges = [];
+  const sliderChanges = [];
 
   try {
     await harness.render(
@@ -506,7 +507,13 @@ test('Switch, Slider, and NumberField preserve native constraints and callbacks'
         React.Fragment,
         null,
         React.createElement(Switch, { label: 'Email alerts', defaultChecked: true }),
-        React.createElement(Slider, { 'aria-label': 'Volume', min: 0, max: 10, defaultValue: 5 }),
+        React.createElement(Slider, {
+          'aria-label': 'Volume',
+          min: 0,
+          max: 10,
+          defaultValue: 5,
+          onChange: (event) => sliderChanges.push(event.currentTarget.value),
+        }),
         React.createElement(NumberField, {
           label: 'Quantity',
           min: 0,
@@ -530,6 +537,15 @@ test('Switch, Slider, and NumberField preserve native constraints and callbacks'
     assert.equal(slider.min, '0');
     assert.equal(slider.max, '10');
     assert.equal(slider.value, '5');
+    assert.equal(slider.type, 'range');
+    await act(async () => {
+      Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set.call(
+        slider,
+        '7',
+      );
+      slider.dispatchEvent(new window.Event('input', { bubbles: true }));
+    });
+    assert.deepEqual(sliderChanges, ['7']);
 
     const numberInput = harness.mount.querySelector('input[type="number"]');
     const increment = harness.mount.querySelector('[aria-label="Increase value"]');

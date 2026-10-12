@@ -10,6 +10,7 @@ import NumberFieldPage from './NumberFieldPage.jsx';
 import RadioGroupPage from './RadioGroupPage.jsx';
 import RatingPage from './RatingPage.jsx';
 import SelectPage from './SelectPage.jsx';
+import SliderPage from './SliderPage.jsx';
 
 const componentPages = import.meta.glob('./components/*/Page.jsx', {
   eager: true,
@@ -30,6 +31,7 @@ export default function ComponentPageRoute() {
   if (slug === 'radio-group') return <RadioGroupPage />;
   if (slug === 'rating') return <RatingPage />;
   if (slug === 'select') return <SelectPage />;
+  if (slug === 'slider') return <SliderPage />;
   if (Page) return <Page />;
 
   return (
