@@ -11,6 +11,7 @@ import RadioGroupPage from './RadioGroupPage.jsx';
 import RatingPage from './RatingPage.jsx';
 import SelectPage from './SelectPage.jsx';
 import SliderPage from './SliderPage.jsx';
+import SwitchPage from './SwitchPage.jsx';
 
 const componentPages = import.meta.glob('./components/*/Page.jsx', {
   eager: true,
@@ -32,6 +33,7 @@ export default function ComponentPageRoute() {
   if (slug === 'rating') return <RatingPage />;
   if (slug === 'select') return <SelectPage />;
   if (slug === 'slider') return <SliderPage />;
+  if (slug === 'switch') return <SwitchPage />;
   if (Page) return <Page />;
 
   return (

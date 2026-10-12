@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const SWITCH_DEMOS = {
-  switch: {
-    title: 'Switch states',
-    caption: 'Toggle a setting on or off and distinguish disabled controls clearly.',
-  },
-  'switch-colors': {
-    title: 'Semantic colors',
-    caption: 'Use restrained color variants to communicate meaningful switch states.',
-  },
-  'switch-labels': {
-    title: 'Labeled settings',
-    caption: 'Pair switches with concise setting names and useful supporting text.',
-  },
-};
-
 const TEXT_FIELD_DEMOS = {
   'text-field': {
     title: 'Basic field',
@@ -572,9 +557,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'switch'
-                              ? SWITCH_DEMOS[demoId]
-                              : component.slug === 'text-field'
+        const demo = component.slug === 'text-field'
                                 ? TEXT_FIELD_DEMOS[demoId]
                                 : component.slug === 'transfer-list'
                                   ? TRANSFER_LIST_DEMOS[demoId]
