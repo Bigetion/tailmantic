@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const APP_BAR_DEMOS = {
-  'app-bar': {
-    title: 'Workspace toolbar',
-    caption: 'Keep the current destination and primary actions visible in a balanced application bar.',
-  },
-  'app-bar-search': {
-    title: 'Search and actions',
-    caption: 'Integrate an expandable search field and action buttons without crowding the toolbar.',
-  },
-  'app-bar-responsive': {
-    title: 'Responsive navigation',
-    caption: 'Adapt the toolbar at narrow widths and expose a compact navigation menu.',
-  },
-};
-
 const CARD_DEMOS = {
   card: {
     title: 'Project overview',
@@ -287,9 +272,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'app-bar'
-                                                                                        ? APP_BAR_DEMOS[demoId]
-                                                                                          : component.slug === 'card'
+        const demo = component.slug === 'card'
                                                                                             ? CARD_DEMOS[demoId]
                                                                                               : component.slug === 'paper'
                                                                                                 ? PAPER_DEMOS[demoId]

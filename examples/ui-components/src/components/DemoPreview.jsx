@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from './Popper.jsx';
-import AppBarDemo from './ui/app-bar/AppBarDemo.jsx';
 import CardDemo from './ui/card/CardDemo.jsx';
 import PaperDemo from './ui/paper/PaperDemo.jsx';
 import PopoverDemo from './ui/popover/PopoverDemo.jsx';
@@ -159,7 +158,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'drawer') return <DrawerDemo demoId={demoId} />;
   if (component.slug === 'breadcrumbs') return <BreadcrumbsDemo demoId={demoId} />;
   if (component.slug === 'bottom-navigation') return <BottomNavigationDemo demoId={demoId} />;
-  if (component.slug === 'app-bar') return <AppBarDemo demoId={demoId} />;
   if (component.slug === 'card') return <CardDemo demoId={demoId} />;
   if (component.slug === 'paper') return <PaperDemo demoId={demoId} />;
   if (component.slug === 'popover') return <PopoverDemo demoId={demoId} />;

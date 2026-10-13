@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { componentCatalog } from '../data/components.js';
 import AccordionPage from './AccordionPage.jsx';
 import AlertPage from './AlertPage.jsx';
+import AppBarPage from './AppBarPage.jsx';
 import AutocompletePage from './AutocompletePage.jsx';
 import AvatarPage from './AvatarPage.jsx';
 import BadgePage from './BadgePage.jsx';
@@ -41,6 +42,7 @@ export default function ComponentPageRoute() {
   const Page = componentPages[`./components/${slug}/Page.jsx`];
 
   if (slug === 'alert') return <AlertPage />;
+  if (slug === 'app-bar') return <AppBarPage />;
   if (slug === 'accordion') return <AccordionPage />;
   if (slug === 'avatar') return <AvatarPage />;
   if (slug === 'autocomplete') return <AutocompletePage />;

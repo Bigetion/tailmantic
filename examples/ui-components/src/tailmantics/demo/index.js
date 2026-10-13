@@ -1,4 +1,3 @@
-import './app-bar.js';
 import './card.js';
 import './paper.js';
 import './popover.js';
