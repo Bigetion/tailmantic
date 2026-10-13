@@ -1,4 +1,3 @@
-import './table.js';
 import './tooltip.js';
 import './typography.js';
 import './alert.js';

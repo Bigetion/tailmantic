@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const TABLE_DEMOS = {
-  table: {
-    title: 'Sortable project table',
-    caption: 'Scan project owners, status, updates, and progress with sortable column headings.',
-  },
-  'table-dense': {
-    title: 'Compact density',
-    caption: 'Reduce row padding to fit more information into a limited space.',
-  },
-  'table-selection': {
-    title: 'Row selection',
-    caption: 'Select individual rows or toggle the entire page with an accessible indeterminate state.',
-  },
-};
-
 const TOOLTIP_DEMOS = {
   tooltip: {
     title: 'Accessible helper',
@@ -407,9 +392,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'table'
-                                                      ? TABLE_DEMOS[demoId]
-                                                        : component.slug === 'tooltip'
+        const demo = component.slug === 'tooltip'
                                                           ? TOOLTIP_DEMOS[demoId]
                                                             : component.slug === 'typography'
                                                               ? TYPOGRAPHY_DEMOS[demoId]

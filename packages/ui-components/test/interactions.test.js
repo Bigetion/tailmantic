@@ -61,6 +61,7 @@ const { default: Stepper, Step } = await import('../dist/stepper.js');
 const { default: Switch } = await import('../dist/switch.js');
 const { default: Skeleton } = await import('../dist/skeleton.js');
 const { default: Tabs } = await import('../dist/tabs.js');
+const { default: Table } = await import('../dist/table.js');
 const { default: TextField } = await import('../dist/text-field.js');
 const { default: ToggleButton } = await import('../dist/toggle-button.js');
 const { default: Typography } = await import('../dist/typography.js');
@@ -116,6 +117,37 @@ test('IconGlyph renders named glyphs with accessible titles and supports decorat
     assert.equal(titled.querySelector('title')?.textContent, 'Save this item');
     assert.equal(decorative.getAttribute('aria-hidden'), 'true');
     assert.equal(decorative.querySelector('path')?.getAttribute('d'), 'm3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z');
+  } finally {
+    await harness.dispose();
+  }
+});
+
+test('Table applies density and interaction variants to semantic table markup', async () => {
+  const harness = await createHarness();
+
+  try {
+    await harness.render(
+      React.createElement(
+        Table,
+        { density: 'dense', hoverable: true, striped: true, 'aria-label': 'Projects' },
+        React.createElement(
+          'tbody',
+          null,
+          React.createElement(React.Fragment, null,
+            React.createElement('tr', null, React.createElement('td', null, 'First')),
+            React.createElement('tr', null, React.createElement('td', null, 'Second')),
+          ),
+        ),
+      ),
+    );
+
+    const table = harness.mount.querySelector('table');
+    assert.equal(table.getAttribute('aria-label'), 'Projects');
+    assert.ok(table.classList.contains('rgi-table'));
+    assert.ok(table.classList.contains('rgi-table-dense'));
+    assert.ok(table.classList.contains('rgi-table-hoverable'));
+    assert.ok(table.classList.contains('rgi-table-striped'));
+    assert.equal(table.querySelectorAll('tbody tr').length, 2);
   } finally {
     await harness.dispose();
   }

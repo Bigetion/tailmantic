@@ -13,6 +13,7 @@ import {
   IconGlyph,
   type IconGlyphName,
   Icons,
+  Table,
   Select,
   TextField,
   TransferList,
@@ -29,6 +30,7 @@ import ChipOnly from '@tailmantic/ui-components/chip';
 import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
+import TableOnly from '@tailmantic/ui-components/table';
 
 export const rootExports = (
   <>
@@ -70,6 +72,7 @@ export const rootExports = (
     </AvatarGroup>
     <IconGlyph name="home" />
     <Icons title="Search"><circle cx="12" cy="12" r="8" /></Icons>
+    <Table density="dense" hoverable striped><tbody><tr><td>Project</td></tr></tbody></Table>
     <Checkbox
       indeterminate
       onChange={(event) => event.currentTarget.checked}
@@ -116,6 +119,7 @@ export const subpathExports = (
     <ChipOnly variant="filled" />
     <IconGlyphOnly name="search" />
     <IconsOnly title="Search"><circle cx="12" cy="12" r="8" /></IconsOnly>
+    <TableOnly stickyHeader><tbody><tr><td>Project</td></tr></tbody></TableOnly>
   </>
 );
 
