@@ -1,4 +1,3 @@
-import './speed-dial.js';
 import './stepper.js';
 import './tabs.js';
 import './click-away-listener.js';

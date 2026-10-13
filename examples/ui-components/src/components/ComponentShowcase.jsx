@@ -15,23 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const SPEED_DIAL_DEMOS = {
-  'speed-dial': {
-    title: 'Quick actions',
-    caption:
-      'Group related shortcuts behind one floating action button and choose an action from the expanded dial.',
-  },
-  'speed-dial-directions': {
-    title: 'Expansion directions',
-    caption: 'Preview actions expanding up, right, down, or left from the primary floating button.',
-  },
-  'speed-dial-open': {
-    title: 'Expanded actions',
-    caption:
-      'Show an expanded speed dial with labeled, discoverable actions and a clear close control.',
-  },
-};
-
 const STEPPER_DEMOS = {
   stepper: {
     title: 'Horizontal stepper',
@@ -136,7 +119,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  'speed-dial': SPEED_DIAL_DEMOS,
   stepper: STEPPER_DEMOS,
   tabs: TABS_DEMOS,
   'click-away-listener': CLICK_AWAY_DEMOS,

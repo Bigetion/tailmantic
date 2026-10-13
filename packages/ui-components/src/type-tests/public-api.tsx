@@ -31,6 +31,7 @@ import {
   Select,
   Skeleton,
   Snackbar,
+  SpeedDial,
   Table,
   TextField,
   Tooltip,
@@ -66,6 +67,7 @@ import PopoverOnly from '@tailmantic/ui-components/popover';
 import ProgressOnly from '@tailmantic/ui-components/progress';
 import SkeletonOnly from '@tailmantic/ui-components/skeleton';
 import SnackbarOnly from '@tailmantic/ui-components/snackbar';
+import SpeedDialOnly from '@tailmantic/ui-components/speed-dial';
 import TableOnly from '@tailmantic/ui-components/table';
 import TooltipOnly from '@tailmantic/ui-components/tooltip';
 import TypographyOnly from '@tailmantic/ui-components/typography';
@@ -198,6 +200,12 @@ export const rootExports = (
       Saved
     </Snackbar>
     <Skeleton variant="circular" width={40} height={40} animation="wave" />
+    <SpeedDial
+      ariaLabel="Open workspace actions"
+      actions={[{ name: 'Create', icon: '+' }]}
+      direction="right"
+      onActionClick={(_event, action) => action.name}
+    />
     <TextField
       label="Search"
       startAdornment="Search"
@@ -266,6 +274,7 @@ export const subpathExports = (
       Pending
     </SnackbarOnly>
     <SkeletonOnly variant="text" width={160} animation="none" />
+    <SpeedDialOnly actions={[{ name: 'Create' }]} defaultOpen />
     <TableOnly stickyHeader>
       <tbody>
         <tr>

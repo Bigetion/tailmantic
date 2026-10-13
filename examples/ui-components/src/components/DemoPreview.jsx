@@ -16,7 +16,6 @@ import ClickAwayListenerDemo from './ui/click-away-listener/ClickAwayListenerDem
 import ModalDemo from './ui/modal/ModalDemo.jsx';
 import PopperDemo from './ui/popper/PopperDemo.jsx';
 import PortalDemo from './ui/portal/PortalDemo.jsx';
-import SpeedDialDemo from './ui/speed-dial/SpeedDialDemo.jsx';
 import StepperDemo from './ui/stepper/StepperDemo.jsx';
 import TabsDemo from './ui/tabs/TabsDemo.jsx';
 
@@ -254,7 +253,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'popper') return <PopperDemo demoId={demoId} />;
   if (component.slug === 'modal') return <ModalDemo demoId={demoId} />;
   if (component.slug === 'click-away-listener') return <ClickAwayListenerDemo demoId={demoId} />;
-  if (component.slug === 'speed-dial') return <SpeedDialDemo demoId={demoId} />;
   if (component.slug === 'stepper') return <StepperDemo demoId={demoId} />;
   if (component.slug === 'tabs') return <TabsDemo demoId={demoId} />;
   if (demoId.startsWith('popover') || demoId.startsWith('autocomplete'))
