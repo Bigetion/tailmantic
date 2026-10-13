@@ -8,6 +8,7 @@ import ButtonGroupPage from './ButtonGroupPage.jsx';
 import ButtonPage from './ButtonPage.jsx';
 import CheckboxPage from './CheckboxPage.jsx';
 import ChipPage from './ChipPage.jsx';
+import DividerPage from './DividerPage.jsx';
 import FloatingActionButtonPage from './FloatingActionButtonPage.jsx';
 import NumberFieldPage from './NumberFieldPage.jsx';
 import RadioGroupPage from './RadioGroupPage.jsx';
@@ -36,6 +37,7 @@ export default function ComponentPageRoute() {
   if (slug === 'button-group') return <ButtonGroupPage />;
   if (slug === 'checkbox') return <CheckboxPage />;
   if (slug === 'chip') return <ChipPage />;
+  if (slug === 'divider') return <DividerPage />;
   if (slug === 'floating-action-button') return <FloatingActionButtonPage />;
   if (slug === 'number-field') return <NumberFieldPage />;
   if (slug === 'radio-group') return <RadioGroupPage />;

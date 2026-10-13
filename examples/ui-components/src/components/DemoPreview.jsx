@@ -34,7 +34,6 @@ import ClickAwayListenerDemo from './ui/click-away-listener/ClickAwayListenerDem
 import ModalDemo from './ui/modal/ModalDemo.jsx';
 import PopperDemo from './ui/popper/PopperDemo.jsx';
 import PortalDemo from './ui/portal/PortalDemo.jsx';
-import DividerDemo from './ui/divider/DividerDemo.jsx';
 import IconsDemo from './ui/icons/IconsDemo.jsx';
 import ListDemo from './ui/list/ListDemo.jsx';
 import IconGlyphDemo from './ui/icon-glyph/IconGlyphDemo.jsx';
@@ -185,7 +184,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'progress') return <ProgressDemo demoId={demoId} />;
   if (component.slug === 'snackbar') return <SnackbarDemo demoId={demoId} />;
   if (component.slug === 'skeleton') return <SkeletonDemo demoId={demoId} />;
-  if (component.slug === 'divider') return <DividerDemo demoId={demoId} />;
   if (component.slug === 'icons') return <IconsDemo demoId={demoId} />;
   if (component.slug === 'list') return <ListDemo demoId={demoId} />;
   if (component.slug === 'table') return <TableDemo demoId={demoId} />;
@@ -194,7 +192,7 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'icon-glyph') return <IconGlyphDemo demoId={demoId} />;
   if (demoId.startsWith('tooltip') || demoId.startsWith('popover') || demoId.startsWith('autocomplete')) return <FloatingDemo demoId={demoId} />;
   if (demoId.startsWith('checkbox')) return <SelectionPreview demoId={demoId} />;
-  if (demoId.startsWith('avatar') || demoId.startsWith('badge') || demoId.startsWith('chip') || demoId.startsWith('divider') || demoId.startsWith('icons') || demoId.startsWith('icon-glyph') || demoId.startsWith('list') || demoId.startsWith('table') || demoId.startsWith('typography')) return <DisplayPreview demoId={demoId} />;
+  if (demoId.startsWith('avatar') || demoId.startsWith('badge') || demoId.startsWith('chip') || demoId.startsWith('icons') || demoId.startsWith('icon-glyph') || demoId.startsWith('list') || demoId.startsWith('table') || demoId.startsWith('typography')) return <DisplayPreview demoId={demoId} />;
   if (demoId.startsWith('alert') || demoId.startsWith('dialog') || demoId.startsWith('progress') || demoId.startsWith('snackbar')) return <FeedbackPreview demoId={demoId} />;
   if (demoId.startsWith('accordion') || demoId.startsWith('app-bar') || demoId.startsWith('card') || demoId.startsWith('paper')) return <SurfacePreview demoId={demoId} />;
   if (demoId.startsWith('bottom-navigation') || demoId.startsWith('drawer')) return <NavigationPreview demoId={demoId} />;

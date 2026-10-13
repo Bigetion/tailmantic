@@ -1076,7 +1076,8 @@ test('buttons, chips, navigation, and presentational primitives preserve semanti
           React.createElement('span', null, 'Current'),
         ),
         React.createElement(Typography, { variant: 'h2' }, 'Heading'),
-        React.createElement(Divider, { orientation: 'vertical' }),
+        React.createElement(Divider, { orientation: 'vertical', flexItem: true }),
+        React.createElement(Divider, { inset: true }),
         React.createElement(Skeleton, { width: 80, height: 12 }),
         React.createElement(
           List,
@@ -1127,6 +1128,14 @@ test('buttons, chips, navigation, and presentational primitives preserve semanti
 
     assert.equal(harness.mount.querySelector('h2').textContent, 'Heading');
     assert.equal(harness.mount.querySelector('[aria-orientation="vertical"]').tagName, 'HR');
+    assert.ok(
+      harness.mount
+        .querySelector('[aria-orientation="vertical"]')
+        .className.includes('rgi-divider-flex-item'),
+    );
+    assert.ok(
+      harness.mount.querySelector('.rgi-divider-inset').className.includes('rgi-divider-horizontal'),
+    );
     assert.equal(harness.mount.querySelector('.rgi-skeleton').getAttribute('aria-hidden'), 'true');
     assert.equal(harness.mount.querySelector('ol.rgi-list').tagName, 'OL');
     assert.equal(harness.mount.querySelector('.rgi-list-primary').textContent, 'Primary');

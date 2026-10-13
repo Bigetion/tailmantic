@@ -1,4 +1,3 @@
-import './divider.js';
 import './icons.js';
 import './icon-glyph.js';
 import './list.js';

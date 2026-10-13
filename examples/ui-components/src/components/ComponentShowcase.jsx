@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const DIVIDER_DEMOS = {
-  divider: {
-    title: 'Horizontal dividers',
-    caption: 'Separate related sections with a subtle, full-width rule.',
-  },
-  'divider-vertical': {
-    title: 'Vertical divider',
-    caption: 'Group controls in a horizontal toolbar without adding visual noise.',
-  },
-  'divider-inset': {
-    title: 'Inset divider',
-    caption: 'Align a separator with list content while leaving leading icons clear.',
-  },
-};
-
 const ICONS_DEMOS = {
   icons: {
     title: 'Browse the icon library',
@@ -467,9 +452,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'divider'
-                                            ? DIVIDER_DEMOS[demoId]
-                                            : component.slug === 'icons'
+        const demo = component.slug === 'icons'
                                               ? ICONS_DEMOS[demoId]
                                               : component.slug === 'icon-glyph'
                                                 ? MATERIAL_ICONS_DEMOS[demoId]
