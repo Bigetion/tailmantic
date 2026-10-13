@@ -20,7 +20,6 @@ import LinkDemo from './ui/link/LinkDemo.jsx';
 import MenuDemo from './ui/menu/MenuDemo.jsx';
 import ModalDemo from './ui/modal/ModalDemo.jsx';
 import PaginationDemo from './ui/pagination/PaginationDemo.jsx';
-import PopoverDemo from './ui/popover/PopoverDemo.jsx';
 import PopperDemo from './ui/popper/PopperDemo.jsx';
 import PortalDemo from './ui/portal/PortalDemo.jsx';
 import SpeedDialDemo from './ui/speed-dial/SpeedDialDemo.jsx';
@@ -270,7 +269,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'drawer') return <DrawerDemo demoId={demoId} />;
   if (component.slug === 'breadcrumbs') return <BreadcrumbsDemo demoId={demoId} />;
   if (component.slug === 'bottom-navigation') return <BottomNavigationDemo demoId={demoId} />;
-  if (component.slug === 'popover') return <PopoverDemo demoId={demoId} />;
   if (demoId.startsWith('popover') || demoId.startsWith('autocomplete'))
     return <FloatingDemo demoId={demoId} />;
   if (demoId.startsWith('checkbox')) return <SelectionPreview demoId={demoId} />;

@@ -18,6 +18,7 @@ import {
   type IconGlyphName,
   Icons,
   Paper,
+  Popover,
   Progress,
   Select,
   Skeleton,
@@ -45,6 +46,7 @@ import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-componen
 import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
 import PaperOnly from '@tailmantic/ui-components/paper';
+import PopoverOnly from '@tailmantic/ui-components/popover';
 import ProgressOnly from '@tailmantic/ui-components/progress';
 import SkeletonOnly from '@tailmantic/ui-components/skeleton';
 import SnackbarOnly from '@tailmantic/ui-components/snackbar';
@@ -106,6 +108,7 @@ export const rootExports = (
     <Paper elevation={3} square>
       Surface content
     </Paper>
+    <Popover open={false} placement="bottom" label="Project details" />
     <Table density="dense" hoverable striped>
       <tbody>
         <tr>
@@ -198,6 +201,7 @@ export const subpathExports = (
       <circle cx="12" cy="12" r="8" />
     </IconsOnly>
     <PaperOnly elevation={5}>Subpath surface</PaperOnly>
+    <PopoverOnly open={false} placement="top-start" label="Subpath details" />
     <ProgressOnly label="Subpath loading" variant="circular" />
     <SnackbarOnly open severity="warning" autoHideDuration={5000}>
       Pending

@@ -15,24 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const POPOVER_DEMOS = {
-  popover: {
-    title: 'Project details',
-    caption:
-      'Anchor a compact project summary to a trigger and dismiss it with a click away or Escape.',
-  },
-  'popover-placements': {
-    title: 'Placement controls',
-    caption:
-      'Preview top, right, bottom, and left placements, with Popper keeping the surface in view.',
-  },
-  'popover-interactive': {
-    title: 'Interactive options',
-    caption:
-      'Choose a workspace color from the floating panel and see the selected value update immediately.',
-  },
-};
-
 const BOTTOM_NAVIGATION_DEMOS = {
   'bottom-navigation': {
     title: 'Primary destinations',
@@ -254,7 +236,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  popover: POPOVER_DEMOS,
   'bottom-navigation': BOTTOM_NAVIGATION_DEMOS,
   breadcrumbs: BREADCRUMBS_DEMOS,
   drawer: DRAWER_DEMOS,

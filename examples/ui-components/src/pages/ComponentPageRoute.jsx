@@ -19,6 +19,7 @@ import IconsPage from './IconsPage.jsx';
 import ListPage from './ListPage.jsx';
 import NumberFieldPage from './NumberFieldPage.jsx';
 import PaperPage from './PaperPage.jsx';
+import PopoverPage from './PopoverPage.jsx';
 import ProgressPage from './ProgressPage.jsx';
 import RadioGroupPage from './RadioGroupPage.jsx';
 import RatingPage from './RatingPage.jsx';
@@ -62,6 +63,7 @@ export default function ComponentPageRoute() {
   if (slug === 'list') return <ListPage />;
   if (slug === 'number-field') return <NumberFieldPage />;
   if (slug === 'paper') return <PaperPage />;
+  if (slug === 'popover') return <PopoverPage />;
   if (slug === 'progress') return <ProgressPage />;
   if (slug === 'radio-group') return <RadioGroupPage />;
   if (slug === 'rating') return <RatingPage />;

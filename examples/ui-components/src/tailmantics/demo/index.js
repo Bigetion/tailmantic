@@ -1,4 +1,3 @@
-import './popover.js';
 import './bottom-navigation.js';
 import './breadcrumbs.js';
 import './drawer.js';
