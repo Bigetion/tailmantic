@@ -22,3 +22,68 @@ register('rgi-dialog-description', {
 });
 register('rgi-dialog-content', { base: { tw: 'mt-4 min-h-0 text-sm leading-relaxed' } });
 register('rgi-dialog-actions', { base: { tw: 'mt-5 flex flex-wrap justify-end gap-2' } });
+register('rgi-dialog-example-surface', {
+  base: {
+    tw: '!max-h-[min(90vh,48rem)] !max-w-[420px] !gap-0 !rounded-xl !border-[#303b50] !bg-[#121925] !p-5 !shadow-[0_24px_80px_rgba(0,0,0,.65)] max-sm:!rounded-xl',
+  },
+});
+register('rgi-dialog-example-surface-danger', {
+  base: { tw: '!border-[#51363c]' },
+});
+register('rgi-dialog-example-surface-fullscreen', {
+  base: { tw: '!max-w-[620px]' },
+});
+register('rgi-dialog-example-surface .rgi-dialog-header', {
+  base: { tw: 'items-start gap-3' },
+});
+register('rgi-dialog-example-surface .rgi-dialog-title', {
+  base: { tw: 'flex items-center gap-3 text-sm font-semibold' },
+});
+register('rgi-dialog-example-surface .rgi-dialog-description', {
+  base: { tw: 'mt-1.5 text-[10px] leading-relaxed' },
+});
+register('rgi-dialog-example-surface .rgi-dialog-content', {
+  base: { tw: 'mt-4 text-[10px]' },
+});
+register('rgi-dialog-example-surface .rgi-dialog-content:empty', {
+  base: { tw: '!hidden' },
+});
+register('rgi-dialog-example-surface .rgi-dialog-actions', {
+  base: { tw: 'mt-5 gap-2' },
+});
+register('rgi-dialog-example-surface .rgi-button', {
+  base: { tw: '!h-8 !px-3 !text-[10px] !normal-case !tracking-normal' },
+});
+register('rgi-dialog-example-trigger-area', {
+  base: { tw: 'flex min-h-[164px] w-full flex-col items-start justify-center gap-3' },
+});
+register('rgi-dialog-example-trigger', {
+  base: { tw: '!h-8 !px-3 !text-[10px] !normal-case !tracking-normal' },
+});
+register('rgi-dialog-example-heading-icon', {
+  base: { tw: '!mb-0 inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#243653] text-[#a9c4ff]' },
+});
+register('rgi-dialog-example-surface-danger .rgi-dialog-example-heading-icon', {
+  base: { tw: 'bg-[#48252b] text-[#ff9aa5]' },
+});
+register('rgi-dialog-example-form', {
+  base: { tw: 'flex flex-col gap-4' },
+});
+register('rgi-dialog-example-field', {
+  base: { tw: 'flex flex-col gap-1.5 text-[9px] font-medium text-[#c4cede]' },
+});
+register('rgi-dialog-example-field input', {
+  base: { tw: 'h-9 rounded-md border border-[#303b50] bg-[#0d131d] px-3 text-[10px] text-[var(--text)] outline-none placeholder:text-[#66748a] focus:border-[#6c8fe1] focus:ring-2 focus:ring-[#547be8]/15' },
+});
+register('rgi-dialog-example-field textarea', {
+  base: { tw: 'min-h-[110px] resize-y rounded-md border border-[#303b50] bg-[#0d131d] px-3 py-2.5 text-[10px] leading-relaxed text-[var(--text)] outline-none placeholder:text-[#66748a] focus:border-[#6c8fe1] focus:ring-2 focus:ring-[#547be8]/15' },
+});
+register('rgi-dialog-example-audience', {
+  base: { tw: 'flex flex-wrap items-center gap-1.5 text-[9px] text-[var(--muted)]' },
+});
+register('rgi-dialog-example-audience span', {
+  base: { tw: 'size-1.5 rounded-full bg-[#7bd6b0]' },
+});
+register('rgi-dialog-example-audience strong', {
+  base: { tw: 'font-medium text-[var(--text)]' },
+});

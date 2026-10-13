@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const DIALOG_DEMOS = {
-  dialog: {
-    title: 'Confirmation dialog',
-    caption: 'Help users confirm whether to save or discard pending changes.',
-  },
-  'dialog-confirmation': {
-    title: 'Destructive confirmation',
-    caption: 'Clearly explain an irreversible action and distinguish the destructive choice.',
-  },
-  'dialog-fullscreen': {
-    title: 'Focused composition',
-    caption: 'Use a larger dialog for a short multi-field task without navigating away.',
-  },
-};
-
 const PROGRESS_DEMOS = {
   progress: {
     title: 'Linear progress',
@@ -347,9 +332,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'dialog'
-                                                                      ? DIALOG_DEMOS[demoId]
-                                                                      : component.slug === 'progress'
+        const demo = component.slug === 'progress'
                                                                         ? PROGRESS_DEMOS[demoId]
                                                                           : component.slug === 'snackbar'
                                                                             ? SNACKBAR_DEMOS[demoId]

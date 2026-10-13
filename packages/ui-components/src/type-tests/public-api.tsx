@@ -11,6 +11,7 @@ import {
   Button,
   Checkbox,
   Chip,
+  Dialog,
   IconGlyph,
   type IconGlyphName,
   Icons,
@@ -31,6 +32,7 @@ import AvatarOnly, { AvatarGroup as AvatarGroupOnly } from '@tailmantic/ui-compo
 import ButtonOnly from '@tailmantic/ui-components/button';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
+import DialogOnly from '@tailmantic/ui-components/dialog';
 import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
@@ -97,6 +99,15 @@ export const rootExports = (
       onDelete={(event) => event.currentTarget.disabled}
       ref={(element) => element?.focus()}
     />
+    <Dialog
+      open
+      title="Confirm"
+      description="Confirm this operation."
+      actions={<button type="button">Continue</button>}
+      onClose={(_event, reason) => reason}
+    >
+      Dialog content
+    </Dialog>
     <TextField
       label="Search"
       startAdornment="Search"
@@ -130,6 +141,7 @@ export const subpathExports = (
       <AvatarOnly alt="Morgan Kim">MK</AvatarOnly>
     </AvatarGroupOnly>
     <ChipOnly variant="filled" />
+    <DialogOnly open title="Details" closeLabel="Dismiss details" />
     <IconGlyphOnly name="search" />
     <IconsOnly title="Search"><circle cx="12" cy="12" r="8" /></IconsOnly>
     <TableOnly stickyHeader><tbody><tr><td>Project</td></tr></tbody></TableOnly>
