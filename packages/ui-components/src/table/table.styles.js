@@ -28,7 +28,9 @@ register('rgi-table caption', {
 });
 
 register('rgi-table-example-wrap', {
-  base: { tw: 'w-full overflow-x-auto rounded-lg border border-[var(--border)]' },
+  base: {
+    tw: 'w-full overflow-auto overscroll-contain rounded-lg border border-[var(--border)] [scrollbar-width:thin] [scrollbar-color:#354156_#111824] [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-[#111824] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#354156] [&::-webkit-scrollbar-thumb:hover]:bg-[#52627c]',
+  },
 });
 
 register('rgi-table-example', {
@@ -65,10 +67,6 @@ register('rgi-table-example-sort-button-active', {
 
 register('rgi-table-example-check-cell', {
   base: { tw: 'w-9 !px-3' },
-});
-
-register('rgi-table-example-checkbox', {
-  base: { tw: 'size-3.5 cursor-pointer accent-[#789df5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#789df5]' },
 });
 
 register('rgi-table-example-project', {

@@ -1,5 +1,5 @@
-import { Table } from '@tailmantic/ui-components';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { Checkbox, Table } from '@tailmantic/ui-components';
+import { useMemo, useState } from 'react';
 import {
   ArrowDown,
   ArrowUp,
@@ -9,6 +9,7 @@ import {
   Download,
 } from 'lucide-react';
 import { cx } from 'tailmantic';
+import '@tailmantic/ui-components/checkbox/styles';
 import '@tailmantic/ui-components/table/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
@@ -69,25 +70,6 @@ function SortButton({ column, label, sort, onSort }) {
     >
       {label}<Icon size={12} aria-hidden="true" />
     </button>
-  );
-}
-
-function TableCheckbox({ checked, indeterminate = false, onChange, label }) {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    if (ref.current) ref.current.indeterminate = indeterminate;
-  }, [indeterminate]);
-
-  return (
-    <input
-      ref={ref}
-      className="rgi-table-example-checkbox"
-      type="checkbox"
-      checked={checked}
-      onChange={onChange}
-      aria-label={label}
-    />
   );
 }
 
@@ -157,11 +139,11 @@ function TableGrid({ demoId }) {
             <tr>
               {hasSelection && (
                 <th className="rgi-table-example-check-cell">
-                  <TableCheckbox
+                  <Checkbox
                     checked={allSelected}
                     indeterminate={someSelected}
                     onChange={toggleAll}
-                    label="Select all projects"
+                    aria-label="Select all projects"
                   />
                 </th>
               )}
@@ -185,10 +167,10 @@ function TableGrid({ demoId }) {
               >
                 {hasSelection && (
                   <td className="rgi-table-example-check-cell">
-                    <TableCheckbox
+                    <Checkbox
                       checked={selected.includes(row.id)}
                       onChange={() => toggleRow(row.id)}
-                      label={`Select ${row.name}`}
+                      aria-label={`Select ${row.name}`}
                     />
                   </td>
                 )}
