@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const LIST_DEMOS = {
-  list: {
-    title: 'Workspace navigation',
-    caption: 'Use a clear leading icon, descriptive label, and active state for section navigation.',
-  },
-  'list-secondary': {
-    title: 'Secondary content',
-    caption: 'Pair primary labels with supporting details and compact timestamps.',
-  },
-  'list-interactive': {
-    title: 'Interactive preferences',
-    caption: 'Make each row an accessible control and reflect its state immediately.',
-  },
-};
-
 const TABLE_DEMOS = {
   table: {
     title: 'Sortable project table',
@@ -422,9 +407,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'list'
-                                                  ? LIST_DEMOS[demoId]
-                                                    : component.slug === 'table'
+        const demo = component.slug === 'table'
                                                       ? TABLE_DEMOS[demoId]
                                                         : component.slug === 'tooltip'
                                                           ? TOOLTIP_DEMOS[demoId]
