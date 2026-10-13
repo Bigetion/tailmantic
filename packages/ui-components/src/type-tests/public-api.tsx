@@ -11,6 +11,7 @@ import {
   Checkbox,
   Chip,
   IconGlyph,
+  Icons,
   Select,
   TextField,
   TransferList,
@@ -25,6 +26,7 @@ import ButtonOnly from '@tailmantic/ui-components/button';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
 import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
+import IconsOnly from '@tailmantic/ui-components/icons';
 
 export const rootExports = (
   <>
@@ -65,6 +67,7 @@ export const rootExports = (
       <Avatar alt="Jordan Davis">JD</Avatar>
     </AvatarGroup>
     <IconGlyph name="home" />
+    <Icons title="Search"><circle cx="12" cy="12" r="8" /></Icons>
     <Checkbox
       indeterminate
       onChange={(event) => event.currentTarget.checked}
@@ -108,6 +111,7 @@ export const subpathExports = (
     </AvatarGroupOnly>
     <ChipOnly variant="filled" />
     <IconGlyphOnly name="search" />
+    <IconsOnly title="Search"><circle cx="12" cy="12" r="8" /></IconsOnly>
   </>
 );
 

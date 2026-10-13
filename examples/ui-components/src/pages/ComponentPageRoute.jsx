@@ -10,6 +10,7 @@ import CheckboxPage from './CheckboxPage.jsx';
 import ChipPage from './ChipPage.jsx';
 import DividerPage from './DividerPage.jsx';
 import FloatingActionButtonPage from './FloatingActionButtonPage.jsx';
+import IconsPage from './IconsPage.jsx';
 import NumberFieldPage from './NumberFieldPage.jsx';
 import RadioGroupPage from './RadioGroupPage.jsx';
 import RatingPage from './RatingPage.jsx';
@@ -39,6 +40,7 @@ export default function ComponentPageRoute() {
   if (slug === 'chip') return <ChipPage />;
   if (slug === 'divider') return <DividerPage />;
   if (slug === 'floating-action-button') return <FloatingActionButtonPage />;
+  if (slug === 'icons') return <IconsPage />;
   if (slug === 'number-field') return <NumberFieldPage />;
   if (slug === 'radio-group') return <RadioGroupPage />;
   if (slug === 'rating') return <RatingPage />;

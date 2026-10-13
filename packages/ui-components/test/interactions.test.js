@@ -40,6 +40,7 @@ const { default: Checkbox } = await import('../dist/checkbox.js');
 const { default: ClickAwayListener } = await import('../dist/click-away-listener.js');
 const { default: Chip } = await import('../dist/chip.js');
 const { default: Divider } = await import('../dist/divider.js');
+const { default: Icons } = await import('../dist/icons.js');
 const { default: Menu } = await import('../dist/menu.js');
 const { MenuItem } = await import('../dist/menu.js');
 const { default: NumberField } = await import('../dist/number-field.js');
@@ -66,6 +67,32 @@ const { default: TransferList } = await import('../dist/transfer-list.js');
 const { default: SpeedDial } = await import('../dist/speed-dial.js');
 
 test.after(() => dom.window.close());
+
+test('Icons renders accessible titles and hides unlabeled decorative SVGs', async () => {
+  const harness = await createHarness();
+
+  try {
+    await harness.render(
+      React.createElement(
+        React.Fragment,
+        null,
+        React.createElement(Icons, { title: 'Search', size: 18 }, React.createElement('path', { d: 'M1 1' })),
+        React.createElement(Icons, { 'aria-label': 'Close' }, React.createElement('path', { d: 'M2 2' })),
+        React.createElement(Icons, null, React.createElement('path', { d: 'M3 3' })),
+      ),
+    );
+
+    const [titled, labeled, decorative] = harness.mount.querySelectorAll('svg');
+    assert.equal(titled.getAttribute('role'), 'img');
+    assert.equal(titled.querySelector('title')?.textContent, 'Search');
+    assert.equal(titled.getAttribute('width'), '18');
+    assert.equal(labeled.getAttribute('role'), 'img');
+    assert.equal(labeled.querySelector('title')?.textContent, 'Close');
+    assert.equal(decorative.getAttribute('aria-hidden'), 'true');
+  } finally {
+    await harness.dispose();
+  }
+});
 
 async function createHarness() {
   const mount = document.createElement('div');

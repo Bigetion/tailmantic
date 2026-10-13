@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const ICONS_DEMOS = {
-  icons: {
-    title: 'Browse the icon library',
-    caption: 'Search, filter, and select a symbol from a practical interface icon set.',
-  },
-  'icons-colors': {
-    title: 'Semantic icon colors',
-    caption: 'Use restrained color to clarify status and reinforce meaning.',
-  },
-  'icons-buttons': {
-    title: 'Icon buttons',
-    caption: 'Keep icon-only actions compact, keyboard accessible, and clearly labeled.',
-  },
-};
-
 const MATERIAL_ICONS_DEMOS = {
   'icon-glyph': {
     title: 'Icon glyphs',
@@ -452,9 +437,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'icons'
-                                              ? ICONS_DEMOS[demoId]
-                                              : component.slug === 'icon-glyph'
+        const demo = component.slug === 'icon-glyph'
                                                 ? MATERIAL_ICONS_DEMOS[demoId]
                                                 : component.slug === 'list'
                                                   ? LIST_DEMOS[demoId]

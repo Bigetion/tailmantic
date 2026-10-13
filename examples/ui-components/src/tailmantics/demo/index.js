@@ -1,4 +1,3 @@
-import './icons.js';
 import './icon-glyph.js';
 import './list.js';
 import './table.js';
