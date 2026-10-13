@@ -1,4 +1,3 @@
-import './chip.js';
 import './divider.js';
 import './icons.js';
 import './icon-glyph.js';

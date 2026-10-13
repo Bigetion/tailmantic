@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const CHIP_DEMOS = {
-  chip: {
-    title: 'Chip variants',
-    caption: 'Use compact labels with leading icons to communicate status and context.',
-  },
-  'chip-colors': {
-    title: 'Selectable filters',
-    caption: 'Toggle related filter chips on and off while keeping selection accessible.',
-  },
-  'chip-deletable': {
-    title: 'Removable tags',
-    caption: 'Let users remove individual chips and restore the original set.',
-  },
-};
-
 const DIVIDER_DEMOS = {
   divider: {
     title: 'Horizontal dividers',
@@ -482,9 +467,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'chip'
-                                          ? CHIP_DEMOS[demoId]
-                                          : component.slug === 'divider'
+        const demo = component.slug === 'divider'
                                             ? DIVIDER_DEMOS[demoId]
                                             : component.slug === 'icons'
                                               ? ICONS_DEMOS[demoId]
