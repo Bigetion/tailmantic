@@ -33,9 +33,9 @@ const Tooltip = forwardRef(function Tooltip(
       id={id}
       className={cx(
         'rgi-tooltip-root',
-        `rgi-tooltip-${placement}`,
-        isOpen && 'rgi-tooltip-open',
-        open === false && 'rgi-tooltip-closed',
+        `rgi-tooltip-root-${placement}`,
+        isOpen && 'rgi-tooltip-root-open',
+        open === false && 'rgi-tooltip-root-closed',
         className,
       )}
       aria-describedby={!hasElementTrigger && content ? tooltipId : undefined}

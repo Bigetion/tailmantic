@@ -64,6 +64,7 @@ const { default: Tabs } = await import('../dist/tabs.js');
 const { default: Table } = await import('../dist/table.js');
 const { default: TextField } = await import('../dist/text-field.js');
 const { default: ToggleButton } = await import('../dist/toggle-button.js');
+const { default: Tooltip } = await import('../dist/tooltip.js');
 const { default: Typography } = await import('../dist/typography.js');
 const { default: TransferList } = await import('../dist/transfer-list.js');
 const { default: SpeedDial } = await import('../dist/speed-dial.js');
@@ -1162,6 +1163,12 @@ test('buttons, chips, navigation, and presentational primitives preserve semanti
           React.createElement('span', null, 'Current'),
         ),
         React.createElement(Typography, { variant: 'h2' }, 'Heading'),
+        React.createElement(Typography, { align: 'center', color: 'success' }, 'Centered success text'),
+        React.createElement(
+          Tooltip,
+          { content: 'More details', open: false, placement: 'right' },
+          React.createElement('button', { type: 'button' }, 'Details'),
+        ),
         React.createElement(Divider, { orientation: 'vertical', flexItem: true }),
         React.createElement(Divider, { inset: true }),
         React.createElement(Skeleton, { width: 80, height: 12 }),
@@ -1213,6 +1220,16 @@ test('buttons, chips, navigation, and presentational primitives preserve semanti
     );
 
     assert.equal(harness.mount.querySelector('h2').textContent, 'Heading');
+    const centeredTypography = harness.mount.querySelector('.rgi-typography-color-success');
+    assert.ok(centeredTypography.className.includes('rgi-typography-align-center'));
+    assert.ok(!centeredTypography.className.split(/\s+/).includes('rgi-typography-inherit'));
+    const tooltip = harness.mount.querySelector('.rgi-tooltip-root');
+    assert.ok(tooltip.className.includes('rgi-tooltip-root-right'));
+    assert.ok(tooltip.className.includes('rgi-tooltip-root-closed'));
+    assert.equal(
+      tooltip.querySelector('button').getAttribute('aria-describedby'),
+      tooltip.querySelector('[role="tooltip"]').id,
+    );
     assert.equal(harness.mount.querySelector('[aria-orientation="vertical"]').tagName, 'HR');
     assert.ok(
       harness.mount

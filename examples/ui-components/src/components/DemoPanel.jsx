@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ArrowRight, Check, Code2, Copy, Sparkles } from 'lucide-react';
 
-export default function DemoPanel({ title, caption, code, children }) {
+export default function DemoPanel({ title, caption, code, children, className }) {
   const [showCode, setShowCode] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -16,7 +16,7 @@ export default function DemoPanel({ title, caption, code, children }) {
   }
 
   return (
-    <section className="demo-card">
+    <section className={`demo-card${className ? ` ${className}` : ''}`}>
       <header className="demo-card-header">
         <div>
           <div className="demo-title-row">

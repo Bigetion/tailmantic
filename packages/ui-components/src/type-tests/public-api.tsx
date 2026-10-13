@@ -14,6 +14,8 @@ import {
   type IconGlyphName,
   Icons,
   Table,
+  Tooltip,
+  Typography,
   Select,
   TextField,
   TransferList,
@@ -31,6 +33,8 @@ import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
 import TableOnly from '@tailmantic/ui-components/table';
+import TooltipOnly from '@tailmantic/ui-components/tooltip';
+import TypographyOnly from '@tailmantic/ui-components/typography';
 
 export const rootExports = (
   <>
@@ -73,6 +77,9 @@ export const rootExports = (
     <IconGlyph name="home" />
     <Icons title="Search"><circle cx="12" cy="12" r="8" /></Icons>
     <Table density="dense" hoverable striped><tbody><tr><td>Project</td></tr></tbody></Table>
+    <Tooltip content="Helpful information" placement="right"><button type="button">Help</button></Tooltip>
+    <Typography variant="h2" weight="bold">Heading</Typography>
+    <Typography color="muted">Muted text</Typography>
     <Checkbox
       indeterminate
       onChange={(event) => event.currentTarget.checked}
@@ -120,6 +127,9 @@ export const subpathExports = (
     <IconGlyphOnly name="search" />
     <IconsOnly title="Search"><circle cx="12" cy="12" r="8" /></IconsOnly>
     <TableOnly stickyHeader><tbody><tr><td>Project</td></tr></tbody></TableOnly>
+    <TooltipOnly content="Help" placement="bottom"><button type="button">Help</button></TooltipOnly>
+    <TypographyOnly variant="caption" color="secondary">Caption</TypographyOnly>
+    <TypographyOnly color="muted">Muted text</TypographyOnly>
   </>
 );
 

@@ -34,8 +34,6 @@ import ClickAwayListenerDemo from './ui/click-away-listener/ClickAwayListenerDem
 import ModalDemo from './ui/modal/ModalDemo.jsx';
 import PopperDemo from './ui/popper/PopperDemo.jsx';
 import PortalDemo from './ui/portal/PortalDemo.jsx';
-import TooltipDemo from './ui/tooltip/TooltipDemo.jsx';
-import TypographyDemo from './ui/typography/TypographyDemo.jsx';
 
 function FloatingDemo({ demoId }) {
   const anchorRef = useRef(null);
@@ -180,11 +178,9 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'progress') return <ProgressDemo demoId={demoId} />;
   if (component.slug === 'snackbar') return <SnackbarDemo demoId={demoId} />;
   if (component.slug === 'skeleton') return <SkeletonDemo demoId={demoId} />;
-  if (component.slug === 'tooltip') return <TooltipDemo demoId={demoId} />;
-  if (component.slug === 'typography') return <TypographyDemo demoId={demoId} />;
-  if (demoId.startsWith('tooltip') || demoId.startsWith('popover') || demoId.startsWith('autocomplete')) return <FloatingDemo demoId={demoId} />;
+  if (demoId.startsWith('popover') || demoId.startsWith('autocomplete')) return <FloatingDemo demoId={demoId} />;
   if (demoId.startsWith('checkbox')) return <SelectionPreview demoId={demoId} />;
-  if (demoId.startsWith('avatar') || demoId.startsWith('badge') || demoId.startsWith('chip') || demoId.startsWith('typography')) return <DisplayPreview demoId={demoId} />;
+  if (demoId.startsWith('avatar') || demoId.startsWith('badge') || demoId.startsWith('chip')) return <DisplayPreview demoId={demoId} />;
   if (demoId.startsWith('alert') || demoId.startsWith('dialog') || demoId.startsWith('progress') || demoId.startsWith('snackbar')) return <FeedbackPreview demoId={demoId} />;
   if (demoId.startsWith('accordion') || demoId.startsWith('app-bar') || demoId.startsWith('card') || demoId.startsWith('paper')) return <SurfacePreview demoId={demoId} />;
   if (demoId.startsWith('bottom-navigation') || demoId.startsWith('drawer')) return <NavigationPreview demoId={demoId} />;

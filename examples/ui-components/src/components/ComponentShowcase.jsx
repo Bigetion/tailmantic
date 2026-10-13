@@ -14,36 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const TOOLTIP_DEMOS = {
-  tooltip: {
-    title: 'Accessible helper',
-    caption: 'Reveal concise supporting information on hover or keyboard focus.',
-  },
-  'tooltip-placements': {
-    title: 'Placement controls',
-    caption: 'Preview top, right, bottom, and left placements using Popper positioning.',
-  },
-  'tooltip-interactive': {
-    title: 'Contextual tooltip',
-    caption: 'Show richer guidance on hover, focus, or click, and dismiss it with Escape.',
-  },
-};
-
-const TYPOGRAPHY_DEMOS = {
-  typography: {
-    title: 'Type scale',
-    caption: 'Build a clear hierarchy from display text through headings, body copy, and captions.',
-  },
-  'typography-weights': {
-    title: 'Font weights',
-    caption: 'Compare regular through bold weights while keeping size and spacing consistent.',
-  },
-  'typography-colors': {
-    title: 'Color and alignment',
-    caption: 'Pair semantic text colors with alignment controls while preserving readability.',
-  },
-};
-
 const ALERT_DEMOS = {
   alert: {
     title: 'Semantic severity',
@@ -392,11 +362,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'tooltip'
-                                                          ? TOOLTIP_DEMOS[demoId]
-                                                            : component.slug === 'typography'
-                                                              ? TYPOGRAPHY_DEMOS[demoId]
-                                                                : component.slug === 'alert'
+        const demo = component.slug === 'alert'
                                                                   ? ALERT_DEMOS[demoId]
                                                                     : component.slug === 'dialog'
                                                                       ? DIALOG_DEMOS[demoId]

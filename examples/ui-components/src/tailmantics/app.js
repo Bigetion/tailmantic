@@ -63,6 +63,12 @@ register.all({
   'demo-card': {
     tw: 'mb-4 overflow-hidden rounded-xl border border-[#293448] bg-[linear-gradient(145deg,rgba(17,23,34,.98),rgba(13,18,27,.98))] shadow-[0_8px_32px_rgba(0,0,0,.12)] transition-[border-color,box-shadow] duration-200 hover:border-[#394967] hover:shadow-[0_14px_44px_rgba(0,0,0,.22)]',
   },
+  'demo-card-overflow-visible': {
+    tw: 'relative z-10 !overflow-visible',
+  },
+  'demo-card-overflow-visible .demo-content': {
+    tw: '!min-h-[190px] !items-end !overflow-visible !pb-3',
+  },
   'demo-card-header': {
     tw: 'flex items-center justify-between border-b border-[#242e3e] px-5 py-4 max-sm:px-4',
   },

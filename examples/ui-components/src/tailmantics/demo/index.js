@@ -1,5 +1,3 @@
-import './tooltip.js';
-import './typography.js';
 import './alert.js';
 import './dialog.js';
 import './progress.js';

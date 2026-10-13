@@ -23,6 +23,8 @@ import TextFieldPage from './TextFieldPage.jsx';
 import TablePage from './TablePage.jsx';
 import ToggleButtonPage from './ToggleButtonPage.jsx';
 import TransferListPage from './TransferListPage.jsx';
+import TooltipPage from './TooltipPage.jsx';
+import TypographyPage from './TypographyPage.jsx';
 
 const componentPages = import.meta.glob('./components/*/Page.jsx', {
   eager: true,
@@ -56,6 +58,8 @@ export default function ComponentPageRoute() {
   if (slug === 'text-field') return <TextFieldPage />;
   if (slug === 'toggle-button') return <ToggleButtonPage />;
   if (slug === 'transfer-list') return <TransferListPage />;
+  if (slug === 'tooltip') return <TooltipPage />;
+  if (slug === 'typography') return <TypographyPage />;
   if (Page) return <Page />;
 
   return (

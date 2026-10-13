@@ -35,7 +35,7 @@ const Typography = forwardRef(function Typography(
       className={cx(
         'rgi-typography',
         `rgi-typography-${variant}`,
-        `rgi-typography-${align}`,
+        `rgi-typography-align-${align}`,
         `rgi-typography-weight-${weight}`,
         color !== 'default' && `rgi-typography-color-${color}`,
         className,

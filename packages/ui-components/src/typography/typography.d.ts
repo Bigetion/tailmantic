@@ -5,6 +5,7 @@ export type TypographyColor =
   | 'default'
   | 'primary'
   | 'secondary'
+  | 'muted'
   | 'success'
   | 'warning'
   | 'danger';
