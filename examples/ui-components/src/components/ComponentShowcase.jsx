@@ -15,23 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const PAPER_DEMOS = {
-  paper: {
-    title: 'Surface elevation',
-    caption:
-      'Compare how subtle elevation levels separate content while keeping the same base surface.',
-  },
-  'paper-elevation': {
-    title: 'Elevation scale',
-    caption:
-      'Choose an elevation level to compare how shadow and surface contrast establish hierarchy.',
-  },
-  'paper-variants': {
-    title: 'Surface variants',
-    caption: 'Compare a contained surface, an outlined panel, and a softly raised content area.',
-  },
-};
-
 const POPOVER_DEMOS = {
   popover: {
     title: 'Project details',
@@ -271,7 +254,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  paper: PAPER_DEMOS,
   popover: POPOVER_DEMOS,
   'bottom-navigation': BOTTOM_NAVIGATION_DEMOS,
   breadcrumbs: BREADCRUMBS_DEMOS,

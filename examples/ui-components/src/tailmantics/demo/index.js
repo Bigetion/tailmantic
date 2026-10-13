@@ -1,4 +1,3 @@
-import './paper.js';
 import './popover.js';
 import './bottom-navigation.js';
 import './breadcrumbs.js';
