@@ -4,6 +4,7 @@ import {
   AccordionHelper,
   AccordionItem,
   AccordionToolbar,
+  Alert,
   Avatar,
   AvatarGroup,
   Autocomplete,
@@ -25,6 +26,7 @@ import AccordionOnly, {
   AccordionItem as AccordionItemOnly,
   AccordionToolbar as AccordionToolbarOnly,
 } from '@tailmantic/ui-components/accordion';
+import AlertOnly from '@tailmantic/ui-components/alert';
 import AvatarOnly, { AvatarGroup as AvatarGroupOnly } from '@tailmantic/ui-components/avatar';
 import ButtonOnly from '@tailmantic/ui-components/button';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
@@ -70,6 +72,9 @@ export const rootExports = (
       <AccordionHelper>Choose a section</AccordionHelper>
     </Accordion>
     <Button variant="outlined" ref={(button) => button?.focus()} />
+    <Alert severity="success" variant="outlined" onClose={(event) => event.currentTarget.remove()}>
+      Saved
+    </Alert>
     <Avatar alt="Jordan Davis" color="indigo" size="xs" />
     <AvatarGroup aria-label="Project team" max={4}>
       <Avatar alt="Jordan Davis">JD</Avatar>
@@ -117,6 +122,7 @@ export const subpathExports = (
       </AccordionItemOnly>
       <AccordionHelperOnly>Choose a section</AccordionHelperOnly>
     </AccordionOnly>
+    <AlertOnly severity="warning" icon={null}>Storage is almost full.</AlertOnly>
     <ButtonOnly size="small" />
     <CheckboxOnly defaultChecked />
     <AvatarOnly alt="Morgan Kim" size="sm" />

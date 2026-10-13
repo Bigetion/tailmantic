@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { componentCatalog } from '../data/components.js';
+import AlertPage from './AlertPage.jsx';
 import AccordionPage from './AccordionPage.jsx';
 import AvatarPage from './AvatarPage.jsx';
 import AutocompletePage from './AutocompletePage.jsx';
@@ -35,6 +36,7 @@ export default function ComponentPageRoute() {
   const { slug } = useParams();
   const Page = componentPages[`./components/${slug}/Page.jsx`];
 
+  if (slug === 'alert') return <AlertPage />;
   if (slug === 'accordion') return <AccordionPage />;
   if (slug === 'avatar') return <AvatarPage />;
   if (slug === 'autocomplete') return <AutocompletePage />;

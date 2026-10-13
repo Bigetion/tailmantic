@@ -30,3 +30,18 @@ register('rgi-alert-close', {
     tw: 'inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded border-0 bg-transparent p-0 text-current opacity-70 hover:bg-white/10 hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-current',
   },
 });
+register('rgi-alert-example-stack', {
+  base: { tw: 'flex w-full max-w-[620px] flex-col gap-2' },
+});
+register('rgi-alert-example', {
+  base: { tw: '!gap-2.5 !rounded-md !px-3 !py-2.5 !text-[10px]' },
+});
+register('rgi-alert-example-actions', {
+  base: { tw: 'flex flex-wrap items-center gap-1' },
+});
+register('rgi-alert-example-action', {
+  base: { tw: '!h-7 !min-h-0 !px-2 !text-[9px] !text-current hover:!bg-white/10' },
+});
+register('rgi-alert-example-empty', {
+  base: { tw: 'flex min-h-[70px] w-full flex-wrap items-center justify-between gap-2 rounded-lg border border-dashed border-[var(--border)] px-3 py-2 text-[10px] text-[var(--muted)]' },
+});

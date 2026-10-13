@@ -1,4 +1,3 @@
-import './alert.js';
 import './dialog.js';
 import './progress.js';
 import './snackbar.js';

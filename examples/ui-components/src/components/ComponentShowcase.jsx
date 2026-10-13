@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const ALERT_DEMOS = {
-  alert: {
-    title: 'Semantic severity',
-    caption: 'Communicate informational, successful, warning, and error states with a clear icon and message.',
-  },
-  'alert-outlined': {
-    title: 'Outlined alerts',
-    caption: 'Keep the same semantic color cues with a lighter, transparent surface.',
-  },
-  'alert-actions': {
-    title: 'Actions and dismissal',
-    caption: 'Offer a useful follow-up action and let users dismiss or restore the message.',
-  },
-};
-
 const DIALOG_DEMOS = {
   dialog: {
     title: 'Confirmation dialog',
@@ -362,9 +347,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'alert'
-                                                                  ? ALERT_DEMOS[demoId]
-                                                                    : component.slug === 'dialog'
+        const demo = component.slug === 'dialog'
                                                                       ? DIALOG_DEMOS[demoId]
                                                                       : component.slug === 'progress'
                                                                         ? PROGRESS_DEMOS[demoId]
