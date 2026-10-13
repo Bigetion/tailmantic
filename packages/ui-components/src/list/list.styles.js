@@ -33,7 +33,7 @@ register('rgi-list-example', {
 });
 
 register('rgi-list-example-navigation-item', {
-  base: { tw: 'min-h-0 p-0' },
+  base: { tw: '!min-h-0 !p-0' },
 });
 
 register('rgi-list-example-navigation-button', {
@@ -97,7 +97,7 @@ register('rgi-list-example-footer', {
 });
 
 register('rgi-list-example-setting-item', {
-  base: { tw: 'min-h-0 p-0' },
+  base: { tw: '!min-h-0 !p-0' },
 });
 
 register('rgi-list-example-setting-button', {
