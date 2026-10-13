@@ -21,6 +21,7 @@ import RadioGroupPage from './RadioGroupPage.jsx';
 import RatingPage from './RatingPage.jsx';
 import SelectPage from './SelectPage.jsx';
 import SliderPage from './SliderPage.jsx';
+import SnackbarPage from './SnackbarPage.jsx';
 import SwitchPage from './SwitchPage.jsx';
 import TablePage from './TablePage.jsx';
 import TextFieldPage from './TextFieldPage.jsx';
@@ -59,6 +60,7 @@ export default function ComponentPageRoute() {
   if (slug === 'rating') return <RatingPage />;
   if (slug === 'select') return <SelectPage />;
   if (slug === 'slider') return <SliderPage />;
+  if (slug === 'snackbar') return <SnackbarPage />;
   if (slug === 'switch') return <SwitchPage />;
   if (slug === 'table') return <TablePage />;
   if (slug === 'text-field') return <TextFieldPage />;

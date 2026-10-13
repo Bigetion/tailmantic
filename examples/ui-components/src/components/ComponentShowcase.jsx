@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const SNACKBAR_DEMOS = {
-  snackbar: {
-    title: 'Dismissible notification',
-    caption: 'Show a brief status message, then dismiss it or let it disappear automatically.',
-  },
-  'snackbar-action': {
-    title: 'Snackbar with action',
-    caption: 'Offer a quick, reversible action while keeping the message concise and non-blocking.',
-  },
-  'snackbar-position': {
-    title: 'Placement options',
-    caption: 'Compare start, center, and end placement within a notification area.',
-  },
-};
-
 const SKELETON_DEMOS = {
   skeleton: {
     title: 'Loading profile card',
@@ -317,9 +302,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'snackbar'
-                                                                            ? SNACKBAR_DEMOS[demoId]
-                                                                              : component.slug === 'skeleton'
+        const demo = component.slug === 'skeleton'
                                                                                 ? SKELETON_DEMOS[demoId]
                                                                                   : component.slug === 'app-bar'
                                                                                         ? APP_BAR_DEMOS[demoId]

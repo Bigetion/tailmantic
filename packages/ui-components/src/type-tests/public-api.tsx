@@ -17,6 +17,7 @@ import {
   Icons,
   Progress,
   Select,
+  Snackbar,
   Table,
   TextField,
   Tooltip,
@@ -38,6 +39,7 @@ import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-componen
 import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
 import ProgressOnly from '@tailmantic/ui-components/progress';
+import SnackbarOnly from '@tailmantic/ui-components/snackbar';
 import TableOnly from '@tailmantic/ui-components/table';
 import TooltipOnly from '@tailmantic/ui-components/tooltip';
 import TypographyOnly from '@tailmantic/ui-components/typography';
@@ -111,6 +113,14 @@ export const rootExports = (
       Dialog content
     </Dialog>
     <Progress label="Project upload" max={200} value={116} />
+    <Snackbar
+      open
+      severity="success"
+      action={<button type="button">Undo</button>}
+      onClose={(reason) => reason}
+    >
+      Saved
+    </Snackbar>
     <TextField
       label="Search"
       startAdornment="Search"
@@ -148,6 +158,9 @@ export const subpathExports = (
     <IconGlyphOnly name="search" />
     <IconsOnly title="Search"><circle cx="12" cy="12" r="8" /></IconsOnly>
     <ProgressOnly label="Subpath loading" variant="circular" />
+    <SnackbarOnly open severity="warning" autoHideDuration={5000}>
+      Pending
+    </SnackbarOnly>
     <TableOnly stickyHeader><tbody><tr><td>Project</td></tr></tbody></TableOnly>
     <TooltipOnly content="Help" placement="bottom"><button type="button">Help</button></TooltipOnly>
     <TypographyOnly variant="caption" color="secondary">Caption</TypographyOnly>

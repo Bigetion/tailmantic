@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from './Popper.jsx';
-import SnackbarDemo from './ui/snackbar/SnackbarDemo.jsx';
 import SkeletonDemo from './ui/skeleton/SkeletonDemo.jsx';
 import AppBarDemo from './ui/app-bar/AppBarDemo.jsx';
 import CardDemo from './ui/card/CardDemo.jsx';
@@ -134,11 +133,6 @@ function DisplayPreview({ demoId }) {
   return <div className="preview-row"><span className="rgi-chip rgi-chip-filled">Data display</span><span className="rgi-chip rgi-chip-primary">Tailmantic UI</span><span className="preview-note">Responsive component preview</span></div>;
 }
 
-function FeedbackPreview({ demoId }) {
-  const [open, setOpen] = useState(demoId.startsWith('snackbar'));
-  return <div className="snackbar-demo"><button className="rgi-button rgi-button-contained" type="button" onClick={() => setOpen(true)}>Show notification</button>{open && <div className="snackbar"><span>File saved successfully</span><button type="button" onClick={() => setOpen(false)}>UNDO</button><button type="button" aria-label="Dismiss" onClick={() => setOpen(false)}><X size={14} /></button></div>}</div>;
-}
-
 function SurfacePreview({ demoId }) {
   const [selected, setSelected] = useState(0);
   return <div className="preview-row"><span className="rgi-chip rgi-chip-filled"><Layers size={14} /> Surface</span><span className="preview-note">Composable content surface</span></div>;
@@ -170,12 +164,10 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'card') return <CardDemo demoId={demoId} />;
   if (component.slug === 'paper') return <PaperDemo demoId={demoId} />;
   if (component.slug === 'popover') return <PopoverDemo demoId={demoId} />;
-  if (component.slug === 'snackbar') return <SnackbarDemo demoId={demoId} />;
   if (component.slug === 'skeleton') return <SkeletonDemo demoId={demoId} />;
   if (demoId.startsWith('popover') || demoId.startsWith('autocomplete')) return <FloatingDemo demoId={demoId} />;
   if (demoId.startsWith('checkbox')) return <SelectionPreview demoId={demoId} />;
   if (demoId.startsWith('avatar') || demoId.startsWith('badge') || demoId.startsWith('chip')) return <DisplayPreview demoId={demoId} />;
-  if (demoId.startsWith('snackbar')) return <FeedbackPreview demoId={demoId} />;
   if (demoId.startsWith('accordion') || demoId.startsWith('app-bar') || demoId.startsWith('card') || demoId.startsWith('paper')) return <SurfacePreview demoId={demoId} />;
   if (demoId.startsWith('bottom-navigation') || demoId.startsWith('drawer')) return <NavigationPreview demoId={demoId} />;
   return <div className="preview-row"><span className="rgi-chip rgi-chip-primary">{component.name}</span><span className="preview-note">Interactive {component.name.toLowerCase()} example</span></div>;
