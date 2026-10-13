@@ -5,9 +5,9 @@ import {
   AccordionItem,
   AccordionToolbar,
   Alert,
+  Autocomplete,
   Avatar,
   AvatarGroup,
-  Autocomplete,
   Button,
   Checkbox,
   Chip,
@@ -15,12 +15,13 @@ import {
   IconGlyph,
   type IconGlyphName,
   Icons,
-  Table,
-  Tooltip,
-  Typography,
+  Progress,
   Select,
+  Table,
   TextField,
+  Tooltip,
   TransferList,
+  Typography,
 } from '@tailmantic/ui-components';
 import AccordionOnly, {
   AccordionHelper as AccordionHelperOnly,
@@ -33,9 +34,10 @@ import ButtonOnly from '@tailmantic/ui-components/button';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
 import DialogOnly from '@tailmantic/ui-components/dialog';
-import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-components/icon-glyph';
+import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
+import ProgressOnly from '@tailmantic/ui-components/progress';
 import TableOnly from '@tailmantic/ui-components/table';
 import TooltipOnly from '@tailmantic/ui-components/tooltip';
 import TypographyOnly from '@tailmantic/ui-components/typography';
@@ -108,6 +110,7 @@ export const rootExports = (
     >
       Dialog content
     </Dialog>
+    <Progress label="Project upload" max={200} value={116} />
     <TextField
       label="Search"
       startAdornment="Search"
@@ -144,6 +147,7 @@ export const subpathExports = (
     <DialogOnly open title="Details" closeLabel="Dismiss details" />
     <IconGlyphOnly name="search" />
     <IconsOnly title="Search"><circle cx="12" cy="12" r="8" /></IconsOnly>
+    <ProgressOnly label="Subpath loading" variant="circular" />
     <TableOnly stickyHeader><tbody><tr><td>Project</td></tr></tbody></TableOnly>
     <TooltipOnly content="Help" placement="bottom"><button type="button">Help</button></TooltipOnly>
     <TypographyOnly variant="caption" color="secondary">Caption</TypographyOnly>

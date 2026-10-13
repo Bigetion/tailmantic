@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const PROGRESS_DEMOS = {
-  progress: {
-    title: 'Linear progress',
-    caption: 'Show a task’s current completion, with an indeterminate state for work whose duration is not known.',
-  },
-  'progress-circular': {
-    title: 'Circular progress',
-    caption: 'Use a compact circular indicator for ongoing work, either with a known value or without one.',
-  },
-  'progress-buffer': {
-    title: 'Buffered progress',
-    caption: 'Distinguish completed work from content that has been buffered and is ready to process.',
-  },
-};
-
 const SNACKBAR_DEMOS = {
   snackbar: {
     title: 'Dismissible notification',
@@ -332,9 +317,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'progress'
-                                                                        ? PROGRESS_DEMOS[demoId]
-                                                                          : component.slug === 'snackbar'
+        const demo = component.slug === 'snackbar'
                                                                             ? SNACKBAR_DEMOS[demoId]
                                                                               : component.slug === 'skeleton'
                                                                                 ? SKELETON_DEMOS[demoId]

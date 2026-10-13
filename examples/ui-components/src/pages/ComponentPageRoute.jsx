@@ -1,31 +1,32 @@
 import { Link, useParams } from 'react-router-dom';
 import { componentCatalog } from '../data/components.js';
-import AlertPage from './AlertPage.jsx';
 import AccordionPage from './AccordionPage.jsx';
-import AvatarPage from './AvatarPage.jsx';
+import AlertPage from './AlertPage.jsx';
 import AutocompletePage from './AutocompletePage.jsx';
+import AvatarPage from './AvatarPage.jsx';
 import BadgePage from './BadgePage.jsx';
 import ButtonGroupPage from './ButtonGroupPage.jsx';
 import ButtonPage from './ButtonPage.jsx';
 import CheckboxPage from './CheckboxPage.jsx';
 import ChipPage from './ChipPage.jsx';
-import DividerPage from './DividerPage.jsx';
 import DialogPage from './DialogPage.jsx';
+import DividerPage from './DividerPage.jsx';
 import FloatingActionButtonPage from './FloatingActionButtonPage.jsx';
-import IconsPage from './IconsPage.jsx';
 import IconGlyphPage from './IconGlyphPage.jsx';
+import IconsPage from './IconsPage.jsx';
 import ListPage from './ListPage.jsx';
 import NumberFieldPage from './NumberFieldPage.jsx';
+import ProgressPage from './ProgressPage.jsx';
 import RadioGroupPage from './RadioGroupPage.jsx';
 import RatingPage from './RatingPage.jsx';
 import SelectPage from './SelectPage.jsx';
 import SliderPage from './SliderPage.jsx';
 import SwitchPage from './SwitchPage.jsx';
-import TextFieldPage from './TextFieldPage.jsx';
 import TablePage from './TablePage.jsx';
+import TextFieldPage from './TextFieldPage.jsx';
 import ToggleButtonPage from './ToggleButtonPage.jsx';
-import TransferListPage from './TransferListPage.jsx';
 import TooltipPage from './TooltipPage.jsx';
+import TransferListPage from './TransferListPage.jsx';
 import TypographyPage from './TypographyPage.jsx';
 
 const componentPages = import.meta.glob('./components/*/Page.jsx', {
@@ -53,6 +54,7 @@ export default function ComponentPageRoute() {
   if (slug === 'icon-glyph') return <IconGlyphPage />;
   if (slug === 'list') return <ListPage />;
   if (slug === 'number-field') return <NumberFieldPage />;
+  if (slug === 'progress') return <ProgressPage />;
   if (slug === 'radio-group') return <RadioGroupPage />;
   if (slug === 'rating') return <RatingPage />;
   if (slug === 'select') return <SelectPage />;

@@ -1,4 +1,3 @@
-import './progress.js';
 import './snackbar.js';
 import './skeleton.js';
 import './app-bar.js';
