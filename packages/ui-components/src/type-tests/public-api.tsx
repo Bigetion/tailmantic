@@ -9,6 +9,8 @@ import {
   Autocomplete,
   Avatar,
   AvatarGroup,
+  BottomNavigation,
+  BottomNavigationItem,
   Button,
   Card,
   Checkbox,
@@ -37,6 +39,9 @@ import AccordionOnly, {
 import AlertOnly from '@tailmantic/ui-components/alert';
 import AppBarOnly from '@tailmantic/ui-components/app-bar';
 import AvatarOnly, { AvatarGroup as AvatarGroupOnly } from '@tailmantic/ui-components/avatar';
+import BottomNavigationOnly, {
+  BottomNavigationItem as BottomNavigationItemOnly,
+} from '@tailmantic/ui-components/bottom-navigation';
 import ButtonOnly from '@tailmantic/ui-components/button';
 import CardOnly from '@tailmantic/ui-components/card';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
@@ -88,6 +93,13 @@ export const rootExports = (
       <AccordionHelper>Choose a section</AccordionHelper>
     </Accordion>
     <Button variant="outlined" ref={(button) => button?.focus()} />
+    <BottomNavigation
+      aria-label="Primary navigation"
+      value="home"
+      onChange={(_event, value) => value}
+    >
+      <BottomNavigationItem value="home" label="Home" />
+    </BottomNavigation>
     <Card variant="outlined" elevation={2} interactive>
       Project summary
     </Card>
@@ -186,6 +198,9 @@ export const subpathExports = (
       Subpath workspace
     </AppBarOnly>
     <ButtonOnly size="small" />
+    <BottomNavigationOnly value="home">
+      <BottomNavigationItemOnly value="home" label="Home" />
+    </BottomNavigationOnly>
     <CardOnly as="section" variant="flat" elevation={0}>
       Subpath project summary
     </CardOnly>

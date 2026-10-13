@@ -15,23 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const BOTTOM_NAVIGATION_DEMOS = {
-  'bottom-navigation': {
-    title: 'Primary destinations',
-    caption:
-      'Switch between the main sections of an application and reflect the active destination.',
-  },
-  'bottom-navigation-labels': {
-    title: 'Label display behavior',
-    caption:
-      'Compare labeled destinations with a compact mode that shows a label only for the selected item.',
-  },
-  'bottom-navigation-icons': {
-    title: 'Badges and icon states',
-    caption: 'Add a small notification count while keeping selection and unread state accessible.',
-  },
-};
-
 const BREADCRUMBS_DEMOS = {
   breadcrumbs: {
     title: 'Page hierarchy',
@@ -236,7 +219,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  'bottom-navigation': BOTTOM_NAVIGATION_DEMOS,
   breadcrumbs: BREADCRUMBS_DEMOS,
   drawer: DRAWER_DEMOS,
   link: LINK_DEMOS,

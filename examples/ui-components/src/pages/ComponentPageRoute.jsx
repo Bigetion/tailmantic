@@ -6,6 +6,7 @@ import AppBarPage from './AppBarPage.jsx';
 import AutocompletePage from './AutocompletePage.jsx';
 import AvatarPage from './AvatarPage.jsx';
 import BadgePage from './BadgePage.jsx';
+import BottomNavigationPage from './BottomNavigationPage.jsx';
 import ButtonGroupPage from './ButtonGroupPage.jsx';
 import ButtonPage from './ButtonPage.jsx';
 import CardPage from './CardPage.jsx';
@@ -50,6 +51,7 @@ export default function ComponentPageRoute() {
   if (slug === 'avatar') return <AvatarPage />;
   if (slug === 'autocomplete') return <AutocompletePage />;
   if (slug === 'badge') return <BadgePage />;
+  if (slug === 'bottom-navigation') return <BottomNavigationPage />;
   if (slug === 'button') return <ButtonPage />;
   if (slug === 'button-group') return <ButtonGroupPage />;
   if (slug === 'card') return <CardPage />;

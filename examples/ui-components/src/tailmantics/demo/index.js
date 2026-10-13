@@ -1,4 +1,3 @@
-import './bottom-navigation.js';
 import './breadcrumbs.js';
 import './drawer.js';
 import './link.js';

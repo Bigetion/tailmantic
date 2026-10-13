@@ -12,7 +12,6 @@ import {
 import { useCallback, useRef, useState } from 'react';
 import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from './Popper.jsx';
-import BottomNavigationDemo from './ui/bottom-navigation/BottomNavigationDemo.jsx';
 import BreadcrumbsDemo from './ui/breadcrumbs/BreadcrumbsDemo.jsx';
 import ClickAwayListenerDemo from './ui/click-away-listener/ClickAwayListenerDemo.jsx';
 import DrawerDemo from './ui/drawer/DrawerDemo.jsx';
@@ -268,7 +267,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'link') return <LinkDemo demoId={demoId} />;
   if (component.slug === 'drawer') return <DrawerDemo demoId={demoId} />;
   if (component.slug === 'breadcrumbs') return <BreadcrumbsDemo demoId={demoId} />;
-  if (component.slug === 'bottom-navigation') return <BottomNavigationDemo demoId={demoId} />;
   if (demoId.startsWith('popover') || demoId.startsWith('autocomplete'))
     return <FloatingDemo demoId={demoId} />;
   if (demoId.startsWith('checkbox')) return <SelectionPreview demoId={demoId} />;
