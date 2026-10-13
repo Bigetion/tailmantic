@@ -21,6 +21,7 @@ import IconGlyphPage from './IconGlyphPage.jsx';
 import IconsPage from './IconsPage.jsx';
 import LinkPage from './LinkPage.jsx';
 import ListPage from './ListPage.jsx';
+import MenuPage from './MenuPage.jsx';
 import NumberFieldPage from './NumberFieldPage.jsx';
 import PaperPage from './PaperPage.jsx';
 import PopoverPage from './PopoverPage.jsx';
@@ -69,6 +70,7 @@ export default function ComponentPageRoute() {
   if (slug === 'icon-glyph') return <IconGlyphPage />;
   if (slug === 'list') return <ListPage />;
   if (slug === 'link') return <LinkPage />;
+  if (slug === 'menu') return <MenuPage />;
   if (slug === 'number-field') return <NumberFieldPage />;
   if (slug === 'paper') return <PaperPage />;
   if (slug === 'popover') return <PopoverPage />;

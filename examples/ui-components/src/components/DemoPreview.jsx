@@ -13,7 +13,6 @@ import { useCallback, useRef, useState } from 'react';
 import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from './Popper.jsx';
 import ClickAwayListenerDemo from './ui/click-away-listener/ClickAwayListenerDemo.jsx';
-import MenuDemo from './ui/menu/MenuDemo.jsx';
 import ModalDemo from './ui/modal/ModalDemo.jsx';
 import PaginationDemo from './ui/pagination/PaginationDemo.jsx';
 import PopperDemo from './ui/popper/PopperDemo.jsx';
@@ -256,7 +255,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'popper') return <PopperDemo demoId={demoId} />;
   if (component.slug === 'modal') return <ModalDemo demoId={demoId} />;
   if (component.slug === 'click-away-listener') return <ClickAwayListenerDemo demoId={demoId} />;
-  if (component.slug === 'menu') return <MenuDemo demoId={demoId} />;
   if (component.slug === 'pagination') return <PaginationDemo demoId={demoId} />;
   if (component.slug === 'speed-dial') return <SpeedDialDemo demoId={demoId} />;
   if (component.slug === 'stepper') return <StepperDemo demoId={demoId} />;

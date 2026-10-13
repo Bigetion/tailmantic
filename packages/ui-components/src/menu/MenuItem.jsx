@@ -3,7 +3,7 @@ import { cx } from 'tailmantic';
 import './menu.styles.js';
 
 const MenuItem = forwardRef(function MenuItem(
-  { children, className, disabled = false, onClick, onClose, ...props },
+  { children, className, disabled = false, onClick, onClose, role = 'menuitem', ...props },
   ref,
 ) {
   return (
@@ -11,7 +11,7 @@ const MenuItem = forwardRef(function MenuItem(
       {...props}
       ref={ref}
       type="button"
-      role="menuitem"
+      role={role}
       aria-disabled={disabled || undefined}
       tabIndex={disabled ? -1 : 0}
       className={cx('rgi-menu-item', disabled && 'rgi-menu-item-disabled', className)}

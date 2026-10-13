@@ -22,6 +22,8 @@ import {
   type IconGlyphName,
   Icons,
   Link,
+  Menu,
+  MenuItem,
   Paper,
   Popover,
   Progress,
@@ -56,6 +58,7 @@ import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-componen
 import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
 import LinkOnly from '@tailmantic/ui-components/link';
+import MenuOnly, { MenuItem as MenuItemOnly } from '@tailmantic/ui-components/menu';
 import PaperOnly from '@tailmantic/ui-components/paper';
 import PopoverOnly from '@tailmantic/ui-components/popover';
 import ProgressOnly from '@tailmantic/ui-components/progress';
@@ -130,6 +133,9 @@ export const rootExports = (
     <Link href="/workspace" underline="always" color="secondary">
       Workspace
     </Link>
+    <Menu open={false} aria-label="Workspace actions" onClose={(event) => event.preventDefault()}>
+      <MenuItem disabled>Unavailable</MenuItem>
+    </Menu>
     <Paper elevation={3} square>
       Surface content
     </Paper>
@@ -239,6 +245,9 @@ export const subpathExports = (
     <LinkOnly href="/workspace" underline="none" color="inherit">
       Workspace
     </LinkOnly>
+    <MenuOnly open={false} placement="bottom-end">
+      <MenuItemOnly>Open</MenuItemOnly>
+    </MenuOnly>
     <PaperOnly elevation={5}>Subpath surface</PaperOnly>
     <PopoverOnly open={false} placement="top-start" label="Subpath details" />
     <ProgressOnly label="Subpath loading" variant="circular" />

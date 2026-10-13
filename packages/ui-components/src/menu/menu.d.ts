@@ -11,6 +11,7 @@ export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
 }
 export interface MenuItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
+  role?: 'menuitem' | 'menuitemcheckbox' | 'menuitemradio';
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 declare const Menu: import('react').ForwardRefExoticComponent<

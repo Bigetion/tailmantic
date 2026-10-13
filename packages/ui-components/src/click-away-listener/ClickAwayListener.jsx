@@ -8,6 +8,7 @@ const ClickAwayListener = forwardRef(function ClickAwayListener(
 ) {
   const rootRef = useRef(null);
   const lastTouchTime = useRef(0);
+  const activated = useRef(false);
 
   function setRef(node) {
     rootRef.current = node;
@@ -17,6 +18,10 @@ const ClickAwayListener = forwardRef(function ClickAwayListener(
 
   useEffect(() => {
     if (typeof document === 'undefined') return undefined;
+    activated.current = false;
+    const activationTimer = window.setTimeout(() => {
+      activated.current = true;
+    }, 0);
     const isOutside = (event) => {
       const root = rootRef.current;
       if (!root) return false;
@@ -24,10 +29,12 @@ const ClickAwayListener = forwardRef(function ClickAwayListener(
       return path ? !path.includes(root) : !root.contains(event.target);
     };
     const handleMouse = (event) => {
+      if (!activated.current) return;
       if (Date.now() - lastTouchTime.current < 800) return;
       if (isOutside(event)) onClickAway?.(event);
     };
     const handleTouch = (event) => {
+      if (!activated.current) return;
       lastTouchTime.current = Date.now();
       if (isOutside(event)) onClickAway?.(event);
     };
@@ -35,6 +42,8 @@ const ClickAwayListener = forwardRef(function ClickAwayListener(
     if (touchEvent !== 'none')
       document.addEventListener(touchEvent, handleTouch, { passive: true });
     return () => {
+      window.clearTimeout(activationTimer);
+      activated.current = false;
       if (mouseEvent !== 'none') document.removeEventListener(mouseEvent, handleMouse);
       if (touchEvent !== 'none') document.removeEventListener(touchEvent, handleTouch);
     };

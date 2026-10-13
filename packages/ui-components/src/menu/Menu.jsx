@@ -1,4 +1,12 @@
-import { Children, cloneElement, forwardRef, isValidElement, useEffect, useRef } from 'react';
+import {
+  Children,
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react';
 import { cx } from 'tailmantic';
 import ClickAwayListener from '../click-away-listener/ClickAwayListener.jsx';
 import Popper from '../popper/Popper.jsx';
@@ -18,15 +26,25 @@ const Menu = forwardRef(function Menu(
   ref,
 ) {
   const menuRef = useRef(null);
-  function setRef(node) {
-    menuRef.current = node;
-    if (typeof ref === 'function') ref(node);
-    else if (ref) ref.current = node;
-  }
+  const setRef = useCallback(
+    (node) => {
+      menuRef.current = node;
+      if (typeof ref === 'function') ref(node);
+      else if (ref) ref.current = node;
+    },
+    [ref],
+  );
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const frame = window.requestAnimationFrame(() => {
+      menuRef.current?.querySelector('[role^="menuitem"]:not([aria-disabled="true"])')?.focus();
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [open]);
 
   useEffect(() => {
     if (!open || typeof window === 'undefined') return undefined;
-    menuRef.current?.querySelector('[role="menuitem"]:not([aria-disabled="true"])')?.focus();
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') onClose?.(event);
     };
@@ -48,7 +66,7 @@ const Menu = forwardRef(function Menu(
           if (event.defaultPrevented) return;
           const items = [
             ...event.currentTarget.querySelectorAll(
-              '[role="menuitem"]:not([aria-disabled="true"])',
+              '[role^="menuitem"]:not([aria-disabled="true"])',
             ),
           ];
           const current = items.indexOf(document.activeElement);

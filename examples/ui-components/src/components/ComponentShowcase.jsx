@@ -15,24 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const MENU_DEMOS = {
-  menu: {
-    title: 'Context actions',
-    caption:
-      'Open a compact action list anchored to its trigger and dismiss it with Escape or a click away.',
-  },
-  'menu-placements': {
-    title: 'Placement options',
-    caption:
-      'Position a menu around its trigger and let Popper keep it within the available viewport.',
-  },
-  'menu-selection': {
-    title: 'Selectable options',
-    caption:
-      'Choose a sort order from a keyboard-accessible menu and reflect the current selection.',
-  },
-};
-
 const PAGINATION_DEMOS = {
   pagination: {
     title: 'Page navigation',
@@ -170,7 +152,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  menu: MENU_DEMOS,
   pagination: PAGINATION_DEMOS,
   'speed-dial': SPEED_DIAL_DEMOS,
   stepper: STEPPER_DEMOS,
