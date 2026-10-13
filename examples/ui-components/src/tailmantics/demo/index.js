@@ -1,4 +1,3 @@
-import './drawer.js';
 import './link.js';
 import './menu.js';
 import './pagination.js';

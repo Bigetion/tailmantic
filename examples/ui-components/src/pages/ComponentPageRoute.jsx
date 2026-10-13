@@ -15,6 +15,7 @@ import CheckboxPage from './CheckboxPage.jsx';
 import ChipPage from './ChipPage.jsx';
 import DialogPage from './DialogPage.jsx';
 import DividerPage from './DividerPage.jsx';
+import DrawerPage from './DrawerPage.jsx';
 import FloatingActionButtonPage from './FloatingActionButtonPage.jsx';
 import IconGlyphPage from './IconGlyphPage.jsx';
 import IconsPage from './IconsPage.jsx';
@@ -61,6 +62,7 @@ export default function ComponentPageRoute() {
   if (slug === 'chip') return <ChipPage />;
   if (slug === 'divider') return <DividerPage />;
   if (slug === 'dialog') return <DialogPage />;
+  if (slug === 'drawer') return <DrawerPage />;
   if (slug === 'floating-action-button') return <FloatingActionButtonPage />;
   if (slug === 'icons') return <IconsPage />;
   if (slug === 'icon-glyph') return <IconGlyphPage />;

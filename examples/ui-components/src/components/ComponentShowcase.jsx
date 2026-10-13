@@ -15,22 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const DRAWER_DEMOS = {
-  drawer: {
-    title: 'Temporary navigation drawer',
-    caption:
-      'Open a modal side panel for primary destinations and dismiss it with Escape or a backdrop click.',
-  },
-  'drawer-temporary': {
-    title: 'Temporary drawer with sections',
-    caption: 'Group related navigation destinations and close the drawer after selecting a page.',
-  },
-  'drawer-permanent': {
-    title: 'Permanent navigation drawer',
-    caption: 'Keep navigation visible beside the main content in a persistent application layout.',
-  },
-};
-
 const LINK_DEMOS = {
   link: {
     title: 'Inline links',
@@ -203,7 +187,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  drawer: DRAWER_DEMOS,
   link: LINK_DEMOS,
   menu: MENU_DEMOS,
   pagination: PAGINATION_DEMOS,

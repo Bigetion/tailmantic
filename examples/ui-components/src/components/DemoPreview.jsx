@@ -13,7 +13,6 @@ import { useCallback, useRef, useState } from 'react';
 import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from './Popper.jsx';
 import ClickAwayListenerDemo from './ui/click-away-listener/ClickAwayListenerDemo.jsx';
-import DrawerDemo from './ui/drawer/DrawerDemo.jsx';
 import LinkDemo from './ui/link/LinkDemo.jsx';
 import MenuDemo from './ui/menu/MenuDemo.jsx';
 import ModalDemo from './ui/modal/ModalDemo.jsx';
@@ -264,7 +263,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'stepper') return <StepperDemo demoId={demoId} />;
   if (component.slug === 'tabs') return <TabsDemo demoId={demoId} />;
   if (component.slug === 'link') return <LinkDemo demoId={demoId} />;
-  if (component.slug === 'drawer') return <DrawerDemo demoId={demoId} />;
   if (demoId.startsWith('popover') || demoId.startsWith('autocomplete'))
     return <FloatingDemo demoId={demoId} />;
   if (demoId.startsWith('checkbox')) return <SelectionPreview demoId={demoId} />;
@@ -277,8 +275,7 @@ function DemoPreview({ component, demoId }) {
     demoId.startsWith('paper')
   )
     return <SurfacePreview demoId={demoId} />;
-  if (demoId.startsWith('bottom-navigation') || demoId.startsWith('drawer'))
-    return <NavigationPreview demoId={demoId} />;
+  if (demoId.startsWith('bottom-navigation')) return <NavigationPreview demoId={demoId} />;
   return (
     <div className="preview-row">
       <span className="rgi-chip rgi-chip-primary">{component.name}</span>

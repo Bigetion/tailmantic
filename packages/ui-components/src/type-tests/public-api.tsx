@@ -17,6 +17,7 @@ import {
   Checkbox,
   Chip,
   Dialog,
+  Drawer,
   IconGlyph,
   type IconGlyphName,
   Icons,
@@ -49,6 +50,7 @@ import CardOnly from '@tailmantic/ui-components/card';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
 import DialogOnly from '@tailmantic/ui-components/dialog';
+import DrawerOnly from '@tailmantic/ui-components/drawer';
 import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-components/icon-glyph';
 import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
@@ -162,6 +164,9 @@ export const rootExports = (
     >
       Dialog content
     </Dialog>
+    <Drawer open variant="temporary" anchor="left" onClose={(event) => event.preventDefault()}>
+      Navigation
+    </Drawer>
     <Progress label="Project upload" max={200} value={116} />
     <Snackbar
       open
@@ -221,6 +226,7 @@ export const subpathExports = (
     </AvatarGroupOnly>
     <ChipOnly variant="filled" />
     <DialogOnly open title="Details" closeLabel="Dismiss details" />
+    <DrawerOnly open variant="permanent" anchor="right" aria-label="Subpath navigation" />
     <IconGlyphOnly name="search" />
     <IconsOnly title="Search">
       <circle cx="12" cy="12" r="8" />
