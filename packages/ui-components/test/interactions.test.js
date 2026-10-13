@@ -41,6 +41,7 @@ const { default: ClickAwayListener } = await import('../dist/click-away-listener
 const { default: Chip } = await import('../dist/chip.js');
 const { default: Divider } = await import('../dist/divider.js');
 const { default: Icons } = await import('../dist/icons.js');
+const { default: IconGlyph } = await import('../dist/icon-glyph.js');
 const { default: Menu } = await import('../dist/menu.js');
 const { MenuItem } = await import('../dist/menu.js');
 const { default: NumberField } = await import('../dist/number-field.js');
@@ -89,6 +90,32 @@ test('Icons renders accessible titles and hides unlabeled decorative SVGs', asyn
     assert.equal(labeled.getAttribute('role'), 'img');
     assert.equal(labeled.querySelector('title')?.textContent, 'Close');
     assert.equal(decorative.getAttribute('aria-hidden'), 'true');
+  } finally {
+    await harness.dispose();
+  }
+});
+
+test('IconGlyph renders named glyphs with accessible titles and supports decorative use', async () => {
+  const harness = await createHarness();
+
+  try {
+    await harness.render(
+      React.createElement(
+        React.Fragment,
+        null,
+        React.createElement(IconGlyph, { name: 'verified', size: 20 }),
+        React.createElement(IconGlyph, { name: 'favorite', title: 'Save this item' }),
+        React.createElement(IconGlyph, { name: 'home', title: '' }),
+      ),
+    );
+
+    const [named, titled, decorative] = harness.mount.querySelectorAll('svg');
+    assert.equal(named.getAttribute('role'), 'img');
+    assert.equal(named.querySelector('title')?.textContent, 'verified');
+    assert.equal(named.getAttribute('width'), '20');
+    assert.equal(titled.querySelector('title')?.textContent, 'Save this item');
+    assert.equal(decorative.getAttribute('aria-hidden'), 'true');
+    assert.equal(decorative.querySelector('path')?.getAttribute('d'), 'm3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z');
   } finally {
     await harness.dispose();
   }

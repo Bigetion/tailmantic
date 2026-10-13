@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const MATERIAL_ICONS_DEMOS = {
-  'icon-glyph': {
-    title: 'Icon glyphs',
-    caption: 'Browse familiar interface symbols presented in a consistent icon tile system.',
-  },
-  'icon-glyph-sizes': {
-    title: 'Icon sizing',
-    caption: 'Choose a consistent glyph size for dense controls, default actions, and display use.',
-  },
-  'icon-glyph-actions': {
-    title: 'Icon action toolbar',
-    caption: 'Combine recognizable glyphs with accessible action labels and live state.',
-  },
-};
-
 const LIST_DEMOS = {
   list: {
     title: 'Workspace navigation',
@@ -437,9 +422,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'icon-glyph'
-                                                ? MATERIAL_ICONS_DEMOS[demoId]
-                                                : component.slug === 'list'
+        const demo = component.slug === 'list'
                                                   ? LIST_DEMOS[demoId]
                                                     : component.slug === 'table'
                                                       ? TABLE_DEMOS[demoId]

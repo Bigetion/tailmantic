@@ -11,6 +11,7 @@ import {
   Checkbox,
   Chip,
   IconGlyph,
+  type IconGlyphName,
   Icons,
   Select,
   TextField,
@@ -26,6 +27,7 @@ import ButtonOnly from '@tailmantic/ui-components/button';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
 import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
+import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
 
 export const rootExports = (
@@ -93,6 +95,8 @@ export const rootExports = (
     />
   </>
 );
+
+export const glyphNames: [IconGlyphName, IconGlyphNameOnly] = ['home', 'verified'];
 
 export const subpathExports = (
   <>
