@@ -20,6 +20,7 @@ import ProgressPage from './ProgressPage.jsx';
 import RadioGroupPage from './RadioGroupPage.jsx';
 import RatingPage from './RatingPage.jsx';
 import SelectPage from './SelectPage.jsx';
+import SkeletonPage from './SkeletonPage.jsx';
 import SliderPage from './SliderPage.jsx';
 import SnackbarPage from './SnackbarPage.jsx';
 import SwitchPage from './SwitchPage.jsx';
@@ -60,6 +61,7 @@ export default function ComponentPageRoute() {
   if (slug === 'rating') return <RatingPage />;
   if (slug === 'select') return <SelectPage />;
   if (slug === 'slider') return <SliderPage />;
+  if (slug === 'skeleton') return <SkeletonPage />;
   if (slug === 'snackbar') return <SnackbarPage />;
   if (slug === 'switch') return <SwitchPage />;
   if (slug === 'table') return <TablePage />;

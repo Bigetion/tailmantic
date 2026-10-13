@@ -14,21 +14,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const SKELETON_DEMOS = {
-  skeleton: {
-    title: 'Loading profile card',
-    caption: 'Preview a content placeholder while profile data is loading, then reveal the finished content.',
-  },
-  'skeleton-variants': {
-    title: 'Shape and content variants',
-    caption: 'Combine text, circular, and rectangular placeholders to match the content being loaded.',
-  },
-  'skeleton-animation': {
-    title: 'Animation styles',
-    caption: 'Compare pulse and wave motion, or disable animation to reduce visual movement.',
-  },
-};
-
 const APP_BAR_DEMOS = {
   'app-bar': {
     title: 'Workspace toolbar',
@@ -302,9 +287,7 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'skeleton'
-                                                                                ? SKELETON_DEMOS[demoId]
-                                                                                  : component.slug === 'app-bar'
+        const demo = component.slug === 'app-bar'
                                                                                         ? APP_BAR_DEMOS[demoId]
                                                                                           : component.slug === 'card'
                                                                                             ? CARD_DEMOS[demoId]

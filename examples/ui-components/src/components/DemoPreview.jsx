@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from './Popper.jsx';
-import SkeletonDemo from './ui/skeleton/SkeletonDemo.jsx';
 import AppBarDemo from './ui/app-bar/AppBarDemo.jsx';
 import CardDemo from './ui/card/CardDemo.jsx';
 import PaperDemo from './ui/paper/PaperDemo.jsx';
@@ -164,7 +163,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'card') return <CardDemo demoId={demoId} />;
   if (component.slug === 'paper') return <PaperDemo demoId={demoId} />;
   if (component.slug === 'popover') return <PopoverDemo demoId={demoId} />;
-  if (component.slug === 'skeleton') return <SkeletonDemo demoId={demoId} />;
   if (demoId.startsWith('popover') || demoId.startsWith('autocomplete')) return <FloatingDemo demoId={demoId} />;
   if (demoId.startsWith('checkbox')) return <SelectionPreview demoId={demoId} />;
   if (demoId.startsWith('avatar') || demoId.startsWith('badge') || demoId.startsWith('chip')) return <DisplayPreview demoId={demoId} />;

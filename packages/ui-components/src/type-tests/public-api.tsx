@@ -17,6 +17,7 @@ import {
   Icons,
   Progress,
   Select,
+  Skeleton,
   Snackbar,
   Table,
   TextField,
@@ -40,6 +41,7 @@ import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
 import ProgressOnly from '@tailmantic/ui-components/progress';
 import SnackbarOnly from '@tailmantic/ui-components/snackbar';
+import SkeletonOnly from '@tailmantic/ui-components/skeleton';
 import TableOnly from '@tailmantic/ui-components/table';
 import TooltipOnly from '@tailmantic/ui-components/tooltip';
 import TypographyOnly from '@tailmantic/ui-components/typography';
@@ -121,6 +123,7 @@ export const rootExports = (
     >
       Saved
     </Snackbar>
+    <Skeleton variant="circular" width={40} height={40} animation="wave" />
     <TextField
       label="Search"
       startAdornment="Search"
@@ -161,6 +164,7 @@ export const subpathExports = (
     <SnackbarOnly open severity="warning" autoHideDuration={5000}>
       Pending
     </SnackbarOnly>
+    <SkeletonOnly variant="text" width={160} animation="none" />
     <TableOnly stickyHeader><tbody><tr><td>Project</td></tr></tbody></TableOnly>
     <TooltipOnly content="Help" placement="bottom"><button type="button">Help</button></TooltipOnly>
     <TypographyOnly variant="caption" color="secondary">Caption</TypographyOnly>
