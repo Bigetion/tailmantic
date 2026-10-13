@@ -1,4 +1,3 @@
-import './link.js';
 import './menu.js';
 import './pagination.js';
 import './speed-dial.js';

@@ -15,23 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const LINK_DEMOS = {
-  link: {
-    title: 'Inline links',
-    caption: 'Use links to navigate to related content while preserving familiar browser behavior.',
-  },
-  'link-variants': {
-    title: 'Semantic link styles',
-    caption:
-      'Apply subtle, primary, and external-link treatments without changing the anchor semantics.',
-  },
-  'link-accessibility': {
-    title: 'Keyboard and disabled states',
-    caption:
-      'Keep links discoverable to keyboard users and represent unavailable destinations clearly.',
-  },
-};
-
 const MENU_DEMOS = {
   menu: {
     title: 'Context actions',
@@ -187,7 +170,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  link: LINK_DEMOS,
   menu: MENU_DEMOS,
   pagination: PAGINATION_DEMOS,
   'speed-dial': SPEED_DIAL_DEMOS,

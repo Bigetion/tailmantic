@@ -19,6 +19,7 @@ import DrawerPage from './DrawerPage.jsx';
 import FloatingActionButtonPage from './FloatingActionButtonPage.jsx';
 import IconGlyphPage from './IconGlyphPage.jsx';
 import IconsPage from './IconsPage.jsx';
+import LinkPage from './LinkPage.jsx';
 import ListPage from './ListPage.jsx';
 import NumberFieldPage from './NumberFieldPage.jsx';
 import PaperPage from './PaperPage.jsx';
@@ -67,6 +68,7 @@ export default function ComponentPageRoute() {
   if (slug === 'icons') return <IconsPage />;
   if (slug === 'icon-glyph') return <IconGlyphPage />;
   if (slug === 'list') return <ListPage />;
+  if (slug === 'link') return <LinkPage />;
   if (slug === 'number-field') return <NumberFieldPage />;
   if (slug === 'paper') return <PaperPage />;
   if (slug === 'popover') return <PopoverPage />;

@@ -21,6 +21,7 @@ import {
   IconGlyph,
   type IconGlyphName,
   Icons,
+  Link,
   Paper,
   Popover,
   Progress,
@@ -54,6 +55,7 @@ import DrawerOnly from '@tailmantic/ui-components/drawer';
 import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-components/icon-glyph';
 import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
+import LinkOnly from '@tailmantic/ui-components/link';
 import PaperOnly from '@tailmantic/ui-components/paper';
 import PopoverOnly from '@tailmantic/ui-components/popover';
 import ProgressOnly from '@tailmantic/ui-components/progress';
@@ -125,6 +127,9 @@ export const rootExports = (
     <Icons title="Search">
       <circle cx="12" cy="12" r="8" />
     </Icons>
+    <Link href="/workspace" underline="always" color="secondary">
+      Workspace
+    </Link>
     <Paper elevation={3} square>
       Surface content
     </Paper>
@@ -231,6 +236,9 @@ export const subpathExports = (
     <IconsOnly title="Search">
       <circle cx="12" cy="12" r="8" />
     </IconsOnly>
+    <LinkOnly href="/workspace" underline="none" color="inherit">
+      Workspace
+    </LinkOnly>
     <PaperOnly elevation={5}>Subpath surface</PaperOnly>
     <PopoverOnly open={false} placement="top-start" label="Subpath details" />
     <ProgressOnly label="Subpath loading" variant="circular" />
