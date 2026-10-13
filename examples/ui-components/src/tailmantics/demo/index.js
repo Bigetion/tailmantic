@@ -1,4 +1,3 @@
-import './breadcrumbs.js';
 import './drawer.js';
 import './link.js';
 import './menu.js';

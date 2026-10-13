@@ -11,6 +11,7 @@ import {
   AvatarGroup,
   BottomNavigation,
   BottomNavigationItem,
+  Breadcrumbs,
   Button,
   Card,
   Checkbox,
@@ -42,6 +43,7 @@ import AvatarOnly, { AvatarGroup as AvatarGroupOnly } from '@tailmantic/ui-compo
 import BottomNavigationOnly, {
   BottomNavigationItem as BottomNavigationItemOnly,
 } from '@tailmantic/ui-components/bottom-navigation';
+import BreadcrumbsOnly from '@tailmantic/ui-components/breadcrumbs';
 import ButtonOnly from '@tailmantic/ui-components/button';
 import CardOnly from '@tailmantic/ui-components/card';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
@@ -100,6 +102,10 @@ export const rootExports = (
     >
       <BottomNavigationItem value="home" label="Home" />
     </BottomNavigation>
+    <Breadcrumbs separator="/" maxItems={3} aria-label="Project location">
+      <a href="/workspace">Workspace</a>
+      <span aria-current="page">Project</span>
+    </Breadcrumbs>
     <Card variant="outlined" elevation={2} interactive>
       Project summary
     </Card>
@@ -201,6 +207,10 @@ export const subpathExports = (
     <BottomNavigationOnly value="home">
       <BottomNavigationItemOnly value="home" label="Home" />
     </BottomNavigationOnly>
+    <BreadcrumbsOnly separator="›" aria-label="Subpath location">
+      <a href="/workspace">Workspace</a>
+      <span aria-current="page">Project</span>
+    </BreadcrumbsOnly>
     <CardOnly as="section" variant="flat" elevation={0}>
       Subpath project summary
     </CardOnly>

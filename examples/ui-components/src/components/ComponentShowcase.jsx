@@ -15,22 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const BREADCRUMBS_DEMOS = {
-  breadcrumbs: {
-    title: 'Page hierarchy',
-    caption: 'Show the current location in context and let users return to an ancestor page.',
-  },
-  'breadcrumbs-separators': {
-    title: 'Separator styles',
-    caption:
-      'Compare chevron, slash, and dot separators while preserving the same navigation hierarchy.',
-  },
-  'breadcrumbs-collapsed': {
-    title: 'Collapsed hierarchy',
-    caption: 'Keep long paths compact and reveal hidden ancestors when the user needs them.',
-  },
-};
-
 const DRAWER_DEMOS = {
   drawer: {
     title: 'Temporary navigation drawer',
@@ -219,7 +203,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  breadcrumbs: BREADCRUMBS_DEMOS,
   drawer: DRAWER_DEMOS,
   link: LINK_DEMOS,
   menu: MENU_DEMOS,
