@@ -10,6 +10,7 @@ import {
   Avatar,
   AvatarGroup,
   Button,
+  Card,
   Checkbox,
   Chip,
   Dialog,
@@ -35,6 +36,7 @@ import AlertOnly from '@tailmantic/ui-components/alert';
 import AppBarOnly from '@tailmantic/ui-components/app-bar';
 import AvatarOnly, { AvatarGroup as AvatarGroupOnly } from '@tailmantic/ui-components/avatar';
 import ButtonOnly from '@tailmantic/ui-components/button';
+import CardOnly from '@tailmantic/ui-components/card';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
 import DialogOnly from '@tailmantic/ui-components/dialog';
@@ -42,8 +44,8 @@ import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-componen
 import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
 import ProgressOnly from '@tailmantic/ui-components/progress';
-import SnackbarOnly from '@tailmantic/ui-components/snackbar';
 import SkeletonOnly from '@tailmantic/ui-components/skeleton';
+import SnackbarOnly from '@tailmantic/ui-components/snackbar';
 import TableOnly from '@tailmantic/ui-components/table';
 import TooltipOnly from '@tailmantic/ui-components/tooltip';
 import TypographyOnly from '@tailmantic/ui-components/typography';
@@ -82,6 +84,9 @@ export const rootExports = (
       <AccordionHelper>Choose a section</AccordionHelper>
     </Accordion>
     <Button variant="outlined" ref={(button) => button?.focus()} />
+    <Card variant="outlined" elevation={2} interactive>
+      Project summary
+    </Card>
     <Alert severity="success" variant="outlined" onClose={(event) => event.currentTarget.remove()}>
       Saved
     </Alert>
@@ -93,10 +98,22 @@ export const rootExports = (
       <Avatar alt="Jordan Davis">JD</Avatar>
     </AvatarGroup>
     <IconGlyph name="home" />
-    <Icons title="Search"><circle cx="12" cy="12" r="8" /></Icons>
-    <Table density="dense" hoverable striped><tbody><tr><td>Project</td></tr></tbody></Table>
-    <Tooltip content="Helpful information" placement="right"><button type="button">Help</button></Tooltip>
-    <Typography variant="h2" weight="bold">Heading</Typography>
+    <Icons title="Search">
+      <circle cx="12" cy="12" r="8" />
+    </Icons>
+    <Table density="dense" hoverable striped>
+      <tbody>
+        <tr>
+          <td>Project</td>
+        </tr>
+      </tbody>
+    </Table>
+    <Tooltip content="Helpful information" placement="right">
+      <button type="button">Help</button>
+    </Tooltip>
+    <Typography variant="h2" weight="bold">
+      Heading
+    </Typography>
     <Typography color="muted">Muted text</Typography>
     <Checkbox
       indeterminate
@@ -154,9 +171,16 @@ export const subpathExports = (
       </AccordionItemOnly>
       <AccordionHelperOnly>Choose a section</AccordionHelperOnly>
     </AccordionOnly>
-    <AlertOnly severity="warning" icon={null}>Storage is almost full.</AlertOnly>
-    <AppBarOnly position="fixed" elevation={3}>Subpath workspace</AppBarOnly>
+    <AlertOnly severity="warning" icon={null}>
+      Storage is almost full.
+    </AlertOnly>
+    <AppBarOnly position="fixed" elevation={3}>
+      Subpath workspace
+    </AppBarOnly>
     <ButtonOnly size="small" />
+    <CardOnly as="section" variant="flat" elevation={0}>
+      Subpath project summary
+    </CardOnly>
     <CheckboxOnly defaultChecked />
     <AvatarOnly alt="Morgan Kim" size="sm" />
     <AvatarGroupOnly aria-label="Team" total={3}>
@@ -165,15 +189,27 @@ export const subpathExports = (
     <ChipOnly variant="filled" />
     <DialogOnly open title="Details" closeLabel="Dismiss details" />
     <IconGlyphOnly name="search" />
-    <IconsOnly title="Search"><circle cx="12" cy="12" r="8" /></IconsOnly>
+    <IconsOnly title="Search">
+      <circle cx="12" cy="12" r="8" />
+    </IconsOnly>
     <ProgressOnly label="Subpath loading" variant="circular" />
     <SnackbarOnly open severity="warning" autoHideDuration={5000}>
       Pending
     </SnackbarOnly>
     <SkeletonOnly variant="text" width={160} animation="none" />
-    <TableOnly stickyHeader><tbody><tr><td>Project</td></tr></tbody></TableOnly>
-    <TooltipOnly content="Help" placement="bottom"><button type="button">Help</button></TooltipOnly>
-    <TypographyOnly variant="caption" color="secondary">Caption</TypographyOnly>
+    <TableOnly stickyHeader>
+      <tbody>
+        <tr>
+          <td>Project</td>
+        </tr>
+      </tbody>
+    </TableOnly>
+    <TooltipOnly content="Help" placement="bottom">
+      <button type="button">Help</button>
+    </TooltipOnly>
+    <TypographyOnly variant="caption" color="secondary">
+      Caption
+    </TypographyOnly>
     <TypographyOnly color="muted">Muted text</TypographyOnly>
   </>
 );

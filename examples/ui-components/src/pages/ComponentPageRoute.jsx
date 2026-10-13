@@ -8,6 +8,7 @@ import AvatarPage from './AvatarPage.jsx';
 import BadgePage from './BadgePage.jsx';
 import ButtonGroupPage from './ButtonGroupPage.jsx';
 import ButtonPage from './ButtonPage.jsx';
+import CardPage from './CardPage.jsx';
 import CheckboxPage from './CheckboxPage.jsx';
 import ChipPage from './ChipPage.jsx';
 import DialogPage from './DialogPage.jsx';
@@ -49,6 +50,7 @@ export default function ComponentPageRoute() {
   if (slug === 'badge') return <BadgePage />;
   if (slug === 'button') return <ButtonPage />;
   if (slug === 'button-group') return <ButtonGroupPage />;
+  if (slug === 'card') return <CardPage />;
   if (slug === 'checkbox') return <CheckboxPage />;
   if (slug === 'chip') return <ChipPage />;
   if (slug === 'divider') return <DividerPage />;

@@ -1,4 +1,3 @@
-import './card.js';
 import './paper.js';
 import './popover.js';
 import './bottom-navigation.js';

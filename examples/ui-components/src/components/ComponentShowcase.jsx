@@ -8,35 +8,23 @@ const styleSources = import.meta.glob('../tailmantics/demo/*.js', {
 });
 
 const COMPONENT_STYLE_NOTES = {
-  autocomplete: 'Base component styles are provided by @tailmantic/ui-components/autocomplete/styles.',
+  autocomplete:
+    'Base component styles are provided by @tailmantic/ui-components/autocomplete/styles.',
   accordion: 'Base component styles are provided by @tailmantic/ui-components/accordion/styles.',
   'floating-action-button':
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const CARD_DEMOS = {
-  card: {
-    title: 'Project overview',
-    caption: 'Group a project summary, status, and a useful action into one clear content surface.',
-  },
-  'card-actions': {
-    title: 'Interactive actions',
-    caption: 'Provide useful card actions and update the interface with their current state.',
-  },
-  'card-media': {
-    title: 'Media and content',
-    caption: 'Combine a strong visual header with supporting text and a compact metadata row.',
-  },
-};
-
 const PAPER_DEMOS = {
   paper: {
     title: 'Surface elevation',
-    caption: 'Compare how subtle elevation levels separate content while keeping the same base surface.',
+    caption:
+      'Compare how subtle elevation levels separate content while keeping the same base surface.',
   },
   'paper-elevation': {
     title: 'Elevation scale',
-    caption: 'Choose an elevation level to compare how shadow and surface contrast establish hierarchy.',
+    caption:
+      'Choose an elevation level to compare how shadow and surface contrast establish hierarchy.',
   },
   'paper-variants': {
     title: 'Surface variants',
@@ -47,26 +35,31 @@ const PAPER_DEMOS = {
 const POPOVER_DEMOS = {
   popover: {
     title: 'Project details',
-    caption: 'Anchor a compact project summary to a trigger and dismiss it with a click away or Escape.',
+    caption:
+      'Anchor a compact project summary to a trigger and dismiss it with a click away or Escape.',
   },
   'popover-placements': {
     title: 'Placement controls',
-    caption: 'Preview top, right, bottom, and left placements, with Popper keeping the surface in view.',
+    caption:
+      'Preview top, right, bottom, and left placements, with Popper keeping the surface in view.',
   },
   'popover-interactive': {
     title: 'Interactive options',
-    caption: 'Choose a workspace color from the floating panel and see the selected value update immediately.',
+    caption:
+      'Choose a workspace color from the floating panel and see the selected value update immediately.',
   },
 };
 
 const BOTTOM_NAVIGATION_DEMOS = {
   'bottom-navigation': {
     title: 'Primary destinations',
-    caption: 'Switch between the main sections of an application and reflect the active destination.',
+    caption:
+      'Switch between the main sections of an application and reflect the active destination.',
   },
   'bottom-navigation-labels': {
     title: 'Label display behavior',
-    caption: 'Compare labeled destinations with a compact mode that shows a label only for the selected item.',
+    caption:
+      'Compare labeled destinations with a compact mode that shows a label only for the selected item.',
   },
   'bottom-navigation-icons': {
     title: 'Badges and icon states',
@@ -81,7 +74,8 @@ const BREADCRUMBS_DEMOS = {
   },
   'breadcrumbs-separators': {
     title: 'Separator styles',
-    caption: 'Compare chevron, slash, and dot separators while preserving the same navigation hierarchy.',
+    caption:
+      'Compare chevron, slash, and dot separators while preserving the same navigation hierarchy.',
   },
   'breadcrumbs-collapsed': {
     title: 'Collapsed hierarchy',
@@ -92,7 +86,8 @@ const BREADCRUMBS_DEMOS = {
 const DRAWER_DEMOS = {
   drawer: {
     title: 'Temporary navigation drawer',
-    caption: 'Open a modal side panel for primary destinations and dismiss it with Escape or a backdrop click.',
+    caption:
+      'Open a modal side panel for primary destinations and dismiss it with Escape or a backdrop click.',
   },
   'drawer-temporary': {
     title: 'Temporary drawer with sections',
@@ -111,33 +106,39 @@ const LINK_DEMOS = {
   },
   'link-variants': {
     title: 'Semantic link styles',
-    caption: 'Apply subtle, primary, and external-link treatments without changing the anchor semantics.',
+    caption:
+      'Apply subtle, primary, and external-link treatments without changing the anchor semantics.',
   },
   'link-accessibility': {
     title: 'Keyboard and disabled states',
-    caption: 'Keep links discoverable to keyboard users and represent unavailable destinations clearly.',
+    caption:
+      'Keep links discoverable to keyboard users and represent unavailable destinations clearly.',
   },
 };
 
 const MENU_DEMOS = {
   menu: {
     title: 'Context actions',
-    caption: 'Open a compact action list anchored to its trigger and dismiss it with Escape or a click away.',
+    caption:
+      'Open a compact action list anchored to its trigger and dismiss it with Escape or a click away.',
   },
   'menu-placements': {
     title: 'Placement options',
-    caption: 'Position a menu around its trigger and let Popper keep it within the available viewport.',
+    caption:
+      'Position a menu around its trigger and let Popper keep it within the available viewport.',
   },
   'menu-selection': {
     title: 'Selectable options',
-    caption: 'Choose a sort order from a keyboard-accessible menu and reflect the current selection.',
+    caption:
+      'Choose a sort order from a keyboard-accessible menu and reflect the current selection.',
   },
 };
 
 const PAGINATION_DEMOS = {
   pagination: {
     title: 'Page navigation',
-    caption: 'Move through a page range with clear current-page, previous, next, first, and last controls.',
+    caption:
+      'Move through a page range with clear current-page, previous, next, first, and last controls.',
   },
   'pagination-outlined': {
     title: 'Outlined pagination',
@@ -152,7 +153,8 @@ const PAGINATION_DEMOS = {
 const SPEED_DIAL_DEMOS = {
   'speed-dial': {
     title: 'Quick actions',
-    caption: 'Group related shortcuts behind one floating action button and choose an action from the expanded dial.',
+    caption:
+      'Group related shortcuts behind one floating action button and choose an action from the expanded dial.',
   },
   'speed-dial-directions': {
     title: 'Expansion directions',
@@ -160,14 +162,16 @@ const SPEED_DIAL_DEMOS = {
   },
   'speed-dial-open': {
     title: 'Expanded actions',
-    caption: 'Show an expanded speed dial with labeled, discoverable actions and a clear close control.',
+    caption:
+      'Show an expanded speed dial with labeled, discoverable actions and a clear close control.',
   },
 };
 
 const STEPPER_DEMOS = {
   stepper: {
     title: 'Horizontal stepper',
-    caption: 'Guide a checkout flow through ordered steps, showing progress and the active section.',
+    caption:
+      'Guide a checkout flow through ordered steps, showing progress and the active section.',
   },
   'stepper-vertical': {
     title: 'Vertical stepper',
@@ -197,61 +201,91 @@ const TABS_DEMOS = {
 const CLICK_AWAY_DEMOS = {
   'click-away': {
     title: 'Outside click',
-    caption: 'Dismiss a panel with an outside interaction while clicks inside its content leave it open.',
+    caption:
+      'Dismiss a panel with an outside interaction while clicks inside its content leave it open.',
   },
   'click-away-portal': {
     title: 'Portaled content',
-    caption: 'Treat content rendered in a body portal as inside the listener and dismiss it from elsewhere.',
+    caption:
+      'Treat content rendered in a body portal as inside the listener and dismiss it from elsewhere.',
   },
   'click-away-touch': {
     title: 'Touch and pointer events',
-    caption: 'Use one pointer listener for mouse, pen, and touch dismissal instead of separate event handlers.',
+    caption:
+      'Use one pointer listener for mouse, pen, and touch dismissal instead of separate event handlers.',
   },
 };
 
 const MODAL_DEMOS = {
   modal: {
     title: 'Project preview',
-    caption: 'Present focused content above the page and return users to their context when it closes.',
+    caption:
+      'Present focused content above the page and return users to their context when it closes.',
   },
   'modal-basic': {
     title: 'Backdrop behavior',
-    caption: 'Choose whether clicking the backdrop dismisses the modal; interactions inside remain contained.',
+    caption:
+      'Choose whether clicking the backdrop dismisses the modal; interactions inside remain contained.',
   },
   'modal-accessibility': {
     title: 'Keyboard accessibility',
-    caption: 'Keep keyboard focus inside the modal, support Escape, and restore focus when it closes.',
+    caption:
+      'Keep keyboard focus inside the modal, support Escape, and restore focus when it closes.',
   },
 };
 
 const POPPER_DEMOS = {
   popper: {
     title: 'Anchored surface',
-    caption: 'Position content relative to a reference element, then dismiss it with a click away or Escape.',
+    caption:
+      'Position content relative to a reference element, then dismiss it with a click away or Escape.',
   },
   'popper-placements': {
     title: 'Placement controls',
-    caption: 'Compare top, right, bottom, and left placements and see when Popper flips to stay in view.',
+    caption:
+      'Compare top, right, bottom, and left placements and see when Popper flips to stay in view.',
   },
   'popper-offset': {
     title: 'Offset modifier',
-    caption: 'Adjust skidding and distance to control how far the floating surface sits from its reference.',
+    caption:
+      'Adjust skidding and distance to control how far the floating surface sits from its reference.',
   },
 };
 
 const PORTAL_DEMOS = {
   portal: {
     title: 'Portal to document.body',
-    caption: 'Render a notification outside its React parent and verify that it is mounted directly under document.body.',
+    caption:
+      'Render a notification outside its React parent and verify that it is mounted directly under document.body.',
   },
   'portal-popover': {
     title: 'Custom portal target',
-    caption: 'Mount content into a chosen DOM node while keeping React event propagation connected to its owner.',
+    caption:
+      'Mount content into a chosen DOM node while keeping React event propagation connected to its owner.',
   },
   'portal-layering': {
     title: 'Escape clipping',
-    caption: 'Render a floating layer outside an overflow-hidden parent so it remains visible beyond the container.',
+    caption:
+      'Render a floating layer outside an overflow-hidden parent so it remains visible beyond the container.',
   },
+};
+
+const DEMOS_BY_COMPONENT = {
+  paper: PAPER_DEMOS,
+  popover: POPOVER_DEMOS,
+  'bottom-navigation': BOTTOM_NAVIGATION_DEMOS,
+  breadcrumbs: BREADCRUMBS_DEMOS,
+  drawer: DRAWER_DEMOS,
+  link: LINK_DEMOS,
+  menu: MENU_DEMOS,
+  pagination: PAGINATION_DEMOS,
+  'speed-dial': SPEED_DIAL_DEMOS,
+  stepper: STEPPER_DEMOS,
+  tabs: TABS_DEMOS,
+  'click-away-listener': CLICK_AWAY_DEMOS,
+  modal: MODAL_DEMOS,
+  popper: POPPER_DEMOS,
+  portal: PORTAL_DEMOS,
 };
 
 function titleFromDemo(id) {
@@ -272,44 +306,15 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = component.slug === 'card'
-                                                                                            ? CARD_DEMOS[demoId]
-                                                                                              : component.slug === 'paper'
-                                                                                                ? PAPER_DEMOS[demoId]
-                                                                                                  : component.slug === 'popover'
-                                                                                                    ? POPOVER_DEMOS[demoId]
-                                                                                                      : component.slug === 'bottom-navigation'
-                                                                                                        ? BOTTOM_NAVIGATION_DEMOS[demoId]
-                                                                                                          : component.slug === 'breadcrumbs'
-                                                                                                            ? BREADCRUMBS_DEMOS[demoId]
-                                                                                                              : component.slug === 'drawer'
-                                                                                                                ? DRAWER_DEMOS[demoId]
-                                                                                                                  : component.slug === 'link'
-                                                                                                                    ? LINK_DEMOS[demoId]
-                                                                                                                      : component.slug === 'menu'
-                                                                                                                        ? MENU_DEMOS[demoId]
-                                                                                                                              : component.slug === 'pagination'
-                                                                                                                                ? PAGINATION_DEMOS[demoId]
-                                                                                                                                  : component.slug === 'speed-dial'
-                                                                                                                                    ? SPEED_DIAL_DEMOS[demoId]
-                                                                                                                                      : component.slug === 'stepper'
-                                                                                                                                        ? STEPPER_DEMOS[demoId]
-                                                                                                                                          : component.slug === 'tabs'
-                                                                                                                                            ? TABS_DEMOS[demoId]
-                                                                                                                                              : component.slug === 'click-away-listener'
-                                                                                                                                                ? CLICK_AWAY_DEMOS[demoId]
-                                                                                                                                                  : component.slug === 'modal'
-                                                                                                                                                    ? MODAL_DEMOS[demoId]
-                                                                                                                                                      : component.slug === 'popper'
-                                                                                                                                                        ? POPPER_DEMOS[demoId]
-                                                                                                                                                          : component.slug === 'portal'
-                                                                                                                                                            ? PORTAL_DEMOS[demoId]
-            : undefined;
+        const demo = DEMOS_BY_COMPONENT[component.slug]?.[demoId];
         return (
           <DemoPanel
             key={demoId}
             title={demo?.title ?? titleFromDemo(demoId)}
-            caption={demo?.caption ?? `Explore the ${titleFromDemo(demoId).toLowerCase()} example for ${component.name} with live controls.`}
+            caption={
+              demo?.caption ??
+              `Explore the ${titleFromDemo(demoId).toLowerCase()} example for ${component.name} with live controls.`
+            }
             code={styleSource}
           >
             <DemoPreview component={component} demoId={demoId} />
