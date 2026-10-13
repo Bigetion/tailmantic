@@ -24,6 +24,7 @@ import {
   Link,
   Menu,
   MenuItem,
+  Pagination,
   Paper,
   Popover,
   Progress,
@@ -59,6 +60,7 @@ import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
 import LinkOnly from '@tailmantic/ui-components/link';
 import MenuOnly, { MenuItem as MenuItemOnly } from '@tailmantic/ui-components/menu';
+import PaginationOnly from '@tailmantic/ui-components/pagination';
 import PaperOnly from '@tailmantic/ui-components/paper';
 import PopoverOnly from '@tailmantic/ui-components/popover';
 import ProgressOnly from '@tailmantic/ui-components/progress';
@@ -139,6 +141,14 @@ export const rootExports = (
     <Paper elevation={3} square>
       Surface content
     </Paper>
+    <Pagination
+      count={12}
+      page={3}
+      showFirstButton
+      showLastButton
+      getItemAriaLabel={(type, page) => `${type}: ${page}`}
+      onChange={(_event, page) => page}
+    />
     <Popover open={false} placement="bottom" label="Project details" />
     <Table density="dense" hoverable striped>
       <tbody>
@@ -249,6 +259,7 @@ export const subpathExports = (
       <MenuItemOnly>Open</MenuItemOnly>
     </MenuOnly>
     <PaperOnly elevation={5}>Subpath surface</PaperOnly>
+    <PaginationOnly count={8} page={2} showFirstButton showLastButton />
     <PopoverOnly open={false} placement="top-start" label="Subpath details" />
     <ProgressOnly label="Subpath loading" variant="circular" />
     <SnackbarOnly open severity="warning" autoHideDuration={5000}>

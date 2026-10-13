@@ -6,8 +6,13 @@ export interface PaginationProps extends Omit<HTMLAttributes<HTMLElement>, 'onCh
   onChange?: (event: React.MouseEvent<HTMLButtonElement>, page: number) => void;
   siblingCount?: number;
   boundaryCount?: number;
+  showFirstButton?: boolean;
+  showLastButton?: boolean;
   disabled?: boolean;
-  getItemAriaLabel?: (type: 'page' | 'previous' | 'next', page: number) => string;
+  getItemAriaLabel?: (
+    type: 'page' | 'first' | 'previous' | 'next' | 'last',
+    page: number,
+  ) => string;
 }
 declare const Pagination: import('react').ForwardRefExoticComponent<
   PaginationProps & import('react').RefAttributes<HTMLElement>

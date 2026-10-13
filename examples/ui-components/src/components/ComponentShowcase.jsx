@@ -15,22 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const PAGINATION_DEMOS = {
-  pagination: {
-    title: 'Page navigation',
-    caption:
-      'Move through a page range with clear current-page, previous, next, first, and last controls.',
-  },
-  'pagination-outlined': {
-    title: 'Outlined pagination',
-    caption: 'Use outlined page controls to distinguish navigation from the surrounding content.',
-  },
-  'pagination-sizes': {
-    title: 'Rows per page',
-    caption: 'Change how many results are shown and keep the current page within the new range.',
-  },
-};
-
 const SPEED_DIAL_DEMOS = {
   'speed-dial': {
     title: 'Quick actions',
@@ -152,7 +136,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  pagination: PAGINATION_DEMOS,
   'speed-dial': SPEED_DIAL_DEMOS,
   stepper: STEPPER_DEMOS,
   tabs: TABS_DEMOS,

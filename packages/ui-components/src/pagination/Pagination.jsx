@@ -25,18 +25,26 @@ const Pagination = forwardRef(function Pagination(
     onChange,
     siblingCount = 1,
     boundaryCount = 1,
+    showFirstButton = false,
+    showLastButton = false,
     disabled = false,
     getItemAriaLabel = (type, item) =>
       type === 'page'
         ? `Go to page ${item}`
-        : `${type === 'previous' ? 'Go to previous' : 'Go to next'} page`,
+        : `${type === 'first' ? 'Go to first' : type === 'last' ? 'Go to last' : type === 'previous' ? 'Go to previous' : 'Go to next'} page`,
     ...props
   },
   ref,
 ) {
   const total = Number.isFinite(count) ? Math.max(0, Math.floor(count)) : 0;
-  const current = total ? Math.min(total, Math.max(1, Math.floor(page))) : 0;
-  const pages = getPages(total, current, Math.max(0, siblingCount), Math.max(0, boundaryCount));
+  const requestedPage = Number.isFinite(page) ? Math.floor(page) : 1;
+  const current = total ? Math.min(total, Math.max(1, requestedPage)) : 0;
+  const pages = getPages(
+    total,
+    current,
+    Math.max(0, Math.floor(siblingCount)),
+    Math.max(0, Math.floor(boundaryCount)),
+  );
   const change = (next, event) => {
     if (!disabled && next >= 1 && next <= total && next !== current) onChange?.(event, next);
   };
@@ -60,6 +68,7 @@ const Pagination = forwardRef(function Pagination(
       className={cx('rgi-pagination', className)}
     >
       <ul className="rgi-pagination-list">
+        {showFirstButton && <li>{button('first', '«', 1, current <= 1)}</li>}
         <li>{button('previous', '‹', current - 1, current <= 1)}</li>
         {pages.map(({ page: pageNumber, key, ellipsis }) => (
           <li key={key}>
@@ -85,6 +94,7 @@ const Pagination = forwardRef(function Pagination(
           </li>
         ))}
         <li>{button('next', '›', current + 1, current >= total)}</li>
+        {showLastButton && <li>{button('last', '»', total, current >= total)}</li>}
       </ul>
     </nav>
   );

@@ -23,6 +23,7 @@ import LinkPage from './LinkPage.jsx';
 import ListPage from './ListPage.jsx';
 import MenuPage from './MenuPage.jsx';
 import NumberFieldPage from './NumberFieldPage.jsx';
+import PaginationPage from './PaginationPage.jsx';
 import PaperPage from './PaperPage.jsx';
 import PopoverPage from './PopoverPage.jsx';
 import ProgressPage from './ProgressPage.jsx';
@@ -73,6 +74,7 @@ export default function ComponentPageRoute() {
   if (slug === 'menu') return <MenuPage />;
   if (slug === 'number-field') return <NumberFieldPage />;
   if (slug === 'paper') return <PaperPage />;
+  if (slug === 'pagination') return <PaginationPage />;
   if (slug === 'popover') return <PopoverPage />;
   if (slug === 'progress') return <ProgressPage />;
   if (slug === 'radio-group') return <RadioGroupPage />;

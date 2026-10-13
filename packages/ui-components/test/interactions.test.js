@@ -79,8 +79,16 @@ test('Icons renders accessible titles and hides unlabeled decorative SVGs', asyn
       React.createElement(
         React.Fragment,
         null,
-        React.createElement(Icons, { title: 'Search', size: 18 }, React.createElement('path', { d: 'M1 1' })),
-        React.createElement(Icons, { 'aria-label': 'Close' }, React.createElement('path', { d: 'M2 2' })),
+        React.createElement(
+          Icons,
+          { title: 'Search', size: 18 },
+          React.createElement('path', { d: 'M1 1' }),
+        ),
+        React.createElement(
+          Icons,
+          { 'aria-label': 'Close' },
+          React.createElement('path', { d: 'M2 2' }),
+        ),
         React.createElement(Icons, null, React.createElement('path', { d: 'M3 3' })),
       ),
     );
@@ -117,7 +125,10 @@ test('IconGlyph renders named glyphs with accessible titles and supports decorat
     assert.equal(named.getAttribute('width'), '20');
     assert.equal(titled.querySelector('title')?.textContent, 'Save this item');
     assert.equal(decorative.getAttribute('aria-hidden'), 'true');
-    assert.equal(decorative.querySelector('path')?.getAttribute('d'), 'm3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z');
+    assert.equal(
+      decorative.querySelector('path')?.getAttribute('d'),
+      'm3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z',
+    );
   } finally {
     await harness.dispose();
   }
@@ -134,7 +145,9 @@ test('Table applies density and interaction variants to semantic table markup', 
         React.createElement(
           'tbody',
           null,
-          React.createElement(React.Fragment, null,
+          React.createElement(
+            React.Fragment,
+            null,
             React.createElement('tr', null, React.createElement('td', null, 'First')),
             React.createElement('tr', null, React.createElement('td', null, 'Second')),
           ),
@@ -598,7 +611,10 @@ test('Checkbox, RadioGroup, and TextField expose native form and validation beha
     const searchInput = harness.mount.querySelector('.rgi-text-field-shell input');
     assert.ok(searchInput.classList.contains('rgi-text-field-control-leading'));
     assert.ok(searchInput.classList.contains('rgi-text-field-control-trailing'));
-    assert.equal(harness.mount.querySelector('.rgi-text-field-adornment-start').textContent, 'Search');
+    assert.equal(
+      harness.mount.querySelector('.rgi-text-field-adornment-start').textContent,
+      'Search',
+    );
     await act(async () => harness.mount.querySelector('[aria-label="Clear search"]').click());
     assert.deepEqual(adornmentClicks, [true]);
   } finally {
@@ -830,6 +846,8 @@ test('Rating, Pagination, ToggleButton, and Stepper honor keyboard, boundary, an
           count: 5,
           page: 2,
           siblingCount: 1,
+          showFirstButton: true,
+          showLastButton: true,
           onChange: (_event, page) => pages.push(page),
         }),
         React.createElement(ToggleButton, { selected: true }, 'Bold'),
@@ -871,6 +889,9 @@ test('Rating, Pagination, ToggleButton, and Stepper honor keyboard, boundary, an
     assert.equal(pagination.querySelector('[aria-current="page"]').textContent, '2');
     await act(async () => pagination.querySelector('[aria-label="Go to next page"]').click());
     assert.deepEqual(pages, [3]);
+    await act(async () => pagination.querySelector('[aria-label="Go to first page"]').click());
+    await act(async () => pagination.querySelector('[aria-label="Go to last page"]').click());
+    assert.deepEqual(pages, [3, 1, 5]);
 
     const toggle = harness.mount.querySelector('.rgi-toggle-button');
     assert.equal(toggle.getAttribute('aria-pressed'), 'true');
@@ -1163,7 +1184,11 @@ test('buttons, chips, navigation, and presentational primitives preserve semanti
           React.createElement('span', null, 'Current'),
         ),
         React.createElement(Typography, { variant: 'h2' }, 'Heading'),
-        React.createElement(Typography, { align: 'center', color: 'success' }, 'Centered success text'),
+        React.createElement(
+          Typography,
+          { align: 'center', color: 'success' },
+          'Centered success text',
+        ),
         React.createElement(
           Tooltip,
           { content: 'More details', open: false, placement: 'right' },
@@ -1237,7 +1262,9 @@ test('buttons, chips, navigation, and presentational primitives preserve semanti
         .className.includes('rgi-divider-flex-item'),
     );
     assert.ok(
-      harness.mount.querySelector('.rgi-divider-inset').className.includes('rgi-divider-horizontal'),
+      harness.mount
+        .querySelector('.rgi-divider-inset')
+        .className.includes('rgi-divider-horizontal'),
     );
     assert.equal(harness.mount.querySelector('.rgi-skeleton').getAttribute('aria-hidden'), 'true');
     assert.equal(harness.mount.querySelector('ol.rgi-list').tagName, 'OL');
