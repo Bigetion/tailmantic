@@ -37,6 +37,7 @@ import SpeedDialPage from './SpeedDialPage.jsx';
 import StepperPage from './StepperPage.jsx';
 import SwitchPage from './SwitchPage.jsx';
 import TablePage from './TablePage.jsx';
+import TabsPage from './TabsPage.jsx';
 import TextFieldPage from './TextFieldPage.jsx';
 import ToggleButtonPage from './ToggleButtonPage.jsx';
 import TooltipPage from './TooltipPage.jsx';
@@ -88,6 +89,7 @@ export default function ComponentPageRoute() {
   if (slug === 'skeleton') return <SkeletonPage />;
   if (slug === 'snackbar') return <SnackbarPage />;
   if (slug === 'switch') return <SwitchPage />;
+  if (slug === 'tabs') return <TabsPage />;
   if (slug === 'table') return <TablePage />;
   if (slug === 'text-field') return <TextFieldPage />;
   if (slug === 'toggle-button') return <ToggleButtonPage />;

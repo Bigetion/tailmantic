@@ -15,21 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const TABS_DEMOS = {
-  tabs: {
-    title: 'Workspace views',
-    caption: 'Switch between related sections and keep each selected panel connected to its tab.',
-  },
-  'tabs-scrollable': {
-    title: 'Scrollable filters',
-    caption: 'Keep a larger set of filters in one tab row that can scroll on narrow screens.',
-  },
-  'tabs-centered': {
-    title: 'Centered settings',
-    caption: 'Center a compact group of settings tabs while preserving keyboard navigation.',
-  },
-};
-
 const CLICK_AWAY_DEMOS = {
   'click-away': {
     title: 'Outside click',
@@ -103,7 +88,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  tabs: TABS_DEMOS,
   'click-away-listener': CLICK_AWAY_DEMOS,
   modal: MODAL_DEMOS,
   popper: POPPER_DEMOS,

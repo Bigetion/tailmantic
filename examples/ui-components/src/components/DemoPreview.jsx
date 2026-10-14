@@ -6,7 +6,6 @@ import ClickAwayListenerDemo from './ui/click-away-listener/ClickAwayListenerDem
 import ModalDemo from './ui/modal/ModalDemo.jsx';
 import PopperDemo from './ui/popper/PopperDemo.jsx';
 import PortalDemo from './ui/portal/PortalDemo.jsx';
-import TabsDemo from './ui/tabs/TabsDemo.jsx';
 
 function FloatingDemo({ demoId }) {
   const anchorRef = useRef(null);
@@ -182,7 +181,7 @@ function SurfacePreview({ demoId }) {
 
 function NavigationPreview({ demoId }) {
   const [selected, setSelected] = useState(0);
-  if (demoId.startsWith('tabs') || demoId.startsWith('bottom-navigation'))
+  if (demoId.startsWith('bottom-navigation'))
     return (
       <div
         className={cx(
@@ -227,7 +226,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'popper') return <PopperDemo demoId={demoId} />;
   if (component.slug === 'modal') return <ModalDemo demoId={demoId} />;
   if (component.slug === 'click-away-listener') return <ClickAwayListenerDemo demoId={demoId} />;
-  if (component.slug === 'tabs') return <TabsDemo demoId={demoId} />;
   if (demoId.startsWith('popover') || demoId.startsWith('autocomplete'))
     return <FloatingDemo demoId={demoId} />;
   if (demoId.startsWith('checkbox')) return <SelectionPreview demoId={demoId} />;

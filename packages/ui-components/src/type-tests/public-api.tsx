@@ -35,6 +35,7 @@ import {
   Step,
   Stepper,
   Table,
+  Tabs,
   TextField,
   Tooltip,
   TransferList,
@@ -72,6 +73,7 @@ import SnackbarOnly from '@tailmantic/ui-components/snackbar';
 import SpeedDialOnly from '@tailmantic/ui-components/speed-dial';
 import StepperOnly, { Step as StepOnly } from '@tailmantic/ui-components/stepper';
 import TableOnly from '@tailmantic/ui-components/table';
+import TabsOnly from '@tailmantic/ui-components/tabs';
 import TooltipOnly from '@tailmantic/ui-components/tooltip';
 import TypographyOnly from '@tailmantic/ui-components/typography';
 
@@ -213,6 +215,15 @@ export const rootExports = (
       <Step label="Account" description="Create your profile." />
       <Step label="Review" />
     </Stepper>
+    <Tabs
+      ariaLabel="Workspace views"
+      tabs={[
+        { label: 'Overview', value: 'overview', content: 'Workspace summary' },
+        { label: 'Activity', value: 'activity', content: 'Recent updates' },
+      ]}
+      variant="scrollable"
+      onChange={(_event, value) => value}
+    />
     <TextField
       label="Search"
       startAdornment="Search"
@@ -286,6 +297,15 @@ export const subpathExports = (
       <StepOnly label="Account" />
       <StepOnly label="Review" />
     </StepperOnly>
+    <TabsOnly
+      ariaLabel="Settings sections"
+      defaultValue="profile"
+      tabs={[
+        { label: 'Profile', value: 'profile', content: 'Account details' },
+        { label: 'Notifications', value: 'notifications', content: 'Alert preferences' },
+      ]}
+      variant="centered"
+    />
     <TableOnly stickyHeader>
       <tbody>
         <tr>
