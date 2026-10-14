@@ -13,6 +13,7 @@ import ButtonPage from './ButtonPage.jsx';
 import CardPage from './CardPage.jsx';
 import CheckboxPage from './CheckboxPage.jsx';
 import ChipPage from './ChipPage.jsx';
+import ClickAwayListenerPage from './ClickAwayListenerPage.jsx';
 import DialogPage from './DialogPage.jsx';
 import DividerPage from './DividerPage.jsx';
 import DrawerPage from './DrawerPage.jsx';
@@ -66,6 +67,7 @@ export default function ComponentPageRoute() {
   if (slug === 'card') return <CardPage />;
   if (slug === 'checkbox') return <CheckboxPage />;
   if (slug === 'chip') return <ChipPage />;
+  if (slug === 'click-away-listener') return <ClickAwayListenerPage />;
   if (slug === 'divider') return <DividerPage />;
   if (slug === 'dialog') return <DialogPage />;
   if (slug === 'drawer') return <DrawerPage />;

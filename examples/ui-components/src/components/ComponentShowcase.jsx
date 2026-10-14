@@ -15,24 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const CLICK_AWAY_DEMOS = {
-  'click-away': {
-    title: 'Outside click',
-    caption:
-      'Dismiss a panel with an outside interaction while clicks inside its content leave it open.',
-  },
-  'click-away-portal': {
-    title: 'Portaled content',
-    caption:
-      'Treat content rendered in a body portal as inside the listener and dismiss it from elsewhere.',
-  },
-  'click-away-touch': {
-    title: 'Touch and pointer events',
-    caption:
-      'Use one pointer listener for mouse, pen, and touch dismissal instead of separate event handlers.',
-  },
-};
-
 const MODAL_DEMOS = {
   modal: {
     title: 'Project preview',
@@ -88,7 +70,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  'click-away-listener': CLICK_AWAY_DEMOS,
   modal: MODAL_DEMOS,
   popper: POPPER_DEMOS,
   portal: PORTAL_DEMOS,

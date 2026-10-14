@@ -16,6 +16,7 @@ import {
   Card,
   Checkbox,
   Chip,
+  ClickAwayListener,
   Dialog,
   Drawer,
   IconGlyph,
@@ -57,6 +58,7 @@ import ButtonOnly from '@tailmantic/ui-components/button';
 import CardOnly from '@tailmantic/ui-components/card';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
+import ClickAwayListenerOnly from '@tailmantic/ui-components/click-away-listener';
 import DialogOnly from '@tailmantic/ui-components/dialog';
 import DrawerOnly from '@tailmantic/ui-components/drawer';
 import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-components/icon-glyph';
@@ -183,6 +185,13 @@ export const rootExports = (
       onDelete={(event) => event.currentTarget.disabled}
       ref={(element) => element?.focus()}
     />
+    <ClickAwayListener
+      onClickAway={(event) => event.type}
+      mouseEvent="mousedown"
+      touchEvent="touchend"
+    >
+      <button type="button">Dismiss from outside</button>
+    </ClickAwayListener>
     <Dialog
       open
       title="Confirm"
@@ -272,6 +281,9 @@ export const subpathExports = (
       <AvatarOnly alt="Morgan Kim">MK</AvatarOnly>
     </AvatarGroupOnly>
     <ChipOnly variant="filled" />
+    <ClickAwayListenerOnly onClickAway={(event) => event.type}>
+      <button type="button">Subpath click-away</button>
+    </ClickAwayListenerOnly>
     <DialogOnly open title="Details" closeLabel="Dismiss details" />
     <DrawerOnly open variant="permanent" anchor="right" aria-label="Subpath navigation" />
     <IconGlyphOnly name="search" />
