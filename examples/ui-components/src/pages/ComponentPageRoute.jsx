@@ -48,14 +48,8 @@ import TooltipPage from './TooltipPage.jsx';
 import TransferListPage from './TransferListPage.jsx';
 import TypographyPage from './TypographyPage.jsx';
 
-const componentPages = import.meta.glob('./components/*/Page.jsx', {
-  eager: true,
-  import: 'default',
-});
-
 export default function ComponentPageRoute() {
   const { slug } = useParams();
-  const Page = componentPages[`./components/${slug}/Page.jsx`];
 
   if (slug === 'alert') return <AlertPage />;
   if (slug === 'app-bar') return <AppBarPage />;
@@ -104,8 +98,6 @@ export default function ComponentPageRoute() {
   if (slug === 'transfer-list') return <TransferListPage />;
   if (slug === 'tooltip') return <TooltipPage />;
   if (slug === 'typography') return <TypographyPage />;
-  if (Page) return <Page />;
-
   return (
     <div className="content-width not-found">
       <p className="component-count">404 / COMPONENT NOT FOUND</p>
