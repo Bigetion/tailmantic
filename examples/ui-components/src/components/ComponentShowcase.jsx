@@ -15,28 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const PORTAL_DEMOS = {
-  portal: {
-    title: 'Portal to document.body',
-    caption:
-      'Render a notification outside its React parent and verify that it is mounted directly under document.body.',
-  },
-  'portal-popover': {
-    title: 'Custom portal target',
-    caption:
-      'Mount content into a chosen DOM node while keeping React event propagation connected to its owner.',
-  },
-  'portal-layering': {
-    title: 'Escape clipping',
-    caption:
-      'Render a floating layer outside an overflow-hidden parent so it remains visible beyond the container.',
-  },
-};
-
-const DEMOS_BY_COMPONENT = {
-  portal: PORTAL_DEMOS,
-};
-
 function titleFromDemo(id) {
   return id
     .split('-')
@@ -55,15 +33,11 @@ export default function ComponentShowcase({ component }) {
   return (
     <div className={`component-showcase component-showcase-${component.slug}`}>
       {component.demos.map((demoId) => {
-        const demo = DEMOS_BY_COMPONENT[component.slug]?.[demoId];
         return (
           <DemoPanel
             key={demoId}
-            title={demo?.title ?? titleFromDemo(demoId)}
-            caption={
-              demo?.caption ??
-              `Explore the ${titleFromDemo(demoId).toLowerCase()} example for ${component.name} with live controls.`
-            }
+            title={titleFromDemo(demoId)}
+            caption={`Explore the ${titleFromDemo(demoId).toLowerCase()} example for ${component.name} with live controls.`}
             code={styleSource}
           >
             <DemoPreview component={component} demoId={demoId} />

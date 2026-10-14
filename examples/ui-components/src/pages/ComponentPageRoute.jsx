@@ -29,6 +29,7 @@ import PaginationPage from './PaginationPage.jsx';
 import PaperPage from './PaperPage.jsx';
 import PopoverPage from './PopoverPage.jsx';
 import PopperPage from './PopperPage.jsx';
+import PortalPage from './PortalPage.jsx';
 import ProgressPage from './ProgressPage.jsx';
 import RadioGroupPage from './RadioGroupPage.jsx';
 import RatingPage from './RatingPage.jsx';
@@ -85,6 +86,7 @@ export default function ComponentPageRoute() {
   if (slug === 'pagination') return <PaginationPage />;
   if (slug === 'popover') return <PopoverPage />;
   if (slug === 'popper') return <PopperPage />;
+  if (slug === 'portal') return <PortalPage />;
   if (slug === 'progress') return <ProgressPage />;
   if (slug === 'radio-group') return <RadioGroupPage />;
   if (slug === 'rating') return <RatingPage />;
