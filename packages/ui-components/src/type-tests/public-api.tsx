@@ -32,6 +32,8 @@ import {
   Skeleton,
   Snackbar,
   SpeedDial,
+  Step,
+  Stepper,
   Table,
   TextField,
   Tooltip,
@@ -68,6 +70,7 @@ import ProgressOnly from '@tailmantic/ui-components/progress';
 import SkeletonOnly from '@tailmantic/ui-components/skeleton';
 import SnackbarOnly from '@tailmantic/ui-components/snackbar';
 import SpeedDialOnly from '@tailmantic/ui-components/speed-dial';
+import StepperOnly, { Step as StepOnly } from '@tailmantic/ui-components/stepper';
 import TableOnly from '@tailmantic/ui-components/table';
 import TooltipOnly from '@tailmantic/ui-components/tooltip';
 import TypographyOnly from '@tailmantic/ui-components/typography';
@@ -206,6 +209,10 @@ export const rootExports = (
       direction="right"
       onActionClick={(_event, action) => action.name}
     />
+    <Stepper activeStep={1} aria-label="Workspace setup" onStepClick={(_event, index) => index}>
+      <Step label="Account" description="Create your profile." />
+      <Step label="Review" />
+    </Stepper>
     <TextField
       label="Search"
       startAdornment="Search"
@@ -275,6 +282,10 @@ export const subpathExports = (
     </SnackbarOnly>
     <SkeletonOnly variant="text" width={160} animation="none" />
     <SpeedDialOnly actions={[{ name: 'Create' }]} defaultOpen />
+    <StepperOnly orientation="vertical" activeStep={0}>
+      <StepOnly label="Account" />
+      <StepOnly label="Review" />
+    </StepperOnly>
     <TableOnly stickyHeader>
       <tbody>
         <tr>

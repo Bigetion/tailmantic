@@ -1,14 +1,4 @@
-import {
-  Activity,
-  Check,
-  ChevronDown,
-  Copy,
-  Home,
-  Layers,
-  Settings,
-  Trash2,
-  X,
-} from 'lucide-react';
+import { Activity, ChevronDown, Copy, Home, Layers, Settings, Trash2, X } from 'lucide-react';
 import { useCallback, useRef, useState } from 'react';
 import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from './Popper.jsx';
@@ -16,7 +6,6 @@ import ClickAwayListenerDemo from './ui/click-away-listener/ClickAwayListenerDem
 import ModalDemo from './ui/modal/ModalDemo.jsx';
 import PopperDemo from './ui/popper/PopperDemo.jsx';
 import PortalDemo from './ui/portal/PortalDemo.jsx';
-import StepperDemo from './ui/stepper/StepperDemo.jsx';
 import TabsDemo from './ui/tabs/TabsDemo.jsx';
 
 function FloatingDemo({ demoId }) {
@@ -193,21 +182,6 @@ function SurfacePreview({ demoId }) {
 
 function NavigationPreview({ demoId }) {
   const [selected, setSelected] = useState(0);
-  const [step, setStep] = useState(1);
-  if (demoId.startsWith('stepper'))
-    return (
-      <div className="stepper-demo">
-        {['Details', 'Address', 'Payment'].map((name, index) => (
-          <button key={name} type="button" onClick={() => setStep(index)}>
-            <span className={cx('step-number', index < step && 'step-complete')}>
-              {index < step ? <Check size={13} /> : index + 1}
-            </span>
-            <span className={cx(index === step && 'step-current')}>{name}</span>
-            {index < 2 && <i />}
-          </button>
-        ))}
-      </div>
-    );
   if (demoId.startsWith('tabs') || demoId.startsWith('bottom-navigation'))
     return (
       <div
@@ -253,7 +227,6 @@ function DemoPreview({ component, demoId }) {
   if (component.slug === 'popper') return <PopperDemo demoId={demoId} />;
   if (component.slug === 'modal') return <ModalDemo demoId={demoId} />;
   if (component.slug === 'click-away-listener') return <ClickAwayListenerDemo demoId={demoId} />;
-  if (component.slug === 'stepper') return <StepperDemo demoId={demoId} />;
   if (component.slug === 'tabs') return <TabsDemo demoId={demoId} />;
   if (demoId.startsWith('popover') || demoId.startsWith('autocomplete'))
     return <FloatingDemo demoId={demoId} />;

@@ -34,6 +34,7 @@ import SkeletonPage from './SkeletonPage.jsx';
 import SliderPage from './SliderPage.jsx';
 import SnackbarPage from './SnackbarPage.jsx';
 import SpeedDialPage from './SpeedDialPage.jsx';
+import StepperPage from './StepperPage.jsx';
 import SwitchPage from './SwitchPage.jsx';
 import TablePage from './TablePage.jsx';
 import TextFieldPage from './TextFieldPage.jsx';
@@ -82,6 +83,7 @@ export default function ComponentPageRoute() {
   if (slug === 'rating') return <RatingPage />;
   if (slug === 'select') return <SelectPage />;
   if (slug === 'speed-dial') return <SpeedDialPage />;
+  if (slug === 'stepper') return <StepperPage />;
   if (slug === 'slider') return <SliderPage />;
   if (slug === 'skeleton') return <SkeletonPage />;
   if (slug === 'snackbar') return <SnackbarPage />;

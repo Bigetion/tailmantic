@@ -15,22 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const STEPPER_DEMOS = {
-  stepper: {
-    title: 'Horizontal stepper',
-    caption:
-      'Guide a checkout flow through ordered steps, showing progress and the active section.',
-  },
-  'stepper-vertical': {
-    title: 'Vertical stepper',
-    caption: 'Keep step details and controls together in a compact, expandable vertical flow.',
-  },
-  'stepper-alternative': {
-    title: 'Alternative labels',
-    caption: 'Place labels beneath step indicators and allow direct navigation between milestones.',
-  },
-};
-
 const TABS_DEMOS = {
   tabs: {
     title: 'Workspace views',
@@ -119,7 +103,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  stepper: STEPPER_DEMOS,
   tabs: TABS_DEMOS,
   'click-away-listener': CLICK_AWAY_DEMOS,
   modal: MODAL_DEMOS,
