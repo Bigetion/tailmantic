@@ -29,6 +29,7 @@ import {
   Pagination,
   Paper,
   Popover,
+  Popper,
   Progress,
   Select,
   Skeleton,
@@ -71,6 +72,7 @@ import ModalOnly from '@tailmantic/ui-components/modal';
 import PaginationOnly from '@tailmantic/ui-components/pagination';
 import PaperOnly from '@tailmantic/ui-components/paper';
 import PopoverOnly from '@tailmantic/ui-components/popover';
+import PopperOnly from '@tailmantic/ui-components/popper';
 import ProgressOnly from '@tailmantic/ui-components/progress';
 import SkeletonOnly from '@tailmantic/ui-components/skeleton';
 import SnackbarOnly from '@tailmantic/ui-components/snackbar';
@@ -155,6 +157,9 @@ export const rootExports = (
     <Paper elevation={3} square>
       Surface content
     </Paper>
+    <Popper open={false} placement="bottom-start" offset={12}>
+      Anchored content
+    </Popper>
     <Pagination
       count={12}
       page={3}
@@ -307,6 +312,9 @@ export const subpathExports = (
     <PaperOnly elevation={5}>Subpath surface</PaperOnly>
     <PaginationOnly count={8} page={2} showFirstButton showLastButton />
     <PopoverOnly open={false} placement="top-start" label="Subpath details" />
+    <PopperOnly open={false} placement="right" preventOverflow={false}>
+      Subpath anchored content
+    </PopperOnly>
     <ProgressOnly label="Subpath loading" variant="circular" />
     <SnackbarOnly open severity="warning" autoHideDuration={5000}>
       Pending

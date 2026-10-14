@@ -15,24 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const POPPER_DEMOS = {
-  popper: {
-    title: 'Anchored surface',
-    caption:
-      'Position content relative to a reference element, then dismiss it with a click away or Escape.',
-  },
-  'popper-placements': {
-    title: 'Placement controls',
-    caption:
-      'Compare top, right, bottom, and left placements and see when Popper flips to stay in view.',
-  },
-  'popper-offset': {
-    title: 'Offset modifier',
-    caption:
-      'Adjust skidding and distance to control how far the floating surface sits from its reference.',
-  },
-};
-
 const PORTAL_DEMOS = {
   portal: {
     title: 'Portal to document.body',
@@ -52,7 +34,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  popper: POPPER_DEMOS,
   portal: PORTAL_DEMOS,
 };
 
