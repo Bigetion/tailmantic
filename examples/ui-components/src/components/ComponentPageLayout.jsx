@@ -12,9 +12,9 @@ import { componentCatalog } from '../data/components.js';
 import DemoPanel from './DemoPanel.jsx';
 
 const IMPLEMENTATION_ROWS = [
-  ['Page', 'src/pages/components/{slug}/Page.jsx', 'Dedicated React Router page.'],
-  ['Component', 'src/components/ui/{slug}/{name}.jsx', 'Dedicated component page entry point.'],
-  ['Styles', 'src/tailmantics/app.js', 'Shared example styles and component-specific variants.'],
+  ['Page', 'examples/ui-components/src/pages/{name}Page.jsx', 'Dedicated React Router page.'],
+  ['Component', 'packages/ui-components/src/{slug}/', 'Component implementation and public API.'],
+  ['Styles', 'packages/ui-components/src/{slug}/', 'Package-owned component styles and variants.'],
   ['Examples', '{count} live examples', 'Rendered in the examples section above.'],
 ];
 
@@ -33,7 +33,7 @@ export default function ComponentPageLayout({
   const importName = component.name.replace(/\s+/g, '');
   const importCode =
     usageCode ??
-    `import ${importName} from './components/ui/${component.slug}/${importName}.jsx';\n\nexport default function ${importName}Example() {\n  return <${importName} />;\n}`;
+    `import { ${importName} } from '@tailmantic/ui-components';\nimport '@tailmantic/ui-components/${component.slug}/styles';\n\nexport default function ${importName}Example() {\n  return <${importName} />;\n}`;
   const implementationRows =
     customImplementationRows ??
     IMPLEMENTATION_ROWS.map(([area, source, purpose]) => [
@@ -81,7 +81,7 @@ export default function ComponentPageLayout({
   ) {
     implementationRows.splice(2, 0, [
       'Demo',
-      `src/components/ui/${component.slug}/${importName}Demo.jsx`,
+      `examples/ui-components/src/pages/${importName}Page.jsx`,
       'Interactive examples rendered in the showcase above.',
     ]);
   }
