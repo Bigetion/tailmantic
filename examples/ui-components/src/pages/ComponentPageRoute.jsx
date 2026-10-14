@@ -23,6 +23,7 @@ import IconsPage from './IconsPage.jsx';
 import LinkPage from './LinkPage.jsx';
 import ListPage from './ListPage.jsx';
 import MenuPage from './MenuPage.jsx';
+import ModalPage from './ModalPage.jsx';
 import NumberFieldPage from './NumberFieldPage.jsx';
 import PaginationPage from './PaginationPage.jsx';
 import PaperPage from './PaperPage.jsx';
@@ -77,6 +78,7 @@ export default function ComponentPageRoute() {
   if (slug === 'list') return <ListPage />;
   if (slug === 'link') return <LinkPage />;
   if (slug === 'menu') return <MenuPage />;
+  if (slug === 'modal') return <ModalPage />;
   if (slug === 'number-field') return <NumberFieldPage />;
   if (slug === 'paper') return <PaperPage />;
   if (slug === 'pagination') return <PaginationPage />;

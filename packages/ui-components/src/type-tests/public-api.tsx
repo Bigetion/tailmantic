@@ -25,6 +25,7 @@ import {
   Link,
   Menu,
   MenuItem,
+  Modal,
   Pagination,
   Paper,
   Popover,
@@ -66,6 +67,7 @@ import IconGlyphOnly from '@tailmantic/ui-components/icon-glyph';
 import IconsOnly from '@tailmantic/ui-components/icons';
 import LinkOnly from '@tailmantic/ui-components/link';
 import MenuOnly, { MenuItem as MenuItemOnly } from '@tailmantic/ui-components/menu';
+import ModalOnly from '@tailmantic/ui-components/modal';
 import PaginationOnly from '@tailmantic/ui-components/pagination';
 import PaperOnly from '@tailmantic/ui-components/paper';
 import PopoverOnly from '@tailmantic/ui-components/popover';
@@ -147,6 +149,9 @@ export const rootExports = (
     <Menu open={false} aria-label="Workspace actions" onClose={(event) => event.preventDefault()}>
       <MenuItem disabled>Unavailable</MenuItem>
     </Menu>
+    <Modal open aria-label="Workspace details" onClose={(_event, reason) => reason}>
+      Details
+    </Modal>
     <Paper elevation={3} square>
       Surface content
     </Paper>
@@ -296,6 +301,9 @@ export const subpathExports = (
     <MenuOnly open={false} placement="bottom-end">
       <MenuItemOnly>Open</MenuItemOnly>
     </MenuOnly>
+    <ModalOnly open aria-labelledby="subpath-modal-title">
+      <h2 id="subpath-modal-title">Workspace details</h2>
+    </ModalOnly>
     <PaperOnly elevation={5}>Subpath surface</PaperOnly>
     <PaginationOnly count={8} page={2} showFirstButton showLastButton />
     <PopoverOnly open={false} placement="top-start" label="Subpath details" />

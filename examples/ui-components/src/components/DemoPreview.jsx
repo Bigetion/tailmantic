@@ -2,7 +2,6 @@ import { Activity, ChevronDown, Copy, Home, Layers, Settings, Trash2, X } from '
 import { useCallback, useRef, useState } from 'react';
 import { cx } from 'tailmantic';
 import { PopperSurface, useClickAway } from './Popper.jsx';
-import ModalDemo from './ui/modal/ModalDemo.jsx';
 import PopperDemo from './ui/popper/PopperDemo.jsx';
 import PortalDemo from './ui/portal/PortalDemo.jsx';
 
@@ -223,7 +222,6 @@ function NavigationPreview({ demoId }) {
 function DemoPreview({ component, demoId }) {
   if (component.slug === 'portal') return <PortalDemo demoId={demoId} />;
   if (component.slug === 'popper') return <PopperDemo demoId={demoId} />;
-  if (component.slug === 'modal') return <ModalDemo demoId={demoId} />;
   if (demoId.startsWith('popover') || demoId.startsWith('autocomplete'))
     return <FloatingDemo demoId={demoId} />;
   if (demoId.startsWith('checkbox')) return <SelectionPreview demoId={demoId} />;

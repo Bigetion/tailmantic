@@ -15,24 +15,6 @@ const COMPONENT_STYLE_NOTES = {
     'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.',
 };
 
-const MODAL_DEMOS = {
-  modal: {
-    title: 'Project preview',
-    caption:
-      'Present focused content above the page and return users to their context when it closes.',
-  },
-  'modal-basic': {
-    title: 'Backdrop behavior',
-    caption:
-      'Choose whether clicking the backdrop dismisses the modal; interactions inside remain contained.',
-  },
-  'modal-accessibility': {
-    title: 'Keyboard accessibility',
-    caption:
-      'Keep keyboard focus inside the modal, support Escape, and restore focus when it closes.',
-  },
-};
-
 const POPPER_DEMOS = {
   popper: {
     title: 'Anchored surface',
@@ -70,7 +52,6 @@ const PORTAL_DEMOS = {
 };
 
 const DEMOS_BY_COMPONENT = {
-  modal: MODAL_DEMOS,
   popper: POPPER_DEMOS,
   portal: PORTAL_DEMOS,
 };
