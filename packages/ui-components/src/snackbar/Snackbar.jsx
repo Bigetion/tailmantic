@@ -27,16 +27,16 @@ const Snackbar = forwardRef(function Snackbar(
     <div
       {...props}
       ref={ref}
-      className={cx('rgi-snackbar', `rgi-snackbar-${severity}`, className)}
+      className={cx('tm-snackbar', `tm-snackbar-${severity}`, className)}
       role={severity === 'error' ? 'alert' : 'status'}
       aria-live={severity === 'error' ? 'assertive' : 'polite'}
     >
-      <div className="rgi-snackbar-message">{children}</div>
-      {action != null && <div className="rgi-snackbar-action">{action}</div>}
+      <div className="tm-snackbar-message">{children}</div>
+      {action != null && <div className="tm-snackbar-action">{action}</div>}
       {onClose && (
         <button
           type="button"
-          className="rgi-snackbar-close"
+          className="tm-snackbar-close"
           aria-label={closeLabel}
           onClick={() => onClose('closeButtonClick')}
         >

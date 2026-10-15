@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register.group('rgi-select', {
+register.group('tm-select', {
   root: { tw: 'relative flex w-[240px] max-w-full flex-col gap-2.5' },
   label: { tw: 'text-[10px] font-semibold uppercase tracking-[.12em] text-[#aab7cd]' },
   control: { tw: 'relative flex min-w-0 flex-col gap-1.5' },
@@ -27,7 +27,7 @@ register.group('rgi-select', {
   'helper-error': { tw: '!text-[var(--danger,#dc737b)]' },
 });
 
-register.all('rgi-select', {
+register.all('tm-select', {
   'options': 'z-50 max-h-64 w-[240px] max-w-[calc(100vw-32px)] overflow-y-auto overscroll-y-contain rounded-xl border border-[#303c52] bg-[#111824] py-1.5 text-[var(--text,#edf2fb)] shadow-[0_18px_48px_rgba(0,0,0,.52)]',
   'option': 'flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 border-0 bg-transparent px-3 text-left text-xs text-[#c6cede] transition-colors hover:bg-[#ffffff08] focus-visible:outline-none',
   'option-active': 'bg-[#1a263a] text-white',

@@ -1,8 +1,8 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-click-away-listener', { base: { tw: 'contents' } });
+register('tm-click-away-listener', { base: { tw: 'contents' } });
 
-register.all('rgi-click-away-example', {
+register.all('tm-click-away-example', {
   '': 'flex w-full max-w-[760px] flex-col gap-3',
   'stage': 'relative flex min-h-[250px] flex-col items-start gap-3 rounded-xl border border-dashed border-[#303a49] bg-[#0d121b] p-4 sm:min-h-[270px] sm:p-5',
   'copy': 'mb-1 flex max-w-[460px] flex-col gap-1.5 [&_strong]:text-[11px] [&_strong]:font-semibold [&_span:last-child]:text-[9px] [&_span:last-child]:leading-relaxed [&_span:last-child]:text-[#9ba9bc]',

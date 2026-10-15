@@ -1,31 +1,31 @@
 import { register } from 'tailmantic/collector';
 
-register('@keyframes rgi-progress-indeterminate', {
+register('@keyframes tm-progress-indeterminate', {
   '0%': { 'stroke-dasharray': '8 99', 'stroke-dashoffset': '0' },
   '50%': { 'stroke-dasharray': '65 99', 'stroke-dashoffset': '-24' },
   '100%': { 'stroke-dasharray': '8 99', 'stroke-dashoffset': '-107' },
 });
 
-register('@keyframes rgi-progress-linear-indeterminate', {
+register('@keyframes tm-progress-linear-indeterminate', {
   '0%': { transform: 'translateX(-110%) scaleX(.5)' },
   '50%': { transform: 'translateX(80%) scaleX(.9)' },
   '100%': { transform: 'translateX(260%) scaleX(.5)' },
 });
 
-register.all('rgi-progress', {
-  '': 'text-[var(--rgi-blue,#8eacff)]',
+register.all('tm-progress', {
+  '': 'text-[var(--tm-blue,#8eacff)]',
   'linear': 'block w-full',
-  '&linear .rgi-progress-track': 'relative block h-1.5 w-full overflow-hidden rounded-full bg-[var(--rgi-progress-track,#293447)]',
-  '&linear .rgi-progress-indicator': 'block h-full rounded-full bg-current transition-[width] duration-200',
-  '&linear .rgi-progress-indeterminate': '!absolute left-0 w-2/5 animate-[rgi-progress-linear-indeterminate_1.6s_ease-in-out_infinite]',
+  '&linear .tm-progress-track': 'relative block h-1.5 w-full overflow-hidden rounded-full bg-[var(--tm-progress-track,#293447)]',
+  '&linear .tm-progress-indicator': 'block h-full rounded-full bg-current transition-[width] duration-200',
+  '&linear .tm-progress-indeterminate': '!absolute left-0 w-2/5 animate-[tm-progress-linear-indeterminate_1.6s_ease-in-out_infinite]',
   'circular': 'inline-flex',
   'circle': '-rotate-90',
-  'track': 'fill-none stroke-[var(--rgi-progress-track,#293447)] [stroke-width:3]',
+  'track': 'fill-none stroke-[var(--tm-progress-track,#293447)] [stroke-width:3]',
   'indicator': 'fill-none stroke-current [stroke-linecap:round] [stroke-width:3] transition-[stroke-dasharray] duration-200',
-  'indeterminate': 'animate-[rgi-progress-indeterminate_1.4s_ease-in-out_infinite]',
+  'indeterminate': 'animate-[tm-progress-indeterminate_1.4s_ease-in-out_infinite]',
 });
 
-register.all('rgi-progress-example', {
+register.all('tm-progress-example', {
   'stack': 'flex w-full max-w-[620px] flex-col gap-3',
   'card': 'flex w-full flex-col gap-3 rounded-lg border border-[var(--border)] bg-[#111720] p-4',
   'heading': 'flex items-center gap-2.5',
@@ -36,20 +36,20 @@ register.all('rgi-progress-example', {
   'value': 'shrink-0 text-[10px] font-semibold tabular-nums text-[#a9c4ff]',
   'linear': 'w-full',
   'actions': 'flex flex-wrap items-center gap-2',
-  '&actions .rgi-button': '!h-7 !px-2.5 !text-[9px] normal-case tracking-normal',
+  '&actions .tm-button': '!h-7 !px-2.5 !text-[9px] normal-case tracking-normal',
   'circular-grid': 'flex flex-wrap items-center gap-x-8 gap-y-5 rounded-lg border border-[var(--border)] bg-[#111720] p-4',
   'circular-item': 'flex min-w-[170px] items-center gap-3',
   'circular-meter': 'relative inline-flex size-12 shrink-0 items-center justify-center text-[10px] font-semibold tabular-nums text-[var(--text)]',
-  '&circular-meter .rgi-progress': 'absolute inset-0',
+  '&circular-meter .tm-progress': 'absolute inset-0',
   'spinner': 'animate-spin',
-  'buffer-track': 'relative h-1.5 w-full overflow-hidden rounded-full bg-[var(--rgi-progress-track,#293447)]',
+  'buffer-track': 'relative h-1.5 w-full overflow-hidden rounded-full bg-[var(--tm-progress-track,#293447)]',
   'buffer': '!absolute inset-0 !w-full !text-[#60799f]',
-  '&buffer .rgi-progress-track': '!bg-transparent',
-  '&buffer .rgi-progress-indicator': '!bg-current',
+  '&buffer .tm-progress-track': '!bg-transparent',
+  '&buffer .tm-progress-indicator': '!bg-current',
   'played': '!absolute inset-0 !w-full',
-  '&played .rgi-progress-track': '!bg-transparent',
+  '&played .tm-progress-track': '!bg-transparent',
   'legend': 'flex flex-wrap gap-x-4 gap-y-2 text-[9px] text-[var(--muted)]',
   '&legend span': 'inline-flex items-center gap-1.5',
-  '&legend i': 'size-2 rounded-full bg-[var(--rgi-blue)]',
+  '&legend i': 'size-2 rounded-full bg-[var(--tm-blue)]',
   'legend-buffered': '!bg-[#60799f]',
 });

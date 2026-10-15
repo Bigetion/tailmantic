@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register.all('rgi-transfer', {
+register.all('tm-transfer', {
   'list': 'grid w-full max-w-[650px] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3 max-sm:gap-2',
   'panel': 'flex h-[220px] min-w-0 flex-col overflow-hidden rounded-lg border border-[#2c394e] bg-[#0e141e]/75 p-2.5',
   'heading': 'mb-2 flex shrink-0 items-center justify-between gap-2 border-b border-[#252f40] pb-2 text-[10px] font-semibold uppercase tracking-[.08em] text-[#c5cede]',

@@ -34,10 +34,10 @@ const TextField = forwardRef(function TextField(
       ref={ref}
       id={id}
       className={cx(
-        'rgi-text-field-control',
-        hasError && 'rgi-text-field-error',
-        hasStartAdornment && 'rgi-text-field-control-leading',
-        hasEndAdornment && 'rgi-text-field-control-trailing',
+        'tm-text-field-control',
+        hasError && 'tm-text-field-error',
+        hasStartAdornment && 'tm-text-field-control-leading',
+        hasEndAdornment && 'tm-text-field-control-trailing',
         inputClassName,
       )}
       aria-describedby={description}
@@ -46,20 +46,20 @@ const TextField = forwardRef(function TextField(
   );
 
   return (
-    <div className={cx('rgi-text-field', className)}>
+    <div className={cx('tm-text-field', className)}>
       {label != null && (
-        <label className="rgi-text-field-label" htmlFor={id}>
+        <label className="tm-text-field-label" htmlFor={id}>
           {label}
         </label>
       )}
       {hasStartAdornment || hasEndAdornment ? (
-        <div className="rgi-text-field-shell">
+        <div className="tm-text-field-shell">
           {hasStartAdornment && (
-            <span className="rgi-text-field-adornment-start">{startAdornment}</span>
+            <span className="tm-text-field-adornment-start">{startAdornment}</span>
           )}
           {input}
           {hasEndAdornment && (
-            <span className="rgi-text-field-adornment-end">{endAdornment}</span>
+            <span className="tm-text-field-adornment-end">{endAdornment}</span>
           )}
         </div>
       ) : (
@@ -67,7 +67,7 @@ const TextField = forwardRef(function TextField(
       )}
       {message != null && (
         <span
-          className={cx('rgi-text-field-message', hasError && 'rgi-text-field-message-error')}
+          className={cx('tm-text-field-message', hasError && 'tm-text-field-message-error')}
           id={messageId}
         >
           {message}

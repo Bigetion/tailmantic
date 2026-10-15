@@ -17,8 +17,8 @@ const AvatarGroup = forwardRef(function AvatarGroup(
       {...props}
       ref={ref}
       className={cx(
-        'rgi-avatar-group',
-        'rgi-avatar-group-stacked',
+        'tm-avatar-group',
+        'tm-avatar-group-stacked',
         className,
       )}
       role={role ?? 'group'}
@@ -26,7 +26,7 @@ const AvatarGroup = forwardRef(function AvatarGroup(
       {visibleAvatars}
       {overflow > 0 && (
         <span
-          className="rgi-avatar rgi-avatar-overflow"
+          className="tm-avatar tm-avatar-overflow"
           role="img"
           aria-label={`${overflow} additional ${overflow === 1 ? 'member' : 'members'}`}
         >

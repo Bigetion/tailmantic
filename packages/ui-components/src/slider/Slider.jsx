@@ -3,7 +3,7 @@ import { cx } from 'tailmantic';
 import './slider.styles.js';
 
 const Slider = forwardRef(function Slider({ className, ...props }, ref) {
-  return <input {...props} ref={ref} type="range" className={cx('rgi-slider', className)} />;
+  return <input {...props} ref={ref} type="range" className={cx('tm-slider', className)} />;
 });
 
 export default Slider;

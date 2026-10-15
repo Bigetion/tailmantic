@@ -19,11 +19,11 @@ const Table = forwardRef(function Table(
       {...props}
       ref={ref}
       className={cx(
-        'rgi-table',
-        `rgi-table-${density}`,
-        hoverable && 'rgi-table-hoverable',
-        stickyHeader && 'rgi-table-sticky-header',
-        striped && 'rgi-table-striped',
+        'tm-table',
+        `tm-table-${density}`,
+        hoverable && 'tm-table-hoverable',
+        stickyHeader && 'tm-table-sticky-header',
+        striped && 'tm-table-striped',
         className,
       )}
     >

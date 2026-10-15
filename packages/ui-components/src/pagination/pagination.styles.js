@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register.all('rgi-pagination', {
+register.all('tm-pagination', {
   '': 'flex justify-center text-[var(--text,#20242b)]',
   'list': 'm-0 flex list-none items-center gap-1 p-0',
   'button': 'flex size-9 cursor-pointer items-center justify-center rounded border border-[var(--border,#d5d9e0)] bg-[var(--surface,#fff)] text-sm text-[var(--text,#20242b)] hover:bg-[var(--surface-hover,#f0f2f5)] focus-visible:outline-2 focus-visible:outline-[var(--accent,#315fc4)] disabled:cursor-not-allowed disabled:opacity-45',
@@ -8,13 +8,13 @@ register.all('rgi-pagination', {
   'ellipsis': 'flex size-9 items-center justify-center text-[var(--muted,#626a75)]',
 });
 
-register.all('rgi-pagination-example', {
+register.all('tm-pagination-example', {
   '': 'flex w-full max-w-[760px] flex-col gap-4',
   'heading': 'flex flex-wrap items-center justify-between gap-2 [&_strong]:text-sm [&_strong]:font-semibold [&_span]:text-xs [&_span]:text-[#9ba9bc]',
-  '& .rgi-pagination': 'justify-start',
-  '& .rgi-pagination-list': 'flex-wrap gap-1.5',
-  '& .rgi-pagination-button': '!size-9 !rounded-lg !border-transparent !bg-transparent !text-sm !font-medium !text-[#aeb9c9] hover:!bg-white/5 hover:!text-white focus-visible:!outline-[#8baeff] disabled:!opacity-40',
-  '& .rgi-pagination-button.rgi-pagination-current': '!border-transparent !bg-[#263954] !text-[#d2e0ff] hover:!bg-[#263954] hover:!text-white',
+  '& .tm-pagination': 'justify-start',
+  '& .tm-pagination-list': 'flex-wrap gap-1.5',
+  '& .tm-pagination-button': '!size-9 !rounded-lg !border-transparent !bg-transparent !text-sm !font-medium !text-[#aeb9c9] hover:!bg-white/5 hover:!text-white focus-visible:!outline-[#8baeff] disabled:!opacity-40',
+  '& .tm-pagination-button.tm-pagination-current': '!border-transparent !bg-[#263954] !text-[#d2e0ff] hover:!bg-[#263954] hover:!text-white',
   'status': 'text-xs text-[#9ba9bc]',
   'table-card': 'flex w-full flex-col gap-4 rounded-xl border border-[#293548] bg-[#111925] p-4',
   'table-header': 'flex flex-wrap items-end justify-between gap-3',
@@ -28,9 +28,9 @@ register.all('rgi-pagination-example', {
   'status-pill-in-review': 'bg-[#263954] text-[#b8d0ff]',
   'status-pill-complete': 'bg-[#203b32] text-[#9edab7]',
   'table-footer': 'flex flex-wrap items-center justify-between gap-3',
-  '&outlined .rgi-pagination-button:not(.rgi-pagination-current)': '!border-[#354154] !bg-[#171f2c] hover:!border-[#536985] hover:!bg-[#202b3a]',
-  '&outlined .rgi-pagination-button.rgi-pagination-current[aria-current="page"]': '!border-[#789fe8] !bg-[#263954] !text-[#d2e0ff] hover:!border-[#789fe8] hover:!bg-[#263954]',
-  '&outlined .rgi-pagination-button:disabled': '!border-[#2d3643] !bg-[#141a23]',
+  '&outlined .tm-pagination-button:not(.tm-pagination-current)': '!border-[#354154] !bg-[#171f2c] hover:!border-[#536985] hover:!bg-[#202b3a]',
+  '&outlined .tm-pagination-button.tm-pagination-current[aria-current="page"]': '!border-[#789fe8] !bg-[#263954] !text-[#d2e0ff] hover:!border-[#789fe8] hover:!bg-[#263954]',
+  '&outlined .tm-pagination-button:disabled': '!border-[#2d3643] !bg-[#141a23]',
 });
 
 register.all('component-showcase-pagination', {

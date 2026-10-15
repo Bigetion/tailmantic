@@ -176,21 +176,21 @@ const Select = forwardRef(function Select(
     : (selectedOption?.label ?? placeholder ?? 'Choose an option');
 
   return (
-    <div className={cx('rgi-select', className)}>
+    <div className={cx('tm-select', className)}>
       {label != null && (
-        <label className="rgi-select-label" id={`${selectId}-label`} htmlFor={selectId}>
+        <label className="tm-select-label" id={`${selectId}-label`} htmlFor={selectId}>
           {label}
         </label>
       )}
-      <div className="rgi-select-control" ref={anchorRef}>
+      <div className="tm-select-control" ref={anchorRef}>
         <button
           {...triggerProps}
           ref={ref}
           id={selectId}
           className={cx(
-            'rgi-select-trigger',
-            open && 'rgi-select-trigger-open',
-            error && 'rgi-select-trigger-error',
+            'tm-select-trigger',
+            open && 'tm-select-trigger-open',
+            error && 'tm-select-trigger-error',
           )}
           type="button"
           role="combobox"
@@ -220,21 +220,21 @@ const Select = forwardRef(function Select(
             triggerProps.onKeyDown?.(event);
           }}
         >
-          <span className="rgi-select-value" id={`${selectId}-value`}>
+          <span className="tm-select-value" id={`${selectId}-value`}>
             {triggerValue}
           </span>
           <span
-            className={cx('rgi-select-icon', open && 'rgi-select-icon-open')}
+            className={cx('tm-select-icon', open && 'tm-select-icon-open')}
             aria-hidden="true"
           />
         </button>
         {multiple && selectedOptions.length > 0 && (
-          <div className="rgi-select-tags">
+          <div className="tm-select-tags">
             {selectedOptions.map((option) => (
-              <span className="rgi-select-tag" key={option.value}>
+              <span className="tm-select-tag" key={option.value}>
                 {option.label}
                 <button
-                  className="rgi-select-tag-remove"
+                  className="tm-select-tag-remove"
                   type="button"
                   aria-label={`Remove ${option.label}`}
                   disabled={disabled}
@@ -260,7 +260,7 @@ const Select = forwardRef(function Select(
           <input type="hidden" name={name} value={selectedValue} disabled={disabled} />
         ))}
       {helperText != null && (
-        <span className={cx('rgi-select-helper', error && 'rgi-select-helper-error')} id={helperId}>
+        <span className={cx('tm-select-helper', error && 'tm-select-helper-error')} id={helperId}>
           {helperText}
         </span>
       )}
@@ -272,7 +272,7 @@ const Select = forwardRef(function Select(
         anchorRef={anchorRef}
         placement="bottom-start"
         fallbackPlacements={SELECT_FALLBACK_PLACEMENTS}
-        className="rgi-select-options"
+        className="tm-select-options"
         role="listbox"
         id={listboxId}
         aria-labelledby={label != null ? `${selectId}-label` : undefined}
@@ -287,10 +287,10 @@ const Select = forwardRef(function Select(
           return (
             <button
               className={cx(
-                'rgi-select-option',
-                isActive && 'rgi-select-option-active',
-                isSelected && 'rgi-select-option-selected',
-                option.disabled && 'rgi-select-option-disabled',
+                'tm-select-option',
+                isActive && 'tm-select-option-active',
+                isSelected && 'tm-select-option-selected',
+                option.disabled && 'tm-select-option-disabled',
               )}
               id={`${listboxId}-option-${index}`}
               key={option.value}
@@ -303,16 +303,16 @@ const Select = forwardRef(function Select(
               onMouseDown={(event) => event.preventDefault()}
               onClick={() => chooseOption(option)}
             >
-              <span className="rgi-select-option-copy">
-                <span className="rgi-select-option-label">
+              <span className="tm-select-option-copy">
+                <span className="tm-select-option-label">
                   {renderOption ? renderOption(option, { isActive, isSelected }) : option.label}
                 </span>
                 {option.detail != null && (
-                  <span className="rgi-select-option-detail">{option.detail}</span>
+                  <span className="tm-select-option-detail">{option.detail}</span>
                 )}
               </span>
               {isSelected && (
-                <span className="rgi-select-option-check" aria-hidden="true">
+                <span className="tm-select-option-check" aria-hidden="true">
                   ✓
                 </span>
               )}

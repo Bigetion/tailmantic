@@ -33,11 +33,11 @@ const Typography = forwardRef(function Typography(
       {...props}
       ref={ref}
       className={cx(
-        'rgi-typography',
-        `rgi-typography-${variant}`,
-        `rgi-typography-align-${align}`,
-        `rgi-typography-weight-${weight}`,
-        color !== 'default' && `rgi-typography-color-${color}`,
+        'tm-typography',
+        `tm-typography-${variant}`,
+        `tm-typography-align-${align}`,
+        `tm-typography-weight-${weight}`,
+        color !== 'default' && `tm-typography-color-${color}`,
         className,
       )}
     >

@@ -77,7 +77,7 @@ const Popper = forwardRef(function Popper(
     <div
       {...props}
       ref={setRef}
-      className={cx('rgi-popper', className)}
+      className={cx('tm-popper', className)}
       data-placement={placement}
       style={{ ...style, visibility: positioned ? style?.visibility : 'hidden' }}
     >

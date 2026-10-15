@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-card', {
+register('tm-card', {
   base: { tw: 'overflow-hidden rounded-xl bg-[var(--panel,#111824)] text-[var(--text,#edf2fb)]' },
   modifiers: {
     elevated: { tw: 'border border-[var(--border,#273142)]' },
@@ -11,12 +11,12 @@ register('rgi-card', {
     'elevation-2': { tw: 'shadow-[0_5px_16px_rgba(0,0,0,.2)]' },
     'elevation-3': { tw: 'shadow-[0_10px_28px_rgba(0,0,0,.25)]' },
     interactive: {
-      tw: 'transition-[border-color,box-shadow,transform] duration-150 hover:-translate-y-px hover:border-[var(--rgi-blue,#9bbcff)] focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--rgi-blue,#9bbcff)]',
+      tw: 'transition-[border-color,box-shadow,transform] duration-150 hover:-translate-y-px hover:border-[var(--tm-blue,#9bbcff)] focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--tm-blue,#9bbcff)]',
     },
   },
 });
 
-register.all('rgi-card-example', {
+register.all('tm-card-example', {
   '': 'w-full max-w-[440px]',
   'project': 'p-5',
   'project-top': 'flex items-center justify-between',
@@ -26,7 +26,7 @@ register.all('rgi-card-example', {
   'eyebrow': 'text-[10px] font-semibold tracking-[.16em] text-[#8694a9]',
   '&copy h3': 'm-0 text-lg font-semibold tracking-tight text-[var(--text)]',
   '&copy p': 'm-0 text-sm leading-relaxed text-[var(--muted)]',
-  '&project-top + .rgi-card-example-copy': 'mt-5',
+  '&project-top + .tm-card-example-copy': 'mt-5',
   'project-meta': 'mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--border)] pt-4 text-xs text-[var(--muted)]',
   'status': 'inline-flex items-center gap-2 rounded-full border border-[#5b4a2b] bg-[#2d281d] px-3 py-1.5 text-[#dfbd78]',
   '&status i': 'size-2 rounded-full bg-[#e3b85f]',
@@ -55,5 +55,5 @@ register.all('rgi-card-example', {
   '&media-content h3': 'mt-3 text-base font-semibold tracking-tight',
   '&media-content p': 'mt-2',
   'media-footer': 'mt-4 flex items-center justify-between border-t border-[var(--border)] pt-3',
-  'media-author': 'inline-flex items-center gap-2.5 text-xs text-[#b8c2d0] [&_.rgi-card-example-author-avatar]:size-8 [&_.rgi-card-example-author-avatar]:text-[9px]',
+  'media-author': 'inline-flex items-center gap-2.5 text-xs text-[#b8c2d0] [&_.tm-card-example-author-avatar]:size-8 [&_.tm-card-example-author-avatar]:text-[9px]',
 });

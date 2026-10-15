@@ -21,18 +21,18 @@ const Chip = forwardRef(function Chip(
   ref,
 ) {
   const classes = cx(
-    'rgi-chip',
-    `rgi-chip-${variant}`,
-    color !== 'default' && `rgi-chip-${color}`,
-    size === 'small' && 'rgi-chip-small',
-    onClick && 'rgi-chip-interactive',
-    selected && 'rgi-chip-selected',
-    disabled && 'rgi-chip-disabled',
+    'tm-chip',
+    `tm-chip-${variant}`,
+    color !== 'default' && `tm-chip-${color}`,
+    size === 'small' && 'tm-chip-small',
+    onClick && 'tm-chip-interactive',
+    selected && 'tm-chip-selected',
+    disabled && 'tm-chip-disabled',
     className,
   );
   const content = (
     <>
-      {Icon && <Icon className="rgi-chip-icon" size={14} aria-hidden="true" />}
+      {Icon && <Icon className="tm-chip-icon" size={14} aria-hidden="true" />}
       <span>{children}</span>
     </>
   );
@@ -44,7 +44,7 @@ const Chip = forwardRef(function Chip(
       <span {...props} className={classes} ref={ref}>
         {content}
         <button
-          className="rgi-chip-delete"
+          className="tm-chip-delete"
           type="button"
           aria-label={label}
           disabled={disabled}

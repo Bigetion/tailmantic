@@ -35,11 +35,11 @@ const Checkbox = forwardRef(function Checkbox(
   }
 
   return (
-    <span className={cx('rgi-checkbox', disabled && 'rgi-checkbox-disabled', className)}>
+    <span className={cx('tm-checkbox', disabled && 'tm-checkbox-disabled', className)}>
       <input
         {...props}
         ref={setInputRef}
-        className={cx('rgi-checkbox-input', inputClassName)}
+        className={cx('tm-checkbox-input', inputClassName)}
         type="checkbox"
         checked={checked}
         defaultChecked={defaultChecked}
@@ -49,14 +49,14 @@ const Checkbox = forwardRef(function Checkbox(
       />
       <span
         className={cx(
-          'rgi-checkbox-indicator',
-          isChecked && 'rgi-checkbox-checked',
-          indeterminate && 'rgi-checkbox-indeterminate',
+          'tm-checkbox-indicator',
+          isChecked && 'tm-checkbox-checked',
+          indeterminate && 'tm-checkbox-indeterminate',
         )}
         aria-hidden="true"
       >
         {indeterminate ? (
-          <span className="rgi-checkbox-dash" />
+          <span className="tm-checkbox-dash" />
         ) : isChecked ? (
           <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path

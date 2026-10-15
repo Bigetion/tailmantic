@@ -1,11 +1,11 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-badge', {
+register('tm-badge', {
   base: {
-    tw: 'absolute z-[1] inline-flex min-w-[18px] h-[18px] items-center justify-center rounded-full border-2 border-[var(--rgi-badge-outline,var(--surface,#101722))] px-1 text-[10px] leading-none font-semibold text-white',
+    tw: 'absolute z-[1] inline-flex min-w-[18px] h-[18px] items-center justify-center rounded-full border-2 border-[var(--tm-badge-outline,var(--surface,#101722))] px-1 text-[10px] leading-none font-semibold text-white',
   },
   modifiers: {
-    primary: { tw: 'bg-[var(--rgi-blue-dark,#547be8)]' },
+    primary: { tw: 'bg-[var(--tm-blue-dark,#547be8)]' },
     success: { tw: 'bg-[#276b53]' },
     warning: { tw: 'bg-[#a75c1b]' },
     danger: { tw: 'bg-[#a94650]' },
@@ -17,7 +17,7 @@ register('rgi-badge', {
   },
 });
 
-register.all('rgi-badge', {
+register.all('tm-badge', {
   'root': 'relative inline-flex align-middle',
   'examples': 'flex flex-wrap items-center gap-5',
   'actions': 'flex flex-wrap items-center gap-2',

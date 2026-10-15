@@ -81,7 +81,7 @@ const Dialog = forwardRef(function Dialog(
   return createPortal(
     // biome-ignore lint/a11y/noStaticElementInteractions: The backdrop closes only when the pointer lands outside the dialog.
     <div
-      className="rgi-dialog-backdrop"
+      className="tm-dialog-backdrop"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onCloseRef.current?.(event, 'backdropClick');
       }}
@@ -89,7 +89,7 @@ const Dialog = forwardRef(function Dialog(
       <section
         {...props}
         ref={setRef}
-        className={cx('rgi-dialog', className)}
+        className={cx('tm-dialog', className)}
         role="dialog"
         aria-modal="true"
         aria-labelledby={title != null ? titleId : undefined}
@@ -97,16 +97,16 @@ const Dialog = forwardRef(function Dialog(
         tabIndex={-1}
       >
         {(title != null || onClose) && (
-          <header className="rgi-dialog-header">
+          <header className="tm-dialog-header">
             {title != null && (
-              <h2 id={titleId} className="rgi-dialog-title">
+              <h2 id={titleId} className="tm-dialog-title">
                 {title}
               </h2>
             )}
             {onClose && (
               <button
                 type="button"
-                className="rgi-dialog-close"
+                className="tm-dialog-close"
                 aria-label={closeLabel}
                 onClick={(event) => onCloseRef.current?.(event, 'closeButtonClick')}
               >
@@ -116,12 +116,12 @@ const Dialog = forwardRef(function Dialog(
           </header>
         )}
         {description != null && (
-          <p id={descriptionId} className="rgi-dialog-description">
+          <p id={descriptionId} className="tm-dialog-description">
             {description}
           </p>
         )}
-        <div className="rgi-dialog-content">{children}</div>
-        {actions != null && <footer className="rgi-dialog-actions">{actions}</footer>}
+        <div className="tm-dialog-content">{children}</div>
+        {actions != null && <footer className="tm-dialog-actions">{actions}</footer>}
       </section>
     </div>,
     document.body,

@@ -32,18 +32,18 @@ const SpeedDial = forwardRef(function SpeedDial(
       {...props}
       ref={ref}
       className={cx(
-        'rgi-speed-dial',
-        `rgi-speed-dial-${direction}`,
-        open && 'rgi-speed-dial-open',
+        'tm-speed-dial',
+        `tm-speed-dial-${direction}`,
+        open && 'tm-speed-dial-open',
         className,
       )}
     >
-      <fieldset id={listId} className="rgi-speed-dial-actions" aria-label="Actions" hidden={!open}>
+      <fieldset id={listId} className="tm-speed-dial-actions" aria-label="Actions" hidden={!open}>
         {actions.map((action, index) => (
           <button
             key={action.key ?? action.name ?? index}
             type="button"
-            className="rgi-speed-dial-action"
+            className="tm-speed-dial-action"
             aria-label={action.name ?? `Action ${index + 1}`}
             title={action.name ?? `Action ${index + 1}`}
             disabled={action.disabled}
@@ -59,7 +59,7 @@ const SpeedDial = forwardRef(function SpeedDial(
       </fieldset>
       <button
         type="button"
-        className="rgi-speed-dial-trigger"
+        className="tm-speed-dial-trigger"
         aria-label={open ? 'Close actions' : ariaLabel}
         aria-expanded={open}
         aria-controls={listId}

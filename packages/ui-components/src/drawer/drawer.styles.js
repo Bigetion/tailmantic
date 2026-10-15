@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-drawer', {
+register('tm-drawer', {
   base: {
     tw: 'fixed z-50 flex h-dvh w-[min(20rem,85vw)] flex-col overflow-auto bg-[var(--surface,#fff)] p-4 text-[var(--text,#20242b)] shadow-[0_8px_32px_rgba(0,0,0,.2)]',
   },
@@ -12,7 +12,7 @@ register('rgi-drawer', {
   },
 });
 
-register.all('rgi-drawer', {
+register.all('tm-drawer', {
   'root': 'contents',
   'backdrop': 'fixed inset-0 z-40 cursor-default border-0 bg-black/40 p-0',
   'permanent': 'contents',
@@ -22,7 +22,7 @@ register.all('rgi-drawer', {
   '& [hidden]': 'hidden',
 });
 
-register.all('rgi-drawer-example', {
+register.all('tm-drawer-example', {
   '': 'flex w-full max-w-[760px] flex-col gap-4',
   'shell': 'relative min-h-[300px] overflow-hidden rounded-xl border border-[#293548] bg-[#0e141e]',
   'topbar': 'flex h-12 items-center gap-3 border-b border-[#293342] bg-[#151c27] px-4 [&_strong]:text-xs [&_strong]:font-semibold [&_strong]:text-[#d3dce8]',
@@ -61,5 +61,5 @@ register.all('rgi-drawer-example', {
 
 register.all('component-showcase-drawer', {
   '& .demo-content': 'bg-[radial-gradient(ellipse_at_50%_0%,rgba(112,145,225,.045),transparent_68%),#0c1119]',
-  '& .rgi-drawer-backdrop': '!z-[70] !bg-[rgba(3,6,10,.68)] !backdrop-blur-[1px]',
+  '& .tm-drawer-backdrop': '!z-[70] !bg-[rgba(3,6,10,.68)] !backdrop-blur-[1px]',
 });

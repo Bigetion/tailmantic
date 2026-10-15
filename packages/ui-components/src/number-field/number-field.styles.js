@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register.group('rgi-number-field', {
+register.group('tm-number-field', {
   root: {
     tw: 'flex h-10 w-[min(260px,100%)] items-center overflow-hidden rounded-lg border border-[#354158] bg-[#0e1420] text-[#d9e2f2] transition-[border-color,box-shadow] focus-within:border-[#718ecb] focus-within:shadow-[0_0_0_3px_rgba(125,159,255,.1)]',
   },

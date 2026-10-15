@@ -17,28 +17,28 @@ function TransferCheckbox({
   }, [indeterminate]);
 
   return (
-    <span className={cx('rgi-transfer-checkbox', disabled && 'rgi-transfer-checkbox-disabled')}>
+    <span className={cx('tm-transfer-checkbox', disabled && 'tm-transfer-checkbox-disabled')}>
       <input
         ref={inputRef}
         id={id}
         aria-checked={indeterminate ? 'mixed' : checked}
         aria-label={label}
         checked={checked}
-        className="rgi-transfer-checkbox-input"
+        className="tm-transfer-checkbox-input"
         disabled={disabled}
         onChange={onChange}
         type="checkbox"
       />
       <span
         className={cx(
-          'rgi-transfer-checkbox-indicator',
-          checked && 'rgi-transfer-checkbox-checked',
-          indeterminate && 'rgi-transfer-checkbox-indeterminate',
+          'tm-transfer-checkbox-indicator',
+          checked && 'tm-transfer-checkbox-checked',
+          indeterminate && 'tm-transfer-checkbox-indeterminate',
         )}
         aria-hidden="true"
       >
         {indeterminate ? (
-          <span className="rgi-transfer-checkbox-dash" />
+          <span className="tm-transfer-checkbox-dash" />
         ) : checked ? (
           <svg aria-hidden="true" viewBox="0 0 12 12" width="11" height="11" fill="none">
             <path d="m2 6 2.5 2.5L10 3" stroke="currentColor" strokeWidth="1.8" />
@@ -138,7 +138,7 @@ function TransferList({
   }
 
   function renderItems(sideItems, selection, setSelection, side, sideId) {
-    if (!sideItems.length) return <p className="rgi-transfer-list-empty">No items</p>;
+    if (!sideItems.length) return <p className="tm-transfer-list-empty">No items</p>;
 
     return sideItems.map((item, index) => {
       const { id, label, description } = item;
@@ -146,7 +146,7 @@ function TransferList({
       const inputId = `${generatedId}-${sideId}-${index}`;
       return (
         <label
-          className={cx('rgi-transfer-item', checked && 'rgi-transfer-item-selected')}
+          className={cx('tm-transfer-item', checked && 'tm-transfer-item-selected')}
           htmlFor={inputId}
           key={id}
         >
@@ -156,10 +156,10 @@ function TransferList({
             checked={checked}
             onChange={(event) => toggleSelection(id, event.currentTarget.checked, setSelection)}
           />
-          <span className="rgi-transfer-item-copy">
-            <span className="rgi-transfer-item-label">{label}</span>
+          <span className="tm-transfer-item-copy">
+            <span className="tm-transfer-item-label">{label}</span>
             {description != null && (
-              <span className="rgi-transfer-item-description">{description}</span>
+              <span className="tm-transfer-item-description">{description}</span>
             )}
           </span>
         </label>
@@ -175,8 +175,8 @@ function TransferList({
     return (
       <label
         className={cx(
-          'rgi-transfer-select-all',
-          !sideItems.length && 'rgi-transfer-select-all-disabled',
+          'tm-transfer-select-all',
+          !sideItems.length && 'tm-transfer-select-all-disabled',
         )}
         htmlFor={inputId}
       >
@@ -196,11 +196,11 @@ function TransferList({
   }
 
   return (
-    <div className={cx('rgi-transfer-list', className)}>
-      <section className="rgi-transfer-panel" aria-labelledby={`${generatedId}-source`}>
-        <h3 className="rgi-transfer-heading" id={`${generatedId}-source`}>
+    <div className={cx('tm-transfer-list', className)}>
+      <section className="tm-transfer-panel" aria-labelledby={`${generatedId}-source`}>
+        <h3 className="tm-transfer-heading" id={`${generatedId}-source`}>
           {sourceTitle}
-          <span className="rgi-transfer-count">{sourceItems.length}</span>
+          <span className="tm-transfer-count">{sourceItems.length}</span>
         </h3>
         {renderSelectAll(
           sourceItems,
@@ -209,14 +209,14 @@ function TransferList({
           sourceTitle,
           `${generatedId}-select-all-source`,
         )}
-        <fieldset className="rgi-transfer-items" aria-label={sourceTitle}>
+        <fieldset className="tm-transfer-items" aria-label={sourceTitle}>
           {renderItems(sourceItems, sourceSelection, setSourceSelection, sourceTitle, 'source')}
         </fieldset>
       </section>
 
-      <fieldset className="rgi-transfer-actions" aria-label="Move items">
+      <fieldset className="tm-transfer-actions" aria-label="Move items">
         <button
-          className="rgi-transfer-action"
+          className="tm-transfer-action"
           type="button"
           aria-label={`Move selected to ${targetTitle}`}
           disabled={!sourceSelection.some((id) => sourceItems.some((item) => item.id === id))}
@@ -226,7 +226,7 @@ function TransferList({
         </button>
         {showAllActions && (
           <button
-            className="rgi-transfer-action rgi-transfer-action-all"
+            className="tm-transfer-action tm-transfer-action-all"
             type="button"
             aria-label={`Move all to ${targetTitle}`}
             disabled={!sourceItems.length}
@@ -237,7 +237,7 @@ function TransferList({
         )}
         {showAllActions && (
           <button
-            className="rgi-transfer-action rgi-transfer-action-all"
+            className="tm-transfer-action tm-transfer-action-all"
             type="button"
             aria-label={`Move all to ${sourceTitle}`}
             disabled={!targetItems.length}
@@ -247,7 +247,7 @@ function TransferList({
           </button>
         )}
         <button
-          className="rgi-transfer-action"
+          className="tm-transfer-action"
           type="button"
           aria-label={`Move selected to ${sourceTitle}`}
           disabled={!targetSelection.some((id) => targetItems.some((item) => item.id === id))}
@@ -257,10 +257,10 @@ function TransferList({
         </button>
       </fieldset>
 
-      <section className="rgi-transfer-panel" aria-labelledby={`${generatedId}-target`}>
-        <h3 className="rgi-transfer-heading" id={`${generatedId}-target`}>
+      <section className="tm-transfer-panel" aria-labelledby={`${generatedId}-target`}>
+        <h3 className="tm-transfer-heading" id={`${generatedId}-target`}>
           {targetTitle}
-          <span className="rgi-transfer-count">{targetItems.length}</span>
+          <span className="tm-transfer-count">{targetItems.length}</span>
         </h3>
         {renderSelectAll(
           targetItems,
@@ -269,11 +269,11 @@ function TransferList({
           targetTitle,
           `${generatedId}-select-all-target`,
         )}
-        <fieldset className="rgi-transfer-items" aria-label={targetTitle}>
+        <fieldset className="tm-transfer-items" aria-label={targetTitle}>
           {renderItems(targetItems, targetSelection, setTargetSelection, targetTitle, 'target')}
         </fieldset>
       </section>
-      <span className="rgi-transfer-status" role="status" aria-live="polite">
+      <span className="tm-transfer-status" role="status" aria-live="polite">
         {announcement || `${sourceItems.length} available, ${targetItems.length} selected.`}
       </span>
     </div>

@@ -13,7 +13,7 @@ const Breadcrumbs = forwardRef(function Breadcrumbs(
       : maxItems && maxItems >= 2 && items.length > maxItems
         ? [
             items[0],
-            <span className="rgi-breadcrumbs-ellipsis" key="ellipsis">
+            <span className="tm-breadcrumbs-ellipsis" key="ellipsis">
               <span aria-hidden="true">…</span>
               <span className="sr-only">More breadcrumb items</span>
             </span>,
@@ -26,12 +26,12 @@ const Breadcrumbs = forwardRef(function Breadcrumbs(
       {...props}
       ref={ref}
       aria-label={props['aria-label'] ?? 'Breadcrumb'}
-      className={cx('rgi-breadcrumbs', className)}
+      className={cx('tm-breadcrumbs', className)}
     >
-      <ol className="rgi-breadcrumbs-list">
+      <ol className="tm-breadcrumbs-list">
         {visible.map((item, index) => (
           <li
-            className="rgi-breadcrumbs-item"
+            className="tm-breadcrumbs-item"
             key={isValidElement(item) && item.key != null ? item.key : index}
             aria-current={
               index === visible.length - 1 && !isValidElement(item) ? 'page' : undefined
@@ -41,7 +41,7 @@ const Breadcrumbs = forwardRef(function Breadcrumbs(
               ? cloneElement(item, { 'aria-current': item.props['aria-current'] ?? 'page' })
               : item}
             {index < visible.length - 1 && (
-              <span className="rgi-breadcrumbs-separator" aria-hidden="true">
+              <span className="tm-breadcrumbs-separator" aria-hidden="true">
                 {separator}
               </span>
             )}

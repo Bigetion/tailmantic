@@ -20,9 +20,9 @@ const List = forwardRef(function List(
       {...props}
       ref={ref}
       className={cx(
-        'rgi-list',
-        dense && 'rgi-list-dense',
-        disablePadding && 'rgi-list-no-padding',
+        'tm-list',
+        dense && 'tm-list-dense',
+        disablePadding && 'tm-list-no-padding',
         className,
       )}
     >
@@ -40,9 +40,9 @@ export const ListItem = forwardRef(function ListItem(
       {...props}
       ref={ref}
       className={cx(
-        'rgi-list-item',
-        divider && 'rgi-list-item-divider',
-        disableGutters && 'rgi-list-item-no-gutters',
+        'tm-list-item',
+        divider && 'tm-list-item-divider',
+        disableGutters && 'tm-list-item-no-gutters',
         className,
       )}
     >
@@ -56,9 +56,9 @@ export const ListItemText = forwardRef(function ListItemText(
   ref,
 ) {
   return (
-    <span {...props} ref={ref} className={cx('rgi-list-item-text', className)}>
-      {primary != null && <span className="rgi-list-primary">{primary}</span>}
-      {secondary != null && <span className="rgi-list-secondary">{secondary}</span>}
+    <span {...props} ref={ref} className={cx('tm-list-item-text', className)}>
+      {primary != null && <span className="tm-list-primary">{primary}</span>}
+      {secondary != null && <span className="tm-list-secondary">{secondary}</span>}
     </span>
   );
 });

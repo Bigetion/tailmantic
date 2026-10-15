@@ -54,13 +54,13 @@ const Menu = forwardRef(function Menu(
 
   if (!open) return null;
   return (
-    <Popper anchorEl={anchorEl} open={open} placement={placement} className="rgi-menu-positioner">
+    <Popper anchorEl={anchorEl} open={open} placement={placement} className="tm-menu-positioner">
       <div
         {...props}
         ref={setRef}
         role="menu"
         aria-label={ariaLabel}
-        className={cx('rgi-menu', className)}
+        className={cx('tm-menu', className)}
         onKeyDown={(event) => {
           props.onKeyDown?.(event);
           if (event.defaultPrevented) return;

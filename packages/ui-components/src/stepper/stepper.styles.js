@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-stepper', {
+register('tm-stepper', {
   base: { tw: 'm-0 flex list-none gap-0 p-0 text-[var(--text,#20242b)]' },
   modifiers: {
     horizontal: { tw: 'flex-row items-start' },
@@ -9,7 +9,7 @@ register('rgi-stepper', {
   },
 });
 
-register('rgi-step', {
+register('tm-step', {
   base: { tw: 'relative flex min-w-0 flex-1 items-start' },
   modifiers: {
     active: { tw: 'text-[var(--accent,#315fc4)]' },
@@ -18,41 +18,41 @@ register('rgi-step', {
   },
 });
 
-register('rgi-stepper-horizontal .rgi-step:not(:last-child)::after', {
+register('tm-stepper-horizontal .tm-step:not(:last-child)::after', {
   base: {
     content: '""',
     tw: 'absolute left-[calc(50%+1.25rem)] right-0 top-4 h-px bg-[var(--border,#d5d9e0)]',
   },
 });
 
-register('rgi-stepper-horizontal .rgi-step-completed:not(:last-child)::after', {
+register('tm-stepper-horizontal .tm-step-completed:not(:last-child)::after', {
   base: { tw: 'bg-[var(--accent,#315fc4)]' },
 });
 
-register('rgi-stepper-vertical .rgi-step', { base: { tw: 'min-h-12 flex-none' } });
+register('tm-stepper-vertical .tm-step', { base: { tw: 'min-h-12 flex-none' } });
 
-register('rgi-stepper-vertical .rgi-step:not(:last-child)::after', {
+register('tm-stepper-vertical .tm-step:not(:last-child)::after', {
   base: {
     content: '""',
     tw: 'absolute bottom-0 left-4 top-8 w-px bg-[var(--border,#d5d9e0)]',
   },
 });
 
-register('rgi-stepper-vertical .rgi-step-completed:not(:last-child)::after', {
+register('tm-stepper-vertical .tm-step-completed:not(:last-child)::after', {
   base: { tw: 'bg-[var(--accent,#315fc4)]' },
 });
 
-register('rgi-step-active .rgi-step-indicator', {
+register('tm-step-active .tm-step-indicator', {
   base: { tw: 'border-[var(--accent,#315fc4)] bg-[var(--accent,#315fc4)] text-white' },
 });
 
-register('rgi-step-completed .rgi-step-indicator', {
+register('tm-step-completed .tm-step-indicator', {
   base: { tw: 'border-[var(--accent,#315fc4)] bg-[var(--accent,#315fc4)] text-white' },
 });
 
-register('rgi-stepper-alternative .rgi-step', { base: { tw: 'flex-col items-center' } });
+register('tm-stepper-alternative .tm-step', { base: { tw: 'flex-col items-center' } });
 
-register.all('rgi-step', {
+register.all('tm-step', {
   'content': 'flex items-center gap-2',
   'button': 'flex cursor-pointer items-center gap-2 border-0 bg-transparent p-0 text-left text-inherit disabled:cursor-not-allowed',
   'indicator': 'z-10 flex size-8 shrink-0 items-center justify-center rounded-full border border-[var(--border,#d5d9e0)] bg-[var(--surface,#fff)] text-xs font-semibold text-[var(--muted,#626a75)]',
@@ -61,19 +61,19 @@ register.all('rgi-step', {
   'description': 'text-xs text-[var(--muted,#626a75)]',
 });
 
-register.all('rgi-stepper-example', {
+register.all('tm-stepper-example', {
   '': 'flex w-full max-w-[760px] flex-col gap-4 rounded-xl border border-[#303a49] bg-[#111720] p-4 sm:gap-5 sm:p-5',
-  '& .rgi-stepper': 'w-full',
-  '& .rgi-step': 'min-w-0',
-  '& .rgi-step-button': 'min-w-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8baeff]',
-  '& .rgi-step-indicator': '!size-8 !border-[#3a4657] !bg-[#202a38] !text-[#9eacbf] transition-colors',
-  '& .rgi-step-active .rgi-step-indicator': '!border-[#8baeff] !bg-[#263954] !text-[#d2e0ff] !shadow-[0_0_0_3px_#8baeff20]',
-  '& .rgi-step-completed .rgi-step-indicator': '!border-[#4c9b78] !bg-[#203b32] !text-[#a6e2c0]',
-  '& .rgi-step-copy': 'min-w-0 gap-1',
-  '& .rgi-step-label': 'text-[9px] text-[#acb8c8] sm:text-[10px]',
-  '& .rgi-step-active .rgi-step-label': 'font-semibold text-[#c5d7ff]',
-  '& .rgi-step-completed .rgi-step-label': 'text-[#a6e2c0]',
-  '& .rgi-step-description': 'max-w-36 text-[8px] leading-relaxed text-[#8997aa]',
+  '& .tm-stepper': 'w-full',
+  '& .tm-step': 'min-w-0',
+  '& .tm-step-button': 'min-w-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8baeff]',
+  '& .tm-step-indicator': '!size-8 !border-[#3a4657] !bg-[#202a38] !text-[#9eacbf] transition-colors',
+  '& .tm-step-active .tm-step-indicator': '!border-[#8baeff] !bg-[#263954] !text-[#d2e0ff] !shadow-[0_0_0_3px_#8baeff20]',
+  '& .tm-step-completed .tm-step-indicator': '!border-[#4c9b78] !bg-[#203b32] !text-[#a6e2c0]',
+  '& .tm-step-copy': 'min-w-0 gap-1',
+  '& .tm-step-label': 'text-[9px] text-[#acb8c8] sm:text-[10px]',
+  '& .tm-step-active .tm-step-label': 'font-semibold text-[#c5d7ff]',
+  '& .tm-step-completed .tm-step-label': 'text-[#a6e2c0]',
+  '& .tm-step-description': 'max-w-36 text-[8px] leading-relaxed text-[#8997aa]',
   'content': 'flex min-h-[78px] flex-col justify-center gap-1 rounded-lg border border-[#2c3746] bg-[#151d28] px-4 py-3 [&_strong]:text-[11px] [&_strong]:font-semibold [&_span:last-child]:text-[9px] [&_span:last-child]:text-[#9ba9bc]',
   'eyebrow': 'text-[8px] font-semibold tracking-[.1em] text-[#90a8cd]',
   'actions': 'flex items-center justify-between gap-3',
@@ -81,25 +81,25 @@ register.all('rgi-stepper-example', {
   'primary': 'inline-flex h-9 cursor-pointer items-center justify-center rounded-md border border-[#789fe8] bg-[#263954] px-4 text-xs font-semibold text-[#d2e0ff] hover:bg-[#304768] focus-visible:outline-2 focus-visible:outline-[#8baeff]',
 });
 
-register.all('rgi-stepper-example-vertical', {
-  '& .rgi-stepper': 'gap-1',
-  '& .rgi-step': 'min-h-14',
-  '& .rgi-step-copy': 'pb-3',
+register.all('tm-stepper-example-vertical', {
+  '& .tm-stepper': 'gap-1',
+  '& .tm-step': 'min-h-14',
+  '& .tm-step-copy': 'pb-3',
 });
 
-register.all('rgi-stepper-example-alternative', {
-  '& .rgi-stepper': 'gap-1',
-  '& .rgi-step-button': 'flex-col items-center gap-2 text-center',
-  '& .rgi-step-copy': 'items-center',
-  '& .rgi-step-label': 'max-w-16 text-center leading-tight',
-  '& .rgi-step:not(:last-child)::after': 'top-4',
+register.all('tm-stepper-example-alternative', {
+  '& .tm-stepper': 'gap-1',
+  '& .tm-step-button': 'flex-col items-center gap-2 text-center',
+  '& .tm-step-copy': 'items-center',
+  '& .tm-step-label': 'max-w-16 text-center leading-tight',
+  '& .tm-step:not(:last-child)::after': 'top-4',
 });
 
-register.all('rgi-stepper-example-horizontal', {
-  '& .rgi-stepper-horizontal': 'max-sm:flex-col',
-  '& .rgi-stepper-horizontal .rgi-step': 'max-sm:min-h-12 max-sm:flex-none',
-  '& .rgi-stepper-horizontal .rgi-step-button': 'max-sm:items-center',
-  '& .rgi-stepper-horizontal .rgi-step:not(:last-child)::after': 'max-sm:bottom-0 max-sm:left-4 max-sm:right-auto max-sm:top-8 max-sm:h-auto max-sm:w-px',
+register.all('tm-stepper-example-horizontal', {
+  '& .tm-stepper-horizontal': 'max-sm:flex-col',
+  '& .tm-stepper-horizontal .tm-step': 'max-sm:min-h-12 max-sm:flex-none',
+  '& .tm-stepper-horizontal .tm-step-button': 'max-sm:items-center',
+  '& .tm-stepper-horizontal .tm-step:not(:last-child)::after': 'max-sm:bottom-0 max-sm:left-4 max-sm:right-auto max-sm:top-8 max-sm:h-auto max-sm:w-px',
 });
 
 register.all('component-showcase-stepper', {

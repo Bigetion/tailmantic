@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register.all('rgi-breadcrumbs', {
+register.all('tm-breadcrumbs', {
   '': 'text-sm text-[var(--muted,#626a75)]',
   'list': 'm-0 flex list-none flex-wrap items-center gap-2 p-0',
   'item': 'inline-flex min-w-0 items-center gap-2',
@@ -10,7 +10,7 @@ register.all('rgi-breadcrumbs', {
   '& [aria-current="page"]': 'font-medium text-[var(--text,#20242b)] no-underline',
 });
 
-register.all('rgi-breadcrumbs-example', {
+register.all('tm-breadcrumbs-example', {
   '': 'flex w-full max-w-[760px] flex-col gap-4',
   'panel': 'flex min-h-[176px] flex-col justify-between gap-6 rounded-xl border border-[#293548] bg-[#111925] p-6 max-sm:p-4',
   'context': 'flex flex-col gap-2 border-b border-[#263246] pb-4',

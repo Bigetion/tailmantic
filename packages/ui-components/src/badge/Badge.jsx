@@ -24,15 +24,15 @@ const Badge = forwardRef(function Badge(
     typeof badgeContent === 'number' && !isDot && badgeContent > max ? `${max}+` : badgeContent;
 
   return (
-    <span {...props} ref={ref} className={cx('rgi-badge-root', className)}>
+    <span {...props} ref={ref} className={cx('tm-badge-root', className)}>
       {children}
       {!invisible && (isDot || !isEmpty) && (
         <span
           className={cx(
-            'rgi-badge',
-            `rgi-badge-${color}`,
-            `rgi-badge-${variant}`,
-            `rgi-badge-overlap-${overlap}`,
+            'tm-badge',
+            `tm-badge-${color}`,
+            `tm-badge-${variant}`,
+            `tm-badge-overlap-${overlap}`,
           )}
           role="img"
           aria-label={badgeLabel}

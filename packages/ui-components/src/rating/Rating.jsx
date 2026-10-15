@@ -74,7 +74,7 @@ const Rating = forwardRef(function Rating(
       <div
         {...props}
         ref={ref}
-        className={cx('rgi-rating-precision', disabled && 'rgi-rating-disabled', className)}
+        className={cx('tm-rating-precision', disabled && 'tm-rating-disabled', className)}
         role="slider"
         aria-label={label}
         aria-valuemin={0}
@@ -99,13 +99,13 @@ const Rating = forwardRef(function Rating(
           const fill = Math.max(0, Math.min(100, (activeRating - index) * 100));
           return (
             <span
-              className="rgi-rating-precision-star"
+              className="tm-rating-precision-star"
               data-rating-star={starValue}
               key={starValue}
               aria-hidden="true"
             >
-              <span className="rgi-rating-precision-empty">☆</span>
-              <span className="rgi-rating-precision-fill" style={{ width: `${fill}%` }}>
+              <span className="tm-rating-precision-empty">☆</span>
+              <span className="tm-rating-precision-fill" style={{ width: `${fill}%` }}>
                 ★
               </span>
             </span>
@@ -120,18 +120,18 @@ const Rating = forwardRef(function Rating(
       <div
         {...props}
         ref={ref}
-        className={cx('rgi-rating', 'rgi-rating-readonly', className)}
+        className={cx('tm-rating', 'tm-rating-readonly', className)}
         role="img"
         aria-label={`${rating} out of ${safeMax} stars`}
       >
         {name && (
-          <input className="rgi-rating-form-value" type="hidden" name={name} value={rating} />
+          <input className="tm-rating-form-value" type="hidden" name={name} value={rating} />
         )}
         {Array.from({ length: safeMax }, (_, index) => index + 1).map((starValue) => (
           <span
             className={cx(
-              'rgi-rating-choice-star',
-              starValue <= rating && 'rgi-rating-choice-star-selected',
+              'tm-rating-choice-star',
+              starValue <= rating && 'tm-rating-choice-star-selected',
             )}
             aria-hidden="true"
             key={starValue}
@@ -147,7 +147,7 @@ const Rating = forwardRef(function Rating(
     <div
       {...props}
       ref={ref}
-      className={cx('rgi-rating', disabled && 'rgi-rating-disabled', className)}
+      className={cx('tm-rating', disabled && 'tm-rating-disabled', className)}
       role="radiogroup"
       aria-label={label}
     >
@@ -157,7 +157,7 @@ const Rating = forwardRef(function Rating(
         return (
           // biome-ignore lint/a11y/useSemanticElements: Rating uses roving-focus buttons as the selectable stars in a radio group.
           <button
-            className="rgi-rating-choice"
+            className="tm-rating-choice"
             type="button"
             role="radio"
             aria-checked={checked}
@@ -171,8 +171,8 @@ const Rating = forwardRef(function Rating(
           >
             <span
               className={cx(
-                'rgi-rating-choice-star',
-                starValue <= rating && 'rgi-rating-choice-star-selected',
+                'tm-rating-choice-star',
+                starValue <= rating && 'tm-rating-choice-star-selected',
               )}
               aria-hidden="true"
             >
@@ -181,7 +181,7 @@ const Rating = forwardRef(function Rating(
           </button>
         );
       })}
-      {name && <input className="rgi-rating-form-value" type="hidden" name={name} value={rating} />}
+      {name && <input className="tm-rating-form-value" type="hidden" name={name} value={rating} />}
     </div>
   );
 });

@@ -1,6 +1,6 @@
 import { register } from 'tailmantic/collector';
 
-register('rgi-app-bar', {
+register('tm-app-bar', {
   base: {
     tw: 'z-10 flex min-h-14 w-full items-center gap-4 border-b border-[var(--border,#273142)] bg-[var(--panel,#111824)] px-4 py-2 text-[var(--text,#edf2fb)]',
   },
@@ -15,7 +15,7 @@ register('rgi-app-bar', {
   },
 });
 
-register.all('rgi-app-bar-example', {
+register.all('tm-app-bar-example', {
   '': 'flex w-full max-w-[720px] flex-col gap-2',
   'preview': 'overflow-hidden rounded-lg border border-[var(--border)] bg-[#0e141e]',
   'header': 'relative z-10 min-h-14 gap-3 border-b border-[var(--border)] bg-[#151c27] px-4 py-2 max-sm:gap-2 max-sm:px-3',

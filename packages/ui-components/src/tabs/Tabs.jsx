@@ -172,56 +172,56 @@ const Tabs = forwardRef(function Tabs(
       id={`${id}-tab-${index}`}
       type="button"
       role="tab"
-      className={cx('rgi-tab', safeIndex === index && 'rgi-tab-selected')}
+      className={cx('tm-tab', safeIndex === index && 'tm-tab-selected')}
       aria-selected={safeIndex === index}
       aria-controls={`${id}-panel-${index}`}
       tabIndex={safeIndex === index ? 0 : -1}
       disabled={tab.disabled}
       onClick={(event) => select(index, event)}
     >
-      {/* Improvement 4 — rgi-tab-content wrapper */}
-      <span className="rgi-tab-content">
+      {/* Improvement 4 — tm-tab-content wrapper */}
+      <span className="tm-tab-content">
         {tab.icon && (
-          <span className="rgi-tab-icon" aria-hidden="true">
+          <span className="tm-tab-icon" aria-hidden="true">
             {tab.icon}
           </span>
         )}
         {tab.label}
         {/* Improvement 3 — badge */}
         {tab.badge !== undefined && (
-          <span className="rgi-tab-badge">{tab.badge}</span>
+          <span className="tm-tab-badge">{tab.badge}</span>
         )}
       </span>
-      {/* Improvement 2 — animated indicator, sibling outside rgi-tab-content */}
-      {safeIndex === index && <span className="rgi-tab-indicator" aria-hidden="true" />}
+      {/* Improvement 2 — animated indicator, sibling outside tm-tab-content */}
+      {safeIndex === index && <span className="tm-tab-indicator" aria-hidden="true" />}
     </button>
   ));
 
   // Build variant class for the list
   const variantClass =
     variant === 'scrollable'
-      ? 'rgi-tabs-list-scrollable'
+      ? 'tm-tabs-list-scrollable'
       : variant === 'centered'
-        ? 'rgi-tabs-list-centered'
+        ? 'tm-tabs-list-centered'
         : variant === 'fullwidth'
-          ? 'rgi-tabs-list-fullwidth'
+          ? 'tm-tabs-list-fullwidth'
           : null;
 
   // Improvement 5 — size class on outer div
-  const sizeClass = size === 'sm' ? 'rgi-tabs-sm' : size === 'lg' ? 'rgi-tabs-lg' : null;
+  const sizeClass = size === 'sm' ? 'tm-tabs-sm' : size === 'lg' ? 'tm-tabs-lg' : null;
 
   return (
     <div
       {...props}
       ref={ref}
-      className={cx('rgi-tabs', `rgi-tabs-${orientation}`, sizeClass, className)}
+      className={cx('tm-tabs', `tm-tabs-${orientation}`, sizeClass, className)}
     >
       {/* Improvement 6 — scrollable variant wraps list in container with chevron buttons */}
       {variant === 'scrollable' ? (
-        <div className="rgi-tabs-scrollable-container">
+        <div className="tm-tabs-scrollable-container">
           <button
             type="button"
-            className="rgi-tabs-scroll-btn"
+            className="tm-tabs-scroll-btn"
             aria-label={orientation === 'vertical' ? 'Scroll tabs up' : 'Scroll tabs left'}
             disabled={!canScrollBack}
             onClick={() => scrollTabs('back')}
@@ -230,7 +230,7 @@ const Tabs = forwardRef(function Tabs(
           </button>
           <div
             ref={listScrollRef}
-            className={cx('rgi-tabs-list', variantClass)}
+            className={cx('tm-tabs-list', variantClass)}
             role="tablist"
             aria-label={ariaLabel}
             aria-orientation={orientation}
@@ -240,7 +240,7 @@ const Tabs = forwardRef(function Tabs(
           </div>
           <button
             type="button"
-            className="rgi-tabs-scroll-btn"
+            className="tm-tabs-scroll-btn"
             aria-label={orientation === 'vertical' ? 'Scroll tabs down' : 'Scroll tabs right'}
             disabled={!canScrollForward}
             onClick={() => scrollTabs('forward')}
@@ -250,7 +250,7 @@ const Tabs = forwardRef(function Tabs(
         </div>
       ) : (
         <div
-          className={cx('rgi-tabs-list', variantClass)}
+          className={cx('tm-tabs-list', variantClass)}
           role="tablist"
           aria-label={ariaLabel}
           aria-orientation={orientation}
@@ -267,7 +267,7 @@ const Tabs = forwardRef(function Tabs(
           role="tabpanel"
           aria-labelledby={`${id}-tab-${index}`}
           tabIndex={tab.tabIndex ?? 0}
-          className="rgi-tab-panel"
+          className="tm-tab-panel"
           hidden={index !== safeIndex}
         >
           {tab.content}
