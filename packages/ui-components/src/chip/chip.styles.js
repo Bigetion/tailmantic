@@ -21,6 +21,4 @@ register('tm-chip', {
 
 register.all('tm-chip', {
   '& button': 'inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-current opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-current disabled:cursor-not-allowed',
-  'examples': 'flex flex-wrap items-center gap-2.5',
-  'actions': 'flex flex-wrap items-center justify-between gap-2',
 });

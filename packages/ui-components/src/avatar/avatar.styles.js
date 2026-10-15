@@ -27,7 +27,4 @@ register.all('tm-avatar', {
   'group': 'inline-flex items-center [&_.tm-avatar]:border-2 [&_.tm-avatar]:border-[var(--panel,#10151e)]',
   'group-stacked': '-space-x-2',
   'overflow': 'relative z-0 size-10 shrink-0 border-[#111720] bg-[#252f40] text-[10px] font-semibold text-[#c0ccdf]',
-  'size-list': 'flex flex-wrap items-end gap-4',
-  'size-item': 'flex flex-col items-center gap-2',
-  'size-label': 'font-mono text-[9px] text-[#8491a5]',
 });
