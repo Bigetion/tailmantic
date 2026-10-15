@@ -83,10 +83,10 @@ function AnchoredSurface() {
   const actualPlacement = useActualPlacement(popperRef, open, 'bottom-start');
 
   return (
-    <div className="rgi-popper-example">
-      <div className="rgi-popper-example-stage">
-        <div className="rgi-popper-example-copy">
-          <span className="rgi-popper-example-eyebrow">ANCHORED FLOATING UI</span>
+    <div className="tm-popper-example">
+      <div className="tm-popper-example-stage">
+        <div className="tm-popper-example-copy">
+          <span className="tm-popper-example-eyebrow">ANCHORED FLOATING UI</span>
           <strong>Position content relative to a trigger</strong>
           <span>The floating surface is portaled and aligned with its reference element.</span>
         </div>
@@ -100,22 +100,22 @@ function AnchoredSurface() {
           <Move size={13} aria-hidden="true" />
         </Button>
       </div>
-      <span className="rgi-popper-example-status" role="status">
+      <span className="tm-popper-example-status" role="status">
         {open
           ? `Open at ${actualPlacement}; use the surface action to close it.`
           : 'The Popper surface renders in a portal.'}
       </span>
       <Popper
         ref={popperRef}
-        className="rgi-popper-example-surface"
+        className="tm-popper-example-surface"
         open={open}
         anchorRef={anchorRef}
         placement="bottom-start"
         role="dialog"
         aria-label="Anchored content preview"
       >
-        <div className="rgi-popper-example-content">
-          <span className="rgi-popper-example-icon">
+        <div className="tm-popper-example-content">
+          <span className="tm-popper-example-icon">
             <Layers size={15} aria-hidden="true" />
           </span>
           <div>
@@ -123,7 +123,7 @@ function AnchoredSurface() {
             <span>Positioned with Popper.js</span>
           </div>
           <Button
-            className="rgi-popper-example-action"
+            className="tm-popper-example-action"
             variant="text"
             onClick={() => setOpen(false)}
           >
@@ -144,16 +144,16 @@ function PlacementPreview() {
   const actualPlacement = useActualPlacement(popperRef, open, placement);
 
   return (
-    <div className="rgi-popper-example">
-      <fieldset className="rgi-popper-placement-controls">
+    <div className="tm-popper-example">
+      <fieldset className="tm-popper-placement-controls">
         <legend className="sr-only">Choose Popper placement</legend>
         {PLACEMENTS.map(([value, Icon]) => (
           <Button
             key={value}
             className={
               placement === value
-                ? 'rgi-popper-placement-option rgi-popper-placement-option-active'
-                : 'rgi-popper-placement-option'
+                ? 'tm-popper-placement-option tm-popper-placement-option-active'
+                : 'tm-popper-placement-option'
             }
             variant="outlined"
             aria-pressed={placement === value}
@@ -167,8 +167,8 @@ function PlacementPreview() {
           </Button>
         ))}
       </fieldset>
-      <div className="rgi-popper-placement-stage">
-        <span className="rgi-popper-example-eyebrow">LIVE PLACEMENT PREVIEW</span>
+      <div className="tm-popper-placement-stage">
+        <span className="tm-popper-example-eyebrow">LIVE PLACEMENT PREVIEW</span>
         <Button
           ref={anchorRef}
           variant="outlined"
@@ -177,7 +177,7 @@ function PlacementPreview() {
         >
           Reference element
         </Button>
-        <span className="rgi-popper-example-status" role="status">
+        <span className="tm-popper-example-status" role="status">
           {open
             ? `Actual placement: ${actualPlacement}${actualPlacement === placement ? '' : ` (flipped from ${placement})`}`
             : 'Choose a direction to preview placement and fallback behavior.'}
@@ -185,7 +185,7 @@ function PlacementPreview() {
       </div>
       <Popper
         ref={popperRef}
-        className="rgi-popper-example-surface rgi-popper-placement-surface"
+        className="tm-popper-example-surface tm-popper-placement-surface"
         open={open}
         anchorRef={anchorRef}
         placement={placement}
@@ -193,11 +193,11 @@ function PlacementPreview() {
         role="dialog"
         aria-label="Popper placement preview"
       >
-        <div className="rgi-popper-placement-content">
+        <div className="tm-popper-placement-content">
           <strong>{actualPlacement}</strong>
           <span>Popper chooses a visible position when space is limited.</span>
           <Button
-            className="rgi-popper-example-action"
+            className="tm-popper-example-action"
             variant="text"
             onClick={() => setOpen(false)}
           >
@@ -221,9 +221,9 @@ function OffsetPreview() {
   );
 
   return (
-    <div className="rgi-popper-example">
-      <div className="rgi-popper-offset-controls">
-        <label className="rgi-popper-range-control">
+    <div className="tm-popper-example">
+      <div className="tm-popper-offset-controls">
+        <label className="tm-popper-range-control">
           <span>
             <strong>Skidding</strong>
             <output>{skidding}px</output>
@@ -242,7 +242,7 @@ function OffsetPreview() {
           />
           <small>Shift along the reference edge.</small>
         </label>
-        <label className="rgi-popper-range-control">
+        <label className="tm-popper-range-control">
           <span>
             <strong>Distance</strong>
             <output>{distance}px</output>
@@ -262,8 +262,8 @@ function OffsetPreview() {
           <small>Move away from the reference element.</small>
         </label>
       </div>
-      <div className="rgi-popper-offset-stage">
-        <span className="rgi-popper-example-eyebrow">OFFSET MODIFIER</span>
+      <div className="tm-popper-offset-stage">
+        <span className="tm-popper-example-eyebrow">OFFSET MODIFIER</span>
         <Button
           ref={anchorRef}
           variant="outlined"
@@ -272,7 +272,7 @@ function OffsetPreview() {
         >
           Reference element
         </Button>
-        <span className="rgi-popper-example-status" role="status">
+        <span className="tm-popper-example-status" role="status">
           {open
             ? `Offset modifier: [${skidding}, ${distance}]px`
             : 'Adjust an offset or open the preview.'}
@@ -280,7 +280,7 @@ function OffsetPreview() {
       </div>
       <Popper
         ref={popperRef}
-        className="rgi-popper-example-surface rgi-popper-offset-surface"
+        className="tm-popper-example-surface tm-popper-offset-surface"
         open={open}
         anchorRef={anchorRef}
         placement="bottom"
@@ -289,8 +289,8 @@ function OffsetPreview() {
         role="dialog"
         aria-label="Popper offset preview"
       >
-        <div className="rgi-popper-offset-content">
-          <span className="rgi-popper-example-icon">
+        <div className="tm-popper-offset-content">
+          <span className="tm-popper-example-icon">
             <Check size={14} aria-hidden="true" />
           </span>
           <div>

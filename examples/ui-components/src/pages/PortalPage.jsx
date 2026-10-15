@@ -43,10 +43,10 @@ function BodyTargetDemo() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rgi-portal-example">
-      <div className="rgi-portal-example-stage">
-        <div className="rgi-portal-example-copy">
-          <span className="rgi-portal-example-eyebrow">RENDER OUTSIDE THE PARENT</span>
+    <div className="tm-portal-example">
+      <div className="tm-portal-example-stage">
+        <div className="tm-portal-example-copy">
+          <span className="tm-portal-example-eyebrow">RENDER OUTSIDE THE PARENT</span>
           <strong>Move content to document.body</strong>
           <span>
             The Portal component stays here while its notification mounts elsewhere in the DOM.
@@ -57,15 +57,15 @@ function BodyTargetDemo() {
           <ArrowUpRight size={13} aria-hidden="true" />
         </Button>
       </div>
-      <div className="rgi-portal-example-feedback" role="status">
+      <div className="tm-portal-example-feedback" role="status">
         {open
           ? 'Notification is rendered directly inside document.body.'
           : 'Show the notification to inspect its portal destination.'}
       </div>
       {open && (
         <Portal>
-          <aside className="rgi-portal-body-notice" role="status">
-            <span className="rgi-portal-example-icon">
+          <aside className="tm-portal-body-notice" role="status">
+            <span className="tm-portal-example-icon">
               <Layers size={14} aria-hidden="true" />
             </span>
             <span>
@@ -91,12 +91,12 @@ function CustomTargetDemo() {
     // biome-ignore lint/a11y/noStaticElementInteractions: Counts clicks bubbling through the React tree from portal content.
     // biome-ignore lint/a11y/useKeyWithClickEvents: This parent observes bubbled clicks; it is not itself interactive.
     <div
-      className="rgi-portal-example rgi-portal-custom-demo"
+      className="tm-portal-example tm-portal-custom-demo"
       onClick={() => setBubbledClicks((count) => count + 1)}
     >
-      <div className="rgi-portal-example-stage rgi-portal-custom-stage">
-        <div className="rgi-portal-example-copy">
-          <span className="rgi-portal-example-eyebrow">CUSTOM MOUNT NODE</span>
+      <div className="tm-portal-example-stage tm-portal-custom-stage">
+        <div className="tm-portal-example-copy">
+          <span className="tm-portal-example-eyebrow">CUSTOM MOUNT NODE</span>
           <strong>Choose where portal content mounts</strong>
           <span>
             Send content into a specific target while React events still follow the component tree.
@@ -105,11 +105,11 @@ function CustomTargetDemo() {
         <Button variant="outlined" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
           {open ? 'Unmount content' : 'Mount content'}
         </Button>
-        <div className="rgi-portal-custom-target" ref={targetRef}>
-          <span className="rgi-portal-target-label">Custom portal target</span>
+        <div className="tm-portal-custom-target" ref={targetRef}>
+          <span className="tm-portal-target-label">Custom portal target</span>
           {open && targetRef.current && (
             <Portal container={targetRef.current}>
-              <div className="rgi-portal-target-content">
+              <div className="tm-portal-target-content">
                 <MousePointer2 size={14} aria-hidden="true" />
                 <span>
                   <strong>Mounted here</strong>
@@ -127,7 +127,7 @@ function CustomTargetDemo() {
           )}
         </div>
       </div>
-      <div className="rgi-portal-example-feedback" role="status">
+      <div className="tm-portal-example-feedback" role="status">
         {`React parent received ${bubbledClicks} ${bubbledClicks === 1 ? 'click' : 'clicks'}${open ? ' · portal mounted in the custom target' : ''}.`}
       </div>
     </div>
@@ -138,24 +138,24 @@ function ClippingDemo() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rgi-portal-example">
-      <div className="rgi-portal-clipping-frame">
-        <span className="rgi-portal-example-eyebrow">CLIPPING CONTAINER · OVERFLOW HIDDEN</span>
+    <div className="tm-portal-example">
+      <div className="tm-portal-clipping-frame">
+        <span className="tm-portal-example-eyebrow">CLIPPING CONTAINER · OVERFLOW HIDDEN</span>
         <p>This frame clips anything rendered inside its bounds.</p>
         <Button variant="outlined" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
           {open ? 'Close escaped layer' : 'Open escaped layer'}
           <ArrowUpRight size={13} aria-hidden="true" />
         </Button>
       </div>
-      <div className="rgi-portal-example-feedback" role="status">
+      <div className="tm-portal-example-feedback" role="status">
         {open
           ? 'The layer is outside the clipping frame in document.body.'
           : 'Open the layer to see a portal escape its clipping parent.'}
       </div>
       {open && (
         <Portal>
-          <aside className="rgi-portal-escaped-layer" role="status">
-            <span className="rgi-portal-example-icon">
+          <aside className="tm-portal-escaped-layer" role="status">
+            <span className="tm-portal-example-icon">
               <Layers size={13} aria-hidden="true" />
             </span>
             <span>

@@ -60,9 +60,9 @@ function ConfirmationDialog({ destructive = false }) {
   }
 
   return (
-    <div className="rgi-dialog-example-trigger-area">
+    <div className="tm-dialog-example-trigger-area">
       <Button
-        className="rgi-dialog-example-trigger"
+        className="tm-dialog-example-trigger"
         variant={destructive ? 'outlined' : 'contained'}
         color={destructive ? 'danger' : 'primary'}
         onClick={() => {
@@ -75,13 +75,13 @@ function ConfirmationDialog({ destructive = false }) {
       <Dialog
         className={
           destructive
-            ? 'rgi-dialog-example-surface rgi-dialog-example-surface-danger'
-            : 'rgi-dialog-example-surface'
+            ? 'tm-dialog-example-surface tm-dialog-example-surface-danger'
+            : 'tm-dialog-example-surface'
         }
         open={open}
         title={(
           <>
-            <span className="rgi-dialog-example-heading-icon" aria-hidden="true">{headingIcon}</span>
+            <span className="tm-dialog-example-heading-icon" aria-hidden="true">{headingIcon}</span>
             <span>{title}</span>
           </>
         )}
@@ -119,9 +119,9 @@ function AnnouncementDialog() {
   }
 
   return (
-    <div className="rgi-dialog-example-trigger-area">
+    <div className="tm-dialog-example-trigger-area">
       <Button
-        className="rgi-dialog-example-trigger"
+        className="tm-dialog-example-trigger"
         onClick={() => {
           setNotice('');
           setOpen(true);
@@ -130,11 +130,11 @@ function AnnouncementDialog() {
         Compose announcement
       </Button>
       <Dialog
-        className="rgi-dialog-example-surface rgi-dialog-example-surface-fullscreen"
+        className="tm-dialog-example-surface tm-dialog-example-surface-fullscreen"
         open={open}
         title={(
           <>
-            <span className="rgi-dialog-example-heading-icon" aria-hidden="true">
+            <span className="tm-dialog-example-heading-icon" aria-hidden="true">
               <FileText size={17} />
             </span>
             <span>Create announcement</span>
@@ -145,26 +145,26 @@ function AnnouncementDialog() {
         actions={(
           <>
             <Button variant="text" onClick={() => setOpen(false)}>Cancel</Button>
-            <Button form="rgi-dialog-announcement-form" type="submit">
+            <Button form="tm-dialog-announcement-form" type="submit">
               Publish announcement
             </Button>
           </>
         )}
       >
         <form
-          className="rgi-dialog-example-form"
-          id="rgi-dialog-announcement-form"
+          className="tm-dialog-example-form"
+          id="tm-dialog-announcement-form"
           onSubmit={publish}
         >
-          <label className="rgi-dialog-example-field">
+          <label className="tm-dialog-example-field">
             <span>Announcement title</span>
             <input required placeholder="What should your team know?" />
           </label>
-          <label className="rgi-dialog-example-field">
+          <label className="tm-dialog-example-field">
             <span>Message</span>
             <textarea required rows={5} placeholder="Share a quick update..." />
           </label>
-          <div className="rgi-dialog-example-audience">
+          <div className="tm-dialog-example-audience">
             <span aria-hidden="true" />
             Visible to <strong>All workspace members</strong>
           </div>

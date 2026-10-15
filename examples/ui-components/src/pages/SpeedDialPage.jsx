@@ -56,10 +56,10 @@ function QuickActionsExample() {
   const [message, setMessage] = useState('');
 
   return (
-    <div className="rgi-speed-dial-example">
-      <div className="rgi-speed-dial-example-stage">
-        <div className="rgi-speed-dial-example-copy">
-          <span className="rgi-speed-dial-example-kicker">WORKSPACE SHORTCUTS</span>
+    <div className="tm-speed-dial-example">
+      <div className="tm-speed-dial-example-stage">
+        <div className="tm-speed-dial-example-copy">
+          <span className="tm-speed-dial-example-kicker">WORKSPACE SHORTCUTS</span>
           <strong>What would you like to create?</strong>
           <span>Open the speed dial to get started.</span>
         </div>
@@ -69,7 +69,7 @@ function QuickActionsExample() {
           onActionClick={(_event, action) => setMessage(`${action.name} selected.`)}
         />
       </div>
-      <span className="rgi-speed-dial-example-status" role="status" aria-live="polite">
+      <span className="tm-speed-dial-example-status" role="status" aria-live="polite">
         {message || 'Quick actions are grouped behind one floating button.'}
       </span>
     </div>
@@ -81,12 +81,12 @@ function DirectionExample() {
   const [message, setMessage] = useState('');
 
   return (
-    <div className="rgi-speed-dial-example">
-      <fieldset className="rgi-speed-dial-example-directions">
+    <div className="tm-speed-dial-example">
+      <fieldset className="tm-speed-dial-example-directions">
         <legend className="sr-only">Speed dial direction</legend>
         {DIRECTIONS.map((value) => (
           <button
-            className="rgi-speed-dial-example-direction"
+            className="tm-speed-dial-example-direction"
             key={value}
             type="button"
             aria-pressed={direction === value}
@@ -99,7 +99,7 @@ function DirectionExample() {
           </button>
         ))}
       </fieldset>
-      <div className="rgi-speed-dial-example-direction-stage">
+      <div className="tm-speed-dial-example-direction-stage">
         <SpeedDial
           ariaLabel="Open directional actions"
           actions={QUICK_ACTIONS}
@@ -107,7 +107,7 @@ function DirectionExample() {
           direction={direction}
           onActionClick={(_event, action) => setMessage(`${action.name} selected.`)}
         />
-        <span className="rgi-speed-dial-example-direction-note" role="status">
+        <span className="tm-speed-dial-example-direction-note" role="status">
           {message || `Actions expand ${direction} from the floating button.`}
         </span>
       </div>
@@ -119,12 +119,12 @@ function SharingExample() {
   const [message, setMessage] = useState('');
 
   return (
-    <div className="rgi-speed-dial-example">
-      <div className="rgi-speed-dial-example-share-card">
-        <span className="rgi-speed-dial-example-share-icon">
+    <div className="tm-speed-dial-example">
+      <div className="tm-speed-dial-example-share-card">
+        <span className="tm-speed-dial-example-share-icon">
           <Share2 size={18} aria-hidden="true" />
         </span>
-        <span className="rgi-speed-dial-example-share-copy">
+        <span className="tm-speed-dial-example-share-copy">
           <strong>Share this workspace</strong>
           <span>Invite a teammate or share a link.</span>
         </span>
@@ -136,7 +136,7 @@ function SharingExample() {
           onActionClick={(_event, action) => setMessage(`${action.name} selected.`)}
         />
       </div>
-      <span className="rgi-speed-dial-example-status" role="status" aria-live="polite">
+      <span className="tm-speed-dial-example-status" role="status" aria-live="polite">
         {message || 'The sharing actions are expanded and ready to select.'}
       </span>
     </div>

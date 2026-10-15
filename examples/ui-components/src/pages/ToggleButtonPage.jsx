@@ -28,10 +28,10 @@ const USAGE_CODE = `import { ButtonGroup, ToggleButton } from '@tailmantic/ui-co
 import '@tailmantic/ui-components/button-group/styles';
 import '@tailmantic/ui-components/toggle-button/styles';
 
-<ButtonGroup className="rgi-toggle-button-group" aria-label="Choose a view">
+<ButtonGroup className="tm-toggle-button-group" aria-label="Choose a view">
   {['list', 'grid'].map((option) => (
     <ToggleButton
-      className="rgi-toggle-button-group-button"
+      className="tm-toggle-button-group-button"
       key={option}
       selected={view === option}
       onClick={() => setView(option)}
@@ -60,10 +60,10 @@ const IMPLEMENTATION_ROWS = [
 
 function ToggleButtonChoices({ label, options, value, onChange, iconOnly = false }) {
   return (
-    <ButtonGroup className="rgi-toggle-button-group" aria-label={label}>
+    <ButtonGroup className="tm-toggle-button-group" aria-label={label}>
       {options.map(({ id, label: optionLabel, Icon }) => (
         <ToggleButton
-          className={`rgi-toggle-button-group-button${iconOnly ? ' rgi-toggle-button-group-icon' : ''}`}
+          className={`tm-toggle-button-group-button${iconOnly ? ' tm-toggle-button-group-icon' : ''}`}
           key={id}
           aria-label={iconOnly ? optionLabel : undefined}
           selected={value === id}
@@ -100,10 +100,10 @@ function ClearableAlignment() {
 
   return (
     <div className="preview-stack">
-      <ButtonGroup className="rgi-toggle-button-group" aria-label="Text alignment">
+      <ButtonGroup className="tm-toggle-button-group" aria-label="Text alignment">
         {ALIGNMENTS.map(({ id, label, Icon }) => (
           <ToggleButton
-            className="rgi-toggle-button-group-button"
+            className="tm-toggle-button-group-button"
             key={id}
             aria-label={label}
             selected={alignment === id}

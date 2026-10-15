@@ -38,14 +38,14 @@ function BadgeCounts() {
 
   return (
     <div className="preview-stack">
-      <div className="rgi-badge-examples" role="group" aria-label="Notification badge counts">
+      <div className="tm-badge-examples" role="group" aria-label="Notification badge counts">
         <Badge badgeContent={unread} badgeLabel={`${unread} unread notifications`}>
-          <span className="rgi-badge-anchor">
+          <span className="tm-badge-anchor">
             <Bell size={21} aria-hidden="true" />
           </span>
         </Badge>
         <Badge badgeContent={messages} badgeLabel="99 plus unread messages">
-          <span className="rgi-badge-anchor">
+          <span className="tm-badge-anchor">
             <Mail size={21} aria-hidden="true" />
           </span>
         </Badge>
@@ -55,12 +55,12 @@ function BadgeCounts() {
           color="default"
           showZero
         >
-          <span className="rgi-badge-anchor">
+          <span className="tm-badge-anchor">
             <MessageCircle size={21} aria-hidden="true" />
           </span>
         </Badge>
       </div>
-      <div className="rgi-badge-actions">
+      <div className="tm-badge-actions">
         <Button variant="outlined" onClick={() => setUnread((count) => Math.max(0, count - 1))}>
           Mark one read
         </Button>
@@ -80,21 +80,21 @@ function BadgeVisibility() {
 
   return (
     <div className="preview-stack">
-      <div className="rgi-badge-examples" role="group" aria-label="Badge visibility and color">
+      <div className="tm-badge-examples" role="group" aria-label="Badge visibility and color">
         <Badge
           badgeContent={8}
           badgeLabel={visible ? '8 unread notifications' : undefined}
           invisible={!visible}
         >
-          <span className="rgi-badge-anchor">
+          <span className="tm-badge-anchor">
             <Bell size={21} aria-hidden="true" />
           </span>
         </Badge>
         <Badge badgeContent={3} badgeLabel="3 tasks remaining" color="success">
-          <span className="rgi-badge-task-anchor">Tasks</span>
+          <span className="tm-badge-task-anchor">Tasks</span>
         </Badge>
         <Badge badgeContent={5} badgeLabel="5 urgent issues" color="danger">
-          <span className="rgi-badge-task-anchor">Issues</span>
+          <span className="tm-badge-task-anchor">Issues</span>
         </Badge>
       </div>
       <Button variant="outlined" onClick={() => setVisible((value) => !value)}>
@@ -113,7 +113,7 @@ function BadgeDots() {
 
   return (
     <div className="preview-stack">
-      <div className="rgi-badge-examples" role="group" aria-label="Dot and compact badges">
+      <div className="tm-badge-examples" role="group" aria-label="Dot and compact badges">
         <Badge
           variant="dot"
           color="success"
@@ -121,7 +121,7 @@ function BadgeDots() {
           invisible={!online}
           overlap="rectangular"
         >
-          <span className="rgi-badge-avatar" aria-hidden="true">
+          <span className="tm-badge-avatar" aria-hidden="true">
             MK
           </span>
         </Badge>
@@ -130,12 +130,12 @@ function BadgeDots() {
           badgeLabel={`Shopping cart with ${cartItems} ${cartItems === 1 ? 'item' : 'items'}`}
           overlap="rectangular"
         >
-          <span className="rgi-badge-anchor">
+          <span className="tm-badge-anchor">
             <ShoppingCart size={21} aria-hidden="true" />
           </span>
         </Badge>
       </div>
-      <div className="rgi-badge-actions">
+      <div className="tm-badge-actions">
         <Button variant="outlined" onClick={() => setOnline((value) => !value)}>
           Set {online ? 'offline' : 'online'}
         </Button>

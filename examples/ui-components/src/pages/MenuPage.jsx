@@ -75,17 +75,17 @@ function ContextMenuExample() {
   }, []);
 
   return (
-    <div className={open ? 'rgi-menu-example rgi-menu-example-context-open' : 'rgi-menu-example'}>
-      <div className="rgi-menu-example-card">
-        <span className="rgi-menu-example-icon">
+    <div className={open ? 'tm-menu-example tm-menu-example-context-open' : 'tm-menu-example'}>
+      <div className="tm-menu-example-card">
+        <span className="tm-menu-example-icon">
           <Settings size={18} aria-hidden="true" />
         </span>
-        <span className="rgi-menu-example-copy">
+        <span className="tm-menu-example-copy">
           <strong>Website refresh</strong>
           <span>Updated 12 minutes ago · 4 members</span>
         </span>
         <button
-          className="rgi-menu-example-trigger"
+          className="tm-menu-example-trigger"
           type="button"
           ref={anchorRef}
           aria-label={open ? 'Close project actions' : 'Open project actions'}
@@ -99,10 +99,10 @@ function ContextMenuExample() {
           <MoreHorizontal size={19} aria-hidden="true" />
         </button>
       </div>
-      <div className="rgi-menu-example-note" role="status">
+      <div className="tm-menu-example-note" role="status">
         {notice || 'Open the project action menu.'}
       </div>
-      <span className="rgi-menu-example-footer">
+      <span className="tm-menu-example-footer">
         {open
           ? 'Use arrow keys to navigate; press Escape to close.'
           : 'Click away or press Escape to dismiss.'}
@@ -112,13 +112,13 @@ function ContextMenuExample() {
         anchorEl={anchorRef.current}
         placement="bottom-end"
         aria-label="Project actions"
-        className="rgi-menu-example-menu"
+        className="tm-menu-example-menu"
         onClose={dismissAndRestoreFocus}
       >
         {CONTEXT_ACTIONS.map(({ label, Icon, danger }) => (
           <MenuItem
             key={label}
-            className={danger ? 'rgi-menu-item-danger' : undefined}
+            className={danger ? 'tm-menu-item-danger' : undefined}
             onClick={() => {
               setNotice(`${label} selected for Website refresh.`);
               dismiss();
@@ -154,7 +154,7 @@ function PlacementMenuExample() {
 
     const updatePlacement = () => {
       const actual = document
-        .querySelector('.rgi-menu-positioner')
+        .querySelector('.tm-menu-positioner')
         ?.getAttribute('data-popper-placement');
       if (actual) setActualPlacement(actual);
     };
@@ -169,14 +169,14 @@ function PlacementMenuExample() {
   }, [open]);
 
   return (
-    <div className="rgi-menu-example">
-      <fieldset className="rgi-menu-example-controls">
+    <div className="tm-menu-example">
+      <fieldset className="tm-menu-example-controls">
         <legend className="sr-only">Menu placement</legend>
         {PLACEMENTS.map((value) => (
           <button
             className={[
-              'rgi-menu-example-placement-option',
-              value === placement && 'rgi-menu-example-placement-option-active',
+              'tm-menu-example-placement-option',
+              value === placement && 'tm-menu-example-placement-option-active',
             ]
               .filter(Boolean)
               .join(' ')}
@@ -194,9 +194,9 @@ function PlacementMenuExample() {
           </button>
         ))}
       </fieldset>
-      <div className="rgi-menu-example-stage">
+      <div className="tm-menu-example-stage">
         <button
-          className="rgi-menu-example-sort-trigger"
+          className="tm-menu-example-sort-trigger"
           type="button"
           ref={anchorRef}
           aria-haspopup="menu"
@@ -205,7 +205,7 @@ function PlacementMenuExample() {
         >
           Anchor menu <ChevronDown size={15} aria-hidden="true" />
         </button>
-        <span className="rgi-menu-example-status" role="status">
+        <span className="tm-menu-example-status" role="status">
           {notice ||
             (actualPlacement
               ? `Actual placement: ${actualPlacement}`
@@ -217,7 +217,7 @@ function PlacementMenuExample() {
         anchorEl={anchorRef.current}
         placement={placement}
         aria-label="Placement example menu"
-        className="rgi-menu-example-menu"
+        className="tm-menu-example-menu"
         onClose={dismissAndRestoreFocus}
       >
         {PLACEMENT_ACTIONS.map(({ label }) => (
@@ -247,17 +247,17 @@ function SelectionMenuExample() {
   }, []);
 
   return (
-    <div className="rgi-menu-example">
-      <div className="rgi-menu-example-selection-card">
-        <span className="rgi-menu-example-icon">
+    <div className="tm-menu-example">
+      <div className="tm-menu-example-selection-card">
+        <span className="tm-menu-example-icon">
           <Settings size={18} aria-hidden="true" />
         </span>
-        <span className="rgi-menu-example-selection-copy">
+        <span className="tm-menu-example-selection-copy">
           <strong>Project sorting</strong>
           <small>Choose how projects are ordered in this view.</small>
         </span>
         <button
-          className="rgi-menu-example-sort-trigger"
+          className="tm-menu-example-sort-trigger"
           type="button"
           ref={anchorRef}
           aria-haspopup="menu"
@@ -267,7 +267,7 @@ function SelectionMenuExample() {
           {selected} <ChevronDown size={15} aria-hidden="true" />
         </button>
       </div>
-      <span className="rgi-menu-example-status" role="status" aria-live="polite">
+      <span className="tm-menu-example-status" role="status" aria-live="polite">
         Current sort order: <strong>{selected}</strong>
       </span>
       <Menu
@@ -275,7 +275,7 @@ function SelectionMenuExample() {
         anchorEl={anchorRef.current}
         placement="bottom-end"
         aria-label="Sort projects"
-        className="rgi-menu-example-menu"
+        className="tm-menu-example-menu"
         onClose={dismissAndRestoreFocus}
       >
         {SORT_OPTIONS.map((item) => (

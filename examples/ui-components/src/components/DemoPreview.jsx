@@ -31,7 +31,7 @@ function FloatingDemo({ demoId }) {
   return (
     <div className={cx('floating-demo', isClickAway && 'click-away-demo')}>
       <button
-        className={cx('rgi-button', 'rgi-button-outlined', 'floating-trigger')}
+        className={cx('tm-button', 'tm-button-outlined', 'floating-trigger')}
         type="button"
         ref={anchorRef}
         aria-expanded={open}
@@ -78,7 +78,7 @@ function FloatingDemo({ demoId }) {
         ) : (
           <div className={cx('floating-card', isPortal && 'portal-card')}>
             <div className="floating-card-heading">
-              <div className="rgi-avatar rgi-avatar-green">
+              <div className="tm-avatar tm-avatar-green">
                 <Layers size={17} />
               </div>
               <div>
@@ -105,10 +105,10 @@ function FloatingDemo({ demoId }) {
               the viewport.
             </p>
             <div className="floating-card-actions">
-              <button className="rgi-button rgi-button-text" type="button" onClick={dismiss}>
+              <button className="tm-button tm-button-text" type="button" onClick={dismiss}>
                 Dismiss
               </button>
-              <button className="rgi-button rgi-button-contained" type="button" onClick={dismiss}>
+              <button className="tm-button tm-button-contained" type="button" onClick={dismiss}>
                 Got it
               </button>
             </div>
@@ -130,7 +130,7 @@ function SelectionPreview({ demoId }) {
       <div className="selection-list">
         <label className="selection-option">
           <input
-            className="rgi-checkbox"
+            className="tm-checkbox"
             type="checkbox"
             checked={checked}
             onChange={(event) => setChecked(event.target.checked)}
@@ -138,11 +138,11 @@ function SelectionPreview({ demoId }) {
           <span>Send me product updates</span>
         </label>
         <label className="selection-option">
-          <input className="rgi-checkbox" type="checkbox" />
+          <input className="tm-checkbox" type="checkbox" />
           <span>Subscribe to newsletter</span>
         </label>
         <label className="selection-option is-disabled">
-          <input className="rgi-checkbox" type="checkbox" disabled />
+          <input className="tm-checkbox" type="checkbox" disabled />
           <span>Disabled option</span>
         </label>
       </div>
@@ -156,8 +156,8 @@ function SelectionPreview({ demoId }) {
 function DisplayPreview({ demoId }) {
   return (
     <div className="preview-row">
-      <span className="rgi-chip rgi-chip-filled">Data display</span>
-      <span className="rgi-chip rgi-chip-primary">Tailmantic UI</span>
+      <span className="tm-chip tm-chip-filled">Data display</span>
+      <span className="tm-chip tm-chip-primary">Tailmantic UI</span>
       <span className="preview-note">Responsive component preview</span>
     </div>
   );
@@ -167,7 +167,7 @@ function SurfacePreview({ demoId }) {
   const [selected, setSelected] = useState(0);
   return (
     <div className="preview-row">
-      <span className="rgi-chip rgi-chip-filled">
+      <span className="tm-chip tm-chip-filled">
         <Layers size={14} /> Surface
       </span>
       <span className="preview-note">Composable content surface</span>
@@ -204,7 +204,7 @@ function NavigationPreview({ demoId }) {
   return (
     <div className="preview-row">
       <button
-        className="rgi-button rgi-button-outlined"
+        className="tm-button tm-button-outlined"
         type="button"
         onClick={() => setSelected((value) => value + 1)}
       >
@@ -233,7 +233,7 @@ function DemoPreview({ component, demoId }) {
   if (demoId.startsWith('bottom-navigation')) return <NavigationPreview demoId={demoId} />;
   return (
     <div className="preview-row">
-      <span className="rgi-chip rgi-chip-primary">{component.name}</span>
+      <span className="tm-chip tm-chip-primary">{component.name}</span>
       <span className="preview-note">Interactive {component.name.toLowerCase()} example</span>
     </div>
   );

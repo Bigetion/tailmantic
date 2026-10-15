@@ -56,12 +56,12 @@ function TypographyScale() {
   ];
 
   return (
-    <div className="rgi-typography-example-scale">
+    <div className="tm-typography-example-scale">
       {samples.map(([label, variant, text, spec, fontSize, lineHeight, weight]) => (
-        <div className="rgi-typography-example-scale-row" key={label}>
-          <span className="rgi-typography-example-scale-label">{label}</span>
+        <div className="tm-typography-example-scale-row" key={label}>
+          <span className="tm-typography-example-scale-label">{label}</span>
           <Typography
-            className="rgi-typography-example-sample"
+            className="tm-typography-example-sample"
             component="span"
             variant={variant}
             weight={weight === 'bold' ? 'bold' : weight === 'regular' ? 'regular' : 'medium'}
@@ -69,7 +69,7 @@ function TypographyScale() {
           >
             {text}
           </Typography>
-          <span className="rgi-typography-example-spec">{spec}</span>
+          <span className="tm-typography-example-spec">{spec}</span>
         </div>
       ))}
     </div>
@@ -83,12 +83,12 @@ function TypographyWeights() {
 
   return (
     <div className="preview-stack">
-      <div className="rgi-typography-example-weight-picker" role="group" aria-label="Font weight">
+      <div className="tm-typography-example-weight-picker" role="group" aria-label="Font weight">
         {WEIGHTS.map(([label, value]) => (
           <button
             className={cx(
-              'rgi-typography-example-weight-button',
-              weight === value && 'rgi-typography-example-weight-active',
+              'tm-typography-example-weight-button',
+              weight === value && 'tm-typography-example-weight-active',
             )}
             key={value}
             type="button"
@@ -99,8 +99,8 @@ function TypographyWeights() {
           </button>
         ))}
       </div>
-      <div className="rgi-typography-example-weight-preview">
-        <span className="rgi-typography-example-weight-meta">INTERFACE LABEL · {selected.toUpperCase()}</span>
+      <div className="tm-typography-example-weight-preview">
+        <span className="tm-typography-example-weight-meta">INTERFACE LABEL · {selected.toUpperCase()}</span>
         <Typography
           component="strong"
           variant="subtitle1"
@@ -128,14 +128,14 @@ function TypographyColors() {
 
   return (
     <div className="preview-stack">
-      <div className="rgi-typography-example-controls">
-        <div className="rgi-typography-example-tone-picker" role="group" aria-label="Text color">
+      <div className="tm-typography-example-controls">
+        <div className="tm-typography-example-tone-picker" role="group" aria-label="Text color">
           {COLORS.map(([label, value]) => (
             <button
               className={cx(
-                'rgi-typography-example-tone-button',
-                `rgi-typography-example-tone-${value}`,
-                tone === value && 'rgi-typography-example-tone-active',
+                'tm-typography-example-tone-button',
+                `tm-typography-example-tone-${value}`,
+                tone === value && 'tm-typography-example-tone-active',
               )}
               key={label}
               type="button"
@@ -146,7 +146,7 @@ function TypographyColors() {
             </button>
           ))}
         </div>
-        <div className="rgi-typography-example-alignment-picker" role="group" aria-label="Text alignment">
+        <div className="tm-typography-example-alignment-picker" role="group" aria-label="Text alignment">
           {[
             ['left', AlignLeft],
             ['center', AlignCenter],
@@ -154,8 +154,8 @@ function TypographyColors() {
           ].map(([value, AlignmentIcon]) => (
             <button
               className={cx(
-                'rgi-typography-example-alignment-button',
-                alignment === value && 'rgi-typography-example-alignment-active',
+                'tm-typography-example-alignment-button',
+                alignment === value && 'tm-typography-example-alignment-active',
               )}
               key={value}
               type="button"
@@ -168,14 +168,14 @@ function TypographyColors() {
           ))}
         </div>
       </div>
-      <div className={cx('rgi-typography-example-color-preview', `rgi-typography-example-align-${alignment}`)}>
-        <Typography className="rgi-typography-example-eyebrow" variant="overline" color={componentColor}>
+      <div className={cx('tm-typography-example-color-preview', `tm-typography-example-align-${alignment}`)}>
+        <Typography className="tm-typography-example-eyebrow" variant="overline" color={componentColor}>
           PROJECT UPDATE
         </Typography>
-        <Typography className="rgi-typography-example-title" variant="h3" color={componentColor} weight="medium">
+        <Typography className="tm-typography-example-title" variant="h3" color={componentColor} weight="medium">
           Everything is moving in the right direction.
         </Typography>
-        <Typography className="rgi-typography-example-copy" variant="body2" color="secondary">
+        <Typography className="tm-typography-example-copy" variant="body2" color="secondary">
           Your team completed the latest milestone. Keep the message readable and use color to add meaning—not decoration.
         </Typography>
       </div>

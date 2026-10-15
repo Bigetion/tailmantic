@@ -80,14 +80,14 @@ function PopoverExample({ mode }) {
   const selectedColorValue = COLORS.find(([name]) => name === selectedColor)?.[2];
 
   return (
-    <div className={`rgi-popover-example rgi-popover-example-${mode}`}>
+    <div className={`tm-popover-example tm-popover-example-${mode}`}>
       {isPlacement && (
-        <div className="rgi-popover-example-placement-picker">
+        <div className="tm-popover-example-placement-picker">
           <span>Placement</span>
-          <div className="rgi-popover-example-placement-options">
+          <div className="tm-popover-example-placement-options">
             {PLACEMENTS.map((item) => (
               <button
-                className={`rgi-popover-example-placement-option${placement === item ? ' is-active' : ''}`}
+                className={`tm-popover-example-placement-option${placement === item ? ' is-active' : ''}`}
                 key={item}
                 type="button"
                 aria-pressed={placement === item}
@@ -102,10 +102,10 @@ function PopoverExample({ mode }) {
           </div>
         </div>
       )}
-      <div className="rgi-popover-example-stage">
+      <div className="tm-popover-example-stage">
         <Button
           ref={anchorRef}
-          className="rgi-popover-example-trigger"
+          className="tm-popover-example-trigger"
           variant="outlined"
           aria-haspopup="dialog"
           aria-expanded={open}
@@ -125,22 +125,22 @@ function PopoverExample({ mode }) {
         anchorEl={anchorRef.current}
         open={open}
         placement={placement}
-        className="rgi-popover-example-surface"
+        className="tm-popover-example-surface"
         labelledBy={headingId}
         onClose={closePopover}
       >
         {isInteractive ? (
-          <div className="rgi-popover-example-content">
-            <div className="rgi-popover-example-heading">
-              <span className="rgi-popover-example-heading-icon">
+          <div className="tm-popover-example-content">
+            <div className="tm-popover-example-heading">
+              <span className="tm-popover-example-heading-icon">
                 <Layers size={18} aria-hidden="true" />
               </span>
-              <span className="rgi-popover-example-heading-copy">
+              <span className="tm-popover-example-heading-copy">
                 <strong id={headingId}>Workspace color</strong>
                 <small>Choose an accent for this space.</small>
               </span>
               <button
-                className="rgi-popover-example-close"
+                className="tm-popover-example-close"
                 type="button"
                 aria-label="Close popover"
                 onClick={closePopover}
@@ -148,11 +148,11 @@ function PopoverExample({ mode }) {
                 <X size={17} aria-hidden="true" />
               </button>
             </div>
-            <fieldset className="rgi-popover-example-color-list">
+            <fieldset className="tm-popover-example-color-list">
               <legend>Workspace colors</legend>
               {COLORS.map(([name, label, color]) => (
                 <button
-                  className="rgi-popover-example-color-option"
+                  className="tm-popover-example-color-option"
                   key={name}
                   type="button"
                   aria-pressed={selectedColor === name}
@@ -166,19 +166,19 @@ function PopoverExample({ mode }) {
             </fieldset>
           </div>
         ) : isPlacement ? (
-          <div className="rgi-popover-example-content">
-            <div className="rgi-popover-example-heading">
-              <span className="rgi-popover-example-heading-icon">
+          <div className="tm-popover-example-content">
+            <div className="tm-popover-example-heading">
+              <span className="tm-popover-example-heading-icon">
                 <Layers size={18} aria-hidden="true" />
               </span>
-              <span className="rgi-popover-example-heading-copy">
+              <span className="tm-popover-example-heading-copy">
                 <strong id={headingId}>
                   {placement.charAt(0).toUpperCase() + placement.slice(1)} placement
                 </strong>
                 <small>Anchored to the selected trigger.</small>
               </span>
               <button
-                className="rgi-popover-example-close"
+                className="tm-popover-example-close"
                 type="button"
                 aria-label="Close popover"
                 onClick={closePopover}
@@ -186,22 +186,22 @@ function PopoverExample({ mode }) {
                 <X size={17} aria-hidden="true" />
               </button>
             </div>
-            <p className="rgi-popover-example-note">
+            <p className="tm-popover-example-note">
               The surface flips automatically when space is limited.
             </p>
           </div>
         ) : (
-          <div className="rgi-popover-example-content">
-            <div className="rgi-popover-example-heading">
-              <span className="rgi-popover-example-heading-icon">
+          <div className="tm-popover-example-content">
+            <div className="tm-popover-example-heading">
+              <span className="tm-popover-example-heading-icon">
                 <FolderKanban size={18} aria-hidden="true" />
               </span>
-              <span className="rgi-popover-example-heading-copy">
+              <span className="tm-popover-example-heading-copy">
                 <strong id={headingId}>Website refresh</strong>
                 <small>Updated 12 minutes ago</small>
               </span>
               <button
-                className="rgi-popover-example-close"
+                className="tm-popover-example-close"
                 type="button"
                 aria-label="Close popover"
                 onClick={closePopover}
@@ -209,17 +209,17 @@ function PopoverExample({ mode }) {
                 <X size={17} aria-hidden="true" />
               </button>
             </div>
-            <p className="rgi-popover-example-description">
+            <p className="tm-popover-example-description">
               A shared project for the new customer workspace experience.
             </p>
-            <div className="rgi-popover-example-project-meta">
+            <div className="tm-popover-example-project-meta">
               <span>
                 <i /> In progress
               </span>
               <span>4 members</span>
             </div>
             <button
-              className="rgi-popover-example-open-project"
+              className="tm-popover-example-open-project"
               type="button"
               onClick={() => {
                 setNotice('Website refresh project opened.');
@@ -231,15 +231,15 @@ function PopoverExample({ mode }) {
           </div>
         )}
       </Popover>
-      <div className="rgi-popover-example-footer">
-        <span className="rgi-popover-example-status" role="status">
+      <div className="tm-popover-example-footer">
+        <span className="tm-popover-example-status" role="status">
           {notice ||
             (open
               ? 'Click outside or press Escape to dismiss.'
               : `Selected color: ${selectedColor}.`)}
         </span>
         {isInteractive && (
-          <span className="rgi-popover-example-color-preview">
+          <span className="tm-popover-example-color-preview">
             <i style={{ backgroundColor: selectedColorValue }} />
             {selectedColor}
           </span>

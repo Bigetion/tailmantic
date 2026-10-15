@@ -39,9 +39,9 @@ const ITEMS = ['Overview', 'Projects', 'Team'];
 
 function Brand({ subtitle }) {
   return (
-    <div className="rgi-app-bar-example-brand">
-      <span className="rgi-app-bar-example-brand-mark">T</span>
-      <span className="rgi-app-bar-example-brand-copy">
+    <div className="tm-app-bar-example-brand">
+      <span className="tm-app-bar-example-brand-mark">T</span>
+      <span className="tm-app-bar-example-brand-copy">
         <strong>Tailmantic UI</strong>
         <small>{subtitle}</small>
       </span>
@@ -74,17 +74,17 @@ function AppBarExample({ variant }) {
   }
 
   return (
-    <div className="rgi-app-bar-example">
-      <div className="rgi-app-bar-example-preview">
+    <div className="tm-app-bar-example">
+      <div className="tm-app-bar-example-preview">
         <AppBar
-          className="rgi-app-bar-example-header"
+          className="tm-app-bar-example-header"
           aria-label="Workspace navigation"
           position="static"
           elevation={1}
         >
           {isResponsive && (
             <Button
-              className="rgi-app-bar-example-mobile-menu"
+              className="tm-app-bar-example-mobile-menu"
               variant="text"
               aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={menuOpen}
@@ -94,10 +94,10 @@ function AppBarExample({ variant }) {
             </Button>
           )}
           <Brand subtitle={isResponsive ? selected : 'Design workspace'} />
-          <nav className="rgi-app-bar-example-nav" aria-label="Workspace">
+          <nav className="tm-app-bar-example-nav" aria-label="Workspace">
             {ITEMS.map((item) => (
               <Button
-                className={`rgi-app-bar-example-nav-link${selected === item ? ' rgi-app-bar-example-nav-link-active' : ''}`}
+                className={`tm-app-bar-example-nav-link${selected === item ? ' tm-app-bar-example-nav-link-active' : ''}`}
                 key={item}
                 variant="text"
                 aria-current={selected === item ? 'page' : undefined}
@@ -109,7 +109,7 @@ function AppBarExample({ variant }) {
           </nav>
           {isSearch && (
             <div
-              className={`rgi-app-bar-example-search${searchOpen ? ' rgi-app-bar-example-search-open' : ''}`}
+              className={`tm-app-bar-example-search${searchOpen ? ' tm-app-bar-example-search-open' : ''}`}
             >
               <Search size={14} aria-hidden="true" />
               <input
@@ -125,14 +125,14 @@ function AppBarExample({ variant }) {
               </kbd>
               {searchOpen && query && (
                 <div
-                  className="rgi-app-bar-example-search-results"
+                  className="tm-app-bar-example-search-results"
                   role="listbox"
                   aria-label="Navigation results"
                 >
                   {filteredItems.length ? (
                     filteredItems.map((item) => (
                       <Button
-                        className="rgi-app-bar-example-search-result"
+                        className="tm-app-bar-example-search-result"
                         key={item}
                         variant="text"
                         role="option"
@@ -154,19 +154,19 @@ function AppBarExample({ variant }) {
               )}
             </div>
           )}
-          <span className="rgi-app-bar-example-spacer" />
+          <span className="tm-app-bar-example-spacer" />
           <Button
-            className={`rgi-app-bar-example-icon-button${notifications ? '' : ' rgi-app-bar-example-icon-button-muted'}`}
+            className={`tm-app-bar-example-icon-button${notifications ? '' : ' tm-app-bar-example-icon-button-muted'}`}
             variant="text"
             aria-label={notifications ? 'Mute notifications' : 'Enable notifications'}
             aria-pressed={notifications}
             onClick={toggleNotifications}
           >
             <Bell size={15} />
-            {notifications && <i className="rgi-app-bar-example-notification-dot" />}
+            {notifications && <i className="tm-app-bar-example-notification-dot" />}
           </Button>
           <Button
-            className="rgi-app-bar-example-settings"
+            className="tm-app-bar-example-settings"
             variant="outlined"
             aria-label="Workspace settings"
             onClick={() => setNotice('Workspace settings opened.')}
@@ -175,20 +175,20 @@ function AppBarExample({ variant }) {
             <span>Settings</span>
           </Button>
           <Button
-            className="rgi-app-bar-example-account"
+            className="tm-app-bar-example-account"
             variant="text"
             aria-label="Account: Jordan Lee"
             onClick={() => setNotice('Signed in as Jordan Lee.')}
           >
-            <span className="rgi-app-bar-example-avatar">JL</span>
+            <span className="tm-app-bar-example-avatar">JL</span>
             <ChevronDown size={12} aria-hidden="true" />
           </Button>
         </AppBar>
         {isResponsive && menuOpen && (
-          <nav className="rgi-app-bar-example-mobile-panel" aria-label="Mobile workspace">
+          <nav className="tm-app-bar-example-mobile-panel" aria-label="Mobile workspace">
             {ITEMS.map((item) => (
               <Button
-                className={`rgi-app-bar-example-mobile-link${selected === item ? ' rgi-app-bar-example-mobile-link-active' : ''}`}
+                className={`tm-app-bar-example-mobile-link${selected === item ? ' tm-app-bar-example-mobile-link-active' : ''}`}
                 key={item}
                 variant="text"
                 onClick={() => selectItem(item)}
@@ -199,13 +199,13 @@ function AppBarExample({ variant }) {
             ))}
           </nav>
         )}
-        <div className="rgi-app-bar-example-content">
-          <span className="rgi-app-bar-example-eyebrow">WORKSPACE / {selected.toUpperCase()}</span>
+        <div className="tm-app-bar-example-content">
+          <span className="tm-app-bar-example-eyebrow">WORKSPACE / {selected.toUpperCase()}</span>
           <strong>{selected === 'Overview' ? 'Good morning, Jordan' : selected}</strong>
           <span>Your team’s latest updates and activity appear here.</span>
         </div>
       </div>
-      <div className="rgi-app-bar-example-footer">
+      <div className="tm-app-bar-example-footer">
         <span className="preview-note" role="status" aria-live="polite">
           {notice || `Current section: ${selected}`}
         </span>
@@ -215,7 +215,7 @@ function AppBarExample({ variant }) {
           </span>
         )}
         {isResponsive && (
-          <span className="rgi-app-bar-example-breakpoint-note">
+          <span className="tm-app-bar-example-breakpoint-note">
             Resize to preview compact navigation.
           </span>
         )}

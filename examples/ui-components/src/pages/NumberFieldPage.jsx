@@ -83,14 +83,14 @@ function NumberFieldExample({ demo }) {
 
   return (
     <div className="preview-stack">
-      <label className="rgi-label" htmlFor={inputId}>
+      <label className="tm-label" htmlFor={inputId}>
         {demo.label}
       </label>
       <NumberField
         id={inputId}
         aria-label={demo.label}
         aria-invalid={invalid}
-        className={invalid ? 'rgi-number-field-invalid' : undefined}
+        className={invalid ? 'tm-number-field-invalid' : undefined}
         value={value}
         step={step}
         min={demo.min}
@@ -102,7 +102,7 @@ function NumberFieldExample({ demo }) {
         onValueChange={setValue}
       />
       {invalid && (
-        <span className="rgi-number-field-error" role="status">
+        <span className="tm-number-field-error" role="status">
           {stepMismatch
             ? `Use increments of ${step}.`
             : `Enter a value between ${demo.min ?? '−∞'} and ${demo.max ?? '∞'}.`}

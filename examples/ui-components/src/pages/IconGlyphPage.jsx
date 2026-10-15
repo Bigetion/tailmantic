@@ -56,16 +56,16 @@ function IconGlyphCollection() {
 
   return (
     <div className="preview-stack">
-      <div className="rgi-icon-glyph-grid" role="group" aria-label="Common interface icon collection">
+      <div className="tm-icon-glyph-grid" role="group" aria-label="Common interface icon collection">
         {GLYPHS.map(([name, label]) => (
           <button
-            className={cx('rgi-icon-glyph-tile', selected === name && 'rgi-icon-glyph-tile-selected')}
+            className={cx('tm-icon-glyph-tile', selected === name && 'tm-icon-glyph-tile-selected')}
             key={name}
             type="button"
             aria-pressed={selected === name}
             onClick={() => setSelected(name)}
           >
-            <span className="rgi-icon-glyph-symbol">
+            <span className="tm-icon-glyph-symbol">
               <IconGlyph name={name} size={21} strokeWidth={1.9} title="" />
             </span>
             <span>{label}</span>
@@ -75,7 +75,7 @@ function IconGlyphCollection() {
       <span className="preview-note" role="status" aria-live="polite">
         Selected glyph: {selectedLabel}
       </span>
-      <span className="rgi-icon-glyph-selection" aria-hidden="true">
+      <span className="tm-icon-glyph-selection" aria-hidden="true">
         <IconGlyph name={selected} size={18} title="" />
         {selectedLabel}
       </span>
@@ -92,10 +92,10 @@ function IconGlyphSizes() {
   ];
 
   return (
-    <div className="rgi-icon-glyph-size-list">
+    <div className="tm-icon-glyph-size-list">
       {sizes.map(([label, size, use]) => (
-        <div className="rgi-icon-glyph-size-item" key={label}>
-          <span className="rgi-icon-glyph-size-symbol">
+        <div className="tm-icon-glyph-size-item" key={label}>
+          <span className="tm-icon-glyph-size-symbol">
             <IconGlyph name="home" size={size} strokeWidth={1.9} title="" />
           </span>
           <span><strong>{label}</strong><small>{use}</small></span>
@@ -113,7 +113,7 @@ function IconGlyphActions() {
 
   return (
     <div className="preview-stack">
-      <div className="rgi-icon-glyph-toolbar" role="group" aria-label="Icon actions">
+      <div className="tm-icon-glyph-toolbar" role="group" aria-label="Icon actions">
         <button type="button" aria-label="Go back" onClick={() => setMessage('Back action selected')}>
           <IconGlyph name="back" size={19} title="" />
         </button>
@@ -121,7 +121,7 @@ function IconGlyphActions() {
           <IconGlyph name="search" size={19} title="" />
         </button>
         <button
-          className={cx(favorite && 'rgi-icon-glyph-action-active')}
+          className={cx(favorite && 'tm-icon-glyph-action-active')}
           type="button"
           aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
           aria-pressed={favorite}
@@ -133,7 +133,7 @@ function IconGlyphActions() {
           <IconGlyph name="favorite" size={19} fill={favorite ? 'currentColor' : 'none'} title="" />
         </button>
         <button
-          className="rgi-icon-glyph-cart"
+          className="tm-icon-glyph-cart"
           type="button"
           aria-label={`Shopping cart, ${cartCount} items`}
           onClick={() => {

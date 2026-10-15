@@ -19,10 +19,10 @@ const component = getComponentBySlug('table');
 const TABLE_STYLES_NOTE =
   'Table styles and table example layouts are provided by @tailmantic/ui-components/table/styles.';
 const INITIAL_ROWS = [
-  { id: 'PRJ-2048', name: 'Mobile app redesign', owner: 'Olivia Martin', initials: 'OM', tone: 'rgi-table-example-avatar-blue', status: 'In progress', updated: '2026-10-02', progress: 72 },
-  { id: 'PRJ-2047', name: 'Design system v2', owner: 'Jackson Lee', initials: 'JL', tone: 'rgi-table-example-avatar-violet', status: 'Review', updated: '2026-10-01', progress: 91 },
-  { id: 'PRJ-2046', name: 'Customer insights', owner: 'Isabella Nguyen', initials: 'IN', tone: 'rgi-table-example-avatar-green', status: 'Complete', updated: '2026-09-29', progress: 100 },
-  { id: 'PRJ-2045', name: 'API documentation', owner: 'William Kim', initials: 'WK', tone: 'rgi-table-example-avatar-amber', status: 'Planned', updated: '2026-09-26', progress: 18 },
+  { id: 'PRJ-2048', name: 'Mobile app redesign', owner: 'Olivia Martin', initials: 'OM', tone: 'tm-table-example-avatar-blue', status: 'In progress', updated: '2026-10-02', progress: 72 },
+  { id: 'PRJ-2047', name: 'Design system v2', owner: 'Jackson Lee', initials: 'JL', tone: 'tm-table-example-avatar-violet', status: 'Review', updated: '2026-10-01', progress: 91 },
+  { id: 'PRJ-2046', name: 'Customer insights', owner: 'Isabella Nguyen', initials: 'IN', tone: 'tm-table-example-avatar-green', status: 'Complete', updated: '2026-09-29', progress: 100 },
+  { id: 'PRJ-2045', name: 'API documentation', owner: 'William Kim', initials: 'WK', tone: 'tm-table-example-avatar-amber', status: 'Planned', updated: '2026-09-26', progress: 18 },
 ];
 const COLUMNS = [
   ['name', 'Project'],
@@ -62,7 +62,7 @@ function SortButton({ column, label, sort, onSort }) {
 
   return (
     <button
-      className={cx('rgi-table-example-sort-button', active && 'rgi-table-example-sort-button-active')}
+      className={cx('tm-table-example-sort-button', active && 'tm-table-example-sort-button-active')}
       type="button"
       aria-label={`Sort by ${label}${active ? `, ${sort.direction === 'asc' ? 'ascending' : 'descending'}` : ''}`}
       aria-pressed={active}
@@ -109,13 +109,13 @@ function TableGrid({ demoId }) {
 
   return (
     <div className="preview-stack">
-      <div className="rgi-table-example-toolbar">
-        <span className="rgi-table-example-result-count">
+      <div className="tm-table-example-toolbar">
+        <span className="tm-table-example-result-count">
           {hasSelection ? `${selected.length} selected` : `${rows.length} projects`}
         </span>
         {hasSelection ? (
           <button
-            className="rgi-table-example-toolbar-button"
+            className="tm-table-example-toolbar-button"
             type="button"
             disabled={!selected.length}
             onClick={() => setSelected([])}
@@ -123,14 +123,14 @@ function TableGrid({ demoId }) {
             <Check size={13} aria-hidden="true" /> Clear selection
           </button>
         ) : (
-          <button className="rgi-table-example-toolbar-button" type="button" onClick={() => changeSort('updated')}>
+          <button className="tm-table-example-toolbar-button" type="button" onClick={() => changeSort('updated')}>
             Recently updated <ChevronDown size={13} aria-hidden="true" />
           </button>
         )}
       </div>
-      <div className="rgi-table-example-wrap">
+      <div className="tm-table-example-wrap">
         <Table
-          className={cx('rgi-table-example', isDense && 'rgi-table-example-dense')}
+          className={cx('tm-table-example', isDense && 'tm-table-example-dense')}
           density="dense"
           hoverable
           aria-label="Projects"
@@ -138,7 +138,7 @@ function TableGrid({ demoId }) {
           <thead>
             <tr>
               {hasSelection && (
-                <th className="rgi-table-example-check-cell">
+                <th className="tm-table-example-check-cell">
                   <Checkbox
                     checked={allSelected}
                     indeterminate={someSelected}
@@ -156,17 +156,17 @@ function TableGrid({ demoId }) {
                   <SortButton column={key} label={label} sort={sort} onSort={changeSort} />
                 </th>
               ))}
-              <th className="rgi-table-example-progress-heading" scope="col">Progress</th>
+              <th className="tm-table-example-progress-heading" scope="col">Progress</th>
             </tr>
           </thead>
           <tbody>
             {sortedRows.map((row) => (
               <tr
-                className={cx(hasSelection && selected.includes(row.id) && 'rgi-table-example-row-selected')}
+                className={cx(hasSelection && selected.includes(row.id) && 'tm-table-example-row-selected')}
                 key={row.id}
               >
                 {hasSelection && (
-                  <td className="rgi-table-example-check-cell">
+                  <td className="tm-table-example-check-cell">
                     <Checkbox
                       checked={selected.includes(row.id)}
                       onChange={() => toggleRow(row.id)}
@@ -175,19 +175,19 @@ function TableGrid({ demoId }) {
                   </td>
                 )}
                 <td>
-                  <span className="rgi-table-example-project">
+                  <span className="tm-table-example-project">
                     <strong>{row.name}</strong>
                     <small>{row.id}</small>
                   </span>
                 </td>
                 <td>
-                  <span className="rgi-table-example-owner">
-                    <span className={cx('rgi-table-example-avatar', row.tone)} aria-hidden="true">{row.initials}</span>
+                  <span className="tm-table-example-owner">
+                    <span className={cx('tm-table-example-avatar', row.tone)} aria-hidden="true">{row.initials}</span>
                     {row.owner}
                   </span>
                 </td>
                 <td>
-                  <span className={cx('rgi-table-example-status', `rgi-table-example-status-${row.status.toLowerCase().replace(' ', '-')}`)}>
+                  <span className={cx('tm-table-example-status', `tm-table-example-status-${row.status.toLowerCase().replace(' ', '-')}`)}>
                     {row.status}
                   </span>
                 </td>
@@ -196,9 +196,9 @@ function TableGrid({ demoId }) {
                     {new Date(`${row.updated}T12:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                   </time>
                 </td>
-                <td className="rgi-table-example-progress-cell">
-                  <span className="rgi-table-example-progress-value">{row.progress}%</span>
-                  <span className="rgi-table-example-progress-track" aria-label={`${row.progress}% complete`}>
+                <td className="tm-table-example-progress-cell">
+                  <span className="tm-table-example-progress-value">{row.progress}%</span>
+                  <span className="tm-table-example-progress-track" aria-label={`${row.progress}% complete`}>
                     <i style={{ width: `${row.progress}%` }} />
                   </span>
                 </td>
@@ -207,14 +207,14 @@ function TableGrid({ demoId }) {
           </tbody>
         </Table>
       </div>
-      <div className="rgi-table-example-footer">
+      <div className="tm-table-example-footer">
         <span>
           {hasSelection
             ? `${selected.length} of ${rows.length} rows selected`
             : `Showing ${rows.length} of ${rows.length} projects`}
         </span>
         <button
-          className="rgi-table-example-export-button"
+          className="tm-table-example-export-button"
           type="button"
           onClick={() => setExportNotice(`Export ready for ${hasSelection ? selected.length : rows.length} projects.`)}
         >

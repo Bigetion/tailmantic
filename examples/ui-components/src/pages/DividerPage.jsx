@@ -33,19 +33,19 @@ const IMPLEMENTATION_ROWS = [
 
 function HorizontalDividers() {
   return (
-    <div className="rgi-divider-example">
-      <span className="rgi-divider-example-label">Account settings</span>
+    <div className="tm-divider-example">
+      <span className="tm-divider-example-label">Account settings</span>
       <Divider />
-      <span className="rgi-divider-example-label">Privacy &amp; security</span>
+      <span className="tm-divider-example-label">Privacy &amp; security</span>
       <Divider />
-      <span className="rgi-divider-example-label">Notifications</span>
+      <span className="tm-divider-example-label">Notifications</span>
     </div>
   );
 }
 
 function VerticalDivider() {
   return (
-    <div className="rgi-divider-toolbar" role="group" aria-label="Account navigation">
+    <div className="tm-divider-toolbar" role="group" aria-label="Account navigation">
       <button type="button">
         <UserRound size={15} aria-hidden="true" /> Profile
       </button>
@@ -63,22 +63,22 @@ function VerticalDivider() {
 
 function InsetDivider() {
   return (
-    <div className="rgi-divider-list" aria-label="Settings list">
-      <div className="rgi-divider-list-item">
-        <span className="rgi-divider-list-icon">
+    <div className="tm-divider-list" aria-label="Settings list">
+      <div className="tm-divider-list-item">
+        <span className="tm-divider-list-icon">
           <UserRound size={16} aria-hidden="true" />
         </span>
-        <span className="rgi-divider-list-copy">
+        <span className="tm-divider-list-copy">
           <strong>Personal details</strong>
           <small>Name, email, and profile</small>
         </span>
       </div>
       <Divider inset />
-      <div className="rgi-divider-list-item">
-        <span className="rgi-divider-list-icon">
+      <div className="tm-divider-list-item">
+        <span className="tm-divider-list-icon">
           <LockKeyhole size={16} aria-hidden="true" />
         </span>
-        <span className="rgi-divider-list-copy">
+        <span className="tm-divider-list-copy">
           <strong>Sign-in and security</strong>
           <small>Password and two-step verification</small>
         </span>

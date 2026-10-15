@@ -37,13 +37,13 @@ const IMPLEMENTATION_ROWS = [
 
 function BasicTooltip() {
   return (
-    <div className="rgi-tooltip-example">
+    <div className="tm-tooltip-example">
       <Tooltip
-        className="rgi-tooltip-example-root"
+        className="tm-tooltip-example-root"
         content="Helpful information appears on hover or focus."
         placement="top"
       >
-        <button className="rgi-tooltip-example-trigger" type="button">
+        <button className="tm-tooltip-example-trigger" type="button">
           Hover or focus me
         </button>
       </Tooltip>
@@ -56,13 +56,13 @@ function PlacementTooltips() {
   const [placement, setPlacement] = useState('top');
 
   return (
-    <div className="rgi-tooltip-example rgi-tooltip-example-placement">
-      <div className="rgi-tooltip-example-placement-picker" role="group" aria-label="Tooltip placement">
+    <div className="tm-tooltip-example tm-tooltip-example-placement">
+      <div className="tm-tooltip-example-placement-picker" role="group" aria-label="Tooltip placement">
         {PLACEMENTS.map((item) => (
           <button
             className={cx(
-              'rgi-tooltip-example-placement-button',
-              placement === item && 'rgi-tooltip-example-placement-active',
+              'tm-tooltip-example-placement-button',
+              placement === item && 'tm-tooltip-example-placement-active',
             )}
             key={item}
             type="button"
@@ -74,11 +74,11 @@ function PlacementTooltips() {
         ))}
       </div>
       <Tooltip
-        className="rgi-tooltip-example-root"
+        className="tm-tooltip-example-root"
         content={`Tooltip positioned ${placement}`}
         placement={placement}
       >
-        <button className="rgi-tooltip-example-trigger" type="button">Hover to preview</button>
+        <button className="tm-tooltip-example-trigger" type="button">Hover to preview</button>
       </Tooltip>
       <span className="preview-note" role="status" aria-live="polite">
         Current placement: {placement}
@@ -100,20 +100,20 @@ function RichTooltip() {
   };
 
   return (
-    <div className="rgi-tooltip-example">
+    <div className="tm-tooltip-example">
       <Tooltip
-        className="rgi-tooltip-example-root rgi-tooltip-example-root-rich"
+        className="tm-tooltip-example-root tm-tooltip-example-root-rich"
         content={(
-          <span className="rgi-tooltip-example-rich-content">
-            <span className="rgi-tooltip-example-rich-icon"><Sparkles size={15} aria-hidden="true" /></span>
-            <span className="rgi-tooltip-example-rich-copy">
+          <span className="tm-tooltip-example-rich-content">
+            <span className="tm-tooltip-example-rich-icon"><Sparkles size={15} aria-hidden="true" /></span>
+            <span className="tm-tooltip-example-rich-copy">
               <strong>Smart suggestions</strong>
               <small>Use shortcuts to finish common tasks faster.</small>
-              <span className="rgi-tooltip-example-shortcut">
+              <span className="tm-tooltip-example-shortcut">
                 <Keyboard size={11} aria-hidden="true" /> Press <kbd>⌘</kbd><kbd>K</kbd> to search
               </span>
             </span>
-            <Check className="rgi-tooltip-example-rich-check" size={14} aria-hidden="true" />
+            <Check className="tm-tooltip-example-rich-check" size={14} aria-hidden="true" />
           </span>
         )}
         open={open}
@@ -122,7 +122,7 @@ function RichTooltip() {
         onMouseEnter={reopenOnInteraction}
         onKeyDown={dismissOnEscape}
       >
-        <button className="rgi-tooltip-example-trigger rgi-tooltip-example-trigger-rich" type="button" onClick={toggleOpen}>
+        <button className="tm-tooltip-example-trigger tm-tooltip-example-trigger-rich" type="button" onClick={toggleOpen}>
           <CircleHelp size={15} aria-hidden="true" /> Click or hover for details
         </button>
       </Tooltip>

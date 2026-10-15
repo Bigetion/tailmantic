@@ -57,7 +57,7 @@ function ContinuousSlider() {
 
   return (
     <div className="preview-stack">
-      <label className="rgi-label" htmlFor="slider-volume">
+      <label className="tm-label" htmlFor="slider-volume">
         Volume
       </label>
       <Slider
@@ -80,7 +80,7 @@ function RangeSlider() {
 
   return (
     <div className="preview-stack">
-      <span className="rgi-label">Price range</span>
+      <span className="tm-label">Price range</span>
       <output className="preview-note">
         ${range[0]} – ${range[1]}
       </output>
@@ -113,7 +113,7 @@ function MarkedSlider() {
 
   return (
     <div className="preview-stack">
-      <label className="rgi-label" htmlFor="slider-zoom">
+      <label className="tm-label" htmlFor="slider-zoom">
         Zoom level
       </label>
       <output className="preview-note" htmlFor="slider-zoom">

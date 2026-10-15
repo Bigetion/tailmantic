@@ -40,7 +40,7 @@ const IMPLEMENTATION_ROWS = [
 function ChipVariants() {
   return (
     <div className="preview-stack">
-      <div className="rgi-chip-examples" role="group" aria-label="Chip variants">
+      <div className="tm-chip-examples" role="group" aria-label="Chip variants">
         <Chip variant="outlined">Outlined</Chip>
         <Chip>Filled</Chip>
         <Chip color="primary" icon={Code2}>
@@ -73,7 +73,7 @@ function SelectableFilters() {
 
   return (
     <div className="preview-stack">
-      <div className="rgi-chip-examples" role="group" aria-label="Filter by team">
+      <div className="tm-chip-examples" role="group" aria-label="Filter by team">
         {filters.map((filter) => (
           <Chip
             key={filter}
@@ -101,7 +101,7 @@ function RemovableTags() {
 
   return (
     <div className="preview-stack">
-      <div className="rgi-chip-examples" role="group" aria-label="Removable tags">
+      <div className="tm-chip-examples" role="group" aria-label="Removable tags">
         {tags.map((tag) => (
           <Chip
             key={tag}
@@ -114,7 +114,7 @@ function RemovableTags() {
         ))}
         {!tags.length && <span className="preview-note">All tags removed.</span>}
       </div>
-      <div className="rgi-chip-actions">
+      <div className="tm-chip-actions">
         <span className="preview-note" role="status" aria-live="polite">
           {tags.length} tags remaining
         </span>

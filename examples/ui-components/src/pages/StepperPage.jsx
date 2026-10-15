@@ -41,9 +41,9 @@ const IMPLEMENTATION_ROWS = [
 
 function StepperControls({ activeStep, complete, onBack, onContinue, onReset }) {
   return (
-    <div className="rgi-stepper-example-actions">
+    <div className="tm-stepper-example-actions">
       <button
-        className="rgi-stepper-example-secondary"
+        className="tm-stepper-example-secondary"
         type="button"
         disabled={activeStep === 0 || complete}
         onClick={onBack}
@@ -51,11 +51,11 @@ function StepperControls({ activeStep, complete, onBack, onContinue, onReset }) 
         Back
       </button>
       {complete ? (
-        <button className="rgi-stepper-example-primary" type="button" onClick={onReset}>
+        <button className="tm-stepper-example-primary" type="button" onClick={onReset}>
           Start over
         </button>
       ) : (
-        <button className="rgi-stepper-example-primary" type="button" onClick={onContinue}>
+        <button className="tm-stepper-example-primary" type="button" onClick={onContinue}>
           {activeStep === STEPS.length - 1 ? 'Finish' : 'Continue'}
         </button>
       )}
@@ -71,10 +71,10 @@ function StepperExample({ variant }) {
   const isHorizontal = !isVertical && !isAlternative;
   const stepIndex = complete ? STEPS.length : activeStep;
   const className = [
-    'rgi-stepper-example',
-    isHorizontal && 'rgi-stepper-example-horizontal',
-    isVertical && 'rgi-stepper-example-vertical',
-    isAlternative && 'rgi-stepper-example-alternative',
+    'tm-stepper-example',
+    isHorizontal && 'tm-stepper-example-horizontal',
+    isVertical && 'tm-stepper-example-vertical',
+    isAlternative && 'tm-stepper-example-alternative',
   ]
     .filter(Boolean)
     .join(' ');
@@ -122,8 +122,8 @@ function StepperExample({ variant }) {
           <Step key={label} label={label} description={isVertical ? detail : undefined} />
         ))}
       </Stepper>
-      <div className="rgi-stepper-example-content" aria-live="polite">
-        <span className="rgi-stepper-example-eyebrow">
+      <div className="tm-stepper-example-content" aria-live="polite">
+        <span className="tm-stepper-example-eyebrow">
           {complete
             ? 'ALL STEPS COMPLETE'
             : isAlternative

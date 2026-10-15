@@ -41,24 +41,24 @@ function InlineLinksExample() {
   const [notice, setNotice] = useState('');
 
   return (
-    <div className="rgi-link-example">
-      <div className="rgi-link-example-card">
-        <span className="rgi-link-example-icon">
+    <div className="tm-link-example">
+      <div className="tm-link-example-card">
+        <span className="tm-link-example-icon">
           <FileText size={19} aria-hidden="true" />
         </span>
-        <div className="rgi-link-example-copy">
+        <div className="tm-link-example-copy">
           <strong>Keep exploring</strong>
           <p>
             Browse the workspace guide or visit the project overview to learn more about your team.
           </p>
-          <div className="rgi-link-example-inline-row">
+          <div className="tm-link-example-inline-row">
             <Link
               href="#workspace-guide"
               onClick={(event) => activatePreview(event, setNotice, 'Workspace guide')}
             >
               Workspace guide <ArrowUpRight size={14} aria-hidden="true" />
             </Link>
-            <span className="rgi-link-example-divider" aria-hidden="true" />
+            <span className="tm-link-example-divider" aria-hidden="true" />
             <Link
               href="#project-overview"
               onClick={(event) => activatePreview(event, setNotice, 'Project overview')}
@@ -68,7 +68,7 @@ function InlineLinksExample() {
           </div>
         </div>
       </div>
-      <span className="rgi-link-example-status" role="status" aria-live="polite">
+      <span className="tm-link-example-status" role="status" aria-live="polite">
         {notice || 'Activate a link to preview its destination.'}
       </span>
     </div>
@@ -99,10 +99,10 @@ function LinkVariantsExample() {
   ];
 
   return (
-    <div className="rgi-link-example">
-      <div className="rgi-link-example-variants">
+    <div className="tm-link-example">
+      <div className="tm-link-example-variants">
         {variants.map(({ label, destination, underline, color }) => (
-          <div className="rgi-link-example-variant-row" key={label}>
+          <div className="tm-link-example-variant-row" key={label}>
             <span>{label}</span>
             <Link
               href={`#${destination.toLowerCase().replaceAll(' ', '-')}`}
@@ -114,10 +114,10 @@ function LinkVariantsExample() {
             </Link>
           </div>
         ))}
-        <div className="rgi-link-example-variant-row">
+        <div className="tm-link-example-variant-row">
           <span>External destination</span>
           <Link
-            className="rgi-link-example-external"
+            className="tm-link-example-external"
             href="https://tailmantic.dev"
             target="_blank"
             rel="noopener noreferrer"
@@ -128,7 +128,7 @@ function LinkVariantsExample() {
           </Link>
         </div>
       </div>
-      <span className="rgi-link-example-status" role="status" aria-live="polite">
+      <span className="tm-link-example-status" role="status" aria-live="polite">
         {notice || 'Link emphasis can change independently from its destination.'}
       </span>
     </div>
@@ -140,18 +140,18 @@ function LinkAccessibilityExample() {
   const [available, setAvailable] = useState(true);
 
   return (
-    <div className="rgi-link-example">
-      <div className="rgi-link-example-card">
-        <span className="rgi-link-example-icon">
+    <div className="tm-link-example">
+      <div className="tm-link-example-card">
+        <span className="tm-link-example-icon">
           <LinkIcon size={19} aria-hidden="true" />
         </span>
-        <div className="rgi-link-example-copy">
+        <div className="tm-link-example-copy">
           <strong>Keyboard-friendly navigation</strong>
           <p>
             Use Tab to focus each available link. Focus styling remains visible, and the unavailable
             destination is not focusable.
           </p>
-          <div className="rgi-link-example-accessibility-row">
+          <div className="tm-link-example-accessibility-row">
             <Link
               href="#accessibility-guide"
               underline="always"
@@ -161,7 +161,7 @@ function LinkAccessibilityExample() {
             </Link>
             {available ? (
               <Link
-                className="rgi-link-example-disabled"
+                className="tm-link-example-disabled"
                 href="#coming-soon"
                 aria-disabled="true"
                 tabIndex={-1}
@@ -170,19 +170,19 @@ function LinkAccessibilityExample() {
                 Coming soon
               </Link>
             ) : (
-              <span className="rgi-link-example-disabled" aria-disabled="true">
+              <span className="tm-link-example-disabled" aria-disabled="true">
                 Unavailable
               </span>
             )}
           </div>
         </div>
       </div>
-      <div className="rgi-link-example-footer">
-        <span className="rgi-link-example-status" role="status" aria-live="polite">
+      <div className="tm-link-example-footer">
+        <span className="tm-link-example-status" role="status" aria-live="polite">
           {notice || 'A disabled destination remains readable but does not act like a normal link.'}
         </span>
         <button
-          className="rgi-link-example-toggle"
+          className="tm-link-example-toggle"
           type="button"
           aria-pressed={!available}
           onClick={() => setAvailable((value) => !value)}

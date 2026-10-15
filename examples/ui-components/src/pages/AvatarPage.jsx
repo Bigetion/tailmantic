@@ -72,13 +72,13 @@ function AvatarFallbacks() {
 function AvatarSizes() {
   return (
     <div className="preview-stack">
-      <div className="rgi-avatar-size-list" role="group" aria-label="Avatar sizes">
+      <div className="tm-avatar-size-list" role="group" aria-label="Avatar sizes">
         {SIZES.map(([size, pixels]) => (
-          <div className="rgi-avatar-size-item" key={size}>
+          <div className="tm-avatar-size-item" key={size}>
             <Avatar alt={`${pixels} pixel avatar`} color="indigo" size={size}>
               JD
             </Avatar>
-            <span className="rgi-avatar-size-label">{pixels}px</span>
+            <span className="tm-avatar-size-label">{pixels}px</span>
           </div>
         ))}
       </div>

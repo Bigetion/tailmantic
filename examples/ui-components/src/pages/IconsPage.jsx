@@ -112,7 +112,7 @@ function IconLibrary() {
 
   return (
     <div className="preview-stack">
-      <label className="rgi-icons-search">
+      <label className="tm-icons-search">
         <Search size={15} aria-hidden="true" />
         <input
           aria-label="Search icons"
@@ -126,10 +126,10 @@ function IconLibrary() {
           </button>
         )}
       </label>
-      <div className="rgi-icons-category-list" role="group" aria-label="Filter icon category">
+      <div className="tm-icons-category-list" role="group" aria-label="Filter icon category">
         {CATEGORIES.map((item) => (
           <button
-            className={cx('rgi-icons-category', category === item && 'rgi-icons-category-active')}
+            className={cx('tm-icons-category', category === item && 'tm-icons-category-active')}
             key={item}
             type="button"
             aria-pressed={category === item}
@@ -139,10 +139,10 @@ function IconLibrary() {
           </button>
         ))}
       </div>
-      <div className="rgi-icons-library-grid" role="group" aria-label="Icon library">
+      <div className="tm-icons-library-grid" role="group" aria-label="Icon library">
         {icons.map(([Icon, name]) => (
           <button
-            className={cx('rgi-icons-library-item', selected === name && 'rgi-icons-library-item-selected')}
+            className={cx('tm-icons-library-item', selected === name && 'tm-icons-library-item-selected')}
             key={name}
             type="button"
             aria-pressed={selected === name}
@@ -152,7 +152,7 @@ function IconLibrary() {
             <span>{name}</span>
           </button>
         ))}
-        {!icons.length && <span className="rgi-icons-empty-state">No icons match “{query}”.</span>}
+        {!icons.length && <span className="tm-icons-empty-state">No icons match “{query}”.</span>}
       </div>
       <span className="preview-note" role="status" aria-live="polite">
         {icons.length} icons · Selected: {selected}
@@ -163,19 +163,19 @@ function IconLibrary() {
 
 function IconColors() {
   const examples = [
-    ['Default', 'currentColor', 'rgi-icons-tone-default', <circle cx="12" cy="12" r="8" />],
-    ['Primary', '#a9c4ff', 'rgi-icons-tone-primary', <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z" />],
-    ['Success', '#7bd2a9', 'rgi-icons-tone-success', <path d="m5 12 4 4L19 6" />],
-    ['Warning', '#f2c27b', 'rgi-icons-tone-warning', <><path d="M12 3 2.8 19h18.4L12 3Z" /><path d="M12 9v4m0 3h.01" /></>],
-    ['Danger', '#f08b98', 'rgi-icons-tone-danger', <><path d="M3 6h18" /><path d="m19 6-1 14H6L5 6" /><path d="M9 6V4h6v2m-5 4v6m4-6v6" /></>],
+    ['Default', 'currentColor', 'tm-icons-tone-default', <circle cx="12" cy="12" r="8" />],
+    ['Primary', '#a9c4ff', 'tm-icons-tone-primary', <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z" />],
+    ['Success', '#7bd2a9', 'tm-icons-tone-success', <path d="m5 12 4 4L19 6" />],
+    ['Warning', '#f2c27b', 'tm-icons-tone-warning', <><path d="M12 3 2.8 19h18.4L12 3Z" /><path d="M12 9v4m0 3h.01" /></>],
+    ['Danger', '#f08b98', 'tm-icons-tone-danger', <><path d="M3 6h18" /><path d="m19 6-1 14H6L5 6" /><path d="M9 6V4h6v2m-5 4v6m4-6v6" /></>],
   ];
 
   return (
     <div className="preview-stack">
-      <div className="rgi-icons-color-grid">
+      <div className="tm-icons-color-grid">
         {examples.map(([label, color, tone, shape]) => (
-          <div className="rgi-icons-color-item" key={label}>
-            <span className={cx('rgi-icons-color-swatch', tone)}>
+          <div className="tm-icons-color-item" key={label}>
+            <span className={cx('tm-icons-color-swatch', tone)}>
               <Icons size={19} color={color} aria-label={`${label} example icon`}>
                 {shape}
               </Icons>
@@ -200,10 +200,10 @@ function IconButtons() {
 
   return (
     <div className="preview-stack">
-      <div className="rgi-icons-action-row" role="group" aria-label="Icon button actions">
+      <div className="tm-icons-action-row" role="group" aria-label="Icon button actions">
         {actions.map(([Icon, label]) => (
           <button
-            className="rgi-icons-action-button"
+            className="tm-icons-action-button"
             key={label}
             type="button"
             aria-label={label}
@@ -213,7 +213,7 @@ function IconButtons() {
           </button>
         ))}
         <button
-          className={cx('rgi-icons-action-button', favorite && 'rgi-icons-action-button-active')}
+          className={cx('tm-icons-action-button', favorite && 'tm-icons-action-button-active')}
           type="button"
           aria-label={favorite ? 'Remove favorite' : 'Add to favorites'}
           aria-pressed={favorite}

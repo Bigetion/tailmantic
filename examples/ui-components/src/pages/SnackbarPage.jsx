@@ -59,8 +59,8 @@ function DismissibleSnackbarExample() {
   const notification = useSnackbar('Project settings saved.');
 
   return (
-    <div className="rgi-snackbar-example-stack">
-      <div className="rgi-snackbar-example-stage">
+    <div className="tm-snackbar-example-stack">
+      <div className="tm-snackbar-example-stage">
         <Snackbar
           open={notification.open}
           severity="success"
@@ -70,12 +70,12 @@ function DismissibleSnackbarExample() {
           {notification.message}
         </Snackbar>
         {!notification.open && (
-          <span className="rgi-snackbar-example-placeholder">
+          <span className="tm-snackbar-example-placeholder">
             Your notification will appear here.
           </span>
         )}
       </div>
-      <div className="rgi-snackbar-example-controls">
+      <div className="tm-snackbar-example-controls">
         <Button variant="contained" size="small" onClick={() => notification.show()}>
           Show notification
         </Button>
@@ -105,8 +105,8 @@ function ActionSnackbarExample() {
   }
 
   return (
-    <div className="rgi-snackbar-example-stack">
-      <div className="rgi-snackbar-example-stage">
+    <div className="tm-snackbar-example-stack">
+      <div className="tm-snackbar-example-stage">
         <Snackbar
           open={notification.open}
           severity="success"
@@ -115,7 +115,7 @@ function ActionSnackbarExample() {
           action={
             notification.message === 'Changes saved successfully.' ? (
               <Button
-                className="rgi-snackbar-example-action"
+                className="tm-snackbar-example-action"
                 variant="text"
                 size="small"
                 onClick={undoSave}
@@ -129,12 +129,12 @@ function ActionSnackbarExample() {
           {notification.message}
         </Snackbar>
         {!notification.open && (
-          <span className="rgi-snackbar-example-placeholder">
+          <span className="tm-snackbar-example-placeholder">
             {notification.notice || 'Your notification will appear here.'}
           </span>
         )}
       </div>
-      <div className="rgi-snackbar-example-controls">
+      <div className="tm-snackbar-example-controls">
         <Button variant="contained" size="small" onClick={() => notification.show()}>
           Show notification
         </Button>
@@ -162,13 +162,13 @@ function PositionSnackbarExample() {
   }
 
   return (
-    <div className="rgi-snackbar-example-stack">
-      <fieldset className="rgi-snackbar-example-position-controls">
-        <legend className="rgi-snackbar-example-position-label">Snackbar position</legend>
+    <div className="tm-snackbar-example-stack">
+      <fieldset className="tm-snackbar-example-position-controls">
+        <legend className="tm-snackbar-example-position-label">Snackbar position</legend>
         {['start', 'center', 'end'].map((item) => (
           <Button
             key={item}
-            className="rgi-snackbar-example-position-option"
+            className="tm-snackbar-example-position-option"
             variant={position === item ? 'contained' : 'text'}
             size="small"
             aria-pressed={position === item}
@@ -178,7 +178,7 @@ function PositionSnackbarExample() {
           </Button>
         ))}
       </fieldset>
-      <div className={`rgi-snackbar-example-stage rgi-snackbar-example-stage-${position}`}>
+      <div className={`tm-snackbar-example-stage tm-snackbar-example-stage-${position}`}>
         <Snackbar
           open={notification.open}
           severity="info"
@@ -188,7 +188,7 @@ function PositionSnackbarExample() {
           {notification.message}
         </Snackbar>
         {!notification.open && (
-          <span className="rgi-snackbar-example-placeholder">
+          <span className="tm-snackbar-example-placeholder">
             Choose a position to preview the notification.
           </span>
         )}

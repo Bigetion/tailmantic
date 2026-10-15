@@ -27,9 +27,9 @@ const NAVIGATION_ITEMS = [
   [HelpCircle, 'Help center', 'Guides and support'],
 ];
 const MESSAGES = [
-  ['AC', 'Ava Chen', 'Shared the Q3 product brief', '2m', 'rgi-list-example-avatar-blue'],
-  ['JM', 'Jordan Miller', 'Left a comment on your draft', '18m', 'rgi-list-example-avatar-violet'],
-  ['SK', 'Sam Kim', 'Invited you to Design review', '1h', 'rgi-list-example-avatar-green'],
+  ['AC', 'Ava Chen', 'Shared the Q3 product brief', '2m', 'tm-list-example-avatar-blue'],
+  ['JM', 'Jordan Miller', 'Left a comment on your draft', '18m', 'tm-list-example-avatar-violet'],
+  ['SK', 'Sam Kim', 'Invited you to Design review', '1h', 'tm-list-example-avatar-green'],
 ];
 const SETTINGS = [
   [Bell, 'Product updates', 'New features and release notes', 'product'],
@@ -68,21 +68,21 @@ function ListNavigation() {
   return (
     <div className="preview-stack">
       <nav aria-label="Workspace navigation">
-        <List className="rgi-list-example" disablePadding>
+        <List className="tm-list-example" disablePadding>
           {NAVIGATION_ITEMS.map(([Icon, label, description]) => (
-            <ListItem className="rgi-list-example-navigation-item" divider key={label}>
+            <ListItem className="tm-list-example-navigation-item" divider key={label}>
               <button
                 className={cx(
-                  'rgi-list-example-navigation-button',
-                  active === label && 'rgi-list-example-navigation-button-active',
+                  'tm-list-example-navigation-button',
+                  active === label && 'tm-list-example-navigation-button-active',
                 )}
                 type="button"
                 aria-current={active === label ? 'page' : undefined}
                 onClick={() => setActive(label)}
               >
-                <span className="rgi-list-example-icon"><Icon size={17} aria-hidden="true" /></span>
+                <span className="tm-list-example-icon"><Icon size={17} aria-hidden="true" /></span>
                 <ListItemText primary={label} secondary={description} />
-                <ChevronRight className="rgi-list-example-trailing" size={15} aria-hidden="true" />
+                <ChevronRight className="tm-list-example-trailing" size={15} aria-hidden="true" />
               </button>
             </ListItem>
           ))}
@@ -95,17 +95,17 @@ function ListNavigation() {
 
 function ListSecondary() {
   return (
-    <div className="rgi-list-example rgi-list-example-messages">
+    <div className="tm-list-example tm-list-example-messages">
       <List aria-label="Recent messages" disablePadding>
         {MESSAGES.map(([initials, name, message, time, tone]) => (
-          <ListItem className="rgi-list-example-message-item" divider key={name}>
-            <span className={cx('rgi-list-example-avatar', tone)} aria-hidden="true">{initials}</span>
+          <ListItem className="tm-list-example-message-item" divider key={name}>
+            <span className={cx('tm-list-example-avatar', tone)} aria-hidden="true">{initials}</span>
             <ListItemText primary={name} secondary={message} />
-            <time className="rgi-list-example-time">{time}</time>
+            <time className="tm-list-example-time">{time}</time>
           </ListItem>
         ))}
       </List>
-      <div className="rgi-list-example-footer">
+      <div className="tm-list-example-footer">
         <Mail size={13} aria-hidden="true" /> Showing your latest conversations
       </div>
     </div>
@@ -127,18 +127,18 @@ function ListInteractive() {
 
   return (
     <div className="preview-stack">
-      <List className="rgi-list-example" aria-label="Notification preferences" disablePadding>
+      <List className="tm-list-example" aria-label="Notification preferences" disablePadding>
         {SETTINGS.map(([Icon, title, description, key]) => (
-          <ListItem className="rgi-list-example-setting-item" divider key={key}>
+          <ListItem className="tm-list-example-setting-item" divider key={key}>
             <button
-              className="rgi-list-example-setting-button"
+              className="tm-list-example-setting-button"
               type="button"
               aria-pressed={enabled[key]}
               onClick={() => toggle(key)}
             >
-              <span className="rgi-list-example-icon"><Icon size={17} aria-hidden="true" /></span>
+              <span className="tm-list-example-icon"><Icon size={17} aria-hidden="true" /></span>
               <ListItemText primary={title} secondary={description} />
-              <span className={cx('rgi-list-example-switch', enabled[key] && 'rgi-list-example-switch-on')} aria-hidden="true">
+              <span className={cx('tm-list-example-switch', enabled[key] && 'tm-list-example-switch-on')} aria-hidden="true">
                 <i />
               </span>
             </button>

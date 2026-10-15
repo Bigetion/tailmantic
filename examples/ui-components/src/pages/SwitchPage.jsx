@@ -71,13 +71,13 @@ function SwitchColors() {
         <Switch
           label="Success green"
           checked={values.green}
-          inputClassName="rgi-switch-success"
+          inputClassName="tm-switch-success"
           onChange={(event) => update('green', event.target.checked)}
         />
         <Switch
           label="Warning orange"
           checked={values.orange}
-          inputClassName="rgi-switch-warning"
+          inputClassName="tm-switch-warning"
           onChange={(event) => update('orange', event.target.checked)}
         />
       </div>

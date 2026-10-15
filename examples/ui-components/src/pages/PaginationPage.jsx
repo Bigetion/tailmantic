@@ -50,8 +50,8 @@ function BasicPaginationExample() {
   const pageCount = 12;
 
   return (
-    <div className="rgi-pagination-example">
-      <div className="rgi-pagination-example-heading">
+    <div className="tm-pagination-example">
+      <div className="tm-pagination-example-heading">
         <strong>Project activity</strong>
         <span>
           Page {page} of {pageCount}
@@ -64,7 +64,7 @@ function BasicPaginationExample() {
         showLastButton
         onChange={(_event, nextPage) => setPage(nextPage)}
       />
-      <span className="rgi-pagination-example-status" role="status" aria-live="polite">
+      <span className="tm-pagination-example-status" role="status" aria-live="polite">
         Showing projects {(page - 1) * 8 + 1}–{Math.min(page * 8, 96)} of 96
       </span>
     </div>
@@ -76,8 +76,8 @@ function OutlinedPaginationExample() {
   const pageCount = 24;
 
   return (
-    <div className="rgi-pagination-example rgi-pagination-example-outlined">
-      <div className="rgi-pagination-example-heading">
+    <div className="tm-pagination-example tm-pagination-example-outlined">
+      <div className="tm-pagination-example-heading">
         <strong>Outlined controls</strong>
         <span>Jump between {pageCount} pages</span>
       </div>
@@ -91,7 +91,7 @@ function OutlinedPaginationExample() {
         aria-label="Outlined pagination"
         onChange={(_event, nextPage) => setPage(nextPage)}
       />
-      <span className="rgi-pagination-example-status" role="status" aria-live="polite">
+      <span className="tm-pagination-example-status" role="status" aria-live="polite">
         Page {page} selected
       </span>
     </div>
@@ -108,15 +108,15 @@ function PaginatedProjectsExample() {
   const lastRow = Math.min(firstProject + pageSize, PROJECTS.length);
 
   return (
-    <div className="rgi-pagination-example rgi-pagination-example-table-card">
-      <div className="rgi-pagination-example-table-header">
-        <div className="rgi-pagination-example-heading">
+    <div className="tm-pagination-example tm-pagination-example-table-card">
+      <div className="tm-pagination-example-table-header">
+        <div className="tm-pagination-example-heading">
           <strong>Recent projects</strong>
           <span>
             Showing {firstRow}–{lastRow} of {PROJECTS.length}
           </span>
         </div>
-        <label className="rgi-pagination-example-size-control">
+        <label className="tm-pagination-example-size-control">
           Rows per page
           <select
             value={pageSize}
@@ -133,8 +133,8 @@ function PaginatedProjectsExample() {
           </select>
         </label>
       </div>
-      <div className="rgi-pagination-example-table-wrap">
-        <table className="rgi-pagination-example-table">
+      <div className="tm-pagination-example-table-wrap">
+        <table className="tm-pagination-example-table">
           <thead>
             <tr>
               <th scope="col">Project</th>
@@ -152,7 +152,7 @@ function PaginatedProjectsExample() {
                 <td>{project.owner}</td>
                 <td>
                   <span
-                    className={`rgi-pagination-example-status-pill rgi-pagination-example-status-pill-${project.status.toLowerCase().replaceAll(' ', '-')}`}
+                    className={`tm-pagination-example-status-pill tm-pagination-example-status-pill-${project.status.toLowerCase().replaceAll(' ', '-')}`}
                   >
                     {project.status}
                   </span>
@@ -162,8 +162,8 @@ function PaginatedProjectsExample() {
           </tbody>
         </table>
       </div>
-      <div className="rgi-pagination-example-table-footer">
-        <span className="rgi-pagination-example-status" role="status" aria-live="polite">
+      <div className="tm-pagination-example-table-footer">
+        <span className="tm-pagination-example-status" role="status" aria-live="polite">
           Page {page} of {pageCount}
         </span>
         <Pagination

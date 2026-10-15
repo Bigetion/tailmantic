@@ -76,8 +76,8 @@ const IMPLEMENTATION_ROWS = [
 
 function DrawerBrand() {
   return (
-    <div className="rgi-drawer-example-brand">
-      <span className="rgi-drawer-example-brand-mark">
+    <div className="tm-drawer-example-brand">
+      <span className="tm-drawer-example-brand-mark">
         <BriefcaseBusiness size={18} aria-hidden="true" />
       </span>
       <span>
@@ -92,8 +92,8 @@ function NavigationItems({ items, selected, onSelect }) {
   return items.map(({ label, Icon, badge }) => (
     <button
       className={[
-        'rgi-drawer-example-nav-item',
-        selected === label && 'rgi-drawer-example-nav-item-active',
+        'tm-drawer-example-nav-item',
+        selected === label && 'tm-drawer-example-nav-item-active',
       ]
         .filter(Boolean)
         .join(' ')}
@@ -112,10 +112,10 @@ function NavigationItems({ items, selected, onSelect }) {
 function DrawerContents({ onClose, onSelect, selected, sections = false }) {
   return (
     <>
-      <div className="rgi-drawer-example-panel-header">
+      <div className="tm-drawer-example-panel-header">
         <DrawerBrand />
         <button
-          className="rgi-drawer-example-close"
+          className="tm-drawer-example-close"
           type="button"
           aria-label="Close navigation drawer"
           onClick={onClose}
@@ -124,10 +124,10 @@ function DrawerContents({ onClose, onSelect, selected, sections = false }) {
         </button>
       </div>
       {sections ? (
-        <div className="rgi-drawer-example-section-list">
+        <div className="tm-drawer-example-section-list">
           {SECTION_ITEMS.map(({ heading, items }) => (
-            <div className="rgi-drawer-example-section" key={heading}>
-              <span className="rgi-drawer-example-section-heading">{heading}</span>
+            <div className="tm-drawer-example-section" key={heading}>
+              <span className="tm-drawer-example-section-heading">{heading}</span>
               <NavigationItems
                 items={items}
                 selected={selected}
@@ -140,8 +140,8 @@ function DrawerContents({ onClose, onSelect, selected, sections = false }) {
           ))}
         </div>
       ) : (
-        <nav className="rgi-drawer-example-nav" aria-label="Workspace destinations">
-          <span className="rgi-drawer-example-section-heading">NAVIGATION</span>
+        <nav className="tm-drawer-example-nav" aria-label="Workspace destinations">
+          <span className="tm-drawer-example-section-heading">NAVIGATION</span>
           <NavigationItems
             items={BASIC_ITEMS}
             selected={selected}
@@ -152,9 +152,9 @@ function DrawerContents({ onClose, onSelect, selected, sections = false }) {
           />
         </nav>
       )}
-      <div className="rgi-drawer-example-account">
-        <span className="rgi-drawer-example-account-avatar">JL</span>
-        <span className="rgi-drawer-example-account-info">
+      <div className="tm-drawer-example-account">
+        <span className="tm-drawer-example-account-avatar">JL</span>
+        <span className="tm-drawer-example-account-info">
           <strong>Jordan Lee</strong>
           <small>jordan@northstar.design</small>
         </span>
@@ -170,24 +170,24 @@ function TemporaryDrawerExample({ sections = false }) {
   const close = useCallback(() => setOpen(false), []);
 
   return (
-    <div className="rgi-drawer-example">
-      <div className="rgi-drawer-example-shell">
-        <header className="rgi-drawer-example-topbar">
-          <span className="rgi-drawer-example-mark">N</span>
+    <div className="tm-drawer-example">
+      <div className="tm-drawer-example-shell">
+        <header className="tm-drawer-example-topbar">
+          <span className="tm-drawer-example-mark">N</span>
           <strong>Northstar</strong>
-          <span className="rgi-drawer-example-spacer" />
-          <span className="rgi-drawer-example-trigger">
+          <span className="tm-drawer-example-spacer" />
+          <span className="tm-drawer-example-trigger">
             Workspace <ChevronDown size={14} aria-hidden="true" />
           </span>
         </header>
-        <div className="rgi-drawer-example-content">
-          <span className="rgi-drawer-example-eyebrow">YOUR WORKSPACE</span>
-          <strong className="rgi-drawer-example-title">{selected}</strong>
-          <span className="rgi-drawer-example-description">
+        <div className="tm-drawer-example-content">
+          <span className="tm-drawer-example-eyebrow">YOUR WORKSPACE</span>
+          <strong className="tm-drawer-example-title">{selected}</strong>
+          <span className="tm-drawer-example-description">
             Open navigation to switch destinations.
           </span>
           <button
-            className="rgi-drawer-example-trigger"
+            className="tm-drawer-example-trigger"
             type="button"
             aria-haspopup="dialog"
             aria-expanded={open}
@@ -197,7 +197,7 @@ function TemporaryDrawerExample({ sections = false }) {
           </button>
         </div>
       </div>
-      <div className="rgi-drawer-example-footer" role="status">
+      <div className="tm-drawer-example-footer" role="status">
         <span>
           Current destination: <strong>{selected}</strong>
         </span>
@@ -207,7 +207,7 @@ function TemporaryDrawerExample({ sections = false }) {
         open={open}
         variant="temporary"
         aria-label="Workspace navigation"
-        className="rgi-drawer-example-panel"
+        className="tm-drawer-example-panel"
         onClose={close}
       >
         <DrawerContents
@@ -225,46 +225,46 @@ function PermanentDrawerExample() {
   const [selected, setSelected] = useState('Overview');
 
   return (
-    <div className="rgi-drawer-example">
-      <div className="rgi-drawer-example-permanent-shell">
+    <div className="tm-drawer-example">
+      <div className="tm-drawer-example-permanent-shell">
         <Drawer
           variant="permanent"
           aria-label="Workspace navigation"
-          className="rgi-drawer-example-permanent-panel"
+          className="tm-drawer-example-permanent-panel"
         >
           <DrawerBrand />
-          <nav className="rgi-drawer-example-nav" aria-label="Workspace destinations">
-            <span className="rgi-drawer-example-section-heading">WORKSPACE</span>
+          <nav className="tm-drawer-example-nav" aria-label="Workspace destinations">
+            <span className="tm-drawer-example-section-heading">WORKSPACE</span>
             <NavigationItems items={BASIC_ITEMS} selected={selected} onSelect={setSelected} />
           </nav>
-          <div className="rgi-drawer-example-account">
-            <span className="rgi-drawer-example-account-avatar">JL</span>
-            <span className="rgi-drawer-example-account-info">
+          <div className="tm-drawer-example-account">
+            <span className="tm-drawer-example-account-avatar">JL</span>
+            <span className="tm-drawer-example-account-info">
               <strong>Jordan Lee</strong>
               <small>Admin</small>
             </span>
             <ChevronDown size={14} aria-hidden="true" />
           </div>
         </Drawer>
-        <main className="rgi-drawer-example-permanent-content">
-          <div className="rgi-drawer-example-permanent-topline">
+        <main className="tm-drawer-example-permanent-content">
+          <div className="tm-drawer-example-permanent-topline">
             <span>Northstar / {selected}</span>
             <button type="button" aria-label="Notifications">
               <Bell size={16} aria-hidden="true" />
             </button>
           </div>
-          <span className="rgi-drawer-example-eyebrow">WORKSPACE</span>
-          <strong className="rgi-drawer-example-title">{selected}</strong>
-          <p className="rgi-drawer-example-description">
+          <span className="tm-drawer-example-eyebrow">WORKSPACE</span>
+          <strong className="tm-drawer-example-title">{selected}</strong>
+          <p className="tm-drawer-example-description">
             The permanent drawer keeps primary destinations in reach while content changes alongside
             it.
           </p>
-          <span className="rgi-drawer-example-permanent-status">
+          <span className="tm-drawer-example-permanent-status">
             <i /> Navigation stays visible
           </span>
         </main>
       </div>
-      <div className="rgi-drawer-example-footer" role="status">
+      <div className="tm-drawer-example-footer" role="status">
         <span>
           Current destination: <strong>{selected}</strong>
         </span>

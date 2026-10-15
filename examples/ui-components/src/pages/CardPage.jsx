@@ -35,36 +35,36 @@ const IMPLEMENTATION_ROWS = [
 
 function ProjectCard() {
   return (
-    <Card className="rgi-card-example rgi-card-example-project" elevation={2} interactive>
-      <div className="rgi-card-example-project-top">
-        <span className="rgi-card-example-project-icon">
+    <Card className="tm-card-example tm-card-example-project" elevation={2} interactive>
+      <div className="tm-card-example-project-top">
+        <span className="tm-card-example-project-icon">
           <Image size={18} aria-hidden="true" />
         </span>
-        <button className="rgi-card-example-more" type="button" aria-label="More project actions">
+        <button className="tm-card-example-more" type="button" aria-label="More project actions">
           <MoreHorizontal size={19} aria-hidden="true" />
         </button>
       </div>
-      <div className="rgi-card-example-copy">
-        <span className="rgi-card-example-eyebrow">PRODUCT DESIGN</span>
+      <div className="tm-card-example-copy">
+        <span className="tm-card-example-eyebrow">PRODUCT DESIGN</span>
         <h3>Website refresh</h3>
         <p>A new look and feel for the customer workspace, from first sketch to final handoff.</p>
       </div>
-      <div className="rgi-card-example-project-meta">
-        <span className="rgi-card-example-status">
+      <div className="tm-card-example-project-meta">
+        <span className="tm-card-example-status">
           <i /> In progress
         </span>
-        <span className="rgi-card-example-team">
+        <span className="tm-card-example-team">
           <Users size={15} aria-hidden="true" /> 4 members
         </span>
       </div>
-      <div className="rgi-card-example-project-footer">
-        <ul className="rgi-card-example-avatar-stack" aria-label="Project team: Jordan, Sam, Alex">
+      <div className="tm-card-example-project-footer">
+        <ul className="tm-card-example-avatar-stack" aria-label="Project team: Jordan, Sam, Alex">
           <li>JL</li>
           <li>SC</li>
           <li>AK</li>
           <li>+1</li>
         </ul>
-        <button className="rgi-card-example-open" type="button">
+        <button className="tm-card-example-open" type="button">
           Open project <ArrowUpRight size={15} aria-hidden="true" />
         </button>
       </div>
@@ -77,31 +77,31 @@ function ActionCard() {
   const [saved, setSaved] = useState(false);
 
   return (
-    <Card className="rgi-card-example rgi-card-example-action" variant="outlined" elevation={0}>
-      <div className="rgi-card-example-author">
-        <span className="rgi-card-example-author-avatar">AM</span>
-        <span className="rgi-card-example-author-details">
+    <Card className="tm-card-example tm-card-example-action" variant="outlined" elevation={0}>
+      <div className="tm-card-example-author">
+        <span className="tm-card-example-author-avatar">AM</span>
+        <span className="tm-card-example-author-details">
           <strong>Alex Morgan</strong>
           <small>Product design · 2 hours ago</small>
         </span>
-        <button className="rgi-card-example-more" type="button" aria-label="More post actions">
+        <button className="tm-card-example-more" type="button" aria-label="More post actions">
           <MoreHorizontal size={19} aria-hidden="true" />
         </button>
       </div>
-      <div className="rgi-card-example-copy rgi-card-example-action-copy">
+      <div className="tm-card-example-copy tm-card-example-action-copy">
         <h3>Introducing the new workspace</h3>
         <p>
           We’ve brought projects, updates, and team conversations together in one calmer place.
           Here’s a first look at what’s new.
         </p>
       </div>
-      <div className="rgi-card-example-tags">
+      <div className="tm-card-example-tags">
         <span>Product update</span>
         <span>3 min read</span>
       </div>
-      <div className="rgi-card-example-actions">
+      <div className="tm-card-example-actions">
         <button
-          className={`rgi-card-example-action-button${liked ? ' is-active' : ''}`}
+          className={`tm-card-example-action-button${liked ? ' is-active' : ''}`}
           type="button"
           aria-pressed={liked}
           onClick={() => setLiked((value) => !value)}
@@ -110,7 +110,7 @@ function ActionCard() {
           {liked ? 'Liked · 25' : 'Like · 24'}
         </button>
         <button
-          className={`rgi-card-example-action-button${saved ? ' is-active' : ''}`}
+          className={`tm-card-example-action-button${saved ? ' is-active' : ''}`}
           type="button"
           aria-pressed={saved}
           onClick={() => setSaved((value) => !value)}
@@ -129,29 +129,29 @@ function ActionCard() {
 
 function MediaCard() {
   return (
-    <Card className="rgi-card-example rgi-card-example-media" variant="flat" elevation={0}>
-      <div className="rgi-card-example-media-visual">
-        <div className="rgi-card-example-media-orbit rgi-card-example-media-orbit-one" />
-        <div className="rgi-card-example-media-orbit rgi-card-example-media-orbit-two" />
-        <div className="rgi-card-example-media-art">
+    <Card className="tm-card-example tm-card-example-media" variant="flat" elevation={0}>
+      <div className="tm-card-example-media-visual">
+        <div className="tm-card-example-media-orbit tm-card-example-media-orbit-one" />
+        <div className="tm-card-example-media-orbit tm-card-example-media-orbit-two" />
+        <div className="tm-card-example-media-art">
           <Image size={28} aria-hidden="true" />
         </div>
-        <span className="rgi-card-example-media-label">FIELD NOTES · 04</span>
+        <span className="tm-card-example-media-label">FIELD NOTES · 04</span>
       </div>
-      <div className="rgi-card-example-media-content">
-        <div className="rgi-card-example-media-heading">
+      <div className="tm-card-example-media-content">
+        <div className="tm-card-example-media-heading">
           <span>DESIGN SYSTEMS</span>
           <span>8 min read</span>
         </div>
         <h3>Building a more thoughtful interface</h3>
         <p>Small, consistent decisions help every screen feel like part of the same product.</p>
-        <div className="rgi-card-example-media-footer">
-          <span className="rgi-card-example-media-author">
-            <span className="rgi-card-example-author-avatar">JL</span>
+        <div className="tm-card-example-media-footer">
+          <span className="tm-card-example-media-author">
+            <span className="tm-card-example-author-avatar">JL</span>
             Jordan Lee
           </span>
           <button
-            className="rgi-card-example-more"
+            className="tm-card-example-more"
             type="button"
             aria-label="Open article by Jordan Lee"
           >

@@ -44,8 +44,8 @@ const IMPLEMENTATION_ROWS = [
 function PanelContent({ portal = false, insideCount, onInteract }) {
   return (
     <>
-      <div className="rgi-click-away-example-panel-heading">
-        <span className="rgi-click-away-example-panel-icon">
+      <div className="tm-click-away-example-panel-heading">
+        <span className="tm-click-away-example-panel-icon">
           <MousePointer2 size={15} aria-hidden="true" />
         </span>
         <span>
@@ -55,7 +55,7 @@ function PanelContent({ portal = false, insideCount, onInteract }) {
           </small>
         </span>
       </div>
-      <button className="rgi-click-away-example-inside-action" type="button" onClick={onInteract}>
+      <button className="tm-click-away-example-inside-action" type="button" onClick={onInteract}>
         <Check size={14} aria-hidden="true" />
         Interact inside
         <span>{insideCount}</span>
@@ -97,7 +97,7 @@ function ClickAwayExample({ variant }) {
   const portalPanel =
     isPortal && open
       ? createPortal(
-          <div className="rgi-click-away-example-portal" ref={(node) => (portalRef.current = node)}>
+          <div className="tm-click-away-example-portal" ref={(node) => (portalRef.current = node)}>
             <PanelContent portal insideCount={insideCount} onInteract={interactInside} />
           </div>,
           document.body,
@@ -105,10 +105,10 @@ function ClickAwayExample({ variant }) {
       : null;
 
   return (
-    <div className="rgi-click-away-example">
-      <div className="rgi-click-away-example-stage">
-        <div className="rgi-click-away-example-copy">
-          <span className="rgi-click-away-example-eyebrow">
+    <div className="tm-click-away-example">
+      <div className="tm-click-away-example-stage">
+        <div className="tm-click-away-example-copy">
+          <span className="tm-click-away-example-eyebrow">
             {isPortal ? 'PORTALED SURFACE' : isTouch ? 'MOUSE AND TOUCH' : 'OUTSIDE INTERACTION'}
           </span>
           <strong>
@@ -127,13 +127,13 @@ function ClickAwayExample({ variant }) {
           </span>
         </div>
         <ClickAwayListener
-          className="rgi-click-away-example-boundary"
+          className="tm-click-away-example-boundary"
           mouseEvent={isTouch ? 'click' : undefined}
           onClickAway={handleClickAway}
           touchEvent={isTouch ? 'touchend' : undefined}
         >
           <button
-            className="rgi-click-away-example-trigger"
+            className="tm-click-away-example-trigger"
             type="button"
             aria-expanded={open}
             onClick={toggle}
@@ -148,19 +148,19 @@ function ClickAwayExample({ variant }) {
             )}
           </button>
           {open && !isPortal && (
-            <section className="rgi-click-away-example-panel" aria-label="Inside panel">
+            <section className="tm-click-away-example-panel" aria-label="Inside panel">
               <PanelContent insideCount={insideCount} onInteract={interactInside} />
             </section>
           )}
         </ClickAwayListener>
-        <button className="rgi-click-away-example-outside" type="button">
+        <button className="tm-click-away-example-outside" type="button">
           Click outside this boundary
         </button>
         {portalPanel}
       </div>
-      <div className="rgi-click-away-example-feedback" role="status" aria-live="polite">
+      <div className="tm-click-away-example-feedback" role="status" aria-live="polite">
         <span
-          className={`rgi-click-away-example-dot${open ? ' rgi-click-away-example-dot-open' : ''}`}
+          className={`tm-click-away-example-dot${open ? ' tm-click-away-example-dot-open' : ''}`}
         />
         <span>
           {message ||

@@ -93,7 +93,7 @@ function ValidationTextField() {
         onChange={handleChange}
       />
       <div className="preview-row">
-        <button className="rgi-button rgi-button-contained" type="submit">
+        <button className="tm-button tm-button-contained" type="submit">
           Continue
         </button>
         <span className="preview-note" role="status" aria-live="polite">
@@ -122,7 +122,7 @@ function AdornedTextField() {
           query ? (
             <button
               aria-label="Clear search"
-              className="rgi-text-field-clear"
+              className="tm-text-field-clear"
               type="button"
               onClick={() => setQuery('')}
             >

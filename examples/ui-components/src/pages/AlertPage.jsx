@@ -43,10 +43,10 @@ const ALERTS = [
 
 function SeverityAlerts({ variant = 'standard' }) {
   return (
-    <div className="rgi-alert-example-stack">
+    <div className="tm-alert-example-stack">
       {ALERTS.map(([severity, Icon, title, message]) => (
         <Alert
-          className="rgi-alert-example"
+          className="tm-alert-example"
           key={severity}
           severity={severity}
           variant={variant}
@@ -73,7 +73,7 @@ function AlertActions() {
     <div className="preview-stack">
       {visible ? (
         <Alert
-          className="rgi-alert-example"
+          className="tm-alert-example"
           severity="success"
           title="Draft published"
           icon={<Check size={16} aria-hidden="true" />}
@@ -84,9 +84,9 @@ function AlertActions() {
           }}
         >
           <span>Your announcement is now visible to workspace members.</span>
-          <div className="rgi-alert-example-actions">
+          <div className="tm-alert-example-actions">
             <Button
-              className="rgi-alert-example-action"
+              className="tm-alert-example-action"
               size="small"
               variant="text"
               onClick={() => setMessage('Publication reverted.')}
@@ -94,7 +94,7 @@ function AlertActions() {
               Undo
             </Button>
             <Button
-              className="rgi-alert-example-action"
+              className="tm-alert-example-action"
               size="small"
               variant="text"
               aria-label="Restore default message"
@@ -105,7 +105,7 @@ function AlertActions() {
           </div>
         </Alert>
       ) : (
-        <div className="rgi-alert-example-empty">
+        <div className="tm-alert-example-empty">
           <span>{message || 'Alert dismissed.'}</span>
           <Button size="small" variant="outlined" onClick={restore}>
             Restore alert

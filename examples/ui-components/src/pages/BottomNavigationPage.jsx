@@ -52,16 +52,16 @@ function NavigationContent({ value }) {
   const [title, description, Icon] = DESTINATION_CONTENT[value];
 
   return (
-    <div className="rgi-bottom-navigation-example-content">
-      <span className="rgi-bottom-navigation-example-content-icon">
+    <div className="tm-bottom-navigation-example-content">
+      <span className="tm-bottom-navigation-example-content-icon">
         <Icon size={20} aria-hidden="true" />
       </span>
-      <span className="rgi-bottom-navigation-example-content-copy">
+      <span className="tm-bottom-navigation-example-content-copy">
         <strong>{title}</strong>
         <small>{description}</small>
       </span>
       {value === 'saved' && (
-        <span className="rgi-bottom-navigation-example-unread">
+        <span className="tm-bottom-navigation-example-unread">
           <Bell size={14} aria-hidden="true" /> 2 new
         </span>
       )}
@@ -80,16 +80,16 @@ function DevicePreview({ mode }) {
       label={label}
       icon={<Icon size={20} />}
       className={[
-        'rgi-bottom-navigation-example-item',
-        compactLabels && 'rgi-bottom-navigation-example-compact-item',
-        iconsOnly && 'rgi-bottom-navigation-example-icon-item',
+        'tm-bottom-navigation-example-item',
+        compactLabels && 'tm-bottom-navigation-example-compact-item',
+        iconsOnly && 'tm-bottom-navigation-example-icon-item',
       ]
         .filter(Boolean)
         .join(' ')}
       aria-label={label}
     >
       {itemValue === 'saved' && iconsOnly && (
-        <span className="rgi-bottom-navigation-example-badge" aria-hidden="true">
+        <span className="tm-bottom-navigation-example-badge" aria-hidden="true">
           2
         </span>
       )}
@@ -97,9 +97,9 @@ function DevicePreview({ mode }) {
   ));
 
   return (
-    <div className={`rgi-bottom-navigation-example rgi-bottom-navigation-example-${mode}`}>
-      <div className="rgi-bottom-navigation-example-device">
-        <div className="rgi-bottom-navigation-example-device-top">
+    <div className={`tm-bottom-navigation-example tm-bottom-navigation-example-${mode}`}>
+      <div className="tm-bottom-navigation-example-device">
+        <div className="tm-bottom-navigation-example-device-top">
           <span>
             <i /> Workspace
           </span>
@@ -108,9 +108,9 @@ function DevicePreview({ mode }) {
         <NavigationContent value={value} />
         <BottomNavigation
           className={[
-            'rgi-bottom-navigation-example-bar',
-            compactLabels && 'rgi-bottom-navigation-example-compact',
-            iconsOnly && 'rgi-bottom-navigation-example-icons-only',
+            'tm-bottom-navigation-example-bar',
+            compactLabels && 'tm-bottom-navigation-example-compact',
+            iconsOnly && 'tm-bottom-navigation-example-icons-only',
           ]
             .filter(Boolean)
             .join(' ')}
@@ -120,21 +120,21 @@ function DevicePreview({ mode }) {
         >
           {items}
         </BottomNavigation>
-        <div className="rgi-bottom-navigation-example-home-indicator" aria-hidden="true">
+        <div className="tm-bottom-navigation-example-home-indicator" aria-hidden="true">
           <span />
         </div>
       </div>
-      <div className="rgi-bottom-navigation-example-footer">
-        <span className="rgi-bottom-navigation-example-status" role="status">
+      <div className="tm-bottom-navigation-example-footer">
+        <span className="tm-bottom-navigation-example-status" role="status">
           Selected destination: <strong>{DESTINATION_CONTENT[value][0]}</strong>
         </span>
         {compactLabels && (
-          <span className="rgi-bottom-navigation-example-hint">
+          <span className="tm-bottom-navigation-example-hint">
             Inactive labels stay hidden until selected.
           </span>
         )}
         {iconsOnly && (
-          <span className="rgi-bottom-navigation-example-hint">
+          <span className="tm-bottom-navigation-example-hint">
             <Bell size={14} aria-hidden="true" /> 2 new items in Saved
           </span>
         )}

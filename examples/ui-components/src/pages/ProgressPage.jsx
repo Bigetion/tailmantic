@@ -34,16 +34,16 @@ const IMPLEMENTATION_ROWS = [
 
 function ProgressCard({ icon: Icon, title, description, value, children }) {
   return (
-    <div className="rgi-progress-example-card">
-      <div className="rgi-progress-example-heading">
-        <span className="rgi-progress-example-icon" aria-hidden="true">
+    <div className="tm-progress-example-card">
+      <div className="tm-progress-example-heading">
+        <span className="tm-progress-example-icon" aria-hidden="true">
           <Icon size={15} />
         </span>
-        <div className="rgi-progress-example-copy">
+        <div className="tm-progress-example-copy">
           <strong>{title}</strong>
           <span>{description}</span>
         </div>
-        {value != null && <span className="rgi-progress-example-value">{value}%</span>}
+        {value != null && <span className="tm-progress-example-value">{value}%</span>}
       </div>
       {children}
     </div>
@@ -54,7 +54,7 @@ function LinearProgressExample() {
   const [value, setValue] = useState(60);
 
   return (
-    <div className="rgi-progress-example-stack">
+    <div className="tm-progress-example-stack">
       <ProgressCard
         icon={CloudUpload}
         title="Uploading project files"
@@ -62,11 +62,11 @@ function LinearProgressExample() {
         value={value}
       >
         <Progress
-          className="rgi-progress-example-linear"
+          className="tm-progress-example-linear"
           label="Project file upload"
           value={value}
         />
-        <div className="rgi-progress-example-actions">
+        <div className="tm-progress-example-actions">
           <Button
             variant="outlined"
             size="small"
@@ -90,7 +90,7 @@ function LinearProgressExample() {
         title="Connecting to workspace"
         description="Completion time is not available"
       >
-        <Progress className="rgi-progress-example-linear" label="Connecting to workspace" />
+        <Progress className="tm-progress-example-linear" label="Connecting to workspace" />
       </ProgressCard>
       <span className="preview-note" role="status" aria-live="polite">
         Upload progress: {value}%.
@@ -103,10 +103,10 @@ function CircularProgressExample() {
   const [value, setValue] = useState(72);
 
   return (
-    <div className="rgi-progress-example-stack">
-      <div className="rgi-progress-example-circular-grid">
-        <div className="rgi-progress-example-circular-item">
-          <div className="rgi-progress-example-circular-meter">
+    <div className="tm-progress-example-stack">
+      <div className="tm-progress-example-circular-grid">
+        <div className="tm-progress-example-circular-item">
+          <div className="tm-progress-example-circular-meter">
             <Progress
               label="File processing progress"
               max={100}
@@ -116,25 +116,25 @@ function CircularProgressExample() {
             />
             <span aria-hidden="true">{value}%</span>
           </div>
-          <div className="rgi-progress-example-copy">
+          <div className="tm-progress-example-copy">
             <strong>{value}% processed</strong>
             <span>File processing</span>
           </div>
         </div>
-        <div className="rgi-progress-example-circular-item">
+        <div className="tm-progress-example-circular-item">
           <Progress
-            className="rgi-progress-example-spinner"
+            className="tm-progress-example-spinner"
             label="Loading account data"
             size={48}
             variant="circular"
           />
-          <div className="rgi-progress-example-copy">
+          <div className="tm-progress-example-copy">
             <strong>Loading account</strong>
             <span>Waiting for a response</span>
           </div>
         </div>
       </div>
-      <div className="rgi-progress-example-actions">
+      <div className="tm-progress-example-actions">
         <Button
           variant="outlined"
           size="small"
@@ -174,37 +174,37 @@ function BufferedProgressExample() {
   }
 
   return (
-    <div className="rgi-progress-example-stack">
+    <div className="tm-progress-example-stack">
       <ProgressCard
         icon={Film}
         title="Streaming video"
         description={`${value}% played · ${buffer}% buffered`}
         value={value}
       >
-        <div className="rgi-progress-example-buffer-track">
+        <div className="tm-progress-example-buffer-track">
           <Progress
-            className="rgi-progress-example-buffer"
+            className="tm-progress-example-buffer"
             label="Video buffered"
             value={buffer}
             aria-hidden="true"
           />
           <Progress
-            className="rgi-progress-example-played"
+            className="tm-progress-example-played"
             label="Video playback"
             value={value}
             aria-valuetext={`${value}% played, ${buffer}% buffered`}
           />
         </div>
-        <div className="rgi-progress-example-legend">
+        <div className="tm-progress-example-legend">
           <span>
-            <i className="rgi-progress-example-legend-played" /> Played
+            <i className="tm-progress-example-legend-played" /> Played
           </span>
           <span>
-            <i className="rgi-progress-example-legend-buffered" /> Buffered
+            <i className="tm-progress-example-legend-buffered" /> Buffered
           </span>
         </div>
       </ProgressCard>
-      <div className="rgi-progress-example-actions">
+      <div className="tm-progress-example-actions">
         <Button variant="contained" size="small" disabled={value === 100} onClick={receiveChunk}>
           <Check size={13} aria-hidden="true" /> Buffer next segment
         </Button>

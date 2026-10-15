@@ -75,7 +75,7 @@ function MobileNavigationDrawer({ groups, onClose }) {
           <span className="brand-mark" aria-hidden="true"><span>T</span></span>
           <span className="brand-lockup"><span className="brand-name">Tailmantic UI</span><span className="brand-subtitle">Explore library</span></span>
           <button
-            className="rgi-icon-button mobile-drawer-close"
+            className="tm-icon-button mobile-drawer-close"
             ref={closeButtonRef}
             type="button"
             aria-label="Close navigation drawer"
@@ -172,7 +172,7 @@ export default function AppLayout() {
     <div className="app-shell">
       <header className="topbar">
         <button
-          className="mobile-menu rgi-icon-button"
+          className="mobile-menu tm-icon-button"
           type="button"
           aria-label={mobileNavOpen ? 'Close navigation' : 'Open navigation'}
           aria-expanded={mobileNavOpen}
@@ -239,7 +239,7 @@ export default function AppLayout() {
         <span>Open source</span><ArrowUpRight size={13} />
         </a>
         <a
-          className="rgi-icon-button help-button"
+          className="tm-icon-button help-button"
           href="https://github.com/Bigetion/tailmantic/tree/main/packages/ui-components"
           target="_blank"
           rel="noreferrer"

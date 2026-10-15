@@ -58,19 +58,19 @@ function HierarchyExample() {
   const [currentIndex, setCurrentIndex] = useState(PATH.length - 1);
 
   return (
-    <div className="rgi-breadcrumbs-example">
-      <div className="rgi-breadcrumbs-example-panel">
-        <div className="rgi-breadcrumbs-example-context">
-          <span className="rgi-breadcrumbs-example-eyebrow">Current location</span>
-          <strong className="rgi-breadcrumbs-example-title">{PATH[currentIndex]}</strong>
-          <span className="rgi-breadcrumbs-example-description">
+    <div className="tm-breadcrumbs-example">
+      <div className="tm-breadcrumbs-example-panel">
+        <div className="tm-breadcrumbs-example-context">
+          <span className="tm-breadcrumbs-example-eyebrow">Current location</span>
+          <strong className="tm-breadcrumbs-example-title">{PATH[currentIndex]}</strong>
+          <span className="tm-breadcrumbs-example-description">
             Select any parent to move back through the project hierarchy.
           </span>
         </div>
         <Breadcrumbs aria-label="Project location">
           {createPathItems(currentIndex, setCurrentIndex)}
         </Breadcrumbs>
-        <span className="rgi-breadcrumbs-example-status" role="status">
+        <span className="tm-breadcrumbs-example-status" role="status">
           Current page: <strong>{PATH[currentIndex]}</strong>
         </span>
       </div>
@@ -87,16 +87,16 @@ function SeparatorExamples() {
   ];
 
   return (
-    <div className="rgi-breadcrumbs-example rgi-breadcrumbs-example-separators">
+    <div className="tm-breadcrumbs-example tm-breadcrumbs-example-separators">
       {separators.map(({ label, value }) => (
-        <div className="rgi-breadcrumbs-example-separator-row" key={label}>
-          <span className="rgi-breadcrumbs-example-separator-label">{label} separator</span>
+        <div className="tm-breadcrumbs-example-separator-row" key={label}>
+          <span className="tm-breadcrumbs-example-separator-label">{label} separator</span>
           <Breadcrumbs aria-label={`${label} separated project location`} separator={value}>
             {createPathItems(currentIndex, setCurrentIndex)}
           </Breadcrumbs>
         </div>
       ))}
-      <span className="rgi-breadcrumbs-example-status" role="status">
+      <span className="tm-breadcrumbs-example-status" role="status">
         Current page: <strong>{PATH[currentIndex]}</strong>
       </span>
     </div>
@@ -108,24 +108,24 @@ function CollapsedExample() {
   const [collapsed, setCollapsed] = useState(true);
 
   return (
-    <div className="rgi-breadcrumbs-example">
-      <div className="rgi-breadcrumbs-example-panel">
-        <div className="rgi-breadcrumbs-example-context">
-          <span className="rgi-breadcrumbs-example-eyebrow">Long page path</span>
-          <strong className="rgi-breadcrumbs-example-title">{PATH[currentIndex]}</strong>
-          <span className="rgi-breadcrumbs-example-description">
+    <div className="tm-breadcrumbs-example">
+      <div className="tm-breadcrumbs-example-panel">
+        <div className="tm-breadcrumbs-example-context">
+          <span className="tm-breadcrumbs-example-eyebrow">Long page path</span>
+          <strong className="tm-breadcrumbs-example-title">{PATH[currentIndex]}</strong>
+          <span className="tm-breadcrumbs-example-description">
             Collapse older ancestors to preserve room on narrow layouts.
           </span>
         </div>
         <Breadcrumbs aria-label="Compact project location" maxItems={collapsed ? 3 : undefined}>
           {createPathItems(currentIndex, setCurrentIndex)}
         </Breadcrumbs>
-        <div className="rgi-breadcrumbs-example-collapse-controls">
-          <span className="rgi-breadcrumbs-example-status" role="status">
+        <div className="tm-breadcrumbs-example-collapse-controls">
+          <span className="tm-breadcrumbs-example-status" role="status">
             {collapsed ? 'Showing a compact path.' : 'All parent locations are visible.'}
           </span>
           <button
-            className="rgi-breadcrumbs-example-collapse-button"
+            className="tm-breadcrumbs-example-collapse-button"
             type="button"
             onClick={() => setCollapsed((value) => !value)}
           >

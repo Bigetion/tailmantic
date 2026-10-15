@@ -34,58 +34,58 @@ const IMPLEMENTATION_ROWS = [
 
 function ProfileCard({ loaded = false, animation = 'pulse' }) {
   return (
-    <article className="rgi-skeleton-example-profile" aria-busy={!loaded}>
+    <article className="tm-skeleton-example-profile" aria-busy={!loaded}>
       {loaded ? (
         <>
-          <div className="rgi-skeleton-example-avatar rgi-skeleton-example-avatar-loaded">
+          <div className="tm-skeleton-example-avatar tm-skeleton-example-avatar-loaded">
             <UserRound size={20} aria-hidden="true" />
           </div>
-          <div className="rgi-skeleton-example-profile-copy">
+          <div className="tm-skeleton-example-profile-copy">
             <strong>Jordan Lee</strong>
             <span>Product designer · 8 projects</span>
             <p>Building thoughtful tools for teams that do their best work together.</p>
           </div>
-          <span className="rgi-skeleton-example-loaded-badge">
+          <span className="tm-skeleton-example-loaded-badge">
             <Check size={12} aria-hidden="true" /> Loaded
           </span>
         </>
       ) : (
         <>
           <Skeleton
-            className="rgi-skeleton-example-avatar"
+            className="tm-skeleton-example-avatar"
             variant="circular"
             animation={animation}
             width={40}
             height={40}
           />
-          <div className="rgi-skeleton-example-profile-copy" aria-hidden="true">
+          <div className="tm-skeleton-example-profile-copy" aria-hidden="true">
             <Skeleton
-              className="rgi-skeleton-example-title"
+              className="tm-skeleton-example-title"
               variant="text"
               animation={animation}
               width={128}
             />
             <Skeleton
-              className="rgi-skeleton-example-subtitle"
+              className="tm-skeleton-example-subtitle"
               variant="text"
               animation={animation}
               width={176}
             />
             <Skeleton
-              className="rgi-skeleton-example-copy"
+              className="tm-skeleton-example-copy"
               variant="text"
               animation={animation}
               width="100%"
             />
             <Skeleton
-              className="rgi-skeleton-example-copy rgi-skeleton-example-copy-short"
+              className="tm-skeleton-example-copy tm-skeleton-example-copy-short"
               variant="text"
               animation={animation}
               width="75%"
             />
           </div>
           <Skeleton
-            className="rgi-skeleton-example-action"
+            className="tm-skeleton-example-action"
             variant="rectangular"
             animation={animation}
             width={64}
@@ -101,11 +101,11 @@ function ProfileSkeletonExample() {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="rgi-skeleton-example-stack">
-      <div className="rgi-skeleton-example-surface">
+    <div className="tm-skeleton-example-stack">
+      <div className="tm-skeleton-example-surface">
         <ProfileCard loaded={loaded} />
       </div>
-      <div className="rgi-skeleton-example-controls">
+      <div className="tm-skeleton-example-controls">
         <Button variant="outlined" size="small" onClick={() => setLoaded((current) => !current)}>
           {loaded ? (
             <>
@@ -127,47 +127,47 @@ function ProfileSkeletonExample() {
 
 function SkeletonVariantsExample() {
   return (
-    <div className="rgi-skeleton-example-stack">
-      <div className="rgi-skeleton-example-variant-grid">
-        <div className="rgi-skeleton-example-variant-card">
-          <div className="rgi-skeleton-example-variant-image">
+    <div className="tm-skeleton-example-stack">
+      <div className="tm-skeleton-example-variant-grid">
+        <div className="tm-skeleton-example-variant-card">
+          <div className="tm-skeleton-example-variant-image">
             <Image size={18} aria-hidden="true" />
             <span>Image</span>
           </div>
-          <Skeleton className="rgi-skeleton-example-variant-title" variant="text" width={112} />
-          <Skeleton className="rgi-skeleton-example-variant-line" variant="text" width="100%" />
-          <Skeleton className="rgi-skeleton-example-variant-line" variant="text" width="68%" />
+          <Skeleton className="tm-skeleton-example-variant-title" variant="text" width={112} />
+          <Skeleton className="tm-skeleton-example-variant-line" variant="text" width="100%" />
+          <Skeleton className="tm-skeleton-example-variant-line" variant="text" width="68%" />
         </div>
-        <div className="rgi-skeleton-example-variant-card rgi-skeleton-example-horizontal">
+        <div className="tm-skeleton-example-variant-card tm-skeleton-example-horizontal">
           <Skeleton
-            className="rgi-skeleton-example-variant-circle"
+            className="tm-skeleton-example-variant-circle"
             variant="circular"
             width={40}
             height={40}
           />
-          <div className="rgi-skeleton-example-variant-copy">
-            <Skeleton className="rgi-skeleton-example-variant-title" variant="text" width={112} />
-            <Skeleton className="rgi-skeleton-example-variant-line" variant="text" width="100%" />
-            <Skeleton className="rgi-skeleton-example-variant-line" variant="text" width="68%" />
+          <div className="tm-skeleton-example-variant-copy">
+            <Skeleton className="tm-skeleton-example-variant-title" variant="text" width={112} />
+            <Skeleton className="tm-skeleton-example-variant-line" variant="text" width="100%" />
+            <Skeleton className="tm-skeleton-example-variant-line" variant="text" width="68%" />
           </div>
         </div>
-        <div className="rgi-skeleton-example-variant-card rgi-skeleton-example-list">
+        <div className="tm-skeleton-example-variant-card tm-skeleton-example-list">
           {[0, 1, 2].map((item) => (
-            <div className="rgi-skeleton-example-row" key={item}>
+            <div className="tm-skeleton-example-row" key={item}>
               <Skeleton
-                className="rgi-skeleton-example-list-icon"
+                className="tm-skeleton-example-list-icon"
                 variant="rectangular"
                 width={28}
                 height={28}
               />
-              <div className="rgi-skeleton-example-variant-copy">
+              <div className="tm-skeleton-example-variant-copy">
                 <Skeleton
-                  className="rgi-skeleton-example-variant-title"
+                  className="tm-skeleton-example-variant-title"
                   variant="text"
                   width={112}
                 />
                 <Skeleton
-                  className="rgi-skeleton-example-variant-line"
+                  className="tm-skeleton-example-variant-line"
                   variant="text"
                   width="68%"
                 />
@@ -187,9 +187,9 @@ function SkeletonAnimationExample() {
   const [animation, setAnimation] = useState('pulse');
 
   return (
-    <div className="rgi-skeleton-example-stack">
-      <fieldset className="rgi-skeleton-example-animation-controls">
-        <legend className="rgi-skeleton-example-animation-label">Skeleton animation</legend>
+    <div className="tm-skeleton-example-stack">
+      <fieldset className="tm-skeleton-example-animation-controls">
+        <legend className="tm-skeleton-example-animation-label">Skeleton animation</legend>
         {[
           ['pulse', 'Pulse'],
           ['wave', 'Wave'],
@@ -197,7 +197,7 @@ function SkeletonAnimationExample() {
         ].map(([value, label]) => (
           <Button
             key={value}
-            className="rgi-skeleton-example-animation-option"
+            className="tm-skeleton-example-animation-option"
             variant={animation === value ? 'contained' : 'text'}
             size="small"
             aria-pressed={animation === value}
@@ -207,7 +207,7 @@ function SkeletonAnimationExample() {
           </Button>
         ))}
       </fieldset>
-      <div className="rgi-skeleton-example-surface">
+      <div className="tm-skeleton-example-surface">
         <ProfileCard animation={animation} />
       </div>
       <span className="preview-note" role="status" aria-live="polite">

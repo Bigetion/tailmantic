@@ -7,7 +7,7 @@ register.all({
   topbar: {
     tw: 'fixed inset-x-0 top-0 z-20 flex h-14 items-center gap-3 border-b border-[var(--border)] bg-[#090c12]/90 px-5 backdrop-blur-xl max-md:gap-2.5 max-md:px-4 max-sm:gap-2 max-sm:px-3',
   },
-  'rgi-icon-button': {
+  'tm-icon-button': {
     tw: 'inline-flex size-9 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent text-[var(--muted)] hover:bg-[#ffffff12] hover:text-white',
   },
   'brand-mark': {
@@ -43,7 +43,7 @@ register.all({
     tw: 'mb-0.5 flex h-[33px] w-full cursor-pointer items-center rounded-lg border-0 border-l-0 border-transparent bg-transparent px-3 text-left text-[11px] tracking-[.005em] text-[#aab5c8] no-underline transition-colors hover:bg-[#ffffff08] hover:text-white',
   },
   'nav-link-active': {
-    tw: 'relative mb-0.5 flex h-[33px] w-full cursor-pointer items-center rounded-lg border-0 border-l-0 border-[var(--rgi-blue)] bg-[linear-gradient(90deg,rgba(125,159,255,.13),rgba(125,159,255,.035))] px-3 text-left text-[11px] font-semibold tracking-[.005em] text-[var(--rgi-blue)] no-underline shadow-[inset_0_0_0_1px_rgba(155,188,255,.08)]',
+    tw: 'relative mb-0.5 flex h-[33px] w-full cursor-pointer items-center rounded-lg border-0 border-l-0 border-[var(--tm-blue)] bg-[linear-gradient(90deg,rgba(125,159,255,.13),rgba(125,159,255,.035))] px-3 text-left text-[11px] font-semibold tracking-[.005em] text-[var(--tm-blue)] no-underline shadow-[inset_0_0_0_1px_rgba(155,188,255,.08)]',
   },
   'new-chip': {
     tw: 'ml-auto rounded-full border border-[#385143] bg-[#14271f] px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wide text-[#8de0b5]',
@@ -53,9 +53,9 @@ register.all({
   },
   'content-width': { tw: 'mx-auto max-w-[1050px]' },
   'app-breadcrumbs': {
-    tw: 'mb-7 flex items-center gap-2.5 text-[10px] tracking-[.02em] text-[var(--subtle)] [&_a]:text-[var(--subtle)] [&_a]:no-underline [&_a:hover]:text-[var(--rgi-blue)]',
+    tw: 'mb-7 flex items-center gap-2.5 text-[10px] tracking-[.02em] text-[var(--subtle)] [&_a]:text-[var(--subtle)] [&_a]:no-underline [&_a:hover]:text-[var(--tm-blue)]',
   },
-  'breadcrumb-current': { tw: 'text-[var(--rgi-blue)]' },
+  'breadcrumb-current': { tw: 'text-[var(--tm-blue)]' },
   'page-heading': {
     tw: 'mb-2 font-[Manrope,sans-serif] text-[42px] font-semibold tracking-[-.045em] text-[#f2f5fb] max-sm:text-[32px]',
   },
@@ -92,7 +92,7 @@ register.all({
   'demo-footer': {
     tw: 'flex items-center justify-between border-t border-[#242e3e] px-5 py-3 text-[10px] text-[var(--subtle)] max-sm:px-4',
   },
-  'source-link': { tw: 'font-medium text-[var(--rgi-blue)] hover:underline' },
+  'source-link': { tw: 'font-medium text-[var(--tm-blue)] hover:underline' },
   'mobile-menu': { tw: 'inline-flex size-8 shrink-0 md:hidden' },
   'sidebar-bottom': {
     tw: 'mt-3 flex shrink-0 items-center gap-2.5 border-t border-[#222b3a] bg-[#0a0e15] px-1 py-3 text-[10px] text-[var(--subtle)] [&_svg:last-child]:ml-auto',
@@ -129,7 +129,7 @@ register.all({
   'footer-brand': { tw: 'flex items-center gap-2 text-xs font-medium text-[var(--muted)]' },
   'brand-mark-small': { tw: 'size-5 text-xs' },
   'footer-links': {
-    tw: 'ml-auto flex items-center gap-3 [&_a]:text-[var(--subtle)] [&_a:hover]:text-[var(--rgi-blue)]',
+    tw: 'ml-auto flex items-center gap-3 [&_a]:text-[var(--subtle)] [&_a:hover]:text-[var(--tm-blue)]',
   },
   'brand-link': { tw: 'flex items-center gap-3 no-underline' },
   'search-results': {
@@ -151,14 +151,14 @@ register.all({
     tw: 'mb-5 flex items-center justify-between border-y border-[#242e3e] py-3.5',
   },
   'component-navigation a': {
-    tw: 'flex items-center gap-2 text-xs text-[var(--muted)] transition-colors hover:text-[var(--rgi-blue)]',
+    tw: 'flex items-center gap-2 text-xs text-[var(--muted)] transition-colors hover:text-[var(--tm-blue)]',
   },
   'component-navigation a span': { tw: 'flex flex-col gap-0.5' },
   'component-navigation small': {
     tw: 'font-mono text-[8px] tracking-[.14em] text-[var(--subtle)]',
   },
   'component-toc a': {
-    tw: 'text-[#95a3b9] no-underline transition-colors hover:text-[var(--rgi-blue)]',
+    tw: 'text-[#95a3b9] no-underline transition-colors hover:text-[var(--tm-blue)]',
   },
   'toc-label': { tw: 'font-medium text-[#66758d]' },
   'toc-version': { tw: 'ml-auto font-mono text-[9px] text-[#74839b]' },
@@ -189,11 +189,11 @@ register.all({
     tw: 'border-b border-[var(--border)] px-4 py-3 text-[var(--muted)] last:border-0',
   },
   'api-table code': {
-    tw: 'rounded bg-[var(--panel-raised)] px-1.5 py-1 font-mono text-[11px] text-[var(--rgi-blue)]',
+    tw: 'rounded bg-[var(--panel-raised)] px-1.5 py-1 font-mono text-[11px] text-[var(--tm-blue)]',
   },
   'usage-preview': { tw: 'flex items-center gap-3 text-sm' },
   'usage-preview-icon': {
-    tw: 'rounded-md bg-[var(--rgi-blue-soft)] px-3 py-2 font-mono text-sm text-[var(--rgi-blue)]',
+    tw: 'rounded-md bg-[var(--tm-blue-soft)] px-3 py-2 font-mono text-sm text-[var(--tm-blue)]',
   },
   'usage-preview p': { tw: 'mt-1 text-xs text-[var(--subtle)]' },
   'not-found': { tw: 'py-12' },
@@ -203,7 +203,7 @@ register.all({
   'floating-demo': { tw: 'relative flex min-h-16 min-w-0 flex-wrap items-center gap-4' },
   'floating-trigger': { tw: 'normal-case tracking-normal' },
   'floating-hint': { tw: 'w-full text-[11px] text-[var(--subtle)]' },
-  'floating-selected': { tw: 'text-xs text-[var(--rgi-blue)]' },
+  'floating-selected': { tw: 'text-xs text-[var(--tm-blue)]' },
   'popper-surface': {
     tw: 'z-50 min-w-[190px] rounded-lg border border-[var(--border)] bg-[#25282d] text-[var(--text)] shadow-[0_12px_32px_#0009]',
   },
@@ -215,5 +215,5 @@ register.all({
   'selection-option': { tw: 'flex cursor-pointer items-center gap-2.5 text-xs text-[var(--text)]' },
   'selection-copy': { tw: 'flex min-w-0 flex-col gap-1' },
   'is-disabled': { tw: 'cursor-not-allowed opacity-40' },
-  'app-breadcrumbs a': { tw: 'text-[var(--subtle)] no-underline hover:text-[var(--rgi-blue)]' },
+  'app-breadcrumbs a': { tw: 'text-[var(--subtle)] no-underline hover:text-[var(--tm-blue)]' },
 });
