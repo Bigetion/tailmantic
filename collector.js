@@ -22,6 +22,8 @@ register.all = function all(prefixOrConfigs, configs) {
 		let name;
 		if (key === '') {
 			name = prefix;
+		} else if (key.startsWith('& ')) {
+			name = `${prefix} ${key.slice(2)}`;
 		} else if (key.startsWith('&')) {
 			const rest = key.slice(1);
 			name = rest ? `${prefix}-${rest}` : prefix;

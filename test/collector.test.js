@@ -25,3 +25,17 @@ test('reset removes previous registrations before a rebuild', () => {
 		groups: {},
 	});
 });
+
+test('prefixed registrations support descendant selectors from the root', () => {
+	register.all('tm-drawer', {
+		'& [hidden]': 'hidden',
+		'&panel[hidden]': 'hidden',
+		'&item-expanded .tm-accordion-chevron': 'rotate-180',
+	});
+
+	assert.deepEqual(getManifest().classes, {
+		'tm-drawer [hidden]': 'hidden',
+		'tm-drawer-panel[hidden]': 'hidden',
+		'tm-drawer-item-expanded .tm-accordion-chevron': 'rotate-180',
+	});
+});

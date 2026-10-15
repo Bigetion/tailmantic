@@ -11,26 +11,4 @@ register.all('tm-dialog', {
   'actions': 'mt-5 flex flex-wrap justify-end gap-2',
 });
 
-register.all('tm-dialog-example', {
-  'surface': '!max-h-[min(90vh,48rem)] !max-w-[420px] !gap-0 !rounded-xl !border-[#303b50] !bg-[#121925] !p-5 !shadow-[0_24px_80px_rgba(0,0,0,.65)] max-sm:!rounded-xl',
-  'surface-danger': '!border-[#51363c]',
-  'surface-fullscreen': '!max-w-[620px]',
-  '&surface .tm-dialog-header': 'items-start gap-3',
-  '&surface .tm-dialog-title': 'flex items-center gap-3 text-sm font-semibold',
-  '&surface .tm-dialog-description': 'mt-1.5 text-[10px] leading-relaxed',
-  '&surface .tm-dialog-content': 'mt-4 text-[10px]',
-  '&surface .tm-dialog-content:empty': '!hidden',
-  '&surface .tm-dialog-actions': 'mt-5 gap-2',
-  '&surface .tm-button': '!h-8 !px-3 !text-[10px] !normal-case !tracking-normal',
-  'trigger-area': 'flex min-h-[164px] w-full flex-col items-start justify-center gap-3',
-  'trigger': '!h-8 !px-3 !text-[10px] !normal-case !tracking-normal',
-  'heading-icon': '!mb-0 inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#243653] text-[#a9c4ff]',
-  '&surface-danger .tm-dialog-example-heading-icon': 'bg-[#48252b] text-[#ff9aa5]',
-  'form': 'flex flex-col gap-4',
-  'field': 'flex flex-col gap-1.5 text-[9px] font-medium text-[#c4cede]',
-  '&field input': 'h-9 rounded-md border border-[#303b50] bg-[#0d131d] px-3 text-[10px] text-[var(--text)] outline-none placeholder:text-[#66748a] focus:border-[#6c8fe1] focus:ring-2 focus:ring-[#547be8]/15',
-  '&field textarea': 'min-h-[110px] resize-y rounded-md border border-[#303b50] bg-[#0d131d] px-3 py-2.5 text-[10px] leading-relaxed text-[var(--text)] outline-none placeholder:text-[#66748a] focus:border-[#6c8fe1] focus:ring-2 focus:ring-[#547be8]/15',
-  'audience': 'flex flex-wrap items-center gap-1.5 text-[9px] text-[var(--muted)]',
-  '&audience span': 'size-1.5 rounded-full bg-[#7bd6b0]',
-  '&audience strong': 'font-medium text-[var(--text)]',
-});
+;

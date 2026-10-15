@@ -4,6 +4,7 @@ import './tokens.js';
 import './app.js';
 import './polish.js';
 import '@tailmantic/ui-components/styles';
+import './showcase.js';
 import './alert.js';
 import './tabs.js';
 import './button.js';

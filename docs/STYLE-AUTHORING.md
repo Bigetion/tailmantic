@@ -124,6 +124,9 @@ register.all('tm-accordion', {
   // attribute selector suffix
   '&panel[hidden]': 'hidden',
 
+  // root descendant selector — keep a space after '&'
+  '& [hidden]': 'hidden',
+
   // descendant element selector
   '&toolbar button': [
     'cursor-pointer border-0 bg-transparent p-0',
@@ -143,8 +146,9 @@ register.all('tm-accordion', {
 | `&` + suffix | `'&panel[hidden]'` | `tm-accordion-panel[hidden]` |
 | `&` + compound | `'&item-expanded .tm-accordion-chevron'` | `tm-accordion-item-expanded .tm-accordion-chevron` |
 | `&` + descendant | `'&toolbar button'` | `tm-accordion-toolbar button` |
+| `& ` + descendant from root | `'& [hidden]'` | `tm-accordion [hidden]` |
 
-The `&` prefix is a signal: "take this suffix literally after prepending `prefix-`". This mirrors CSS nesting syntax where `&` refers to the current context.
+`&` is a Tailmantic prefix-map marker, not CSS nesting syntax. Without a space, its suffix is joined to the prefix with `-`; with a space, it denotes a descendant selector under the root.
 
 ---
 
@@ -154,11 +158,11 @@ The `&` prefix is a signal: "take this suffix literally after prepending `prefix
 |---|---|
 | One class, short utilities | String (`'...'`) |
 | One class, many utilities | String array (`[...]`) |
-| One class, state variants | Full `{ base, modifiers }` |
 | Many unrelated classes | `register.all({ flat map })` |
-| One component, many sub-elements | `register.all('prefix', { ... })` |
+| One component with a root, variants, and sub-elements | `register.all('prefix', { ... })` |
+| One class needing modifiers without sub-elements | Full `{ base, modifiers }` |
 
-All forms can be mixed freely — use the flat map for shared utilities and the prefixed map for component-specific ones in the same file.
+For reusable components, prefer the prefixed map to keep the root, named variants, and sub-elements together with direct string or array values. All forms remain supported and can be mixed when useful.
 
 ---
 
