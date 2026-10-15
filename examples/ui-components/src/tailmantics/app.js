@@ -184,6 +184,7 @@ register.all({
     tw: 'inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[#ffffff03] px-2.5 py-1.5 text-[10px] font-medium text-[var(--muted)] transition-colors hover:border-[#455675] hover:bg-[var(--panel-raised)] hover:text-white',
   },
   'demo-title-row': { tw: 'flex items-center gap-2.5' },
+  'demo-live-pill': {
     tw: 'inline-flex items-center gap-1 rounded-full border border-[#29443c] bg-[#102019] px-1.5 py-0.5 font-mono text-[7px] font-medium tracking-[.1em] text-[#81d4ad]',
   },
   'demo-live-pill span': {
