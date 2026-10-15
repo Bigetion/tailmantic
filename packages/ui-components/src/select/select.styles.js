@@ -27,42 +27,14 @@ register.group('rgi-select', {
   'helper-error': { tw: '!text-[var(--danger,#dc737b)]' },
 });
 
-register('rgi-select-options', {
-  base: {
-    tw: 'z-50 max-h-64 w-[240px] max-w-[calc(100vw-32px)] overflow-y-auto overscroll-y-contain rounded-xl border border-[#303c52] bg-[#111824] py-1.5 text-[var(--text,#edf2fb)] shadow-[0_18px_48px_rgba(0,0,0,.52)]',
-  },
-});
-
-register('rgi-select-option', {
-  base: {
-    tw: 'flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 border-0 bg-transparent px-3 text-left text-xs text-[#c6cede] transition-colors hover:bg-[#ffffff08] focus-visible:outline-none',
-  },
-});
-
-register('rgi-select-option-active', {
-  base: { tw: 'bg-[#1a263a] text-white' },
-});
-
-register('rgi-select-option-selected', {
-  base: { tw: 'text-[#a9c2ff]' },
-});
-
-register('rgi-select-option-disabled', {
-  base: { tw: 'cursor-not-allowed opacity-40 hover:bg-transparent' },
-});
-
-register('rgi-select-option-copy', {
-  base: { tw: 'flex min-w-0 flex-1 flex-col gap-0.5' },
-});
-
-register('rgi-select-option-label', {
-  base: { tw: 'truncate font-medium text-inherit' },
-});
-
-register('rgi-select-option-detail', {
-  base: { tw: 'truncate text-[10px] text-[#78859b]' },
-});
-
-register('rgi-select-option-check', {
-  base: { tw: 'shrink-0 text-[#a9c2ff]' },
+register.all('rgi-select', {
+  'options': 'z-50 max-h-64 w-[240px] max-w-[calc(100vw-32px)] overflow-y-auto overscroll-y-contain rounded-xl border border-[#303c52] bg-[#111824] py-1.5 text-[var(--text,#edf2fb)] shadow-[0_18px_48px_rgba(0,0,0,.52)]',
+  'option': 'flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 border-0 bg-transparent px-3 text-left text-xs text-[#c6cede] transition-colors hover:bg-[#ffffff08] focus-visible:outline-none',
+  'option-active': 'bg-[#1a263a] text-white',
+  'option-selected': 'text-[#a9c2ff]',
+  'option-disabled': 'cursor-not-allowed opacity-40 hover:bg-transparent',
+  'option-copy': 'flex min-w-0 flex-1 flex-col gap-0.5',
+  'option-label': 'truncate font-medium text-inherit',
+  'option-detail': 'truncate text-[10px] text-[#78859b]',
+  'option-check': 'shrink-0 text-[#a9c2ff]',
 });

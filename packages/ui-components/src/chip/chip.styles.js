@@ -19,16 +19,8 @@ register('rgi-chip', {
   },
 });
 
-register('rgi-chip button', {
-  base: {
-    tw: 'inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-current opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-current disabled:cursor-not-allowed',
-  },
-});
-
-register('rgi-chip-examples', {
-  base: { tw: 'flex flex-wrap items-center gap-2.5' },
-});
-
-register('rgi-chip-actions', {
-  base: { tw: 'flex flex-wrap items-center justify-between gap-2' },
+register.all('rgi-chip', {
+  '& button': 'inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-current opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-current disabled:cursor-not-allowed',
+  'examples': 'flex flex-wrap items-center gap-2.5',
+  'actions': 'flex flex-wrap items-center justify-between gap-2',
 });

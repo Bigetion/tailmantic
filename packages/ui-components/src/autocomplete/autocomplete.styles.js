@@ -28,12 +28,6 @@ register.group('autocomplete', {
   },
 });
 
-register('autocomplete-popover', {
-  base: {
-    tw: 'z-50 w-[min(380px,calc(100vw-32px))] overflow-hidden rounded-xl border border-[#303c52] bg-[#111824] py-1.5 text-[var(--text)] shadow-[0_18px_48px_rgba(0,0,0,.52)]',
-  },
-});
-
 register('autocomplete-option', {
   base: {
     tw: 'flex w-full cursor-pointer items-center gap-3 border-0 bg-transparent px-3 py-2.5 text-left text-xs text-[#c6cede] transition-colors hover:bg-[#ffffff08] focus:outline-none',
@@ -44,32 +38,13 @@ register('autocomplete-option', {
   },
 });
 
-register('autocomplete-option-icon', {
-  base: {
-    tw: 'flex size-7 shrink-0 items-center justify-center rounded-lg border border-[#29364c] bg-[#192337] text-[10px] font-semibold text-[#a9c2ff]',
-  },
-});
-
-register('autocomplete-option-copy', {
-  base: { tw: 'flex min-w-0 flex-1 flex-col gap-0.5' },
-});
-
-register('autocomplete-option-title', {
-  base: { tw: 'truncate font-medium text-inherit' },
-});
-
-register('autocomplete-option-description', {
-  base: { tw: 'truncate text-[10px] text-[#78859b]' },
-});
-
-register('autocomplete-empty', {
-  base: { tw: 'flex flex-col gap-1 px-4 py-5 text-center' },
-});
-
-register('autocomplete-create', {
-  base: { tw: 'border-t border-[#273246] pt-1.5' },
-});
-
-register('autocomplete-count', {
-  base: { tw: 'ml-auto rounded-full bg-[#ffffff08] px-1.5 py-0.5 text-[9px] text-[#9aa7bd]' },
+register.all('autocomplete', {
+  'popover': 'z-50 w-[min(380px,calc(100vw-32px))] overflow-hidden rounded-xl border border-[#303c52] bg-[#111824] py-1.5 text-[var(--text)] shadow-[0_18px_48px_rgba(0,0,0,.52)]',
+  'option-icon': 'flex size-7 shrink-0 items-center justify-center rounded-lg border border-[#29364c] bg-[#192337] text-[10px] font-semibold text-[#a9c2ff]',
+  'option-copy': 'flex min-w-0 flex-1 flex-col gap-0.5',
+  'option-title': 'truncate font-medium text-inherit',
+  'option-description': 'truncate text-[10px] text-[#78859b]',
+  'empty': 'flex flex-col gap-1 px-4 py-5 text-center',
+  'create': 'border-t border-[#273246] pt-1.5',
+  'count': 'ml-auto rounded-full bg-[#ffffff08] px-1.5 py-0.5 text-[9px] text-[#9aa7bd]',
 });

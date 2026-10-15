@@ -22,32 +22,12 @@ register('rgi-avatar', {
   },
 });
 
-register('rgi-avatar img', {
-  base: { tw: 'size-full object-cover' },
-});
-
-register('rgi-avatar-group', {
-  base: { tw: 'inline-flex items-center [&_.rgi-avatar]:border-2 [&_.rgi-avatar]:border-[var(--panel,#10151e)]' },
-});
-
-register('rgi-avatar-group-stacked', {
-  base: { tw: '-space-x-2' },
-});
-
-register('rgi-avatar-overflow', {
-  base: {
-    tw: 'relative z-0 size-10 shrink-0 border-[#111720] bg-[#252f40] text-[10px] font-semibold text-[#c0ccdf]',
-  },
-});
-
-register('rgi-avatar-size-list', {
-  base: { tw: 'flex flex-wrap items-end gap-4' },
-});
-
-register('rgi-avatar-size-item', {
-  base: { tw: 'flex flex-col items-center gap-2' },
-});
-
-register('rgi-avatar-size-label', {
-  base: { tw: 'font-mono text-[9px] text-[#8491a5]' },
+register.all('rgi-avatar', {
+  '& img': 'size-full object-cover',
+  'group': 'inline-flex items-center [&_.rgi-avatar]:border-2 [&_.rgi-avatar]:border-[var(--panel,#10151e)]',
+  'group-stacked': '-space-x-2',
+  'overflow': 'relative z-0 size-10 shrink-0 border-[#111720] bg-[#252f40] text-[10px] font-semibold text-[#c0ccdf]',
+  'size-list': 'flex flex-wrap items-end gap-4',
+  'size-item': 'flex flex-col items-center gap-2',
+  'size-label': 'font-mono text-[9px] text-[#8491a5]',
 });
