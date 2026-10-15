@@ -1,5 +1,13 @@
 # Tailmantic Changelog
 
+## [1.0.3] - 2026-10-15
+
+### Changed
+
+- Standardized UI component style registrations on prefixed `register.all()` maps.
+- Moved UI showcase-only styles from the reusable component package into the UI components example app.
+- Added support for root descendant selectors in prefixed registrations using the `'& '` key form.
+
 ## [1.0.2] - 2026-10-07
 
 ### Added
