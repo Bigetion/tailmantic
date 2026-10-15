@@ -166,7 +166,15 @@ export function createRegistry({ injectStyles = true } = {}) {
 
 	function register(name, config = {}) {
 		if (typeof name !== 'string' || !name.trim()) throw new TypeError('tailmantic.register: className must be a non-empty string');
-		if (!config || typeof config !== 'object' || Array.isArray(config)) throw new TypeError('tailmantic.register: config must be a CSS style object');
+		// string or array config = tw utilities — already compiled by Vite plugin, skip at runtime
+		if (typeof config === 'string' || Array.isArray(config)) return;
+		if (!config || typeof config !== 'object') throw new TypeError('tailmantic.register: config must be a CSS style object');
+		// flat { tw } form — tw utilities already compiled, strip tw key and process remaining CSS declarations
+		if ('tw' in config && !('base' in config) && !('modifiers' in config)) {
+			const { tw: _tw, ...rest } = config;
+			if (!Object.keys(rest).length) return;
+			config = rest;
+		}
 		assertNoUtilities(config);
 		const previousConfig = rawConfigs.get(name);
 		const hadPreviousConfig = rawConfigs.has(name);
@@ -215,9 +223,29 @@ export function createRegistry({ injectStyles = true } = {}) {
 		inject(`group:${baseName}`, css);
 	};
 
-	register.all = function all(configs = {}) {
-		if (!configs || typeof configs !== 'object' || Array.isArray(configs)) throw new TypeError('tailmantic.register.all: expected an object map');
-		for (const [name, config] of Object.entries(configs)) register(name, config);
+	register.all = function all(prefixOrConfigs, configs) {
+		if (configs === undefined) {
+			// flat map form: register.all({ 'foo': {...}, 'bar': {...} })
+			if (!prefixOrConfigs || typeof prefixOrConfigs !== 'object' || Array.isArray(prefixOrConfigs)) throw new TypeError('tailmantic.register.all: expected an object map');
+			for (const [name, config] of Object.entries(prefixOrConfigs)) register(name, config);
+		} else {
+			// prefixed map form: register.all('prefix', { '': {...}, 'item': {...}, '&compound': {...} })
+			if (typeof prefixOrConfigs !== 'string' || !prefixOrConfigs.trim()) throw new TypeError('tailmantic.register.all: prefix must be a non-empty string');
+			if (!configs || typeof configs !== 'object' || Array.isArray(configs)) throw new TypeError('tailmantic.register.all: expected an object map as second argument');
+			const prefix = prefixOrConfigs;
+			for (const [key, config] of Object.entries(configs)) {
+				let name;
+				if (key === '') {
+					name = prefix;
+				} else if (key.startsWith('&')) {
+					const rest = key.slice(1);
+					name = rest ? `${prefix}-${rest}` : prefix;
+				} else {
+					name = `${prefix}-${key}`;
+				}
+				register(name, config);
+			}
+		}
 	};
 
 	register.extractCSS = () => [...registry.values()].join('\n');

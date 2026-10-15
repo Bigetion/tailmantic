@@ -185,11 +185,9 @@ test('fails the build when a utility is not known to Tailwind', async () => {
 	);
 });
 
-test('rejects utility arrays in the runtime registration API', () => {
-	assert.throws(
-		() => register('runtime-utility-array', { tw: ['flex'] }),
-		/Tailwind utilities must be compiled at build time/,
-	);
+test('silently skips utility arrays in the runtime registration API', () => {
+	// tw arrays are compiled at build time — runtime should no-op, not throw.
+	assert.doesNotThrow(() => register('runtime-utility-array', { tw: ['flex'] }));
 });
 
 test('writes compiled CSS to an output file', async () => {

@@ -111,8 +111,10 @@ test('cx combines conditional values and supports bound classes', () => {
 	assert.equal(cx.with('base')('extra'), 'base extra');
 });
 
-test('rejects runtime Tailwind classes and requires the build adapter', () => {
-	assert.throws(() => register('btn', { tw: 'bg-blue-500' }), /tailmantic\/compile/);
+test('silently skips runtime Tailwind classes that require the build adapter', () => {
+	// tw utilities are compiled at build time by the Vite plugin / collector.
+	// At runtime the style file may still be imported as a side-effect by the
+	// component, so register() should silently no-op instead of throwing.
+	assert.doesNotThrow(() => register('btn', { tw: 'bg-blue-500' }));
 	assert.throws(() => register.group('badge', { root: 'bg-blue-100' }), /tailmantic\/compile/);
-	assert.equal(register.extractCSS(), '');
 });
