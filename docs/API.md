@@ -137,6 +137,8 @@ export default getManifest();
 
 The collector exports `register`, `getManifest()`, and `resetManifest()`. The Vite plugin executes the configured entry and compiles its default-exported manifest.
 
+For all supported writing styles — string, array, flat `{ tw }`, `{ base, modifiers }`, and prefixed maps — see the [Style Authoring Guide](./STYLE-AUTHORING.md).
+
 ## Vite Plugin
 
 ```js

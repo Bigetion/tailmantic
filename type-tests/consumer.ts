@@ -18,6 +18,13 @@ const className: string = cx.with('button')('button-primary', { disabled: false 
 
 collect('button', button);
 const manifest: TailmanticManifest = getManifest();
+
+// flexible register styles — all forms are valid
+collect('tm-foo', 'flex items-center gap-2');                        // string shorthand
+collect('tm-arr', ['flex', 'items-center', 'gap-2']);                // array shorthand
+collect('tm-bar', { tw: 'rounded-lg px-4 py-2' });                  // flat { tw: string }
+collect('tm-bar2', { tw: ['rounded-lg', 'px-4', 'py-2'] });         // flat { tw: string[] }
+collect('tm-baz', { base: { tw: 'border border-gray-200' } });       // canonical form
 const compiledCss: Promise<string> = compile(manifest, { baseDir: '.' });
 const variantClasses: string[] = createVariants({
 	variants: { size: { sm: { padding: '4px' } } },

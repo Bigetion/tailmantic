@@ -188,7 +188,7 @@ function orderedClassEntries(classes) {
       throw new Error(`tailmantic compile: circular extend detected for "${name}"`);
     resolving.add(name);
     const config = classes[name];
-    const ownConfig = typeof config === 'string' ? { tw: config } : config || {};
+    const ownConfig = typeof config === 'string' ? { tw: config } : Array.isArray(config) ? { tw: config.join(' ') } : config || {};
     const parents = ownConfig.extend
       ? Array.isArray(ownConfig.extend)
         ? ownConfig.extend
@@ -223,8 +223,9 @@ function utilityVariant(key) {
 }
 
 function collectUtilities(selector, config, tokenSelectors, variants = [], options = {}) {
-  if (typeof config === 'string') {
-    for (const utility of splitClassList(config))
+  if (typeof config === 'string' || Array.isArray(config)) {
+    const value = Array.isArray(config) ? config.join(' ') : config;
+    for (const utility of splitClassList(value))
       addUtility(utility, selector, tokenSelectors, variants);
     return;
   }
@@ -292,7 +293,7 @@ function collectRegistrationUtilities(
       throw new Error(`tailmantic compile: circular extend detected for "${name}"`);
     resolving.add(name);
     const config = classes[name];
-    const ownConfig = typeof config === 'string' ? { tw: config } : { ...(config || {}) };
+    const ownConfig = typeof config === 'string' ? { tw: config } : Array.isArray(config) ? { tw: config.join(' ') } : { ...(config || {}) };
     const parents = ownConfig.extend
       ? Array.isArray(ownConfig.extend)
         ? ownConfig.extend
