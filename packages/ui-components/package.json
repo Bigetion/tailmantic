@@ -1,6 +1,6 @@
 {
   "name": "@tailmantic/ui-components",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Standalone React components styled with Tailmantic.",
   "homepage": "https://github.com/Bigetion/tailmantic/tree/main/packages/ui-components#readme",
   "repository": {
@@ -286,7 +286,7 @@
     "@popperjs/core": "^2.11.8",
     "react": ">=18",
     "react-dom": ">=18",
-    "tailmantic": "^1.0.0"
+    "tailmantic": "^1.0.3"
   },
   "sideEffects": [
     "./dist/*.js",
