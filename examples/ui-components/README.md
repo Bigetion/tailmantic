@@ -1,6 +1,8 @@
-# Tailmantic UI Components
+# Tailmantic UI documentation
 
-A component explorer for the Tailmantic UI library, built with React, React Router, Popper.js, and Vite. Every component has its own addressable page, live examples, usage snippet, and implementation source map. Component styles are registered as semantic classes and compiled by Tailmantic's Vite plugin.
+The documentation site is the usage guide for `@tailmantic/ui-components`. It covers installation, Tailmantic style registration, themes, and component APIs with interactive examples.
+
+## Run locally
 
 Requires Node.js 20 or newer.
 
@@ -9,16 +11,19 @@ npm install
 npm run dev
 ```
 
-Run `npm run build` to verify the production bundle. Styles are defined in `src/tailmantics` and collected from `src/tailmantics/index.js`; the app loads the generated stylesheet through `virtual:tailmantic.css`.
+Build the site for production with:
 
-Reusable React APIs and their base styles for all 47 components live in the standalone `@tailmantic/ui-components` package under `packages/ui-components`; showcase pages, interactive demos, and demo-only styles remain in this application. The app's Tailmantic manifest imports the package style manifest so component base rules are included in the generated stylesheet. Shared base style registrations have been removed from demo style modules to keep package styles and showcase-only styles separate.
-
-Each component page retains its own demo and source context:
-
-```text
-src/pages/components/button/Page.jsx
-src/components/ui/button/Button.jsx
-src/tailmantics/components/button.js
+```sh
+npm run build
 ```
 
-Component metadata, groups, and descriptions are defined in `src/data/components.js`; each page route is resolved to its own page module. Shared page layout, code panels, and interaction primitives stay reusable. Component-specific styles are imported by `src/tailmantics/components/index.js` and registered with Tailmantic's collector. Floating menus, tooltips, autocomplete/select examples, and popovers share a portal-based Popper implementation with flip and overflow handling, outside-click dismissal, and Escape-key support.
+## Documentation structure
+
+- `/` introduces the library and provides a quick start.
+- `/getting-started/installation` covers package installation and Vite/Tailmantic setup.
+- `/getting-started/usage` explains package imports and controlled component usage.
+- `/customization/theming` documents theme tokens and selective component styles.
+- `/components` lists components by category.
+- `/components/:slug` provides component usage, interactive examples, and a link to its public TypeScript API.
+
+The library package and component base styles live in `packages/ui-components`. This app contains documentation pages and example-only styles; application-specific styles are not required to consume the package.

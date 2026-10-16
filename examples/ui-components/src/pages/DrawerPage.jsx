@@ -14,6 +14,7 @@ import {
 import { useCallback, useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('drawer');
@@ -40,8 +41,6 @@ const SECTION_ITEMS = [
     ],
   },
 ];
-const DRAWER_STYLES_NOTE =
-  'Drawer component and example styles are provided by @tailmantic/ui-components/drawer/styles.';
 const USAGE_CODE = `import { useState } from 'react';
 import { Drawer } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/drawer/styles';
@@ -287,21 +286,21 @@ export default function DrawerPage() {
         <DemoPanel
           title="Temporary navigation drawer"
           caption="Open a modal side panel for primary destinations and dismiss it with Escape or a backdrop click."
-          code={DRAWER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Temporary navigation drawer')}
         >
           <TemporaryDrawerExample />
         </DemoPanel>
         <DemoPanel
           title="Temporary drawer with sections"
           caption="Group related navigation destinations and close the drawer after selecting a page."
-          code={DRAWER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Temporary drawer with sections')}
         >
           <TemporaryDrawerExample sections />
         </DemoPanel>
         <DemoPanel
           title="Permanent navigation drawer"
           caption="Keep navigation visible beside the main content in a persistent application layout."
-          code={DRAWER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Permanent navigation drawer')}
         >
           <PermanentDrawerExample />
         </DemoPanel>

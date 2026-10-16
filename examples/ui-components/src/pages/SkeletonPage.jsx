@@ -5,11 +5,10 @@ import '@tailmantic/ui-components/skeleton/styles';
 import '@tailmantic/ui-components/button/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('skeleton');
-const SKELETON_STYLES_NOTE =
-  'Skeleton and its example layout styles are provided by @tailmantic/ui-components/skeleton/styles.';
 const USAGE_CODE = `import { Skeleton } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/skeleton/styles';
 
@@ -232,21 +231,21 @@ export default function SkeletonPage() {
         <DemoPanel
           title="Loading profile card"
           caption="Preview a content placeholder while profile data is loading, then reveal the finished content."
-          code={SKELETON_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Loading profile card')}
         >
           <ProfileSkeletonExample />
         </DemoPanel>
         <DemoPanel
           title="Shape and content variants"
           caption="Combine text, circular, and rectangular placeholders to match the content being loaded."
-          code={SKELETON_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Shape and content variants')}
         >
           <SkeletonVariantsExample />
         </DemoPanel>
         <DemoPanel
           title="Animation styles"
           caption="Compare pulse and wave motion, or disable animation to reduce visual movement."
-          code={SKELETON_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Animation styles')}
         >
           <SkeletonAnimationExample />
         </DemoPanel>

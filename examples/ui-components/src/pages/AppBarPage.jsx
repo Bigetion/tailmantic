@@ -5,11 +5,10 @@ import '@tailmantic/ui-components/button/styles';
 import '@tailmantic/ui-components/app-bar/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('app-bar');
-const APP_BAR_STYLES_NOTE =
-  'AppBar and its example layout styles are provided by @tailmantic/ui-components/app-bar/styles.';
 const USAGE_CODE = `import { AppBar } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/app-bar/styles';
 
@@ -237,21 +236,21 @@ export default function AppBarPage() {
         <DemoPanel
           title="Workspace toolbar"
           caption="Keep the current destination and primary actions visible in a balanced application bar."
-          code={APP_BAR_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Workspace toolbar')}
         >
           <AppBarExample variant="default" />
         </DemoPanel>
         <DemoPanel
           title="Search and actions"
           caption="Integrate an expandable search field and action buttons without crowding the toolbar."
-          code={APP_BAR_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Search and actions')}
         >
           <AppBarExample variant="search" />
         </DemoPanel>
         <DemoPanel
           title="Responsive navigation"
           caption="Adapt the toolbar at narrow widths and expose a compact navigation menu."
-          code={APP_BAR_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Responsive navigation')}
         >
           <AppBarExample variant="responsive" />
         </DemoPanel>

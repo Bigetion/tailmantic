@@ -2,11 +2,10 @@ import { NumberField } from '@tailmantic/ui-components';
 import { useId, useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('number-field');
-const NUMBER_FIELD_STYLES_NOTE =
-  'Base component styles are provided by @tailmantic/ui-components/number-field/styles.';
 const USAGE_CODE = `import { NumberField } from '@tailmantic/ui-components';
 
 <label htmlFor="quantity">Quantity</label>
@@ -134,7 +133,7 @@ export default function NumberFieldPage() {
               key={demoId}
               title={demo.title}
               caption={demo.caption}
-              code={NUMBER_FIELD_STYLES_NOTE}
+              code={getExampleCode(component.slug, demo.title)}
             >
               <NumberFieldExample demo={demo} />
             </DemoPanel>

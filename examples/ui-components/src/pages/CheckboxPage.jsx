@@ -2,11 +2,10 @@ import { Checkbox } from '@tailmantic/ui-components';
 import { useId, useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('checkbox');
-const CHECKBOX_STYLES_NOTE =
-  'Base component styles are provided by @tailmantic/ui-components/checkbox/styles.';
 const PREFERENCES = [
   { id: 'product', label: 'Product updates', description: 'News about features and releases.' },
   {
@@ -223,21 +222,21 @@ export default function CheckboxPage() {
         <DemoPanel
           title="Checkbox states"
           caption="Make independent choices clear with checked, unchecked, and disabled states."
-          code={CHECKBOX_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Checkbox states')}
         >
           <CheckboxStates />
         </DemoPanel>
         <DemoPanel
           title="Select all and indeterminate"
           caption="Show partial selection clearly and let one control update a related set."
-          code={CHECKBOX_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Select all and indeterminate')}
         >
           <SelectAllCheckboxes />
         </DemoPanel>
         <DemoPanel
           title="Checkbox group"
           caption="Collect multiple related choices and summarize the current selection."
-          code={CHECKBOX_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Checkbox group')}
         >
           <CheckboxGroup />
         </DemoPanel>

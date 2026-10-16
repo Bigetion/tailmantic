@@ -3,11 +3,10 @@ import { ArrowUpRight, ExternalLink, FileText, Link as LinkIcon } from 'lucide-r
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('link');
-const LINK_STYLES_NOTE =
-  'Link component and example styles are provided by @tailmantic/ui-components/link/styles.';
 const USAGE_CODE = `import { Link } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/link/styles';
 
@@ -207,21 +206,21 @@ export default function LinkPage() {
         <DemoPanel
           title="Inline links"
           caption="Use links to navigate to related content while preserving familiar browser behavior."
-          code={LINK_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Inline links')}
         >
           <InlineLinksExample />
         </DemoPanel>
         <DemoPanel
           title="Semantic link styles"
           caption="Change emphasis independently from the destination and identify external navigation."
-          code={LINK_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Semantic link styles')}
         >
           <LinkVariantsExample />
         </DemoPanel>
         <DemoPanel
           title="Keyboard and disabled states"
           caption="Keep links discoverable to keyboard users and represent unavailable destinations clearly."
-          code={LINK_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Keyboard and disabled states')}
         >
           <LinkAccessibilityExample />
         </DemoPanel>

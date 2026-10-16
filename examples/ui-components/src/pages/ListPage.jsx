@@ -15,11 +15,10 @@ import { cx } from 'tailmantic';
 import '@tailmantic/ui-components/list/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('list');
-const LIST_STYLES_NOTE =
-  'List, ListItem, ListItemText, and example layout styles are provided by @tailmantic/ui-components/list/styles.';
 const NAVIGATION_ITEMS = [
   [Folder, 'Projects', '12 active projects'],
   [FileText, 'Documents', 'Recently updated'],
@@ -163,21 +162,21 @@ export default function ListPage() {
         <DemoPanel
           title="Workspace navigation"
           caption="Use a clear leading icon, descriptive label, and active state for section navigation."
-          code={LIST_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Workspace navigation')}
         >
           <ListNavigation />
         </DemoPanel>
         <DemoPanel
           title="Secondary content"
           caption="Pair primary labels with supporting details and compact timestamps."
-          code={LIST_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Secondary content')}
         >
           <ListSecondary />
         </DemoPanel>
         <DemoPanel
           title="Interactive preferences"
           caption="Make each row an accessible control and reflect its state immediately."
-          code={LIST_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Interactive preferences')}
         >
           <ListInteractive />
         </DemoPanel>

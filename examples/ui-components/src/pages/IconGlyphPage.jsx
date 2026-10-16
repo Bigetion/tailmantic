@@ -4,11 +4,10 @@ import { cx } from 'tailmantic';
 import '@tailmantic/ui-components/icon-glyph/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('icon-glyph');
-const ICON_GLYPH_STYLES_NOTE =
-  'IconGlyph and its example layout styles are provided by @tailmantic/ui-components/icon-glyph/styles.';
 const GLYPHS = [
   ['home', 'Home'],
   ['search', 'Search'],
@@ -166,21 +165,21 @@ export default function IconGlyphPage() {
         <DemoPanel
           title="Icon glyphs"
           caption="Browse familiar interface symbols presented in a consistent icon tile system."
-          code={ICON_GLYPH_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Icon glyphs')}
         >
           <IconGlyphCollection />
         </DemoPanel>
         <DemoPanel
           title="Icon sizing"
           caption="Choose a consistent glyph size for dense controls, default actions, and display use."
-          code={ICON_GLYPH_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Icon sizing')}
         >
           <IconGlyphSizes />
         </DemoPanel>
         <DemoPanel
           title="Icon action toolbar"
           caption="Combine recognizable glyphs with accessible action labels and live state."
-          code={ICON_GLYPH_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Icon action toolbar')}
         >
           <IconGlyphActions />
         </DemoPanel>

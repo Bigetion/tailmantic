@@ -3,6 +3,7 @@ import {
   AccordionHelper,
   AccordionItem,
   AccordionToolbar,
+  Card,
 } from '@tailmantic/ui-components';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
@@ -10,8 +11,76 @@ import DemoPanel from '../components/DemoPanel.jsx';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('accordion');
-const ACCORDION_STYLES_NOTE =
-  'Base component styles are provided by @tailmantic/ui-components/accordion/styles.';
+const BASIC_CODE = `import { Accordion, AccordionItem } from '@tailmantic/ui-components';
+
+<Accordion>
+  <AccordionItem title="How do I reset my password?" defaultExpanded>
+    Select “Forgot password” on the sign-in page and enter your email address.
+  </AccordionItem>
+</Accordion>`;
+const MULTIPLE_CODE = `import { useState } from 'react';
+import { Accordion, AccordionItem } from '@tailmantic/ui-components';
+
+const items = [
+  { title: 'Privacy & security', content: 'Manage account security and privacy settings.' },
+  { title: 'Billing & subscription', content: 'Review your plan and payment details.' },
+];
+
+function Example() {
+  const [expanded, setExpanded] = useState([0]);
+  function toggleItem(index) {
+    setExpanded((current) =>
+      current.includes(index) ? current.filter((item) => item !== index) : [...current, index],
+    );
+  }
+
+  return (
+    <Accordion>
+      {items.map((item, index) => (
+        <AccordionItem
+          key={item.title}
+          title={item.title}
+          expanded={expanded.includes(index)}
+          onChange={() => toggleItem(index)}
+        >
+          {item.content}
+        </AccordionItem>
+      ))}
+    </Accordion>
+  );
+}`;
+const DISABLED_CODE = `import { Accordion, AccordionItem } from '@tailmantic/ui-components';
+
+<Accordion>
+  <AccordionItem title="Premium feature information" disabled>
+    This content is currently unavailable.
+  </AccordionItem>
+</Accordion>`;
+const BORDERS_CODE = `import { Accordion, AccordionItem } from '@tailmantic/ui-components';
+
+<Accordion className="tm-accordion-example-bordered">
+  <AccordionItem title="How does billing work?">
+    Billing details appear in your account settings.
+  </AccordionItem>
+</Accordion>`;
+const CARD_CODE = `import { Accordion, AccordionItem, Card } from '@tailmantic/ui-components';
+
+<Card variant="outlined">
+  <Accordion>
+    <AccordionItem title="Subscription & Billing">
+      Manage your account, plan, payments, and cancellations.
+    </AccordionItem>
+  </Accordion>
+</Card>`;
+const RTL_CODE = `import { Accordion, AccordionItem } from '@tailmantic/ui-components';
+
+<div dir="rtl">
+  <Accordion>
+    <AccordionItem title="كيف يمكنني إعادة تعيين كلمة المرور؟">
+      أدخل بريدك الإلكتروني وسنرسل إليك رابطًا آمنًا لإعادة التعيين.
+    </AccordionItem>
+  </Accordion>
+</div>`;
 const USAGE_CODE = `import { Accordion, AccordionItem } from '@tailmantic/ui-components';
 
 <Accordion>
@@ -39,28 +108,28 @@ const IMPLEMENTATION_ROWS = [
 
 const SECTIONS = [
   {
-    title: 'What is Tailmantic?',
+    title: 'How do I reset my password?',
     content:
-      'Tailmantic compiles registered Tailwind CSS utilities into reusable, semantic component styles for your application.',
+      'Select “Forgot password” on the sign-in page and enter your email address. We will send a secure reset link that expires after 24 hours.',
   },
   {
-    title: 'How does style collection work?',
+    title: 'Can I change my subscription plan?',
     content:
-      'Register a component name once, then use that name in your markup. Tailmantic collects the matching utility styles into your generated stylesheet.',
+      'You can update your plan at any time from Billing settings. Changes take effect at the start of your next billing period.',
   },
   {
-    title: 'Can I customize the theme?',
+    title: 'What payment methods do you accept?',
     content:
-      'Yes. Use your own design tokens and utility values to make each component match the rest of your product interface.',
+      'We accept major credit and debit cards. Available payment methods may vary by region.',
   },
 ];
 
-function SingleAccordion() {
+function SingleAccordion({ className, sections = SECTIONS }) {
   const [expanded, setExpanded] = useState(0);
 
   return (
-    <Accordion>
-      {SECTIONS.map((section, index) => (
+    <Accordion className={className}>
+      {sections.map((section, index) => (
         <AccordionItem
           key={section.title}
           title={section.title}
@@ -89,7 +158,7 @@ function MultipleAccordion() {
   return (
     <Accordion>
       <AccordionToolbar>
-        <span>Workspace help</span>
+        <span>Notification settings</span>
         <button
           type="button"
           onClick={() => setExpanded(allExpanded ? [] : SECTIONS.map((_, index) => index))}
@@ -109,6 +178,50 @@ function MultipleAccordion() {
         </AccordionItem>
       ))}
     </Accordion>
+  );
+}
+
+function CardAccordion() {
+  return (
+    <Card className="accordion-card-example" variant="outlined">
+      <strong>Subscription &amp; Billing</strong>
+      <p>Common questions about your account, plans, payments and cancellations.</p>
+      <Accordion>
+        <AccordionItem title="What subscription plans do you offer?" defaultExpanded>
+          We offer three subscription tiers: Starter, Pro, and Enterprise. Each plan includes
+          increasing storage limits, API access, and support options.
+        </AccordionItem>
+        <AccordionItem title="How does billing work?">
+          Billing happens monthly and can be managed from your account settings.
+        </AccordionItem>
+        <AccordionItem title="How do I cancel my subscription?">
+          You can cancel any time from the billing page.
+        </AccordionItem>
+      </Accordion>
+    </Card>
+  );
+}
+
+function RtlAccordion() {
+  const sections = [
+    {
+      title: 'كيف يمكنني إعادة تعيين كلمة المرور؟',
+      content: 'أدخل بريدك الإلكتروني وسنرسل إليك رابطًا آمنًا لإعادة التعيين.',
+    },
+    {
+      title: 'ما طرق الدفع التي تقبلونها؟',
+      content: 'نقبل بطاقات الائتمان والخصم الرئيسية.',
+    },
+    {
+      title: 'كيف أتواصل مع الدعم؟',
+      content: 'يمكنك التواصل مع فريق الدعم عبر البريد الإلكتروني.',
+    },
+  ];
+
+  return (
+    <div dir="rtl" className="accordion-rtl-example">
+      <SingleAccordion sections={sections} />
+    </div>
   );
 }
 
@@ -145,25 +258,46 @@ export default function AccordionPage() {
     >
       <div className="component-showcase component-showcase-accordion">
         <DemoPanel
-          title="Single panel expansion"
+          title="Basic"
           caption="Expand one section at a time and collapse the open section when it is activated again."
-          code={ACCORDION_STYLES_NOTE}
+          code={BASIC_CODE}
         >
           <SingleAccordion />
         </DemoPanel>
         <DemoPanel
-          title="Multiple panel expansion"
+          title="Multiple"
           caption="Open several sections independently and use the controls to expand or collapse all panels."
-          code={ACCORDION_STYLES_NOTE}
+          code={MULTIPLE_CODE}
         >
           <MultipleAccordion />
         </DemoPanel>
         <DemoPanel
-          title="Disabled panel"
+          title="Disabled"
           caption="Keep unavailable content visible in the list while communicating that it cannot be expanded."
-          code={ACCORDION_STYLES_NOTE}
+          code={DISABLED_CODE}
         >
           <DisabledAccordion />
+        </DemoPanel>
+        <DemoPanel
+          title="Borders"
+          caption="Use the bordered treatment when the accordion needs more separation from surrounding content."
+          code={BORDERS_CODE}
+        >
+          <SingleAccordion className="tm-accordion-example-bordered" />
+        </DemoPanel>
+        <DemoPanel
+          title="Card"
+          caption="Place related questions and answers in a card surface."
+          code={CARD_CODE}
+        >
+          <CardAccordion />
+        </DemoPanel>
+        <DemoPanel
+          title="Right-to-left"
+          caption="Accordion content follows the direction of its surrounding layout."
+          code={RTL_CODE}
+        >
+          <RtlAccordion />
         </DemoPanel>
       </div>
     </ComponentPageLayout>

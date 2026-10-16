@@ -1,5 +1,4 @@
 import { Checkbox, Table } from '@tailmantic/ui-components';
-import { useMemo, useState } from 'react';
 import {
   ArrowDown,
   ArrowUp,
@@ -8,16 +7,16 @@ import {
   ChevronDown,
   Download,
 } from 'lucide-react';
+import { useMemo, useState } from 'react';
 import { cx } from 'tailmantic';
 import '@tailmantic/ui-components/checkbox/styles';
 import '@tailmantic/ui-components/table/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('table');
-const TABLE_STYLES_NOTE =
-  'Table styles and table example layouts are provided by @tailmantic/ui-components/table/styles.';
 const INITIAL_ROWS = [
   { id: 'PRJ-2048', name: 'Mobile app redesign', owner: 'Olivia Martin', initials: 'OM', tone: 'tm-table-example-avatar-blue', status: 'In progress', updated: '2026-10-02', progress: 72 },
   { id: 'PRJ-2047', name: 'Design system v2', owner: 'Jackson Lee', initials: 'JL', tone: 'tm-table-example-avatar-violet', status: 'Review', updated: '2026-10-01', progress: 91 },
@@ -198,7 +197,7 @@ function TableGrid({ demoId }) {
                 </td>
                 <td className="tm-table-example-progress-cell">
                   <span className="tm-table-example-progress-value">{row.progress}%</span>
-                  <span className="tm-table-example-progress-track" aria-label={`${row.progress}% complete`}>
+                  <span className="tm-table-example-progress-track" role="img" aria-label={`${row.progress}% complete`}>
                     <i style={{ width: `${row.progress}%` }} />
                   </span>
                 </td>
@@ -245,21 +244,21 @@ export default function TablePage() {
         <DemoPanel
           title="Sortable project table"
           caption="Scan project owners, status, updates, and progress with sortable column headings."
-          code={TABLE_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Sortable project table')}
         >
           <TableGrid demoId="table" />
         </DemoPanel>
         <DemoPanel
           title="Compact density"
           caption="Reduce row padding to fit more information into a limited space."
-          code={TABLE_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Compact density')}
         >
           <TableGrid demoId="table-dense" />
         </DemoPanel>
         <DemoPanel
           title="Row selection"
           caption="Select individual rows or toggle the entire page with an accessible indeterminate state."
-          code={TABLE_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Row selection')}
         >
           <TableGrid demoId="table-selection" />
         </DemoPanel>

@@ -2,11 +2,10 @@ import { Switch } from '@tailmantic/ui-components';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('switch');
-const SWITCH_STYLES_NOTE =
-  'Base and semantic variant styles are provided by @tailmantic/ui-components/switch/styles.';
 const USAGE_CODE = `import { Switch } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/switch/styles';
 
@@ -158,7 +157,7 @@ export default function SwitchPage() {
     >
       <div className="component-showcase component-showcase-switch">
         {EXAMPLES.map(({ id, title, caption, component: Example }) => (
-          <DemoPanel key={id} title={title} caption={caption} code={SWITCH_STYLES_NOTE}>
+          <DemoPanel key={id} title={title} caption={caption} code={getExampleCode(component.slug, title)}>
             <Example />
           </DemoPanel>
         ))}

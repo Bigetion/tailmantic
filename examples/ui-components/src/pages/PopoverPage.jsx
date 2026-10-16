@@ -3,6 +3,7 @@ import { ArrowUpRight, Check, ChevronDown, FolderKanban, Layers, X } from 'lucid
 import { useId, useRef, useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('popover');
@@ -13,8 +14,6 @@ const COLORS = [
   ['amber', 'Amber', '#e8b968'],
   ['rose', 'Rose', '#e992a8'],
 ];
-const POPOVER_STYLES_NOTE =
-  'Popover component and example styles are provided by @tailmantic/ui-components/popover/styles.';
 const USAGE_CODE = `import { useState } from 'react';
 import Popover from '@tailmantic/ui-components/popover';
 import '@tailmantic/ui-components/popover/styles';
@@ -262,21 +261,21 @@ export default function PopoverPage() {
         <DemoPanel
           title="Project details"
           caption="Show a focused summary and action next to the control that opened it."
-          code={POPOVER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Project details')}
         >
           <PopoverExample mode="project" />
         </DemoPanel>
         <DemoPanel
           title="Placement controls"
           caption="Preview the four primary placements and see the surface stay anchored to its trigger."
-          code={POPOVER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Placement controls')}
         >
           <PopoverExample mode="placement" />
         </DemoPanel>
         <DemoPanel
           title="Interactive options"
           caption="Let users change a workspace accent and immediately see the selected value."
-          code={POPOVER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Interactive options')}
         >
           <PopoverExample mode="interactive" />
         </DemoPanel>

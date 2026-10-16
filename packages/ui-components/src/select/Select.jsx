@@ -1,5 +1,6 @@
 import { forwardRef, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { cx } from 'tailmantic';
+import ChevronIcon from '../internal/ChevronIcon.jsx';
 import Popper from '../popper/Popper.jsx';
 import './select.styles.js';
 
@@ -223,9 +224,9 @@ const Select = forwardRef(function Select(
           <span className="tm-select-value" id={`${selectId}-value`}>
             {triggerValue}
           </span>
-          <span
+          <ChevronIcon
             className={cx('tm-select-icon', open && 'tm-select-icon-open')}
-            aria-hidden="true"
+            size={16}
           />
         </button>
         {multiple && selectedOptions.length > 0 && (

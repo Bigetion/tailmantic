@@ -3,11 +3,10 @@ import { ArrowUpRight, Bookmark, Check, Heart, Image, MoreHorizontal, Users } fr
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('card');
-const CARD_STYLES_NOTE =
-  'Card component and example styles are provided by @tailmantic/ui-components/card/styles.';
 const USAGE_CODE = `import { Card } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/card/styles';
 
@@ -176,21 +175,21 @@ export default function CardPage() {
         <DemoPanel
           title="Project overview"
           caption="Group a project summary, status, and a useful action into one interactive surface."
-          code={CARD_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Project overview')}
         >
           <ProjectCard />
         </DemoPanel>
         <DemoPanel
           title="Interactive actions"
           caption="Add contextual actions and expose their current state accessibly."
-          code={CARD_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Interactive actions')}
         >
           <ActionCard />
         </DemoPanel>
         <DemoPanel
           title="Media and content"
           caption="Combine a visual header with supporting text and a compact metadata row."
-          code={CARD_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Media and content')}
         >
           <MediaCard />
         </DemoPanel>

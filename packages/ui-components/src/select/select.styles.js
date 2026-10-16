@@ -10,8 +10,8 @@ register.all('tm-select', {
   'trigger-error':
     '!border-[var(--danger,#dc737b)] focus-visible:!shadow-[0_0_0_3px_var(--danger-soft,rgba(220,115,123,.2))]',
   value: 'min-w-0 flex-1 truncate',
-  icon: 'size-2 shrink-0 rotate-45 border-b-2 border-r-2 border-[#8290a7] transition-transform',
-  'icon-open': '-translate-y-0.5 rotate-[225deg] border-[#b8c9f1]',
+  icon: 'size-4 shrink-0 text-[#8290a7] transition-transform duration-200',
+  'icon-open': 'rotate-180 text-[#b8c9f1]',
   tags: 'flex min-w-0 flex-wrap items-center gap-1.5 pt-1',
   tag: 'inline-flex max-w-full items-center gap-1.5 rounded-md border border-[#34425b] bg-[#192337] py-1 pl-2.5 pr-1.5 text-[10px] font-medium text-[#c8d6f5]',
   'tag-remove':

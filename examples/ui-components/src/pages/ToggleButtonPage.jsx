@@ -5,16 +5,15 @@ import {
   AlignRight,
   Grid2X2,
   List,
-  Map,
+  Map as MapIcon,
 } from 'lucide-react';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('toggle-button');
-const TOGGLE_BUTTON_STYLES_NOTE =
-  'Toggle buttons use @tailmantic/ui-components/toggle-button/styles; grouping uses @tailmantic/ui-components/button-group/styles.';
 const VIEWS = [
   { id: 'list', label: 'List', Icon: List },
   { id: 'grid', label: 'Grid', Icon: Grid2X2 },
@@ -125,7 +124,7 @@ function ClearableAlignment() {
 function CompactIconControls() {
   const [view, setView] = useState('map');
   const options = [
-    { id: 'map', label: 'Map', Icon: Map },
+    { id: 'map', label: 'Map', Icon: MapIcon },
     { id: 'grid', label: 'Grid', Icon: Grid2X2 },
   ];
 
@@ -159,21 +158,21 @@ export default function ToggleButtonPage() {
         <DemoPanel
           title="View selection"
           caption="Switch between related content views with an exclusive pressed state."
-          code={TOGGLE_BUTTON_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'View selection')}
         >
           <ViewSelection />
         </DemoPanel>
         <DemoPanel
           title="Clearable selection"
           caption="Allow an active toggle to be pressed again to clear the selection."
-          code={TOGGLE_BUTTON_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Clearable selection')}
         >
           <ClearableAlignment />
         </DemoPanel>
         <DemoPanel
           title="Compact icon controls"
           caption="Use concise icon-only toggles with accessible labels when space is limited."
-          code={TOGGLE_BUTTON_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Compact icon controls')}
         >
           <CompactIconControls />
         </DemoPanel>

@@ -1,17 +1,16 @@
+import { ArrowUpRight, CircleHelp, ExternalLink, Menu, Search, ShieldCheck, X } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import {
-  ArrowUpRight,
-  CircleHelp,
-  ExternalLink,
-  Menu,
-  Search,
-  ShieldCheck,
-  X,
-} from 'lucide-react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { cx } from 'tailmantic';
-import { componentGroups, componentCatalog } from '../data/components.js';
+import { componentCatalog, componentGroups } from '../data/components.js';
+
+const documentationLinks = [
+  { label: 'Overview', to: '/' },
+  { label: 'Installation', to: '/getting-started/installation' },
+  { label: 'Usage', to: '/getting-started/usage' },
+  { label: 'Themes & styles', to: '/customization/theming' },
+];
 
 function MobileNavigationDrawer({ groups, onClose }) {
   const drawerRef = useRef(null);
@@ -31,16 +30,24 @@ function MobileNavigationDrawer({ groups, onClose }) {
       }
       if (event.key !== 'Tab') return;
 
-      const focusable = [...drawerRef.current.querySelectorAll(
-        'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
-      )];
+      const focusable = [
+        ...drawerRef.current.querySelectorAll(
+          'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
+        ),
+      ];
       if (!focusable.length) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
-      if (event.shiftKey && (document.activeElement === first || !drawerRef.current.contains(document.activeElement))) {
+      if (
+        event.shiftKey &&
+        (document.activeElement === first || !drawerRef.current.contains(document.activeElement))
+      ) {
         event.preventDefault();
         last.focus();
-      } else if (!event.shiftKey && (document.activeElement === last || !drawerRef.current.contains(document.activeElement))) {
+      } else if (
+        !event.shiftKey &&
+        (document.activeElement === last || !drawerRef.current.contains(document.activeElement))
+      ) {
         event.preventDefault();
         first.focus();
       }
@@ -72,8 +79,13 @@ function MobileNavigationDrawer({ groups, onClose }) {
         aria-label="Component navigation"
       >
         <div className="mobile-drawer-header">
-          <span className="brand-mark" aria-hidden="true"><span>T</span></span>
-          <span className="brand-lockup"><span className="brand-name">Tailmantic UI</span><span className="brand-subtitle">Explore library</span></span>
+          <span className="brand-mark" aria-hidden="true">
+            <span>T</span>
+          </span>
+          <span className="brand-lockup">
+            <span className="brand-name">Tailmantic UI</span>
+            <span className="brand-subtitle">Documentation</span>
+          </span>
           <button
             className="tm-icon-button mobile-drawer-close"
             ref={closeButtonRef}
@@ -85,6 +97,28 @@ function MobileNavigationDrawer({ groups, onClose }) {
           </button>
         </div>
         <div className="mobile-drawer-scroll">
+          <nav className="nav-section" aria-label="Documentation">
+            <h2 className="nav-heading">Getting started</h2>
+            {documentationLinks.map(({ label, to }) => (
+              <NavLink
+                className={({ isActive }) => cx(isActive ? 'nav-link-active' : 'nav-link')}
+                key={to}
+                to={to}
+                end={to === '/'}
+                onClick={onClose}
+              >
+                {label}
+              </NavLink>
+            ))}
+            <NavLink
+              className={({ isActive }) => cx(isActive ? 'nav-link-active' : 'nav-link')}
+              to="/components"
+              end
+              onClick={onClose}
+            >
+              All components
+            </NavLink>
+          </nav>
           {groups.map(({ group, items }) => (
             <nav className="nav-section" key={group} aria-label={group}>
               <h2 className="nav-heading">
@@ -106,8 +140,13 @@ function MobileNavigationDrawer({ groups, onClose }) {
           ))}
         </div>
         <div className="sidebar-bottom">
-          <div className="sidebar-bottom-icon"><ShieldCheck size={14} /></div>
-          <span><strong>Built with Tailmantic</strong><small>Semantic styling, made simple</small></span>
+          <div className="sidebar-bottom-icon">
+            <ShieldCheck size={14} />
+          </div>
+          <span>
+            <strong>Built with Tailmantic</strong>
+            <small>Semantic styling, made simple</small>
+          </span>
           <ExternalLink size={12} />
         </div>
       </aside>
@@ -122,9 +161,10 @@ export default function AppLayout() {
   const searchRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
-  const shortcutLabel = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.userAgent)
-    ? '⌘ K'
-    : 'Ctrl K';
+  const shortcutLabel =
+    typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.userAgent)
+      ? '⌘ K'
+      : 'Ctrl K';
 
   const filteredGroups = useMemo(
     () =>
@@ -139,6 +179,7 @@ export default function AppLayout() {
     [query],
   );
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Reset navigation state and scroll whenever the route changes.
   useEffect(() => {
     setMobileNavOpen(false);
     window.scrollTo({ top: 0, behavior: 'auto' });
@@ -180,13 +221,38 @@ export default function AppLayout() {
         >
           {mobileNavOpen ? <X size={19} /> : <Menu size={19} />}
         </button>
-        <NavLink className="brand-link" to="/components/autocomplete" aria-label="Tailmantic UI home">
-          <span className="brand-mark" aria-hidden="true"><span>T</span></span>
-          <span className="brand-lockup"><span className="brand-name">Tailmantic UI</span><span className="brand-subtitle">by Tailmantic</span></span>
+        <NavLink className="brand-link" to="/" aria-label="Tailmantic UI documentation home">
+          <span className="brand-mark" aria-hidden="true">
+            <span>T</span>
+          </span>
+          <span className="brand-lockup">
+            <span className="brand-name">Tailmantic UI</span>
+            <span className="brand-subtitle">by Tailmantic</span>
+          </span>
         </NavLink>
         <span className="version-badge">
-          <span className="version-indicator" /> v0.1.0
+          <span className="version-indicator" /> v0.2.1
         </span>
+        <nav className="top-nav" aria-label="Main navigation">
+          <NavLink to="/" end className={({ isActive }) => isActive ? 'top-nav-active' : ''}>
+            Home
+          </NavLink>
+          <NavLink
+            to="/getting-started/installation"
+            className={({ isActive }) => isActive ? 'top-nav-active' : ''}
+          >
+            Docs
+          </NavLink>
+          <NavLink
+            to="/components"
+            className={({ isActive }) => isActive ? 'top-nav-active' : ''}
+          >
+            Components
+          </NavLink>
+          <a href="https://github.com/Bigetion/tailmantic/tree/main/packages/ui-components">
+            Package
+          </a>
+        </nav>
         <div className="topbar-spacer" />
         <label className="search-box">
           <Search size={15} />
@@ -235,8 +301,14 @@ export default function AppLayout() {
             </div>
           )}
         </label>
-        <a className="topbar-github" href="https://github.com/Bigetion/tailmantic" target="_blank" rel="noreferrer">
-        <span>Open source</span><ArrowUpRight size={13} />
+        <a
+          className="topbar-github"
+          href="https://github.com/Bigetion/tailmantic"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span>Open source</span>
+          <ArrowUpRight size={13} />
         </a>
         <a
           className="tm-icon-button help-button"
@@ -251,20 +323,40 @@ export default function AppLayout() {
       </header>
 
       <div className="app-layout">
-        <aside
-          className="sidebar"
-          aria-label="Component navigation"
-        >
+        <aside className="sidebar" aria-label="Component navigation">
           <div className="sidebar-intro">
-            <span className="sidebar-label">Explore library</span>
+            <span className="sidebar-label">Documentation</span>
           </div>
           <div className="sidebar-scroll">
+            <nav className="nav-section docs-nav" aria-label="Documentation">
+              <h2 className="nav-heading">Getting started</h2>
+              {documentationLinks.map(({ label, to }) => (
+                <NavLink
+                  className={({ isActive }) => cx(isActive ? 'nav-link-active' : 'nav-link')}
+                  key={to}
+                  to={to}
+                  end={to === '/'}
+                >
+                  {label}
+                </NavLink>
+              ))}
+              <NavLink
+                className={({ isActive }) => cx(isActive ? 'nav-link-active' : 'nav-link')}
+                to="/components"
+                end
+              >
+                All components
+              </NavLink>
+            </nav>
+            <div className="sidebar-label component-nav-label">COMPONENTS</div>
             {filteredGroups.length ? (
               filteredGroups.map(({ group, items }) => (
                 <nav className="nav-section" key={group} aria-label={group}>
                   <h2 className="nav-heading">
                     {group}
-                    <span className="nav-group-count">{items.length.toString().padStart(2, '0')}</span>
+                    <span className="nav-group-count">
+                      {items.length.toString().padStart(2, '0')}
+                    </span>
                   </h2>
                   {items.map(({ name, badge, slug }) => (
                     <NavLink
@@ -283,8 +375,13 @@ export default function AppLayout() {
             )}
           </div>
           <div className="sidebar-bottom">
-            <div className="sidebar-bottom-icon"><ShieldCheck size={14} /></div>
-            <span><strong>Built with Tailmantic</strong><small>Semantic styling, made simple</small></span>
+            <div className="sidebar-bottom-icon">
+              <ShieldCheck size={14} />
+            </div>
+            <span>
+              <strong>Tailmantic UI</strong>
+              <small>Components styled with Tailmantic</small>
+            </span>
             <ExternalLink size={12} />
           </div>
         </aside>
@@ -294,10 +391,7 @@ export default function AppLayout() {
         </main>
       </div>
       {mobileNavOpen && (
-        <MobileNavigationDrawer
-          groups={filteredGroups}
-          onClose={() => setMobileNavOpen(false)}
-        />
+        <MobileNavigationDrawer groups={filteredGroups} onClose={() => setMobileNavOpen(false)} />
       )}
     </div>
   );

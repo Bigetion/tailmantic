@@ -5,12 +5,11 @@ import { cx } from 'tailmantic';
 import '@tailmantic/ui-components/tooltip/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('tooltip');
 const PLACEMENTS = ['top', 'right', 'bottom', 'left'];
-const TOOLTIP_STYLES_NOTE =
-  'Tooltip and its example layout styles are provided by @tailmantic/ui-components/tooltip/styles.';
 const USAGE_CODE = `import Tooltip from '@tailmantic/ui-components/tooltip';
 import '@tailmantic/ui-components/tooltip/styles';
 
@@ -144,21 +143,21 @@ export default function TooltipPage() {
         <DemoPanel
           title="Accessible helper"
           caption="Reveal concise supporting information on hover or keyboard focus."
-          code={TOOLTIP_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Accessible helper')}
         >
           <BasicTooltip />
         </DemoPanel>
         <DemoPanel
           title="Placement controls"
           caption="Preview top, right, bottom, and left placements using the package Tooltip."
-          code={TOOLTIP_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Placement controls')}
         >
           <PlacementTooltips />
         </DemoPanel>
         <DemoPanel
           title="Contextual tooltip"
           caption="Add richer guidance with keyboard and click interactions."
-          code={TOOLTIP_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Contextual tooltip')}
           className="demo-card-overflow-visible"
         >
           <RichTooltip />

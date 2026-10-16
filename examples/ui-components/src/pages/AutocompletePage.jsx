@@ -3,11 +3,10 @@ import { Check, ChevronDown, Command, CornerDownLeft, Search, X } from 'lucide-r
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('autocomplete');
-const AUTOCOMPLETE_STYLES_NOTE =
-  'Base component styles are provided by @tailmantic/ui-components/autocomplete/styles.';
 const OPTIONS = [
   { label: 'React', detail: 'User interface library', group: 'Frontend', mark: 'R' },
   { label: 'Vue', detail: 'Progressive JavaScript framework', group: 'Frontend', mark: 'V' },
@@ -151,21 +150,21 @@ export default function AutocompletePage() {
         <DemoPanel
           title="Search and select"
           caption="Filter a curated list and select one framework with keyboard or pointer."
-          code={AUTOCOMPLETE_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Search and select')}
         >
           <AutocompleteExample />
         </DemoPanel>
         <DemoPanel
           title="Multiple selection"
           caption="Build a compact selection of frameworks with removable tags."
-          code={AUTOCOMPLETE_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Multiple selection')}
         >
           <AutocompleteExample multiple />
         </DemoPanel>
         <DemoPanel
           title="Free solo"
           caption="Choose a suggestion or create a custom value that is not in the list."
-          code={AUTOCOMPLETE_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Free solo')}
         >
           <AutocompleteExample freeSolo />
         </DemoPanel>

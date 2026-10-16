@@ -3,29 +3,47 @@ import {
   ArrowRight,
   Check,
   Component as ComponentIcon,
+  Copy,
   ExternalLink,
-  Layers,
-  Sparkles,
 } from 'lucide-react';
+import { Children, isValidElement, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { componentCatalog } from '../data/components.js';
+import { ComponentDocsProvider } from './ComponentDocsContext.jsx';
 import DemoPanel from './DemoPanel.jsx';
 
-const IMPLEMENTATION_ROWS = [
-  ['Page', 'examples/ui-components/src/pages/{name}Page.jsx', 'Dedicated React Router page.'],
-  ['Component', 'packages/ui-components/src/{slug}/', 'Component implementation and public API.'],
-  ['Styles', 'packages/ui-components/src/{slug}/', 'Package-owned component styles and variants.'],
-  ['Examples', '{count} live examples', 'Rendered in the examples section above.'],
-];
+function getExamplePanels(children) {
+  const panels = [];
+  function visit(nodes) {
+    Children.forEach(nodes, (node) => {
+      if (!isValidElement(node)) return;
+      if (node.type === DemoPanel) {
+        panels.push(node.props);
+        return;
+      }
+      if (node.props?.children) visit(node.props.children);
+    });
+  }
+  visit(children);
+  return panels;
+}
+
+function getAnchorId(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
 
 export default function ComponentPageLayout({
   component,
   children,
-  implementationRows: customImplementationRows,
   usageCode,
   usageCaption,
   usageDescription,
 }) {
+  const [packageManager, setPackageManager] = useState('npm');
+  const [copied, setCopied] = useState(false);
   const index = componentCatalog.findIndex((item) => item.slug === component.slug);
   const previous =
     componentCatalog[(index - 1 + componentCatalog.length) % componentCatalog.length];
@@ -33,214 +51,40 @@ export default function ComponentPageLayout({
   const importName = component.name.replace(/\s+/g, '');
   const importCode =
     usageCode ??
-    `import { ${importName} } from '@tailmantic/ui-components';\nimport '@tailmantic/ui-components/${component.slug}/styles';\n\nexport default function ${importName}Example() {\n  return <${importName} />;\n}`;
-  const implementationRows =
-    customImplementationRows ??
-    IMPLEMENTATION_ROWS.map(([area, source, purpose]) => [
-      area,
-      source
-        .replaceAll('{slug}', component.slug)
-        .replace('{name}', importName)
-        .replace('{count}', component.demos.length),
-      purpose,
-    ]);
-  if (
-    !customImplementationRows &&
-    [
-      'chip',
-      'divider',
-      'icons',
-      'icon-glyph',
-      'list',
-      'table',
-      'tooltip',
-      'typography',
-      'alert',
-      'dialog',
-      'progress',
-      'snackbar',
-      'skeleton',
-      'app-bar',
-      'card',
-      'paper',
-      'popover',
-      'bottom-navigation',
-      'breadcrumbs',
-      'drawer',
-      'link',
-      'menu',
-      'pagination',
-      'speed-dial',
-      'stepper',
-      'tabs',
-      'click-away-listener',
-      'modal',
-      'popper',
-      'portal',
-    ].includes(component.slug)
-  ) {
-    implementationRows.splice(2, 0, [
-      'Demo',
-      `examples/ui-components/src/pages/${importName}Page.jsx`,
-      'Interactive examples rendered in the showcase above.',
-    ]);
-  }
+    `import { ${importName} } from '@tailmantic/ui-components';\n\nexport default function ${importName}Example() {\n  return <${importName} />;\n}`;
+  const propsType = `${importName}Props`;
+  const declarationPath = `packages/ui-components/src/${component.slug}/${component.slug}.d.ts`;
+  const declarationUrl = `https://github.com/Bigetion/tailmantic/blob/main/${declarationPath}`;
+  const examples = getExamplePanels(children);
+  const installCommands = {
+    npm: `npm install @tailmantic/ui-components tailmantic`,
+    pnpm: `pnpm add @tailmantic/ui-components tailmantic`,
+    yarn: `yarn add @tailmantic/ui-components tailmantic`,
+    bun: `bun add @tailmantic/ui-components tailmantic`,
+  };
+  const copyPage = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1400);
+    } catch (error) {
+      console.error('Could not copy component page URL:', error);
+    }
+  };
 
   return (
     <div className="content-width component-page">
-      <nav className="app-breadcrumbs" aria-label="Breadcrumb">
-        <Link to="/components/autocomplete">Components</Link>
-        <span>/</span>
-        <span>{component.group}</span>
-        <span>/</span>
-        <span className="breadcrumb-current">{component.name}</span>
-      </nav>
-
-      <header className="component-hero">
-        <div className="component-hero-copy">
-          <div className="component-eyebrow">
-            <span className="eyebrow-glow" /> {component.group}{' '}
-            <span className="eyebrow-divider">/</span> COMPONENT
-          </div>
+      <header className="component-page-heading">
+        <div>
+          <p className="component-eyebrow"><ComponentIcon size={13} /> {component.group}</p>
           <h1 className="page-heading">{component.name}</h1>
           <p className="page-intro">{component.description}</p>
-          <div className="hero-meta">
-            <span>
-              <Check size={13} /> Dedicated Tailmantic style module
-            </span>
-            <span>
-              <Layers size={13} /> {component.demos.length} live examples
-            </span>
-          </div>
         </div>
-        <div className="hero-emblem" aria-hidden="true">
-          <div className="hero-emblem-halo" />
-          <div className="hero-emblem-icon">
-            <ComponentIcon size={34} strokeWidth={1.35} />
-          </div>
-          <span className="hero-emblem-orbit orbit-one" />
-          <span className="hero-emblem-orbit orbit-two" />
-          <span className="hero-emblem-spark">
-            <Sparkles size={15} />
-          </span>
-        </div>
-        <a
-          className="tm-button tm-button-outlined docs-button"
-          href="https://github.com/Bigetion/tailmantic/tree/main/packages/ui-components"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <ExternalLink size={14} /> Package source
-        </a>
-      </header>
-
-      <div className="component-navigation">
-        <Link to={`/components/${previous.slug}`}>
-          <ArrowLeft size={14} />
-          <span>
-            <small>PREVIOUS</small>
-            {previous.name}
-          </span>
-        </Link>
-        <Link to={`/components/${next.slug}`}>
-          <span>
-            <small>NEXT</small>
-            {next.name}
-          </span>
-          <ArrowRight size={14} />
-        </Link>
-      </div>
-
-      <nav className="component-toc" aria-label="On this page">
-        <span className="toc-label">On this page</span>
-        <a href={`#${component.slug}-examples-heading`}>Examples</a>
-        <a href={`#${component.slug}-usage-heading`}>Usage</a>
-        <a href={`#${component.slug}-implementation-heading`}>Implementation</a>
-        <span className="toc-version">v0.1.0</span>
-      </nav>
-
-      <section className="page-section" aria-labelledby={`${component.slug}-examples-heading`}>
-        <div className="section-heading">
-          <div>
-            <p className="component-count">
-              <span className="component-count-dot" /> COMPONENT
-            </p>
-            <h2 id={`${component.slug}-examples-heading`}>Examples</h2>
-          </div>
-          <span className="example-count">{component.demos.length} examples</span>
-        </div>
-        {children}
-      </section>
-
-      <section className="page-section" aria-labelledby={`${component.slug}-usage-heading`}>
-        <div className="section-heading">
-          <div>
-            <p className="component-count">GET STARTED</p>
-            <h2 id={`${component.slug}-usage-heading`}>Usage</h2>
-          </div>
-        </div>
-        <DemoPanel
-          title="Import component"
-          caption={
-            usageCaption ??
-            "Import this component's dedicated React module to render its interactive examples."
-          }
-          code={importCode}
-        >
-          <div className="usage-preview">
-            <span className="usage-preview-icon">&lt;/&gt;</span>
-            <div>
-              <strong>{importName}</strong>
-              <p>
-                {usageDescription ??
-                  'Interactive examples and styles are maintained in component-specific modules.'}
-              </p>
-            </div>
-          </div>
-        </DemoPanel>
-      </section>
-
-      <section
-        className="page-section implementation-section"
-        aria-labelledby={`${component.slug}-implementation-heading`}
-      >
-        <div className="section-heading">
-          <div>
-            <p className="component-count">SOURCE MAP</p>
-            <h2 id={`${component.slug}-implementation-heading`}>{component.name} implementation</h2>
-          </div>
-        </div>
-        <div className="api-table-wrap">
-          <table className="api-table">
-            <thead>
-              <tr>
-                <th>Area</th>
-                <th>Source</th>
-                <th>Purpose</th>
-              </tr>
-            </thead>
-            <tbody>
-              {implementationRows.map(([area, source, purpose]) => (
-                <tr key={area}>
-                  <td>{area}</td>
-                  <td>
-                    <code>{source}</code>
-                  </td>
-                  <td>{purpose}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <footer className="page-footer" id="tailmantic-source">
-        <div className="footer-brand">
-          <span className="brand-mark brand-mark-small">T</span>
-          <span>Tailmantic UI</span>
-        </div>
-        <span>Semantic styles, powered by Tailmantic.</span>
-        <div className="footer-links">
+        <div className="component-page-actions">
+          <button className="component-copy-button" type="button" onClick={copyPage}>
+            {copied ? <Check size={13} /> : <Copy size={13} />}
+            {copied ? 'Copied' : 'Copy page'}
+          </button>
           <Link to={`/components/${previous.slug}`} aria-label={`Previous: ${previous.name}`}>
             <ArrowLeft size={15} />
           </Link>
@@ -248,6 +92,118 @@ export default function ComponentPageLayout({
             <ArrowRight size={15} />
           </Link>
         </div>
+      </header>
+
+      <nav className="component-tabs" aria-label={`${component.name} sections`}>
+        <a href="#installation">Installation</a>
+        <a href="#usage">Usage</a>
+        {component.slug === 'accordion' && <a href="#composition">Composition</a>}
+        <a href="#examples">Examples</a>
+        <a href="#api-reference">API reference</a>
+      </nav>
+
+      <section className="docs-section component-doc-section" id="installation">
+        <h2>Installation</h2>
+        <div className="package-manager-tabs" role="group" aria-label="Package manager">
+          {Object.keys(installCommands).map((manager) => (
+            <button
+              aria-pressed={packageManager === manager}
+              className={packageManager === manager ? 'package-manager-active' : ''}
+              key={manager}
+              onClick={() => setPackageManager(manager)}
+              type="button"
+            >
+              {manager}
+            </button>
+          ))}
+        </div>
+        <div className="component-code-block">
+          <code>{installCommands[packageManager]}</code>
+          <button
+            className="component-code-copy"
+            type="button"
+            aria-label="Copy installation command"
+            onClick={async () => {
+              try {
+                await navigator.clipboard.writeText(installCommands[packageManager]);
+              } catch (error) {
+                console.error('Could not copy installation command:', error);
+              }
+            }}
+          >
+            <Copy size={13} />
+          </button>
+        </div>
+      </section>
+
+      <section className="docs-section component-doc-section" id="usage">
+        <h2>Usage</h2>
+        <p>{usageCaption ?? `Import ${component.name} and compose it in your React application.`}</p>
+        <pre className="component-code-block component-usage-code"><code>{importCode}</code></pre>
+        {usageDescription && <p>{usageDescription}</p>}
+      </section>
+
+      {component.slug === 'accordion' && (
+        <section className="docs-section component-doc-section" id="composition">
+          <h2>Composition</h2>
+          <p>
+            Compose the root with one or more items. Add a toolbar for group actions or helper text
+            for additional guidance.
+          </p>
+          <pre className="component-code-block component-usage-code"><code>{`Accordion
+├── AccordionItem
+├── AccordionItem
+├── AccordionToolbar (optional)
+└── AccordionHelper (optional)`}</code></pre>
+        </section>
+      )}
+
+      <section className="docs-section component-doc-section" id="examples">
+        <h2>Examples</h2>
+        <p>Explore common patterns and interact with each example.</p>
+        <ComponentDocsProvider value={{ slug: component.slug, usageCode: importCode }}>
+          {children}
+        </ComponentDocsProvider>
+      </section>
+
+      <section className="docs-section component-doc-section" id="api-reference">
+        <h2 id={`${component.slug}-api-heading`}>{component.name} API</h2>
+        <div className="docs-api-card">
+          <div><span>Props type</span><code>{propsType}</code></div>
+          <div><span>Package import</span><code>@tailmantic/ui-components/{component.slug}</code></div>
+          <a href={declarationUrl} target="_blank" rel="noreferrer">
+            View all props, event handlers, and TypeScript types <ExternalLink size={14} />
+          </a>
+          <p>The declaration extends native React attributes where supported.</p>
+        </div>
+      </section>
+
+      <aside className="component-page-toc" aria-label="On this page">
+        <span>On this page</span>
+        <a href="#installation">Installation</a>
+        <a href="#usage">Usage</a>
+        {component.slug === 'accordion' && <a href="#composition">Composition</a>}
+        <a href="#examples">Examples</a>
+        <div className="component-toc-examples">
+          {examples.map(({ title }) => (
+            <a href={`#${component.slug}-example-${getAnchorId(title)}`} key={title}>
+              {title}
+            </a>
+          ))}
+        </div>
+        <a href="#api-reference">API reference</a>
+        <div className="component-toc-promo">
+          <strong>Deploy your project</strong>
+          <p>Build with Tailmantic UI components and Tailmantic styling.</p>
+          <a href="https://github.com/Bigetion/tailmantic" target="_blank" rel="noreferrer">
+            Explore on GitHub <ExternalLink size={11} />
+          </a>
+        </div>
+      </aside>
+
+      <footer className="page-footer" id="tailmantic-source">
+        <div className="footer-brand"><span className="brand-mark brand-mark-small">T</span><span>Tailmantic UI</span></div>
+        <span>React components, styled with Tailmantic.</span>
       </footer>
     </div>
   );

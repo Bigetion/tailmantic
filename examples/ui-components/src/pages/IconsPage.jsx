@@ -37,11 +37,10 @@ import { cx } from 'tailmantic';
 import '@tailmantic/ui-components/icons/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('icons');
-const ICONS_STYLES_NOTE =
-  'The Icons primitive and icon example styles are provided by @tailmantic/ui-components/icons/styles. The catalog uses lucide-react icons.';
 const CATEGORIES = ['All', 'Navigation', 'Actions', 'Files', 'People'];
 const ICONS = [
   [Home, 'Home', 'Navigation'],
@@ -163,11 +162,11 @@ function IconLibrary() {
 
 function IconColors() {
   const examples = [
-    ['Default', 'currentColor', 'tm-icons-tone-default', <circle cx="12" cy="12" r="8" />],
-    ['Primary', '#a9c4ff', 'tm-icons-tone-primary', <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z" />],
-    ['Success', '#7bd2a9', 'tm-icons-tone-success', <path d="m5 12 4 4L19 6" />],
-    ['Warning', '#f2c27b', 'tm-icons-tone-warning', <><path d="M12 3 2.8 19h18.4L12 3Z" /><path d="M12 9v4m0 3h.01" /></>],
-    ['Danger', '#f08b98', 'tm-icons-tone-danger', <><path d="M3 6h18" /><path d="m19 6-1 14H6L5 6" /><path d="M9 6V4h6v2m-5 4v6m4-6v6" /></>],
+    ['Default', 'currentColor', 'tm-icons-tone-default', <circle key="default" cx="12" cy="12" r="8" />],
+    ['Primary', '#a9c4ff', 'tm-icons-tone-primary', <path key="primary" d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z" />],
+    ['Success', '#7bd2a9', 'tm-icons-tone-success', <path key="success" d="m5 12 4 4L19 6" />],
+    ['Warning', '#f2c27b', 'tm-icons-tone-warning', <g key="warning"><path d="M12 3 2.8 19h18.4L12 3Z" /><path d="M12 9v4m0 3h.01" /></g>],
+    ['Danger', '#f08b98', 'tm-icons-tone-danger', <g key="danger"><path d="M3 6h18" /><path d="m19 6-1 14H6L5 6" /><path d="M9 6V4h6v2m-5 4v6m4-6v6" /></g>],
   ];
 
   return (
@@ -243,21 +242,21 @@ export default function IconsPage() {
         <DemoPanel
           title="Browse the icon library"
           caption="Search, filter, and select a symbol from a practical interface icon set."
-          code={ICONS_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Browse the icon library')}
         >
           <IconLibrary />
         </DemoPanel>
         <DemoPanel
           title="Semantic icon colors"
           caption="Use restrained color to clarify status and reinforce meaning."
-          code={ICONS_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Semantic icon colors')}
         >
           <IconColors />
         </DemoPanel>
         <DemoPanel
           title="Icon buttons"
           caption="Keep icon-only actions compact, keyboard accessible, and clearly labeled."
-          code={ICONS_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Icon buttons')}
         >
           <IconButtons />
         </DemoPanel>

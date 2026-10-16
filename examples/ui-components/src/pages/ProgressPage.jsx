@@ -5,11 +5,10 @@ import '@tailmantic/ui-components/progress/styles';
 import '@tailmantic/ui-components/button/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('progress');
-const PROGRESS_STYLES_NOTE =
-  'Progress and its example layout styles are provided by @tailmantic/ui-components/progress/styles.';
 const USAGE_CODE = `import Progress from '@tailmantic/ui-components/progress';
 import '@tailmantic/ui-components/progress/styles';
 
@@ -232,21 +231,21 @@ export default function ProgressPage() {
         <DemoPanel
           title="Linear progress"
           caption="Show completed work and work without a predictable completion time."
-          code={PROGRESS_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Linear progress')}
         >
           <LinearProgressExample />
         </DemoPanel>
         <DemoPanel
           title="Circular progress"
           caption="Use a compact circular indicator for a known value or ongoing work."
-          code={PROGRESS_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Circular progress')}
         >
           <CircularProgressExample />
         </DemoPanel>
         <DemoPanel
           title="Buffered progress"
           caption="Distinguish the portion already played from content that is ready to process."
-          code={PROGRESS_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Buffered progress')}
         >
           <BufferedProgressExample />
         </DemoPanel>

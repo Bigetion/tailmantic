@@ -3,11 +3,10 @@ import { Activity, ArrowRight, Check, Info, Plus, Trash2 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('button');
-const BUTTON_STYLES_NOTE =
-  'Base component styles are provided by @tailmantic/ui-components/button/styles.';
 const USAGE_CODE = `import { Button } from '@tailmantic/ui-components';
 
 <Button variant="contained" color="primary">
@@ -161,35 +160,35 @@ export default function ButtonPage() {
         <DemoPanel
           title="Button variants"
           caption="Choose the right visual weight for each action in your interface."
-          code={BUTTON_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Button variants')}
         >
           <ButtonVariants />
         </DemoPanel>
         <DemoPanel
           title="Semantic colors"
           caption="Use color to reinforce intent without changing the button behavior."
-          code={BUTTON_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Semantic colors')}
         >
           <ButtonColors />
         </DemoPanel>
         <DemoPanel
           title="Button sizes"
           caption="Balance compact controls with comfortable, prominent actions."
-          code={BUTTON_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Button sizes')}
         >
           <ButtonSizes />
         </DemoPanel>
         <DemoPanel
           title="Icons and actions"
           caption="Pair icons with labels to make common actions easier to scan."
-          code={BUTTON_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Icons and actions')}
         >
           <ButtonIcons />
         </DemoPanel>
         <DemoPanel
           title="Loading and disabled"
           caption="Give feedback while an action is running and prevent duplicate submissions."
-          code={BUTTON_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Loading and disabled')}
         >
           <ButtonLoading />
         </DemoPanel>

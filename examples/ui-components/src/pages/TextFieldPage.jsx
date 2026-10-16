@@ -3,11 +3,10 @@ import { Search, X } from 'lucide-react';
 import { useId, useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('text-field');
-const TEXT_FIELD_STYLES_NOTE =
-  'Base, validation, and adornment styles are provided by @tailmantic/ui-components/text-field/styles.';
 const USAGE_CODE = `import { TextField } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/text-field/styles';
 
@@ -169,7 +168,7 @@ export default function TextFieldPage() {
     >
       <div className="component-showcase component-showcase-text-field">
         {EXAMPLES.map(({ id, title, caption, component: Example }) => (
-          <DemoPanel key={id} title={title} caption={caption} code={TEXT_FIELD_STYLES_NOTE}>
+          <DemoPanel key={id} title={title} caption={caption} code={getExampleCode(component.slug, title)}>
             <Example />
           </DemoPanel>
         ))}

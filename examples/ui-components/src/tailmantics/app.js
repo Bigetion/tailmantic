@@ -5,8 +5,13 @@ register.all({
     tw: 'min-h-screen bg-[radial-gradient(ellipse_at_75%_-15%,rgba(74,102,166,.16),transparent_42%),radial-gradient(ellipse_at_0%_60%,rgba(40,69,112,.08),transparent_34%)]',
   },
   topbar: {
-    tw: 'fixed inset-x-0 top-0 z-20 flex h-14 items-center gap-3 border-b border-[var(--border)] bg-[#090c12]/90 px-5 backdrop-blur-xl max-md:gap-2.5 max-md:px-4 max-sm:gap-2 max-sm:px-3',
+    tw: 'fixed inset-x-0 top-0 z-20 flex h-12 items-center gap-5 border-b border-[var(--border)] bg-[#090c12]/95 px-5 backdrop-blur-xl max-md:gap-2.5 max-md:px-4 max-sm:gap-2 max-sm:px-3',
   },
+  'top-nav': { tw: 'flex h-full items-center gap-5 max-lg:hidden' },
+  'top-nav a': {
+    tw: 'flex h-full items-center border-b border-transparent text-[10px] text-[var(--muted)] no-underline hover:border-[#66748a] hover:text-white',
+  },
+  'top-nav .top-nav-active': { tw: 'border-white text-white' },
   'tm-icon-button': {
     tw: 'inline-flex size-9 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent text-[var(--muted)] hover:bg-[#ffffff12] hover:text-white',
   },
@@ -21,9 +26,9 @@ register.all({
   'search-box': {
     tw: 'relative flex h-9 w-[min(310px,30vw)] min-w-0 shrink items-center gap-2 rounded-xl border border-[#273142] bg-[#ffffff04] px-3 text-[11px] text-[var(--subtle)] transition-[border-color,background-color] focus-within:border-[#718bbd] focus-within:bg-[#ffffff08] max-sm:w-auto max-sm:flex-1 max-sm:px-2.5',
   },
-  'app-layout': { tw: 'flex min-h-screen pt-14' },
+  'app-layout': { tw: 'flex min-h-screen pt-12' },
   sidebar: {
-    tw: 'fixed bottom-0 left-0 top-14 z-10 hidden w-[246px] flex-col overflow-hidden border-r border-[#202938] bg-[linear-gradient(180deg,#0b0f17,#0a0e15)] px-3.5 py-5 md:flex lg:w-[276px]',
+    tw: 'fixed bottom-0 left-0 top-12 z-10 hidden w-[220px] flex-col overflow-hidden border-r border-[#202938] bg-[#090a0b] px-3 py-4 md:flex lg:w-[240px]',
   },
   'sidebar-scroll': {
     tw: 'min-h-0 flex-1 overflow-y-auto pb-2 [scrollbar-width:thin] [scrollbar-color:#354156_transparent]',
@@ -49,9 +54,9 @@ register.all({
     tw: 'ml-auto rounded-full border border-[#385143] bg-[#14271f] px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wide text-[#8de0b5]',
   },
   'main-content': {
-    tw: 'ml-0 min-w-0 flex-1 px-4 py-6 md:ml-[246px] md:px-7 md:py-8 lg:ml-[276px] lg:px-8 xl:px-[clamp(28px,5vw,76px)] xl:py-12',
+    tw: 'ml-0 min-w-0 flex-1 px-4 py-6 md:ml-[220px] md:px-7 md:py-8 lg:ml-[240px] lg:px-8 xl:px-[clamp(32px,5vw,76px)] xl:py-10 xl:pr-[230px]',
   },
-  'content-width': { tw: 'mx-auto max-w-[1050px]' },
+  'content-width': { tw: 'mx-auto max-w-[820px]' },
   'app-breadcrumbs': {
     tw: 'mb-7 flex items-center gap-2.5 text-[10px] tracking-[.02em] text-[var(--subtle)] [&_a]:text-[var(--subtle)] [&_a]:no-underline [&_a:hover]:text-[var(--tm-blue)]',
   },
@@ -66,33 +71,12 @@ register.all({
   'component-count-dot': {
     tw: 'size-1 rounded-full bg-[#9bbcff] shadow-[0_0_8px_rgba(155,188,255,.8)]',
   },
-  'demo-card': {
-    tw: 'mb-4 overflow-hidden rounded-xl border border-[#293448] bg-[linear-gradient(145deg,rgba(17,23,34,.98),rgba(13,18,27,.98))] shadow-[0_8px_32px_rgba(0,0,0,.12)] transition-[border-color,box-shadow] duration-200 hover:border-[#394967] hover:shadow-[0_14px_44px_rgba(0,0,0,.22)]',
-  },
   'demo-card-overflow-visible': {
     tw: 'relative z-10 !overflow-visible',
   },
   'demo-card-overflow-visible .demo-content': {
     tw: '!min-h-[190px] !items-end !overflow-visible !pb-3',
   },
-  'demo-card-header': {
-    tw: 'flex items-center justify-between border-b border-[#242e3e] px-5 py-4 max-sm:px-4',
-  },
-  'demo-title': { tw: 'text-[12px] font-semibold tracking-[-.015em] text-[#e5ebf6]' },
-  'demo-caption': { tw: 'mt-1.5 text-[10px] text-[#8592a6]' },
-  'demo-content': {
-    tw: 'relative flex min-h-[164px] flex-wrap items-center gap-3 overflow-hidden bg-[radial-gradient(ellipse_at_0%_0%,rgba(112,145,225,.07),transparent_58%),linear-gradient(rgba(255,255,255,.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.018)_1px,transparent_1px)] bg-[length:auto,24px_24px,24px_24px] px-5 py-7 max-sm:px-4',
-  },
-  'demo-content-column': {
-    tw: 'flex min-h-[140px] flex-col items-start justify-center gap-4 px-5 py-6',
-  },
-  'code-toggle': {
-    tw: 'inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-[var(--border)] bg-[#ffffff03] px-2.5 py-1.5 text-[10px] font-medium text-[var(--muted)] transition-colors hover:border-[#455675] hover:bg-[var(--panel-raised)] hover:text-white',
-  },
-  'demo-footer': {
-    tw: 'flex items-center justify-between border-t border-[#242e3e] px-5 py-3 text-[10px] text-[var(--subtle)] max-sm:px-4',
-  },
-  'source-link': { tw: 'font-medium text-[var(--tm-blue)] hover:underline' },
   'mobile-menu': { tw: 'inline-flex size-8 shrink-0 md:hidden' },
   'sidebar-bottom': {
     tw: 'mt-3 flex shrink-0 items-center gap-2.5 border-t border-[#222b3a] bg-[#0a0e15] px-1 py-3 text-[10px] text-[var(--subtle)] [&_svg:last-child]:ml-auto',
@@ -159,6 +143,65 @@ register.all({
   },
   'component-toc a': {
     tw: 'text-[#95a3b9] no-underline transition-colors hover:text-[var(--tm-blue)]',
+  },
+  'component-page-heading': {
+    tw: 'mb-6 flex items-start justify-between gap-5',
+  },
+  'component-page-heading .page-heading': { tw: 'mb-1 text-[27px] tracking-[-.035em]' },
+  'component-page-heading .page-intro': { tw: 'max-w-[660px] text-[11px] leading-5' },
+  'component-page-heading .component-eyebrow': {
+    tw: 'mb-2 normal-case tracking-normal text-[#9aa4b2]',
+  },
+  'component-page-actions': { tw: 'flex shrink-0 items-center gap-1.5' },
+  'component-page-actions a': {
+    tw: 'inline-flex size-7 items-center justify-center rounded-md border border-[var(--border)] text-[var(--muted)] hover:bg-white/5 hover:text-white',
+  },
+  'component-copy-button': {
+    tw: 'inline-flex h-7 items-center gap-1.5 rounded-md border border-[var(--border)] bg-transparent px-2 text-[9px] text-[var(--muted)] hover:bg-white/5 hover:text-white',
+  },
+  'component-tabs': {
+    tw: 'mb-7 flex items-center gap-5 border-b border-[#202938] text-[10px]',
+  },
+  'component-tabs a': {
+    tw: 'border-b border-transparent pb-2.5 text-[var(--muted)] no-underline hover:text-white',
+  },
+  'component-tabs a:first-child': { tw: 'border-white text-white' },
+  'component-doc-section': { tw: 'mb-8 scroll-mt-16' },
+  'component-doc-section h2': {
+    tw: 'mb-2 text-[15px] font-semibold tracking-[-.02em] text-[#eceff4]',
+  },
+  'component-doc-section > p': { tw: 'mb-3 text-[10px] leading-5 text-[var(--muted)]' },
+  'component-code-block': {
+    tw: 'relative block overflow-x-auto rounded-lg border border-[#24272b] bg-[#151617] px-4 py-3 font-mono text-[10px] leading-5 text-[#d1d5db]',
+  },
+  'component-code-copy': {
+    tw: 'absolute right-2 top-2 inline-flex size-6 items-center justify-center rounded border border-[#303337] bg-[#1a1b1d] text-[#9ca3af] hover:text-white',
+  },
+  'component-usage-code': { tw: 'whitespace-pre' },
+  'package-manager-tabs': {
+    tw: 'mb-0 flex w-fit gap-0.5 rounded-t-lg border border-b-0 border-[#24272b] bg-[#111213] p-1',
+  },
+  'package-manager-tabs button': {
+    tw: 'cursor-pointer rounded px-2 py-1 text-[9px] text-[#8b9098] hover:text-white',
+  },
+  'package-manager-tabs .package-manager-active': {
+    tw: 'bg-[#25272a] text-white',
+  },
+  'component-page-toc': {
+    tw: 'fixed right-[max(24px,calc((100vw-1480px)/2))] top-[76px] z-10 hidden w-[170px] flex-col gap-2 border-l border-[#202327] pl-3 text-[9px] text-[#8d929b] xl:flex',
+  },
+  'component-page-toc > span': { tw: 'mb-1 font-medium text-[#d3d6da]' },
+  'component-page-toc > a': { tw: 'text-inherit no-underline hover:text-white' },
+  'component-toc-examples': { tw: 'flex flex-col gap-2 border-l border-[#25282c] pl-2.5' },
+  'component-toc-examples a': {
+    tw: 'text-[8px] text-[#777d86] no-underline hover:text-[#d2d5d9]',
+  },
+  'component-toc-promo': {
+    tw: 'mt-4 rounded-lg border border-[#24272b] bg-[#121314] p-3 text-[#d2d5d9]',
+  },
+  'component-toc-promo p': { tw: 'my-2 text-[8px] leading-4 text-[#8b9098]' },
+  'component-toc-promo a': {
+    tw: 'inline-flex items-center gap-1 rounded border border-[#303337] px-2 py-1 text-[8px] text-[#d2d5d9] no-underline hover:bg-white/5',
   },
   'toc-label': { tw: 'font-medium text-[#66758d]' },
   'toc-version': { tw: 'ml-auto font-mono text-[9px] text-[#74839b]' },

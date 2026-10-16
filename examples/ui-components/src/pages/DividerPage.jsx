@@ -2,11 +2,10 @@ import { Divider } from '@tailmantic/ui-components';
 import { Bell, LockKeyhole, UserRound } from 'lucide-react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('divider');
-const DIVIDER_STYLES_NOTE =
-  'Divider and example layout styles are provided by @tailmantic/ui-components/divider/styles.';
 const USAGE_CODE = `import { Divider } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/divider/styles';
 
@@ -63,7 +62,7 @@ function VerticalDivider() {
 
 function InsetDivider() {
   return (
-    <div className="tm-divider-list" aria-label="Settings list">
+    <section className="tm-divider-list" aria-label="Settings list">
       <div className="tm-divider-list-item">
         <span className="tm-divider-list-icon">
           <UserRound size={16} aria-hidden="true" />
@@ -83,7 +82,7 @@ function InsetDivider() {
           <small>Password and two-step verification</small>
         </span>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -100,21 +99,21 @@ export default function DividerPage() {
         <DemoPanel
           title="Horizontal dividers"
           caption="Separate related sections with a subtle, full-width rule."
-          code={DIVIDER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Horizontal dividers')}
         >
           <HorizontalDividers />
         </DemoPanel>
         <DemoPanel
           title="Vertical divider"
           caption="Group controls in a horizontal toolbar without adding visual noise."
-          code={DIVIDER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Vertical divider')}
         >
           <VerticalDivider />
         </DemoPanel>
         <DemoPanel
           title="Inset divider"
           caption="Align a separator with list content while leaving leading icons clear."
-          code={DIVIDER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Inset divider')}
         >
           <InsetDivider />
         </DemoPanel>

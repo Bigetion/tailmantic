@@ -2,11 +2,10 @@ import { RadioGroup } from '@tailmantic/ui-components';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('radio-group');
-const RADIO_GROUP_STYLES_NOTE =
-  'Base component styles are provided by @tailmantic/ui-components/radio-group/styles.';
 const PLANS = [
   { value: 'starter', label: 'Starter', description: 'For personal projects' },
   { value: 'team', label: 'Team', description: 'For growing teams' },
@@ -134,7 +133,7 @@ export default function RadioGroupPage() {
     >
       <div className="component-showcase component-showcase-radio-group">
         {EXAMPLES.map(({ id, title, caption, Component }) => (
-          <DemoPanel key={id} title={title} caption={caption} code={RADIO_GROUP_STYLES_NOTE}>
+          <DemoPanel key={id} title={title} caption={caption} code={getExampleCode(component.slug, title)}>
             <Component />
           </DemoPanel>
         ))}

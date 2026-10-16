@@ -3,12 +3,11 @@ import { ChevronRight, Dot } from 'lucide-react';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('breadcrumbs');
 const PATH = ['Workspace', 'Engineering', 'Projects', 'Website refresh', 'Design system'];
-const BREADCRUMBS_STYLES_NOTE =
-  'Breadcrumbs component and example styles are provided by @tailmantic/ui-components/breadcrumbs/styles.';
 const USAGE_CODE = `import { Breadcrumbs } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/breadcrumbs/styles';
 
@@ -150,21 +149,21 @@ export default function BreadcrumbsPage() {
         <DemoPanel
           title="Page hierarchy"
           caption="Show the current location in context and let users return to an ancestor page."
-          code={BREADCRUMBS_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Page hierarchy')}
         >
           <HierarchyExample />
         </DemoPanel>
         <DemoPanel
           title="Separator styles"
           caption="Compare chevron, slash, and dot separators across the same navigable path."
-          code={BREADCRUMBS_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Separator styles')}
         >
           <SeparatorExamples />
         </DemoPanel>
         <DemoPanel
           title="Collapsed hierarchy"
           caption="Keep long paths compact and reveal hidden ancestors when needed."
-          code={BREADCRUMBS_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Collapsed hierarchy')}
         >
           <CollapsedExample />
         </DemoPanel>

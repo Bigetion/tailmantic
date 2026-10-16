@@ -3,11 +3,10 @@ import { Bell, Mail, MessageCircle, ShoppingCart } from 'lucide-react';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('badge');
-const BADGE_STYLES_NOTE =
-  'Badge styles are provided by @tailmantic/ui-components/badge/styles.';
 const USAGE_CODE = `import { Badge } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/badge/styles';
 
@@ -163,21 +162,21 @@ export default function BadgePage() {
         <DemoPanel
           title="Notification counts"
           caption="Show unread counts clearly, including zero and capped large values."
-          code={BADGE_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Notification counts')}
         >
           <BadgeCounts />
         </DemoPanel>
         <DemoPanel
           title="Visibility and emphasis"
           caption="Control when a badge appears and vary its emphasis for secondary counts."
-          code={BADGE_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Visibility and emphasis')}
         >
           <BadgeVisibility />
         </DemoPanel>
         <DemoPanel
           title="Status and compact badges"
           caption="Use a dot for presence and a count badge for compact action indicators."
-          code={BADGE_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Status and compact badges')}
         >
           <BadgeDots />
         </DemoPanel>

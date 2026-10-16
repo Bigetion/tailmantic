@@ -2,6 +2,7 @@ import { getManifest } from 'tailmantic/collector';
 import '@tailmantic/ui-components/tokens/dark';
 import './tokens.js';
 import './app.js';
+import './docs.js';
 import './polish.js';
 import '@tailmantic/ui-components/styles';
 import './showcase.js';

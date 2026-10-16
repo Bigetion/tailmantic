@@ -3,11 +3,10 @@ import { Check, Clock3, Code2, X } from 'lucide-react';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('chip');
-const CHIP_STYLES_NOTE =
-  'Chip and example layout styles are provided by @tailmantic/ui-components/chip/styles.';
 const ORIGINAL_TAGS = ['Design system', 'React', 'Accessibility'];
 const USAGE_CODE = `import { Chip } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/chip/styles';
@@ -143,21 +142,21 @@ export default function ChipPage() {
         <DemoPanel
           title="Chip variants"
           caption="Use compact labels with leading icons to communicate status and context."
-          code={CHIP_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Chip variants')}
         >
           <ChipVariants />
         </DemoPanel>
         <DemoPanel
           title="Selectable filters"
           caption="Toggle related filter chips on and off while keeping selection accessible."
-          code={CHIP_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Selectable filters')}
         >
           <SelectableFilters />
         </DemoPanel>
         <DemoPanel
           title="Removable tags"
           caption="Let users remove individual chips and restore the original set."
-          code={CHIP_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Removable tags')}
         >
           <RemovableTags />
         </DemoPanel>

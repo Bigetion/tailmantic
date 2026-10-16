@@ -4,11 +4,10 @@ import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('click-away-listener');
-const CLICK_AWAY_STYLES_NOTE =
-  'ClickAwayListener component and example styles are provided by @tailmantic/ui-components/click-away-listener/styles.';
 const USAGE_CODE = `import { useState } from 'react';
 import { ClickAwayListener } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/click-away-listener/styles';
@@ -186,21 +185,21 @@ export default function ClickAwayListenerPage() {
         <DemoPanel
           title="Outside click"
           caption="Keep a panel open during in-boundary interactions and dismiss it from outside."
-          code={CLICK_AWAY_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Outside click')}
         >
           <ClickAwayExample variant="basic" />
         </DemoPanel>
         <DemoPanel
           title="Portaled content"
           caption="Extend the outside check to a portal node so interacting with portaled content does not dismiss it."
-          code={CLICK_AWAY_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Portaled content')}
         >
           <ClickAwayExample variant="portal" />
         </DemoPanel>
         <DemoPanel
           title="Mouse and touch"
           caption="Use the component's click and touch listeners together without double handling a touch."
-          code={CLICK_AWAY_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Mouse and touch')}
         >
           <ClickAwayExample variant="touch" />
         </DemoPanel>

@@ -3,6 +3,7 @@ import { FilePlus2, Image, Mail, Plus, Share2, Users } from 'lucide-react';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('speed-dial');
@@ -17,8 +18,6 @@ const SHARE_ACTIONS = [
   { name: 'Share link', icon: <Share2 size={17} aria-hidden="true" /> },
   { name: 'Send email', icon: <Mail size={17} aria-hidden="true" /> },
 ];
-const SPEED_DIAL_STYLES_NOTE =
-  'SpeedDial component and example styles are provided by @tailmantic/ui-components/speed-dial/styles.';
 const USAGE_CODE = `import { useState } from 'react';
 import { SpeedDial } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/speed-dial/styles';
@@ -156,21 +155,21 @@ export default function SpeedDialPage() {
         <DemoPanel
           title="Quick actions"
           caption="Group common workspace tasks behind one floating button."
-          code={SPEED_DIAL_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Quick actions')}
         >
           <QuickActionsExample />
         </DemoPanel>
         <DemoPanel
           title="Expansion directions"
           caption="Choose whether actions expand above, below, or to either side of the trigger."
-          code={SPEED_DIAL_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Expansion directions')}
         >
           <DirectionExample />
         </DemoPanel>
         <DemoPanel
           title="Expanded actions"
           caption="Keep sharing shortcuts visible beside the content they act on."
-          code={SPEED_DIAL_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Expanded actions')}
         >
           <SharingExample />
         </DemoPanel>

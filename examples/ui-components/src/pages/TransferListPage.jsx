@@ -2,11 +2,10 @@ import { TransferList } from '@tailmantic/ui-components';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('transfer-list');
-const TRANSFER_LIST_STYLES_NOTE =
-  'Base and bulk-selection styles are provided by @tailmantic/ui-components/transfer-list/styles.';
 const ITEMS = [
   { id: 'wifi', label: 'Wi-Fi', description: 'Network access' },
   { id: 'bluetooth', label: 'Bluetooth', description: 'Nearby devices' },
@@ -109,7 +108,7 @@ export default function TransferListPage() {
     >
       <div className="component-showcase component-showcase-transfer-list">
         {EXAMPLES.map(({ id, title, caption, component: example }) => (
-          <DemoPanel key={id} title={title} caption={caption} code={TRANSFER_LIST_STYLES_NOTE}>
+          <DemoPanel key={id} title={title} caption={caption} code={getExampleCode(component.slug, title)}>
             {example}
           </DemoPanel>
         ))}

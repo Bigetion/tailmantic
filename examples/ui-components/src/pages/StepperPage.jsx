@@ -2,6 +2,7 @@ import { Step, Stepper } from '@tailmantic/ui-components';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('stepper');
@@ -11,8 +12,6 @@ const STEPS = [
   { label: 'Payment', detail: 'Choose a payment method.' },
   { label: 'Review', detail: 'Review the details before finishing.' },
 ];
-const STEPPER_STYLES_NOTE =
-  'Stepper component and example styles are provided by @tailmantic/ui-components/stepper/styles.';
 const USAGE_CODE = `import { Step, Stepper } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/stepper/styles';
 
@@ -159,21 +158,21 @@ export default function StepperPage() {
         <DemoPanel
           title="Horizontal checkout"
           caption="Move through a linear checkout and see completed, current, and upcoming steps."
-          code={STEPPER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Horizontal checkout')}
         >
           <StepperExample variant="horizontal" />
         </DemoPanel>
         <DemoPanel
           title="Vertical setup"
           caption="Show supporting details beside each step and allow people to revisit earlier sections."
-          code={STEPPER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Vertical setup')}
         >
           <StepperExample variant="vertical" />
         </DemoPanel>
         <DemoPanel
           title="Alternative labels"
           caption="Place step labels below their indicators and jump directly between project milestones."
-          code={STEPPER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Alternative labels')}
         >
           <StepperExample variant="alternative" />
         </DemoPanel>

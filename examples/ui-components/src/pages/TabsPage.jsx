@@ -3,11 +3,10 @@ import { Activity, Bell, FileText, LayoutDashboard, Settings, Users } from 'luci
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('tabs');
-const TAB_STYLES_NOTE =
-  'Tabs component and example styles are provided by @tailmantic/ui-components/tabs/styles.';
 const USAGE_CODE = `import { Tabs } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/tabs/styles';
 
@@ -227,21 +226,21 @@ export default function TabsPage() {
         <DemoPanel
           title="Workspace views"
           caption="Switch between related sections while keeping each panel connected to its selected tab."
-          code={TAB_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Workspace views')}
         >
           <WorkspaceTabsExample />
         </DemoPanel>
         <DemoPanel
           title="Scrollable project filters"
           caption="Browse a longer filter list with scroll controls and a live count on every tab."
-          code={TAB_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Scrollable project filters')}
         >
           <ScrollableTabsExample />
         </DemoPanel>
         <DemoPanel
           title="Centered settings"
           caption="Center a compact set of settings tabs and keep the active panel easy to scan."
-          code={TAB_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Centered settings')}
         >
           <CenteredTabsExample />
         </DemoPanel>

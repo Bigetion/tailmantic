@@ -5,11 +5,10 @@ import '@tailmantic/ui-components/button/styles';
 import '@tailmantic/ui-components/popper/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('popper');
-const POPPER_STYLES_NOTE =
-  'Popper and its example layout styles are provided by @tailmantic/ui-components/popper/styles.';
 const PLACEMENTS = [
   ['top', ArrowUp],
   ['right', ArrowRight],
@@ -318,21 +317,21 @@ export default function PopperPage() {
         <DemoPanel
           title="Anchored surface"
           caption="Position content relative to a reference element and render it in a portal."
-          code={POPPER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Anchored surface')}
         >
           <AnchoredSurface />
         </DemoPanel>
         <DemoPanel
           title="Placement controls"
           caption="Compare top, right, bottom, and left placements and see when Popper flips to stay in view."
-          code={POPPER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Placement controls')}
         >
           <PlacementPreview />
         </DemoPanel>
         <DemoPanel
           title="Offset modifier"
           caption="Adjust skidding and distance to control how far the floating surface sits from its reference."
-          code={POPPER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Offset modifier')}
         >
           <OffsetPreview />
         </DemoPanel>

@@ -5,11 +5,10 @@ import '@tailmantic/ui-components/snackbar/styles';
 import '@tailmantic/ui-components/button/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('snackbar');
-const SNACKBAR_STYLES_NOTE =
-  'Snackbar and its example layout styles are provided by @tailmantic/ui-components/snackbar/styles.';
 const USAGE_CODE = `import { Snackbar } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/snackbar/styles';
 
@@ -215,21 +214,21 @@ export default function SnackbarPage() {
         <DemoPanel
           title="Dismissible notification"
           caption="Show a brief status message, then dismiss it or let it disappear automatically."
-          code={SNACKBAR_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Dismissible notification')}
         >
           <DismissibleSnackbarExample />
         </DemoPanel>
         <DemoPanel
           title="Snackbar with action"
           caption="Offer a quick, reversible action while keeping the message concise and non-blocking."
-          code={SNACKBAR_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Snackbar with action')}
         >
           <ActionSnackbarExample />
         </DemoPanel>
         <DemoPanel
           title="Placement options"
           caption="Compare start, center, and end placement within a notification area."
-          code={SNACKBAR_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Placement options')}
         >
           <PositionSnackbarExample />
         </DemoPanel>

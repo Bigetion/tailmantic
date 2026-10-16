@@ -2,11 +2,10 @@ import { Slider } from '@tailmantic/ui-components';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('slider');
-const SLIDER_STYLES_NOTE =
-  'Base component styles are provided by @tailmantic/ui-components/slider/styles.';
 const MARKS = [0, 25, 50, 75, 100];
 const USAGE_CODE = `import { Slider } from '@tailmantic/ui-components';
 
@@ -161,7 +160,7 @@ export default function SliderPage() {
         {EXAMPLES.map(({ id, title, caption }) => {
           const Example = EXAMPLE_COMPONENTS[id];
           return (
-            <DemoPanel key={id} title={title} caption={caption} code={SLIDER_STYLES_NOTE}>
+            <DemoPanel key={id} title={title} caption={caption} code={getExampleCode(component.slug, title)}>
               <Example />
             </DemoPanel>
           );

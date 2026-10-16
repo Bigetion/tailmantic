@@ -5,11 +5,10 @@ import '@tailmantic/ui-components/button/styles';
 import '@tailmantic/ui-components/modal/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('modal');
-const MODAL_STYLES_NOTE =
-  'Modal and its example layout styles are provided by @tailmantic/ui-components/modal/styles.';
 const USAGE_CODE = `import { useState } from 'react';
 import { Modal } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/modal/styles';
@@ -297,21 +296,21 @@ export default function ModalPage() {
         <DemoPanel
           title="Project preview"
           caption="Present focused content above the page and return users to their context when it closes."
-          code={MODAL_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Project preview')}
         >
           <ProjectPreview />
         </DemoPanel>
         <DemoPanel
           title="Backdrop behavior"
           caption="Choose whether clicking the backdrop dismisses the modal; interactions inside remain contained."
-          code={MODAL_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Backdrop behavior')}
         >
           <BackdropBehavior />
         </DemoPanel>
         <DemoPanel
           title="Keyboard accessibility"
           caption="Keep keyboard focus inside the modal, support Escape, and restore focus when it closes."
-          code={MODAL_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Keyboard accessibility')}
         >
           <KeyboardAccessibility />
         </DemoPanel>

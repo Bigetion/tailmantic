@@ -1,15 +1,14 @@
 import { Alert, Button } from '@tailmantic/ui-components';
-import { Activity, Check, CircleX, Info, RotateCcw, TriangleAlert } from 'lucide-react';
+import { Check, CircleX, Info, RotateCcw, TriangleAlert } from 'lucide-react';
 import { useState } from 'react';
 import '@tailmantic/ui-components/alert/styles';
 import '@tailmantic/ui-components/button/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('alert');
-const ALERT_STYLES_NOTE =
-  'Alert and its example layout styles are provided by @tailmantic/ui-components/alert/styles.';
 const USAGE_CODE = `import { Alert } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/alert/styles';
 
@@ -134,21 +133,21 @@ export default function AlertPage() {
         <DemoPanel
           title="Semantic severity"
           caption="Communicate informational, successful, warning, and error states with a clear icon and message."
-          code={ALERT_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Semantic severity')}
         >
           <SeverityAlerts />
         </DemoPanel>
         <DemoPanel
           title="Outlined alerts"
           caption="Keep the same semantic color cues with a lighter, transparent surface."
-          code={ALERT_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Outlined alerts')}
         >
           <SeverityAlerts variant="outlined" />
         </DemoPanel>
         <DemoPanel
           title="Actions and dismissal"
           caption="Offer a useful follow-up action and let users dismiss or restore the message."
-          code={ALERT_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Actions and dismissal')}
         >
           <AlertActions />
         </DemoPanel>

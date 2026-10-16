@@ -1,26 +1,7 @@
 import { forwardRef, useId, useState } from 'react';
 import { cx } from 'tailmantic';
+import ChevronIcon from '../internal/ChevronIcon.jsx';
 import './accordion.styles.js';
-
-function ChevronDownIcon({ className, size = 16 }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <polyline points="6 9 12 15 18 9" />
-    </svg>
-  );
-}
 
 const Accordion = forwardRef(function Accordion({ children, className, ...props }, ref) {
   return (
@@ -85,7 +66,7 @@ const AccordionItem = forwardRef(function AccordionItem(
           {disabled ? (
             <span className="tm-accordion-unavailable">Unavailable</span>
           ) : (
-            <ChevronDownIcon className="tm-accordion-chevron" size={16} />
+            <ChevronIcon className="tm-accordion-chevron" size={16} />
           )}
         </button>
       </h3>

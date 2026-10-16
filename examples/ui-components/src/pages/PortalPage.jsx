@@ -6,11 +6,10 @@ import '@tailmantic/ui-components/button/styles';
 import '@tailmantic/ui-components/portal/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('portal');
-const PORTAL_STYLES_NOTE =
-  'Portal and its example layout styles are provided by @tailmantic/ui-components/portal/styles.';
 const USAGE_CODE = `import { Portal } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/portal/styles';
 
@@ -185,21 +184,21 @@ export default function PortalPage() {
         <DemoPanel
           title="Portal to document.body"
           caption="Render a notification outside its React parent and inspect its DOM destination."
-          code={PORTAL_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Portal to document.body')}
         >
           <BodyTargetDemo />
         </DemoPanel>
         <DemoPanel
           title="Custom portal target"
           caption="Mount content into a chosen DOM node while React events continue to bubble through the component tree."
-          code={PORTAL_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Custom portal target')}
         >
           <CustomTargetDemo />
         </DemoPanel>
         <DemoPanel
           title="Escape clipping"
           caption="Render a floating layer outside an overflow-hidden parent so it remains visible."
-          code={PORTAL_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Escape clipping')}
         >
           <ClippingDemo />
         </DemoPanel>

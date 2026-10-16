@@ -5,6 +5,7 @@ import { cx } from 'tailmantic';
 import '@tailmantic/ui-components/typography/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('typography');
@@ -21,8 +22,6 @@ const COLORS = [
   ['Success', 'success', 'success'],
   ['Warning', 'warning', 'warning'],
 ];
-const TYPOGRAPHY_STYLES_NOTE =
-  'Typography and its example layout styles are provided by @tailmantic/ui-components/typography/styles.';
 const USAGE_CODE = `import Typography from '@tailmantic/ui-components/typography';
 import '@tailmantic/ui-components/typography/styles';
 
@@ -199,21 +198,21 @@ export default function TypographyPage() {
         <DemoPanel
           title="Type scale"
           caption="Build a clear hierarchy from display text through headings, body copy, and captions."
-          code={TYPOGRAPHY_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Type scale')}
         >
           <TypographyScale />
         </DemoPanel>
         <DemoPanel
           title="Font weights"
           caption="Compare regular through bold weights while keeping size and spacing consistent."
-          code={TYPOGRAPHY_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Font weights')}
         >
           <TypographyWeights />
         </DemoPanel>
         <DemoPanel
           title="Color and alignment"
           caption="Pair semantic text colors with alignment controls while preserving readability."
-          code={TYPOGRAPHY_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Color and alignment')}
         >
           <TypographyColors />
         </DemoPanel>

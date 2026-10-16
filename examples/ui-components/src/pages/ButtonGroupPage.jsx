@@ -12,12 +12,11 @@ import {
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { useClickAway } from '../components/Popper.jsx';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('button-group');
-const BUTTON_GROUP_STYLES_NOTE =
-  'Base component styles are provided by @tailmantic/ui-components/button-group/styles.';
 const VIEWS = [
   { label: 'Preview', Icon: Eye },
   { label: 'Source', Icon: Code2 },
@@ -211,21 +210,21 @@ export default function ButtonGroupPage() {
         <DemoPanel
           title="Segmented choices"
           caption="Keep a small set of mutually exclusive views in one compact control."
-          code={BUTTON_GROUP_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Segmented choices')}
         >
           <SegmentedChoices />
         </DemoPanel>
         <DemoPanel
           title="Vertical controls"
           caption="Change orientation while keeping related actions visually connected."
-          code={BUTTON_GROUP_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Vertical controls')}
         >
           <VerticalControls />
         </DemoPanel>
         <DemoPanel
           title="Split action"
           caption="Pair a primary action with clearly discoverable alternatives."
-          code={BUTTON_GROUP_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Split action')}
         >
           <SplitAction />
         </DemoPanel>

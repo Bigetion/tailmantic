@@ -1,103 +1,67 @@
+import { lazy, Suspense } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { componentCatalog } from '../data/components.js';
-import AccordionPage from './AccordionPage.jsx';
-import AlertPage from './AlertPage.jsx';
-import AppBarPage from './AppBarPage.jsx';
-import AutocompletePage from './AutocompletePage.jsx';
-import AvatarPage from './AvatarPage.jsx';
-import BadgePage from './BadgePage.jsx';
-import BottomNavigationPage from './BottomNavigationPage.jsx';
-import BreadcrumbsPage from './BreadcrumbsPage.jsx';
-import ButtonGroupPage from './ButtonGroupPage.jsx';
-import ButtonPage from './ButtonPage.jsx';
-import CardPage from './CardPage.jsx';
-import CheckboxPage from './CheckboxPage.jsx';
-import ChipPage from './ChipPage.jsx';
-import ClickAwayListenerPage from './ClickAwayListenerPage.jsx';
-import DialogPage from './DialogPage.jsx';
-import DividerPage from './DividerPage.jsx';
-import DrawerPage from './DrawerPage.jsx';
-import FloatingActionButtonPage from './FloatingActionButtonPage.jsx';
-import IconGlyphPage from './IconGlyphPage.jsx';
-import IconsPage from './IconsPage.jsx';
-import LinkPage from './LinkPage.jsx';
-import ListPage from './ListPage.jsx';
-import MenuPage from './MenuPage.jsx';
-import ModalPage from './ModalPage.jsx';
-import NumberFieldPage from './NumberFieldPage.jsx';
-import PaginationPage from './PaginationPage.jsx';
-import PaperPage from './PaperPage.jsx';
-import PopoverPage from './PopoverPage.jsx';
-import PopperPage from './PopperPage.jsx';
-import PortalPage from './PortalPage.jsx';
-import ProgressPage from './ProgressPage.jsx';
-import RadioGroupPage from './RadioGroupPage.jsx';
-import RatingPage from './RatingPage.jsx';
-import SelectPage from './SelectPage.jsx';
-import SkeletonPage from './SkeletonPage.jsx';
-import SliderPage from './SliderPage.jsx';
-import SnackbarPage from './SnackbarPage.jsx';
-import SpeedDialPage from './SpeedDialPage.jsx';
-import StepperPage from './StepperPage.jsx';
-import SwitchPage from './SwitchPage.jsx';
-import TablePage from './TablePage.jsx';
-import TabsPage from './TabsPage.jsx';
-import TextFieldPage from './TextFieldPage.jsx';
-import ToggleButtonPage from './ToggleButtonPage.jsx';
-import TooltipPage from './TooltipPage.jsx';
-import TransferListPage from './TransferListPage.jsx';
-import TypographyPage from './TypographyPage.jsx';
+
+const componentPages = {
+  accordion: lazy(() => import('./AccordionPage.jsx')),
+  alert: lazy(() => import('./AlertPage.jsx')),
+  'app-bar': lazy(() => import('./AppBarPage.jsx')),
+  autocomplete: lazy(() => import('./AutocompletePage.jsx')),
+  avatar: lazy(() => import('./AvatarPage.jsx')),
+  badge: lazy(() => import('./BadgePage.jsx')),
+  'bottom-navigation': lazy(() => import('./BottomNavigationPage.jsx')),
+  breadcrumbs: lazy(() => import('./BreadcrumbsPage.jsx')),
+  button: lazy(() => import('./ButtonPage.jsx')),
+  'button-group': lazy(() => import('./ButtonGroupPage.jsx')),
+  card: lazy(() => import('./CardPage.jsx')),
+  checkbox: lazy(() => import('./CheckboxPage.jsx')),
+  chip: lazy(() => import('./ChipPage.jsx')),
+  'click-away-listener': lazy(() => import('./ClickAwayListenerPage.jsx')),
+  dialog: lazy(() => import('./DialogPage.jsx')),
+  divider: lazy(() => import('./DividerPage.jsx')),
+  drawer: lazy(() => import('./DrawerPage.jsx')),
+  'floating-action-button': lazy(() => import('./FloatingActionButtonPage.jsx')),
+  'icon-glyph': lazy(() => import('./IconGlyphPage.jsx')),
+  icons: lazy(() => import('./IconsPage.jsx')),
+  link: lazy(() => import('./LinkPage.jsx')),
+  list: lazy(() => import('./ListPage.jsx')),
+  menu: lazy(() => import('./MenuPage.jsx')),
+  modal: lazy(() => import('./ModalPage.jsx')),
+  'number-field': lazy(() => import('./NumberFieldPage.jsx')),
+  pagination: lazy(() => import('./PaginationPage.jsx')),
+  paper: lazy(() => import('./PaperPage.jsx')),
+  popover: lazy(() => import('./PopoverPage.jsx')),
+  popper: lazy(() => import('./PopperPage.jsx')),
+  portal: lazy(() => import('./PortalPage.jsx')),
+  progress: lazy(() => import('./ProgressPage.jsx')),
+  'radio-group': lazy(() => import('./RadioGroupPage.jsx')),
+  rating: lazy(() => import('./RatingPage.jsx')),
+  select: lazy(() => import('./SelectPage.jsx')),
+  skeleton: lazy(() => import('./SkeletonPage.jsx')),
+  slider: lazy(() => import('./SliderPage.jsx')),
+  snackbar: lazy(() => import('./SnackbarPage.jsx')),
+  'speed-dial': lazy(() => import('./SpeedDialPage.jsx')),
+  stepper: lazy(() => import('./StepperPage.jsx')),
+  switch: lazy(() => import('./SwitchPage.jsx')),
+  table: lazy(() => import('./TablePage.jsx')),
+  tabs: lazy(() => import('./TabsPage.jsx')),
+  'text-field': lazy(() => import('./TextFieldPage.jsx')),
+  'toggle-button': lazy(() => import('./ToggleButtonPage.jsx')),
+  tooltip: lazy(() => import('./TooltipPage.jsx')),
+  'transfer-list': lazy(() => import('./TransferListPage.jsx')),
+  typography: lazy(() => import('./TypographyPage.jsx')),
+};
 
 export default function ComponentPageRoute() {
   const { slug } = useParams();
-
-  if (slug === 'alert') return <AlertPage />;
-  if (slug === 'app-bar') return <AppBarPage />;
-  if (slug === 'accordion') return <AccordionPage />;
-  if (slug === 'avatar') return <AvatarPage />;
-  if (slug === 'autocomplete') return <AutocompletePage />;
-  if (slug === 'badge') return <BadgePage />;
-  if (slug === 'bottom-navigation') return <BottomNavigationPage />;
-  if (slug === 'breadcrumbs') return <BreadcrumbsPage />;
-  if (slug === 'button') return <ButtonPage />;
-  if (slug === 'button-group') return <ButtonGroupPage />;
-  if (slug === 'card') return <CardPage />;
-  if (slug === 'checkbox') return <CheckboxPage />;
-  if (slug === 'chip') return <ChipPage />;
-  if (slug === 'click-away-listener') return <ClickAwayListenerPage />;
-  if (slug === 'divider') return <DividerPage />;
-  if (slug === 'dialog') return <DialogPage />;
-  if (slug === 'drawer') return <DrawerPage />;
-  if (slug === 'floating-action-button') return <FloatingActionButtonPage />;
-  if (slug === 'icons') return <IconsPage />;
-  if (slug === 'icon-glyph') return <IconGlyphPage />;
-  if (slug === 'list') return <ListPage />;
-  if (slug === 'link') return <LinkPage />;
-  if (slug === 'menu') return <MenuPage />;
-  if (slug === 'modal') return <ModalPage />;
-  if (slug === 'number-field') return <NumberFieldPage />;
-  if (slug === 'paper') return <PaperPage />;
-  if (slug === 'pagination') return <PaginationPage />;
-  if (slug === 'popover') return <PopoverPage />;
-  if (slug === 'popper') return <PopperPage />;
-  if (slug === 'portal') return <PortalPage />;
-  if (slug === 'progress') return <ProgressPage />;
-  if (slug === 'radio-group') return <RadioGroupPage />;
-  if (slug === 'rating') return <RatingPage />;
-  if (slug === 'select') return <SelectPage />;
-  if (slug === 'speed-dial') return <SpeedDialPage />;
-  if (slug === 'stepper') return <StepperPage />;
-  if (slug === 'slider') return <SliderPage />;
-  if (slug === 'skeleton') return <SkeletonPage />;
-  if (slug === 'snackbar') return <SnackbarPage />;
-  if (slug === 'switch') return <SwitchPage />;
-  if (slug === 'tabs') return <TabsPage />;
-  if (slug === 'table') return <TablePage />;
-  if (slug === 'text-field') return <TextFieldPage />;
-  if (slug === 'toggle-button') return <ToggleButtonPage />;
-  if (slug === 'transfer-list') return <TransferListPage />;
-  if (slug === 'tooltip') return <TooltipPage />;
-  if (slug === 'typography') return <TypographyPage />;
+  const ComponentPage = componentPages[slug];
+  if (ComponentPage) {
+    return (
+      <Suspense fallback={<div className="content-width not-found">Loading component docs…</div>}>
+        <ComponentPage />
+      </Suspense>
+    );
+  }
   return (
     <div className="content-width not-found">
       <p className="component-count">404 / COMPONENT NOT FOUND</p>

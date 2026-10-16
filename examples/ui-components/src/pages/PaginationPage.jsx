@@ -2,11 +2,10 @@ import { Pagination } from '@tailmantic/ui-components';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('pagination');
-const PAGINATION_STYLES_NOTE =
-  'Pagination component and example styles are provided by @tailmantic/ui-components/pagination/styles.';
 const USAGE_CODE = `import { useState } from 'react';
 import { Pagination } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/pagination/styles';
@@ -192,21 +191,21 @@ export default function PaginationPage() {
         <DemoPanel
           title="Page navigation"
           caption="Move through a page range and keep the current page and result range in sync."
-          code={PAGINATION_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Page navigation')}
         >
           <BasicPaginationExample />
         </DemoPanel>
         <DemoPanel
           title="Outlined pagination"
           caption="Use bordered page controls with first and last shortcuts for a longer range."
-          code={PAGINATION_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Outlined pagination')}
         >
           <OutlinedPaginationExample />
         </DemoPanel>
         <DemoPanel
           title="Rows per page"
           caption="Change the number of visible results and reset pagination to the first page."
-          code={PAGINATION_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Rows per page')}
         >
           <PaginatedProjectsExample />
         </DemoPanel>

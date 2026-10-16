@@ -13,13 +13,12 @@ import {
 import { useCallback, useEffect, useRef, useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('menu');
 const PLACEMENTS = ['bottom-start', 'bottom-end', 'top-start', 'top-end'];
 const SORT_OPTIONS = ['Recently updated', 'Name A to Z', 'Created date'];
-const MENU_STYLES_NOTE =
-  'Menu and MenuItem component and example styles are provided by @tailmantic/ui-components/menu/styles.';
 const USAGE_CODE = `import { useState } from 'react';
 import { Menu, MenuItem } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/menu/styles';
@@ -311,21 +310,21 @@ export default function MenuPage() {
         <DemoPanel
           title="Context actions"
           caption="Open a compact action list anchored to its trigger and dismiss it with Escape or a click away."
-          code={MENU_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Context actions')}
         >
           <ContextMenuExample />
         </DemoPanel>
         <DemoPanel
           title="Placement options"
           caption="Position a menu around its trigger and let Popper keep it within the available viewport."
-          code={MENU_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Placement options')}
         >
           <PlacementMenuExample />
         </DemoPanel>
         <DemoPanel
           title="Selectable options"
           caption="Choose a sort order from a keyboard-accessible menu and reflect the current selection."
-          code={MENU_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Selectable options')}
         >
           <SelectionMenuExample />
         </DemoPanel>

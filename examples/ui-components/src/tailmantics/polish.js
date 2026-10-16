@@ -42,4 +42,42 @@ register.all({
   'orbit-two': { tw: 'inset-[-9px] border-[#7083aa]/10' },
   'hero-emblem-spark': { tw: 'absolute right-1 top-5 flex size-8 items-center justify-center rounded-xl border border-[#6c83b5]/30 bg-[#18243a] text-[#b8cbff] shadow-lg' },
   'component-toc': { tw: 'mb-9 flex items-center gap-5 border-b border-[#202a39] pb-3 text-[10px] max-sm:gap-4' },
+  'demo-card': {
+    tw: 'mb-5 overflow-hidden rounded-xl border border-[#25272a] bg-[#0a0b0c] shadow-none',
+  },
+  'demo-card-header': { tw: 'border-0 bg-transparent px-4 pb-1 pt-4' },
+  'demo-title': { tw: 'text-[10px] font-medium text-[#e3e5e8]' },
+  'demo-caption': { tw: 'mt-1 text-[9px] leading-4 text-[#8d929b]' },
+  'demo-content': { tw: 'min-h-[130px] bg-transparent px-4 py-3' },
+  'demo-footer': { tw: 'justify-center border-t border-[#202225] bg-[#151617] px-4 py-2.5' },
+  'code-toggle': {
+    tw: 'h-6 rounded border border-[#303337] bg-[#0b0c0d] px-2 text-[8px] text-[#d2d5d9] hover:bg-[#202225] hover:text-white',
+  },
+  'code-block': { tw: 'border-t border-[#25272a] bg-[#151617] px-4 py-3' },
+  'code-block pre': { tw: 'text-[9px] leading-4' },
+  'page-footer': { tw: 'mt-10' },
+  'component-page .component-showcase': { tw: 'mt-5' },
+  'component-page .component-showcase > .demo-card': { tw: 'mb-6' },
+  'component-page .component-showcase .demo-content': { tw: 'min-h-[160px]' },
+  'component-page .component-showcase .demo-canvas': { tw: 'justify-center' },
+  'component-page .component-showcase-accordion .demo-content': { tw: 'min-h-[210px]' },
+  'tm-accordion-example-bordered': {
+    tw: 'rounded-sm border-x-0 border-t-0 bg-transparent',
+  },
+  'accordion-card-example': {
+    tw: 'w-full max-w-[340px] rounded-lg border border-[#292b2e] bg-[#151617] p-4',
+  },
+  'accordion-card-example > strong': {
+    tw: 'mb-1 block text-[10px] font-semibold text-[#e1e4e8]',
+  },
+  'accordion-card-example > p': {
+    tw: 'mb-3 text-[8px] leading-4 text-[#9298a1]',
+  },
+  'accordion-card-example .tm-accordion': {
+    tw: 'border-0 bg-transparent',
+  },
+  'accordion-card-example .tm-accordion-trigger': { tw: 'px-0' },
+  'accordion-card-example .tm-accordion-panel': { tw: 'px-0' },
+  'accordion-rtl-example .tm-accordion-trigger': { tw: 'text-right' },
+  'accordion-rtl-example .tm-accordion-panel': { tw: 'px-4 text-right' },
 });

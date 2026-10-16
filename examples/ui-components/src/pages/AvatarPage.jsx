@@ -2,11 +2,10 @@ import { Avatar, AvatarGroup } from '@tailmantic/ui-components';
 import { User } from 'lucide-react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('avatar');
-const AVATAR_STYLES_NOTE =
-  'Avatar, color, size, and group styles are provided by @tailmantic/ui-components/avatar/styles.';
 const TEAM = [
   { name: 'Jordan Davis', initials: 'JD', color: 'indigo' },
   { name: 'Morgan Kim', initials: 'MK', color: 'teal' },
@@ -119,21 +118,21 @@ export default function AvatarPage() {
         <DemoPanel
           title="Avatar fallbacks"
           caption="Represent a person with initials, an icon, or a neutral fallback."
-          code={AVATAR_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Avatar fallbacks')}
         >
           <AvatarFallbacks />
         </DemoPanel>
         <DemoPanel
           title="Avatar sizes"
           caption="Choose a size that fits the density and hierarchy of the surrounding interface."
-          code={AVATAR_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Avatar sizes')}
         >
           <AvatarSizes />
         </DemoPanel>
         <DemoPanel
           title="Avatar group"
           caption="Show a compact team of people and summarize additional members."
-          code={AVATAR_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Avatar group')}
         >
           <AvatarGroupExample />
         </DemoPanel>

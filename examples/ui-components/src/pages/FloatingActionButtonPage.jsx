@@ -3,11 +3,10 @@ import { FileText, Heart, Image, Mail, Plus, X } from 'lucide-react';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('floating-action-button');
-const FAB_STYLES_NOTE =
-  'Base component styles are provided by @tailmantic/ui-components/floating-action-button/styles.';
 const ACTIONS = [
   { label: 'Upload image', Icon: Image },
   { label: 'New document', Icon: FileText },
@@ -145,21 +144,21 @@ export default function FloatingActionButtonPage() {
         <DemoPanel
           title="Floating actions"
           caption="Keep the screen’s primary action easy to reach and visually distinct."
-          code={FAB_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Floating actions')}
         >
           <FloatingActions />
         </DemoPanel>
         <DemoPanel
           title="FAB sizes"
           caption="Choose a control size that fits the action’s prominence and available space."
-          code={FAB_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'FAB sizes')}
         >
           <FloatingActionSizes />
         </DemoPanel>
         <DemoPanel
           title="Quick action group"
           caption="Reveal secondary actions from one compact floating action button."
-          code={FAB_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Quick action group')}
         >
           <QuickActionGroup />
         </DemoPanel>

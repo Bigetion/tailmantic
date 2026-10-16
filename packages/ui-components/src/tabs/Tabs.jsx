@@ -1,39 +1,7 @@
 import { forwardRef, useCallback, useEffect, useId, useRef, useState } from 'react';
 import { cx } from 'tailmantic';
+import ChevronIcon from '../internal/ChevronIcon.jsx';
 import './tabs.styles.js';
-
-// Improvement 6 — scroll button SVG chevrons
-function ChevronLeft() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function ChevronRight() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function ChevronUp() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M4 10l4-4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function ChevronDown() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 const Tabs = forwardRef(function Tabs(
   {
@@ -226,7 +194,7 @@ const Tabs = forwardRef(function Tabs(
             disabled={!canScrollBack}
             onClick={() => scrollTabs('back')}
           >
-            {orientation === 'vertical' ? <ChevronUp /> : <ChevronLeft />}
+            <ChevronIcon direction={orientation === 'vertical' ? 'up' : 'left'} />
           </button>
           <div
             ref={listScrollRef}
@@ -245,7 +213,7 @@ const Tabs = forwardRef(function Tabs(
             disabled={!canScrollForward}
             onClick={() => scrollTabs('forward')}
           >
-            {orientation === 'vertical' ? <ChevronDown /> : <ChevronRight />}
+            <ChevronIcon direction={orientation === 'vertical' ? 'down' : 'right'} />
           </button>
         </div>
       ) : (

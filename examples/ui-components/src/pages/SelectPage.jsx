@@ -2,11 +2,10 @@ import { Select } from '@tailmantic/ui-components';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('select');
-const SELECT_STYLES_NOTE =
-  'Base component styles are provided by @tailmantic/ui-components/select/styles.';
 const OPTIONS = [
   { value: 'engineering', label: 'Engineering', detail: 'Product and platform teams' },
   { value: 'design', label: 'Design', detail: 'Research and user experience' },
@@ -107,7 +106,7 @@ export default function SelectPage() {
         {EXAMPLES.map(({ id, title, caption }) => {
           const Example = id === 'select' ? SingleSelection : MultipleSelection;
           return (
-            <DemoPanel key={id} title={title} caption={caption} code={SELECT_STYLES_NOTE}>
+            <DemoPanel key={id} title={title} caption={caption} code={getExampleCode(component.slug, title)}>
               <Example />
             </DemoPanel>
           );

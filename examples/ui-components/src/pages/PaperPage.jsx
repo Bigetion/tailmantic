@@ -3,12 +3,11 @@ import { Layers, Plus } from 'lucide-react';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('paper');
 const LEVELS = [0, 1, 2, 3, 4, 5];
-const PAPER_STYLES_NOTE =
-  'Paper component and example styles are provided by @tailmantic/ui-components/paper/styles.';
 const USAGE_CODE = `import Paper from '@tailmantic/ui-components/paper';
 import '@tailmantic/ui-components/paper/styles';
 
@@ -182,21 +181,21 @@ export default function PaperPage() {
         <DemoPanel
           title="Surface elevation"
           caption="See how distance from the page changes the prominence of a surface."
-          code={PAPER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Surface elevation')}
         >
           <SurfaceElevationDemo />
         </DemoPanel>
         <DemoPanel
           title="Elevation scale"
           caption="Choose a level to preview the elevation values supported by Paper."
-          code={PAPER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Elevation scale')}
         >
           <ElevationScaleDemo />
         </DemoPanel>
         <DemoPanel
           title="Surface variants"
           caption="Compare subtle, outlined, and nested treatments for different content needs."
-          code={PAPER_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Surface variants')}
         >
           <PaperVariantsDemo />
         </DemoPanel>

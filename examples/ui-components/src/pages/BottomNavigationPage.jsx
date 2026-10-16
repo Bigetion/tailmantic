@@ -3,6 +3,7 @@ import { Bell, Bookmark, Compass, Home, Search, UserRound } from 'lucide-react';
 import { useState } from 'react';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('bottom-navigation');
@@ -18,8 +19,6 @@ const DESTINATION_CONTENT = {
   saved: ['Saved for later', 'Your bookmarked updates are ready when you are.', Bookmark],
   profile: ['Your profile', 'Manage your account and personal preferences.', UserRound],
 };
-const BOTTOM_NAVIGATION_STYLES_NOTE =
-  'Bottom Navigation component and example styles are provided by @tailmantic/ui-components/bottom-navigation/styles.';
 const USAGE_CODE = `import { useState } from 'react';
 import { BottomNavigation, BottomNavigationItem } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/bottom-navigation/styles';
@@ -156,21 +155,21 @@ export default function BottomNavigationPage() {
         <DemoPanel
           title="Primary destinations"
           caption="Switch between top-level sections and reflect the active destination."
-          code={BOTTOM_NAVIGATION_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Primary destinations')}
         >
           <DevicePreview mode="standard" />
         </DemoPanel>
         <DemoPanel
           title="Compact labels"
           caption="Keep inactive destinations compact and reveal the label for the current section."
-          code={BOTTOM_NAVIGATION_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Compact labels')}
         >
           <DevicePreview mode="labels" />
         </DemoPanel>
         <DemoPanel
           title="Badges and icon states"
           caption="Pair a notification count with clear selected and unread states."
-          code={BOTTOM_NAVIGATION_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Badges and icon states')}
         >
           <DevicePreview mode="badges" />
         </DemoPanel>

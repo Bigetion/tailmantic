@@ -5,11 +5,10 @@ import '@tailmantic/ui-components/dialog/styles';
 import '@tailmantic/ui-components/button/styles';
 import ComponentPageLayout from '../components/ComponentPageLayout.jsx';
 import DemoPanel from '../components/DemoPanel.jsx';
+import { getExampleCode } from '../components/exampleCode.js';
 import { getComponentBySlug } from '../data/components.js';
 
 const component = getComponentBySlug('dialog');
-const DIALOG_STYLES_NOTE =
-  'Dialog and its example layout styles are provided by @tailmantic/ui-components/dialog/styles.';
 const USAGE_CODE = `import { Button, Dialog } from '@tailmantic/ui-components';
 import '@tailmantic/ui-components/dialog/styles';
 
@@ -188,21 +187,21 @@ export default function DialogPage() {
         <DemoPanel
           title="Confirmation dialog"
           caption="Help users confirm whether to save or discard pending changes."
-          code={DIALOG_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Confirmation dialog')}
         >
           <ConfirmationDialog />
         </DemoPanel>
         <DemoPanel
           title="Destructive confirmation"
           caption="Clearly explain an irreversible action and distinguish the destructive choice."
-          code={DIALOG_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Destructive confirmation')}
         >
           <ConfirmationDialog destructive />
         </DemoPanel>
         <DemoPanel
           title="Focused composition"
           caption="Use a larger dialog for a short multi-field task without navigating away."
-          code={DIALOG_STYLES_NOTE}
+          code={getExampleCode(component.slug, 'Focused composition')}
         >
           <AnnouncementDialog />
         </DemoPanel>

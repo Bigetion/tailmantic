@@ -5,7 +5,7 @@ register.all('tm-button', {
   contained:
     'bg-[var(--tm-blue-dark,#547be8)] text-white shadow-[0_2px_4px_rgba(72,111,216,.24)] enabled:hover:bg-[#6689ed] enabled:hover:shadow-[0_4px_12px_rgba(72,111,216,.3)]',
   outlined:
-    'border border-[#607db9] bg-transparent text-[var(--tm-blue,#9bbcff)] enabled:hover:border-[var(--tm-blue,#9bbcff)] enabled:hover:bg-[var(--tm-blue-soft,rgba(125,159,255,.12))]',
+    '!border-[#607db9] bg-transparent text-[var(--tm-blue,#9bbcff)] enabled:hover:!border-[var(--tm-blue,#9bbcff)] enabled:hover:bg-[var(--tm-blue-soft,rgba(125,159,255,.12))]',
   text: 'bg-transparent text-[var(--tm-blue,#9bbcff)] enabled:hover:bg-[var(--tm-blue-soft,rgba(125,159,255,.12))]',
   small: '!h-8 gap-1.5 !px-3 !text-[11px]',
   large: 'h-11 gap-2.5 px-5 text-sm',
