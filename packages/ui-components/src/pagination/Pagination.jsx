@@ -1,6 +1,43 @@
 import { forwardRef } from 'react';
 import { cx } from 'tailmantic';
+import ChevronIcon from '../internal/ChevronIcon.jsx';
 import './pagination.styles.js';
+
+function PaginationIcon({ type }) {
+  if (type === 'previous') {
+    return <ChevronIcon className="tm-pagination-icon" direction="left" size={20} />;
+  }
+  if (type === 'next') {
+    return <ChevronIcon className="tm-pagination-icon" direction="right" size={20} />;
+  }
+
+  return (
+    <svg
+      className="tm-pagination-icon"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {type === 'first' ? (
+        <>
+          <path d="M12 18 6 12l6-6" />
+          <path d="M20 18 14 12l6-6" />
+        </>
+      ) : (
+        <>
+          <path d="M12 18 18 12l-6-6" />
+          <path d="M4 18 10 12 4 6" />
+        </>
+      )}
+    </svg>
+  );
+}
 
 function getPages(count, page, siblingCount, boundaryCount) {
   const pages = new Set();
@@ -48,16 +85,16 @@ const Pagination = forwardRef(function Pagination(
   const change = (next, event) => {
     if (!disabled && next >= 1 && next <= total && next !== current) onChange?.(event, next);
   };
-  const button = (type, label, target, isDisabled) => (
+  const button = (type, target, isDisabled) => (
     <button
       key={type}
       type="button"
-      className="tm-pagination-button"
+      className="tm-pagination-button tm-pagination-nav-button"
       aria-label={getItemAriaLabel(type, target)}
       disabled={disabled || isDisabled}
       onClick={(event) => change(target, event)}
     >
-      {label}
+      <PaginationIcon type={type} />
     </button>
   );
   return (
@@ -68,8 +105,8 @@ const Pagination = forwardRef(function Pagination(
       className={cx('tm-pagination', className)}
     >
       <ul className="tm-pagination-list">
-        {showFirstButton && <li>{button('first', '«', 1, current <= 1)}</li>}
-        <li>{button('previous', '‹', current - 1, current <= 1)}</li>
+        {showFirstButton && <li>{button('first', 1, current <= 1)}</li>}
+        <li>{button('previous', current - 1, current <= 1)}</li>
         {pages.map(({ page: pageNumber, key, ellipsis }) => (
           <li key={key}>
             {ellipsis ? (
@@ -93,8 +130,8 @@ const Pagination = forwardRef(function Pagination(
             )}
           </li>
         ))}
-        <li>{button('next', '›', current + 1, current >= total)}</li>
-        {showLastButton && <li>{button('last', '»', total, current >= total)}</li>}
+        <li>{button('next', current + 1, current >= total)}</li>
+        {showLastButton && <li>{button('last', total, current >= total)}</li>}
       </ul>
     </nav>
   );

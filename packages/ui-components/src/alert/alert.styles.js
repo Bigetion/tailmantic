@@ -1,7 +1,7 @@
 import { register } from 'tailmantic/collector';
 
 register.all('tm-alert', {
-  '': 'flex w-full items-start gap-3 rounded-lg border px-4 py-3 text-sm',
+  '': 'box-border flex w-full items-start gap-3 rounded-lg border px-4 py-3 text-sm',
 
   info: 'border-[var(--tm-info-border,#315a78)] bg-[var(--tm-info-bg,#142b3b)] text-[var(--tm-info,#a9d6f5)]',
   success:

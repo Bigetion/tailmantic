@@ -8,7 +8,7 @@ register.all('tm-badge', {
   danger: 'bg-[#a94650]',
   default: 'bg-[var(--muted,#53627a)]',
   standard: 'top-0 right-0 translate-x-1/2 -translate-y-1/2',
-  dot: 'size-2 min-w-0 border-0 p-0 top-0 right-0 translate-x-1/2 -translate-y-1/2',
+  dot: '!size-2 !min-w-0 !border-0 !p-0 top-0 right-0 translate-x-1/2 -translate-y-1/2',
   'overlap-circular': 'right-[12%]',
   'overlap-rectangular': 'right-0',
 });

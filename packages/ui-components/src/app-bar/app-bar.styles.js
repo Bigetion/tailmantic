@@ -1,7 +1,7 @@
 import { register } from 'tailmantic/collector';
 
 register.all('tm-app-bar', {
-  '': 'z-10 flex min-h-14 w-full items-center gap-4 border-b border-[var(--border,#273142)] bg-[var(--panel,#111824)] px-4 py-2 text-[var(--text,#edf2fb)]',
+  '': 'z-10 box-border flex min-h-14 w-full items-center gap-4 border-b border-[var(--border,#273142)] bg-[var(--panel,#111824)] px-4 py-2 text-[var(--text,#edf2fb)]',
   static: 'relative',
   sticky: 'sticky top-0',
   fixed: 'fixed inset-x-0 top-0',

@@ -1,6 +1,6 @@
 {
   "name": "@tailmantic/ui-components",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Standalone React components styled with Tailmantic.",
   "homepage": "https://github.com/Bigetion/tailmantic/tree/main/packages/ui-components#readme",
   "repository": {
@@ -277,7 +277,7 @@
   ],
   "scripts": {
     "build": "vite build",
-    "test": "npm run build && node --test test/popper.test.js test/overlays.test.js test/interactions.test.js test/exports.test.js test/pack-consumer.test.js test/ssr.test.js",
+    "test": "npm run build && node --test test/popper.test.js test/overlays.test.js test/interactions.test.js test/exports.test.js test/pack-consumer.test.js test/ssr.test.js test/badge-styles.test.js test/box-sizing-styles.test.js test/button-group-styles.test.js test/toggle-button-styles.test.js",
     "typecheck": "tsc --noEmit --strict --jsx react-jsx --module ESNext --moduleResolution Bundler --target ES2022 index.d.ts src/index.d.ts src/type-tests/public-api.tsx src/type-tests/all-components.ts",
     "prepack": "npm run build",
     "prepublishOnly": "npm test && npm run typecheck"

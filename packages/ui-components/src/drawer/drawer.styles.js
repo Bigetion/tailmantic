@@ -1,7 +1,7 @@
 import { register } from 'tailmantic/collector';
 
 register.all('tm-drawer', {
-  '': 'fixed z-50 flex h-dvh w-[min(20rem,85vw)] flex-col overflow-auto bg-[var(--surface,#fff)] p-4 text-[var(--text,#20242b)] shadow-[0_8px_32px_rgba(0,0,0,.2)]',
+  '': 'fixed z-50 box-border flex h-dvh w-[min(20rem,85vw)] flex-col overflow-auto bg-[var(--surface,#fff)] p-4 text-[var(--text,#20242b)] shadow-[0_8px_32px_rgba(0,0,0,.2)]',
   'anchor-left': 'inset-y-0 left-0',
   'anchor-right': 'inset-y-0 right-0',
   'anchor-top': 'inset-x-0 top-0 h-auto w-full',

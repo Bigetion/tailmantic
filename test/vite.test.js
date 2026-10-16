@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, readFile, rm, symlink, writeFile } from 'node:fs/promises';
-import test from 'node:test';
+import { mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
+import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { build, createServer } from 'vite';
 import { tailmantic } from '../vite.js';
@@ -54,6 +54,53 @@ test('Vite plugin generates CSS on startup and rebuilds after registration chang
 		const rebuiltCss = await waitForCss(server, (css) => /\.action-button\s*\{[^}]*display:\s*grid/.test(css));
 		assert.match(rebuiltCss, /display:\s*grid/);
 		assert.doesNotMatch(rebuiltCss, /display:\s*flex/);
+	} finally {
+		await server?.close();
+		await rm(root, { recursive: true, force: true });
+	}
+});
+
+test('Vite plugin loads external package registrations into the active manifest', { timeout: 15000 }, async () => {
+	const root = await mkdtemp(join(packageRoot, '.test-vite-package-'));
+	const sourceDirectory = join(root, 'src');
+	const packageDirectory = join(root, 'node_modules', 'example-style-package');
+	const entryPath = join(sourceDirectory, 'registrations.js');
+	let server;
+
+	try {
+		await mkdir(sourceDirectory, { recursive: true });
+		await mkdir(packageDirectory, { recursive: true });
+		await mkdir(join(root, 'node_modules'), { recursive: true });
+		await symlink(packageRoot, join(root, 'node_modules', 'tailmantic'), 'junction');
+		await writeFile(join(packageDirectory, 'package.json'), JSON.stringify({
+			name: 'example-style-package',
+			type: 'module',
+			exports: './styles.js',
+		}));
+		await writeFile(join(packageDirectory, 'styles.js'), [
+			"import { register } from 'tailmantic/collector';",
+			"register('published-action', { tw: 'flex' });",
+		].join('\n'));
+		await writeFile(entryPath, [
+			"import 'example-style-package';",
+			"import { getManifest } from 'tailmantic/collector';",
+			'export default getManifest();',
+		].join('\n'));
+
+		server = await createServer({
+			configFile: false,
+			root,
+			plugins: [tailmantic({
+				entry: 'src/registrations.js',
+				ssr: { noExternal: ['tailmantic', 'example-style-package'] },
+			})],
+			server: { host: '127.0.0.1', port: 0 },
+			logLevel: 'silent',
+		});
+		await server.listen();
+
+		const css = await waitForCss(server, (value) => /\.published-action\s*\{[^}]*display:\s*flex/.test(value));
+		assert.match(css, /\.published-action\s*\{[^}]*display:\s*flex/);
 	} finally {
 		await server?.close();
 		await rm(root, { recursive: true, force: true });

@@ -1,6 +1,6 @@
-import { createRequire } from 'node:module';
-import { resolve, relative, dirname, sep } from 'node:path';
 import { mkdir, writeFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
+import { dirname, relative, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { compile } from './compile.js';
 
@@ -64,6 +64,7 @@ export function tailmantic(options = {}) {
 			configFile: false,
 			root,
 			server: { middlewareMode: true },
+			ssr: options.ssr,
 			appType: 'custom',
 			logLevel: 'error',
 			optimizeDeps: { noDiscovery: true, include: [] },

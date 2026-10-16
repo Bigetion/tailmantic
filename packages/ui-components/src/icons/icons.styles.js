@@ -2,25 +2,33 @@ import { register } from 'tailmantic/collector';
 
 register.all('tm-icons', {
   '': 'inline-block shrink-0 align-middle text-[var(--tm-icon-color,currentColor)]',
-  'search': 'flex h-9 w-full max-w-[360px] items-center gap-2 rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 text-[var(--muted)] focus-within:border-[var(--tm-blue)]',
-  '&search input': 'min-w-0 flex-1 border-0 bg-transparent text-xs text-[var(--text)] outline-none placeholder:text-[var(--muted)]',
-  '&search button': 'inline-flex size-5 cursor-pointer items-center justify-center rounded border-0 bg-transparent p-0 text-[var(--muted)] hover:text-[var(--text)]',
+  search:
+    'box-border flex h-9 w-full max-w-[360px] items-center gap-2 rounded-md border border-[var(--border)] bg-[var(--panel)] px-3 text-[var(--muted)] focus-within:border-[var(--tm-blue)]',
+  '&search input':
+    'min-w-0 flex-1 border-0 bg-transparent text-xs text-[var(--text)] outline-none placeholder:text-[var(--muted)]',
+  '&search button':
+    'inline-flex size-5 cursor-pointer items-center justify-center rounded border-0 bg-transparent p-0 text-[var(--muted)] hover:text-[var(--text)]',
   'category-list': 'flex flex-wrap gap-1.5',
-  'category': 'h-7 cursor-pointer rounded-full border border-[var(--border)] bg-transparent px-2.5 text-[10px] font-medium text-[var(--muted)] hover:bg-[var(--panel-raised)] hover:text-[var(--text)]',
-  'category-active': 'border-transparent bg-[var(--tm-blue-dark)] text-white hover:bg-[var(--tm-blue-dark)] hover:text-white',
+  category:
+    'h-7 cursor-pointer rounded-full border border-[var(--border)] bg-transparent px-2.5 text-[10px] font-medium text-[var(--muted)] hover:bg-[var(--panel-raised)] hover:text-[var(--text)]',
+  'category-active':
+    'border-transparent bg-[var(--tm-blue-dark)] text-white hover:bg-[var(--tm-blue-dark)] hover:text-white',
   'library-grid': 'grid w-full grid-cols-[repeat(auto-fit,minmax(76px,1fr))] gap-2',
-  'library-item': 'flex min-h-[68px] cursor-pointer flex-col items-center justify-center gap-2 rounded-md border border-[var(--border)] bg-transparent px-1 py-2 text-[var(--muted)] hover:border-[var(--tm-blue)] hover:bg-[var(--panel-raised)] hover:text-[var(--tm-blue)] [&_span]:text-[9px]',
+  'library-item':
+    'flex min-h-[68px] cursor-pointer flex-col items-center justify-center gap-2 rounded-md border border-[var(--border)] bg-transparent px-1 py-2 text-[var(--muted)] hover:border-[var(--tm-blue)] hover:bg-[var(--panel-raised)] hover:text-[var(--tm-blue)] [&_span]:text-[9px]',
   'library-item-selected': 'border-[#547be8] bg-[#19253a] text-[#b8cbff]',
   'empty-state': 'col-span-full py-5 text-center text-xs text-[var(--muted)]',
   'color-grid': 'flex flex-wrap items-center gap-3',
   'color-item': 'flex min-w-[68px] flex-col items-center gap-2 text-[10px] text-[var(--muted)]',
-  'color-swatch': 'inline-flex size-11 items-center justify-center rounded-lg bg-[var(--panel-raised)] text-[var(--text)]',
+  'color-swatch':
+    'inline-flex size-11 items-center justify-center rounded-lg bg-[var(--panel-raised)] text-[var(--text)]',
   'tone-primary': 'bg-[#1b2d52] text-[#a9c4ff]',
   'tone-success': 'bg-[#18352c] text-[#7bd2a9]',
   'tone-warning': 'bg-[#3a2d1d] text-[#f2c27b]',
   'tone-danger': 'bg-[#3c2027] text-[#f08b98]',
   'tone-default': 'bg-[var(--panel-raised)] text-[var(--muted)]',
   'action-row': 'flex items-center gap-2',
-  'action-button': 'inline-flex size-9 cursor-pointer items-center justify-center rounded-md border border-[var(--border)] bg-[var(--panel)] text-[var(--muted)] hover:border-[var(--tm-blue)] hover:bg-[var(--panel-raised)] hover:text-[var(--text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--tm-blue)]',
+  'action-button':
+    'inline-flex size-9 cursor-pointer items-center justify-center rounded-md border border-[var(--border)] bg-[var(--panel)] text-[var(--muted)] hover:border-[var(--tm-blue)] hover:bg-[var(--panel-raised)] hover:text-[var(--text)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--tm-blue)]',
   'action-button-active': 'border-[#75404d] bg-[#3c2027] text-[#f08b98]',
 });

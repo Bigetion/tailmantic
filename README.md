@@ -125,7 +125,17 @@ Run the app as usual:
 npm run dev
 ```
 
-The CSS flow is handled by Vite: it watches `src/tailmantics`, recompiles when a registration changes, and emits CSS during `npm run build`. The component demo in [`examples/register-component-demo`](./examples/register-component-demo/README.md) shows the complete setup.
+The CSS flow is handled by Vite: it watches `src/tailmantics`, recompiles when a registration changes, and emits CSS during `npm run build`. If the manifest imports registration modules from dependencies, pass those packages to the plugin's SSR loader so their registrations use the same collector:
+
+```js
+tailmantic({
+  ssr: {
+    noExternal: ['tailmantic', '@scope/style-package'],
+  },
+});
+```
+
+The component demo in [`examples/register-component-demo`](./examples/register-component-demo/README.md) shows the complete setup.
 
 ## Writing Utilities
 

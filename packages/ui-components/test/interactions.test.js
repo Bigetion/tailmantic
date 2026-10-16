@@ -886,6 +886,18 @@ test('Rating, Pagination, ToggleButton, and Stepper honor keyboard, boundary, an
     assert.deepEqual(precisionRatings, [4]);
 
     const pagination = harness.mount.querySelector('nav[aria-label="Pagination"]');
+    const paginationIcons = [...pagination.querySelectorAll('.tm-pagination-nav-button svg')];
+    assert.equal(paginationIcons.length, 4);
+    assert.ok(paginationIcons.every((icon) => icon.getAttribute('aria-hidden') === 'true'));
+    assert.ok(paginationIcons.every((icon) => icon.getAttribute('width') === '20'));
+    assert.deepEqual(
+      [...paginationIcons[0].querySelectorAll('path')].map((path) => path.getAttribute('d')),
+      ['M12 18 6 12l6-6', 'M20 18 14 12l6-6'],
+    );
+    assert.deepEqual(
+      [...paginationIcons[1].querySelectorAll('polyline')][0].getAttribute('points'),
+      '6 9 12 15 18 9',
+    );
     assert.equal(pagination.querySelector('[aria-current="page"]').textContent, '2');
     await act(async () => pagination.querySelector('[aria-label="Go to next page"]').click());
     assert.deepEqual(pages, [3]);

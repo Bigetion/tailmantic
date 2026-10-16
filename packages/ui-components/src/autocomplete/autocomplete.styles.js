@@ -4,7 +4,7 @@ register.all('autocomplete', {
   '': 'relative flex w-[min(380px,100%)] flex-col gap-2.5',
   label: 'text-[10px] font-semibold uppercase tracking-[.12em] text-[#aab7cd]',
   field:
-    'flex min-h-11 w-full items-center gap-2.5 rounded-xl border border-[#354158] bg-[#0e1420] px-3.5 text-[var(--text)] shadow-[inset_0_1px_0_rgba(255,255,255,.025)] transition-[border-color,box-shadow,background-color] duration-150 focus-within:border-[#718ecb] focus-within:bg-[#111927] focus-within:shadow-[0_0_0_3px_rgba(125,159,255,.1)]',
+    'box-border flex min-h-11 w-full items-center gap-2.5 rounded-xl border border-[#354158] bg-[#0e1420] px-3.5 text-[var(--text)] shadow-[inset_0_1px_0_rgba(255,255,255,.025)] transition-[border-color,box-shadow,background-color] duration-150 focus-within:border-[#718ecb] focus-within:bg-[#111927] focus-within:shadow-[0_0_0_3px_rgba(125,159,255,.1)]',
   'field-open': 'border-[#718ecb]',
   input:
     'min-w-0 flex-1 border-0 bg-transparent py-2.5 text-xs text-[var(--text)] outline-none placeholder:text-[#748198] focus:border-0 focus:outline-none focus:ring-0',
@@ -22,14 +22,14 @@ register.all('autocomplete', {
 });
 
 register.all('autocomplete-option', {
-  '': 'flex w-full cursor-pointer items-center gap-3 border-0 bg-transparent px-3 py-2.5 text-left text-xs text-[#c6cede] transition-colors hover:bg-[#ffffff08] focus:outline-none',
+  '': 'box-border flex w-full cursor-pointer items-center gap-3 border-0 bg-transparent px-3 py-2.5 text-left text-xs text-[#c6cede] transition-colors hover:bg-[#ffffff08] focus:outline-none',
   active: 'bg-[#1a263a] text-white',
   selected: 'text-[#a9c2ff]',
 });
 
 register.all('autocomplete', {
   popover:
-    'z-50 w-[min(380px,calc(100vw-32px))] overflow-hidden rounded-xl border border-[#303c52] bg-[#111824] py-1.5 text-[var(--text)] shadow-[0_18px_48px_rgba(0,0,0,.52)]',
+    'z-50 box-border w-[min(380px,calc(100vw-32px))] overflow-hidden rounded-xl border border-[#303c52] bg-[#111824] py-1.5 text-[var(--text)] shadow-[0_18px_48px_rgba(0,0,0,.52)]',
   'option-icon':
     'flex size-7 shrink-0 items-center justify-center rounded-lg border border-[#29364c] bg-[#192337] text-[10px] font-semibold text-[#a9c2ff]',
   'option-copy': 'flex min-w-0 flex-1 flex-col gap-0.5',

@@ -1,7 +1,7 @@
 import { register } from 'tailmantic/collector';
 
 register.all('tm-bottom-navigation', {
-  '': 'fixed inset-x-0 bottom-0 z-40 flex min-h-14 items-stretch justify-around border-t border-[var(--border,#d5d9e0)] bg-[var(--surface,#fff)] px-2 pb-[env(safe-area-inset-bottom)] text-[var(--text,#20242b)] shadow-[0_-2px_8px_rgba(0,0,0,.08)]',
+  '': 'fixed inset-x-0 bottom-0 z-40 box-border flex min-h-14 items-stretch justify-around border-t border-[var(--border,#d5d9e0)] bg-[var(--surface,#fff)] px-2 pb-[env(safe-area-inset-bottom)] text-[var(--text,#20242b)] shadow-[0_-2px_8px_rgba(0,0,0,.08)]',
   icon: 'flex h-6 items-center justify-center text-lg leading-none',
   label: 'truncate',
 });

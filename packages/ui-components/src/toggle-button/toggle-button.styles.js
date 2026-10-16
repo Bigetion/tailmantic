@@ -1,9 +1,9 @@
 import { register } from 'tailmantic/collector';
 
 register.all('tm-toggle-button', {
-  '': 'inline-flex min-h-9 cursor-pointer items-center justify-center gap-2 border border-[var(--border,#354158)] bg-[var(--panel,#101722)] px-3.5 text-sm font-medium text-[var(--text-muted,#aab6ca)] transition-colors hover:bg-[var(--hover,rgba(255,255,255,.05))] hover:text-[var(--text,#edf2fb)] focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--tm-blue,#86a6ff)] aria-pressed:bg-[var(--tm-blue-soft,rgba(84,123,232,.2))] aria-pressed:text-[var(--tm-blue,#b9ccff)] disabled:cursor-not-allowed disabled:opacity-40',
+  '': 'inline-flex min-h-9 w-fit cursor-pointer items-center justify-self-start gap-2 rounded-md border border-[var(--border,#354158)] bg-[var(--panel,#101722)] px-3.5 text-sm font-medium text-[var(--text-muted,#aab6ca)] transition-[background-color,border-color,color,box-shadow,transform] hover:border-[#465b80] hover:bg-[var(--hover,rgba(255,255,255,.05))] hover:text-[var(--text,#edf2fb)] active:scale-[.98] focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--tm-blue,#86a6ff)] aria-pressed:border-[#6484d2] aria-pressed:bg-[#243653] aria-pressed:text-[#d7e3ff] aria-pressed:shadow-[inset_0_0_0_1px_rgba(155,188,255,.12)] disabled:cursor-not-allowed disabled:opacity-40',
   small: 'min-h-7 gap-1.5 px-2.5 text-xs',
-  selected: '!bg-[var(--tm-blue-soft,rgba(84,123,232,.2))] !text-[var(--tm-blue,#b9ccff)]',
+  selected: '!border-[#6484d2] !bg-[#243653] !text-[#d7e3ff] !shadow-[inset_0_0_0_1px_rgba(155,188,255,.12)]',
 });
 
 register.all('tm-toggle-button-group', {
