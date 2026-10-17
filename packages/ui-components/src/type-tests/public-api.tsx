@@ -17,6 +17,7 @@ import {
   Checkbox,
   Chip,
   ClickAwayListener,
+  DatePicker,
   Dialog,
   Drawer,
   IconGlyph,
@@ -62,6 +63,7 @@ import CardOnly from '@tailmantic/ui-components/card';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
 import ClickAwayListenerOnly from '@tailmantic/ui-components/click-away-listener';
+import DatePickerOnly from '@tailmantic/ui-components/date-picker';
 import DialogOnly from '@tailmantic/ui-components/dialog';
 import DrawerOnly from '@tailmantic/ui-components/drawer';
 import type { IconGlyphName as IconGlyphNameOnly } from '@tailmantic/ui-components/icon-glyph';
@@ -103,6 +105,7 @@ export const rootExports = (
       ]}
       value="engineering"
       onValueChange={(value, option) => [value, option?.detail]}
+      popperClassName="department-options"
       ref={(button) => button?.focus()}
     />
     <Select
@@ -130,6 +133,13 @@ export const rootExports = (
       <a href="/workspace">Workspace</a>
       <span aria-current="page">Project</span>
     </Breadcrumbs>
+    <DatePicker
+      label="Due date"
+      value="2026-10-17"
+      dateFormat="dd/MM/yyyy"
+      showMonthYearSelect
+      onChange={(value) => value}
+    />
     <Card variant="outlined" elevation={2} interactive>
       Project summary
     </Card>
@@ -299,6 +309,7 @@ export const subpathExports = (
     <ClickAwayListenerOnly onClickAway={(event) => event.type}>
       <button type="button">Subpath click-away</button>
     </ClickAwayListenerOnly>
+    <DatePickerOnly defaultValue="2026-10-17" showMonthYearSelect />
     <DialogOnly open title="Details" closeLabel="Dismiss details" />
     <DrawerOnly open variant="permanent" anchor="right" aria-label="Subpath navigation" />
     <IconGlyphOnly name="search" />

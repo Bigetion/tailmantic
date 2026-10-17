@@ -23,6 +23,11 @@ export const componentGroups = [
         description: 'Test checked, unchecked, and indeterminate states.',
       },
       {
+        name: 'Date Picker',
+        slug: 'date-picker',
+        description: 'Choose a date and constrain the available range.',
+      },
+      {
         name: 'Floating Action Button',
         slug: 'floating-action-button',
         description: 'Try compact and extended action buttons.',

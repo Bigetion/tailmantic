@@ -48,6 +48,7 @@ function ComponentTests({ slug }) {
   const [alertVisible, setAlertVisible] = useState(true);
   const [choice, setChoice] = useState('design');
   const [multiChoice, setMultiChoice] = useState(['design']);
+  const [date, setDate] = useState('');
   const [rating, setRating] = useState(3.5);
   const [progress, setProgress] = useState(62);
   const [page, setPage] = useState(2);
@@ -280,6 +281,29 @@ function ComponentTests({ slug }) {
             <div className="test-labeled-control">
               <UI.Checkbox aria-label="Locked preference" checked disabled /> Locked preference
             </div>
+          </div>
+        </DemoSection>
+      );
+    case 'date-picker':
+      return (
+        <DemoSection
+          title="Date selection and bounds"
+          description="Choose a date and inspect the selected ISO value."
+        >
+          <div className="test-stack">
+            <UI.DatePicker
+              label="Due date"
+              value={date}
+              onChange={setDate}
+              dateFormat="dd/MM/yyyy"
+              showMonthYearSelect
+              minDate="2025-01-01"
+              maxDate="2028-12-31"
+              helperText="Select a date from 2025 through 2028."
+            />
+            <output className="test-output">
+              {date ? `Selected date: ${date}` : 'No date selected'}
+            </output>
           </div>
         </DemoSection>
       );

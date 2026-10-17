@@ -13,6 +13,7 @@ import {
   Checkbox,
   Chip,
   ClickAwayListener,
+  DatePicker,
   Dialog,
   Divider,
   Drawer,
@@ -61,6 +62,7 @@ import CardOnly from '@tailmantic/ui-components/card';
 import CheckboxOnly from '@tailmantic/ui-components/checkbox';
 import ChipOnly from '@tailmantic/ui-components/chip';
 import ClickAwayListenerOnly from '@tailmantic/ui-components/click-away-listener';
+import DatePickerOnly from '@tailmantic/ui-components/date-picker';
 import DialogOnly from '@tailmantic/ui-components/dialog';
 import DividerOnly from '@tailmantic/ui-components/divider';
 import DrawerOnly from '@tailmantic/ui-components/drawer';
@@ -111,6 +113,7 @@ export const rootComponents = [
   Chip,
   ClickAwayListener,
   Dialog,
+  DatePicker,
   Divider,
   Drawer,
   FloatingActionButton,
@@ -161,6 +164,7 @@ export const subpathComponents = [
   ChipOnly,
   ClickAwayListenerOnly,
   DialogOnly,
+  DatePickerOnly,
   DividerOnly,
   DrawerOnly,
   FloatingActionButtonOnly,

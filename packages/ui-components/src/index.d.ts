@@ -21,7 +21,7 @@ export type {
 } from './autocomplete/autocomplete.js';
 export { default as Autocomplete } from './autocomplete/autocomplete.js';
 export type { AvatarColor, AvatarGroupProps, AvatarProps, AvatarSize } from './avatar/avatar.js';
-export { default as Avatar, AvatarGroup } from './avatar/avatar.js';
+export { AvatarGroup, default as Avatar } from './avatar/avatar.js';
 export type { BadgeColor, BadgeOverlap, BadgeProps, BadgeVariant } from './badge/badge.js';
 export { default as Badge } from './badge/badge.js';
 export type {
@@ -46,6 +46,8 @@ export type { ChipColor, ChipProps, ChipSize, ChipVariant } from './chip/chip.js
 export { default as Chip } from './chip/chip.js';
 export type { ClickAwayListenerProps } from './click-away-listener/click-away-listener.js';
 export { default as ClickAwayListener } from './click-away-listener/click-away-listener.js';
+export type { DatePickerChangeHandler, DatePickerProps } from './date-picker/date-picker.js';
+export { default as DatePicker } from './date-picker/date-picker.js';
 export type { DialogCloseReason, DialogProps } from './dialog/dialog.js';
 export { default as Dialog } from './dialog/dialog.js';
 export type { DividerOrientation, DividerProps, DividerTextAlign } from './divider/divider.js';

@@ -15,9 +15,11 @@ export interface SelectProps
     ButtonHTMLAttributes<HTMLButtonElement>,
     'children' | 'defaultValue' | 'name' | 'onChange' | 'value'
   > {
-  options?: SelectOptionInput[];
+    announceSelection?: boolean;
+    options?: SelectOptionInput[];
   value?: string;
   defaultValue?: string;
+  disablePortal?: boolean;
   onValueChange?: (value: string, option: SelectOption | null) => void;
   multiple?: boolean;
   selectedValues?: string[];
@@ -29,6 +31,7 @@ export interface SelectProps
   error?: boolean;
   required?: boolean;
   placeholder?: string;
+  popperClassName?: string;
   renderOption?: (
     option: SelectOption,
     state: { isActive: boolean; isSelected: boolean },

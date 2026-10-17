@@ -6,6 +6,7 @@ const components = [
       ['Button', '', 'button', 'Buttons communicate actions and let people make choices with a single tap.', ['button', 'button-colors', 'button-sizes', 'button-icons', 'button-loading']],
       ['Button Group', '', 'button-group', 'Group related buttons together into a single, connected control.', ['button-group', 'button-group-vertical', 'button-group-split']],
       ['Checkbox', '', 'checkbox', 'Checkboxes let users select one or more items from a set.', ['checkbox', 'checkbox-indeterminate', 'checkbox-group']],
+      ['Date Picker', 'NEW', 'date-picker', 'Choose a date with a keyboard-accessible calendar.', ['date-picker', 'date-picker-bounds']],
       ['Floating Action Button', '', 'floating-action-button', 'A floating action button performs the primary action on a screen.', ['fab', 'fab-sizes', 'fab-group']],
       ['Number Field', 'NEW', 'number-field', 'A numeric input with controls for incrementing and decrementing a value.', ['number-field', 'number-field-steps', 'number-field-limits']],
       ['Radio Group', '', 'radio-group', 'Radio buttons allow the user to select one option from a set.', ['radio-group', 'radio-group-row', 'radio-group-disabled']],

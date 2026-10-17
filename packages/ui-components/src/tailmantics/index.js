@@ -14,6 +14,7 @@ import '../checkbox/checkbox.styles.js';
 import '../chip/chip.styles.js';
 import '../click-away-listener/click-away-listener.styles.js';
 import '../dialog/dialog.styles.js';
+import '../date-picker/date-picker.styles.js';
 import '../divider/divider.styles.js';
 import '../drawer/drawer.styles.js';
 import '../floating-action-button/floating-action-button.styles.js';

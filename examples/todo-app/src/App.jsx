@@ -1,7 +1,20 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Alert,
+  Avatar,
+  Button,
+  Checkbox,
+  Chip,
+  DatePicker,
+  List,
+  ListItem,
+  Paper,
+  Progress,
+  Select,
+  TextField,
+  Typography,
+} from '@tailmantic/ui-components';
 import {
   CalendarDays,
-  Check,
   CircleCheck,
   Clock3,
   Inbox,
@@ -11,16 +24,21 @@ import {
   Sparkles,
   Trash2,
 } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { cx } from 'tailmantic';
 
 const STORAGE_KEY = 'tailmantic-daymark-tasks-v1';
+const priorities = ['low', 'medium', 'high'];
+const priorityOptions = priorities.map((value) => ({
+  label: value[0].toUpperCase() + value.slice(1),
+  value,
+}));
 const views = [
   { id: 'inbox', label: 'All tasks', icon: Inbox },
   { id: 'today', label: 'Today', icon: CalendarDays },
   { id: 'upcoming', label: 'Upcoming', icon: Clock3 },
   { id: 'completed', label: 'Completed', icon: CircleCheck },
 ];
-const priorities = ['low', 'medium', 'high'];
 
 function localDate(date = new Date()) {
   const year = date.getFullYear();
@@ -34,101 +52,183 @@ function starterTasks() {
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
   return [
-    { id: 'seed-1', title: 'Review the component API', date: localDate(today), priority: 'high', completed: false },
-    { id: 'seed-2', title: 'Try the todo flow on mobile', date: localDate(today), priority: 'medium', completed: false },
-    { id: 'seed-3', title: 'Write up the next iteration', date: localDate(tomorrow), priority: 'low', completed: false },
-    { id: 'seed-4', title: 'Set up the project workspace', date: localDate(today), priority: 'low', completed: true },
+    {
+      id: 'seed-1',
+      title: 'Review the component API',
+      date: localDate(today),
+      priority: 'high',
+      completed: false,
+    },
+    {
+      id: 'seed-2',
+      title: 'Try the todo flow on mobile',
+      date: localDate(today),
+      priority: 'medium',
+      completed: false,
+    },
+    {
+      id: 'seed-3',
+      title: 'Write up the next iteration',
+      date: localDate(tomorrow),
+      priority: 'low',
+      completed: false,
+    },
+    {
+      id: 'seed-4',
+      title: 'Set up the project workspace',
+      date: localDate(today),
+      priority: 'low',
+      completed: true,
+    },
   ];
 }
 
 function readTasks() {
-  if (typeof window === 'undefined') return starterTasks();
+  if (typeof window === 'undefined') return { tasks: starterTasks(), error: '' };
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (!stored) return starterTasks();
+    if (!stored) return { tasks: starterTasks(), error: '' };
     const tasks = JSON.parse(stored);
-    return Array.isArray(tasks) ? tasks : starterTasks();
-  } catch {
-    return starterTasks();
+    if (
+      !Array.isArray(tasks) ||
+      tasks.some(
+        (task) =>
+          !task ||
+          typeof task.id !== 'string' ||
+          typeof task.title !== 'string' ||
+          typeof task.date !== 'string' ||
+          !priorities.includes(task.priority) ||
+          typeof task.completed !== 'boolean',
+      )
+    ) {
+      throw new TypeError('Saved task data is invalid.');
+    }
+    return { tasks, error: '' };
+  } catch (error) {
+    console.error('Could not load saved tasks:', error);
+    return {
+      tasks: starterTasks(),
+      error: 'Saved tasks could not be loaded. The starter list is shown instead.',
+    };
   }
 }
 
 function formatDueDate(date) {
-  if (!date) return 'No date';
+  if (!date) return 'No due date';
   if (date === localDate()) return 'Today';
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   if (date === localDate(tomorrow)) return 'Tomorrow';
-  return new Date(`${date}T12:00:00`).toLocaleDateString('en', { month: 'short', day: 'numeric' });
+  return new Date(`${date}T12:00:00`).toLocaleDateString('en', {
+    month: 'short',
+    day: 'numeric',
+  });
 }
 
 function viewTitle(view) {
-  return views.find((item) => item.id === view)?.label || 'All tasks';
+  return views.find((item) => item.id === view)?.label ?? 'All tasks';
 }
 
-function TailmanticTaskRow({ task, onToggle, onDelete }) {
+function ViewNavigation({ counts, activeView, onSelect, mobile = false }) {
   return (
-    <li className={cx('task-row', task.completed && 'task-row-completed')}>
-      <button className={cx('task-check', task.completed && 'task-check-checked')} type="button" aria-label={task.completed ? `Mark ${task.title} incomplete` : `Complete ${task.title}`} onClick={onToggle}>
-        {task.completed && <Check size={13} strokeWidth={2.6} />}
-      </button>
-      <div className="task-details">
-        <span className={cx('task-title', task.completed && 'task-title-completed')}>{task.title}</span>
-        <div className="task-meta">
-          <span className="priority-tag"><span className={cx('priority-dot', `priority-dot-${task.priority}`)} />{task.priority}</span>
-          <span className="due-label"><CalendarDays size={13} />{formatDueDate(task.date)}</span>
-        </div>
-      </div>
-      <button className="delete-button" type="button" aria-label={`Delete ${task.title}`} onClick={onDelete}><Trash2 size={16} /></button>
-    </li>
+    <nav className={cx('todo-view-nav', mobile && 'todo-view-nav-mobile')} aria-label="Task views">
+      {views.map(({ id, label, icon: Icon }) => (
+        <Button
+          key={id}
+          className={cx(
+            'todo-view-link',
+            mobile && 'todo-view-link-mobile',
+            activeView === id && 'todo-view-link-selected',
+          )}
+          size="small"
+          variant="text"
+          aria-current={activeView === id ? 'page' : undefined}
+          onClick={() => onSelect(id)}
+        >
+          <Icon className="todo-view-icon" size={17} aria-hidden="true" />
+          <span className="todo-view-label">{label}</span>
+          <Chip size="small" className="todo-view-count">
+            {counts[id]}
+          </Chip>
+        </Button>
+      ))}
+    </nav>
   );
 }
 
-function TailwindTaskRow({ task, onToggle, onDelete }) {
+function TaskRow({ task, onToggle, onDelete }) {
   const priorityColor = {
-    low: 'bg-[#77a589]',
-    medium: 'bg-[#c4954c]',
-    high: 'bg-[#cf735f]',
+    low: 'success',
+    medium: 'warning',
+    high: 'primary',
   }[task.priority];
 
   return (
-    <li className={`group flex min-h-[68px] items-center gap-3 border-b border-[#edf0ee] px-4 py-3 last:border-b-0 hover:bg-[#fcfdfc] max-sm:gap-2 max-sm:px-3 ${task.completed ? 'bg-[#fbfcfb]' : ''}`}>
-      <button className={`grid size-[19px] shrink-0 place-items-center rounded-full border-[1.5px] bg-white text-white transition-colors hover:border-[#57917a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#57917a] ${task.completed ? 'border-[#5b9b78] bg-[#5b9b78]' : 'border-[#cbd7d0]'}`} type="button" aria-label={task.completed ? `Mark ${task.title} incomplete` : `Complete ${task.title}`} onClick={onToggle}>
-        {task.completed && <Check size={13} strokeWidth={2.6} />}
-      </button>
-      <div className="flex min-w-0 flex-1 flex-col gap-1">
-        <span className={`overflow-hidden text-ellipsis whitespace-nowrap text-[12px] font-medium ${task.completed ? 'text-[#a2aca6] line-through' : 'text-[#354a40]'}`}>{task.title}</span>
-        <div className="flex items-center gap-3">
-          <span className="inline-flex items-center gap-1.5 text-[10px] capitalize text-[#87938c]"><span className={`size-2 rounded-full ${priorityColor}`} />{task.priority}</span>
-          <span className="inline-flex items-center gap-1 text-[10px] text-[#929e97]"><CalendarDays size={13} />{formatDueDate(task.date)}</span>
+    <ListItem className={cx('todo-task-row', task.completed && 'todo-task-row-completed')} divider>
+      <Checkbox
+        checked={task.completed}
+        className="todo-task-checkbox"
+        aria-label={task.completed ? `Mark ${task.title} incomplete` : `Complete ${task.title}`}
+        onChange={onToggle}
+      />
+      <div className="todo-task-details">
+        <Typography
+          className={cx('todo-task-title', task.completed && 'todo-task-title-completed')}
+          component="span"
+          variant="subtitle2"
+        >
+          {task.title}
+        </Typography>
+        <div className="todo-task-meta">
+          <Chip
+            className={cx('todo-priority-chip', `todo-priority-${task.priority}`)}
+            color={priorityColor}
+            size="small"
+          >
+            {task.priority}
+          </Chip>
+          <Chip className="todo-due-chip" icon={CalendarDays} size="small" variant="outlined">
+            {formatDueDate(task.date)}
+          </Chip>
         </div>
       </div>
-      <button className="grid size-8 shrink-0 place-items-center rounded-[7px] text-[#b4beb8] opacity-0 transition-colors hover:bg-[#fff0ed] hover:text-[#bb6655] hover:opacity-100 focus:opacity-100 max-sm:opacity-100" type="button" aria-label={`Delete ${task.title}`} onClick={onDelete}><Trash2 size={16} /></button>
-    </li>
+      <Button
+        className="todo-delete-button"
+        size="small"
+        variant="text"
+        aria-label={`Delete ${task.title}`}
+        onClick={onDelete}
+      >
+        <Trash2 size={17} aria-hidden="true" />
+      </Button>
+    </ListItem>
   );
 }
 
 export default function App() {
   const today = localDate();
-  const [tasks, setTasks] = useState(readTasks);
+  const [initialStorage] = useState(readTasks);
+  const [tasks, setTasks] = useState(initialStorage.tasks);
+  const [storageError, setStorageError] = useState(initialStorage.error);
   const [activeView, setActiveView] = useState('today');
   const [search, setSearch] = useState('');
   const [draft, setDraft] = useState('');
   const [draftDate, setDraftDate] = useState(today);
   const [draftPriority, setDraftPriority] = useState('medium');
-  const [rowStyle, setRowStyle] = useState('tailmantic');
   const searchInput = useRef(null);
 
   useEffect(() => {
     const handleSearchShortcut = (event) => {
       const target = event.target;
-      const isEditing = target instanceof HTMLElement && target.matches('input, textarea, select, [contenteditable="true"]');
+      const isEditing =
+        target instanceof HTMLElement &&
+        target.matches('input, textarea, select, [contenteditable="true"]');
       if (event.key === '/' && !isEditing) {
         event.preventDefault();
         searchInput.current?.focus();
       } else if (event.key === 'Escape' && target === searchInput.current) {
         setSearch('');
-        searchInput.current.blur();
+        searchInput.current?.blur();
       }
     };
     window.addEventListener('keydown', handleSearchShortcut);
@@ -136,50 +236,67 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+      setStorageError('');
+    } catch (error) {
+      console.error('Could not save tasks:', error);
+      setStorageError('Changes could not be saved on this device.');
+    }
   }, [tasks]);
 
-  const counts = useMemo(() => ({
-    inbox: tasks.filter((task) => !task.completed).length,
-    today: tasks.filter((task) => !task.completed && task.date <= today).length,
-    upcoming: tasks.filter((task) => !task.completed && task.date > today).length,
-    completed: tasks.filter((task) => task.completed).length,
-  }), [tasks, today]);
+  const counts = useMemo(
+    () => ({
+      inbox: tasks.filter((task) => !task.completed).length,
+      today: tasks.filter((task) => !task.completed && task.date <= today).length,
+      upcoming: tasks.filter((task) => !task.completed && task.date > today).length,
+      completed: tasks.filter((task) => task.completed).length,
+    }),
+    [tasks, today],
+  );
 
-  const visibleTasks = useMemo(() => tasks
-    .filter((task) => {
-      if (activeView === 'completed') return task.completed;
-      if (task.completed) return false;
-      if (activeView === 'today') return task.date <= today;
-      if (activeView === 'upcoming') return task.date > today;
-      return true;
-    })
-    .filter((task) => task.title.toLowerCase().includes(search.trim().toLowerCase()))
-    .sort((first, second) => {
-      if (first.completed !== second.completed) return Number(first.completed) - Number(second.completed);
-      return priorities.indexOf(second.priority) - priorities.indexOf(first.priority);
-    }), [activeView, search, tasks, today]);
+  const visibleTasks = useMemo(
+    () =>
+      tasks
+        .filter((task) => {
+          if (activeView === 'completed') return task.completed;
+          if (task.completed) return false;
+          if (activeView === 'today') return task.date <= today;
+          if (activeView === 'upcoming') return task.date > today;
+          return true;
+        })
+        .filter((task) => task.title.toLowerCase().includes(search.trim().toLowerCase()))
+        .sort(
+          (first, second) =>
+            Number(first.completed) - Number(second.completed) ||
+            priorities.indexOf(second.priority) - priorities.indexOf(first.priority),
+        ),
+    [activeView, search, tasks, today],
+  );
 
   const addTask = (event) => {
     event.preventDefault();
     const title = draft.trim();
     if (!title) return;
-    setTasks((current) => [{
-      id: crypto.randomUUID(),
-      title,
-      date: draftDate,
-      priority: draftPriority,
-      completed: false,
-    }, ...current]);
+    setTasks((current) => [
+      {
+        id: crypto.randomUUID(),
+        title,
+        date: draftDate,
+        priority: draftPriority,
+        completed: false,
+      },
+      ...current,
+    ]);
     setDraft('');
     setDraftDate(today);
     setDraftPriority('medium');
   };
 
   const toggleTask = (taskId) => {
-    setTasks((current) => current.map((task) => (
-      task.id === taskId ? { ...task, completed: !task.completed } : task
-    )));
+    setTasks((current) =>
+      current.map((task) => (task.id === taskId ? { ...task, completed: !task.completed } : task)),
+    );
   };
 
   const deleteTask = (taskId) => {
@@ -190,116 +307,235 @@ export default function App() {
     setTasks((current) => current.filter((task) => !task.completed));
   };
 
-  const dateHeading = new Date().toLocaleDateString('en', { weekday: 'long', month: 'long', day: 'numeric' });
+  const dateHeading = new Date().toLocaleDateString('en', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+  });
+  const completion = tasks.length ? Math.round((counts.completed / tasks.length) * 100) : 0;
 
   return (
-    <div className="app-shell">
-      <div className="app-frame">
-        <aside className="sidebar">
-          <a className="brand" href="#today" aria-label="Daymark home">
-            <span className="brand-icon"><ListTodo size={19} strokeWidth={2.2} /></span>
+    <div className="todo-app">
+      <div className="todo-app-frame">
+        <aside className="todo-sidebar">
+          <a className="todo-brand" href="#today" aria-label="Daymark home">
+            <span className="todo-brand-icon">
+              <ListTodo size={19} strokeWidth={2.2} aria-hidden="true" />
+            </span>
             <span>daymark</span>
           </a>
 
-          <div className="sidebar-caption">WORKSPACE</div>
-          <nav className="view-nav" aria-label="Task views">
-            {views.map(({ id, label, icon: Icon }) => (
-              <button
-                key={id}
-                type="button"
-                className={cx('view-link', activeView === id && 'view-link-active')}
-                aria-current={activeView === id ? 'page' : undefined}
-                onClick={() => setActiveView(id)}
-              >
-                <Icon size={17} strokeWidth={1.9} />
-                <span>{label}</span>
-                <span className="view-count">{counts[id]}</span>
-              </button>
-            ))}
-          </nav>
+          <Typography className="todo-sidebar-caption" variant="overline">
+            Workspace
+          </Typography>
+          <ViewNavigation counts={counts} activeView={activeView} onSelect={setActiveView} />
 
-          <div className="sidebar-note">
-            <div className="note-icon"><Sparkles size={15} /></div>
-            <p className="sidebar-note-copy">A little progress adds up.</p>
-            <span className="sidebar-note-detail">{counts.completed} tasks completed</span>
-          </div>
-          <div className="sidebar-footer">
-            <span className="avatar">D</span>
-            <span className="profile-copy"><strong className="profile-name">Daymark</strong><small className="profile-detail">Personal space</small></span>
-            <span className="online-dot" aria-label="Saved on this device" />
+          <Paper className="todo-sidebar-note" elevation={0}>
+            <span className="todo-note-icon">
+              <Sparkles size={15} aria-hidden="true" />
+            </span>
+            <Typography className="todo-note-copy" component="p" variant="subtitle2">
+              A little progress adds up.
+            </Typography>
+            <Typography className="todo-note-detail" component="span" variant="caption">
+              {counts.completed} tasks completed
+            </Typography>
+          </Paper>
+          <div className="todo-sidebar-footer">
+            <Avatar className="todo-avatar" color="success" size="small">
+              D
+            </Avatar>
+            <span className="todo-profile-copy">
+              <Typography className="todo-empty-state-title" component="strong" variant="subtitle2">
+                Daymark
+              </Typography>
+              <Typography component="span" variant="caption">
+                Personal space
+              </Typography>
+            </span>
+            <span className="todo-online-dot" aria-hidden="true" />
           </div>
         </aside>
 
-        <main className="main-panel">
-          <header className="mobile-header">
-            <a className="brand" href="#today"><span className="brand-icon"><ListTodo size={18} /></span><span>daymark</span></a>
-            <span className="mobile-date">{dateHeading}</span>
+        <main className="todo-main">
+          <header className="todo-mobile-header">
+            <a className="todo-brand" href="#today" aria-label="Daymark home">
+              <span className="todo-brand-icon">
+                <ListTodo size={18} aria-hidden="true" />
+              </span>
+              <span>daymark</span>
+            </a>
+            <Typography className="todo-mobile-date" variant="caption">
+              {dateHeading}
+            </Typography>
           </header>
 
-          <nav className="mobile-nav" aria-label="Task views">
-            {views.map(({ id, label, icon: Icon }) => (
-              <button
-                key={id}
-                type="button"
-                className={cx('mobile-nav-link', activeView === id && 'mobile-nav-link-active')}
-                aria-current={activeView === id ? 'page' : undefined}
-                onClick={() => setActiveView(id)}
-              >
-                <Icon size={16} />{label}
-              </button>
-            ))}
-          </nav>
+          <ViewNavigation counts={counts} activeView={activeView} onSelect={setActiveView} mobile />
 
-          <div className="content-wrap">
-            <div className="page-heading">
+          <div className="todo-content">
+            <div className="todo-page-heading">
               <div>
-                <div className="eyebrow"><CalendarDays size={14} />{dateHeading}</div>
-                <h1 className="page-title">{viewTitle(activeView)}</h1>
-                <p className="heading-copy">A clear list makes room for your best work.</p>
+                <Typography className="todo-eyebrow" variant="caption">
+                  <CalendarDays size={14} aria-hidden="true" />
+                  {dateHeading}
+                </Typography>
+                <Typography className="todo-page-title" component="h1" variant="h2">
+                  {viewTitle(activeView)}
+                </Typography>
+                <Typography className="todo-heading-copy" component="p" variant="body2">
+                  A clear list makes room for your best work.
+                </Typography>
               </div>
-              <label className="search-box">
-                <Search size={17} />
-                <input className="search-input" ref={searchInput} value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search tasks" aria-label="Search tasks" />
-                <kbd className="search-shortcut">/</kbd>
-              </label>
+              <TextField
+                ref={searchInput}
+                className="todo-search"
+                inputClassName="todo-control-input"
+                type="search"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                placeholder="Search tasks"
+                aria-label="Search tasks"
+                startAdornment={<Search size={17} aria-hidden="true" />}
+                endAdornment={<kbd className="todo-search-shortcut">/</kbd>}
+              />
             </div>
 
-            <section className="focus-strip" aria-label="Task summary">
-              <div className="focus-mark"><span className="focus-mark-inner" /></div>
-              <div className="focus-copy"><strong className="focus-title">{counts.today} tasks on your plate</strong><span className="focus-detail">Keep your focus on what matters today.</span></div>
-              <div className="focus-progress"><span>{counts.completed} done</span><div className="progress-track"><span className="progress-value" style={{ width: `${tasks.length ? Math.round((counts.completed / tasks.length) * 100) : 0}%` }} /></div></div>
-            </section>
+            {storageError && (
+              <Alert className="todo-storage-alert" severity="warning">
+                {storageError}
+              </Alert>
+            )}
 
-            <form className="task-composer" onSubmit={addTask}>
-              <div className="composer-main">
-                <span className="composer-plus"><Plus size={19} /></span>
-                <input className="composer-input" value={draft} onChange={(event) => setDraft(event.target.value)} placeholder="Add a task to your list..." aria-label="Task title" />
+            <Paper className="todo-focus" elevation={0} aria-label="Task summary">
+              <span className="todo-focus-mark">
+                <span />
+              </span>
+              <div className="todo-focus-copy">
+                <Typography component="strong" variant="subtitle2">
+                  {counts.today} tasks on your plate
+                </Typography>
+                <Typography component="span" variant="caption">
+                  Keep your focus on what matters today.
+                </Typography>
               </div>
-              <div className="composer-options">
-                <label className="composer-select"><CalendarDays size={15} /><span className="sr-only">Due date</span><input className="date-input" type="date" value={draftDate} onChange={(event) => setDraftDate(event.target.value)} aria-label="Due date" /></label>
-                <label className="composer-select"><span className={cx('priority-dot', `priority-dot-${draftPriority}`)} /><span className="sr-only">Priority</span><select className="priority-select" value={draftPriority} onChange={(event) => setDraftPriority(event.target.value)} aria-label="Priority">{priorities.map((priority) => <option key={priority} value={priority}>{priority[0].toUpperCase() + priority.slice(1)}</option>)}</select></label>
-                <button className="add-button" type="submit" disabled={!draft.trim()}><Plus size={16} />Add task</button>
+              <div className="todo-focus-progress">
+                <Typography component="span" variant="caption">
+                  {counts.completed} done
+                </Typography>
+                <Progress
+                  className="todo-progress"
+                  value={completion}
+                  max={100}
+                  label={`${completion}% of tasks completed`}
+                />
               </div>
+            </Paper>
+
+            <form className="todo-composer-form" onSubmit={addTask}>
+              <Paper className="todo-composer" elevation={1}>
+                <div className="todo-composer-main">
+                  <span className="todo-composer-plus">
+                    <Plus size={18} aria-hidden="true" />
+                  </span>
+                  <TextField
+                    className="todo-task-field"
+                    inputClassName="todo-control-input"
+                    value={draft}
+                    onChange={(event) => setDraft(event.target.value)}
+                    placeholder="Add a task to your list..."
+                    aria-label="Task title"
+                    required
+                  />
+                </div>
+                <div className="todo-composer-options">
+                  <DatePicker
+                    className="todo-date-field"
+                    popoverClassName="todo-date-picker-popover"
+                    value={draftDate}
+                    onChange={setDraftDate}
+                    aria-label="Due date"
+                  />
+                  <Select
+                    className="todo-priority-field"
+                    value={draftPriority}
+                    options={priorityOptions}
+                    onValueChange={setDraftPriority}
+                    aria-label="Priority"
+                  />
+                  <Button
+                    className="todo-add-button"
+                    type="submit"
+                    size="small"
+                    disabled={!draft.trim()}
+                  >
+                    <Plus size={16} aria-hidden="true" />
+                    Add task
+                  </Button>
+                </div>
+              </Paper>
             </form>
 
-            <div className="list-toolbar">
-              <div className="list-heading-group"><div><h2 className="list-heading">{activeView === 'today' ? 'Your list' : viewTitle(activeView)}</h2><span className="list-count">{visibleTasks.length} {visibleTasks.length === 1 ? 'task' : 'tasks'}</span></div><div className="row-style-control"><span className="row-style-label">ROW STYLE</span><div className="row-style-toggle" role="group" aria-label="Task row styling"><button className={cx('row-style-option', rowStyle === 'tailwind' && 'row-style-option-active')} type="button" aria-pressed={rowStyle === 'tailwind'} onClick={() => setRowStyle('tailwind')}>Tailwind</button><button className={cx('row-style-option', rowStyle === 'tailmantic' && 'row-style-option-active')} type="button" aria-pressed={rowStyle === 'tailmantic'} onClick={() => setRowStyle('tailmantic')}>Tailmantic</button></div></div></div>
-              <button className="clear-button" type="button" onClick={clearCompleted} disabled={!counts.completed}><Trash2 size={15} />Clear completed</button>
+            <div className="todo-list-toolbar">
+              <div className="todo-list-heading">
+                <Typography component="h2" variant="h4">
+                  {activeView === 'today' ? 'Your list' : viewTitle(activeView)}
+                </Typography>
+                <Chip className="todo-list-count" size="small">
+                  {visibleTasks.length} {visibleTasks.length === 1 ? 'task' : 'tasks'}
+                </Chip>
+              </div>
+              <Button
+                className="todo-clear-button"
+                size="small"
+                variant="text"
+                onClick={clearCompleted}
+                disabled={!counts.completed}
+              >
+                <Trash2 size={15} aria-hidden="true" />
+                Clear completed
+              </Button>
             </div>
 
             {visibleTasks.length ? (
-              <ul className="task-list">
-                {visibleTasks.map((task) => (
-                  rowStyle === 'tailmantic'
-                    ? <TailmanticTaskRow key={task.id} task={task} onToggle={() => toggleTask(task.id)} onDelete={() => deleteTask(task.id)} />
-                    : <TailwindTaskRow key={task.id} task={task} onToggle={() => toggleTask(task.id)} onDelete={() => deleteTask(task.id)} />
-                ))}
-              </ul>
+              <Paper className="todo-task-paper" elevation={0}>
+                <List className="todo-task-list" disablePadding>
+                  {visibleTasks.map((task) => (
+                    <TaskRow
+                      key={task.id}
+                      task={task}
+                      onToggle={() => toggleTask(task.id)}
+                      onDelete={() => deleteTask(task.id)}
+                    />
+                  ))}
+                </List>
+              </Paper>
             ) : (
-              <div className="empty-state"><div className="empty-icon"><Search size={21} /></div><strong className="empty-title">{search ? 'No matching tasks' : 'All clear for now'}</strong><span className="empty-copy">{search ? 'Try another search.' : 'Add a task above and give it a place in your day.'}</span></div>
+              <Paper className="todo-empty-state" elevation={0}>
+                <span className="todo-empty-icon">
+                  <Search size={20} aria-hidden="true" />
+                </span>
+                <Typography component="strong" variant="subtitle2">
+                  {search ? 'No matching tasks' : 'All clear for now'}
+                </Typography>
+                <Typography className="todo-empty-state-copy" component="span" variant="caption">
+                  {search
+                    ? 'Try another search.'
+                    : 'Add a task above and give it a place in your day.'}
+                </Typography>
+              </Paper>
             )}
 
-            <footer className="list-footer"><span className="footer-status"><span className="saved-indicator" />Changes save automatically on this device</span><span>{counts.inbox} active · {counts.completed} completed</span></footer>
+            <footer className="todo-list-footer">
+              <Typography className="todo-footer-status" component="span" variant="caption">
+                <span className={cx('todo-saved-indicator', storageError && 'todo-save-error')} />
+                {storageError
+                  ? 'Saving is unavailable'
+                  : 'Changes save automatically on this device'}
+              </Typography>
+              <Typography component="span" variant="caption">
+                {counts.inbox} active · {counts.completed} completed
+              </Typography>
+            </footer>
           </div>
         </main>
       </div>

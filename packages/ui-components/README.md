@@ -97,6 +97,27 @@ import { Autocomplete } from '@tailmantic/ui-components';
 
 Set `multiple` and use `selectedValues`/`onSelectedValuesChange` for a removable selection list. Set `freeSolo` to offer a custom option when the query does not match an existing label. Both modes support keyboard navigation and work with string options as well as `{ label, value, description }` objects.
 
+## Select
+
+`Select` announces selection changes through a live region by default. Set `announceSelection={false}` to disable those announcements. Use `disablePortal` when the dropdown must remain inside a containing overlay, or `popperClassName` to add a class to the dropdown popper.
+
+## DatePicker
+
+`DatePicker` accepts ISO calendar dates (`YYYY-MM-DD`) through `value` or `defaultValue`. The selected date defaults to the English `dd MMMM yyyy` display format and can be customized with `dateFormat`; supported tokens are `d`, `dd`, `M`, `MM`, `MMM`, `MMMM`, `yy`, and `yyyy`. Set `showMonthYearSelect` to show month and year dropdowns in the calendar header. It renders a calendar popover, supports `minDate` and `maxDate`, and calls `onChange` with the selected ISO date string. The calendar supports arrow-key day movement, Home/End week movement, and PageUp/PageDown month movement.
+
+```jsx
+import { DatePicker } from '@tailmantic/ui-components';
+
+<DatePicker
+  label="Due date"
+  value={dueDate}
+  dateFormat="dd/MM/yyyy"
+  showMonthYearSelect
+  minDate="2026-01-01"
+  onChange={setDueDate}
+/>;
+```
+
 ## Standalone component usage
 
 Each component ships its own style file and a corresponding token file so you can load only what you need.

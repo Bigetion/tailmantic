@@ -100,6 +100,11 @@
       "import": "./dist/dialog.js"
     },
     "./dialog/styles": "./src/dialog/dialog.styles.js",
+    "./date-picker": {
+      "types": "./src/date-picker/date-picker.d.ts",
+      "import": "./dist/date-picker.js"
+    },
+    "./date-picker/styles": "./src/date-picker/date-picker.styles.js",
     "./divider": {
       "types": "./src/divider/divider.d.ts",
       "import": "./dist/divider.js"
@@ -277,7 +282,7 @@
   ],
   "scripts": {
     "build": "vite build",
-    "test": "npm run build && node --test test/popper.test.js test/overlays.test.js test/interactions.test.js test/exports.test.js test/pack-consumer.test.js test/ssr.test.js test/badge-styles.test.js test/box-sizing-styles.test.js test/button-group-styles.test.js test/toggle-button-styles.test.js",
+    "test": "npm run build && node --test test/popper.test.js test/overlays.test.js test/interactions.test.js test/date-picker.test.js test/exports.test.js test/pack-consumer.test.js test/ssr.test.js test/badge-styles.test.js test/box-sizing-styles.test.js test/button-group-styles.test.js test/toggle-button-styles.test.js",
     "typecheck": "tsc --noEmit --strict --jsx react-jsx --module ESNext --moduleResolution Bundler --target ES2022 index.d.ts src/index.d.ts src/type-tests/public-api.tsx src/type-tests/all-components.ts",
     "prepack": "npm run build",
     "prepublishOnly": "npm test && npm run typecheck"

@@ -28,6 +28,7 @@ export default defineConfig({
         chip: source('chip/index.js'),
         'click-away-listener': source('click-away-listener/index.js'),
         dialog: source('dialog/index.js'),
+        'date-picker': source('date-picker/index.js'),
         divider: source('divider/index.js'),
         drawer: source('drawer/index.js'),
         'floating-action-button': source('floating-action-button/index.js'),

@@ -19,9 +19,11 @@ const Select = forwardRef(function Select(
   {
     'aria-describedby': describedBy,
     'aria-invalid': ariaInvalid,
+    announceSelection = true,
     className,
     defaultSelectedValues = [],
     defaultValue,
+    disablePortal = false,
     disabled = false,
     error = false,
     helperText,
@@ -33,6 +35,7 @@ const Select = forwardRef(function Select(
     onValueChange,
     options = [],
     placeholder,
+    popperClassName,
     required = false,
     renderOption,
     selectedValues: controlledSelectedValues,
@@ -119,15 +122,17 @@ const Select = forwardRef(function Select(
         : [...selectedValues, option.value];
       if (controlledSelectedValues === undefined) setInternalSelectedValues(nextValues);
       onSelectedValuesChange?.(nextValues, option);
-      setAnnouncement(
-        `${option.label} ${nextValues.includes(option.value) ? 'selected' : 'removed'}. ${nextValues.length} selected.`,
-      );
+      if (announceSelection) {
+        setAnnouncement(
+          `${option.label} ${nextValues.includes(option.value) ? 'selected' : 'removed'}. ${nextValues.length} selected.`,
+        );
+      }
       setActiveIndex(optionNodes.findIndex((item) => item.value === option.value));
       return;
     }
     if (controlledValue === undefined) setInternalValue(option.value);
     onValueChange?.(option.value, option);
-    setAnnouncement(`${option.label} selected.`);
+    if (announceSelection) setAnnouncement(`${option.label} selected.`);
     dismiss();
   }
 
@@ -135,7 +140,9 @@ const Select = forwardRef(function Select(
     const nextValues = selectedValues.filter((value) => value !== option.value);
     if (controlledSelectedValues === undefined) setInternalSelectedValues(nextValues);
     onSelectedValuesChange?.(nextValues, null);
-    setAnnouncement(`${option.label} removed. ${nextValues.length} selected.`);
+    if (announceSelection) {
+      setAnnouncement(`${option.label} removed. ${nextValues.length} selected.`);
+    }
   }
 
   function handleKeyDown(event) {
@@ -265,15 +272,18 @@ const Select = forwardRef(function Select(
           {helperText}
         </span>
       )}
-      <span className="sr-only" id={statusId} role="status" aria-live="polite">
-        {announcement}
-      </span>
+      {announceSelection && (
+        <span className="sr-only" id={statusId} role="status" aria-live="polite">
+          {announcement}
+        </span>
+      )}
       <Popper
         open={open && !disabled}
         anchorRef={anchorRef}
         placement="bottom-start"
         fallbackPlacements={SELECT_FALLBACK_PLACEMENTS}
-        className="tm-select-options"
+        className={cx('tm-select-options', popperClassName)}
+        disablePortal={disablePortal}
         role="listbox"
         id={listboxId}
         aria-labelledby={label != null ? `${selectId}-label` : undefined}

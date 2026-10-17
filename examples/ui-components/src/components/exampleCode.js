@@ -34,6 +34,7 @@ function code(imports, example) {
     alignment: "'left'",
     department: "'engineering'",
     difficulty: '3',
+    dueDate: "'2026-10-17'",
     email: "''",
     filter: "'all'",
     framework: "'React'",
@@ -320,6 +321,24 @@ const snippets = {
   <label><Checkbox value="in-app" /> In-app</label>
   <label><Checkbox value="digest" /> Weekly digest</label>
 </fieldset>`),
+  },
+  datePicker: {
+    'Controlled date': code('DatePicker', `<DatePicker
+  label="Due date"
+  value={dueDate}
+  onChange={setDueDate}
+  dateFormat="dd/MM/yyyy"
+  helperText="Choose a date for this task."
+/>`),
+    'Date range': code('DatePicker', `<DatePicker
+  label="Planning window"
+  value={dueDate}
+  onChange={setDueDate}
+  dateFormat="dd/MM/yyyy"
+  showMonthYearSelect
+  minDate="2025-01-01"
+  maxDate="2028-12-31"
+/>`),
   },
   chip: {
     'Chip variants': code('Chip', `<div>

@@ -26,7 +26,7 @@ export type {
   AvatarProps,
   AvatarSize,
 } from './src/avatar/avatar.js';
-export { default as Avatar, AvatarGroup } from './src/avatar/avatar.js';
+export { AvatarGroup, default as Avatar } from './src/avatar/avatar.js';
 export type { BadgeColor, BadgeOverlap, BadgeProps, BadgeVariant } from './src/badge/badge.js';
 export { default as Badge } from './src/badge/badge.js';
 export type {
@@ -51,6 +51,8 @@ export type { ChipColor, ChipProps, ChipSize, ChipVariant } from './src/chip/chi
 export { default as Chip } from './src/chip/chip.js';
 export type { ClickAwayListenerProps } from './src/click-away-listener/click-away-listener.js';
 export { default as ClickAwayListener } from './src/click-away-listener/click-away-listener.js';
+export type { DatePickerChangeHandler, DatePickerProps } from './src/date-picker/date-picker.js';
+export { default as DatePicker } from './src/date-picker/date-picker.js';
 export type { DialogCloseReason, DialogProps } from './src/dialog/dialog.js';
 export { default as Dialog } from './src/dialog/dialog.js';
 export type { DividerOrientation, DividerProps, DividerTextAlign } from './src/divider/divider.js';

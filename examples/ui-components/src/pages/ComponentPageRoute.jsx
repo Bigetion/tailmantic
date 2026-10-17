@@ -17,6 +17,7 @@ const componentPages = {
   checkbox: lazy(() => import('./CheckboxPage.jsx')),
   chip: lazy(() => import('./ChipPage.jsx')),
   'click-away-listener': lazy(() => import('./ClickAwayListenerPage.jsx')),
+  'date-picker': lazy(() => import('./DatePickerPage.jsx')),
   dialog: lazy(() => import('./DialogPage.jsx')),
   divider: lazy(() => import('./DividerPage.jsx')),
   drawer: lazy(() => import('./DrawerPage.jsx')),

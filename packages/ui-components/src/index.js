@@ -7,7 +7,7 @@ export {
 export { default as Alert } from './alert/Alert.jsx';
 export { default as AppBar } from './app-bar/AppBar.jsx';
 export { default as Autocomplete } from './autocomplete/Autocomplete.jsx';
-export { default as Avatar, AvatarGroup } from './avatar/index.js';
+export { AvatarGroup, default as Avatar } from './avatar/index.js';
 export { default as Badge } from './badge/Badge.jsx';
 export { BottomNavigationItem, default as BottomNavigation } from './bottom-navigation/index.js';
 export { default as Breadcrumbs } from './breadcrumbs/Breadcrumbs.jsx';
@@ -17,6 +17,7 @@ export { default as Card } from './card/Card.jsx';
 export { default as Checkbox } from './checkbox/Checkbox.jsx';
 export { default as Chip } from './chip/Chip.jsx';
 export { default as ClickAwayListener } from './click-away-listener/ClickAwayListener.jsx';
+export { default as DatePicker } from './date-picker/DatePicker.jsx';
 export { default as Dialog } from './dialog/Dialog.jsx';
 export { default as Divider } from './divider/Divider.jsx';
 export { default as Drawer } from './drawer/Drawer.jsx';

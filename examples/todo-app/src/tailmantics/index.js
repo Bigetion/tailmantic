@@ -1,8 +1,6 @@
 import { getManifest } from 'tailmantic/collector';
 import './tokens.js';
-import './layout.js';
-import './workspace.js';
-import './composer.js';
-import './task-list.js';
+import './app.js';
+import '@tailmantic/ui-components/styles';
 
 export default getManifest();
